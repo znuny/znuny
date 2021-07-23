@@ -361,6 +361,19 @@ EOF
             ContentType => 'text/html; charset="utf-8"',
         },
     },
+    {
+        Name => 'Standard - extra spaces after charset and = tokens',
+        Data => {
+            Content     => 'Some Content',
+            ContentType => 'text/html; charset = "utf-8"',
+        },
+        Attachments => {},
+        URL         => 'Action=SomeAction;FileID=',
+        Result      => {
+            Content     => 'Some Content',
+            ContentType => 'text/html; charset = "utf-8"',
+        },
+    },
 );
 
 for my $Test (@Tests) {

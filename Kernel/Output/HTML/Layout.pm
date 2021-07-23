@@ -5066,7 +5066,7 @@ sub RichTextDocumentServe {
 
     # Get charset from passed content type parameter.
     my $Charset;
-    if ( $Param{Data}->{ContentType} =~ m/.+?charset=("|'|)(.+)/ig ) {
+    if ( $Param{Data}->{ContentType} =~ m/.+?charset\s*=\s*("|'|)(.+)/ig ) {
         $Charset = $2;
         $Charset =~ s/"|'//g;
     }
@@ -5086,7 +5086,7 @@ sub RichTextDocumentServe {
 
         # Replace charset in content type and content.
         $Param{Data}->{ContentType} =~ s/\Q$Charset\E/utf-8/gi;
-        if ( !( $Param{Data}->{Content} =~ s/(<meta[^>]+charset=("|'|))\Q$Charset\E/$1utf-8/gi ) ) {
+        if ( !( $Param{Data}->{Content} =~ s/(<meta[^>]+charset\s*=\s*("|'|))\Q$Charset\E/$1utf-8/gi ) ) {
 
             # Add explicit charset if missing.
             $Param{Data}->{Content}

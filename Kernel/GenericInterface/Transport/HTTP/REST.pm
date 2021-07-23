@@ -322,7 +322,7 @@ sub ProviderProcessRequest {
 
     # Convert char-set if necessary.
     my $ContentCharset;
-    if ( $ENV{'CONTENT_TYPE'} =~ m{ \A .* charset= ["']? ( [^"']+ ) ["']? \z }xmsi ) {
+    if ( $ENV{'CONTENT_TYPE'} =~ m{ \A .* charset\s*=\s* ["']? ( [^"']+ ) ["']? \z }xmsi ) {
         $ContentCharset = $1;
     }
     if ( $ContentCharset && $ContentCharset !~ m{ \A utf [-]? 8 \z }xmsi ) {

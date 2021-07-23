@@ -298,7 +298,7 @@ sub ArticlePreview {
             # Get the charset directly from the attachment hash and convert content to the internal charset (utf-8).
             #   Please see bug#13367 for more information.
             my $Charset;
-            if ( $Data{ContentType} =~ m/.+?charset=("|'|)(?<Charset>.+)/ig ) {
+            if ( $Data{ContentType} =~ m/.+?charset\s*=\s*("|'|)(?<Charset>.+)/ig ) {
                 $Charset = $+{Charset};
                 $Charset =~ s/"|'//g;
             }
