@@ -136,12 +136,6 @@ sub Run {
 
             '<Insert Table="notification_event_item">
                 <Data Key="notification_id">' . $NotificationID . '</Data>
-                <Data Key="event_key" Type="Quote">TransportEmailTemplate</Data>
-                <Data Key="event_value" Type="Quote">Default</Data>
-            </Insert>',
-
-            '<Insert Table="notification_event_item">
-                <Data Key="notification_id">' . $NotificationID . '</Data>
                 <Data Key="event_key" Type="Quote">Transports</Data>
                 <Data Key="event_value" Type="Quote">Email</Data>
             </Insert>',
