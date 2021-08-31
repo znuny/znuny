@@ -1,6 +1,7 @@
 # --
 # Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
 # Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+# Copyright (C) 2021 Informatyka Boguslawski sp. z o.o. sp.k., http://www.ib.pl/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (GPL). If you
@@ -316,13 +317,14 @@ sub PossibleLinkList {
 add a new link between two elements
 
     $True = $LinkObject->LinkAdd(
-        SourceObject => 'Ticket',
-        SourceKey    => '321',
-        TargetObject => 'FAQ',
-        TargetKey    => '5',
-        Type         => 'ParentChild',
-        State        => 'Valid',
-        UserID       => 1,
+        SourceObject   => 'Ticket',
+        SourceKey      => '321',
+        TargetObject   => 'FAQ',
+        TargetKey      => '5',
+        Type           => 'ParentChild',
+        State          => 'Valid',
+        UserID         => 1,
+        NoticeIfExists => 1, # optional; notice not error if link exists
     );
 
 =cut
@@ -437,8 +439,11 @@ sub LinkAdd {
         if ( $Existing{StateID} ne $StateID ) {
 
             $Kernel::OM->Get('Kernel::System::Log')->Log(
-                Priority => 'error',
-                Message  => "Link already exists between these two objects "
+                Priority => $Param{NoticeIfExists} ? 'notice' : 'error',
+                Message  => "Cannot create a '$Param{Type}' link between "
+                    . "$Param{SourceObject} $Param{SourceKey} and "
+                    . "$Param{TargetObject} $Param{TargetKey}! "
+                    . "Link already exists between these two objects "
                     . "with a different state id '$Existing{StateID}'!",
             );
             return;
@@ -455,8 +460,11 @@ sub LinkAdd {
 
         # log error
         $Kernel::OM->Get('Kernel::System::Log')->Log(
-            Priority => 'error',
-            Message  => 'Link already exists between these two objects in opposite direction!',
+            Priority => $Param{NoticeIfExists} ? 'notice' : 'error',
+            Message  => "Cannot create a '$Param{Type}' link between "
+                . "$Param{SourceObject} $Param{SourceKey} and "
+                . "$Param{TargetObject} $Param{TargetKey}! "
+                . 'Link already exists between these two objects in opposite direction!',
         );
         return;
     }
@@ -495,8 +503,11 @@ sub LinkAdd {
 
             # existing link type is in a type group with the new link
             $Kernel::OM->Get('Kernel::System::Log')->Log(
-                Priority => 'error',
-                Message  => 'Another Link already exists within the same type group!',
+                Priority => $Param{NoticeIfExists} ? 'notice' : 'error',
+                Message  => "Cannot create a '$Param{Type}' link between "
+                    . "$Param{SourceObject} $Param{SourceKey} and "
+                    . "$Param{TargetObject} $Param{TargetKey}! "
+                    . 'Another Link already exists within the same type group!',
             );
 
             return;
