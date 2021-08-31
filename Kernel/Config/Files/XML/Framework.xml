@@ -3053,6 +3053,20 @@
             <Item ValueType="String" ValueRegex="^\d+$">86400</Item><!-- default 1 day -->
         </Value>
     </Setting>
+    <Setting Name="TLS::VerifyPeer" Required="1" Valid="1">
+        <Description Translatable="1">If this option is enabled (default, recommended), then the remote peer TLS certificates are verified against configured CA (see below). When disabled (not recommended for security reasons) peer TLS certificates are not verified. Please note: this option is currently used for mail account IMAPS connections only.</Description>
+        <Navigation>Core::Crypt::TLS</Navigation>
+        <Value>
+            <Item ValueType="Checkbox">1</Item>
+        </Value>
+    </Setting>
+    <Setting Name="TLS::CAPath" Required="1" Valid="1">
+        <Description Translatable="1">Specifies the directory where TLS trusted CA certificates for TLS peer certificate verification are stored. This setting is used if TLS::VerifyPeer is enabled (see above). Please note: this option is currently used for mail account IMAPS connections only.</Description>
+        <Navigation>Core::Crypt::TLS</Navigation>
+        <Value>
+            <Item ValueRegex="" ValueType="Directory">/etc/ssl/certs</Item>
+        </Value>
+    </Setting>
     <Setting Name="SMIME::FetchFromCustomer" Required="1" Valid="1">
         <Description Translatable="1">Enables fetch S/MIME from CustomerUser backend support.</Description>
         <Navigation>Core::Crypt::SMIME</Navigation>
