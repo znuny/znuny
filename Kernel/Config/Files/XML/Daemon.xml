@@ -721,7 +721,7 @@
         </Value>
     </Setting>
     <!-- new tasks -->
-    <Setting Name="Daemon::SchedulerCronTaskManager::Task###RegistrationUpdateSend" Required="1" Valid="1" ReadOnly="1" ConfigLevel="100">
+    <Setting Name="Daemon::SchedulerCronTaskManager::Task###RegistrationUpdateSend" Required="0" Valid="0" ConfigLevel="100">
         <Description Translatable="1">Sends registration information to OTRS group.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
@@ -738,7 +738,7 @@
             </Hash>
         </Value>
     </Setting>
-    <Setting Name="Daemon::SchedulerCronTaskManager::Task###SupportDataCollectAsynchronous" Required="1" Valid="1" ReadOnly="1" ConfigLevel="100">
+    <Setting Name="Daemon::SchedulerCronTaskManager::Task###SupportDataCollectAsynchronous" Required="0" Valid="0" ConfigLevel="100">
         <Description Translatable="1">Collect support data for asynchronous plug-in modules.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
@@ -755,7 +755,7 @@
             </Hash>
         </Value>
     </Setting>
-    <Setting Name="Daemon::SchedulerCronTaskManager::Task###OTRSBusinessEntitlementCheck" Required="1" Valid="1" ReadOnly="1" ConfigLevel="100">
+    <Setting Name="Daemon::SchedulerCronTaskManager::Task###OTRSBusinessEntitlementCheck" Required="0" Valid="0" ConfigLevel="100">
         <Description Translatable="1">Checks the entitlement status of OTRS Business Solution™.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
@@ -772,7 +772,7 @@
             </Hash>
         </Value>
     </Setting>
-    <Setting Name="Daemon::SchedulerCronTaskManager::Task###OTRSBusinessAvailabilityCheck" Required="1" Valid="1" ReadOnly="1" ConfigLevel="100">
+    <Setting Name="Daemon::SchedulerCronTaskManager::Task###OTRSBusinessAvailabilityCheck" Required="0" Valid="0" ConfigLevel="100">
         <Description Translatable="1">Checks the availability of OTRS Business Solution™ for this system.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>

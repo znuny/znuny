@@ -849,7 +849,7 @@
             </Hash>
         </Value>
     </Setting>
-    <Setting Name="Frontend::NotifyModule###1100-OTRSBusiness" Required="1" Valid="1">
+    <Setting Name="Frontend::NotifyModule###1100-OTRSBusiness" Required="0" Valid="0">
         <Description Translatable="1">Defines the module to display a notification in different interfaces on different occasions for OTRS Business Solution™.</Description>
         <Navigation>Frontend::Agent::FrontendNotification</Navigation>
         <Value>
@@ -859,7 +859,7 @@
             </Hash>
         </Value>
     </Setting>
-    <Setting Name="CustomerFrontend::NotifyModule###1-OTRSBusiness" Required="1" Valid="1">
+    <Setting Name="CustomerFrontend::NotifyModule###1-OTRSBusiness" Required="0" Valid="0">
         <Description Translatable="1">Defines the module to display a notification in different interfaces on different occasions for OTRS Business Solution™.</Description>
         <Navigation>Frontend::Customer::FrontendNotification</Navigation>
         <Value>
@@ -7366,54 +7366,6 @@ via the Preferences button after logging in.
                         <Item Key="Block">ItemArea</Item>
                         <Item Key="AccessKey"></Item>
                         <Item Key="Prio">8500</Item>
-                    </Hash>
-                </Item>
-<!--
-                <Item>
-                    <Hash>
-                        <Item Key="Group">
-                            <Array>
-                                <Item>stats</Item>
-                            </Array>
-                        </Item>
-                        <Item Key="GroupRo">
-                            <Array>
-                                <Item>stats</Item>
-                            </Array>
-                        </Item>
-                        <Item Key="Description" Translatable="1">Statistic Reports overview.</Item>
-                        <Item Key="Name" Translatable="1">Reports (OTRS Business Solution™)</Item>
-                        <Item Key="Link">Action=AgentStatisticsReports;Subaction=Overview</Item>
-                        <Item Key="LinkOption">class="OTRSBusinessRequired"</Item>
-                        <Item Key="NavBar">Reports</Item>
-                        <Item Key="Type"></Item>
-                        <Item Key="Block"></Item>
-                        <Item Key="AccessKey"></Item>
-                        <Item Key="Prio">100</Item>
-                    </Hash>
-                </Item>
--->
-                <Item>
-                    <Hash>
-                        <Item Key="Group">
-                            <Array>
-                                <Item>stats</Item>
-                            </Array>
-                        </Item>
-                        <Item Key="GroupRo">
-                            <Array>
-                                <Item>stats</Item>
-                            </Array>
-                        </Item>
-                        <Item Key="Description" Translatable="1">Statistics overview.</Item>
-                        <Item Key="Name" Translatable="1">Statistics</Item>
-                        <Item Key="Link">Action=AgentStatistics;Subaction=Overview</Item>
-                        <Item Key="LinkOption"></Item>
-                        <Item Key="NavBar">Reports</Item>
-                        <Item Key="Type"></Item>
-                        <Item Key="Block"></Item>
-                        <Item Key="AccessKey"></Item>
-                        <Item Key="Prio">200</Item>
                     </Hash>
                 </Item>
             </Array>
