@@ -916,7 +916,27 @@ Returns:
 sub ArticleSearchIndexBuild {
     my ( $Self, %Param ) = @_;
 
-    return $Kernel::OM->Get( $Self->{ArticleSearchIndexModule} )->ArticleSearchIndexBuild(%Param);
+    for my $Needed (qw(ArticleID)) {
+        if ( !$Param{$Needed} ) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "Need $Needed!"
+            );
+            return;
+        }
+    }
+
+    if ( $Kernel::OM->Get( $Self->{ArticleSearchIndexModule} )->ArticleSearchIndexBuild(%Param) ) {
+
+        # Unset articles search index rebuild flag after successfull rebuild.
+        $Self->ArticleSearchIndexRebuildFlagSet(
+             ArticleIDs => [$Param{ArticleID}],
+             Value      => 0,
+        );
+        return 1;
+    }
+
+    return;
 }
 
 =head2 ArticleSearchIndexDelete()

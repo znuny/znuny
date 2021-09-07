@@ -194,12 +194,6 @@ sub ArticleIndexRebuild {
                         Message  => "Could not rebuild index for ArticleID '$ArticleID'!"
                     );
                 }
-                else {
-                    $ArticleObject->ArticleSearchIndexRebuildFlagSet(
-                        ArticleIDs => [$ArticleID],
-                        Value      => 0,
-                    );
-                }
             }
 
             # Close child process at the end.
