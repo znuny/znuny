@@ -244,7 +244,7 @@ if ( $DB =~ m/mysql/i ) {
     }
     if (
         !system(
-            "( $DBDump -u $DatabaseUser $DatabasePw -h $DatabaseHost $Database || touch $ErrorIndicationFileName ) | $CompressCMD > $Directory/DatabaseBackup.sql.$CompressEXT"
+            "( $DBDump -u $DatabaseUser $DatabasePw -h $DatabaseHost $Database --no-tablespaces || touch $ErrorIndicationFileName ) | $CompressCMD > $Directory/DatabaseBackup.sql.$CompressEXT"
         )
         && !-f $ErrorIndicationFileName
         )
