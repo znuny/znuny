@@ -275,11 +275,13 @@ sub ArticleSend {
         AttachmentsRef => $Param{Attachment},
     );
 
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+
     # create article
     my $Time      = $DateTimeObject->ToEpoch();
     my $Random    = rand 999999;
-    my $FQDN      = $Kernel::OM->Get('Kernel::Config')->Get('FQDN');
-    my $MessageID = "<$Time.$Random\@$FQDN>";
+    my $ExtFQDN   = $ConfigObject->Get('ExtFQDN') || $ConfigObject->Get('FQDN');
+    my $MessageID = "<$Time.$Random\@$ExtFQDN>";
     my $ArticleID = $Self->ArticleCreate(
         %Param,
         MessageID => $MessageID,
@@ -365,13 +367,14 @@ sub ArticleBounce {
         }
     }
 
+    my $ConfigObject   = $Kernel::OM->Get('Kernel::Config');
     my $DateTimeObject = $Kernel::OM->Create('Kernel::System::DateTime');
 
     # create message id
     my $Time         = $DateTimeObject->ToEpoch();
     my $Random       = rand 999999;
-    my $FQDN         = $Kernel::OM->Get('Kernel::Config')->Get('FQDN');
-    my $NewMessageID = "<$Time.$Random.0\@$FQDN>";
+    my $ExtFQDN      = $ConfigObject->Get('ExtFQDN') || $ConfigObject->Get('FQDN');
+    my $NewMessageID = "<$Time.$Random.0\@$ExtFQDN>";
     my $Email        = $Self->ArticlePlain( ArticleID => $Param{ArticleID} );
 
     # check if plain email exists

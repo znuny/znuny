@@ -96,9 +96,10 @@ sub FormIDAddFile {
     if ( !$ContentID && lc $Disposition eq 'inline' ) {
 
         my $Random = rand 999999;
-        my $FQDN   = $Kernel::OM->Get('Kernel::Config')->Get('FQDN');
+        my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+        my $ExtFQDN = $ConfigObject->Get('ExtFQDN') || $ConfigObject->Get('FQDN');
 
-        $ContentID = "$Disposition$Random.$Param{FormID}\@$FQDN";
+        $ContentID = "$Disposition$Random.$Param{FormID}\@$ExtFQDN";
     }
 
     # write attachment to db
