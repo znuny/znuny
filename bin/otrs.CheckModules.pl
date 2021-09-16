@@ -519,6 +519,27 @@ my @NeededModules = (
         },
     },
     {
+        Module    => 'Redis',
+        Required  => 0,
+        Comment   => 'Required for using Redis as a cache backend.',
+        InstTypes => {
+            aptget => 'libredis-perl',
+            emerge => 'dev-perl/Redis',
+            zypper => 'perl-Redis',
+            ports  => 'databases/p5-Redis',
+        },
+    },
+    {
+        Module    => 'Redis::Fast',
+        Required  => 0,
+        Comment   => 'Faster implementation of Redis cache backend.',
+        InstTypes => {
+            aptget => 'libredis-fast-perl',
+            zypper => 'perl-Redis-Fast',
+            ports  => 'databases/p5-Redis-Fast',
+        },
+    },
+    {
         Module    => 'Template',
         Required  => 1,
         Comment   => 'Template::Toolkit, the rendering engine of OTRS.',

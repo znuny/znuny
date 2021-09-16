@@ -8492,6 +8492,27 @@ via the Preferences button after logging in.
             </Item>
         </Value>
     </Setting>
+        <Setting Name="Cache::Redis###Server" Required="1" Valid="1" ConfigLevel="200">
+        <Description Translatable="1">Redis server address. Example: 127.0.0.1:6379.</Description>
+        <Navigation>Core::Cache</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">127.0.0.1:6379</Item>
+        </Value>
+    </Setting>
+    <Setting Name="Cache::Redis###DatabaseNumber" Required="1" Valid="1" ConfigLevel="200">
+        <Description Translatable="1">Use specified Redis logical database.</Description>
+        <Navigation>Core::Cache</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="\d">0</Item>
+        </Value>
+    </Setting>
+    <Setting Name="Cache::Redis###RedisFast" Required="1" Valid="1" ConfigLevel="200">
+        <Description Translatable="1">Use Redis::Fast instead of Redis.</Description>
+        <Navigation>Core::Cache</Navigation>
+        <Value>
+            <Item ValueType="Checkbox">0</Item>
+        </Value>
+    </Setting>
     <Setting Name="AutoComplete::Agent###Default" Required="0" Valid="1">
         <Description Translatable="1">Defines the config options for the autocompletion feature.</Description>
         <Navigation>Frontend::Agent</Navigation>
