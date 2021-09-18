@@ -1,7 +1,7 @@
 # --
 # Copyright (C) 2003-2010 Tomasz Melissa <janek at rumianek.com>
 # Copyright (C) 2009 Artur Skalski <skal.ar at wp.pl>
-# Copyright (C) 2011-2013 Informatyka Boguslawski sp. z o.o. sp.k., http://www.ib.pl/
+# Copyright (C) 2011-2021 Informatyka Boguslawski sp. z o.o. sp.k., http://www.ib.pl/
 # Copyright (C) 2014 Wojciech Myrda <wmyrda at auticon.pl>, http://www.auticon.pl
 # Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
 # Copyright (C) 2021 Znuny GmbH, https://znuny.org/
@@ -2772,6 +2772,9 @@ sub Data {
         'Outgoing message' => 'Wiadomość wychodząca',
         'Internal message' => 'Wiadomość wewnętrzna',
         'Sending of this message has failed.' => '',
+        'Error while validating Recipient email address.' => 'Błąd w trakcie weryfikacji adresu odbiorcy.',
+        'Error while validating Message data.' => 'Błąd w trakcie weryfikacji danych wiadomości.',
+        'Error while validating Sender email address.' => 'Błąd w trakcie weryfikacji adresu nadawcy.',
         'Resize' => 'Zmień rozmiar',
         'Mark this article as read' => 'Oznacz wiadomość jako przeczytaną',
         'Show Full Text' => 'Pokaż pełną treść',
