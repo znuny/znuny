@@ -109,7 +109,10 @@ sub Run {
         return $Param{GetParam}->{'X-OTRS-BodyDecrypted'} if $Param{GetParam}->{'X-OTRS-BodyDecrypted'};
     }
     else {
-        $Param{GetParam}->{'X-OTRS-BodyDecrypted'} = '';
+        # If it's not an encrypted message, set X-OTRS-BodyDecrypted to message
+        # body to allow one to use only X-OTRS-BodyDecrypted in postmaster filters
+        # and not to force user to define separate filters for Body and X-OTRS-BodyDecrypted.
+        $Param{GetParam}->{'X-OTRS-BodyDecrypted'} = $Param{GetParam}->{Body};
     }
 
     return 1;
@@ -164,6 +167,8 @@ sub _DecryptPGP {
     my $ParserObject = Kernel::System::EmailParser->new( %{$Self}, Email => $Decrypt{Data} );
     $DecryptBody = $ParserObject->GetMessageBody();
 
+    # WARNING: see StoreDecryptedBody description before enabling it
+    # to avoid data loss!
     if ( $Param{JobConfig}->{StoreDecryptedBody} ) {
         $Param{GetParam}->{Body} = $DecryptBody;
     }
@@ -213,36 +218,46 @@ sub _DecryptSMIME {
         return;
     }
 
-    my $IncomingMailAddress;
-    for my $Email (qw(From)) {
+    # get all email addresses on article
+    my %EmailsToSearch;
+    for my $Email (qw(Resent-To Envelope-To To Cc Delivered-To X-Original-To)) {
 
         my @EmailAddressOnField = $Self->{ParserObject}->SplitAddressLine(
             Line => $Self->{ParserObject}->GetParam( WHAT => $Email ),
         );
 
+        # filter email addresses avoiding repeated and save on hash to search
         for my $EmailAddress (@EmailAddressOnField) {
-            $IncomingMailAddress = $Self->{ParserObject}->GetEmailAddress(
+            my $CleanEmailAddress = $Self->{ParserObject}->GetEmailAddress(
                 Email => $EmailAddress,
             );
+            $EmailsToSearch{$CleanEmailAddress} = '1';
         }
     }
 
-    my @PrivateList = $CryptObject->PrivateSearch(
-        Search => $IncomingMailAddress,
-    );
+    # look for private keys for every email address
+    # extract every resulting cert and put it into an hash of hashes avoiding repeated
+    my %PrivateKeys;
+    for my $EmailAddress ( sort keys %EmailsToSearch ) {
+       my @PrivateKeysResult = $CryptObject->PrivateSearch(
+           Search => $EmailAddress,
+       );
+       for my $Cert (@PrivateKeysResult) {
+           $PrivateKeys{ $Cert->{Filename} } = $Cert;
+       }
+    }
+    return if !%PrivateKeys;
 
     my %Decrypt;
     PRIVATESEARCH:
-    for my $PrivateFilename (@PrivateList) {
+    for my $CertResult ( values %PrivateKeys ) {
 
-        # Try to decrypt
+        # decrypt
         %Decrypt = $CryptObject->Decrypt(
             Message            => $DecryptBody,
             SearchingNeededKey => 1,
-            Filename           => $PrivateFilename->{Filename},
+            %{$CertResult},
         );
-
-        # Stop loop if successful
         last PRIVATESEARCH if ( $Decrypt{Successful} );
     }
 
@@ -254,6 +269,8 @@ sub _DecryptSMIME {
     );
     $DecryptBody = $ParserObject->GetMessageBody();
 
+    # WARNING: see StoreDecryptedBody description before enabling it
+    # to avoid data loss!
     if ( $Param{JobConfig}->{StoreDecryptedBody} ) {
         $Param{GetParam}->{Body}           = $DecryptBody;
         $Param{GetParam}->{'Content-Type'} = 'text/html';

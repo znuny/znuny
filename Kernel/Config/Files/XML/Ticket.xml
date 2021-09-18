@@ -11534,7 +11534,7 @@ Thanks for your help!
         </Value>
     </Setting>
     <Setting Name="PostMaster::PreFilterModule###000-DecryptBody" Required="0" Valid="0">
-        <Description Translatable="1">Module to filter encrypted bodies of incoming messages.</Description>
+        <Description Translatable="1">Module to allow filtering bodies of incoming messages (encrypted and not encrypted) using X-OTRS-BodyDecrypted (note: Body in postmaster filter definition doesn't work for encrypted messages). For encrypted messages article search index is not created on article creation but when article is opened for the first time (decrypted) in application. Enabling StoreDecryptedBody allows to create search index on article creation but !!!WARNING!!! when StoreDecryptedBody is enabled, attachments from encrypted messages won't be extracted from message and visible in application web panel! Enable StoreDecryptedBody only if you're ABSOLUTELY SURE it won't hurt your communication (i.e. encrypted messages won't have attachments). Message decription flow should be fixed in the future application versions probably, to preserve attachments in UI also when StoreDecryptedBody is enabled.</Description>
         <Navigation>Core::Email::PostMaster</Navigation>
         <Value>
             <Hash>
