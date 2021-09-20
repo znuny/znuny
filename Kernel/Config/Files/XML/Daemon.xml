@@ -166,7 +166,7 @@
     </Setting>
     <!-- var/cron tasks -->
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###CoreCacheCleanup" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Delete expired cache from core modules.</Description>
+        <Description Translatable="1">Delete expired cache from core modules. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -185,7 +185,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###WebUploadCacheCleanup" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Delete expired upload cache hourly.</Description>
+        <Description Translatable="1">Delete expired upload cache hourly. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -202,7 +202,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###LoaderCacheDelete" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Delete expired loader cache weekly (Sunday mornings).</Description>
+        <Description Translatable="1">Delete expired loader cache weekly (Sunday mornings). Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -219,7 +219,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###FetchMail" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Fetch emails via fetchmail.</Description>
+        <Description Translatable="1">Fetch emails via fetchmail. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -236,7 +236,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###FetchMailSSL" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Fetch emails via fetchmail (using SSL).</Description>
+        <Description Translatable="1">Fetch emails via fetchmail (using SSL). Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -255,7 +255,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###GenerateDashboardStats" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Generate dashboard statistics.</Description>
+        <Description Translatable="1">Generate dashboard statistics. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -273,7 +273,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###EscalationCheck" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Triggers ticket escalation events and notification events for escalation.</Description>
+        <Description Translatable="1">Triggers ticket escalation events and notification events for escalation. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -290,7 +290,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###TicketPendingCheck" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Process pending tickets.</Description>
+        <Description Translatable="1">Process pending tickets. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -307,7 +307,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###SpoolMailsReprocess" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Reprocess mails from spool directory that could not be imported in the first place.</Description>
+        <Description Translatable="1">Reprocess mails from spool directory that could not be imported in the first place. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -324,7 +324,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###MailAccountFetch" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Fetch incoming emails from configured mail accounts.</Description>
+        <Description Translatable="1">Fetch incoming emails from configured mail accounts. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -341,7 +341,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###TicketAcceleratorRebuild" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Rebuild the ticket index for AgentTicketQueue.</Description>
+        <Description Translatable="1">Rebuild the ticket index for AgentTicketQueue. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -358,7 +358,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###SessionDeleteExpired" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Delete expired sessions.</Description>
+        <Description Translatable="1">Delete expired sessions. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -375,7 +375,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###TicketUnlockTimeout" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Unlock tickets that are past their unlock timeout.</Description>
+        <Description Translatable="1">Unlock tickets that are past their unlock timeout. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -392,7 +392,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###RenewCustomerSMIMECertificates" Required="0" Valid="1">
-        <Description Translatable="1">Renew existing SMIME certificates from customer backend. Note: SMIME and SMIME::FetchFromCustomer needs to be enabled in SysConfig and customer backend needs to be configured to fetch UserSMIMECertificate attribute.</Description>
+        <Description Translatable="1">Renew existing SMIME certificates from customer backend. Note: SMIME and SMIME::FetchFromCustomer needs to be enabled in SysConfig and customer backend needs to be configured to fetch UserSMIMECertificate attribute. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -409,7 +409,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###ArticleSearchIndexRebuild" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Checks for articles that needs to be updated in the article search index.</Description>
+        <Description Translatable="1">Checks for articles that needs to be updated in the article search index. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -430,7 +430,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###MailQueueSend" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Checks for queued outgoing emails to be sent.</Description>
+        <Description Translatable="1">Checks for queued outgoing emails to be sent. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -448,7 +448,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###CommunicationLogDelete" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Checks for communication log entries to be deleted.</Description>
+        <Description Translatable="1">Checks for communication log entries to be deleted. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -467,7 +467,7 @@
     </Setting>
     <!-- custom cron tasks -->
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###Custom1" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required.</Description>
+        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -484,7 +484,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###Custom2" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required.</Description>
+        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -501,7 +501,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###Custom3" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required.</Description>
+        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -518,7 +518,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###Custom4" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required.</Description>
+        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -535,7 +535,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###Custom5" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required.</Description>
+        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -552,7 +552,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###Custom6" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required.</Description>
+        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -569,7 +569,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###Custom7" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required.</Description>
+        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -586,7 +586,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###Custom8" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required.</Description>
+        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -603,7 +603,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###Custom9" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required.</Description>
+        <Description Translatable="1">Executes a custom command or module. Note: if module is used, function is required. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -621,7 +621,7 @@
     </Setting>
     <!-- custom generic agent tasks -->
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###GenericAgentFile1" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Run file based generic agent jobs (Note: module name needs to be specified in -configuration-module param e.g. "Kernel::System::GenericAgent").</Description>
+        <Description Translatable="1">Run file based generic agent jobs (Note: module name needs to be specified in -configuration-module param e.g. "Kernel::System::GenericAgent"). Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -641,7 +641,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###GenericAgentFile2" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Run file based generic agent jobs (Note: module name needs to be specified in -configuration-module param e.g. "Kernel::System::GenericAgent").</Description>
+        <Description Translatable="1">Run file based generic agent jobs (Note: module name needs to be specified in -configuration-module param e.g. "Kernel::System::GenericAgent"). Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -661,7 +661,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###GenericAgentFile3" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Run file based generic agent jobs (Note: module name needs to be specified in -configuration-module param e.g. "Kernel::System::GenericAgent").</Description>
+        <Description Translatable="1">Run file based generic agent jobs (Note: module name needs to be specified in -configuration-module param e.g. "Kernel::System::GenericAgent"). Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -681,7 +681,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###GenericAgentFile4" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Run file based generic agent jobs (Note: module name needs to be specified in -configuration-module param e.g. "Kernel::System::GenericAgent").</Description>
+        <Description Translatable="1">Run file based generic agent jobs (Note: module name needs to be specified in -configuration-module param e.g. "Kernel::System::GenericAgent"). Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -701,7 +701,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###GenericAgentFile5" Required="0" Valid="0" ConfigLevel="100">
-        <Description Translatable="1">Run file based generic agent jobs (Note: module name needs to be specified in -configuration-module param e.g. "Kernel::System::GenericAgent").</Description>
+        <Description Translatable="1">Run file based generic agent jobs (Note: module name needs to be specified in -configuration-module param e.g. "Kernel::System::GenericAgent"). Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -722,7 +722,7 @@
     </Setting>
     <!-- new tasks -->
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###RegistrationUpdateSend" Required="1" Valid="1" ReadOnly="1" ConfigLevel="100">
-        <Description Translatable="1">Sends registration information to OTRS group.</Description>
+        <Description Translatable="1">Sends registration information to OTRS group. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -739,7 +739,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###SupportDataCollectAsynchronous" Required="1" Valid="1" ReadOnly="1" ConfigLevel="100">
-        <Description Translatable="1">Collect support data for asynchronous plug-in modules.</Description>
+        <Description Translatable="1">Collect support data for asynchronous plug-in modules. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -756,7 +756,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###OTRSBusinessEntitlementCheck" Required="1" Valid="1" ReadOnly="1" ConfigLevel="100">
-        <Description Translatable="1">Checks the entitlement status of OTRS Business Solution™.</Description>
+        <Description Translatable="1">Checks the entitlement status of OTRS Business Solution™. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -773,7 +773,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###OTRSBusinessAvailabilityCheck" Required="1" Valid="1" ReadOnly="1" ConfigLevel="100">
-        <Description Translatable="1">Checks the availability of OTRS Business Solution™ for this system.</Description>
+        <Description Translatable="1">Checks the availability of OTRS Business Solution™ for this system. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -797,7 +797,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###ConfigurationDeploymentCleanup" Required="1" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Removes old system configuration deployments (Sunday mornings).</Description>
+        <Description Translatable="1">Removes old system configuration deployments (Sunday mornings). Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -814,7 +814,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###TicketNumberCounterCleanup" Required="1" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Removes old ticket number counters (each 10 minutes).</Description>
+        <Description Translatable="1">Removes old ticket number counters (each 10 minutes). Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -831,7 +831,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###GeneticInterfaceDebugLogCleanup" Required="0" Valid="1">
-        <Description Translatable="1">Removes old generic interface debug log entries created before the specified amount of days.</Description>
+        <Description Translatable="1">Removes old generic interface debug log entries created before the specified amount of days. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>
@@ -850,7 +850,7 @@
         </Value>
     </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###TicketDraftDeleteExpired" Required="0" Valid="1" ConfigLevel="100">
-        <Description Translatable="1">Delete expired ticket draft entries.</Description>
+        <Description Translatable="1">Delete expired ticket draft entries. Schedule must be defined in UTC.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
         <Value>
             <Hash>

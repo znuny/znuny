@@ -193,7 +193,7 @@
                                 </tbody>
                             </table>
                             <p class="FieldExplanation">
-                                [% Translate("Automatic execution values are in the system timezone.") | html %]
+                                [% Translate("Automatic execution schedule in UTC.") | html %]
                             </p>
 [% RenderBlockStart("JobScheduleWarning") %]
                             <p class="Error SpacingTop">
