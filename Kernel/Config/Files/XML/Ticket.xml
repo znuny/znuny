@@ -243,6 +243,16 @@
             <Item ValueType="String" ValueRegex="^[0-9]+$">1440</Item>
         </Value>
     </Setting>
+    <Setting Name="Ticket::EventModulePost###2000-TicketAllChildrenClosed" Required="0" Valid="1">
+        <Description Translatable="1">Sends an event to the parent ticket if a child was closed/merged/removed.</Description>
+        <Navigation>Core::Event::Ticket</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::System::Ticket::Event::TicketAllChildrenClosed</Item>
+                <Item Key="Event">TicketStateUpdate|TicketCreate</Item>
+            </Hash>
+        </Value>
+    </Setting>
     <Setting Name="Ticket::EventModulePost###2300-ArchiveRestore" Required="0" Valid="1">
         <Description Translatable="1">Restores a ticket from the archive (only if the event is a state change to any open available state).</Description>
         <Navigation>Core::Event::Ticket</Navigation>
@@ -10473,6 +10483,7 @@
                 <Item>NotificationEscalation</Item>
                 <Item>NotificationEscalationNotifyBefore</Item>
                 <Item>NotificationServiceUpdate</Item>
+                <Item>TicketAllChildrenClosed</Item>
             </Array>
         </Value>
     </Setting>
