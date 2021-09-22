@@ -327,102 +327,52 @@ sub ArticleQuote {
                 . $SessionID
                 . ';ContentID=';
 
-            # search inline documents in body and add it to upload cache
+            # Search inline images (defined with Content-ID or Content-Location)
+            # in body and add it to upload cache.
             my %Attachments = %{ $QuoteArticle{Atms} };
             my %AttachmentAlreadyUsed;
-            $Body =~ s{
-                (=|"|')cid:(.*?)("|'|>|\/>|\s)
-            }
-            {
-                my $Start= $1;
-                my $ContentID = $2;
-                my $End = $3;
-
-                # improve html quality
-                if ( $Start ne '"' && $Start ne '\'' ) {
-                    $Start .= '"';
-                }
-                if ( $End ne '"' && $End ne '\'' ) {
-                    $End = '"' . $End;
-                }
-
-                # find attachment to include
-                ATMCOUNT:
-                for my $AttachmentID ( sort keys %Attachments ) {
-
-                    if ( lc $Attachments{$AttachmentID}->{ContentID} ne lc "<$ContentID>" ) {
-                        next ATMCOUNT;
-                    }
-
-                    # get whole attachment
-                    my %AttachmentPicture = $ArticleBackendObject->ArticleAttachment(
-                        TicketID => $Param{TicketID},
-                        ArticleID => $Param{ArticleID},
-                        FileID    => $AttachmentID,
-                    );
-
-                    # content id cleanup
-                    $AttachmentPicture{ContentID} =~ s/^<//;
-                    $AttachmentPicture{ContentID} =~ s/>$//;
-
-                    # find cid, add attachment URL and remember, file is already uploaded
-                    $ContentID = $AttachmentLink . $Self->LinkEncode( $AttachmentPicture{ContentID} );
-
-                    # add to upload cache if not uploaded and remember
-                    if (!$AttachmentAlreadyUsed{$AttachmentID}) {
-
-                        # remember
-                        $AttachmentAlreadyUsed{$AttachmentID} = 1;
-
-                        # write attachment to upload cache
-                        $Param{UploadCacheObject}->FormIDAddFile(
-                            FormID      => $Param{FormID},
-                            Disposition => 'inline',
-                            %{ $Attachments{$AttachmentID} },
-                            %AttachmentPicture,
-                        );
-                    }
-                }
-
-                # return link
-                $Start . $ContentID . $End;
-            }egxi;
-
-            # find inline images using Content-Location instead of Content-ID
-            ATTACHMENT:
+            ATTACHMENTID:
             for my $AttachmentID ( sort keys %Attachments ) {
 
-                next ATTACHMENT if !$Attachments{$AttachmentID}->{ContentID};
+                next ATTACHMENTID if !$Attachments{$AttachmentID}->{ContentID};
 
-                # get whole attachment
+                # Get whole attachment.
                 my %AttachmentPicture = $ArticleBackendObject->ArticleAttachment(
                     TicketID  => $Param{TicketID},
                     ArticleID => $Param{ArticleID},
                     FileID    => $AttachmentID,
                 );
 
-                # content id cleanup
+                # Content ID cleanup.
                 $AttachmentPicture{ContentID} =~ s/^<//;
                 $AttachmentPicture{ContentID} =~ s/>$//;
 
                 $Body =~ s{
-                    ("|')(\Q$AttachmentPicture{ContentID}\E)("|'|>|\/>|\s)
+                    (\ssrc\s*=\s*)(["']{0,1}\s*)cid:(\Q$AttachmentPicture{ContentID}\E)("|'|>|\/>|\s)
                 }
                 {
-                    my $Start= $1;
-                    my $ContentID = $2;
-                    my $End = $3;
+                    my $PartSrc = $1;
+                    my $PartOpenQuot;
+                    my $PartContentID = $3;
+                    my $PartEnd = $4;
 
-                    # find cid, add attachment URL and remember, file is already uploaded
-                    $ContentID = $AttachmentLink . $Self->LinkEncode( $AttachmentPicture{ContentID} );
+                    # Improve HTML quality.
+                    if ( $PartEnd ne '"' && $PartEnd ne '\'' ) {
+                        $PartEnd = '"' . $PartEnd;
+                        $PartOpenQuot = '"';
+                    }
+                    $PartOpenQuot = $PartEnd if !$PartOpenQuot;
 
-                    # add to upload cache if not uploaded and remember
+                    # Find CID, add attachment URL and remeber, file is already uploaded.
+                    $PartContentID = $AttachmentLink . $Self->LinkEncode( $AttachmentPicture{ContentID} );
+
+                    # Add to upload cache if not uploaded and remember.
                     if (!$AttachmentAlreadyUsed{$AttachmentID}) {
 
-                        # remember
+                        # Remember.
                         $AttachmentAlreadyUsed{$AttachmentID} = 1;
 
-                        # write attachment to upload cache
+                        # Write attachment to upload cache.
                         $Param{UploadCacheObject}->FormIDAddFile(
                             FormID      => $Param{FormID},
                             Disposition => 'inline',
@@ -431,8 +381,8 @@ sub ArticleQuote {
                         );
                     }
 
-                    # return link
-                    $Start . $ContentID . $End;
+                    # Return new runtime URL.
+                    $PartSrc . $PartOpenQuot . $PartContentID . $PartEnd;
                 }egxi;
             }
 

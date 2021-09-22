@@ -1,0 +1,61 @@
+Date: Wed, 16 Apr 2016 12:00:00 +0200
+From: test <test@host.test>
+To: test <test@host.test>
+Subject: test
+Message-ID: <testmsg1@host.test>
+MIME-Version: 1.0
+Content-Type: multipart/related;
+ boundary="------------38E2FFC460F6F36AA659878B"
+Content-Language: pl
+
+This is a multi-part message in MIME format.
+--------------38E2FFC460F6F36AA659878B
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <p><font size="-1"><font face="Verdana">test1.png image: <IMG
+            SRC = ' 
+	cid:part1.E5AE6B6E.C188FB97@host1.test'
+alt="" class=""></font></font></p>
+    <p><font size="-1"><font face="Verdana">test2.png image: <img
+            id="CID:part2.4DAB9C65.7AA0767C@host1.test"
+src="https://example.com/test2.png"
+alt="" class=""><br>
+        </font></font></p>
+    <p><br>
+    </p>
+  </body>
+</html>
+
+--------------38E2FFC460F6F36AA659878B
+Content-Type: image/png;
+ name="test1.png"
+Content-Transfer-Encoding: base64
+Content-ID: <part1.E5AE6B6E.C188FB97@host1.test>
+Content-Disposition: inline;
+ filename="test1.png"
+
+iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAABlBMVEX///8AAABVwtN+AAAA
+CXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3gQYFBgEGpRZowAAAB1pVFh0Q29tbWVudAAA
+AAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAAEklEQVQI12NggAEWBgY+MIkEAAGUABckedJ2
+AAAAAElFTkSuQmCC
+--------------38E2FFC460F6F36AA659878B
+Content-Type: image/png;
+ name="test2.png"
+Content-Transfer-Encoding: base64
+Content-ID: <part2.4DAB9C65.7AA0767C@host1.test>
+Content-Disposition: inline;
+ filename="test2.png"
+
+iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1B
+AACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfeBBgUGAQalFmjAAAAHWlU
+WHRDb21tZW50AAAAAABDcmVhdGVkIHdpdGggR0lNUGQuZQcAAAAySURBVChTY/wPBAxEACYo
+TRBQpvCdrCqUhQAYCmGKMBSDPIMO3sqoQFkIMNh8jQkYGACqFTGhetN9CQAAAABJRU5ErkJg
+gg==
+--------------38E2FFC460F6F36AA659878B--
+

@@ -5168,71 +5168,39 @@ sub RichTextDocumentServe {
         $SessionID = ';' . $Self->{SessionName} . '=' . $Self->{SessionID};
     }
 
-    # replace inline images in content with runtime url to images
+    # Replace inline images (defined with Content-ID or Content-Location)
+    # in content with runtime URL to images.
     my $AttachmentLink = $Self->{Baselink} . $Param{URL};
-    $Param{Data}->{Content} =~ s{
-        (=|"|')cid:(.*?)("|'|>|\/>|\s)
-    }
-    {
-        my $Start= $1;
-        my $ContentID = $2;
-        my $End = $3;
-
-        # improve html quality
-        if ( $Start ne '"' && $Start ne '\'' ) {
-            $Start .= '"';
-        }
-        if ( $End ne '"' && $End ne '\'' ) {
-            $End = '"' . $End;
-        }
-
-        # find matching attachment and replace it with runtime url to image
-        ATTACHMENT_ID:
-        for my $AttachmentID (  sort keys %{ $Param{Attachments} }) {
-            next ATTACHMENT_ID if lc $Param{Attachments}->{$AttachmentID}->{ContentID} ne lc "<$ContentID>";
-            $ContentID = $AttachmentLink . $AttachmentID . $SessionID;
-            last ATTACHMENT_ID;
-        }
-
-        # return new runtime url
-        $Start . $ContentID . $End;
-    }egxi;
-
-    # bug #5053
-    # inline images using Content-Location as identifier instead of Content-ID even RFC2557
-    # http://www.ietf.org/rfc/rfc2557.txt
-
-    # find matching attachment and replace it with runtlime url to image
-    ATTACHMENT:
+    ATTACHMENTID:
     for my $AttachmentID ( sort keys %{ $Param{Attachments} } ) {
-        next ATTACHMENT if !$Param{Attachments}->{$AttachmentID}->{ContentID};
+        next ATTACHMENTID if !$Param{Attachments}->{$AttachmentID}->{ContentID};
 
-        # content id cleanup
+        # Content ID cleanup.
         $Param{Attachments}->{$AttachmentID}->{ContentID} =~ s/^<//;
         $Param{Attachments}->{$AttachmentID}->{ContentID} =~ s/>$//;
 
-        next ATTACHMENT if !$Param{Attachments}->{$AttachmentID}->{ContentID};
+        next ATTACHMENTID if !$Param{Attachments}->{$AttachmentID}->{ContentID};
 
         $Param{Data}->{Content} =~ s{
-        (=|"|')(\Q$Param{Attachments}->{$AttachmentID}->{ContentID}\E)("|'|>|\/>|\s)
-    }
-    {
-        my $Start= $1;
-        my $ContentID = $2;
-        my $End = $3;
-
-        # improve html quality
-        if ( $Start ne '"' && $Start ne '\'' ) {
-            $Start .= '"';
+        (\ssrc\s*=\s*)(["']{0,1}\s*)cid:(\Q$Param{Attachments}->{$AttachmentID}->{ContentID}\E)("|'|>|\/>|\s)
         }
-        if ( $End ne '"' && $End ne '\'' ) {
-            $End = '"' . $End;
-        }
+        {
+            my $PartSrc = $1;
+            my $PartOpenQuot;
+            my $PartContentID = $3;
+            my $PartEnd = $4;
 
-        # return new runtime url
-        $ContentID = $AttachmentLink . $AttachmentID . $SessionID;
-        $Start . $ContentID . $End;
-    }egxi;
+            # Improve HTML quality.
+            if ( $PartEnd ne '"' && $PartEnd ne '\'' ) {
+                $PartEnd = '"' . $PartEnd;
+                $PartOpenQuot = '"';
+            }
+            $PartOpenQuot = $PartEnd if !$PartOpenQuot;
+
+            # Return new runtime URL.
+            $PartContentID = $AttachmentLink . $AttachmentID . $SessionID;
+            $PartSrc . $PartOpenQuot . $PartContentID . $PartEnd;
+        }egxi;
     }
 
     return %{ $Param{Data} };

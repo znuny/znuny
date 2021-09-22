@@ -54,7 +54,7 @@ my $HTML = '<html>
 <body>
 <b>Test HTML document.</b>
 <img src="cid:1234" border="0">
-<img src="Untitled%20Attachment" border="0">
+<img src="cid:Untitled%20Attachment" border="0">
 Special case from Lotus Notes:
 <img src=cid:_1_09B1841409B1651C003EDE23C325785D border="0">
 </body>

@@ -354,7 +354,7 @@ for my $TicketSubjectConfig ( 'Right', 'Left' ) {
             my $UserRand1 = 'example-user' . $Helper->GetRandomID() . '@example.com';
 
             FILE:
-            for my $File (qw(1 2 3 5 6 11 17 18 21 22 23)) {
+            for my $File (qw(1 2 3 5 6 11 17 18 21 22 23 28)) {
 
                 my $NamePrefix = "#$NumberModule $StorageModule $TicketSubjectConfig $File ";
 
@@ -605,6 +605,61 @@ for my $TicketSubjectConfig ( 'Right', 'Left' ) {
                         $MD5,
                         '52f20c90a1f0d8cf3bd415e278992001',
                         $NamePrefix . ' md5 body check',
+                    );
+                }
+
+                if ( $File == 28 ) {
+
+                    # Check body.
+                    my %Article = $ArticleBackendObject->ArticleGet(
+                        ArticleID     => $ArticleIDs[0],
+                        DynamicFields => 1,
+                    );
+
+                    # Check all attachments.
+                    my %Index = $ArticleBackendObject->ArticleAttachmentIndex(
+                        ArticleID => $ArticleIDs[0],
+                        ExcludePlainText => 0,
+                        ExcludeHTMLBody => 0,
+                        ExcludeInline => 0,
+                    );
+
+                    $Self->Is(
+                        scalar keys %Index,
+                        3,
+                        $NamePrefix . ' number of attachments check ArticleAttachmentIndex()',
+                    );
+
+                    # Check regular attachments.
+                    %Index = $ArticleBackendObject->ArticleAttachmentIndex(
+                        ArticleID => $ArticleIDs[0],
+                        ExcludePlainText => 1,
+                        ExcludeHTMLBody => 1,
+                        ExcludeInline => 1,
+                    );
+
+                    $Self->Is(
+                        scalar keys %Index,
+                        1,
+                        $NamePrefix . ' number of regular attachments check ArticleAttachmentIndex()',
+                    );
+
+                    my %Attachment = $ArticleBackendObject->ArticleAttachment(
+                        ArticleID => $ArticleIDs[0],
+                        FileID    => 3,
+                    );
+
+                    my $MD5 = $MainObject->MD5sum( String => $Attachment{Content} ) || '';
+                    $Self->Is(
+                        $MD5,
+                        'b9e5facb341ca29464001d8e130838ca',
+                        $NamePrefix . ' md5 regular attachment check',
+                    );
+
+                    $Self->Is(
+                        $Attachment{Filename},
+                        'test2.png',
+                        $NamePrefix . ' filename regular attachment check ArticleAttachment()',
                     );
                 }
 

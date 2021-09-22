@@ -61,7 +61,7 @@ sub Run {
             )
         {
             my ($ImageID) = ( $Attachment->{ContentID} =~ m{^<(.*)>$}ixms );
-            if ( grep { $_->{Content} =~ m{<img.*src=.*['|"]cid:\Q$ImageID\E['|"].*>}ixms } @Attachments ) {
+            if ( grep { $_->{Content} =~ /(\ssrc\s*=\s*)(["']{0,1}\s*)cid:(\Q$ImageID\E)("|'|>|\/>|\s)/i } @Attachments ) {
                 $AttachmentInline = 1;
             }
         }

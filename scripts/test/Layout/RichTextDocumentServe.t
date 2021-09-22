@@ -53,7 +53,7 @@ my @Tests = (
     {
         Name => '',
         Data => {
-            Content     => "<img border=\"0\" src=\"cid:1234567890ABCDEF\">",
+            Content     => "<img border=\"0\" src = \" \n\tcid:1234567890ABCDEF\">",
             ContentType => 'text/html; charset="iso-8859-1"',
         },
         URL         => 'Action=SomeAction;FileID=',
@@ -64,7 +64,7 @@ my @Tests = (
         },
         Result => {
             Content =>
-                '<img border="0" src="index.pl?Action=SomeAction;FileID=0;SessionID=123">',
+                '<img border="0" src = "index.pl?Action=SomeAction;FileID=0;SessionID=123">',
             ContentType => 'text/html; charset="utf-8"',
         },
     },
@@ -143,7 +143,7 @@ my @Tests = (
     {
         Name => '',
         Data => {
-            Content     => '<img src=\'Untitled%20Attachment\' />',
+            Content     => '<img src=\'CiD:Untitled%20Attachment\' />',
             ContentType => 'text/html; charset="iso-8859-1"',
         },
         URL         => 'Action=SomeAction;FileID=',

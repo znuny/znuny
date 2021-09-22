@@ -216,7 +216,7 @@ sub ArticleAttachmentIndex {
                     my ($ImageID) = ( $File{ContentID} =~ m{^<(.*)>$}ixms );
 
                     # Search in the article body if there is any reference to it.
-                    if ( $HTMLBody{Content} =~ m{<img.+src=['|"]cid:\Q$ImageID\E['|"].*>}ixms ) {
+                    if ( $HTMLBody{Content} =~ /(\ssrc\s*=\s*)(["']{0,1}\s*)cid:(\Q$ImageID\E)("|'|>|\/>|\s)/i ) {
                         push @AttachmentIDsInline, $AttachmentID;
                     }
                 }
