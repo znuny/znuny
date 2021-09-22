@@ -66,6 +66,18 @@ sub _CheckParams {
         return;
     }
 
+    # Check if we have a needed DynamicField
+    if ( $Param{Config}->{_Check} ) {
+        my $DynamicField = $Param{Config}->{_Check};
+        if ( !($Param{Ticket}->{$DynamicField}) ) {
+            return;
+        }
+    }
+    # delete the config entry to make sure it doesn't cause errors
+    if ( exists($Param{Config}->{_Check}) ) {
+        delete($Param{Config}->{_Check});
+    }
+
     return 1;
 }
 
