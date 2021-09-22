@@ -1307,6 +1307,7 @@ sub SetPreferences {
         UserLastname  => 1,
         UserFullname  => 1,
         UserTitle     => 1,
+        UserType      => 1,
         ChangeTime    => 1,
         CreateTime    => 1,
         ValidID       => 1,
@@ -1320,11 +1321,10 @@ sub SetPreferences {
         NoOutOfOffice => 1,
     );
 
-    # no updated needed
-    return 1
-        if defined $User{ $Param{Key} }
-        && defined $Param{Value}
-        && $User{ $Param{Key} } eq $Param{Value};
+    # No update needed (treat undef and empty strings as equal).
+    my $UserValue = $User{ $Param{Key} } // '';
+    my $ParamValue = $Param{Value} // '';
+    return 1 if $UserValue eq $ParamValue;
 
     $Self->_UserCacheClear( UserID => $Param{UserID} );
 
