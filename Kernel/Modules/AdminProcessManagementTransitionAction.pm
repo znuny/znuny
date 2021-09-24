@@ -142,7 +142,7 @@ sub Run {
             );
         }
 
-        # set entitty sync state
+        # set entity sync state
         my $Success = $EntityObject->EntitySyncStateSet(
             EntityType => 'TransitionAction',
             EntityID   => $EntityID,
@@ -330,7 +330,7 @@ sub Run {
             );
         }
 
-        # set entitty sync state
+        # set entity sync state
         $Success = $EntityObject->EntitySyncStateSet(
             EntityType => 'TransitionAction',
             EntityID   => $TransitionActionData->{EntityID},
@@ -408,6 +408,29 @@ sub Run {
                 );
             }
         }
+    }
+
+    # ------------------------------------------------------------ #
+    # Add default parameter
+    # ------------------------------------------------------------ #
+    elsif ( $Self->{Subaction} eq 'GetDefaultConfigParameters' ) {
+    
+        my $Module = $ParamObject->GetParam( Param => 'Module' );
+        my %ConfigParameter = $Self->_GetDefaultConfigParameters(
+            Module => $Module,
+        );
+
+        my $JSON = $LayoutObject->JSONEncode(
+            Data => {
+                %ConfigParameter
+            }
+        );
+        return $LayoutObject->Attachment(
+            ContentType => 'application/json; charset=' . $LayoutObject->{Charset},
+            Content     => $JSON || '',
+            Type        => 'inline',
+            NoCache     => 1,
+        );
     }
 
     # ------------------------------------------------------------ #
@@ -745,6 +768,29 @@ sub _CheckTransitionActionUsage {
     }
 
     return \@Usage;
+}
+
+sub _GetDefaultConfigParameters {
+    my ( $Self, %Param ) = @_;
+    
+    for my $Needed (qw(Module)) {
+        if ( !$Param{$Needed} ) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => 'Need '.$Needed.'!'
+            );
+            return;
+        }
+    }
+
+    # replace e.g. 'Kernel::System::ProcessManagement::TransitionAction::TicketCreate' to 'TicketCreate'
+    if ($Param{Module} =~ m/TransitionAction::(.+)$/) {
+        my $Settings = $Kernel::OM->Get('Kernel::Config')->Get('TransitionActionDefaultParameter::Settings');
+        if ( IsHashRefWithData($Settings) && IsHashRefWithData($Settings->{ $1 }) ) {
+            return %{ $Settings->{ $1 } };
+        }
+    }
+    return;
 }
 
 1;

@@ -83,6 +83,9 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
         if (Core.Config.Get('Action') === 'AdminProcessManagementPath' && Subaction !== 'ClosePopup') {
            TargetNS.InitPathEdit();
         }
+
+        // Initialize ajax call for updating default config parameter
+        TargetNS.ShowDefaultConfigParameters();
     };
 
     /**
@@ -1667,7 +1670,7 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
      * @returns {Boolean} Returns false, if Config is not defined.
      * @param {Object} Config
      * @description
-     *      Update gloabl process config object after config change e.g. in popup windows.
+     *      Update global process config object after config change e.g. in popup windows.
      */
     TargetNS.UpdateConfig = function (Config) {
         if (typeof Config === 'undefined') {
@@ -1715,6 +1718,73 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
             });
         }
     };
+
+    TargetNS.ShowDefaultConfigParameters = function () {
+        $('#Module').on("change", function () {
+            var TransitionActionModule = $("#Module option:selected").val();
+            var FieldsWithValue;
+            if (TransitionActionModule) {
+                // alert if there is already an input
+                FieldsWithValue = $('#ConfigParams input[name*="ConfigValue"]').filter(function() { return $(this).val() !== ''; }).length;
+                if (FieldsWithValue) {
+                    Core.UI.Dialog.ShowDialog({
+                        Title : Core.Language.Translate('Warning'),
+                        HTML : Core.Language.Translate('Are you sure you want to overwrite the config parameters?'),
+                        Modal : true,
+                        CloseOnClickOutside : true,
+                        CloseOnEscape : true,
+                        PositionTop: '100px',
+                        PositionLeft: 'Center',
+                        Buttons: [
+                            {
+                                Label: Core.Language.Translate("Yes"),
+                                Class: 'Primary',
+                                Function: function () {
+                                    TargetNS.GetDefaultConfigParameters(TransitionActionModule)
+                                    Core.UI.Dialog.CloseDialog($('.Dialog:visible'));
+                                }
+                            },
+                            {
+                                Label: Core.Language.Translate("Cancel"),
+                                Function: function () {
+                                    Core.UI.Dialog.CloseDialog($('.Dialog:visible'));
+                                }
+                            }
+                        ]
+                    });
+                } else {
+                    TargetNS.GetDefaultConfigParameters(TransitionActionModule);
+                }
+            }
+        });
+    }
+    
+    TargetNS.GetDefaultConfigParameters = function (TransitionActionModule) {
+
+        // do AJAX call
+        var Data = {
+            Action: 'AdminProcessManagementTransitionAction',
+            Subaction: 'GetDefaultConfigParameters',
+            Module: TransitionActionModule
+        };
+        Core.AJAX.FunctionCall(Core.Config.Get('CGIHandle'), Data, function (Response) {
+            if (Response) {
+                // delete old params
+                $('#ConfigParams > fieldset').remove();
+                // add one empty element
+                if (!Object.keys(Response).length) {
+                    $('#ConfigParams').append( $('#ConfigParamContainer').html().replace(/_INDEX_/g, 1) );
+                }
+                // insert params from config
+                $.each(Object.keys(Response).sort(), function(Counter, Key) {
+                    var $Element = $($('#ConfigParamContainer').html().replace(/_INDEX_/g, Counter + 1));
+                    $Element.find('input[name*="ConfigKey"]').val(Key);
+                    $Element.find('input[name*="ConfigValue"]').attr('placeholder', Response[Key]);
+                    $('#ConfigParams').append($Element);
+                });
+            }
+        });
+    }
 
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');
 
