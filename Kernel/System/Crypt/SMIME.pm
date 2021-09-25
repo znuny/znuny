@@ -2325,8 +2325,10 @@ sub _Init {
         $Self->{Cmd} = "LC_MESSAGES=POSIX $Self->{Bin}";
     }
 
+    # determine System Username to make sure each user has an own .rnd file
+    my $SystemUsername = $<;
     # ensure that there is a random state file that we can write to (otherwise openssl will bail)
-    $ENV{RANDFILE} = $ConfigObject->Get('TempDir') . '/.rnd';    ## no critic
+    $ENV{RANDFILE} = $ConfigObject->Get('TempDir') . '/.rnd_' . "$SystemUsername";    ## no critic
 
     # prepend RANDFILE declaration to openssl cmd
     $Self->{Cmd} = "HOME=" . $ConfigObject->Get('Home') . " RANDFILE=$ENV{RANDFILE} $Self->{Cmd}";
