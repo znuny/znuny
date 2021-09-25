@@ -5665,6 +5665,29 @@ via the Preferences button after logging in.
                     <Hash>
                     </Hash>
                 </DefaultItem>
+                <Item>
+                    <Hash>
+                        <Item Key="Group">
+                            <Array>
+                                <Item>admin</Item>
+                                <Item>users</Item>
+                            </Array>
+                        </Item>
+                        <Item Key="GroupRo">
+                            <Array>
+                            </Array>
+                        </Item>
+                        <Item Key="Description" Translatable="1">Manage Customer User-Customer Relations.</Item>
+                        <Item Key="Name" Translatable="1">Customer User-Customer Relations</Item>
+                        <Item Key="Link">Action=AdminCustomerUserCustomer;Nav=Agent</Item>
+                        <Item Key="LinkOption"></Item>
+                        <Item Key="NavBar">Customers</Item>
+                        <Item Key="Type"></Item>
+                        <Item Key="Block">ItemArea</Item>
+                        <Item Key="AccessKey"></Item>
+                        <Item Key="Prio">9000</Item>
+                    </Hash>
+                </Item>
             </Array>
         </Value>
     </Setting>
