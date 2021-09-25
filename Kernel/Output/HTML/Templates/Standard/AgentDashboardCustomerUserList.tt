@@ -12,6 +12,9 @@
     [% Data.SiteNavBar %]
 </span>
 [% RenderBlockEnd("ContentLargeCustomerUserListNavBar") %]
+[% RenderBlockStart("ContentLargeCustomerIDAdd") %]
+<h2><a class="CallForAction" href="[% Env("Baselink") %]Action=AdminCustomerUserCustomer;Subaction=Customer;ID=[% Data.CustomerID | uri %]"><span><i class="fa fa-plus-square"></i> [% Translate("Change CustomerID Relations") | html %]</span></a></h2>
+[% RenderBlockEnd("ContentLargeCustomerIDAdd") %]
 [% RenderBlockStart("ContentLargeCustomerUserAdd") %]
 <h2><a class="CallForAction" href="[% Env("Baselink") %]Action=AdminCustomerUser;Subaction=Add;CustomerID=[% Data.CustomerID | uri %]"><span><i class="fa fa-plus-square"></i> [% Translate("Add Customer User") | html %]</span></a></h2>
 [% RenderBlockEnd("ContentLargeCustomerUserAdd") %]
