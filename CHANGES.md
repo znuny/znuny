@@ -1,4 +1,5 @@
 # 6.5.11 2024-??-??
+ - 2024-08-30 Added HTML filter to ProcessManagement/SLA template. Converts the characters <, >, & and " to &lt;, &gt;, &amp;, and &quot; respectively, protecting them from being interpreted as representing HTML tags or entities.
  - 2024-08-27 Fixed console command Admin::Service::Add - does not work after ITSMCore is installed.
  - 2024-08-27 Added auto mapping for unknown actions to Znuny.Form.Input.FieldIDMapping.
  - 2024-08-22 Added '--single-transaction' option to scripts/backup.pl for MySQL/MariaDB. The --single-transaction flag will start a transaction before running.

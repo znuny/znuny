@@ -24,7 +24,7 @@
     <div id="[% Data.FieldID | html %]Error" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
     <div id="[% Data.FieldID | html %]ServerError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
 [% RenderBlockStart("rw:SLA:DescriptionShort") %]
-    <div class="FieldExplanation">[% Data.DescriptionShort %]</div>
+    <div class="FieldExplanation">[% Data.DescriptionShort | html %]</div>
 [% RenderBlockEnd("rw:SLA:DescriptionShort") %]
 </div>
 <div class="Clear"></div>
