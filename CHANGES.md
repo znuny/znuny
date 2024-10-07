@@ -1,4 +1,5 @@
 # 6.5.12 2024-??-??
+ - 2024-10-07 Updated jstree from version 3.3.7 to 3.3.8.
  - 2024-10-07 Updated nunjucks from version 3.2.2 to 3.2.3.
 
 # 6.5.11 2024-10-02

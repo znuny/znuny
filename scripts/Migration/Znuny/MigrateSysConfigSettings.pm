@@ -126,14 +126,16 @@ sub _GetMigrateSysConfigSettings {
         },
         "Loader::Agent::CommonJS###000-Framework" => {
             UpdateEffectiveValue => {
-                'thirdparty/nunjucks-3.2.2/nunjucks.min.js' => 'thirdparty/nunjucks-3.2.3/nunjucks.min.js',
+                'thirdparty/jquery-jstree-3.3.7/jquery.jstree.js' => 'thirdparty/jquery-jstree-3.3.8/jquery.jstree.js',
+                'thirdparty/nunjucks-3.2.2/nunjucks.min.js'       => 'thirdparty/nunjucks-3.2.3/nunjucks.min.js',
             },
         },
         "Loader::Customer::CommonJS###000-Framework" => {
             UpdateEffectiveValue => {
-                'thirdparty/nunjucks-3.2.2/nunjucks.min.js' => 'thirdparty/nunjucks-3.2.3/nunjucks.min.js',
+                'thirdparty/jquery-jstree-3.3.7/jquery.jstree.js' => 'thirdparty/jquery-jstree-3.3.8/jquery.jstree.js',
+                'thirdparty/nunjucks-3.2.2/nunjucks.min.js'       => 'thirdparty/nunjucks-3.2.3/nunjucks.min.js',
             },
-        }
+        },
     );
 
     return %MigrateSysConfigSettings;
