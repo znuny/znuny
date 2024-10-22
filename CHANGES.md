@@ -1,4 +1,5 @@
 # 6.5.12 2024-??-??
+ - 2024-10-22 Perl Module Hash::Merge is now be listed in otrs.CheckModules.pl as mandatory.
  - 2024-10-15 Ticket search for customer ID in customer interface now searches for the raw ID. Thanks to @BuilderNSV for reporting the issue. [#602](https://github.com/znuny/Znuny/issues/602)
  - 2024-10-10 Updated MIME::Decoder::QuotedPrint from 5.509 to 5.515.
  - 2024-10-07 Updated jstree from version 3.3.7 to 3.3.8.
