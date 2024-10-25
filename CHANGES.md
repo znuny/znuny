@@ -1,4 +1,5 @@
 # 7.1.4 2024-??-??
+ - 2024-10-24 Fixed Bug - 'Use of uninitialized value' warning on build custom package and there are no permissions to write to the target directory. Thanks to @BuilderNSV for reporting the issue. [#610](https://github.com/znuny/Znuny/issues/610)
  - 2024-10-22 Perl Module Hash::Merge is now be listed in znuny.CheckModules.pl/otrs.CheckModules.pl as mandatory.
  - 2024-10-21 Sector Nord AG: Fixed #571 AgentTicketProcess Mobile-View is not showing all elements of ActivityDialog. Thanks to @LuBroering (Lukas Bröring SectorNord AG). [PR#553](https://github.com/znuny/Znuny/pull/553)
  - 2024-10-16 AdminSystemConfiguration: Addon name is no longer translated.
