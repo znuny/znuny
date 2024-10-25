@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D-%M-%Y';
     $Self->{DateInputFormat}     = '%D-%M-%Y';
     $Self->{DateInputFormatLong} = '%D-%M-%Y - %T';
-    $Self->{Completeness}        = 0.49597899228623;
+    $Self->{Completeness}        = 0.49777484753585;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1691,7 +1691,7 @@ sub Data {
         'Available Fields' => 'Beschikbare velden',
         'Filter available fields' => 'Filter beschikbare velden',
         'Assigned Fields' => 'Toegewezen velden',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => 'Communicatiekanaal',
         'Is visible for customer' => 'Is zichtbaar voor de klant',
         'Text Template' => 'Tekstsjabloon',
@@ -2370,23 +2370,15 @@ sub Data {
         'in' => 'over',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => ' Annuleren',
         'more' => 'meer',
         'No Data Available.' => '',
         'Available Columns' => 'Beschikbare kolommen',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'Beschikbare kolommen (sorteer door middel van drag & drop)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => 'Bewerk klant koppelingen',
@@ -2626,7 +2618,7 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '',
         'Date Invalid!' => 'Datum ongeldig.',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => 'Klantgebruiker adresboek',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2636,12 +2628,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'Verwijder deze en geef een nieuwe met een correcte waarde.',
         'This address already exists on the address list.' => 'Dit adres is al toegevoegd.',
-        ' Cc' => '',
         'Remove Cc' => 'Verwijder CC',
         'Bcc' => 'Bcc',
-        ' Bcc' => '',
         'Remove Bcc' => 'Verwijder BCC',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => 'Wijzig klant van %s%s%s',
@@ -2650,23 +2639,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'Maak nieuw e-mail ticket',
-        ' Example Template' => '',
         'Example Template' => 'Voorbeeld Template',
         'To customer user' => 'Aan klant',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'Selecteer tenminste een klant voor dit ticket.',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'Selecteer deze klant als hoofd-klant',
         'Remove Ticket Customer User' => 'Verwijder klant van ticket',
         'From queue' => 'In wachtrij',
-        ' Get all' => '',
         'Get all' => 'Gebruik alle',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2719,18 +2701,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'Geen tickets gevonden.',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'Afzender',
         'Customer User Name' => '',
         'Impact' => 'Impact',
         'Update Time' => 'Vervolg tijd',
         'Solution Time' => 'Oplossingstijd',
         'First Response Time' => 'Eerste reactie',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'Verplaats naar nieuwe wachtrij',
         'Change queue' => 'Verplaats naar wachtrij',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2739,21 +2719,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => 'Verwijder van lijst met gevolgde tickets',
         'Tickets per page' => 'Tickets per pagina',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => 'Kanaal ontbreekt',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'Herstel overzicht',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => 'Splits in nieuw telefoon ticket',
         'Create New Phone Ticket' => 'Maak nieuw telefoon ticket aan',
         'Please include at least one customer for the ticket.' => 'Voeg ten minste één klant toe voor dit ticket.',
-        'Select this customer as the main customer.' => 'Selecteer deze klant als hoofd-klant',
         'To queue' => 'In wachtrij',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2766,7 +2743,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => 'Nieuw proces-ticket',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => 'Voeg ticket toe aan een proces',
@@ -2810,7 +2786,6 @@ sub Data {
         'Save as default' => 'Opslaan als standaard',
         'Drafts' => 'Concepten',
         'by' => 'door',
-        'Move ticket to a different queue' => 'Verplaats naar nieuwe wachtrij',
         'Change Queue' => 'Wijzig wachtrij',
         'There are no dialogs available at this point in the process.' =>
             'Op dit moment zijn er geen dialogen beschikbaar.',
@@ -2952,9 +2927,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'Nieuw ticket',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
         'Welcome!' => 'Welkom!',
@@ -3210,7 +3183,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => 'Om de afspraak eigenschap te krijgen',
-        ' e. g.' => ' bijv.',
+        'e. g.' => 'bijv.',
         'To get the first 20 character of the appointment title.' => '',
         'To get the calendar attribute' => '',
         'Attributes of the recipient user for the notification' => 'Eigenschappen van de ontvanger voor deze melding',
@@ -3242,9 +3215,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => 'Ticket dynamisch veld voor interne sleutelwaarden',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             'Ticket dynamisch veld weergave waarden, handig voor dropdown en multiselect velden',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'bijv.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5044,6 +5014,8 @@ sub Data {
         'Server Database Charset' => 'Server Database karakterinstelling',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'Tabel Karacterset',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 

@@ -73,24 +73,44 @@ sub Run {
         }
     }
 
-    my @TablesWithInvalidCharset;
+    my @SystemTables = $DBObject->GetSystemTables(
+        IncludePackageTables => 1,
+    );
+    my %SystemTables = map { $_ => 1 } @SystemTables;
+
+    my @SystemTablesWithInvalidCharset;
+    my @NonSystemTablesWithInvalidCharset;
 
     # Views have engine == null, ignore those.
     $DBObject->Prepare( SQL => 'show table status where engine is not null' );
     while ( my @Row = $DBObject->FetchrowArray() ) {
         if ( $Row[14] !~ /^utf8mb4/i ) {
-            push @TablesWithInvalidCharset, $Row[0];
+            my $Table = $Row[0];
+
+            push @SystemTablesWithInvalidCharset,    $Table if $SystemTables{$Table};
+            push @NonSystemTablesWithInvalidCharset, $Table if !$SystemTables{$Table};
         }
     }
-    if (@TablesWithInvalidCharset) {
+
+    if (@NonSystemTablesWithInvalidCharset) {
+        $Self->AddResultWarning(
+            Identifier => 'TableEncoding',
+            Label      => Translatable('Table Charset'),
+            Value      => join( ', ', @NonSystemTablesWithInvalidCharset ),
+            Message    => Translatable("There were non-system tables found which do not have 'utf8mb4' as charset."),
+        );
+    }
+
+    if (@SystemTablesWithInvalidCharset) {
         $Self->AddResultProblem(
             Identifier => 'TableEncoding',
             Label      => Translatable('Table Charset'),
-            Value      => join( ', ', @TablesWithInvalidCharset ),
+            Value      => join( ', ', @SystemTablesWithInvalidCharset ),
             Message    => Translatable("There were tables found which do not have 'utf8mb4' as charset."),
         );
     }
-    else {
+
+    if ( !@SystemTablesWithInvalidCharset && !@NonSystemTablesWithInvalidCharset ) {
         $Self->AddResultOk(
             Identifier => 'TableEncoding',
             Label      => Translatable('Table Charset'),

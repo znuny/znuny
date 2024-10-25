@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y/%M/%D';
     $Self->{DateInputFormat}     = '%Y/%M/%D';
     $Self->{DateInputFormatLong} = '%Y/%M/%D - %T';
-    $Self->{Completeness}        = 0.68193008370261;
+    $Self->{Completeness}        = 0.684687654524477;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1691,7 +1691,7 @@ sub Data {
         'Available Fields' => '利用可能な領域',
         'Filter available fields' => '利用可能な領域をフィルタ',
         'Assigned Fields' => '割り当てられた領域',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => 'コミュニケーション・チャネル',
         'Is visible for customer' => '顧客が閲覧可能',
         'Text Template' => '本文テンプレート',
@@ -2370,23 +2370,15 @@ sub Data {
         'in' => '＞',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => '続き',
         'No Data Available.' => '',
         'Available Columns' => '利用可能な列',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => '表示する列 (ドラッグ&ドロップで並び替えできます)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '顧客関係を変更',
@@ -2626,8 +2618,8 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '%s%s%sの返信を作成',
         'Date Invalid!' => '日時が無効です。',
-        ' Select one or more recipients from the customer user address book.' =>
-            '',
+        'Select one or more recipients from the customer user address book.' =>
+            '顧客ユーザーのアドレス帳から1人以上の受信者を選択します。',
         'Customer user address book' => '顧客ユーザーのアドレス帳',
         'This address is registered as system address and cannot be used: %s' =>
             '',
@@ -2636,12 +2628,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'このエントリーを削除し、正しい値で新しいエントリーを追加してください。',
         'This address already exists on the address list.' => 'この住所はすでにアドレスリストに存在します。',
-        ' Cc' => '',
         'Remove Cc' => 'Ccを削除',
         'Bcc' => 'Bcc',
-        ' Bcc' => '',
         'Remove Bcc' => 'Bccを削除',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '%s%s%sの顧客を変更',
@@ -2650,23 +2639,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => '新規メールチケットの作成',
-        ' Example Template' => '',
         'Example Template' => 'テンプレート例',
         'To customer user' => '宛先顧客ユーザー',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => '',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => '',
         'Remove Ticket Customer User' => 'チケットの顧客ユーザーを削除',
         'From queue' => 'キューから',
-        ' Get all' => '',
         'Get all' => '全てを取得',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '%s%s%sの送信メール',
-        'Select one or more recipients from the customer user address book.' =>
-            '顧客ユーザーのアドレス帳から1人以上の受信者を選択します。',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '%s%s%sのメールを再送信',
@@ -2719,18 +2701,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'チケットデータがありません',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => '送信者',
         'Customer User Name' => '顧客ユーザー名',
         'Impact' => '影響度',
         'Update Time' => '更新期限',
         'Solution Time' => '解決期限',
         'First Response Time' => '初回応答期限',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => '別のキューへチケットを移転',
         'Change queue' => 'キュー変更',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2739,21 +2719,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => '監視チケットリストから削除',
         'Tickets per page' => 'ページ毎のチケット数',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => 'チャンネルがありません。',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => '一覧のリセット',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => '新規電話チケットに分割',
         'Create New Phone Ticket' => '新規電話チケットの作成',
         'Please include at least one customer for the ticket.' => 'チケットには少なくとも1名のお客様を含めるようにして下さい。',
-        'Select this customer as the main customer.' => '',
         'To queue' => 'キュー',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2766,7 +2743,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => '新しいプロセスチケットを作成',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => 'チケットをプロセスに登録する',
@@ -2810,7 +2786,6 @@ sub Data {
         'Save as default' => 'ドラフトとして保存',
         'Drafts' => '下書き',
         'by' => 'by',
-        'Move ticket to a different queue' => '別のキューへチケットを移転',
         'Change Queue' => 'キューを変更',
         'There are no dialogs available at this point in the process.' =>
             'このプロセスは完了しました。',
@@ -2952,9 +2927,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => '新規チケット',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
         'Welcome!' => 'ようこそ！',
@@ -3210,7 +3183,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '予定の属性を取得すること',
-        ' e. g.' => '例',
+        'e. g.' => '例',
         'To get the first 20 character of the appointment title.' => 'アポイントの表題から最初の20文字を取得',
         'To get the calendar attribute' => 'カレンダーの属性を取得すること',
         'Attributes of the recipient user for the notification' => '通知する受信者ユーザーの属性',
@@ -3242,9 +3215,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => 'チケットのダイナミック・フィールドの内部用キー値',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             'チケットのダイナミック・フィールドの表示値。ドロップダウンまたは複数選択領域で利用可能',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => '例',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5045,6 +5015,8 @@ sub Data {
         'Server Database Charset' => 'データーベースサーバーのキャラクターセット',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'Table キャラクターセット',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 

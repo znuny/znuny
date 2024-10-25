@@ -33,7 +33,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.243558181519777;
+    $Self->{Completeness}        = 0.244437118839624;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1692,7 +1692,7 @@ sub Data {
         'Available Fields' => '',
         'Filter available fields' => '',
         'Assigned Fields' => 'Přiřazené pole',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '',
         'Is visible for customer' => 'Je viditelné pro zákazníka',
         'Text Template' => '',
@@ -2371,23 +2371,15 @@ sub Data {
         'in' => 'v',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'další',
         'No Data Available.' => '',
         'Available Columns' => 'Dostupné sloupce',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'Viditelné sloupce (seřadťe přetažením)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '',
@@ -2627,7 +2619,7 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '',
         'Date Invalid!' => 'Neplatné datum!',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => '',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2637,12 +2629,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'Prosíme, odstraňte tento záznam a vytvořte nový se správnou hodnotou.',
         'This address already exists on the address list.' => 'Tato adresa již v adresáři existuje.',
-        ' Cc' => '',
         'Remove Cc' => 'Odstranit Cc',
         'Bcc' => 'Skrytá kopie',
-        ' Bcc' => '',
         'Remove Bcc' => 'Odstranit Bcc',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '',
@@ -2651,23 +2640,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'Vytvořit nový e-mailový tiket',
-        ' Example Template' => '',
         'Example Template' => 'Ukázková šablona',
         'To customer user' => 'Zákaznickému uživateli',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => '',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => '',
         'Remove Ticket Customer User' => '',
         'From queue' => 'Z fronty',
-        ' Get all' => '',
         'Get all' => '',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => 'Odchozí e-mail pro %s%s%s',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2720,18 +2702,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'žádné',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'Odesílatel',
         'Customer User Name' => 'Jméno zákaznického uživatele',
         'Impact' => 'Vliv',
         'Update Time' => 'Čas Aktualizace',
         'Solution Time' => 'Čas Řešení',
         'First Response Time' => 'Čas první reakce',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'Přesuň tiket do jiné fronty',
         'Change queue' => 'Změnit frontu',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2740,21 +2720,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => 'Odebrat ze seznamu sledovaných ticketů',
         'Tickets per page' => 'Tiketů na stránku',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => '',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => '',
         'Create New Phone Ticket' => 'Vytvořit nový telefonní tiket',
         'Please include at least one customer for the ticket.' => '',
-        'Select this customer as the main customer.' => '',
         'To queue' => 'Do fronty',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2767,7 +2744,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => '',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => '',
@@ -2811,7 +2787,6 @@ sub Data {
         'Save as default' => '',
         'Drafts' => '',
         'by' => 'přes',
-        'Move ticket to a different queue' => 'Přesuň tiket do jiné fronty',
         'Change Queue' => 'Změnit frontu',
         'There are no dialogs available at this point in the process.' =>
             '',
@@ -2953,9 +2928,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'Nový Tiket',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
         'Welcome!' => 'Vítejte!',
@@ -3211,7 +3184,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '',
-        ' e. g.' => 'např.',
+        'e. g.' => 'např.',
         'To get the first 20 character of the appointment title.' => '',
         'To get the calendar attribute' => '',
         'Attributes of the recipient user for the notification' => '',
@@ -3243,9 +3216,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => '',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             '',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'např.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5045,6 +5015,8 @@ sub Data {
         'Server Database Charset' => 'Kódová stránka databáze',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => '',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 

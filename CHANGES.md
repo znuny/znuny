@@ -1,4 +1,29 @@
-# 7.1.3 2024-??-??
+# 7.1.4 2024-??-??
+ - 2024-10-24 Fixed Bug - 'Use of uninitialized value' warning on build custom package and there are no permissions to write to the target directory. Thanks to @BuilderNSV for reporting the issue. [#610](https://github.com/znuny/Znuny/issues/610)
+ - 2024-10-22 Perl Module Hash::Merge is now be listed in znuny.CheckModules.pl/otrs.CheckModules.pl as mandatory.
+ - 2024-10-21 Sector Nord AG: Fixed #571 AgentTicketProcess Mobile-View is not showing all elements of ActivityDialog. Thanks to @LuBroering (Lukas Bröring SectorNord AG). [PR#553](https://github.com/znuny/Znuny/pull/553)
+ - 2024-10-16 AdminSystemConfiguration: Addon name is no longer translated.
+ - 2024-10-15 Added additional PageNavBar to bottom in AdminDynamicField.
+ - 2024-10-10 Updated MIME::Decoder::QuotedPrint from 5.509 to 5.515.
+ - 2024-10-07 Updated jstree from version 3.3.7 to 3.3.8.
+ - 2024-10-07 Updated nunjucks from version 3.2.2 to 3.2.3.
+ - 2024-09-27 Added missing tooltip to show complete email address of sender/recipient when hovering article email header in ticket zoom.
+ - 2024-09-27 Fixed dynamic date fields being validated even if not selected for form submit. Thanks to @BuilderNSV for reporting the issue. [#596](https://github.com/znuny/Znuny/issues/596)
+
+# 7.1.3 2024-10-02
+ - 2024-09-26 Removed regex from Kernel::System::HTMLUtils::DocumentCleanup that could lead to a security issue. It replaced HTML of Microsoft Word. Thanks for reporting to Emin Yazi (@eyazi), Efflux.
+ - 2024-09-26 Fixed duplicate database record insert attempts for ticket flags. Thanks to @lukasdebaum for reporting. [#531](https://github.com/znuny/Znuny/issues/531)
+ - 2024-09-25 Fixed link to customer information center in agent ticket zoom.
+ - 2024-09-24 Updated CKEditor to version 4.25.1-znuny.
+ - 2024-09-24 Fixed bug - ArticleStorageSwitch creates duplicate files with an additional file extension '-1'.
+ - 2024-09-18 Fixed exit code of migration script.
+ - 2024-09-18 Fixed bug - In the AgentDashboard: Statistics widgets are always displayed, regardless of which DashboardWidgetExpand is currently set.
+ - 2024-09-11 Fixed Bug - Duplicate value 'ArticleAgentNotification' in Ticket.xml 'Events###Article'. Thanks for reporting (@BuilderNSV). [#594](https://github.com/znuny/Znuny/issues/594)
+ - 2024-09-10 Fixed sorting of translated list entries in dropdown elements.
+ - 2024-09-09 Improved performance regarding dynamic field values when fetching tickets.
+ - 2024-09-03 Fixed DialogModalClass in Core.UI.Dialog.js.
+ - 2024-09-02 Updated schema.xml - Added needed dbcrud_uuid columns.
+ - 2024-08-30 Added HTML filter to ProcessManagement/SLA template. Converts the characters <, >, & and " to &lt;, &gt;, &amp;, and &quot; respectively, protecting them from being interpreted as representing HTML tags or entities.
  - 2024-08-27 Fixed console command Admin::Service::Add - does not work after ITSMCore is installed.
  - 2024-08-26 Added auto mapping for unknown actions to Znuny.Form.Input.FieldIDMapping.
  - 2024-08-23 Fixed evaluation of ticket ID parameter in generic interface operation TicketGet.
@@ -292,6 +317,23 @@
  - 2022-08-22 Core.UI.InputFields.js - Changed the behaviour of the Core.UI.InputFields.js. Now no fields are automatically enlarged or reduced.
  - 2022-08-08 Admin - Added counter of AdminSettingPages per widget and additional focus by filter.
  - 2022-07-15 Frontend::ToolBarModule - Refactored the Toolbar registration, position and view.
+
+# 6.5.11 2024-10-02
+ - 2024-10-02 Added HTML filter to ProcessManagement/SLA template. Converts the characters <, >, & and " to <, >, &, and " respectively, protecting them from being interpreted as representing HTML tags or entities.
+ - 2024-09-26 Removed regex from Kernel::System::HTMLUtils::DocumentCleanup that could lead to a security issue. It replaced HTML of Microsoft Word. Thanks for reporting to Emin Yazi (@eyazi), Efflux.
+ - 2024-09-25 Fixed link to customer information center in agent ticket zoom.
+ - 2024-09-24 Updated CKEditor to version 4.25.1-znuny.
+ - 2024-09-24 Fixed bug - ArticleStorageSwitch creates duplicate files with an additional file extension '-1'.
+ - 2024-09-18 Fixed exit code of migration script.
+ - 2024-09-10 Fixed sorting of translated list entries in dropdown elements.
+ - 2024-09-09 Improved performance regarding dynamic field values when fetching tickets.
+ - 2024-09-09 Improved error logging in OAuth2 token overview. Fixed token error message reset.
+ - 2024-08-27 Fixed console command Admin::Service::Add - does not work after ITSMCore is installed.
+ - 2024-08-27 Added auto mapping for unknown actions to Znuny.Form.Input.FieldIDMapping.
+ - 2024-08-23 Fixed duplicate database record insert attempts for ticket flags. Thanks to @lukasdebaum for reporting. #531
+ - 2024-08-22 Added '--single-transaction' option to scripts/backup.pl for MySQL/MariaDB. The --single-transaction flag will start a transaction before running.
+ - 2024-07-29 Fixed evaluation of ticket ID parameter in generic interface operation TicketGet.
+ - 2024-07-25 Console command Admin::PostMasterFilter::Import now will also update existing filters instead of only create new ones. Thanks to @meisterheister for reporting the issue. #527
 
 # 6.5.10 2024-07-24
  - 2024-07-11 Updated Moment.js to 2.30.1 and jQueryUI to 1.13.3.

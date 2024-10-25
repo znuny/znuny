@@ -38,7 +38,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.8301329394387;
+    $Self->{Completeness}        = 0.834020108785232;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1697,7 +1697,7 @@ sub Data {
         'Available Fields' => 'Доступные поля',
         'Filter available fields' => 'Фильтр для доступных полей',
         'Assigned Fields' => 'Назначенные поля',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => 'Канал связи',
         'Is visible for customer' => 'Виден клиенту',
         'Text Template' => 'Текстовый шаблон',
@@ -2376,23 +2376,15 @@ sub Data {
         'in' => 'в',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'далее',
         'No Data Available.' => 'Данные недоступны.',
         'Available Columns' => 'Колонки, доступные для отображения',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'Отображаемые (порядок устанавливается перетаскиванием)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => 'Изменить Связи клиентов',
@@ -2632,8 +2624,8 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => 'Создать ответ для %s%s%s',
         'Date Invalid!' => 'Неверная дата!',
-        ' Select one or more recipients from the customer user address book.' =>
-            '',
+        'Select one or more recipients from the customer user address book.' =>
+            'Выберите одного или более получателей из адресной книги клиентов.',
         'Customer user address book' => 'Адресная книга клиентов',
         'This address is registered as system address and cannot be used: %s' =>
             'Этот адрес является системным зарегистрированным адресом и не может быть использован: %s',
@@ -2642,12 +2634,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'Пожалуйста, удалите эту запись и введите новую с корректным значением.',
         'This address already exists on the address list.' => 'Такой адрес уже существует в списке адресов.',
-        ' Cc' => '',
         'Remove Cc' => 'Удалить из копии',
         'Bcc' => 'Скрытая копия',
-        ' Bcc' => '',
         'Remove Bcc' => 'Удалить из скрытой копии',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => 'Изменить клиента для %s%s%s',
@@ -2656,23 +2645,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'Создать заявку по email',
-        ' Example Template' => '',
         'Example Template' => 'Пример шаблона',
         'To customer user' => 'Клиенту',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'Укажите, пожалуйста, хотя бы одного клиента',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'Выбрать этого клиента главным клиентом',
         'Remove Ticket Customer User' => 'Удалить клиента заявки',
         'From queue' => 'Из очереди',
-        ' Get all' => '',
         'Get all' => 'Получить всех',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => 'Исходящее письмо для %s%s%s',
-        'Select one or more recipients from the customer user address book.' =>
-            'Выберите одного или более получателей из адресной книги клиентов.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => 'Отправить личное сообщение для %s%s%s',
@@ -2725,18 +2707,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'Не найдено данных о заявках.',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'Отправитель',
         'Customer User Name' => 'Имя клиента',
         'Impact' => 'Степень влияния',
         'Update Time' => 'Время до изменения заявки',
         'Solution Time' => 'Время до решения заявки',
         'First Response Time' => 'Время до первого ответа',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'Переместить заявку в другую очередь',
         'Change queue' => 'Сменить очередь',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2745,21 +2725,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => 'Удалить из списка наблюдаемых заявок',
         'Tickets per page' => 'Заявок на страницу',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => 'Ошибочный канал',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'Сбросить настройки просмотра',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => 'Разделить с созданием новой телефонной заявки',
         'Create New Phone Ticket' => 'Создать телефонную заявку',
         'Please include at least one customer for the ticket.' => 'Пожалуйста, введите хотя бы одного клиента для заявки.',
-        'Select this customer as the main customer.' => 'Выбрать этого клиента главным клиентом',
         'To queue' => 'В очередь',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2772,7 +2749,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => 'Создать новую процессную заявку',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => 'Зарегистрировать заявку в Процессе',
@@ -2816,7 +2792,6 @@ sub Data {
         'Save as default' => 'Сохранить, как значение по умолчанию',
         'Drafts' => 'Черновики',
         'by' => 'кем',
-        'Move ticket to a different queue' => 'Переместить заявку в другую очередь',
         'Change Queue' => 'Сменить очередь',
         'There are no dialogs available at this point in the process.' =>
             'Нет доступных диалогов в этой части процесса.',
@@ -2958,9 +2933,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'Новая заявка',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
         'Welcome!' => 'Добро пожаловать!',
@@ -3216,7 +3189,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => 'Чтобы получить атрибут мероприятия',
-        ' e. g.' => ' например,',
+        'e. g.' => 'например,',
         'To get the first 20 character of the appointment title.' => 'Чтобы получить первые 20 символов темы мероприятия.',
         'To get the calendar attribute' => 'Чтобы получить атрибут календаря',
         'Attributes of the recipient user for the notification' => 'Атрибуты пользователя - получателя уведомления',
@@ -3248,9 +3221,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => 'Значения внутренних ключей динамических полей заявки',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             'Отображаемые значения динамических полей заявки, полезно при использовании полей типа Dropdown и Multiselect',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'например,',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5050,6 +5020,8 @@ sub Data {
         'Server Database Charset' => 'Кодировка для сервера базы данных',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'Кодировка для таблицы',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 
@@ -8404,13 +8376,13 @@ sub Data {
         'Please only select at most %s files for upload.' => 'Пожалуйста, выберите только файлы %s для загрузки.',
         'The following files are not allowed to be uploaded: %s' => 'Следующие типы файлов не разрешены для загрузки: %s',
         'The following files exceed the maximum allowed size per file of %s and were not uploaded: %s' =>
-            '',
+            'Следующие файлы превысили максимальный допустимый размер одного файла (%s) и не были загружены: %s',
         'The names of the following files exceed the maximum allowed length of %s characters and were not uploaded: %s' =>
-            '',
+            'Следующие файлы превысили максимальное допустимое количество символов в имени (%s) и не были загружены: %s',
         'The following files were already uploaded and have not been uploaded again: %s' =>
-            '',
+            'Следующие файлы уже загружены и не были загружены снова: %s',
         'No space left for the following files: %s' => 'Недостаточно места для следующих файлов: %s',
-        'Available space %s of %s.' => 'Доступное место 1%s из 1%s',
+        'Available space %s of %s.' => 'Доступное место %s из %s',
         'Upload information' => 'Информация о загрузке',
         'An unknown error occurred when deleting the attachment. Please try again. If the error persists, please contact your system administrator.' =>
             'Неизвестная ошибка обнаружена при удалении вложения. Попробуйте повторить. Если ошибка повторяется постоянно, свяжитесь в вашим системным администратором.',

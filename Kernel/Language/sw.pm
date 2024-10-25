@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%M/%D/%Y';
     $Self->{DateInputFormat}     = '%M/%D/%Y';
     $Self->{DateInputFormatLong} = '%M/%D/%Y - %T';
-    $Self->{Completeness}        = 0.435253569670113;
+    $Self->{Completeness}        = 0.436954013515741;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -1688,7 +1688,7 @@ sub Data {
         'Available Fields' => 'Uga uliopo',
         'Filter available fields' => 'Chuja Uga zinazopatika',
         'Assigned Fields' => 'Uga zilizogaiwa',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '',
         'Is visible for customer' => '',
         'Text Template' => 'Kielezo cha matini',
@@ -2367,23 +2367,15 @@ sub Data {
         'in' => 'Ndani',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'aidi',
         'No Data Available.' => '',
         'Available Columns' => 'Safu wima zilizopo',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'Safuwima zinazoonekana (kwa oda ya kokota na dondosha)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '',
@@ -2623,7 +2615,7 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '',
         'Date Invalid!' => 'Tarehe batili',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => '',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2633,12 +2625,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'Tafadhali toa ingizo hili na uweke jipya lenye thamani sahihi.',
         'This address already exists on the address list.' => 'Anwani hii tayari ipo katika orodha ya anwani',
-        ' Cc' => '',
         'Remove Cc' => 'Toa Cc.',
         'Bcc' => 'Bcc',
-        ' Bcc' => '',
         'Remove Bcc' => 'Toa Bcc',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '',
@@ -2647,23 +2636,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'Tengeneza tiketi ya barua pepe mpya',
-        ' Example Template' => '',
         'Example Template' => 'Kiolezo cha mfano',
         'To customer user' => 'Kwenda kwa mtumiaji wa mteja',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'Tafadhali weka japo mtumiaji wa mteja mmoja kwa tiketi hii.',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'Chagua mteja huyu kama mteja mkuu.',
         'Remove Ticket Customer User' => 'Ondoa mtumiaji wa mteja wa tiketi',
         'From queue' => 'Kutoka kwenye foleni',
-        ' Get all' => '',
         'Get all' => 'Pata zote',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2716,18 +2698,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'Data za tiketi hazijapatikana',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'Mtumaji',
         'Customer User Name' => '',
         'Impact' => 'Madhara',
         'Update Time' => 'Muda wa kusasisha',
         'Solution Time' => 'Muda wa ufumbuzi',
         'First Response Time' => 'Muda wa kwanza wa majibu',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'Hamisha tiketi kwenye foleni nyingine',
         'Change queue' => 'Badili foleni',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2736,21 +2716,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => 'Ondoa kwenye orodha ya tiketi zilizoangaliwa',
         'Tickets per page' => 'Tiketi kwa ukurasa',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'Weka tena mapitio',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => 'Gawanya kwenye tiketi za simu mpya',
         'Create New Phone Ticket' => 'Tengeneza tiketi mpya ya simu',
         'Please include at least one customer for the ticket.' => 'Tafadhali ambatanisha japo mteja mmoja kwa tiketi hii.',
-        'Select this customer as the main customer.' => 'Chagua mteja huyu kama mteja mkuu.',
         'To queue' => 'Kwenda kwenye foleni',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2763,7 +2740,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => 'Tengeneza tiketi mpya za mchakato',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => 'Andikisha tiketi hii kuwa mchakato',
@@ -2807,7 +2783,6 @@ sub Data {
         'Save as default' => 'Hifadhi kama chaguo-msingi',
         'Drafts' => '',
         'by' => 'Kwa',
-        'Move ticket to a different queue' => 'Hamisha tiketi kwenye foleni nyingine',
         'Change Queue' => 'Badili foleni',
         'There are no dialogs available at this point in the process.' =>
             'Hakuna mazungumzo yaliyopo katika hatua hii ya mchakato.',
@@ -2949,9 +2924,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'Tiketi mpya',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
         'Welcome!' => 'Karibu ',
@@ -3207,7 +3180,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '',
-        ' e. g.' => 'Mfano',
+        'e. g.' => 'Mfano',
         'To get the first 20 character of the appointment title.' => '',
         'To get the calendar attribute' => '',
         'Attributes of the recipient user for the notification' => '',
@@ -3239,9 +3212,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => '',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             '',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'Mfano',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5041,6 +5011,8 @@ sub Data {
         'Server Database Charset' => 'Seti ya herufi ya hifadhi data ya seva',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'Seti ya herufi ya jedwali',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 

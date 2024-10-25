@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.275890365993763;
+    $Self->{Completeness}        = 0.276907862205373;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1685,7 +1685,7 @@ sub Data {
         'Available Fields' => 'Достапни Полиња',
         'Filter available fields' => 'Филтрирај достапни полиња',
         'Assigned Fields' => 'Доделени Полиња',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '',
         'Is visible for customer' => '',
         'Text Template' => 'Шаблон за текст',
@@ -2364,23 +2364,15 @@ sub Data {
         'in' => 'во',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'повеќе',
         'No Data Available.' => '',
         'Available Columns' => 'Достапни Колони',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'Достапни Колумни (подреди ги со влечење и пуштање)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '',
@@ -2620,7 +2612,7 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '',
         'Date Invalid!' => 'Невалиден датум!',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => '',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2630,12 +2622,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'Ве молиме избришете го овој внес и внесете нов со коректна вредност.',
         'This address already exists on the address list.' => 'Оваа адреса веќе постои во листата на адреси.',
-        ' Cc' => '',
         'Remove Cc' => 'Избриши Cc',
         'Bcc' => 'Bcc',
-        ' Bcc' => '',
         'Remove Bcc' => 'Избриши Bcc',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '',
@@ -2644,23 +2633,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'Направи Нов E-mail Тикет',
-        ' Example Template' => '',
         'Example Template' => 'Пример за Шаблон',
         'To customer user' => 'До корисник клиент',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'Во молиме додавајте барем по еден регистриран корисник за тикетот.',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'Избери го овој клиент како главен клиент.',
         'Remove Ticket Customer User' => 'Избриши Тикет за Регистриран Корисник',
         'From queue' => 'Од редица',
-        ' Get all' => '',
         'Get all' => 'Избери сите',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2713,18 +2695,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'Не се пронајдени информации за тикет.',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'Испраќач',
         'Customer User Name' => '',
         'Impact' => 'Влијание',
         'Update Time' => 'Ажурирај Време',
         'Solution Time' => 'Време за Решение',
         'First Response Time' => 'Прво време на одговор',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'Премести го тикетот во различен ред',
         'Change queue' => 'Измени редица',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2733,21 +2713,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => 'Отстрани од листа на гледани тикети',
         'Tickets per page' => 'Тикети по страна',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'Ресетирај преглед.',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => 'Подели Во Нов Телефонски Тикет',
         'Create New Phone Ticket' => 'Направи Нов Телефонски Тикет',
         'Please include at least one customer for the ticket.' => 'Ве молиме внесете барем еден клиент за тикетот.',
-        'Select this customer as the main customer.' => 'Избери го овој клиент како главен клиент.',
         'To queue' => 'Во редица',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2760,7 +2737,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => 'Креирај Нов Процесирачки Тикет',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => 'Вклучи Тикет во некој Процес',
@@ -2804,7 +2780,6 @@ sub Data {
         'Save as default' => 'Сними како стандард',
         'Drafts' => '',
         'by' => 'од',
-        'Move ticket to a different queue' => 'Премести го тикетот во различен ред',
         'Change Queue' => 'Измени Редица',
         'There are no dialogs available at this point in the process.' =>
             'Нема слободни дијалози во оваа состојба во процесот.',
@@ -2946,9 +2921,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'Нов Тикет',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
         'Welcome!' => 'Добредојдовте!',
@@ -3204,7 +3177,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '',
-        ' e. g.' => 'пример',
+        'e. g.' => 'п.р.',
         'To get the first 20 character of the appointment title.' => '',
         'To get the calendar attribute' => '',
         'Attributes of the recipient user for the notification' => '',
@@ -3236,9 +3209,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => '',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             '',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'п.р.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5038,6 +5008,8 @@ sub Data {
         'Server Database Charset' => 'Карактер сет серверска база на податоци',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'Табела Множзнаци',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 

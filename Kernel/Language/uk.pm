@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%M/%D/%Y';
     $Self->{DateInputFormat}     = '%M/%D/%Y';
     $Self->{DateInputFormatLong} = '%M/%D/%Y - %T';
-    $Self->{Completeness}        = 0.435417692433941;
+    $Self->{Completeness}        = 0.437118839624196;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -1686,7 +1686,7 @@ sub Data {
         'Available Fields' => 'Доступні поля',
         'Filter available fields' => 'Фільтрувати доступні поля',
         'Assigned Fields' => 'Призначені поля',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '',
         'Is visible for customer' => '',
         'Text Template' => 'Шаблон тексту',
@@ -2365,23 +2365,15 @@ sub Data {
         'in' => 'в',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'далі',
         'No Data Available.' => 'Немає доступних даних.',
         'Available Columns' => 'Доступні колонки',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'Видимі стовпці (упорядковуйте шляхом тягни-й-пусти)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '',
@@ -2621,7 +2613,7 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => 'Написати відповідь для %s%s%s',
         'Date Invalid!' => 'Невірна дата!',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => '',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2631,12 +2623,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'Будь ласка, вилучіть цей запис та додайте новий з правильним значенням.',
         'This address already exists on the address list.' => 'Ця адреса вже є в списку адрес',
-        ' Cc' => '',
         'Remove Cc' => 'Вилучити Копія',
         'Bcc' => 'Прихована копія',
-        ' Bcc' => '',
         'Remove Bcc' => 'Вилучити Прихована Копія',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => 'Зміна Клаєнта: %s%s%s',
@@ -2645,23 +2634,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'Заявка по e-mail',
-        ' Example Template' => '',
         'Example Template' => 'Приклад шаблону',
         'To customer user' => 'Для користувача',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'Будь ласка, додайте хоча б одного користувача-клієнта для квитка.',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'Виберіть клієнта у якості основного.',
         'Remove Ticket Customer User' => 'Вилучити Користувача-Клієнта',
         'From queue' => ' Із черги',
-        ' Get all' => '',
         'Get all' => 'Отримати всі',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => 'Вихідна адреса електронної пошти для %s%s%s',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2714,18 +2696,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'Не знайдено даних про квитки',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'Відправник',
         'Customer User Name' => '',
         'Impact' => '',
         'Update Time' => 'Час до зміни заявки',
         'Solution Time' => 'Час розв\'язку заявки',
         'First Response Time' => 'Час до першої відповіді',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'Перемістити заявку в іншу чергу',
         'Change queue' => 'Перемістити в іншу чергу',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2734,21 +2714,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => 'Вилучити зі списку спостережуваних заявок',
         'Tickets per page' => 'Квитків на сторінку.',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'Скинути огляд',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => 'Розділити на Нові Телефонні Квитки',
         'Create New Phone Ticket' => 'Заявка по телефону',
         'Please include at least one customer for the ticket.' => 'Будь ласка, вкажіть хоча б одного клієнта для квитка.',
-        'Select this customer as the main customer.' => 'Виберіть клієнта у якості основного.',
         'To queue' => 'У чергу',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2761,7 +2738,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => 'Створити Новий  Квиток Процесу',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => 'Залучити Квиток в Процес',
@@ -2805,7 +2781,6 @@ sub Data {
         'Save as default' => 'Зберегти як типовий',
         'Drafts' => '',
         'by' => 'ні',
-        'Move ticket to a different queue' => 'Перемістити заявку в іншу чергу',
         'Change Queue' => 'Перемінити черга',
         'There are no dialogs available at this point in the process.' =>
             'На даний момент в цьому процесі немає ніяких діалогових вікон.',
@@ -2947,9 +2922,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'Нова заявка',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
         'Welcome!' => 'Ласкаво просимо!',
@@ -3205,7 +3178,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => 'Для отримання атрибуту Події',
-        ' e. g.' => ' наприклад,',
+        'e. g.' => 'наприклад,',
         'To get the first 20 character of the appointment title.' => 'Для отримання перших 20-ти символів заголовку Події',
         'To get the calendar attribute' => 'Для отримання аатрибутів календаря',
         'Attributes of the recipient user for the notification' => 'Атрибути користувача-одержувача для сповіщення',
@@ -3237,9 +3210,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => 'Значення внутрішніх ключів динамічних полів квитка.',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             'Динамічні поля квитка відображають значення, корисні для полів що Розкриваються та з Множинним вибором',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'наприклад,',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5039,6 +5009,8 @@ sub Data {
         'Server Database Charset' => 'Набір символів бази даних сервера',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'Таблиця набору символів',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 

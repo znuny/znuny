@@ -19,67 +19,6 @@ my $HTMLUtilsObject = $Kernel::OM->Get('Kernel::System::HTMLUtils');
 # DocumentCleanup tests
 my @Tests = (
     {
-        Input  => '<p class="MsoNormal">Sehr geehrte Damen und Herren,<o:p></o:p></p>',
-        Result => 'Sehr geehrte Damen und Herren,<o:p></o:p><br/>',
-        Name   => 'DocumentCleanup - MSHTML'
-    },
-    {
-        Input  => "<p\n class=\"MsoNormal\">Sehr geehrte Damen und Herren,<o:p></o:p></p>",
-        Result => 'Sehr geehrte Damen und Herren,<o:p></o:p><br/>',
-        Name   => 'DocumentCleanup - MSHTML'
-    },
-    {
-        Input =>
-            "<p\n class=\"MsoNormal\">Sehr geehrte Damen und Herren,<o:p></o:p></p>\n<p\nclass=\"MsoNormal\"><o:p>&nbsp;</o:p></p>",
-        Result => "Sehr geehrte Damen und Herren,<o:p></o:p><br/>\n<o:p>&nbsp;</o:p><br/>",
-        Name   => 'DocumentCleanup - MSHTML'
-    },
-    {
-        Input  => "<p class='MsoNormal'>Sehr geehrte Damen und Herren,<o:p></o:p></p>",
-        Result => 'Sehr geehrte Damen und Herren,<o:p></o:p><br/>',
-        Name   => 'DocumentCleanup - MSHTML'
-    },
-    {
-        Input  => "<p\n class='MsoNormal'>Sehr geehrte Damen und Herren,<o:p></o:p></p>",
-        Result => 'Sehr geehrte Damen und Herren,<o:p></o:p><br/>',
-        Name   => 'DocumentCleanup - MSHTML'
-    },
-    {
-        Input =>
-            "<p\n class='MsoNormal'>Sehr geehrte Damen und Herren,<o:p></o:p></p>\n<p\nclass='MsoNormal'><o:p>&nbsp;</o:p></p>",
-        Result => "Sehr geehrte Damen und Herren,<o:p></o:p><br/>\n<o:p>&nbsp;</o:p><br/>",
-        Name   => 'DocumentCleanup - MSHTML'
-    },
-    {
-        Input =>
-            "<p class=MsoNormal>Sehr geehrte Damen und Herren,<o:p></o:p></p>Some Other Text... ",
-        Result => 'Sehr geehrte Damen und Herren,<o:p></o:p><br/>Some Other Text... ',
-        Name   => 'DocumentCleanup - MSHTML'
-    },
-    {
-        Input  => "<p\n class=MsoNormal>Sehr geehrte Damen und Herren,<o:p></o:p></p>",
-        Result => 'Sehr geehrte Damen und Herren,<o:p></o:p><br/>',
-        Name   => 'DocumentCleanup - MSHTML'
-    },
-    {
-        Input =>
-            "<p\n class=MsoNormal>Sehr geehrte Damen und Herren,<o:p></o:p></p>\n<p\nclass='MsoNormal'><o:p>&nbsp;</o:p></p>",
-        Result => "Sehr geehrte Damen und Herren,<o:p></o:p><br/>\n<o:p>&nbsp;</o:p><br/>",
-        Name   => 'DocumentCleanup - MSHTML'
-    },
-    {
-        Input =>
-            "<div\n class=MsoNormal>Sehr geehrte Damen und Herren,<o:div></o:div></div>\n<div\nclass='MsoNormal'><o:div>&nbsp;</o:div></div>",
-        Result => "Sehr geehrte Damen und Herren,<o:div></o:div><br/>\n<o:div>&nbsp;</o:div><br/>",
-        Name   => 'DocumentCleanup - MSHTML'
-    },
-    {
-        Input =>
-            "<div\r class=MsoNormal>Sehr geehrte Damen und Herren,<o:div></o:div></div>\n<div class='MsoNormal' type=\"cite\"><o:div>&nbsp;</o:div></div>",
-        Result => "Sehr geehrte Damen und Herren,<o:div></o:div><br/>\n<o:div>&nbsp;</o:div><br/>",
-        Name   => 'DocumentCleanup - MSHTML'
-    },
-    {
         Input  => 'Some Tex<b>t</b>',
         Result => 'Some Tex<b>t</b>',
         Name   => 'DocumentCleanup - blockquote'

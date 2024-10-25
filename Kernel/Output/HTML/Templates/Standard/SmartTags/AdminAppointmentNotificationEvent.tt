@@ -10,7 +10,7 @@
 <dt><code class="bold">&lt;OTRS_APPOINTMENT_*&gt;</code></dt>
 <dd class="flex-row">
     [% Translate("To get the appointment attribute") | html %]
-    [% Translate(" e. g.") | html %] <code>&lt;OTRS_APPOINTMENT_APPOINTMENTID&gt;, &lt;OTRS_APPOINTMENT_STARTTIME&gt;, &lt;OTRS_APPOINTMENT_DESCRIPTION&gt;</code>
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_APPOINTMENT_APPOINTMENTID&gt;, &lt;OTRS_APPOINTMENT_STARTTIME&gt;, &lt;OTRS_APPOINTMENT_DESCRIPTION&gt;</code>
 </dd>
 
 <dt><code class="bold">&lt;OTRS_APPOINTMENT_TITLE[20]&gt;</code></dt>
@@ -21,11 +21,11 @@
 <dt><code class="bold">&lt;OTRS_CALENDAR_*&gt;</code></dt>
 <dd class="flex-row">
     [% Translate("To get the calendar attribute") | html %]
-    [% Translate(" e. g.") | html %] <code>&lt;OTRS_CALENDAR_CALENDARID&gt;, &lt;OTRS_CALENDAR_CALENDARNAME&gt;, &lt;OTRS_CALENDAR_COLOR&gt;</code>
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_CALENDAR_CALENDARID&gt;, &lt;OTRS_CALENDAR_CALENDARNAME&gt;, &lt;OTRS_CALENDAR_COLOR&gt;</code>
 </dd>
 
 <dt><code class="bold">&lt;OTRS_*&gt;</code> [% Translate("or") | html %] <code>&lt;OTRS_NOTIFICATION_RECIPIENT_*&gt;</code></dt>
 <dd class="flex-row">
     [% Translate("Attributes of the recipient user for the notification") | html %]
-    [% Translate(" e. g.") | html %] <code>&lt;OTRS_UserFullname&gt;</code> [% Translate("or") | html %] <code>&lt;OTRS_NOTIFICATION_RECIPIENT_UserFullname&gt;</code>
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_UserFullname&gt;</code> [% Translate("or") | html %] <code>&lt;OTRS_NOTIFICATION_RECIPIENT_UserFullname&gt;</code>
 </dd>

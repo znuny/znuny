@@ -4453,6 +4453,7 @@ sub ConfigurationCategoriesGet {
         my $DisplayName = $ConfigObject->Get("SystemConfiguration::Category::Name::$PackageName") || $PackageName;
 
         $Result{$PackageName} = {
+            PackageName => $PackageName,
             DisplayName => $DisplayName,
             Files       => \@XMLFiles,
         };

@@ -14,7 +14,7 @@
 [% RenderBlockStart("LabelSpan") %]
     <span class="Marker">*</span>
 [% RenderBlockEnd("LabelSpan") %]
-    <a href="#" id="ResponsibleSelectionGetAll" class="GetAllAJAX icon-hover" title="[% Translate(" Get all") | html %]">
+    <a href="#" id="ResponsibleSelectionGetAll" class="GetAllAJAX icon-hover" title="[% Translate("Get all") | html %]">
         <i class="fa fa-refresh"></i>
     </a>
 [% RenderBlockStart("rw:Responsible:DescriptionLong") %]

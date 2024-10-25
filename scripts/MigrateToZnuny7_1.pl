@@ -79,9 +79,11 @@ Please run it as the 'znuny' user or with the help of su:
 ";
     }
 
-    $Kernel::OM->Create('scripts::Migration')->Run(
+    my $Result = $Kernel::OM->Create('scripts::Migration')->Run(
         CommandlineOptions => \%Options,
     );
+
+    exit 1 if !$Result;
 
     exit 0;
 }

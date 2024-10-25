@@ -10648,8 +10648,6 @@
                 <Item>ArticleAutoResponse</Item>
                 <Item>ArticleFlagSet</Item>
                 <Item>ArticleFlagDelete</Item>
-                <Item>ArticleAgentNotification</Item>
-                <Item>ArticleCustomerNotification</Item>
                 <Item>ArticleEmailSendingQueued</Item>
                 <Item>ArticleEmailSendingSent</Item>
                 <Item>ArticleEmailSendingError</Item>

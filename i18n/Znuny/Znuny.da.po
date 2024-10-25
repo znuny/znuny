@@ -5095,7 +5095,7 @@ msgid "Assigned Fields"
 msgstr "Tildelte felter"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementActivityDialog.tt
-msgid " Filter assigned fields"
+msgid "Filter assigned fields"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementActivityDialog.tt
@@ -5932,7 +5932,7 @@ msgstr "Kør forespørgsel"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminSelectBox.tt
 msgid "%s Results"
-msgstr ""
+msgstr "%s resultater"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminSelectBox.tt
 msgid "Query is executed."
@@ -7051,10 +7051,6 @@ msgid "in"
 msgstr "om"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Show or hide the content"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Search inactive widgets"
 msgstr ""
 
@@ -7063,35 +7059,11 @@ msgid "Active Widgets"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Save changes"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Save"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid "Save changes"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Settings"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Refresh"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Close this widget"
+msgid "Close this widget"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Hide"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Cancel"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
@@ -7107,16 +7079,8 @@ msgid "Available Columns"
 msgstr "Tilgængelige kolonner"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Filter available fields"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Visible Columns (order by drag & drop)"
 msgstr "Synlige kolonner (flyt dem med musen)"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Submit"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
 msgid "Change Customer Relations"
@@ -7723,10 +7687,6 @@ msgid "Bounce %s%s%s"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBounce.tt
-msgid "cancel"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBounce.tt
 msgid "Bounce to"
 msgstr "Overgiv til"
 
@@ -7799,10 +7759,6 @@ msgid "Date Invalid!"
 msgstr "Ugyldig dato!"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Select one or more recipients from the customer user address book."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
 msgid "Customer user address book"
 msgstr ""
 
@@ -7827,10 +7783,6 @@ msgid "This address already exists on the address list."
 msgstr "Denne adresse eksisterer allerede i adresselisten."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Cc"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
 msgid "Remove Cc"
 msgstr "Fjern Cc"
 
@@ -7839,16 +7791,8 @@ msgid "Bcc"
 msgstr "Bcc"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Bcc"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
 msgid "Remove Bcc"
 msgstr "Fjern Bcc"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Send mail"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
 msgid "Change Customer of %s%s%s"
@@ -7867,10 +7811,6 @@ msgid "Create New Email Ticket"
 msgstr "Opret ny mail-sag"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Example Template"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Example Template"
 msgstr "Eksempel-skabelon"
 
@@ -7879,20 +7819,8 @@ msgid "To customer user"
 msgstr "Til kundebruger"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " To"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Please include at least one customer user for the ticket."
 msgstr "Inkluder venligst mindst en kundebruger til sagen"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Select this customer as the main customer."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " To customer user"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Remove Ticket Customer User"
@@ -7903,24 +7831,8 @@ msgid "From queue"
 msgstr "Fra kø"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Get all"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Get all"
 msgstr "Hent alle"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Message body"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
-msgid "Outbound Email for %s%s%s"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
-msgid "Select one or more recipients from the customer user address book."
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
 msgid "Resend Email for %s%s%s"
@@ -8063,19 +7975,15 @@ msgid "NoteToTicket invalid."
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Select all"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "No ticket data found."
 msgstr "Ingen sager fundet."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Open / Close ticket action menu"
+msgid "Open / Close ticket action menu"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Select this ticket"
+msgid "Select this ticket"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
@@ -8103,14 +8011,6 @@ msgid "First Response Time"
 msgstr "Frist til første svar"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Service Time"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Move ticket to a different queue"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "Change queue"
 msgstr "Skift kø"
 
@@ -8130,14 +8030,6 @@ msgstr ""
 msgid "Tickets per page"
 msgstr "Sager pr. side"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
-msgid "Filter assigned fields"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-msgid " Missing channel"
-msgstr ""
-
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
 msgid "Missing channel"
 msgstr ""
@@ -8147,7 +8039,7 @@ msgid "Reset overview"
 msgstr "Nulstil oversigt"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
-msgid " Column Filters Form"
+msgid "Column Filters Form"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
@@ -8162,7 +8054,7 @@ msgstr "Opret ny sag"
 msgid "Please include at least one customer for the ticket."
 msgstr "Der skal være mindst én kunde til sagen."
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Select this customer as the main customer."
 msgstr "Vælg denne kunde som sagens hovedkunde"
 
@@ -8188,10 +8080,6 @@ msgstr "Download denne mail"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
 msgid "Create New Process Ticket"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
-msgid " Loading"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
@@ -8342,7 +8230,7 @@ msgstr ""
 msgid "by"
 msgstr "af"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "Move ticket to a different queue"
 msgstr "Flyt sag til anden kø"
 
@@ -8512,7 +8400,7 @@ msgstr "Tildelt"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/TicketInformation.tt
 msgid "%s Ticket(s)"
-msgstr ""
+msgstr "%s sag(er)"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/TicketInformation.tt
 msgid "Accounted time"
@@ -8596,7 +8484,7 @@ msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerFooterJS.tt
 msgid "%s detected possible network issues. You could either try reloading this page manually or wait until your browser has re-established the connection on its own."
-msgstr ""
+msgstr "%s oplever udfald på forbindelsen. Du kan enten forsøge at opdatere siden eller vente til din browser automatisk forsøger igen."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerFooterJS.tt
 msgid "The connection has been re-established after a temporary connection loss. Due to this, elements on this page could have stopped to work correctly. In order to be able to use all elements correctly again, it is strongly recommended to reload this page."
@@ -8727,15 +8615,11 @@ msgid "New Ticket"
 msgstr "Ny sag"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
-msgid " Service level agreement"
+msgid "Service level agreement"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
 msgid "Dymanic Info"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
-msgid " Subject"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
@@ -9395,7 +9279,7 @@ msgid "To get the appointment attribute"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
-msgid " e. g."
+msgid "e. g."
 msgstr "f.eks."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
@@ -9481,10 +9365,6 @@ msgstr ""
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminNotificationEvent.tt
 msgid "Ticket dynamic fields display values, useful for Dropdown and Multiselect fields"
 msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-msgid "e. g."
-msgstr "f.eks."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
 msgid "To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types."
@@ -9704,7 +9584,7 @@ msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SystemConfiguration/SettingsList.tt
 msgid "%s (%s) is currently working on this setting."
-msgstr ""
+msgstr "%s (%s) arbejder i øjeblikket på denne indstilling."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SystemConfiguration/SettingsList.tt
 msgid "Toggle advanced options for this setting"
@@ -10096,7 +9976,7 @@ msgstr ""
 
 #. Perl Module: Kernel/Modules/AdminACL.pm
 msgid "%s (copy) %s"
-msgstr ""
+msgstr "%s (kopi) %s"
 
 #. Perl Module: Kernel/Modules/AdminACL.pm
 msgid "Please note that ACL restrictions will be ignored for the Superuser account (UserID 1)."
@@ -10220,7 +10100,7 @@ msgstr "Ukendt besked %s!"
 
 #. Perl Module: Kernel/Modules/AdminAppointmentNotificationEvent.pm
 msgid "%s (copy)"
-msgstr ""
+msgstr "%s (kopi)"
 
 #. Perl Module: Kernel/Modules/AdminAppointmentNotificationEvent.pm
 msgid "There was an error creating the Notification"
@@ -11932,11 +11812,11 @@ msgstr ""
 
 #. Perl Module: Kernel/Modules/AgentAppointmentEdit.pm
 msgid "%s hour(s) before"
-msgstr ""
+msgstr "%s time(r) før"
 
 #. Perl Module: Kernel/Modules/AgentAppointmentEdit.pm
 msgid "%s day(s) before"
-msgstr ""
+msgstr "%s dag(e) før"
 
 #. Perl Module: Kernel/Modules/AgentAppointmentEdit.pm
 msgid "%s week before"
@@ -11980,7 +11860,7 @@ msgstr "Kunde-historik"
 
 #. Perl Module: Kernel/Modules/AgentCustomerUserAddressBook.pm
 msgid "No RecipientField is given!"
-msgstr ""
+msgstr "Modtagerfeltet er ikke angivet"
 
 #. Perl Module: Kernel/Modules/AgentDashboardCommon.pm
 msgid "No such config for %s"
@@ -12024,7 +11904,7 @@ msgstr "Kan ikke slette link med %s!"
 
 #. Perl Module: Kernel/Modules/AgentLinkObject.pm
 msgid "%s Link(s) deleted successfully."
-msgstr ""
+msgstr "%s Link slettet."
 
 #. Perl Module: Kernel/Modules/AgentLinkObject.pm
 msgid "Can not create link with %s! Object already linked as %s."
@@ -12352,7 +12232,7 @@ msgstr ""
 
 #. Perl Module: Kernel/Modules/AgentTicketProcess.pm
 msgid "No Process configured!"
-msgstr ""
+msgstr "Processen er ikke konfigureret!"
 
 #. Perl Module: Kernel/Modules/AgentTicketProcess.pm
 msgid "The selected process is invalid!"
@@ -13016,11 +12896,11 @@ msgstr "Underskrevet"
 
 #. Perl Module: Kernel/Output/HTML/ArticleCheck/PGP.pm
 msgid "\"PGP SIGNED MESSAGE\" header found, but invalid!"
-msgstr ""
+msgstr "\"PGP SIGNED MESSAGE\" header fundet, men den er invalid!"
 
 #. Perl Module: Kernel/Output/HTML/ArticleCheck/SMIME.pm
 msgid "\"S/MIME SIGNED MESSAGE\" header found, but invalid!"
-msgstr ""
+msgstr "\"S/MIME SIGNED MESSAGE\" header fundet, men den er invalid!"
 
 #. Perl Module: Kernel/Output/HTML/ArticleCheck/SMIME.pm
 msgid "Ticket decrypted before"
@@ -13240,23 +13120,23 @@ msgstr "Marker for at aktivere denne dato"
 
 #. Perl Module: Kernel/Output/HTML/Layout.pm
 msgid "%s TB"
-msgstr ""
+msgstr "%s TB"
 
 #. Perl Module: Kernel/Output/HTML/Layout.pm
 msgid "%s GB"
-msgstr ""
+msgstr "%s GB"
 
 #. Perl Module: Kernel/Output/HTML/Layout.pm
 msgid "%s MB"
-msgstr ""
+msgstr "%s MB"
 
 #. Perl Module: Kernel/Output/HTML/Layout.pm
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #. Perl Module: Kernel/Output/HTML/Layout.pm
 msgid "%s B"
-msgstr ""
+msgstr "%s B"
 
 #. Perl Module: Kernel/Output/HTML/Layout.pm
 msgid "No Permission!"
@@ -13264,7 +13144,7 @@ msgstr "Ingen tilladelse."
 
 #. Perl Module: Kernel/Output/HTML/Layout.pm
 msgid "No Permission"
-msgstr ""
+msgstr "Ingen tilladelse"
 
 #. Perl Module: Kernel/Output/HTML/Layout.pm
 msgid "Show Tree Selection"
@@ -14896,7 +14776,7 @@ msgstr ""
 
 #. Perl Module: Kernel/System/Web/InterfaceAgent.pm
 msgid "No Permission to use this frontend module!"
-msgstr ""
+msgstr "Ingen tilladelse til at anvende frontend modulet"
 
 #. Perl Module: Kernel/System/Web/InterfaceCustomer.pm
 msgid "Authentication succeeded, but no customer record is found in the customer backend. Please contact the administrator."
@@ -21308,7 +21188,7 @@ msgstr ""
 
 #. JS File: var/httpd/htdocs/js/Core.Agent.TicketBulk.js
 msgid " ...show less"
-msgstr ""
+msgstr " ... vis færre"
 
 #. JS File: var/httpd/htdocs/js/Core.Agent.TicketFormDraft.js
 msgid "Add new draft"
@@ -24419,5 +24299,25 @@ msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+msgid "Save changes"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBounce.tt
+msgid "cancel"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
+msgid "Select one or more recipients from the customer user address book."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
+msgid "Outbound Email for %s%s%s"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
+msgid "There were non-system tables found which do not have 'utf8mb4' as charset."
 msgstr ""
 

@@ -2987,7 +2987,11 @@ sub PackageUpgradeAll {
     );
 
     # Modify @PackageInstalledList if ITSM packages are installed from Bundle (see bug#13778).
-    if ( grep { $_->{Name} eq 'ITSM' } @PackageInstalledList && grep { $_->{Name} eq 'ITSM' } @PackageOnlineList ) {
+    if (
+        @PackageInstalledList && grep { $_->{Name} eq 'ITSM' }
+        @PackageInstalledList && grep { $_->{Name} eq 'ITSM' } @PackageOnlineList
+        )
+    {
         my @TmpPackages = (
             'GeneralCatalog',
             'ITSMCore',

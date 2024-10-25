@@ -110,23 +110,43 @@ sub Run {
         print "The setting character_set_database is: $DatabaseCharacterSet. ";
     }
 
-    my @TablesWithInvalidCharset;
+    my @SystemTables = $DBObject->GetSystemTables(
+        IncludePackageTables => 1,
+    );
+    my %SystemTables = map { $_ => 1 } @SystemTables;
+
+    my @SystemTablesWithInvalidCharset;
+    my @NonSystemTablesWithInvalidCharset;
 
     # Check for tables with invalid character set. Views have engine == null, ignore those.
     $DBObject->Prepare( SQL => 'show table status where engine is not null' );
     while ( my @Row = $DBObject->FetchrowArray() ) {
         if ( $Row[14] !~ /^$RequiredCharacterSet\_unicode_ci$/i ) {
-            push @TablesWithInvalidCharset, $Row[0];
+            my $Table = $Row[0];
+
+            push @SystemTablesWithInvalidCharset,    $Table if $SystemTables{$Table};
+            push @NonSystemTablesWithInvalidCharset, $Table if !$SystemTables{$Table};
         }
     }
 
-    if (@TablesWithInvalidCharset) {
+    if (@NonSystemTablesWithInvalidCharset) {
+        print
+            "\n    Warning: There were non-system tables found which do not have '$RequiredCharacterSet' as charset: '";
+        print join( "', '", @NonSystemTablesWithInvalidCharset ) . "'.\n";
+    }
+
+    if (@SystemTablesWithInvalidCharset) {
         print "\n    Error: There were tables found which do not have '$RequiredCharacterSet' as charset: '";
-        print join( "', '", @TablesWithInvalidCharset ) . "'.\n";
+        print join( "', '", @SystemTablesWithInvalidCharset ) . "'.\n";
         return;
     }
 
-    if ($Verbose) {
+    if (
+        $Verbose
+        && !@SystemTablesWithInvalidCharset
+        && !@NonSystemTablesWithInvalidCharset
+        )
+    {
         print "No tables found with invalid charset.\n";
     }
 
