@@ -100,7 +100,7 @@ sub Run {
             {
 
                 my @Data;
-                my $MatchesFound;
+                my $MatchesFound = 0;
 
                 # add result block
                 $LayoutObject->Block(
