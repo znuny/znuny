@@ -1188,8 +1188,8 @@ Core.UI.InputFields = (function (TargetNS) {
 
             // For performance reasons:
             // Do not initialize modern inputfields on selects with many entries
-            MaxDropdownOptions = Core.Config.Get('MaxDropdownOptions');
-            if ($(SelectObj).children('option').length > MaxDropdownOptions) {
+            MaxNumberOfOptions = Core.Config.Get('InputFields::ModernizedSelection::MaxNumberOfOptions');
+            if ($(SelectObj).children('option').length > MaxNumberOfOptions) {
                 return;
             }
 
