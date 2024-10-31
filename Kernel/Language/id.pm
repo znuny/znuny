@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.606889731333443;
+    $Self->{Completeness}        = 0.606789716545814;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -8819,6 +8819,7 @@ Helpdesk Team Anda
         'Manage tasks triggered by event or time based execution.' => 'Mengelola tugas dipicu oleh peristiwa atau waktu eksekusi berdasarkan.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Tandai sebagai Spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Tandai tiket ini sebagai sampah!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',

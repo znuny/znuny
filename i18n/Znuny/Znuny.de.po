@@ -24333,3 +24333,7 @@ msgstr "Ergänzt Feld-Mapping für AgentTicketActionCommon für unbekannte Actio
 msgid "There were non-system tables found which do not have 'utf8mb4' as charset."
 msgstr "Es wurden systemfremde Tabellen gefunden, die nicht 'utf8mb4' als Zeichensatz haben."
 
+#. SysConfig
+msgid "Mark as seen"
+msgstr "Als gelesen markieren"
+

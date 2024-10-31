@@ -35,7 +35,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.602933904730509;
+    $Self->{Completeness}        = 0.602834541858932;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -8829,6 +8829,7 @@ Il tuo helpdesk.
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Contrassegna come spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Marca questo ticket come spam!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',

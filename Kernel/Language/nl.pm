@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D-%M-%Y';
     $Self->{DateInputFormat}     = '%D-%M-%Y';
     $Self->{DateInputFormatLong} = '%D-%M-%Y - %T';
-    $Self->{Completeness}        = 0.49777484753585;
+    $Self->{Completeness}        = 0.497692814765985;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -8822,6 +8822,7 @@ Het Helpdesk Team
         'Manage tasks triggered by event or time based execution.' => 'Beheer van taken op basis van events of tijdschema\'s',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Markeer als spam',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Markeer het ticket als junk!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',

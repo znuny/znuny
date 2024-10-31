@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '';
     $Self->{DateInputFormat}     = '';
     $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.309543431679578;
+    $Self->{Completeness}        = 0.309492419248517;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -8819,6 +8819,7 @@ A sua equipa de Helpdesk
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Marcar como Spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',

@@ -35,7 +35,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.381242788857755;
+    $Self->{Completeness}        = 0.381179960448253;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -8814,6 +8814,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Marker som søppel',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Marker denne saken som søppel!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',

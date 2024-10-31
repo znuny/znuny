@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.897642986649085;
+    $Self->{Completeness}        = 0.897495056031641;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -8822,6 +8822,7 @@ Az Ön segélyszolgálat csapata
         'Manage tasks triggered by event or time based execution.' => 'Esemény vagy időalapú végrehajtás által aktivált feladatok kezelése.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Megjelölés szemétként!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Jegy megjelölése szemétként!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',

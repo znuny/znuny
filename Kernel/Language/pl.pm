@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.637877039723092;
+    $Self->{Completeness}        = 0.637771918259723;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -8820,6 +8820,7 @@ Twój Zespół Helpdesk.
         'Manage tasks triggered by event or time based execution.' => 'Zarządza zadaniami wywołanymi zdarzeniami lub zaplanowymi czasowo.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Oznacz jako spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Oznacz to zgłoszenie jako SPAM!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',

@@ -24344,3 +24344,7 @@ msgstr ""
 msgid "There were non-system tables found which do not have 'utf8mb4' as charset."
 msgstr ""
 
+#. SysConfig
+msgid "Mark as seen"
+msgstr ""
+

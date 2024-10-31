@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.894181638371518;
+    $Self->{Completeness}        = 0.89403427818062;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -8822,6 +8822,7 @@ Vaša tehnička podrška
         'Manage tasks triggered by event or time based execution.' => 'Upravlja zadacima pokrenutim od događaja ili na osnovu vremenskog izvršavanja.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Označi kao Spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Označi ovaj tiket kao besmislen junk!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
