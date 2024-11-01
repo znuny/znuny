@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%M/%D/%Y';
     $Self->{DateInputFormat}     = '%M/%D/%Y';
     $Self->{DateInputFormatLong} = '%M/%D/%Y - %T';
-    $Self->{Completeness}        = 0.436882003955175;
+    $Self->{Completeness}        = 0.436810018124897;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -5610,6 +5610,8 @@ sub Data {
             'Kigawa mstari otomatiki katika ujumbe wa maneno baada ya namba x ya herufi.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Inaweka namba ya mistari ambayo inaonyeshwa katika ujumbe wa maneno (mfano mistari ya tiketi katika foleni iliyokuzwa).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Washa kokota na dondosha kwa ajili wa uabiri mkuu.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Inafafanua umbizo umbizo ingizo la tarehe linalotumika katika fomu (hiari au uga ingizo).',

@@ -510,7 +510,8 @@ sub Block {
 
     # For performance reasons:
     # Do not initialize modernized input fields on selections with many entries
-    my $MaxNumberOfOptions = $Kernel::OM->Get('Kernel::Config')->Get("InputFields::ModernizedSelection::MaxNumberOfOptions");
+    my $MaxNumberOfOptions
+        = $Kernel::OM->Get('Kernel::Config')->Get("InputFields::ModernizedSelection::MaxNumberOfOptions");
     $Self->AddJSData(
         Key   => 'InputFields::ModernizedSelection::MaxNumberOfOptions',
         Value => $MaxNumberOfOptions,

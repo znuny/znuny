@@ -1184,7 +1184,8 @@ Core.UI.InputFields = (function (TargetNS) {
                 $ShowTreeObj,
                 $FiltersListObj,
                 WholeRowClicked,
-                ScrollEventListener;
+                ScrollEventListener,
+                MaxNumberOfOptions;
 
             // For performance reasons:
             // Do not initialize modern inputfields on selects with many entries

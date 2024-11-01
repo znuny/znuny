@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.89403427818062;
+    $Self->{Completeness}        = 0.893886966551326;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -5608,6 +5608,8 @@ sub Data {
             'Аутоматски крај реда у текстуалним порукама после х карактера.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Подешава број линија приказаних у текстуалним порукама (нпр број линија у детаљном прегледу реда).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Активира превуци и отпусти у главној навигацији.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Дефинише форноса датума у формуларе (опционо или поља за унос).',

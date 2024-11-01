@@ -107,6 +107,7 @@ The following persons contributed to Znuny:
 * Samuel Diniz Casimiro <nedmaj@yahoo.com>
 * Sanjin Vik <svik@s7designcreative.com>
 * Shawn Beasley <shawn.beasley@znuny.com>
+* Sidpatchy <35241490+Sidpatchy@users.noreply.github.com>
 * Stefan Bedorf <stefan.bedorf@otrs.com>
 * Stefan Rother <stefan.rother@otrs.com>
 * Stefan Wintermeyer <stefan@otrs.org>
@@ -133,6 +134,7 @@ The following persons contributed to Znuny:
 * b1-luettje <53084931+b1-luettje@users.noreply.github.com>
 * djurici <igor.djuric@muehlbauer.de>
 * forwwward <hello@forwwward.studio>
+* itweserems <153607410+itweserems@users.noreply.github.com>
 * jsinagowitz <91074418+jsinagowitz@users.noreply.github.com>
 * juanmclavero <juanm.clavero@ibsalut.es>
 * meisterheister <35762852+meisterheister@users.noreply.github.com>

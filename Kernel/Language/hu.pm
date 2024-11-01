@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.897495056031641;
+    $Self->{Completeness}        = 0.897347174163783;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -5613,6 +5613,8 @@ sub Data {
             'Automatikus sortörés a szöveges üzenetekben x karakter után.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Beállítja a szöveges üzenetekben megjelenített sorok számát (például a QueueZoom modulban lévő jegy sorok).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Bekapcsolja a „fogd és vidd” lehetőséget a fő navigációnál.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Meghatározza az űrlapokon használt adatok beviteli formátumát (választás vagy beviteli mező).',

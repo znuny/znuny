@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '';
     $Self->{DateInputFormat}     = '';
     $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.868984838497034;
+    $Self->{Completeness}        = 0.868841654308782;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -5607,6 +5607,8 @@ sub Data {
             'X 문자 수 후에 문자 메시지의 자동 줄바꿈',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             '문자 메시지에 표시되는 줄 수를 설정합니다 (예 : QueueZoom의 티켓 줄).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => '기본 탐색에 대한 드래그 앤 드롭을 켭니다.',
         'Defines the date input format used in forms (option or input fields).' =>
             '양식 (옵션 또는 입력 필드)에 사용되는 날짜 입력 형식을 정의합니다.',

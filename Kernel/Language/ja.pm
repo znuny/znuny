@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y/%M/%D';
     $Self->{DateInputFormat}     = '%Y/%M/%D';
     $Self->{DateInputFormatLong} = '%Y/%M/%D - %T';
-    $Self->{Completeness}        = 0.68457481872116;
+    $Self->{Completeness}        = 0.684462020102159;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -5614,6 +5614,8 @@ sub Data {
             'X個の文字型の後の、テキスト・メッセージにおける自動化されたライン・ブレイク。',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'テキスト・メッセージに表示される行の数を設定します（つまり、キュー・ズーム内のチケット・ラインのためです）。',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'メイン画面でドラッグアンドドロップを有効にします。',
         'Defines the date input format used in forms (option or input fields).' =>
             'フォームで使用されるデータ・インプット・フォーマットを定義します（オプションまたはインプット・フィールド）。',

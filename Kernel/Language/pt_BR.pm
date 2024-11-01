@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.862722478576137;
+    $Self->{Completeness}        = 0.862580326248146;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -5611,6 +5611,8 @@ sub Data {
             'Quebra de linha automatizada em mensagens de texto após x número de caracteres.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Define o número de linhas exibidas nas mensagens de texto (exemplo: linhas de ticket na Visão de Fila)',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Habilita "arrasta e solta" na navegação principal.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Define o formato de entrada de data utilizado em formulários (opção ou campos de entrada).',

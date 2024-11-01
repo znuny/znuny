@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.61766644693474;
+    $Self->{Completeness}        = 0.617564672927995;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -5613,6 +5613,8 @@ sub Data {
             'خط خودکار در پیام های متنی از تعداد X از کاراکتر.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'مجموعه تعدادی از خطوط که در پیام های متنی (به عنوان مثال خطوط بلیط در QueueZoom) نمایش داده شود.',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'روشن کشیدن و رها کردن برای ناوبری اصلی.',
         'Defines the date input format used in forms (option or input fields).' =>
             'تعریف فرمت تاریخ ورودی مورد استفاده در اشکال (گزینه و یا ورودی زمینه).',
