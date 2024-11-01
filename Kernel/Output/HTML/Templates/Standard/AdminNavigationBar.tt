@@ -77,7 +77,7 @@
                     <div class="Header">
                         <h2>[% Translate(Group.Title) | html %] <span>([% Group.Count | html %])</span></h2>
                         <div class="WidgetAction Toggle">
-                            <a href="#" title=" Show or hide the content">
+                            <a href="#" title="Show or hide the content">
                                 <i class="fa fa-caret-down"></i>
                             </a>
                         </div>

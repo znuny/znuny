@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.34465780403742;
+    $Self->{Completeness}        = 0.349266523817373;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -1688,7 +1688,7 @@ sub Data {
         'Available Fields' => 'Tilgængelige felter',
         'Filter available fields' => '',
         'Assigned Fields' => 'Tildelte felter',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '',
         'Is visible for customer' => '',
         'Text Template' => 'Tekst-skabelon',
@@ -1971,7 +1971,7 @@ sub Data {
             'Der mangler mindst et parameter for bindingen. Tjek det venligst.',
         'Result format' => 'Resultatformat',
         'Run Query' => 'Kør forespørgsel',
-        '%s Results' => '',
+        '%s Results' => '%s resultater',
         'Query is executed.' => 'Forespørgslen er udført',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminService.tt
@@ -2367,23 +2367,15 @@ sub Data {
         'in' => 'om',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'mere',
         'No Data Available.' => '',
         'Available Columns' => 'Tilgængelige kolonner',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'Synlige kolonner (flyt dem med musen)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '',
@@ -2623,7 +2615,7 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '',
         'Date Invalid!' => 'Ugyldig dato!',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => '',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2633,12 +2625,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'Fjern venligst denne indtastning og skriv en ny med den korrekte værdi.',
         'This address already exists on the address list.' => 'Denne adresse eksisterer allerede i adresselisten.',
-        ' Cc' => '',
         'Remove Cc' => 'Fjern Cc',
         'Bcc' => 'Bcc',
-        ' Bcc' => '',
         'Remove Bcc' => 'Fjern Bcc',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '',
@@ -2647,23 +2636,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'Opret ny mail-sag',
-        ' Example Template' => '',
         'Example Template' => 'Eksempel-skabelon',
         'To customer user' => 'Til kundebruger',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'Inkluder venligst mindst en kundebruger til sagen',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'Vælg denne kunde som sagens hovedkunde',
         'Remove Ticket Customer User' => 'Fjern kundebruger fra sagen',
         'From queue' => 'Fra kø',
-        ' Get all' => '',
         'Get all' => 'Hent alle',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2716,18 +2698,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'Ingen sager fundet.',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'Afsender',
         'Customer User Name' => 'Kundenavn',
         'Impact' => 'Påvirkning',
         'Update Time' => 'Opdateringstid',
         'Solution Time' => 'Løsningstid',
         'First Response Time' => 'Frist til første svar',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'Flyt sag til anden kø',
         'Change queue' => 'Skift kø',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2736,21 +2716,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => 'Fjern fra listen over fulgte sager',
         'Tickets per page' => 'Sager pr. side',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'Nulstil oversigt',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => '',
         'Create New Phone Ticket' => 'Opret ny sag',
         'Please include at least one customer for the ticket.' => 'Der skal være mindst én kunde til sagen.',
-        'Select this customer as the main customer.' => 'Vælg denne kunde som sagens hovedkunde',
         'To queue' => 'Til kø',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2763,7 +2740,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => '',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => '',
@@ -2807,7 +2783,6 @@ sub Data {
         'Save as default' => 'Gem som standard',
         'Drafts' => '',
         'by' => 'af',
-        'Move ticket to a different queue' => 'Flyt sag til anden kø',
         'Change Queue' => 'Skift kø',
         'There are no dialogs available at this point in the process.' =>
             'Der er ingen dialoger tilgængelige på dette sted i processen.',
@@ -2906,7 +2881,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerFooterJS.tt
         '%s detected possible network issues. You could either try reloading this page manually or wait until your browser has re-established the connection on its own.' =>
-            '',
+            '%s oplever udfald på forbindelsen. Du kan enten forsøge at opdatere siden eller vente til din browser automatisk forsøger igen.',
         'The connection has been re-established after a temporary connection loss. Due to this, elements on this page could have stopped to work correctly. In order to be able to use all elements correctly again, it is strongly recommended to reload this page.' =>
             '',
 
@@ -2949,9 +2924,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'Ny sag',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
         'Welcome!' => 'Velkommen!',
@@ -3207,7 +3180,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '',
-        ' e. g.' => 'f.eks.',
+        'e. g.' => 'f.eks.',
         'To get the first 20 character of the appointment title.' => '',
         'To get the calendar attribute' => '',
         'Attributes of the recipient user for the notification' => '',
@@ -3239,9 +3212,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => '',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             '',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'f.eks.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -3336,7 +3306,7 @@ sub Data {
             '',
         'Changing this setting is only available in a higher config level!' =>
             '',
-        '%s (%s) is currently working on this setting.' => '',
+        '%s (%s) is currently working on this setting.' => '%s (%s) arbejder i øjeblikket på denne indstilling.',
         'Toggle advanced options for this setting' => '',
         'Disable this setting, so it is no longer effective' => '',
         'Disable' => '',
@@ -3483,7 +3453,7 @@ sub Data {
         'There was an error synchronizing the ACLs.' => '',
         'ACL %s could not be deleted' => '',
         'There was an error getting data for ACL with ID %s' => '',
-        '%s (copy) %s' => '',
+        '%s (copy) %s' => '%s (kopi) %s',
         'Please note that ACL restrictions will be ignored for the Superuser account (UserID 1).' =>
             '',
         'Exact match' => '',
@@ -3522,7 +3492,7 @@ sub Data {
         'There was an error getting data for Notification with ID:%s!' =>
             'Der var en fejl med at hente data for beskeden med ID:%s!',
         'Unknown Notification %s!' => 'Ukendt besked %s!',
-        '%s (copy)' => '',
+        '%s (copy)' => '%s (kopi)',
         'There was an error creating the Notification' => 'Der opstod en fejl ved oprettelse af beskeden',
         'Notifications could not be Imported due to a unknown error, please check Znuny logs for more information' =>
             'Beskeder kunne ikke importeres grundet en ukendt fejl. Tjek Znuny-loggen for mere information.',
@@ -4125,8 +4095,8 @@ sub Data {
         'until %s' => '',
         'No notification' => '',
         '%s minute(s) before' => '',
-        '%s hour(s) before' => '',
-        '%s day(s) before' => '',
+        '%s hour(s) before' => '%s time(r) før',
+        '%s day(s) before' => '%s dag(e) før',
         '%s week before' => '',
         'before the appointment starts' => '',
         'after the appointment has been started' => '',
@@ -4143,7 +4113,7 @@ sub Data {
         'Customer History' => 'Kunde-historik',
 
         # Perl Module: Kernel/Modules/AgentCustomerUserAddressBook.pm
-        'No RecipientField is given!' => '',
+        'No RecipientField is given!' => 'Modtagerfeltet er ikke angivet',
 
         # Perl Module: Kernel/Modules/AgentDashboardCommon.pm
         'No such config for %s' => '',
@@ -4157,7 +4127,7 @@ sub Data {
         'Need SourceObject and SourceKey!' => '',
         'You need ro permission!' => '',
         'Can not delete link with %s!' => 'Kan ikke slette link med %s!',
-        '%s Link(s) deleted successfully.' => '',
+        '%s Link(s) deleted successfully.' => '%s Link slettet.',
         'Can not create link with %s! Object already linked as %s.' => '',
         'Can not create link with %s!' => 'Kan ikke oprette link med %s!',
         '%s links added successfully.' => '',
@@ -4290,7 +4260,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/AgentTicketProcess.pm
         'Couldn\'t get ActivityDialogEntityID "%s"!' => '',
-        'No Process configured!' => '',
+        'No Process configured!' => 'Processen er ikke konfigureret!',
         'The selected process is invalid!' => 'Den valgte proces er ugyldig.',
         'Process %s is invalid!' => '',
         'Subaction is invalid!' => '',
@@ -4557,10 +4527,10 @@ sub Data {
         'Crypted' => 'Krypteret',
         'Sent message encrypted to recipient!' => '',
         'Signed' => 'Underskrevet',
-        '"PGP SIGNED MESSAGE" header found, but invalid!' => '',
+        '"PGP SIGNED MESSAGE" header found, but invalid!' => '"PGP SIGNED MESSAGE" header fundet, men den er invalid!',
 
         # Perl Module: Kernel/Output/HTML/ArticleCheck/SMIME.pm
-        '"S/MIME SIGNED MESSAGE" header found, but invalid!' => '',
+        '"S/MIME SIGNED MESSAGE" header found, but invalid!' => '"S/MIME SIGNED MESSAGE" header fundet, men den er invalid!',
         'Ticket decrypted before' => '',
         'Impossible to decrypt: private key for email was not found!' => '',
         'Successful decryption' => '',
@@ -4650,13 +4620,13 @@ sub Data {
         'Hours' => 'Timer',
         'Minutes' => 'Minutter',
         'Check to activate this date' => 'Marker for at aktivere denne dato',
-        '%s TB' => '',
-        '%s GB' => '',
-        '%s MB' => '',
-        '%s KB' => '',
-        '%s B' => '',
+        '%s TB' => '%s TB',
+        '%s GB' => '%s GB',
+        '%s MB' => '%s MB',
+        '%s KB' => '%s KB',
+        '%s B' => '%s B',
         'No Permission!' => 'Ingen tilladelse.',
-        'No Permission' => '',
+        'No Permission' => 'Ingen tilladelse',
         'Show Tree Selection' => 'Vis træ',
         'Split Quote' => '',
         'Remove Quote' => '',
@@ -5041,6 +5011,8 @@ sub Data {
         'Server Database Charset' => 'Karaktersæt i databasen.',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'Karakterset i tabeller',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 
@@ -5399,7 +5371,7 @@ sub Data {
         'Invalid Token!' => 'Ugyldigt Token!',
         'Sent new password to %s. Please check your email.' => 'Nyt password sendt til %s. Tjek venligst din mail.',
         'Error: invalid session.' => '',
-        'No Permission to use this frontend module!' => '',
+        'No Permission to use this frontend module!' => 'Ingen tilladelse til at anvende frontend modulet',
 
         # Perl Module: Kernel/System/Web/InterfaceCustomer.pm
         'Authentication succeeded, but no customer record is found in the customer backend. Please contact the administrator.' =>
@@ -8303,7 +8275,7 @@ sub Data {
 
         # JS File: var/httpd/htdocs/js/Core.Agent.TicketBulk.js
         ' ...and %s more' => '',
-        ' ...show less' => '',
+        ' ...show less' => ' ... vis færre',
 
         # JS File: var/httpd/htdocs/js/Core.Agent.TicketFormDraft.js
         'Add new draft' => '',

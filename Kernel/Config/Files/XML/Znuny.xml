@@ -2678,11 +2678,9 @@
                 <Item Key="AppointmentNotification">Appointment</Item>
                 <Item Key="AppointmentUpdate">Appointment</Item>
                 <Item Key="ArticleAgentNotification">Article</Item>
-                <Item Key="ArticleAgentNotification">Article</Item>
                 <Item Key="ArticleAutoResponse">Article</Item>
                 <Item Key="ArticleBounce">Article</Item>
                 <Item Key="ArticleCreate">Article</Item>
-                <Item Key="ArticleCustomerNotification">Article</Item>
                 <Item Key="ArticleCustomerNotification">Article</Item>
                 <Item Key="ArticleEmailSendingError">Article</Item>
                 <Item Key="ArticleEmailSendingQueued">Article</Item>

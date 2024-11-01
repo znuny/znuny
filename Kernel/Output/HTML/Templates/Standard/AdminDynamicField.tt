@@ -243,6 +243,16 @@
                     </tbody>
                 </table>
             </div>
+            <div class="DynamicFieldsPagination">
+                <span class="Pagination">
+[% RenderBlockStart("OverviewNavBarPageNavBarBottom") %]
+                    <ul>
+                        <li>[% Data.ResultLong %]</li>
+                        <li class="page-links">[% Data.SiteNavBarLong %]</li>
+                    </ul>
+[% RenderBlockEnd("OverviewNavBarPageNavBarBottom") %]
+                </span>
+            </div>
         </div>
 [% RenderBlockStart("MaxFieldOrder") %]
         <input id="MaxFieldOrder" type="hidden" name="MaxFieldOrder" value="[% Data.MaxFieldOrder | html %]"/>

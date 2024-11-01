@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y.%M.%D';
     $Self->{DateInputFormat}     = '%Y.%M.%D';
     $Self->{DateInputFormatLong} = '%Y.%M.%D - %T';
-    $Self->{Completeness}        = 0.308058427703923;
+    $Self->{Completeness}        = 0.309213779462667;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -1688,7 +1688,7 @@ sub Data {
         'Available Fields' => '可選的字段',
         'Filter available fields' => '過濾可選的字段',
         'Assigned Fields' => '指排的字段',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '',
         'Is visible for customer' => '',
         'Text Template' => '文本模板',
@@ -2367,23 +2367,15 @@ sub Data {
         'in' => '之内',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => '更多',
         'No Data Available.' => '',
         'Available Columns' => '可選擇的字段',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => '顯示的字段(通過拖拽可調整順序)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '',
@@ -2624,7 +2616,7 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '',
         'Date Invalid!' => '日期無效！',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => '',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2634,12 +2626,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             '請刪除這個條目並重新輸入一個正確的值。',
         'This address already exists on the address list.' => '地址列表已有這個地址。',
-        ' Cc' => '',
         'Remove Cc' => '刪除Cc',
         'Bcc' => '暗送',
-        ' Bcc' => '',
         'Remove Bcc' => '刪除Bcc',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '',
@@ -2648,23 +2637,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => '創建郵件工單',
-        ' Example Template' => '',
         'Example Template' => '',
         'To customer user' => '選擇用戶',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => '請包括至少一個工單用戶。',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => '選擇這個用戶作為主用戶',
         'Remove Ticket Customer User' => '刪除工單用戶',
         'From queue' => '隊列',
-        ' Get all' => '',
         'Get all' => '獲取全部',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2717,18 +2699,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => '沒有找到工單數據。',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => '發件人',
         'Customer User Name' => '用戶名',
         'Impact' => '影響',
         'Update Time' => '更新時間',
         'Solution Time' => '解決時間',
         'First Response Time' => '第一響應時間',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => '將工單轉移到另一個隊列',
         'Change queue' => '更改隊列',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2737,21 +2717,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => '取消訂閱此工單',
         'Tickets per page' => '工單數/頁',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => '',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => '',
         'Create New Phone Ticket' => '創建電話工單',
         'Please include at least one customer for the ticket.' => '請包括至少一個工單用戶。',
-        'Select this customer as the main customer.' => '選擇這個用戶作為主用戶',
         'To queue' => '隊列',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2764,7 +2741,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => '創建流程工單',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => '',
@@ -2808,7 +2784,6 @@ sub Data {
         'Save as default' => '',
         'Drafts' => '',
         'by' => '由',
-        'Move ticket to a different queue' => '將工單轉移到另一個隊列',
         'Change Queue' => '改變隊列',
         'There are no dialogs available at this point in the process.' =>
             '目前流程中沒有環節操作。',
@@ -2950,9 +2925,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => '新的工單',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
         'Welcome!' => '歡迎！',
@@ -3208,7 +3181,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '',
-        ' e. g.' => '例如',
+        'e. g.' => '例如',
         'To get the first 20 character of the appointment title.' => '',
         'To get the calendar attribute' => '',
         'Attributes of the recipient user for the notification' => '',
@@ -3240,9 +3213,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => '',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             '',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => '例如',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5042,6 +5012,8 @@ sub Data {
         'Server Database Charset' => '',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => '',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 

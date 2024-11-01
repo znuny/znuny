@@ -37,6 +37,7 @@ CREATE TABLE acl_sync (
 -- ----------------------------------------------------------
 CREATE TABLE activity (
     id serial NOT NULL,
+    dbcrud_uuid VARCHAR (36) NULL,
     user_id INTEGER NOT NULL,
     activity_type VARCHAR (200) NOT NULL,
     activity_title VARCHAR (255) NOT NULL,
@@ -45,7 +46,8 @@ CREATE TABLE activity (
     activity_link VARCHAR (255) NULL,
     create_time timestamp(0) NOT NULL,
     create_by INTEGER NOT NULL,
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    CONSTRAINT activity_uuid UNIQUE (dbcrud_uuid)
 );
 -- ----------------------------------------------------------
 --  create table acl_ticket_attribute_relations
