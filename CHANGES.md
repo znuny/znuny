@@ -1,4 +1,5 @@
 # 6.5.12 2024-??-??
+ - 2024-11-01 Fixed Bug - Translate the ticket state in PDF search result (AgentTicketSearch|CustomerTicketSearch). Thanks to @BuilderNSV for reporting the issue. [#615](https://github.com/znuny/Znuny/issues/615)
  - 2024-11-01 Sector Nord AG: Fixed uninitialized value in AdminSelectBox. Thanks to Sector Nord AG (@jsinagowitz). [PR#611](https://github.com/znuny/Znuny/pull/611)
  - 2024-10-24 Fixed Bug - 'Use of uninitialized value' warning on build custom package and there are no permissions to write to the target directory. Thanks to @BuilderNSV for reporting the issue. [#610](https://github.com/znuny/Znuny/issues/610)
  - 2024-10-22 Perl Module Hash::Merge is now be listed in otrs.CheckModules.pl as mandatory.
