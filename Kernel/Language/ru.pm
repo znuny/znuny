@@ -7873,7 +7873,7 @@ sub Data {
         'Defines the config parameters available in the preferences view. The default redirect URL from SysConfig \'MarkTicketSeenRedirectDefaultURL\' is used if no selection is made by the agent.' =>
             'Определяет параметры конфигурации, доступные в персональных настройках. Если пользователь не выберет значение, то по умолчанию будет использован URL-адрес страницы, заданный \'MarkTicketSeenRedirectDefaultURL\' параметром системной конфигурации.',
         'Defines the redirect URL for setting a ticket article to \'seen\'.' =>
-            'Определяет URL-адрес страницы для пометки сообщения заявки как \\'прочитанное\\'.',
+            'Определяет URL-адрес страницы для пометки сообщения заявки как \'прочитанное\'.',
         'Registers a link in the ticket menu to mark a ticket as unseen.' =>
             'Регистрирует ссылку в меню заявки для пометки заявки как непрочитанной.',
         'Registers a link in the ticket menu to mark a ticket as seen.' =>

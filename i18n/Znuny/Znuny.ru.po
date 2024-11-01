@@ -24204,7 +24204,7 @@ msgstr "Определяет параметры конфигурации, дос
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Defines the redirect URL for setting a ticket article to 'seen'."
-msgstr "Определяет URL-адрес страницы для пометки сообщения заявки как \\\\'прочитанное\\\\'."
+msgstr "Определяет URL-адрес страницы для пометки сообщения заявки как 'прочитанное'."
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Registers a link in the ticket menu to mark a ticket as unseen."
