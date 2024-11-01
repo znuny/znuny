@@ -2373,6 +2373,7 @@ sub Data {
         'in' => 'dans',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Tous',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2933,6 +2934,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Ticket',
         'Welcome!' => 'Bienvenue !',
         'Please click the button below to create your first ticket.' => 'Merci de cliquer sur le bouton suivant pour créer votre premier ticket.',
         'Create your first ticket' => 'Créez votre premier ticket',
@@ -2941,13 +2943,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Nom du Modèle',
         'e. g. 10*5155 or 105658*' => 'p. ex. 10*5155 ou 105658*',
         'CustomerID' => 'Code client',
         'Types' => 'Types',
         'Limitation' => '',
         'No time settings' => 'Pas de réglages de temps',
-        'All' => 'Tous',
         'Specific date' => 'Date précise',
         'Only tickets created' => 'Seulement les tickets créés',
         'Date range' => 'période',
@@ -2956,7 +2959,6 @@ sub Data {
         'Save Search as Template?' => 'Enregistrer la recherche en tant que modèle?',
         'Save as Template' => 'Enregistrer comme Modèle',
         'Save as Template?' => 'Enregistrer comme Modèle?',
-        'Template Name' => 'Nom du Modèle',
         'Pick a profile name' => 'Choisissez un nom de profil',
         'Output to' => 'Sortie vers',
 
@@ -5190,7 +5192,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Ticket',
         'Ticket History Entries' => '',
         'Articles' => 'Articles',
         'Attachments (DB, Without HTML)' => '',
@@ -9057,7 +9058,6 @@ Thanks for your help!
         'Ticket Priority.' => 'Priorité du ticket.',
         'Ticket Queue Overview' => 'Vue d\'ensemble des files de tickets',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

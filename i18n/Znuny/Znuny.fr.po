@@ -8654,7 +8654,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "Pas de réglages de temps"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Tous"
 
@@ -14362,7 +14362,7 @@ msgstr ""
 msgid "Database Records"
 msgstr ""
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "Ticket"
 
@@ -23813,7 +23813,7 @@ msgstr "Vue d'ensemble des files de tickets"
 msgid "Ticket Responsible."
 msgstr ""
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 

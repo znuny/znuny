@@ -8660,7 +8660,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "時間設定なし"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "全て"
 
@@ -14369,7 +14369,7 @@ msgstr "デーモンは稼働していません。"
 msgid "Database Records"
 msgstr "データーベースレコード"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "チケット"
 
@@ -23840,7 +23840,7 @@ msgstr "チケット・キュー一覧"
 msgid "Ticket Responsible."
 msgstr "チケット責任者"
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 

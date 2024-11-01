@@ -2370,6 +2370,7 @@ sub Data {
         'in' => 'در',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'همه',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2930,6 +2931,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'درخواست‌ها',
         'Welcome!' => 'خوش آمدید',
         'Please click the button below to create your first ticket.' => 'لطفا دکمه زیر را برای ساخت اولین درخواست خود بفشارید.',
         'Create your first ticket' => 'ساخت اولین درخواست شما',
@@ -2938,13 +2940,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'مشخصات کاربری',
+        'Template Name' => 'نام قالب',
         'e. g. 10*5155 or 105658*' => 'به عنوان مثال 10*5155 یا 105658*',
         'CustomerID' => 'کد اشتراک',
         'Types' => 'انواع',
         'Limitation' => '',
         'No time settings' => 'بدون تنظیمات زمان',
-        'All' => 'همه',
         'Specific date' => 'تاریخ خاص',
         'Only tickets created' => 'فقط درخواست‌های ساخته شده',
         'Date range' => 'محدوده زمانی',
@@ -2953,7 +2956,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'ذخیره به عنوان الگو',
         'Save as Template?' => 'ذخیره به عنوان قالب؟',
-        'Template Name' => 'نام قالب',
         'Pick a profile name' => 'انتخاب یک نام مشخصات',
         'Output to' => 'خروجی به',
 
@@ -5187,7 +5189,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'سوابق پایگاه داده',
-        'Tickets' => 'درخواست‌ها',
         'Ticket History Entries' => 'درخواست تاریخچه مطالب',
         'Articles' => 'مقالات',
         'Attachments (DB, Without HTML)' => 'فایل های پیوست (DB، بدون HTML)',
@@ -9065,7 +9066,6 @@ Thanks for your help!
         'Ticket Priority.' => 'اولویت درخواست',
         'Ticket Queue Overview' => 'بررسی اجمالی صف درخواست',
         'Ticket Responsible.' => 'درخواست به عهده دارد.',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'نگهبان درخواست',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => 'درخواست زوم.',

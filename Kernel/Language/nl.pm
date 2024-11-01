@@ -2370,6 +2370,7 @@ sub Data {
         'in' => 'over',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Alle',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2930,6 +2931,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tickets',
         'Welcome!' => 'Welkom!',
         'Please click the button below to create your first ticket.' => 'Klik op de button om uw eerste ticket aan te maken.',
         'Create your first ticket' => 'Maak uw eerste ticket aan',
@@ -2938,13 +2940,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Sjabloon',
+        'Template Name' => 'Template naam',
         'e. g. 10*5155 or 105658*' => 'bijv. 2010*5155 of 20100802*',
         'CustomerID' => 'Klantcode',
         'Types' => 'Typen',
         'Limitation' => '',
         'No time settings' => 'Niet zoeken op tijd',
-        'All' => 'Alle',
         'Specific date' => 'Specifieke datum',
         'Only tickets created' => 'Alleen tickets aangemaakt',
         'Date range' => 'Datum range',
@@ -2953,7 +2956,6 @@ sub Data {
         'Save Search as Template?' => 'Zoekopdracht opslaan als sjabloon?',
         'Save as Template' => 'Bewaar',
         'Save as Template?' => 'Bewaar als sjabloon?',
-        'Template Name' => 'Template naam',
         'Pick a profile name' => 'Naam voor dit sjabloon',
         'Output to' => 'Uitvoer naar',
 
@@ -5187,7 +5189,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Tickets',
         'Ticket History Entries' => 'Ticket Historie gegevens',
         'Articles' => 'Interacties',
         'Attachments (DB, Without HTML)' => 'Bijlagen (Database, zonder HTML)',
@@ -9065,7 +9066,6 @@ Het Helpdesk Team
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'Ticketwachtrij overzicht',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

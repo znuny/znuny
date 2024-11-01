@@ -2367,6 +2367,7 @@ sub Data {
         'in' => '之内',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => '全部',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2928,6 +2929,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => '工單',
         'Welcome!' => '歡迎！',
         'Please click the button below to create your first ticket.' => '請點擊下面的按鈕創建第一個工單。',
         'Create your first ticket' => '創建第一個工單',
@@ -2936,13 +2938,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => '搜索條件',
+        'Template Name' => '模板名稱',
         'e. g. 10*5155 or 105658*' => '例如: 10*5155 或 105658*',
         'CustomerID' => '客戶編號',
         'Types' => '類型',
         'Limitation' => '',
         'No time settings' => '',
-        'All' => '全部',
         'Specific date' => '',
         'Only tickets created' => '工單創建於',
         'Date range' => '',
@@ -2951,7 +2954,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => '保存為模板',
         'Save as Template?' => '保存為模板',
-        'Template Name' => '模板名稱',
         'Pick a profile name' => '',
         'Output to' => '輸出為',
 
@@ -5185,7 +5187,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => '工單',
         'Ticket History Entries' => '',
         'Articles' => '文章',
         'Attachments (DB, Without HTML)' => '',
@@ -9053,7 +9054,6 @@ Thanks for your help!
         'Ticket Priority.' => '工單優先級',
         'Ticket Queue Overview' => '工單隊列',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

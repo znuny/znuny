@@ -8662,7 +8662,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "بدون تنظیمات زمان"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "همه"
 
@@ -14370,7 +14370,7 @@ msgstr "سرویس در حال اجرا نیست."
 msgid "Database Records"
 msgstr "سوابق پایگاه داده"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "درخواست‌ها"
 
@@ -23832,7 +23832,7 @@ msgstr "بررسی اجمالی صف درخواست"
 msgid "Ticket Responsible."
 msgstr "درخواست به عهده دارد."
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 

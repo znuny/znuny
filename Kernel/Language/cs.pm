@@ -2371,6 +2371,7 @@ sub Data {
         'in' => 'v',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Vše',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2931,6 +2932,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tikety',
         'Welcome!' => 'Vítejte!',
         'Please click the button below to create your first ticket.' => 'Prosím stiskněte tlačítko pro vytvoření vašeho prvního tiketu.',
         'Create your first ticket' => 'Vytvořit váš první tiket',
@@ -2939,13 +2941,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Název šablony',
         'e. g. 10*5155 or 105658*' => 'např. 10*5155 or 105658*',
         'CustomerID' => 'ID zákazníka',
         'Types' => '',
         'Limitation' => '',
         'No time settings' => '',
-        'All' => 'Vše',
         'Specific date' => '',
         'Only tickets created' => 'Pouze tikety vytvořené',
         'Date range' => '',
@@ -2954,7 +2957,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Uložit jako šablonu',
         'Save as Template?' => 'Uložit jako šablonu?',
-        'Template Name' => 'Název šablony',
         'Pick a profile name' => 'Zvolit název profilu',
         'Output to' => 'Výstup na',
 
@@ -5188,7 +5190,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Záznamů v databázi',
-        'Tickets' => 'Tikety',
         'Ticket History Entries' => '',
         'Articles' => '',
         'Attachments (DB, Without HTML)' => '',
@@ -9055,7 +9056,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'Přehled tiketů ve frontách',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

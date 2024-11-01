@@ -2376,6 +2376,7 @@ sub Data {
         'in' => 'в',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Все',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2936,6 +2937,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Заявки',
         'Welcome!' => 'Добро пожаловать!',
         'Please click the button below to create your first ticket.' => 'Пожалуйста, нажмите на кнопку ниже, чтобы создать вашу первую заявку.',
         'Create your first ticket' => 'Создать вашу первую заявку.',
@@ -2944,13 +2946,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Параметры',
+        'Template Name' => 'Имя шаблона',
         'e. g. 10*5155 or 105658*' => 'например, 10*5155 или 105658*',
         'CustomerID' => 'ID компании',
         'Types' => 'Типы',
         'Limitation' => '',
         'No time settings' => 'Без указания времени',
-        'All' => 'Все',
         'Specific date' => 'Определенная дата',
         'Only tickets created' => 'Заявки созданные',
         'Date range' => 'Диапазон дат',
@@ -2959,7 +2962,6 @@ sub Data {
         'Save Search as Template?' => 'Сохранить параметры поиска как шаблон?',
         'Save as Template' => 'Сохранить как шаблон',
         'Save as Template?' => 'Сохранить как шаблон?',
-        'Template Name' => 'Имя шаблона',
         'Pick a profile name' => 'Выберите имя шаблона',
         'Output to' => 'Вывести как',
 
@@ -5193,7 +5195,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Записи базы данных',
-        'Tickets' => 'Заявки',
         'Ticket History Entries' => 'Записи истории заявки',
         'Articles' => 'Заметки/сообщения',
         'Attachments (DB, Without HTML)' => 'Вложения (DB, без HTML)',
@@ -9071,7 +9072,6 @@ Thanks for your help!
         'Ticket Priority.' => 'Приоритет заявки.',
         'Ticket Queue Overview' => 'Итоги по очередям',
         'Ticket Responsible.' => 'Ответственность за Заявку',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'Наблюдающий за заявкой',
         'Ticket Zoom' => 'Увеличить Заявку',
         'Ticket Zoom.' => 'Подробности заявки.',

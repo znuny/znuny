@@ -2367,6 +2367,7 @@ sub Data {
         'in' => 'in',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'All',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2927,6 +2928,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tickets',
         'Welcome!' => 'Welcome!',
         'Please click the button below to create your first ticket.' => 'Please click the button below to create your first ticket.',
         'Create your first ticket' => 'Create your first ticket',
@@ -2935,13 +2937,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profile',
+        'Template Name' => 'Template Name',
         'e. g. 10*5155 or 105658*' => 'e. g. 10*5155 or 105658*',
         'CustomerID' => 'CustomerID',
         'Types' => 'Types',
         'Limitation' => '',
         'No time settings' => 'No time settings',
-        'All' => 'All',
         'Specific date' => 'Specific date',
         'Only tickets created' => 'Only tickets created',
         'Date range' => 'Date range',
@@ -2950,7 +2953,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Save as Template',
         'Save as Template?' => 'Save as Template?',
-        'Template Name' => 'Template Name',
         'Pick a profile name' => 'Pick a profile name',
         'Output to' => 'Output to',
 
@@ -5184,7 +5186,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Database Records',
-        'Tickets' => 'Tickets',
         'Ticket History Entries' => 'Ticket History Entries',
         'Articles' => 'Articles',
         'Attachments (DB, Without HTML)' => 'Attachments (DB, Without HTML)',
@@ -9062,7 +9063,6 @@ Thanks for your help!
         'Ticket Priority.' => 'Ticket Priority.',
         'Ticket Queue Overview' => 'Ticket Queue Overview',
         'Ticket Responsible.' => 'Ticket Responsible.',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'Ticket Watcher',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => 'Ticket Zoom.',

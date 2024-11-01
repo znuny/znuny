@@ -8666,7 +8666,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "Nincsenek időbeállítások"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Összes"
 
@@ -14374,7 +14374,7 @@ msgstr "A démon nem fut."
 msgid "Database Records"
 msgstr "Adatbázis rekordok"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "Jegyek"
 
@@ -23836,7 +23836,7 @@ msgstr "Jegyvárólista áttekintő"
 msgid "Ticket Responsible."
 msgstr "Jegyfelelős."
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 

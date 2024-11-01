@@ -2364,6 +2364,7 @@ sub Data {
         'in' => 'in',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Toate',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2924,6 +2925,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tichete',
         'Welcome!' => 'Bine ați venit!',
         'Please click the button below to create your first ticket.' => '',
         'Create your first ticket' => '',
@@ -2932,13 +2934,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Nume șablon',
         'e. g. 10*5155 or 105658*' => '',
         'CustomerID' => 'IDClient',
         'Types' => 'Tipuri',
         'Limitation' => '',
         'No time settings' => 'Nu există setări de timp',
-        'All' => 'Toate',
         'Specific date' => 'Data exacta',
         'Only tickets created' => 'Doar tichetele create',
         'Date range' => 'Interval dată',
@@ -2947,7 +2950,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Salvează ca șablon',
         'Save as Template?' => 'Salvez ca șablon?',
-        'Template Name' => 'Nume șablon',
         'Pick a profile name' => 'Alege un nume al profilului',
         'Output to' => 'Ieșire către',
 
@@ -5181,7 +5183,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Înregistrări în baza de date',
-        'Tickets' => 'Tichete',
         'Ticket History Entries' => 'Istoricul tichetului',
         'Articles' => 'Articole',
         'Attachments (DB, Without HTML)' => 'Fișiere atașate (DB, fără HTML)',
@@ -9048,7 +9049,6 @@ Thanks for your help!
         'Ticket Priority.' => 'Prioritate Tichet.',
         'Ticket Queue Overview' => '',
         'Ticket Responsible.' => 'Responsabil Tichet.',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'Urmăritor tichet',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

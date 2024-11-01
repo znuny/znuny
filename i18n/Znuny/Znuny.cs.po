@@ -8650,7 +8650,7 @@ msgstr ""
 msgid "No time settings"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Vše"
 
@@ -14358,7 +14358,7 @@ msgstr ""
 msgid "Database Records"
 msgstr "Záznamů v databázi"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "Tikety"
 
@@ -23809,7 +23809,7 @@ msgstr "Přehled tiketů ve frontách"
 msgid "Ticket Responsible."
 msgstr ""
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 

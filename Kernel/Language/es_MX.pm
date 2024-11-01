@@ -2365,6 +2365,7 @@ sub Data {
         'in' => 'en',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Todo',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2925,6 +2926,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tickets',
         'Welcome!' => '¡Bienvenido!',
         'Please click the button below to create your first ticket.' => 'Por favor haga click en el botón inferior para crear su primer ticket.',
         'Create your first ticket' => 'Crear su primer ticket',
@@ -2933,13 +2935,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Perfil',
+        'Template Name' => 'Nombre de la Plantilla',
         'e. g. 10*5155 or 105658*' => 'Por ejemplo: 10*5155 ó 105658*',
         'CustomerID' => 'Identificador del cliente',
         'Types' => 'Tipos',
         'Limitation' => '',
         'No time settings' => 'Sin ajustes de tiempo',
-        'All' => 'Todo',
         'Specific date' => 'Fecha específica',
         'Only tickets created' => 'Únicamente tickets creados',
         'Date range' => 'Rango de fechas',
@@ -2948,7 +2951,6 @@ sub Data {
         'Save Search as Template?' => '¿Guardar Búsqueda como Plantilla?',
         'Save as Template' => 'Guardar como Plantilla',
         'Save as Template?' => '¿Guardar como Plantilla?',
-        'Template Name' => 'Nombre de la Plantilla',
         'Pick a profile name' => 'Seleccione un nombre para el perfil',
         'Output to' => 'Salida a',
 
@@ -5182,7 +5184,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Registros de la Base de Datos',
-        'Tickets' => 'Tickets',
         'Ticket History Entries' => 'Entradas del Historial de Tickets',
         'Articles' => 'Artículos',
         'Attachments (DB, Without HTML)' => 'Archivos adjuntos (BD, Sin HTML)',
@@ -9060,7 +9061,6 @@ Tu Equipo de Soporte
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'Vista general por fila',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

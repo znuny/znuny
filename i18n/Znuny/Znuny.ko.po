@@ -8666,7 +8666,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "시간 설정 없음"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "모든"
 
@@ -14374,7 +14374,7 @@ msgstr "데몬이 실행되고 있지 않습니다."
 msgid "Database Records"
 msgstr "데이터베이스 레코드"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "티켓"
 
@@ -23836,7 +23836,7 @@ msgstr "티켓 대기열 개요"
 msgid "Ticket Responsible."
 msgstr "책임 티켓."
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 

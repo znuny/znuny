@@ -8666,7 +8666,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "没有设置时间"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "全部"
 
@@ -14374,7 +14374,7 @@ msgstr "守护进程没有运行。"
 msgid "Database Records"
 msgstr "数据库记录"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "工单"
 
@@ -23835,7 +23835,7 @@ msgstr "工单队列概览"
 msgid "Ticket Responsible."
 msgstr "工单负责人。"
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 

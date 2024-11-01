@@ -2367,6 +2367,7 @@ sub Data {
         'in' => 'om',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Alle',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2927,6 +2928,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Sager',
         'Welcome!' => 'Velkommen!',
         'Please click the button below to create your first ticket.' => 'Klik på knappen herunder for at oprette din første sag.',
         'Create your first ticket' => 'Opret din første sag',
@@ -2935,13 +2937,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Navn på skabelon',
         'e. g. 10*5155 or 105658*' => 'f.eks. 10*55 eller 105658*',
         'CustomerID' => 'Kunde-ID',
         'Types' => 'Typer',
         'Limitation' => '',
         'No time settings' => 'Ingen tidsindstillinger',
-        'All' => 'Alle',
         'Specific date' => 'Specifik dato',
         'Only tickets created' => 'Kun oprettede sager',
         'Date range' => 'Datointerval',
@@ -2950,7 +2953,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Gem som skabelon',
         'Save as Template?' => 'Gem som skabelon?',
-        'Template Name' => 'Navn på skabelon',
         'Pick a profile name' => 'Vælg et profilnavn',
         'Output to' => 'Output til',
 
@@ -5184,7 +5186,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Sager',
         'Ticket History Entries' => 'Sagens Historik',
         'Articles' => 'Indlæg',
         'Attachments (DB, Without HTML)' => '',
@@ -9051,7 +9052,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'Sagskø oversigt',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

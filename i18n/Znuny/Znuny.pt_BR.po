@@ -8666,7 +8666,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "Sem configurações de tempo"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Todas"
 
@@ -14374,7 +14374,7 @@ msgstr "Daemon não está ativo."
 msgid "Database Records"
 msgstr "Registros de Banco"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "Chamados"
 
@@ -23836,7 +23836,7 @@ msgstr "Visão Geral de Fila de Chamado"
 msgid "Ticket Responsible."
 msgstr "Responsável pelo chamado."
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 

@@ -8668,7 +8668,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "Без указания времени"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Все"
 
@@ -14376,7 +14376,7 @@ msgstr "Служба не запущена."
 msgid "Database Records"
 msgstr "Записи базы данных"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "Заявки"
 
@@ -23838,7 +23838,7 @@ msgstr "Итоги по очередям"
 msgid "Ticket Responsible."
 msgstr "Ответственность за Заявку"
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 

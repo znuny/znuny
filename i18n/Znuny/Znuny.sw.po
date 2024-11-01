@@ -8658,7 +8658,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "Hakuna mipangilio ya muda"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Yote"
 
@@ -14366,7 +14366,7 @@ msgstr ""
 msgid "Database Records"
 msgstr "Rekodi ya hifadhi data"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "Tiketi"
 
@@ -23821,7 +23821,7 @@ msgstr "Mapitio ya foleni ya tiketi"
 msgid "Ticket Responsible."
 msgstr ""
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 

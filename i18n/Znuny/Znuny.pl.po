@@ -8693,7 +8693,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "Brak ustawień czasowych"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Wszystkie"
 
@@ -14401,7 +14401,7 @@ msgstr "Demon nie jest uruchomiony"
 msgid "Database Records"
 msgstr "Rekordy bazy danych"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "Zgłoszenia"
 
@@ -23862,7 +23862,7 @@ msgstr "Przegląd zgłoszeń na kolejkach"
 msgid "Ticket Responsible."
 msgstr "Odpowiedzialny za zgłoszenie."
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 

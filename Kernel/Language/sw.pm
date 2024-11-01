@@ -2367,6 +2367,7 @@ sub Data {
         'in' => 'Ndani',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Yote',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2927,6 +2928,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tiketi',
         'Welcome!' => 'Karibu ',
         'Please click the button below to create your first ticket.' => 'Tafadhali bofya kwneye kitufe cha chini kutengeneza tiketi yako ya kwanza.',
         'Create your first ticket' => 'Tengeneza tiketi yako ya kwanza',
@@ -2935,13 +2937,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Maelezo mafupi',
+        'Template Name' => 'Jina la kielezo',
         'e. g. 10*5155 or 105658*' => 'Mfano 10*5155 au 105658',
         'CustomerID' => 'Kitambilisho cha mteja',
         'Types' => 'Aina',
         'Limitation' => '',
         'No time settings' => 'Hakuna mipangilio ya muda',
-        'All' => 'Yote',
         'Specific date' => 'Tarehe maalum',
         'Only tickets created' => 'Tiketi zilizotengenezwa tu',
         'Date range' => 'tarehe mbalimbali',
@@ -2950,7 +2953,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Hifadhi kama kielezo',
         'Save as Template?' => 'Hifadhi kama kielezo?',
-        'Template Name' => 'Jina la kielezo',
         'Pick a profile name' => 'Chagua jina la umbo',
         'Output to' => 'Matokeo ya ',
 
@@ -5184,7 +5186,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Rekodi ya hifadhi data',
-        'Tickets' => 'Tiketi',
         'Ticket History Entries' => 'Historia ya ingizo ya tiketi',
         'Articles' => 'Makala',
         'Attachments (DB, Without HTML)' => 'Viambatanisho (DB, bila ya HTML)',
@@ -9054,7 +9055,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'Mapitio ya foleni ya tiketi',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

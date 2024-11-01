@@ -2365,6 +2365,7 @@ sub Data {
         'in' => 'в',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Усі',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2925,6 +2926,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Заявки',
         'Welcome!' => 'Ласкаво просимо!',
         'Please click the button below to create your first ticket.' => 'Будь ласка, натисніть на кнопку нижче, щоб створити ваш перший квиток.',
         'Create your first ticket' => 'Створення вашого першого квитка',
@@ -2933,13 +2935,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Параметри',
+        'Template Name' => 'Ім\'я шаблону',
         'e. g. 10*5155 or 105658*' => 'наприклад, 10*5155 або 105658*',
         'CustomerID' => 'ID клієнта',
         'Types' => 'Типи',
         'Limitation' => '',
         'No time settings' => 'Немає налаштувань часу',
-        'All' => 'Усі',
         'Specific date' => 'Вкажіть дату',
         'Only tickets created' => 'Заявки створені',
         'Date range' => 'Проміжок часу',
@@ -2948,7 +2951,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Зберегти у якості шаблону',
         'Save as Template?' => 'Зберегти як шаблон',
-        'Template Name' => 'Ім\'я шаблону',
         'Pick a profile name' => 'Виберіть ім\'я профілю',
         'Output to' => 'Вивести як',
 
@@ -5182,7 +5184,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Заявки',
         'Ticket History Entries' => '',
         'Articles' => '',
         'Attachments (DB, Without HTML)' => '',
@@ -9049,7 +9050,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => '',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

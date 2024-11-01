@@ -8664,7 +8664,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "Tidak ada pengaturan waktu"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Semua"
 
@@ -14372,7 +14372,7 @@ msgstr "Daemon tidak berjalan"
 msgid "Database Records"
 msgstr ""
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "Tiket"
 
@@ -23835,7 +23835,7 @@ msgstr "Antrian tiket keseluruhan"
 msgid "Ticket Responsible."
 msgstr "Penanggung jawab tiket"
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 

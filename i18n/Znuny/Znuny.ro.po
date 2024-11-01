@@ -8658,7 +8658,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "Nu există setări de timp"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Toate"
 
@@ -14366,7 +14366,7 @@ msgstr ""
 msgid "Database Records"
 msgstr "Înregistrări în baza de date"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "Tichete"
 
@@ -23817,7 +23817,7 @@ msgstr ""
 msgid "Ticket Responsible."
 msgstr "Responsabil Tichet."
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 

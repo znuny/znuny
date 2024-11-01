@@ -2367,6 +2367,7 @@ sub Data {
         'in' => 'में',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'सभी',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2927,6 +2928,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'टिकटें',
         'Welcome!' => 'आपका स्वागत है',
         'Please click the button below to create your first ticket.' => 'अपना पहला टिकट बनाने के लिए कृपया नीचे दिए गए बटन को दबाऐ।',
         'Create your first ticket' => 'अपना पहला टिकट बनाएँ',
@@ -2935,13 +2937,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'वर्णन',
+        'Template Name' => 'टेम्पलेट का नाम',
         'e. g. 10*5155 or 105658*' => 'उदा.: 10*5155 or 105658*',
         'CustomerID' => 'ग्राहक ID',
         'Types' => 'प्रकार',
         'Limitation' => '',
         'No time settings' => '',
-        'All' => 'सभी',
         'Specific date' => '',
         'Only tickets created' => 'केवल टिकट बनाए',
         'Date range' => '',
@@ -2950,7 +2953,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => '',
         'Save as Template?' => 'टेम्पलेट के रूप में सुरक्षित करें ?',
-        'Template Name' => 'टेम्पलेट का नाम',
         'Pick a profile name' => '',
         'Output to' => 'को आउटपुट',
 
@@ -5184,7 +5186,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'टिकटें',
         'Ticket History Entries' => '',
         'Articles' => '',
         'Attachments (DB, Without HTML)' => '',
@@ -9051,7 +9052,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => '',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

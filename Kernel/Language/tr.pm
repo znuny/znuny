@@ -2365,6 +2365,7 @@ sub Data {
         'in' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Tümü',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2925,6 +2926,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'BİLETLER',
         'Welcome!' => 'Hoşgeldiniz',
         'Please click the button below to create your first ticket.' => 'Lütfen ilk biletinizi oluşturmak için aşağıdaki butona basın.',
         'Create your first ticket' => 'İlk biletinizi oluşturun',
@@ -2933,13 +2935,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Şablon Adı',
         'e. g. 10*5155 or 105658*' => 'örn: 10*5155 yada 105658*',
         'CustomerID' => 'Müşteri IDsi',
         'Types' => 'Tipler',
         'Limitation' => '',
         'No time settings' => 'Zaman ayarları yok',
-        'All' => 'Tümü',
         'Specific date' => '',
         'Only tickets created' => 'Sadece biletler oluşturuldu',
         'Date range' => '',
@@ -2948,7 +2951,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Şablon olarak kaydet',
         'Save as Template?' => 'Şablon olarak kaydedilsin mi?',
-        'Template Name' => 'Şablon Adı',
         'Pick a profile name' => 'Bir profil adı seç',
         'Output to' => 'Çıkar',
 
@@ -5182,7 +5184,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'BİLETLER',
         'Ticket History Entries' => '',
         'Articles' => '',
         'Attachments (DB, Without HTML)' => '',
@@ -9049,7 +9050,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => '',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

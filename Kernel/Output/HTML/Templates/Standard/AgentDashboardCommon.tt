@@ -13,7 +13,7 @@
 [% RenderBlockStart("DashboardWidgetExpandContent") %]
             [% IF Data.ActiveContentLargeWidgets %]
             <li class="DashboardWidgetExpandListItem" data-widget-name="All">
-                <a class="[% Data.ClassDashboardWidgetExpandAll | html %]">All</a>
+                <a class="[% Data.ClassDashboardWidgetExpandAll | html %]">[% Translate("All") | html %]</a>
             </li>
             [% END %]
 [% RenderBlockEnd("DashboardWidgetExpandContent") %]
@@ -65,8 +65,7 @@
                     </ul>
 
                     <div>
-                        <button class="btn-main btn-primary" accesskey="g" title="[% Translate("Save changes") | html %]
-                            (g)" type="submit" value="[% Translate("Save") | html %]">
+                        <button class="btn-main btn-primary" accesskey="g" title="[% Translate("Save changes") | html %] (g)" type="submit" value="[% Translate("Save") | html %]">
                             <span>[% Translate("Save changes") | html %]</span>
                         </button>
                     </div>

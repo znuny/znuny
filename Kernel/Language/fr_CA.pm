@@ -2372,6 +2372,7 @@ sub Data {
         'in' => 'dans',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Tout',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2932,6 +2933,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Demandes',
         'Welcome!' => 'Bienvenue !',
         'Please click the button below to create your first ticket.' => 'Veuillez cliquer sur le bouton ci-dessous pour créer votre première demande.',
         'Create your first ticket' => 'Créer votre première demande',
@@ -2940,13 +2942,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Nom de modèle',
         'e. g. 10*5155 or 105658*' => 'p. ex. 10*5155 ou 105658*',
         'CustomerID' => 'Numéro de client ',
         'Types' => 'Types',
         'Limitation' => '',
         'No time settings' => 'Pas de réglages de temps',
-        'All' => 'Tout',
         'Specific date' => '',
         'Only tickets created' => 'Seulement les demandes créées',
         'Date range' => '',
@@ -2955,7 +2958,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Sauver comme Modèle',
         'Save as Template?' => 'Sauvegarder comme modèle',
-        'Template Name' => 'Nom de modèle',
         'Pick a profile name' => 'Choisir un nom de profil',
         'Output to' => 'Sortie vers',
 
@@ -5189,7 +5191,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Demandes',
         'Ticket History Entries' => '',
         'Articles' => 'Articles',
         'Attachments (DB, Without HTML)' => '',
@@ -9056,7 +9057,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'État des files',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

@@ -8666,7 +8666,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "Nessuna impostazione per il tempo"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Tutti"
 
@@ -14374,7 +14374,7 @@ msgstr "Il demone non è in esecuzione."
 msgid "Database Records"
 msgstr "Record di Database"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "Ticket"
 
@@ -23841,7 +23841,7 @@ msgstr "Riepilogo coda dei ticket"
 msgid "Ticket Responsible."
 msgstr "Ticket Responsabile."
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 
