@@ -38,7 +38,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.834020108785232;
+    $Self->{Completeness}        = 0.84066567803592;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -295,7 +295,7 @@ sub Data {
         'Some account problems' => 'Есть проблемы с учетными записями',
         'No account problems' => 'Нет проблем с учетными записями',
         'No account activity' => 'Нет активных учетных записей',
-        'Number of accounts with problems: %s' => 'Количество учетных записей с проблемами:%s',
+        'Number of accounts with problems: %s' => 'Количество учетных записей с проблемами: %s',
         'Number of accounts with warnings: %s' => 'Количество учетных записей с предупреждениями: %s',
         'Failing communications' => 'Неудачные сеансы связи',
         'No communication problems' => 'Нет проблем с сеансами связи',
@@ -385,8 +385,8 @@ sub Data {
         'Search Results' => 'Результаты поиска',
         'Change Group Relations for Customer' => 'Изменить связи групп с клиентами',
         'Change Customer Relations for Group' => 'Изменить связь клиентов с группой',
-        'Toggle %s Permission for all' => 'Переключить разрешение «%s» для всех',
-        'Toggle %s permission for %s' => 'Переключить разрешение «%s» для %s',
+        'Toggle %s Permission for all' => 'Переключить разрешение "%s" для всех',
+        'Toggle %s permission for %s' => 'Переключить разрешение "%s" для %s',
         'Customer Default Groups:' => 'Клиентские группы по-умолчанию:',
         'No changes can be made to these groups.' => 'В эти группы нельзя внести изменения.',
         'Reference' => 'Ссылка',
@@ -548,7 +548,7 @@ sub Data {
         'Here you can specify an optional HTTP link for the field value in Overviews and Zoom screens.' =>
             'Здесь можно указать необязательную HTTP-ссылку для значения поля в экранах Обзоров и Подробного просмотра',
         'If special characters (&, @, :, /, etc.) should not be encoded, use \'url\' instead of \'uri\' filter.' =>
-            'Если специальные символы (&, @, :, /, т.п.) не должны быть закодированы, вместо «uri» используйте фильтр «url».',
+            'Если специальные символы (&, @, :, /, т.п.) не должны быть закодированы, вместо "uri" используйте фильтр "url".',
         'Example' => 'Пример',
         'Link for preview' => 'Ссылка для предпросмотра',
         'If filled in, this URL will be used for a preview which is shown when this link is hovered in ticket zoom. Please note that for this to work, the regular URL field above needs to be filled in, too.' =>
@@ -845,7 +845,7 @@ sub Data {
         'Edit ErrorHandling' => 'Редактировать ErrorHandling',
         'General options' => 'Общие настройки',
         'The name can be used to distinguish different error handling configurations.' =>
-            'Имя может быть использовано для для отличия настроек обработки ошибок.',
+            'Имя может быть использовано для отличия настроек обработки ошибок.',
         'Please provide a unique name for this web service.' => 'Укажите уникальное имя для этого веб-сервиса.',
         'Error handling module backend' => 'Бэкенд-модуль обработки ошибок',
         'This Znuny error handling backend module will be called internally to process the error handling mechanism.' =>
@@ -960,7 +960,7 @@ sub Data {
             'Асинхронные триггеры событий будут обрабатываться Планировщиком Znuny в фоновом режиме (рекомендуется).',
         'Synchronous event triggers would be processed directly during the web request.' =>
             'Синхронные триггеры событий будут обрабатываться непосредственно при веб-запросе.',
-        'Add all attachments' => '',
+        'Add all attachments' => 'Добавьте все вложения',
         'Add all attachments to invoker payload.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceInvokerEvent.tt
@@ -1119,15 +1119,15 @@ sub Data {
         'The password for the privileged user.' => 'Пароль для привилегированного пользователя',
         'JWT authentication: Key file' => '',
         'ATTENTION: Key file and/or password (if needed, see below) seem to be invalid.' =>
-            '',
+            'ВНИМАНИЕ: Файл ключа и/или пароль (при необходимости см. ниже) выглядят недействительными.',
         'Path to private key file (PEM or DER). The key will be used to sign the JWT.' =>
             '',
         'JWT authentication: Key file password' => '',
         'ATTENTION: Password and/or key file (see above) seem to be invalid.' =>
-            '',
+            'ВНИМАНИЕ: Пароль и/или файл ключа (см. выше) кажутся недействительными.',
         'JWT authentication: Certificate file' => '',
-        'ATTENTION: Certificate file could not be parsed.' => '',
-        'ATTENTION: Certificate is expired.' => '',
+        'ATTENTION: Certificate file could not be parsed.' => 'ВНИМАНИЕ: Не удалось разобрать файл сертификата.',
+        'ATTENTION: Certificate is expired.' => 'ВНИМАНИЕ: Срок действия сертификата истек.',
         'Path to X.509 certificate file (PEM). Data of the certificate can be used for the payload and/or header data of the JWT.' =>
             '',
         'JWT authentication: Algorithm' => '',
@@ -1231,7 +1231,7 @@ sub Data {
         'Text to be used to as function wrapper name suffix or replacement.' =>
             'Текст, который будет использоваться как суффикс имени обертки функции или для замены.',
         'Please consider XML element naming restrictions (e.g. don\'t use \'<\' and \'&\').' =>
-            'Обратите внимание на ограничения именования XML элементов (например, нельзя использовать «<» и «&»).',
+            'Обратите внимание на ограничения именования XML элементов (например, нельзя использовать "<" и "&").',
         'Response name scheme' => 'Схема именования ответов',
         'Select how SOAP response function wrapper should be constructed.' =>
             'Выберите способ построения обертки функции SOAP ответов.',
@@ -1279,7 +1279,7 @@ sub Data {
         'After you save the configuration you will be redirected again to the edit screen.' =>
             'После сохранения конфигурации вы будете перенаправлены обратно на экран редактирования.',
         'If you want to return to overview please click the "Go to overview" button.' =>
-            'Чтобы вернуться к обзору, нажмите кнопку «Перейти к обзору».',
+            'Чтобы вернуться к обзору, нажмите кнопку "Перейти к обзору".',
         'Edit Web Service' => 'Редактировать веб-сервис',
         'Remote system' => 'Удалённая система',
         'Provider transport' => 'Транспорт провайдера',
@@ -1428,7 +1428,7 @@ sub Data {
         'URL for authorization code' => '',
         'URL for token by authorization code' => '',
         'URL for token by refresh token' => '',
-        'Access token scope' => '',
+        'Access token scope' => 'Область действия токена доступа',
         'Template' => 'Шаблон',
         'This is the template that was used to create this OAuth2 token configuration.' =>
             '',
@@ -1878,7 +1878,7 @@ sub Data {
         'Select the role:group permissions.' => 'Выберите разрешения роль:группа.',
         'If nothing is selected, then there are no permissions in this group (tickets will not be available for the role).' =>
             'Если ничего не выбрано, тогда в этой группе нет прав (для этой роли заявки не будут доступны).',
-        'Toggle %s permission for all' => 'Переключить разрешение «%s» для всех',
+        'Toggle %s permission for all' => 'Переключить разрешение "%s" для всех',
         'move_into' => 'переместить',
         'Permissions to move tickets into this group/queue.' => 'Права на перемещение заявок в эту группу/очередь.',
         'create' => 'создание',
@@ -2076,7 +2076,7 @@ sub Data {
             'Об использовании системных настроек можно почитать в %s.',
         'Search in all settings...' => 'Искать среди всех настроек...',
         'There are currently no settings available. Please make sure to run \'znuny.Console.pl Maint::Config::Rebuild\' before using the software.' =>
-            'В настоящий момент нет доступных настроек. Убедитесь, что перед началом использования приложения была выполнена команда «znuny.Console.pl Maint::Config::Rebuild».',
+            'В настоящий момент нет доступных настроек. Убедитесь, что перед началом использования приложения была выполнена команда \'znuny.Console.pl Maint::Config::Rebuild\'.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemConfigurationDeployment.tt
         'Help' => 'Помощь',
@@ -2376,8 +2376,9 @@ sub Data {
         'in' => 'в',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Все',
         'Search inactive widgets' => '',
-        'Active Widgets' => '',
+        'Active Widgets' => 'Активные Виджеты',
         'Save changes' => '',
         'Close this widget' => '',
         'Hide' => '',
@@ -2541,7 +2542,7 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsOverview.tt
         'Statistics' => 'Отчеты',
         'Edit statistic "%s".' => 'Редактировать отчет "%s".',
-        'Export statistic "%s"' => 'Экспортировать отчёт «%s»',
+        'Export statistic "%s"' => 'Экспортировать отчёт "%s"',
         'Export statistic %s' => 'Экспортировать отчёт %s',
         'Delete statistic %s' => 'Удалить отчет %s',
         'Do you really want to delete this statistic?' => 'Вы действительно желаете удалить этот отчет?',
@@ -2616,9 +2617,9 @@ sub Data {
         'Link together' => 'Связать',
         'Link to parent' => 'Связать с родителем',
         'Unlock tickets' => 'Разблокировать заявки',
-        'Watch tickets' => '',
-        'Mark tickets as seen' => '',
-        'Mark tickets as unseen' => '',
+        'Watch tickets' => 'Наблюдать за заявками',
+        'Mark tickets as seen' => 'Пометить заявки как прочитанные',
+        'Mark tickets as unseen' => 'Пометить заявки как непрочитанные',
         'Execute Bulk Action' => 'Выполнить Массовое действие',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
@@ -2936,6 +2937,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Заявки',
         'Welcome!' => 'Добро пожаловать!',
         'Please click the button below to create your first ticket.' => 'Пожалуйста, нажмите на кнопку ниже, чтобы создать вашу первую заявку.',
         'Create your first ticket' => 'Создать вашу первую заявку.',
@@ -2944,13 +2946,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Параметры',
+        'Template Name' => 'Имя шаблона',
         'e. g. 10*5155 or 105658*' => 'например, 10*5155 или 105658*',
         'CustomerID' => 'ID компании',
         'Types' => 'Типы',
         'Limitation' => '',
         'No time settings' => 'Без указания времени',
-        'All' => 'Все',
         'Specific date' => 'Определенная дата',
         'Only tickets created' => 'Заявки созданные',
         'Date range' => 'Диапазон дат',
@@ -2959,7 +2962,6 @@ sub Data {
         'Save Search as Template?' => 'Сохранить параметры поиска как шаблон?',
         'Save as Template' => 'Сохранить как шаблон',
         'Save as Template?' => 'Сохранить как шаблон?',
-        'Template Name' => 'Имя шаблона',
         'Pick a profile name' => 'Выберите имя шаблона',
         'Output to' => 'Вывести как',
 
@@ -2995,10 +2997,10 @@ sub Data {
         'Save as new draft' => 'Сохранить как новый черновик',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/FormElements/DraftNotifications.tt
-        'You have loaded the draft "%s".' => 'Вы загрузили черновик «%s».',
-        'You have loaded the draft "%s". You last changed it %s.' => 'Вы загрузили черновик «%s». Последнее раз вы обновляли его %s.',
+        'You have loaded the draft "%s".' => 'Вы загрузили черновик "%s".',
+        'You have loaded the draft "%s". You last changed it %s.' => 'Вы загрузили черновик "%s". Последний раз Вы обновляли его %s.',
         'You have loaded the draft "%s". It was last changed %s by %s.' =>
-            'Вы загрузили черновик «%s». Последнее обновление его было %s.',
+            'Вы загрузили черновик "%s". Последнее его обновление было %s.',
         'Please note that you have already one or more saved drafts for this action.' =>
             '',
         'Please note that this draft is outdated because the ticket was modified since this draft was created.' =>
@@ -3009,7 +3011,7 @@ sub Data {
         'You are logged in as' => 'Вы вошли как',
         'Delete all activities' => '',
         'Delete all' => '',
-        'Mark all activities as seen' => '',
+        'Mark all activities as seen' => 'Пометить все активности как прочитанные',
         'Seen all' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/HeaderToolbar.tt
@@ -3276,7 +3278,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Statistics/RestrictionsWidget.tt
         'Please select only one element or turn off the button \'Fixed\'.' =>
-            'Выберите только один пункт или уберите флажок «Фиксировано».',
+            'Выберите только один пункт или уберите флажок \'Фиксировано\'.',
         'Absolute period' => 'Абсолютный период',
         'Between %s and %s' => 'Между %s и %s',
         'Relative period' => 'Относительный период',
@@ -4210,7 +4212,7 @@ sub Data {
         'Customer user automatically added in Cc.' => 'Клиент автоматически добавлен копию сообщения.',
 
         # Perl Module: Kernel/Modules/AgentTicketEmail.pm
-        'Ticket "%s" created!' => 'Создана заявка «%s»!',
+        'Ticket "%s" created!' => 'Создана заявка "%s"!',
         'No Subaction!' => 'Нет Subaction!',
 
         # Perl Module: Kernel/Modules/AgentTicketEmailOutbound.pm
@@ -4514,15 +4516,15 @@ sub Data {
         'Split this article' => 'Разделить это сообщение',
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/AgentTicketPlain.pm
-        'View the source for this Article' => 'Посмотреть исходный текст этой Статьи ',
+        'View the source for this Article' => 'Посмотреть исходный текст этого Сообщения',
         'Plain Format' => 'Исходный формат',
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/AgentTicketPrint.pm
         'Print this article' => 'Напечатать это сообщение',
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
-        'Mark article as unseen' => '',
-        'Mark as unseen' => '',
+        'Mark article as unseen' => 'Пометить сообщение как непрочитанное',
+        'Mark as unseen' => 'Пометить как непрочитанное',
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/MarkAsImportant.pm
         'Mark' => 'Пометить',
@@ -5193,7 +5195,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Записи базы данных',
-        'Tickets' => 'Заявки',
         'Ticket History Entries' => 'Записи истории заявки',
         'Articles' => 'Заметки/сообщения',
         'Attachments (DB, Without HTML)' => 'Вложения (DB, без HTML)',
@@ -5569,24 +5570,24 @@ sub Data {
         'The headline shown in the customer interface.' => 'Заголовок, отображаемый в интерфейсе клиента.',
         'The logo shown in the header of the customer interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             'Логотип, отображаемый в заголовке экрана в интерфейсе клиента. URL ссылка может быть относительным URL на каталог с файлами (skin) или быть полным URL на внешний веб-сервер.',
-        'The shortcut icon for the customer interface.' => '',
+        'The shortcut icon for the customer interface.' => 'Иконка ярлыка интерфейса клиента.',
         'The shortcut icon for the customer interface for the skin "default".' =>
-            '',
-        'The Apple touch icon for the customer interface.' => '',
+            'Иконка ярлыка для интерфейса клиента с внешним видом (skin) "по умолчанию".',
+        'The Apple touch icon for the customer interface.' => 'Apple touch иконка для интерфейса клиента.',
         'The Apple touch icon for the customer interface for skin "default".' =>
-            '',
+            'Apple touch иконка для интерфейса клиента с внешним видом (skin) "по умолчанию".',
         'The logo shown in the header of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             'Логотип, отображаемый в заголовке экрана в интерфейсе агента. URL ссылка может быть относительным URL на каталог с файлами (skin) или быть полным URL на внешний веб-сервер.',
         'The logo shown in the header of the agent interface for the skin "default". See "AgentLogo" for further description.' =>
             'Логотип, отображаемый в заголовке экрана в интерфейсе агента для окраса "default". Смотрите описание "AgentLogo" для дальгейших пояснений.',
         'The logo shown on top of the login box of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             '',
-        'The shortcut icon for the agent interface.' => '',
+        'The shortcut icon for the agent interface.' => 'Иконка ярлыка для интерфейса агента.',
         'The shortcut icon for the agent interface fot the skin "default".' =>
-            '',
-        'The Apple touch icon for the agent interface.' => '',
+            'Иконка ярлыка для интерфейса агента с внешним видом (skin) "по умолчанию".',
+        'The Apple touch icon for the agent interface.' => 'Apple touch иконка для интерфейса агента.',
         'The Apple touch icon for the agent interface for the skin "default".' =>
-            '',
+            'Apple touch иконка для интерфейса агента с внешним видом (skin) "по умолчанию".',
         'Defines the URL base path of icons, CSS and Java Script.' => 'Задает путь в виде URL к icons, CSS и Java Script.',
         'Defines the URL image path of icons for navigation.' => 'Задает путь в виде URL к файлам иконок навигационной панели.',
         'Defines the URL CSS path.' => 'Задает путь к URL CSS.',
@@ -5619,11 +5620,13 @@ sub Data {
             'Автоматический перевод строки в тексте сообщения после х символов.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Задает количество строк отображаемых в текстовых сообщениях (например, строк заявки в QueueZoom).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Включает возможность "drag and drop" для основной навигации.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Задает способ ввода даты (выбором (option) или прямым вводом в поле (input).',
         'Defines the available steps in time selections. Select "Minute" to be able to select all minutes of one hour from 1-59. Select "30 Minutes" to only make full and half hours available.' =>
-            'Определяет доступные шаги при выборе временнОго интервала. Выберите «Минуты», чтобы выбрать все минуты одного часа от 1 до 59. Выберите «30 минут», чтобы получить полные часы и полчаса.',
+            'Определяет доступные шаги при выборе временнОго интервала. Выберите "Минуты", чтобы выбрать все минуты одного часа от 1 до 59. Выберите "30 минут", чтобы сделать доступными только полные часы и полчаса.',
         'Shows time in long format (days, hours, minutes), if enabled; or in short format (days, hours), if not enabled.' =>
             '',
         'Allows choosing between showing the attachments of a ticket in the browser (inline) or just make them downloadable (attachment).' =>
@@ -5689,7 +5692,7 @@ sub Data {
             '',
         'MailQueue configuration settings.' => 'Настройки конфигурации MailQueue.',
         'Define which avatar engine should be used for the agent avatar on the header and the sender images in AgentTicketZoom. If \'None\' is selected, initials will be displayed instead. Please note that selecting anything other than \'None\' will transfer the encrypted email address of the particular user to an external service.' =>
-            'Определите, какой движок аватара следует использовать для аватара агента в заголовке и изображения отправителя в AgentTicketZoom. Если выбрано «Нет», вместо него будут отображаться инициалы. Обратите внимание, что выбор чего-либо другого, кроме «Нет», переносит зашифрованный адрес электронной почты конкретного пользователя на внешнюю службу.',
+            'Определите, какой движок аватара следует использовать для аватара агента в заголовке и изображениях отправителя в AgentTicketZoom. Если выбрано \'Нет\', вместо него будут отображаться инициалы. Обратите внимание, что выбор чего-либо другого, кроме \'Нет\', переносит зашифрованный адрес электронной почты конкретного пользователя на внешнюю службу.',
         'Define which avatar default image should be used for the current agent if no gravatar is assigned to the mail address of the agent. Check https://gravatar.com/site/implement/images/ for further information.' =>
             '',
         'Define which avatar default image should be used for the article view if no gravatar is assigned to the mail address. Check https://gravatar.com/site/implement/images/ for further information.' =>
@@ -6023,7 +6026,7 @@ sub Data {
             'Задает возможность входа для клиента, если для него не задан секретный ключ хранимый в его личных настройках, т.е. не используется двух-факторная аутентификация.',
         'Defines the parameters for the customer preferences table.' => 'Задает параметры личных настроек для клиента',
         'Defines all the parameters for this item in the customer preferences. \'PasswordRegExp\' allows to match passwords against a regular expression. Define the minimum number of characters using \'PasswordMinSize\'. Define if at least 2 lowercase and 2 uppercase letter characters are needed by setting the appropriate option to \'1\'. \'PasswordMin2Characters\' defines if the password needs to contain at least 2 letter characters (set to 0 or 1). \'PasswordNeedDigit\' controls the need of at least 1 digit (set to 0 or 1 to control).' =>
-            'Определяет все параметры этого элемента в личных настройках клиента. «PasswordRegExp» позволяет сопоставлять пароли с регулярным выражением. Определите минимальное количество символов, используя \'PasswordMinSize\'. Определите, требуется ли как минимум 2 строчных буквы и 2 буквы в верхнем регистре, установив соответствующую опцию в «1». «PasswordMin2Characters» определяет, должен ли пароль содержать не менее двух буквенных символов (установите в 0 или 1). «PasswordNeedDigit» управляет потребностью не менее 1 цифры (устанавливается в 0 или 1 ).',
+            'Определяет все параметры этого элемента в личных настройках клиента. \'PasswordRegExp\' позволяет сопоставлять пароли с регулярным выражением. Определите минимальное количество символов, используя \'PasswordMinSize\'. Определите, требуется ли как минимум 2 строчных буквы и 2 буквы в верхнем регистре, установив соответствующую опцию в \'1\'. \'PasswordMin2Characters\' определяет, должен ли пароль содержать не менее 2 буквенных символов (устанавливается в 0 или 1). \'PasswordNeedDigit\' управляет необходимостью указывать не менее 1 цифры (устанавливается в 0 или 1 ).',
         'Defines the config parameters of this item, to be shown in the preferences view.' =>
             'Задает параметры для этого элемента, которые будут отображаться на экране личных настроек.',
         'Defines all the parameters for this item in the customer preferences.' =>
@@ -6198,7 +6201,7 @@ sub Data {
         'Defines the shown columns and the position in the AgentCustomerUserAddressBook result screen.' =>
             '',
         'Example package autoload configuration.' => '',
-        'Activates week number for datepickers.' => '',
+        'Activates week number for datepickers.' => 'Активирует номер недели при выборе даты.',
 
         # XML Definition: Kernel/Config/Files/XML/GenericInterface.xml
         'Performs the configured action for each event (as an Invoker) for each configured web service.' =>
@@ -6319,7 +6322,7 @@ sub Data {
         'Activates the ticket archive system to have a faster system by moving some tickets out of the daily scope. To search for these tickets, the archive flag has to be enabled in the ticket search.' =>
             'Включить функцию архивирования заявок для ускорения работы, путем перемещения некоторых заявок из ежедневного объема. Для поиска таких заявок необходимо включить архивный флажок при создании поискового запроса',
         'Controls if the ticket and article seen flags are removed when a ticket is archived.' =>
-            'Управляет удалением флагов просмотра заявок и сообщений при архивирвании заявки.',
+            'Управляет удалением флагов просмотра заявок и сообщений при архивировании заявки.',
         'Removes the ticket watcher information when a ticket is archived.' =>
             'Удаляет признак наблюдения за заявкой при ее архивировании.',
         'Activates the ticket archive system search in the customer interface.' =>
@@ -6512,7 +6515,7 @@ sub Data {
         'Sets the age in minutes (second level) for highlighting services that contain untouched tickets.' =>
             '',
         'Activates a blinking mechanism of the service that contains the oldest ticket.' =>
-            '',
+            'Активирует механизм моргания сервиса, который содержит самую старую заявку.',
         'Activates time accounting.' => 'Включить учет времени выполнения',
         'Sets the prefered time units (e.g. work units, hours, minutes).' =>
             'Задает единицы измерения для единиц времени (например: рабочие часы, часы, минуты).',
@@ -7823,7 +7826,7 @@ sub Data {
         'Defines the default next state of a ticket after adding a note in the NoteToLinkedTicket screen of the agent interface.' =>
             '',
         'Activates the selection if a note in NoteToLinkedTicket screen should be created in this origin ticket.' =>
-            '',
+            'Активирует выбор, если в этой исходной заявке должна быть создана заметка на NoteToLinkedTicket экране.',
         'Defines the default value if a note in NoteToLinkedTicket screen should be created in this origin ticket.' =>
             '',
         'Sets the default subject for notes added in the NoteToLinkedTicket screen of the agent interface.' =>
@@ -7864,21 +7867,21 @@ sub Data {
         'Loader module registration for the public interface.' => '',
         'Deletes orphaned sessions.' => '',
         'Defines the config parameters available in the preferences view. The default redirect URL from SysConfig \'MarkTicketUnseenRedirectDefaultURL\' is used if no selection is made by the agent.' =>
-            '',
+            'Определяет параметр конфигурации, доступный в персональных настройках. Если пользователь не выберет значение, то по умолчанию для перенаправления будет использован URL, заданный \'MarkTicketUnseenRedirectDefaultURL\' параметром системной конфигурации.',
         'Defines the redirect URL for setting a ticket article to \'unseen\'.' =>
-            '',
+            'Определяет URL-адрес страницы для пометки сообщения заявки как \'непрочитанное\'.',
         'Defines the config parameters available in the preferences view. The default redirect URL from SysConfig \'MarkTicketSeenRedirectDefaultURL\' is used if no selection is made by the agent.' =>
-            '',
+            'Определяет параметры конфигурации, доступные в персональных настройках. Если пользователь не выберет значение, то по умолчанию будет использован URL-адрес страницы, заданный \'MarkTicketSeenRedirectDefaultURL\' параметром системной конфигурации.',
         'Defines the redirect URL for setting a ticket article to \'seen\'.' =>
-            '',
+            'Определяет URL-адрес страницы для пометки сообщения заявки как \'прочитанное\'.',
         'Registers a link in the ticket menu to mark a ticket as unseen.' =>
-            '',
+            'Регистрирует ссылку в меню заявки для пометки заявки как непрочитанной.',
         'Registers a link in the ticket menu to mark a ticket as seen.' =>
-            '',
+            'Регистрирует ссылку в меню заявки для пометки заявки как прочитанной.',
         'Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as unseen.' =>
-            '',
+            'Регистрирует ссылку в меню заявки в обзоре заявок для пометки всех сообщений заявки как непрочитанные.',
         'Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as seen.' =>
-            '',
+            'Регистрирует ссылку в меню заявки в обзоре заявок для пометки всех сообщений заявки как прочитанные.',
         'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "agent".' =>
             '',
         'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".' =>
@@ -8011,8 +8014,8 @@ sub Data {
         'The activity could not be updated.' => '',
         'The activity could not be deleted.' => '',
         'The activity could not be marked as new.' => '',
-        'The activity could not be marked as seen.' => '',
-        'The activities could not be marked as seen.' => '',
+        'The activity could not be marked as seen.' => 'Активность не может быть помечена как прочитанная.',
+        'The activities could not be marked as seen.' => 'Активности не могут быть помечены как прочитанные.',
 
         # JS File: var/httpd/htdocs/js/Core.Agent.Admin.ACL.js
         'Add all' => 'Добавить все. После добавления вы можете изменить статус элемента нажав на пометку справа',
@@ -8079,7 +8082,7 @@ sub Data {
 
         # JS File: var/httpd/htdocs/js/Core.Agent.Admin.Group.js
         'WARNING: When you change the name of the group \'admin\', before making the appropriate changes in the SysConfig, you will be locked out of the administrations panel! If this happens, please rename the group back to admin per SQL statement.' =>
-            'ВНИМАНИЕ! Если вы измените имя группы «admin» до того, как поменяете название этой группы конфигурации системы, у вас не будет прав доступа на панель администрирования. Если это произошло, верните прежнее название группы (admin) вручную командой SQL.',
+            'ВНИМАНИЕ! Если вы измените имя группы \'admin\' до того, как поменяете название этой группы конфигурации системы, у вас не будет прав доступа на панель администрирования. Если это произошло, верните прежнее название группы (admin) вручную командой SQL.',
 
         # JS File: var/httpd/htdocs/js/Core.Agent.Admin.MailAccount.js
         'Delete this Mail Account' => 'Удалить эту учетную запись почты',
@@ -8164,7 +8167,7 @@ sub Data {
         'Cannot proceed' => 'Не удается продолжить',
         'Update manually' => 'Обновите вручную',
         'You can either have the affected settings updated automatically to reflect the changes you just made or do it on your own by pressing \'update manually\'.' =>
-            'Вы можете либо автоматически изменять затронутые параметры, чтобы отразить изменения, которые вы только что сделали, либо сделать это самостоятельно, нажав «обновить вручную».',
+            'Вы можете либо автоматически изменять затронутые параметры, чтобы отразить изменения, которые Вы только что сделали, либо сделать это самостоятельно, нажав \'обновить вручную\'.',
         'Save and update automatically' => 'Сохранить и обновить автоматически',
         'Don\'t save, update manually' => 'Не сохранять, обновить вручную',
         'The item you\'re currently viewing is part of a not-yet-deployed configuration setting, which makes it impossible to edit it in its current state. Please wait until the setting has been deployed. If you\'re unsure what to do next, please contact your system administrator.' =>
@@ -8454,7 +8457,7 @@ Thanks for your help!
             '',
         'AJAX interface for the web service dynamic field backends.' => '',
         'AccountedTime' => 'Затраченное время',
-        'Activation of dynamic fields for screens.' => '',
+        'Activation of dynamic fields for screens.' => 'Активация динамических полей для экранов.',
         'Activity LinkTarget' => '',
         'Activity Notification' => '',
         'Activity.' => '',
@@ -8465,11 +8468,11 @@ Thanks for your help!
         'Added %s time unit(s), for a total of %s time unit(s).' => 'Добавлено %sединиц времени, всего единиц времени %s.',
         'Added email. %s' => 'Получено письмо от %s.',
         'Added follow-up to ticket [%s]. %s' => 'Добавлено дополнение к заявке [%s]. %s',
-        'Added link to ticket "%s".' => 'К заявке «%s» добавлена связь.',
+        'Added link to ticket "%s".' => 'К заявке "%s" добавлена связь.',
         'Added note (%s).' => 'Добавлена заметка (%s).',
         'Added phone call from customer.' => 'Добавлена запись звонка клиента.',
         'Added phone call to customer.' => 'Добавлена запись звонка клиенту.',
-        'Added subscription for user "%s".' => 'Добавлена подписка для пользователя «%s».',
+        'Added subscription for user "%s".' => 'Добавлена подписка для пользователя "%s".',
         'Added system request (%s).' => 'Добавлен системный запрос (%s).',
         'Added web request from customer.' => 'Добавлен веб-запрос от клиента.',
         'Admin' => 'Администрирование',
@@ -8520,7 +8523,7 @@ Thanks for your help!
         'Attachment Name' => 'Имя вложения',
         'Avatar' => 'Аватар',
         'Based on global RichText setting' => 'Основано на глобальной настройке RichText',
-        'Bounced to "%s".' => 'Перенаправлено «%s».',
+        'Bounced to "%s".' => 'Перенаправлено "%s".',
         'Bulgarian' => 'Болгарский',
         'Bulk Action' => 'Массовое действие',
         'CSV Separator' => 'Разделитель CSV',
@@ -8541,7 +8544,7 @@ Thanks for your help!
         'Changed dynamic field %s from "%s" to "%s".' => 'Динамическое поле %s изменено с "%s" на "%s".',
         'Changed owner to "%s" (%s).' => 'Владелец изменен на "%s" (%s).',
         'Changed pending time to "%s".' => 'Время ожидания изменено на "%s".',
-        'Changed priority from "%s" (%s) to "%s" (%s).' => 'Изменен приоритет с «%s» (%s) на «%s» (%s).',
+        'Changed priority from "%s" (%s) to "%s" (%s).' => 'Изменен приоритет с "%s" (%s) на "%s" (%s).',
         'Changed queue to "%s" (%s) from "%s" (%s).' => 'Очередь изменена на "%s" (%s) с "%s" (%s).',
         'Changed responsible to "%s" (%s).' => 'Ответственный изменен на "%s" (%s).',
         'Changed service to "%s" (%s).' => 'Сервис изменен на "%s" (%s).',
@@ -8579,9 +8582,9 @@ Thanks for your help!
         'Configure which screen should be shown after a new ticket has been created.' =>
             'Выберите экран, который должен отображаться после создания новой заявки.',
         'Configure which screen should be shown after marking a ticket or article as seen.' =>
-            '',
+            'Настраивает экран, который должен отображаться после пометки заявки или сообщения как прочитанное.',
         'Configure which screen should be shown after marking a ticket or article as unseen.' =>
-            '',
+            'Настраивает экран, который должен отображаться после пометки заявки или сообщения как непрочитанное.',
         'Create New process ticket.' => 'Создать новую процессную заявку.',
         'Create Process Ticket' => '',
         'Create Ticket' => 'Создание заявки',
@@ -8654,7 +8657,7 @@ Thanks for your help!
         'Define the service comment 2.' => 'Внести Комментарий 2 для сервиса.',
         'Define the sla comment 2.' => 'Внести Комментарий 2 для SLA.',
         'Delete this ticket' => 'Удалить эту заявку',
-        'Deleted link to ticket "%s".' => 'Связь с заявкой «%s» удалена.',
+        'Deleted link to ticket "%s".' => 'Связь с заявкой "%s" удалена.',
         'Detached' => '',
         'Determines the strings that will be shown as recipient (To:) of the phone ticket and as sender (From:) of the email ticket in the agent interface. For Queue as NewQueueSelectionType "<Queue>" shows the names of the queues and for SystemAddress "<Realname> <<Email>>" shows the name and email of the recipient.' =>
             '',
@@ -8718,7 +8721,7 @@ Thanks for your help!
         'FirstResponseInMin' => 'FirstResponseInMin',
         'Firstname Lastname' => 'Имя Фамилия',
         'Firstname Lastname (UserLogin)' => 'Имя Фамилия (UserLogin)',
-        'Forwarded to "%s".' => 'Переcлано «%s».',
+        'Forwarded to "%s".' => 'Переcлано "%s".',
         'Free Fields' => 'Свободные поля',
         'French' => 'Французский',
         'French (Canada)' => 'Французский (Канада)',
@@ -8828,9 +8831,10 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => 'Управление заданиями, основанными на событиях или времени выполнения',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Пометить как спам!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Пометить эту заявку как мусор!',
-        'Mark ticket as seen' => '',
-        'Mark ticket as unseen' => '',
+        'Mark ticket as seen' => 'Пометить заявку как прочитанную',
+        'Mark ticket as unseen' => 'Пометить заявку как непрочитанную',
         'Mattermost Username' => '',
         'Max. number of articles per page in TicketZoom' => '',
         'Medium' => 'Средний',
@@ -8925,7 +8929,7 @@ Thanks for your help!
         'Queue view' => 'Просмотр очередей',
         'Refresh interval' => 'Интервал обновления',
         'Reminder Tickets' => 'Заявки с напоминанием',
-        'Removed subscription for user "%s".' => 'Удалена подписка для пользователя «%s».',
+        'Removed subscription for user "%s".' => 'Удалена подписка для пользователя "%s".',
         'Reports' => 'Отчеты',
         'Resend Ticket Email.' => '',
         'Resent email to "%s".' => '',
@@ -8937,8 +8941,8 @@ Thanks for your help!
         'Russian' => 'Русский',
         'S/MIME Certificates' => 'Сертификаты S/MIME',
         'Schedule a maintenance period.' => 'Управлять периодом обслуживания.',
-        'Screen after marking as seen' => '',
-        'Screen after marking as unseen' => '',
+        'Screen after marking as seen' => 'Страница после пометки как прочитанное',
+        'Screen after marking as unseen' => 'Страница после пометки как непрочитанное',
         'Screen after new ticket' => 'Экран после создания новой заявки',
         'Search Customer' => 'Искать клиента',
         'Search Ticket.' => 'Поиск заявок.',
@@ -8950,7 +8954,7 @@ Thanks for your help!
         'Seconds' => '',
         'Select after which period ticket overviews should refresh automatically.' =>
             'Выберите период, после которого просмотр списка заявок будет автоматически обновлен.',
-        'Select how many last views should be shown.' => '',
+        'Select how many last views should be shown.' => 'Выбрать количество отображаемых последних просмотренных страниц.',
         'Select how many tickets should be shown in overviews by default.' =>
             'Выберете как много заявок будет показываться в обзоре по умолчанию.',
         'Select the main interface language.' => 'Выберете главный язык интерфейса.',
@@ -9059,16 +9063,15 @@ Thanks for your help!
         'Ticket Note.' => 'Заметка к заявки.',
         'Ticket Notifications' => 'Уведомления по заявкам',
         'Ticket Outbound Email.' => 'Исходящая почта для заявки.',
-        'Ticket Overview "Medium" Limit' => 'Обзор заявок - лимит режима «Средний»',
-        'Ticket Overview "Preview" Limit' => 'Обзор заявок - лимит режима «Предварительный просмотр»',
-        'Ticket Overview "Small" Limit' => 'Обзор заявок - лимит режима «Краткий»',
+        'Ticket Overview "Medium" Limit' => 'Обзор заявок - лимит режима "Средний"',
+        'Ticket Overview "Preview" Limit' => 'Обзор заявок - лимит режима "Предварительный просмотр"',
+        'Ticket Overview "Small" Limit' => 'Обзор заявок - лимит режима "Краткий"',
         'Ticket Owner.' => 'Владелец заявки.',
         'Ticket Pending.' => 'Заявка ожидает.',
         'Ticket Print.' => 'Печать заявки.',
         'Ticket Priority.' => 'Приоритет заявки.',
         'Ticket Queue Overview' => 'Итоги по очередям',
         'Ticket Responsible.' => 'Ответственность за Заявку',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'Наблюдающий за заявкой',
         'Ticket Zoom' => 'Увеличить Заявку',
         'Ticket Zoom.' => 'Подробности заявки.',
@@ -9121,7 +9124,7 @@ Thanks for your help!
         'Your email with ticket number "<OTRS_TICKET>" is bounced to "<OTRS_BOUNCE_TO>". Contact this address for further information.' =>
             'Ваше письмо с номером заявки "<OTRS_TICKET>" переправлено адресату "<OTRS_BOUNCE_TO>". Контактируйте по этому адресу для получения дальнейшей информации.',
         'Your email with ticket number "<OTRS_TICKET>" is merged to "<OTRS_MERGE_TO_TICKET>".' =>
-            'Ваш email с номером заявки «<OTRS_TICKET>» объединен с "<OTRS_MERGE_TO_TICKET>".',
+            'Ваш email с номером заявки "<OTRS_TICKET>" объединен с "<OTRS_MERGE_TO_TICKET>".',
         'Your queue selection of your preferred queues. You also get notified about those queues via email if enabled.' =>
             'Выбор очередей, которые вас интересуют. Вы также будете уведомляться по электронной почте о событиях в ней происходящих, если эта функция включена.',
         'Your service selection of your preferred services. You also get notified about those services via email if enabled.' =>

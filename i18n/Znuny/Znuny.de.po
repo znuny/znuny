@@ -8676,7 +8676,7 @@ msgstr "Limitierung"
 msgid "No time settings"
 msgstr "Keine Zeiteinstellungen"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Alle"
 
@@ -14384,7 +14384,7 @@ msgstr "Daemon läuft nicht."
 msgid "Database Records"
 msgstr "Datenbankeinträge"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "Tickets"
 
@@ -23845,7 +23845,7 @@ msgstr "Ticket-Übersicht nach Queues"
 msgid "Ticket Responsible."
 msgstr "Ticket-Verantwortlicher."
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr "Suche"
 
@@ -24332,4 +24332,12 @@ msgstr "Ergänzt Feld-Mapping für AgentTicketActionCommon für unbekannte Actio
 #. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
 msgid "There were non-system tables found which do not have 'utf8mb4' as charset."
 msgstr "Es wurden systemfremde Tabellen gefunden, die nicht 'utf8mb4' als Zeichensatz haben."
+
+#. SysConfig
+msgid "Mark as seen"
+msgstr "Als gelesen markieren"
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized."
+msgstr "Limitiert die Anzahl an Optionen für modernized Auswahlfelder. Wenn das Limit überschritten ist, wird das Auswahlfeld aus Performancegründen als nicht-modernized angezeigt."
 

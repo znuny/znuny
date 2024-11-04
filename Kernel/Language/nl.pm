@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D-%M-%Y';
     $Self->{DateInputFormat}     = '%D-%M-%Y';
     $Self->{DateInputFormatLong} = '%D-%M-%Y - %T';
-    $Self->{Completeness}        = 0.49777484753585;
+    $Self->{Completeness}        = 0.497610809029494;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2370,6 +2370,7 @@ sub Data {
         'in' => 'over',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Alle',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2930,6 +2931,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tickets',
         'Welcome!' => 'Welkom!',
         'Please click the button below to create your first ticket.' => 'Klik op de button om uw eerste ticket aan te maken.',
         'Create your first ticket' => 'Maak uw eerste ticket aan',
@@ -2938,13 +2940,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Sjabloon',
+        'Template Name' => 'Template naam',
         'e. g. 10*5155 or 105658*' => 'bijv. 2010*5155 of 20100802*',
         'CustomerID' => 'Klantcode',
         'Types' => 'Typen',
         'Limitation' => '',
         'No time settings' => 'Niet zoeken op tijd',
-        'All' => 'Alle',
         'Specific date' => 'Specifieke datum',
         'Only tickets created' => 'Alleen tickets aangemaakt',
         'Date range' => 'Datum range',
@@ -2953,7 +2956,6 @@ sub Data {
         'Save Search as Template?' => 'Zoekopdracht opslaan als sjabloon?',
         'Save as Template' => 'Bewaar',
         'Save as Template?' => 'Bewaar als sjabloon?',
-        'Template Name' => 'Template naam',
         'Pick a profile name' => 'Naam voor dit sjabloon',
         'Output to' => 'Uitvoer naar',
 
@@ -5187,7 +5189,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Tickets',
         'Ticket History Entries' => 'Ticket Historie gegevens',
         'Articles' => 'Interacties',
         'Attachments (DB, Without HTML)' => 'Bijlagen (Database, zonder HTML)',
@@ -5613,6 +5614,8 @@ sub Data {
             '',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Bepaalt het aantal gels dat wordt weergegeven in tekstberichten (zoals het aantal regels in QueueZoom)',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
             '',
@@ -8822,6 +8825,7 @@ Het Helpdesk Team
         'Manage tasks triggered by event or time based execution.' => 'Beheer van taken op basis van events of tijdschema\'s',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Markeer als spam',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Markeer het ticket als junk!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9062,7 +9066,6 @@ Het Helpdesk Team
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'Ticketwachtrij overzicht',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

@@ -33,7 +33,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.596176034283831;
+    $Self->{Completeness}        = 0.595979568297907;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2371,6 +2371,7 @@ sub Data {
         'in' => 'en',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Todo',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2931,6 +2932,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tickets',
         'Welcome!' => 'Bienvenido',
         'Please click the button below to create your first ticket.' => 'Pulse el botón inferior para crear su primer ticket.',
         'Create your first ticket' => 'Cree su primer ticket',
@@ -2939,13 +2941,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Perfil',
+        'Template Name' => 'Nombre de la plantilla',
         'e. g. 10*5155 or 105658*' => 'ej: 10*5155 or 105658*',
         'CustomerID' => 'ID del cliente',
         'Types' => 'Tipos',
         'Limitation' => '',
         'No time settings' => 'Sin ajustes de tiempo',
-        'All' => 'Todo',
         'Specific date' => 'Fecha específica',
         'Only tickets created' => 'Sólo los tickets creados',
         'Date range' => 'Rango de fecha',
@@ -2954,7 +2957,6 @@ sub Data {
         'Save Search as Template?' => '¿Guardar la búsqueda como una plantilla?',
         'Save as Template' => 'Guardar como plantilla',
         'Save as Template?' => '¿Guardar como plantilla?',
-        'Template Name' => 'Nombre de la plantilla',
         'Pick a profile name' => 'Elija un nombre de perfil',
         'Output to' => 'Formato de salida',
 
@@ -5189,7 +5191,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Registros de la Base de Datos',
-        'Tickets' => 'Tickets',
         'Ticket History Entries' => 'Entradas Del Historial De Ticket',
         'Articles' => 'Artículos',
         'Attachments (DB, Without HTML)' => 'Archivos adjuntos (BD, Sin HTML)',
@@ -5614,6 +5615,8 @@ sub Data {
         'Automated line break in text messages after x number of chars.' =>
             'Salto de linea automático en mensajes de texto después de x número de caracteres.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
+            '',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
             '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
@@ -8830,6 +8833,7 @@ Tu Equipo de Soporte
         'Manage tasks triggered by event or time based execution.' => 'Gestionar tareas activadas por eventos o ejecuciones temporales.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => '¡Marcar como spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '¡Marcar este ticket como basura!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9070,7 +9074,6 @@ Tu Equipo de Soporte
         'Ticket Priority.' => 'Prioridad del ticket.',
         'Ticket Queue Overview' => 'Resumen de Tickets por Cola',
         'Ticket Responsible.' => 'Responsable del Ticket.',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => 'Vista detallada del Ticket.',

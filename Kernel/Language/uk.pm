@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%M/%D/%Y';
     $Self->{DateInputFormat}     = '%M/%D/%Y';
     $Self->{DateInputFormatLong} = '%M/%D/%Y - %T';
-    $Self->{Completeness}        = 0.437118839624196;
+    $Self->{Completeness}        = 0.436974789915966;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -2365,6 +2365,7 @@ sub Data {
         'in' => 'в',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Усі',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2925,6 +2926,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Заявки',
         'Welcome!' => 'Ласкаво просимо!',
         'Please click the button below to create your first ticket.' => 'Будь ласка, натисніть на кнопку нижче, щоб створити ваш перший квиток.',
         'Create your first ticket' => 'Створення вашого першого квитка',
@@ -2933,13 +2935,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Параметри',
+        'Template Name' => 'Ім\'я шаблону',
         'e. g. 10*5155 or 105658*' => 'наприклад, 10*5155 або 105658*',
         'CustomerID' => 'ID клієнта',
         'Types' => 'Типи',
         'Limitation' => '',
         'No time settings' => 'Немає налаштувань часу',
-        'All' => 'Усі',
         'Specific date' => 'Вкажіть дату',
         'Only tickets created' => 'Заявки створені',
         'Date range' => 'Проміжок часу',
@@ -2948,7 +2951,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Зберегти у якості шаблону',
         'Save as Template?' => 'Зберегти як шаблон',
-        'Template Name' => 'Ім\'я шаблону',
         'Pick a profile name' => 'Виберіть ім\'я профілю',
         'Output to' => 'Вивести як',
 
@@ -5182,7 +5184,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Заявки',
         'Ticket History Entries' => '',
         'Articles' => '',
         'Attachments (DB, Without HTML)' => '',
@@ -5607,6 +5608,8 @@ sub Data {
         'Automated line break in text messages after x number of chars.' =>
             '',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
+            '',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
             '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
@@ -8806,6 +8809,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Позначити як спам!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9046,7 +9050,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => '',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

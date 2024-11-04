@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '';
     $Self->{DateInputFormat}     = '';
     $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.86912806988627;
+    $Self->{Completeness}        = 0.868841654308782;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -2364,6 +2364,7 @@ sub Data {
         'in' => '...에서',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => '모든',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2924,6 +2925,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => '티켓',
         'Welcome!' => '환영!',
         'Please click the button below to create your first ticket.' => '첫 번째 티켓을 만드려면 아래 버튼을 클릭하십시오.',
         'Create your first ticket' => '첫 번째 티켓 만들기',
@@ -2932,13 +2934,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => '프로필',
+        'Template Name' => '템플릿 이름',
         'e. g. 10*5155 or 105658*' => '이자형. 지. 10 * 5155 또는 105658 *',
         'CustomerID' => '고객 ID',
         'Types' => '유형',
         'Limitation' => '',
         'No time settings' => '시간 설정 없음',
-        'All' => '모든',
         'Specific date' => '특정 날짜',
         'Only tickets created' => '생성된 티켓만',
         'Date range' => '날짜 범위',
@@ -2947,7 +2950,6 @@ sub Data {
         'Save Search as Template?' => '검색을 템플릿으로 저장하시겠습니까?',
         'Save as Template' => '템플릿으로 저장?',
         'Save as Template?' => '템플릿으로 저장?',
-        'Template Name' => '템플릿 이름',
         'Pick a profile name' => '프로필 이름 선택',
         'Output to' => '출력',
 
@@ -5181,7 +5183,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '데이터베이스 레코드',
-        'Tickets' => '티켓',
         'Ticket History Entries' => '티켓 기록 항목',
         'Articles' => '게시물',
         'Attachments (DB, Without HTML)' => '첨부 파일 (DB, HTML 제외)',
@@ -5607,6 +5608,8 @@ sub Data {
             'X 문자 수 후에 문자 메시지의 자동 줄바꿈',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             '문자 메시지에 표시되는 줄 수를 설정합니다 (예 : QueueZoom의 티켓 줄).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => '기본 탐색에 대한 드래그 앤 드롭을 켭니다.',
         'Defines the date input format used in forms (option or input fields).' =>
             '양식 (옵션 또는 입력 필드)에 사용되는 날짜 입력 형식을 정의합니다.',
@@ -8816,6 +8819,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '이벤트 또는 시간 기반 실행에 의해 트리거된 작업을 관리합니다.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => '스팸으로 표시하십시오!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '이 티켓을 정크로 표시하십시오!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9056,7 +9060,6 @@ Thanks for your help!
         'Ticket Priority.' => '티켓 심각도',
         'Ticket Queue Overview' => '티켓 대기열 개요',
         'Ticket Responsible.' => '책임 티켓.',
-        'Ticket Search' => '',
         'Ticket Watcher' => '티켓 워처',
         'Ticket Zoom' => '티켓 확대/축소',
         'Ticket Zoom.' => '티켓 확대/축소.',

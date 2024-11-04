@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.22333937695731;
+    $Self->{Completeness}        = 0.223265776898995;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -2371,6 +2371,7 @@ sub Data {
         'in' => 'in',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'כל',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2931,6 +2932,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'פניות',
         'Welcome!' => 'ברוכים הבאים!',
         'Please click the button below to create your first ticket.' => 'נא ללחוץ על הכפתור למטה על מנת ליצור את הפניה הראשונה שלכם.',
         'Create your first ticket' => 'צרו את הפניה הראשונה שלכם',
@@ -2939,13 +2941,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'פרופיל',
+        'Template Name' => 'שם התבנית',
         'e. g. 10*5155 or 105658*' => 'למשל 10*5155 או 105658*',
         'CustomerID' => 'מספר זיהוי לקוח',
         'Types' => 'סוגים',
         'Limitation' => '',
         'No time settings' => 'Keine Zeiteinstellungen',
-        'All' => 'כל',
         'Specific date' => '',
         'Only tickets created' => 'רק פניות שנוצרו',
         'Date range' => '',
@@ -2954,7 +2957,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'שמור כתבנית',
         'Save as Template?' => 'שמור כתבנית?',
-        'Template Name' => 'שם התבנית',
         'Pick a profile name' => 'בחר שם פרופיל',
         'Output to' => 'פלט אל',
 
@@ -5188,7 +5190,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'פניות',
         'Ticket History Entries' => '',
         'Articles' => '',
         'Attachments (DB, Without HTML)' => '',
@@ -5613,6 +5614,8 @@ sub Data {
         'Automated line break in text messages after x number of chars.' =>
             '',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
+            '',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
             '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
@@ -8812,6 +8815,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'סמן כספאם!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9052,7 +9056,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'מבט-על על תורים של פניות',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

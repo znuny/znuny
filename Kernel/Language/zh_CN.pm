@@ -33,7 +33,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y.%M.%D';
     $Self->{DateInputFormat}     = '%Y.%M.%D';
     $Self->{DateInputFormatLong} = '%Y.%M.%D - %T';
-    $Self->{Completeness}        = 0.897642986649085;
+    $Self->{Completeness}        = 0.897347174163783;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -2371,6 +2371,7 @@ sub Data {
         'in' => '之内',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => '全部',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2931,6 +2932,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => '工单',
         'Welcome!' => '欢迎！',
         'Please click the button below to create your first ticket.' => '请点击下面的按钮创建第一个工单。',
         'Create your first ticket' => '创建第一个工单',
@@ -2939,13 +2941,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => '搜索条件',
+        'Template Name' => '模板名称',
         'e. g. 10*5155 or 105658*' => '例如: 10*5155 或 105658*',
         'CustomerID' => 'CustomerID',
         'Types' => '类型',
         'Limitation' => '',
         'No time settings' => '没有设置时间',
-        'All' => '全部',
         'Specific date' => '指定日期',
         'Only tickets created' => '仅工单创建时间',
         'Date range' => '日期范围',
@@ -2954,7 +2957,6 @@ sub Data {
         'Save Search as Template?' => '将搜索保存为模板吗？',
         'Save as Template' => '保存为模板',
         'Save as Template?' => '保存为模板吗？',
-        'Template Name' => '模板名称',
         'Pick a profile name' => '输入模板名称',
         'Output to' => '输出为',
 
@@ -5188,7 +5190,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '数据库记录',
-        'Tickets' => '工单',
         'Ticket History Entries' => '工单历史条目',
         'Articles' => '信件',
         'Attachments (DB, Without HTML)' => '附件（DB，不包括HTML文件）',
@@ -5614,6 +5615,8 @@ sub Data {
             '文本消息中在X个字符后自动换行。',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             '设置文本消息显示的行数（例如：队列视图中工单的行）。',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => '开启主菜单的拖放功能。',
         'Defines the date input format used in forms (option or input fields).' =>
             '定义表单中数据的输入格式（选项或输入字段）。',
@@ -8822,6 +8825,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '管理事件触发或基于时间执行的任务。',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => '标记为垃圾!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '标记这个工单为垃圾!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9062,7 +9066,6 @@ Thanks for your help!
         'Ticket Priority.' => '工单优先级。',
         'Ticket Queue Overview' => '工单队列概览',
         'Ticket Responsible.' => '工单负责人。',
-        'Ticket Search' => '',
         'Ticket Watcher' => '工单关注人',
         'Ticket Zoom' => '工单详情',
         'Ticket Zoom.' => '工单详情。',

@@ -8666,7 +8666,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "Nincsenek időbeállítások"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Összes"
 
@@ -14374,7 +14374,7 @@ msgstr "A démon nem fut."
 msgid "Database Records"
 msgstr "Adatbázis rekordok"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "Jegyek"
 
@@ -23836,7 +23836,7 @@ msgstr "Jegyvárólista áttekintő"
 msgid "Ticket Responsible."
 msgstr "Jegyfelelős."
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 
@@ -24330,5 +24330,13 @@ msgstr ""
 
 #. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
 msgid "There were non-system tables found which do not have 'utf8mb4' as charset."
+msgstr ""
+
+#. SysConfig
+msgid "Mark as seen"
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized."
 msgstr ""
 

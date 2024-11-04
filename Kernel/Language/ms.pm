@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.538157244107467;
+    $Self->{Completeness}        = 0.53797989784149;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2364,6 +2364,7 @@ sub Data {
         'in' => 'dalam',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Semua',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2924,6 +2925,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tiket',
         'Welcome!' => 'Selamat datang!',
         'Please click the button below to create your first ticket.' => 'Sila tekan butang di bawah untuk membuat tiket pertama anda.',
         'Create your first ticket' => 'Buat tiket pertama anda',
@@ -2932,13 +2934,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Nama templat',
         'e. g. 10*5155 or 105658*' => 'contoj: 10*5155 atau 105658*',
         'CustomerID' => 'IDPelanggan',
         'Types' => 'Jenis',
         'Limitation' => '',
         'No time settings' => 'Tiada tetapan masa',
-        'All' => 'Semua',
         'Specific date' => 'Tarikh spesifik',
         'Only tickets created' => 'Hanya tiket yang dibuat',
         'Date range' => 'Jarak tarikh',
@@ -2947,7 +2950,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Simpan sebagai templat',
         'Save as Template?' => 'Simpan sebagai templat?',
-        'Template Name' => 'Nama templat',
         'Pick a profile name' => 'Pilih nama profil',
         'Output to' => 'Output kepada',
 
@@ -5181,7 +5183,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Tiket',
         'Ticket History Entries' => 'Penyertaan Sejarah Tiket ',
         'Articles' => 'Artikel',
         'Attachments (DB, Without HTML)' => 'Lampiran (DB, Tanpa HTML)',
@@ -5607,6 +5608,8 @@ sub Data {
             'Memecahkan garis Automatik dalam mesej teks selepas beberapa x aksara.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Tetapkan jumlah barisan yang dipamerkan dalam mesej teks (cth: barisan tiket dalam dalam QueueZoom).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Aktifkan tarik dan lepas untuk navigasi utama.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Mentakrifkan format input tarikh yang digunakan dalam bentuk (pilihan atau medan input).',
@@ -8819,6 +8822,7 @@ Kumpulan MejaBantuan Anda
         'Manage tasks triggered by event or time based execution.' => 'Uruskan tugas yang dicetuskan oleh acara atau pelaksanaan berdasarkan masa.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Tanda sebagai Spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Tanda tiket ini sebagai junk!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9059,7 +9063,6 @@ Kumpulan MejaBantuan Anda
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'Tinjauan Barisan Tiket',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

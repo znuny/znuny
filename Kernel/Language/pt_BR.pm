@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.862864677764958;
+    $Self->{Completeness}        = 0.862580326248146;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2368,6 +2368,7 @@ sub Data {
         'in' => 'em',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Todas',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2928,6 +2929,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Chamados',
         'Welcome!' => 'Bem-vindo!',
         'Please click the button below to create your first ticket.' => 'Por favor, clique no botão abaixo para criar o seu primeiro chamado.',
         'Create your first ticket' => 'Criar seu primeiro chamado',
@@ -2936,13 +2938,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Perfil',
+        'Template Name' => 'Nome do Modelo',
         'e. g. 10*5155 or 105658*' => 'ex. 10*5155 ou 105658*',
         'CustomerID' => 'ID do Cliente',
         'Types' => 'Tipos',
         'Limitation' => '',
         'No time settings' => 'Sem configurações de tempo',
-        'All' => 'Todas',
         'Specific date' => 'Data específica',
         'Only tickets created' => 'Apenas chamados criados',
         'Date range' => 'Período de data',
@@ -2951,7 +2954,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Salvar como Modelo',
         'Save as Template?' => 'Salvar como Modelo?',
-        'Template Name' => 'Nome do Modelo',
         'Pick a profile name' => 'Escolha um nome de perfil',
         'Output to' => 'Saída para',
 
@@ -5185,7 +5187,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Registros de Banco',
-        'Tickets' => 'Chamados',
         'Ticket History Entries' => 'Entradas de Histórico de Chamados',
         'Articles' => 'Artigos',
         'Attachments (DB, Without HTML)' => 'Anexos (DB, sem HTML)',
@@ -5611,6 +5612,8 @@ sub Data {
             'Quebra de linha automatizada em mensagens de texto após x número de caracteres.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Define o número de linhas exibidas nas mensagens de texto (exemplo: linhas de ticket na Visão de Fila)',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Habilita "arrasta e solta" na navegação principal.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Define o formato de entrada de data utilizado em formulários (opção ou campos de entrada).',
@@ -8820,6 +8823,7 @@ Obrigado pela ajuda!
         'Manage tasks triggered by event or time based execution.' => 'Gerenciar tarefas disparadas por evento ou com execução baseada em tempo.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Marque como Spam',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Marcar este chamado como lixo!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9060,7 +9064,6 @@ Obrigado pela ajuda!
         'Ticket Priority.' => 'Prioridade do chamado',
         'Ticket Queue Overview' => 'Visão Geral de Fila de Chamado',
         'Ticket Responsible.' => 'Responsável pelo chamado.',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'Monitorador do Chamado',
         'Ticket Zoom' => 'Zoom do chamado',
         'Ticket Zoom.' => 'Zoom do chamado',

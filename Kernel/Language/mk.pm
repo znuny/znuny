@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.276907862205373;
+    $Self->{Completeness}        = 0.27681660899654;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2364,6 +2364,7 @@ sub Data {
         'in' => 'во',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Сите',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2924,6 +2925,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Тикети',
         'Welcome!' => 'Добредојдовте!',
         'Please click the button below to create your first ticket.' => '',
         'Create your first ticket' => '',
@@ -2932,13 +2934,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Профил',
+        'Template Name' => '',
         'e. g. 10*5155 or 105658*' => '',
         'CustomerID' => 'Корисничко ИД',
         'Types' => '',
         'Limitation' => '',
         'No time settings' => '',
-        'All' => 'Сите',
         'Specific date' => 'Специфичен датум ',
         'Only tickets created' => '',
         'Date range' => 'Опсег на датум ',
@@ -2947,7 +2950,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => '',
         'Save as Template?' => '',
-        'Template Name' => '',
         'Pick a profile name' => '',
         'Output to' => 'Излез',
 
@@ -5181,7 +5183,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Евиденција на База на Податоци ',
-        'Tickets' => 'Тикети',
         'Ticket History Entries' => 'Историја на Тикет Записи',
         'Articles' => 'Натписи',
         'Attachments (DB, Without HTML)' => 'Прилози (база на податоци, без HTML)',
@@ -5606,6 +5607,8 @@ sub Data {
         'Automated line break in text messages after x number of chars.' =>
             '',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
+            '',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
             '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
@@ -8805,6 +8808,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Означи како Спам!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9045,7 +9049,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => '',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

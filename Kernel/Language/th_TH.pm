@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.524147024888742;
+    $Self->{Completeness}        = 0.523974295600593;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -2367,6 +2367,7 @@ sub Data {
         'in' => 'ใน',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'ทั้งหมด',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2927,6 +2928,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'ตั๋ว',
         'Welcome!' => 'ยินดีต้อนรับ!',
         'Please click the button below to create your first ticket.' => 'กรุณาคลิกที่ปุ่มด้านล่างเพื่อสร้างตั๋วของคุณครั้งแรก',
         'Create your first ticket' => 'สร้างตั๋วของคุณครั้งแรก',
@@ -2935,13 +2937,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'โปรไฟล์',
+        'Template Name' => 'ชื่อแม่แบบ',
         'e. g. 10*5155 or 105658*' => 'เช่น 10*5155 หรือ 105658*',
         'CustomerID' => 'ไอดีลูกค้า',
         'Types' => 'ประเภท',
         'Limitation' => '',
         'No time settings' => 'ไม่มีการตั้งค่าเวลา',
-        'All' => 'ทั้งหมด',
         'Specific date' => 'วันที่เฉพาะเจาะจง',
         'Only tickets created' => 'เฉพาะตั๋วที่สร้างแล้ว',
         'Date range' => 'ช่วงวันที่',
@@ -2950,7 +2953,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'บันทึกเป็นแม่แบบ',
         'Save as Template?' => 'บันทึกเป็นแม่แบบ?',
-        'Template Name' => 'ชื่อแม่แบบ',
         'Pick a profile name' => 'เลือกชื่อโปรไฟล์',
         'Output to' => 'ส่งออกไปยัง',
 
@@ -5184,7 +5186,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'ตั๋ว',
         'Ticket History Entries' => 'ประวัติการป้อนตั๋ว',
         'Articles' => 'บทความ',
         'Attachments (DB, Without HTML)' => 'สิ่งที่แนบมา (DB ปราศจาก HTML)',
@@ -5609,6 +5610,8 @@ sub Data {
         'Automated line break in text messages after x number of chars.' =>
             'แบ่งบรรทัดอัตโนมัติในข้อความหลังจากจำนวนตัวอักษร  x ',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
+            '',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
             '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
@@ -8822,6 +8825,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'มาร์คว่าเป็นสแปม!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'ทำเครื่องหมายตั๋วนี้เป็นขยะ!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9062,7 +9066,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => '',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

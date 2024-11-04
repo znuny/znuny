@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y.%M.%D';
     $Self->{DateInputFormat}     = '%Y.%M.%D';
     $Self->{DateInputFormatLong} = '%Y.%M.%D - %T';
-    $Self->{Completeness}        = 0.330805999670348;
+    $Self->{Completeness}        = 0.330696984676223;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2367,6 +2367,7 @@ sub Data {
         'in' => 'i',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Alla',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2927,6 +2928,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Ärenden',
         'Welcome!' => 'Välkommen!',
         'Please click the button below to create your first ticket.' => 'Vänligen klicka på knappen nedan för att skapa ditt första ärende',
         'Create your first ticket' => 'Skapa ditt första ärende',
@@ -2935,13 +2937,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Mallnamn',
         'e. g. 10*5155 or 105658*' => '',
         'CustomerID' => 'Kund-ID',
         'Types' => 'Typer',
         'Limitation' => '',
         'No time settings' => 'Inga tidsinställningar',
-        'All' => 'Alla',
         'Specific date' => 'Specifikt datum',
         'Only tickets created' => 'Bara ärenden skapade',
         'Date range' => 'Datumintervall',
@@ -2950,7 +2953,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Spara som mall',
         'Save as Template?' => 'Spara som mall?',
-        'Template Name' => 'Mallnamn',
         'Pick a profile name' => 'Välj ett profilnamn',
         'Output to' => 'Utdata till',
 
@@ -5184,7 +5186,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Ärenden',
         'Ticket History Entries' => '',
         'Articles' => 'Artiklar',
         'Attachments (DB, Without HTML)' => 'Bilagor (DB, utan HTML)',
@@ -5609,6 +5610,8 @@ sub Data {
         'Automated line break in text messages after x number of chars.' =>
             '',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
+            '',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
             '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
@@ -8808,6 +8811,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Markera som spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Märk ärendet som skräp!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9048,7 +9052,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'Kö-översikt',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

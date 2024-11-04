@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.897642986649085;
+    $Self->{Completeness}        = 0.897347174163783;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2370,6 +2370,7 @@ sub Data {
         'in' => 'ekkor:',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Összes',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2930,6 +2931,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Jegyek',
         'Welcome!' => 'Üdvözöljük!',
         'Please click the button below to create your first ticket.' => 'Kattintson a lenti gombra az első jegy létrehozásához.',
         'Create your first ticket' => 'Első jegy létrehozása',
@@ -2938,13 +2940,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Sablonnév',
         'e. g. 10*5155 or 105658*' => 'például 10*5155 vagy 105658*',
         'CustomerID' => 'Ügyfél-azonosító',
         'Types' => 'Típusok',
         'Limitation' => '',
         'No time settings' => 'Nincsenek időbeállítások',
-        'All' => 'Összes',
         'Specific date' => 'Adott dátum',
         'Only tickets created' => 'Csak létrehozott jegyek',
         'Date range' => 'Dátumtartomány',
@@ -2953,7 +2956,6 @@ sub Data {
         'Save Search as Template?' => 'Menti a keresést sablonként?',
         'Save as Template' => 'Mentés sablonként',
         'Save as Template?' => 'Menti sablonként?',
-        'Template Name' => 'Sablonnév',
         'Pick a profile name' => 'Válasszon egy profilnevet',
         'Output to' => 'Kimenet ide',
 
@@ -5187,7 +5189,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Adatbázis rekordok',
-        'Tickets' => 'Jegyek',
         'Ticket History Entries' => 'Jegy előzmény bejegyzések',
         'Articles' => 'Bejegyzések',
         'Attachments (DB, Without HTML)' => 'Mellékletek (DB, HTML nélkül)',
@@ -5613,6 +5614,8 @@ sub Data {
             'Automatikus sortörés a szöveges üzenetekben x karakter után.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Beállítja a szöveges üzenetekben megjelenített sorok számát (például a QueueZoom modulban lévő jegy sorok).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Bekapcsolja a „fogd és vidd” lehetőséget a fő navigációnál.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Meghatározza az űrlapokon használt adatok beviteli formátumát (választás vagy beviteli mező).',
@@ -8822,6 +8825,7 @@ Az Ön segélyszolgálat csapata
         'Manage tasks triggered by event or time based execution.' => 'Esemény vagy időalapú végrehajtás által aktivált feladatok kezelése.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Megjelölés szemétként!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Jegy megjelölése szemétként!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9062,7 +9066,6 @@ Az Ön segélyszolgálat csapata
         'Ticket Priority.' => 'Jegyprioritás.',
         'Ticket Queue Overview' => 'Jegyvárólista áttekintő',
         'Ticket Responsible.' => 'Jegyfelelős.',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'Jegymegfigyelő',
         'Ticket Zoom' => 'Jegynagyítás',
         'Ticket Zoom.' => 'Jegynagyítás.',

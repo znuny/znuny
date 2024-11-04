@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.463491016977089;
+    $Self->{Completeness}        = 0.463338276487065;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2365,6 +2365,7 @@ sub Data {
         'in' => 'en',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Todo',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2925,6 +2926,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tickets',
         'Welcome!' => 'Reciba a benvida!',
         'Please click the button below to create your first ticket.' => 'Por favor faga clic no botón de abaixo para crear o seu primeiro ticket.',
         'Create your first ticket' => 'Cree o seu primeiro ticket',
@@ -2933,13 +2935,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Perfil',
+        'Template Name' => 'Nome do modelo',
         'e. g. 10*5155 or 105658*' => 'p.ex. 10*5155 ou 105658*',
         'CustomerID' => 'Identificador do cliente',
         'Types' => 'Tipos',
         'Limitation' => '',
         'No time settings' => 'Non hai configuración horaria',
-        'All' => 'Todo',
         'Specific date' => '',
         'Only tickets created' => 'Só tickets creados',
         'Date range' => 'Intervalo de datas',
@@ -2948,7 +2951,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Garde como Modelo',
         'Save as Template?' => 'Garde como Modelo?',
-        'Template Name' => 'Nome do modelo',
         'Pick a profile name' => 'Escolla un nome de perfil',
         'Output to' => 'Saída',
 
@@ -5182,7 +5184,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Rexistros da base de datos',
-        'Tickets' => 'Tickets',
         'Ticket History Entries' => 'Historial Entrada Ticket',
         'Articles' => 'Artigos',
         'Attachments (DB, Without HTML)' => 'Anexos (Base de datos, sen HTML)',
@@ -5608,6 +5609,8 @@ sub Data {
             'Salto de liña automatizada en mensaxes de texto despois de x número de carácteres.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Establece o número de liñas que son mostradas en mensaxes de texto (ex. liñas en ticket na ColaZoom).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Encenda arrastre e caída para a navegación principal.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Define o formato de entrada de datos utilizado en formularios (campos de opción ou entrada).',
@@ -8806,6 +8809,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => 'Dirixa tarefas disparadas por evento ou baseadas no tempo de execución.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Marcar como lixo!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9046,7 +9050,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'Vista xeral da fila de tíckets',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

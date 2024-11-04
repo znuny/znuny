@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.995220042854788;
+    $Self->{Completeness}        = 0.995221618058988;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2365,6 +2365,7 @@ sub Data {
         'in' => 'in',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Alle',
         'Search inactive widgets' => 'Suche deaktivierte Widgets',
         'Active Widgets' => 'Aktivierte Widget',
         'Save changes' => 'Änderungen speichern',
@@ -2925,6 +2926,7 @@ sub Data {
         'Service level agreement' => 'Service-Level-Vereinbarung',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tickets',
         'Welcome!' => 'Willkommen!',
         'Please click the button below to create your first ticket.' => 'Bitte verwenden Sie den Knopf unten zur Erstellung Ihres ersten Tickets.',
         'Create your first ticket' => 'Ihr erstes Ticket erstellen',
@@ -2933,13 +2935,14 @@ sub Data {
         'New Process Ticket' => 'Neues Prozess-Ticket',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => 'Suche',
         'Profile' => 'Profil',
+        'Template Name' => 'Name der Vorlage',
         'e. g. 10*5155 or 105658*' => 'z. B. 10*5155 oder 105658*',
         'CustomerID' => 'Kundennummer',
         'Types' => 'Typen',
         'Limitation' => 'Limitierung',
         'No time settings' => 'Keine Zeiteinstellungen',
-        'All' => 'Alle',
         'Specific date' => 'spezifisches Datum',
         'Only tickets created' => 'Nur Tickets, die erstellt wurden',
         'Date range' => 'Datumsbereich',
@@ -2948,7 +2951,6 @@ sub Data {
         'Save Search as Template?' => 'Suche als Vorlage speichern?',
         'Save as Template' => 'Als Vorlage speichern',
         'Save as Template?' => 'Als Vorlage speichern?',
-        'Template Name' => 'Name der Vorlage',
         'Pick a profile name' => 'Profilnamen auswählen',
         'Output to' => 'Ausgabe nach',
 
@@ -5182,7 +5184,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Datenbankeinträge',
-        'Tickets' => 'Tickets',
         'Ticket History Entries' => 'Ticket-Historieneinträge',
         'Articles' => 'Artikel',
         'Attachments (DB, Without HTML)' => 'Anhänge (in der Datenbank, ohne HTML)',
@@ -5608,6 +5609,8 @@ sub Data {
             'Automatischer Zeilenumbruch in Textnachrichten nach x-Zeichen.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Legt die Anzahl an Zeilen fest, die von Textnachrichten angezeigt werden sollen (z. B. von Tickets in der Queue-Ansicht).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            'Limitiert die Anzahl an Optionen für modernized Auswahlfelder. Wenn das Limit überschritten ist, wird das Auswahlfeld aus Performancegründen als nicht-modernized angezeigt.',
         'Turns on drag and drop for the main navigation.' => 'Aktiviert Drag und Drop für die Hauptnavigation.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Definiert das benutzte Datumseingabeformat in Formularen (Option für Eingabefelder).',
@@ -8816,6 +8819,7 @@ Ihr Helpdesk-Team
         'Manage tasks triggered by event or time based execution.' => 'Verwaltung von event- oder zeitbasierten Aufgaben.',
         'Management of ticket attribute relations.' => 'Verwaltung von abhängigen Ticketattributen.',
         'Mark as Spam!' => 'Als Spam makieren!',
+        'Mark as seen' => 'Als gelesen markieren',
         'Mark this ticket as junk!' => 'Dieses Ticket als Junk markieren!',
         'Mark ticket as seen' => 'Ticket als gelesen markieren',
         'Mark ticket as unseen' => 'Ticket als ungelesen markieren',
@@ -9056,7 +9060,6 @@ Ihr Helpdesk-Team
         'Ticket Priority.' => 'Ticket-Priorität.',
         'Ticket Queue Overview' => 'Ticket-Übersicht nach Queues',
         'Ticket Responsible.' => 'Ticket-Verantwortlicher.',
-        'Ticket Search' => 'Suche',
         'Ticket Watcher' => 'Ticket-Beobachter',
         'Ticket Zoom' => 'Ticket-Zoom',
         'Ticket Zoom.' => 'Ticket-Detailansicht.',

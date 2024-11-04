@@ -32,7 +32,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.894181638371518;
+    $Self->{Completeness}        = 0.893886966551326;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2370,6 +2370,7 @@ sub Data {
         'in' => 'u',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Sve',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2930,6 +2931,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tiketi',
         'Welcome!' => 'Dobrodošli!',
         'Please click the button below to create your first ticket.' => 'Molimo da pritisnete dugme ispod za kreiranje vašeg prvog tiketa.',
         'Create your first ticket' => 'Kreirajte vaš prvi tiket',
@@ -2938,13 +2940,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Naziv šablona',
         'e. g. 10*5155 or 105658*' => 'npr. 10*5155 ili 105658*',
         'CustomerID' => 'ID klijenta',
         'Types' => 'Tipovi',
         'Limitation' => '',
         'No time settings' => 'Nema podešavanja vremena',
-        'All' => 'Sve',
         'Specific date' => 'Određeni datum',
         'Only tickets created' => 'Samo kreirani tiketi',
         'Date range' => 'Raspon datuma',
@@ -2953,7 +2956,6 @@ sub Data {
         'Save Search as Template?' => 'Sačuvaj pretragu kao šablon?',
         'Save as Template' => 'Sačuvaj kao šablon',
         'Save as Template?' => 'Sačuvati kao šablon?',
-        'Template Name' => 'Naziv šablona',
         'Pick a profile name' => 'Izaberi naziv profila',
         'Output to' => 'Izlaz na',
 
@@ -5187,7 +5189,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Zapisi u bazi podataka',
-        'Tickets' => 'Tiketi',
         'Ticket History Entries' => 'Istorija unosa tiketa',
         'Articles' => 'Članci',
         'Attachments (DB, Without HTML)' => 'Prilozi (baza podataka, bez HTML)',
@@ -5613,6 +5614,8 @@ sub Data {
             'Automatski kraj reda u tekstualnim porukama posle h karaktera.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Podešava broj linija prikazanih u tekstualnim porukama (npr broj linija u detaljnom pregledu reda).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Aktivira prevuci i otpusti u glavnoj navigaciji.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Definiše fornosa datuma u formulare (opciono ili polja za unos).',
@@ -8822,6 +8825,7 @@ Vaša tehnička podrška
         'Manage tasks triggered by event or time based execution.' => 'Upravlja zadacima pokrenutim od događaja ili na osnovu vremenskog izvršavanja.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Označi kao Spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Označi ovaj tiket kao besmislen junk!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9062,7 +9066,6 @@ Vaša tehnička podrška
         'Ticket Priority.' => 'Prioritet tiketa.',
         'Ticket Queue Overview' => 'Pregled reda tiketa',
         'Ticket Responsible.' => 'Odgovoran za tiket.',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'Praćenje tiketa.',
         'Ticket Zoom' => 'Detalji tiketa',
         'Ticket Zoom.' => 'Detalji tiketa.',

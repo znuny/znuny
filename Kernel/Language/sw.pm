@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%M/%D/%Y';
     $Self->{DateInputFormat}     = '%M/%D/%Y';
     $Self->{DateInputFormatLong} = '%M/%D/%Y - %T';
-    $Self->{Completeness}        = 0.436954013515741;
+    $Self->{Completeness}        = 0.436810018124897;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -2367,6 +2367,7 @@ sub Data {
         'in' => 'Ndani',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Yote',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2927,6 +2928,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tiketi',
         'Welcome!' => 'Karibu ',
         'Please click the button below to create your first ticket.' => 'Tafadhali bofya kwneye kitufe cha chini kutengeneza tiketi yako ya kwanza.',
         'Create your first ticket' => 'Tengeneza tiketi yako ya kwanza',
@@ -2935,13 +2937,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Maelezo mafupi',
+        'Template Name' => 'Jina la kielezo',
         'e. g. 10*5155 or 105658*' => 'Mfano 10*5155 au 105658',
         'CustomerID' => 'Kitambilisho cha mteja',
         'Types' => 'Aina',
         'Limitation' => '',
         'No time settings' => 'Hakuna mipangilio ya muda',
-        'All' => 'Yote',
         'Specific date' => 'Tarehe maalum',
         'Only tickets created' => 'Tiketi zilizotengenezwa tu',
         'Date range' => 'tarehe mbalimbali',
@@ -2950,7 +2953,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Hifadhi kama kielezo',
         'Save as Template?' => 'Hifadhi kama kielezo?',
-        'Template Name' => 'Jina la kielezo',
         'Pick a profile name' => 'Chagua jina la umbo',
         'Output to' => 'Matokeo ya ',
 
@@ -5184,7 +5186,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Rekodi ya hifadhi data',
-        'Tickets' => 'Tiketi',
         'Ticket History Entries' => 'Historia ya ingizo ya tiketi',
         'Articles' => 'Makala',
         'Attachments (DB, Without HTML)' => 'Viambatanisho (DB, bila ya HTML)',
@@ -5610,6 +5611,8 @@ sub Data {
             'Kigawa mstari otomatiki katika ujumbe wa maneno baada ya namba x ya herufi.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Inaweka namba ya mistari ambayo inaonyeshwa katika ujumbe wa maneno (mfano mistari ya tiketi katika foleni iliyokuzwa).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Washa kokota na dondosha kwa ajili wa uabiri mkuu.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Inafafanua umbizo umbizo ingizo la tarehe linalotumika katika fomu (hiari au uga ingizo).',
@@ -8811,6 +8814,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => 'Simamia kazi zilizoamshwa na tukio au zinazotekelezwa kutegemeana na muda.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Weka alama kama barua taka',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9051,7 +9055,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'Mapitio ya foleni ya tiketi',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

@@ -550,6 +550,13 @@
             <Item ValueType="String" ValueRegex="^[0-9]{1,5}$">6000</Item>
         </Value>
     </Setting>
+    <Setting Name="InputFields::ModernizedSelection::MaxNumberOfOptions" Required="1" Valid="1">
+        <Description Translatable="1">Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.</Description>
+        <Navigation>Frontend::Base</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="^\d+$">1000</Item>
+        </Value>
+    </Setting>
     <Setting Name="Frontend::MenuDragDropEnabled" Required="1" Valid="1">
         <Description Translatable="1">Turns on drag and drop for the main navigation.</Description>
         <Navigation>Frontend::Base</Navigation>

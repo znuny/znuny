@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.606889731333443;
+    $Self->{Completeness}        = 0.606689734717416;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -2366,6 +2366,7 @@ bin/znuny.Daemon.pl status\').',
         'in' => 'Masuk',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Semua',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2926,6 +2927,7 @@ bin/znuny.Daemon.pl status\').',
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tiket',
         'Welcome!' => 'Selamat datang!',
         'Please click the button below to create your first ticket.' => 'Silahkan tekan tombol dibawah untuk membuat tiket pertama anda.',
         'Create your first ticket' => 'Membuat tiket pertama anda',
@@ -2934,13 +2936,14 @@ bin/znuny.Daemon.pl status\').',
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Nama template',
         'e. g. 10*5155 or 105658*' => 'Contoh : 10*5155 atau 105658*',
         'CustomerID' => 'ID Pelanggan',
         'Types' => 'Jenis',
         'Limitation' => '',
         'No time settings' => 'Tidak ada pengaturan waktu',
-        'All' => 'Semua',
         'Specific date' => 'Tanggal spesifik',
         'Only tickets created' => 'Hanya tiket dibuat',
         'Date range' => 'Rentang tanggal',
@@ -2949,7 +2952,6 @@ bin/znuny.Daemon.pl status\').',
         'Save Search as Template?' => '',
         'Save as Template' => 'Simpan sebagai template',
         'Save as Template?' => 'Simpan sebagai template',
-        'Template Name' => 'Nama template',
         'Pick a profile name' => 'Memilih nama profil',
         'Output to' => 'Keluarkan',
 
@@ -5183,7 +5185,6 @@ bin/znuny.Daemon.pl status\').',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Tiket',
         'Ticket History Entries' => 'Tiket Sejarah Entries',
         'Articles' => 'Artikel',
         'Attachments (DB, Without HTML)' => 'Lampiran (DB, Tanpa HTML)',
@@ -5609,6 +5610,8 @@ bin/znuny.Daemon.pl status\').',
             'Baris istirahat otomatis dalam pesan teks setelah x jumlah karakter.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Menetapkan jumlah baris yang ditampilkan dalam pesan teks (misalnya garis tiket di Antrian Zoom).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Menghidupkan drag and drop untuk navigasi utama.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Mendefinisikan format tanggal input yang digunakan dalam bentuk (pilihan atau masukan bidang).',
@@ -8819,6 +8822,7 @@ Helpdesk Team Anda
         'Manage tasks triggered by event or time based execution.' => 'Mengelola tugas dipicu oleh peristiwa atau waktu eksekusi berdasarkan.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Tandai sebagai Spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Tandai tiket ini sebagai sampah!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9059,7 +9063,6 @@ Helpdesk Team Anda
         'Ticket Priority.' => 'Prioritas tiket',
         'Ticket Queue Overview' => 'Antrian tiket keseluruhan',
         'Ticket Responsible.' => 'Penanggung jawab tiket',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'Watcher tiket',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => 'Tiket Zoom.',

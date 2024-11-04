@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.165979891214768;
+    $Self->{Completeness}        = 0.165925193606855;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -2365,6 +2365,7 @@ sub Data {
         'in' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Kõik',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2925,6 +2926,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Intsidendid',
         'Welcome!' => 'Tere tulemast!',
         'Please click the button below to create your first ticket.' => 'Pileti loomiseks vajuta allolevat nuppu.',
         'Create your first ticket' => 'Loo uus pilet',
@@ -2933,13 +2935,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profiil',
+        'Template Name' => 'Malli nimi',
         'e. g. 10*5155 or 105658*' => '',
         'CustomerID' => 'Kliendi nr.',
         'Types' => 'Tüübid',
         'Limitation' => '',
         'No time settings' => '',
-        'All' => 'Kõik',
         'Specific date' => '',
         'Only tickets created' => '',
         'Date range' => '',
@@ -2948,7 +2951,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Salvesta kui mall',
         'Save as Template?' => 'Salvesta kui mall?',
-        'Template Name' => 'Malli nimi',
         'Pick a profile name' => 'vali profiili nimi',
         'Output to' => 'Tulemuste formaat',
 
@@ -5182,7 +5184,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Intsidendid',
         'Ticket History Entries' => '',
         'Articles' => '',
         'Attachments (DB, Without HTML)' => '',
@@ -5607,6 +5608,8 @@ sub Data {
         'Automated line break in text messages after x number of chars.' =>
             '',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
+            '',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
             '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
@@ -8806,6 +8809,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Märgi spämmiks!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9046,7 +9050,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => '',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

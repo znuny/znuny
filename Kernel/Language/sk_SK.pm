@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.18345145871106;
+    $Self->{Completeness}        = 0.183391003460208;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2364,6 +2364,7 @@ sub Data {
         'in' => 'v',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Všetko',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2924,6 +2925,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tikety',
         'Welcome!' => 'Vitajte!',
         'Please click the button below to create your first ticket.' => 'Na vytvorenie Vášho prvého tiketu stlačte tlačítko dole',
         'Create your first ticket' => 'Vytvoriť tiket',
@@ -2932,13 +2934,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Meno šablóny',
         'e. g. 10*5155 or 105658*' => 'napríklad 10*5155 alebo 105658*',
         'CustomerID' => 'Zákaznícke č.',
         'Types' => 'Typy',
         'Limitation' => '',
         'No time settings' => 'Bez nastavenia času',
-        'All' => 'Všetko',
         'Specific date' => '',
         'Only tickets created' => 'Len tikety vytvorené',
         'Date range' => '',
@@ -2947,7 +2950,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Uložiť ako šablónu',
         'Save as Template?' => 'Uložiť ako šablónu?',
-        'Template Name' => 'Meno šablóny',
         'Pick a profile name' => 'Vyberte meno profilu',
         'Output to' => 'Výstup na',
 
@@ -5181,7 +5183,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Tikety',
         'Ticket History Entries' => 'História tiketu',
         'Articles' => 'Články',
         'Attachments (DB, Without HTML)' => 'Prílohy',
@@ -5606,6 +5607,8 @@ sub Data {
         'Automated line break in text messages after x number of chars.' =>
             '',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
+            '',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
             '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
@@ -8805,6 +8808,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Označ ako Spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9045,7 +9049,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => '',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

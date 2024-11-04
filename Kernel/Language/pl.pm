@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.637877039723092;
+    $Self->{Completeness}        = 0.637666831438458;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2369,6 +2369,7 @@ sub Data {
         'in' => 'za',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Wszystkie',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => 'Zapisz zmiany',
@@ -2929,6 +2930,7 @@ sub Data {
         'Service level agreement' => 'Gwarantowany poziom świadczenia usług (SLA)',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Zgłoszenia',
         'Welcome!' => 'Witaj!',
         'Please click the button below to create your first ticket.' => 'Prosimy, kliknij przycisk poniżej aby utworzyć swoje pierwsze zgłoszenie.',
         'Create your first ticket' => 'Utwórz swoje pierwsze zgłoszenie',
@@ -2937,13 +2939,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Nazwa szablonu',
         'e. g. 10*5155 or 105658*' => 'np. 10*5155 lub 105658*',
         'CustomerID' => 'Identyfikator klienta',
         'Types' => 'Typy zgłoszeń',
         'Limitation' => '',
         'No time settings' => 'Brak ustawień czasowych',
-        'All' => 'Wszystkie',
         'Specific date' => 'Konkretna data',
         'Only tickets created' => 'Tylko zgłoszenia utworzone',
         'Date range' => 'Zakres dat',
@@ -2952,7 +2955,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Zapisz jako szablon',
         'Save as Template?' => 'Zapisać jako szablon?',
-        'Template Name' => 'Nazwa szablonu',
         'Pick a profile name' => 'Wybierz nazwę profilu',
         'Output to' => 'Wyniki prezentuj jako',
 
@@ -5186,7 +5188,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Rekordy bazy danych',
-        'Tickets' => 'Zgłoszenia',
         'Ticket History Entries' => 'Historia zgłoszeń',
         'Articles' => 'Wiadomości',
         'Attachments (DB, Without HTML)' => 'Załączniki (DB, bez HTML)',
@@ -5612,6 +5613,8 @@ sub Data {
             '',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Ustawia liczbę linii widocznych w wiadomościach tekstowych (np. linie zgłoszenia w QueueZoom)',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
             'Definiuje format daty używanej w formularzach (opcja lub pole wstawienia).',
@@ -8820,6 +8823,7 @@ Twój Zespół Helpdesk.
         'Manage tasks triggered by event or time based execution.' => 'Zarządza zadaniami wywołanymi zdarzeniami lub zaplanowymi czasowo.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Oznacz jako spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Oznacz to zgłoszenie jako SPAM!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9060,7 +9064,6 @@ Twój Zespół Helpdesk.
         'Ticket Priority.' => 'Priorytet zgłoszenia.',
         'Ticket Queue Overview' => 'Przegląd zgłoszeń na kolejkach',
         'Ticket Responsible.' => 'Odpowiedzialny za zgłoszenie.',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'Obserwujący zgłoszenie',
         'Ticket Zoom' => 'Szczegóły zgłoszenia',
         'Ticket Zoom.' => 'Szczegóły zgłoszenia.',

@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.894181638371518;
+    $Self->{Completeness}        = 0.893886966551326;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2365,6 +2365,7 @@ sub Data {
         'in' => 'у',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+        'All' => 'Све',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
         'Save changes' => '',
@@ -2925,6 +2926,7 @@ sub Data {
         'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Тикети',
         'Welcome!' => 'Добродошли!',
         'Please click the button below to create your first ticket.' => 'Молимо да притиснете дугме испод за креирање вашег првог тикета.',
         'Create your first ticket' => 'Креирајте ваш први тикет',
@@ -2933,13 +2935,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Профил',
+        'Template Name' => 'Назив шаблона',
         'e. g. 10*5155 or 105658*' => 'нпр. 10*5155 или 105658*',
         'CustomerID' => 'ID клијента',
         'Types' => 'Типови',
         'Limitation' => '',
         'No time settings' => 'Нема подешавања времена',
-        'All' => 'Све',
         'Specific date' => 'Одређени датум',
         'Only tickets created' => 'Само креирани тикети',
         'Date range' => 'Распон датума',
@@ -2948,7 +2951,6 @@ sub Data {
         'Save Search as Template?' => 'Сачувај претрагу као шаблон?',
         'Save as Template' => 'Сачувај као шаблон',
         'Save as Template?' => 'Сачувати као шаблон?',
-        'Template Name' => 'Назив шаблона',
         'Pick a profile name' => 'Изабери назив профила',
         'Output to' => 'Излаз на',
 
@@ -5182,7 +5184,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Записи у бази података',
-        'Tickets' => 'Тикети',
         'Ticket History Entries' => 'Историја уноса тикета',
         'Articles' => 'Чланци',
         'Attachments (DB, Without HTML)' => 'Прилози (база података, без HTML)',
@@ -5608,6 +5609,8 @@ sub Data {
             'Аутоматски крај реда у текстуалним порукама после х карактера.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Подешава број линија приказаних у текстуалним порукама (нпр број линија у детаљном прегледу реда).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Активира превуци и отпусти у главној навигацији.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Дефинише форноса датума у формуларе (опционо или поља за унос).',
@@ -8817,6 +8820,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => 'Управља задацима покренутим од догађаја или на основу временског извршавања.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Означи као Спам!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Означи овај тикет као бесмислен junk!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9057,7 +9061,6 @@ Thanks for your help!
         'Ticket Priority.' => 'Приоритет тикета.',
         'Ticket Queue Overview' => 'Преглед реда тикета',
         'Ticket Responsible.' => 'Одговоран за тикет.',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'Праћење тикета.',
         'Ticket Zoom' => 'Детаљи тикета',
         'Ticket Zoom.' => 'Детаљи тикета.',
