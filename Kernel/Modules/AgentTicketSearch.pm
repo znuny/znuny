@@ -1128,7 +1128,7 @@ sub Run {
                 push @PDFRow,  $Created;
                 push @PDFRow,  $Data{From};
                 push @PDFRow,  $Data{Subject};
-                push @PDFRow,  $Data{State};
+                push @PDFRow,  $LayoutObject->{LanguageObject}->Translate( $Data{State} );
                 push @PDFRow,  $Data{Queue};
                 push @PDFRow,  $Owner;
                 push @PDFRow,  $Customer;

@@ -15,6 +15,8 @@ use utf8;
 
 use parent qw(scripts::Migration::Base);
 
+use Kernel::System::VariableCheck qw(:all);
+
 our @ObjectDependencies = (
     'Kernel::Config',
     'Kernel::System::DB',
@@ -30,6 +32,8 @@ sub Run {
     my ( $Self, %Param ) = @_;
 
     return 1 if !$Self->_IsAffectedDatabaseBackend(%Param);
+
+    $Self->{RepairAndOptimizeTables} = [];
 
     return if !$Self->_CheckInnoDB(%Param);
     return if !$Self->_SetNames(%Param);
@@ -126,6 +130,24 @@ sub _SetCharacterSetDatabase {
     my $Verbose  = $Param{CommandlineOptions}->{Verbose} || 0;
     my $Database = $ConfigObject->Get('Database');
 
+    return if !$DBObject->Prepare(
+        SQL => '
+            SELECT default_character_set_name, default_collation_name
+            FROM   information_schema.SCHEMATA
+            WHERE  schema_name = ?
+        ',
+        Bind => [
+            \$Database,
+        ],
+        Limit => 1,
+    );
+
+    while ( my @Row = $DBObject->FetchrowArray() ) {
+        my ( $CharacterSet, $Collation ) = @Row;
+
+        return 1 if $CharacterSet eq 'utf8mb4' && $Collation eq 'utf8mb4_unicode_ci';
+    }
+
     # Do not quote database name in this statement!
     return if !$DBObject->Do(
         SQL => 'ALTER DATABASE ' . $Database . ' CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;',
@@ -141,13 +163,49 @@ sub _SetCharacterSetDatabase {
 sub _SetCharacterSetTables {
     my ( $Self, %Param ) = @_;
 
-    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    my $DBObject     = $Kernel::OM->Get('Kernel::System::DB');
+
+    my $Database = $ConfigObject->Get('Database');
+
+    my @SystemTables = $DBObject->GetSystemTables(
+        IncludePackageTables => 1,
+    );
+    my %SystemTables = map { $_ => 1 } @SystemTables;
+
+    return if !$DBObject->Prepare(
+        SQL => '
+            SELECT T.table_name, CCSA.character_set_name, CCSA.collation_name
+            FROM   information_schema.`TABLES` T, information_schema.`COLLATION_CHARACTER_SET_APPLICABILITY` CCSA
+            WHERE  CCSA.collation_name = T.table_collation
+                   AND T.table_schema = ?
+                   ORDER BY table_name
+        ',
+        Bind => [
+            \$Database,
+        ],
+    );
+
+    my @TablesToMigrate;
+
+    ROW:
+    while ( my @Row = $DBObject->FetchrowArray() ) {
+        my ( $TableName, $CharacterSet, $Collation ) = @Row;
+
+        next ROW if !$SystemTables{$TableName};                                         # Ignore non-system tables
+        next ROW if $CharacterSet eq 'utf8mb4' && $Collation eq 'utf8mb4_unicode_ci';
+
+        push @TablesToMigrate, $TableName;
+    }
+
+    return 1 if !@TablesToMigrate;
+
+    $Self->{RepairAndOptimizeTables} = [@TablesToMigrate];
 
     my $Verbose = $Param{CommandlineOptions}->{Verbose} || 0;
-    my @Tables  = $DBObject->ListTables();
     my @FailedTables;
 
-    for my $Table ( sort @Tables ) {
+    for my $Table ( sort @TablesToMigrate ) {
 
         # Do not quote table name in this statement!
         my $Success = $DBObject->Do(
@@ -177,13 +235,14 @@ sub _SetCharacterSetTables {
 sub _RepairAndOptimizeTables {
     my ( $Self, %Param ) = @_;
 
+    return 1 if !IsArrayRefWithData( $Self->{RepairAndOptimizeTables} );
+
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
     my $Verbose = $Param{CommandlineOptions}->{Verbose} || 0;
-    my @Tables  = $DBObject->ListTables();
 
     TABLE:
-    for my $Table ( sort @Tables ) {
+    for my $Table ( sort @{ $Self->{RepairAndOptimizeTables} } ) {
 
         my $Repair = $DBObject->Do(
             SQL => 'REPAIR TABLE ' . $Table . ';',

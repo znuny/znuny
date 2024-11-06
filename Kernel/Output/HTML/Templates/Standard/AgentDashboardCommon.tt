@@ -13,7 +13,7 @@
 [% RenderBlockStart("DashboardWidgetExpandContent") %]
             [% IF Data.ActiveContentLargeWidgets %]
             <li class="DashboardWidgetExpandListItem" data-widget-name="All">
-                <a class="[% Data.ClassDashboardWidgetExpandAll | html %]">All</a>
+                <a class="[% Data.ClassDashboardWidgetExpandAll | html %]">[% Translate("All") | html %]</a>
             </li>
             [% END %]
 [% RenderBlockEnd("DashboardWidgetExpandContent") %]
@@ -34,7 +34,7 @@
             <div class="Header">
                 <h2>[% Translate("Settings") | html %]</h2>
                 <div class="WidgetAction Toggle">
-                    <a href="#" title="[% Translate(" Show or hide the content") | html %]">
+                    <a href="#" title="[% Translate("Show or hide the content") | html %]">
                         <i class="fa fa-caret-down"></i>
                     </a>
                 </div>
@@ -65,8 +65,7 @@
                     </ul>
 
                     <div>
-                        <button class="btn-main btn-primary" accesskey="g" title="[% Translate(" Save changes") | html %]
-                            (g)" type="submit" value="[% Translate(" Save") | html %]">
+                        <button class="btn-main btn-primary" accesskey="g" title="[% Translate("Save changes") | html %] (g)" type="submit" value="[% Translate("Save") | html %]">
                             <span>[% Translate("Save changes") | html %]</span>
                         </button>
                     </div>
@@ -88,7 +87,7 @@
                         <li>
 [% RenderBlockStart("ContentSmallPreferences") %]
                             <div class="WidgetAction Settings">
-                                <a href="#" id="Dashboard[% Data.Name | html %]-toggle" title="[% Translate(" Settings") | html %]">
+                                <a href="#" id="Dashboard[% Data.Name | html %]-toggle" title="[% Translate("Settings") | html %]">
                                     <span class="iconWrapper">
                                         <i class="fa fa-cog"></i>
                                     </span>
@@ -101,7 +100,7 @@
                         <li>
 [% RenderBlockStart("ContentSmallRefresh") %]
                             <div class="WidgetAction Refresh">
-                                <a href="#" id="Dashboard[% Data.Name | html %]_toggle" title="[% Translate(" Refresh") | html %]">
+                                <a href="#" id="Dashboard[% Data.Name | html %]_toggle" title="[% Translate("Refresh") | html %]">
                                     <span class="iconWrapper">
                                         <i class="fa fa-refresh"></i>
                                     </span>
@@ -116,7 +115,7 @@
                             <div class="WidgetAction Close">
                                 <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=UpdateRemove;Name=[% Data.Name |
                             uri %];CustomerID=[% Data.CustomerID | uri %];CustomerUserID=[% Data.CustomerUserID | uri %];[%
-                            Env("ChallengeTokenParam") | html %]" title="[% Translate(" Close this widget") | html %]">
+                            Env("ChallengeTokenParam") | html %]" title="[% Translate("Close this widget") | html %]">
                                     <span class="iconWrapper">
                                         <i class="fa fa-times"></i>
                                     </span>
@@ -183,7 +182,7 @@
                                 </button>
                                 <button id="Dashboard[% Data.Name | html %]_cancel"
                                         class="DontPrint btn-main btn-cancel-ghost"
-                                        type="submit" value="[% Translate(" Cancel") | html %]">
+                                        type="submit" value="[% Translate("Cancel") | html %]">
                                     <span>[% Translate("Cancel") | html %]</span>
                                 </button>
                             </div>
@@ -236,7 +235,7 @@
                         <li>
 [% RenderBlockStart("ContentLargePreferences") %]
                             <div class="WidgetAction Settings">
-                                <a href="#" id="Dashboard[% Data.Name | html %]-toggle" title="[% Translate(" Settings") | html %]">
+                                <a href="#" id="Dashboard[% Data.Name | html %]-toggle" title="[% Translate("Settings") | html %]">
                                     <span class="iconWrapper">
                                         <i class="fa fa-cog"></i>
                                     </span>
@@ -250,7 +249,7 @@
                             <div class="WidgetAction Close">
                                 <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=UpdateRemove;Name=[% Data.Name |
                                     uri %];CustomerID=[% Data.CustomerID | uri %];CustomerUserID=[% Data.CustomerUserID | uri %];[%
-                                    Env("ChallengeTokenParam") | html %]" title="[% Translate(" Close this widget") | html %]">
+                                    Env("ChallengeTokenParam") | html %]" title="[% Translate("Close this widget") | html %]">
                                     <span class="iconWrapper">
                                         <i class="fa fa-times"></i>
                                     </span>
@@ -316,8 +315,8 @@
                                             </ul>
                                             <div class="FilterInputContainer">
                                                 <input type="text" class="FilterAvailableFields" name="FilterAvailableFields"
-                                                    value="" title="[% Translate(" Filter available fields") | html %]"
-                                                    placeholder="[% Translate(" Filter available fields") | html %]..." />
+                                                    value="" title="[% Translate("Filter available fields") | html %]"
+                                                    placeholder="[% Translate("Filter available fields") | html %]..." />
                                             </div>
                                             <ul class="AllocationList Tablelike AvailableFields"
                                                 id="AvailableField-Dashboard[% Data.Name | html %]"></ul>
@@ -329,8 +328,8 @@
                                             </ul>
                                             <div class="FilterInputContainer">
                                                 <input type="text" class="FilterAssignedFields" name="FilterAssignedFields"
-                                                    value="" title="[% Translate(" Filter assigned fields") | html %]"
-                                                    placeholder="[% Translate(" Filter assigned fields") | html %]..." />
+                                                    value="" title="[% Translate("Filter assigned fields") | html %]"
+                                                    placeholder="[% Translate("Filter assigned fields") | html %]..." />
                                             </div>
                                             <ul class="AllocationList Tablelike AssignedFields OrderNumbers"
                                                 id="AssignedFields-Dashboard[% Data.Name | html %]"></ul>
@@ -343,10 +342,10 @@
 [% RenderBlockEnd("ContentLargePreferencesItemRawHTML") %]
 [% RenderBlockEnd("ContentLargePreferencesItem") %]
                             <div class="SaveButtons align-right">
-                                <button id="Dashboard[% Data.Name | html %]_cancel" class="btn-main btn-width-md btn-cancel-ghost DontPrint" type="submit" value="[% Translate(" Cancel") | html %]">
+                                <button id="Dashboard[% Data.Name | html %]_cancel" class="btn-main btn-width-md btn-cancel-ghost DontPrint" type="submit" value="[% Translate("Cancel") | html %]">
                                     <span>[% Translate("Cancel") | html %]</span>
                                 </button>
-                                <button id="Dashboard[% Data.Name | html %]_submit" class="btn-main btn-width-md btn-primary DontPrint" type="submit" value="[% Translate(" Submit") | html %]">
+                                <button id="Dashboard[% Data.Name | html %]_submit" class="btn-main btn-width-md btn-primary DontPrint" type="submit" value="[% Translate("Submit") | html %]">
                                     <span>[% Translate("Save Changes") | html %]</span>
                                 </button>
                             </div>

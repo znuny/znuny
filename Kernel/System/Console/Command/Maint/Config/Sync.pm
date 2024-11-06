@@ -35,11 +35,11 @@ sub Run {
 
     if ( !$Success ) {
         $Self->PrintError("Could not synchronize system configuration\n");
-        $Self->Print("\n<red>Fail.</red>\n");
+        $Self->Print("<red>Fail.</red>\n");
         return $Self->ExitCodeError();
     }
 
-    $Self->Print("\n<green>Done.</green>\n");
+    $Self->Print("<green>Done.</green>\n");
     return $Self->ExitCodeOk();
 }
 

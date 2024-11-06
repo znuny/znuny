@@ -40,6 +40,7 @@
 <!-- activity -->
 <Table Name="activity">
     <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="INTEGER"/>
+    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/>
     <Column Name="user_id" Required="true" Type="INTEGER"/>
     <Column Name="activity_type" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="activity_title" Required="true" Size="255" Type="VARCHAR"/>
@@ -48,6 +49,9 @@
     <Column Name="activity_link" Required="false" Size="255" Type="VARCHAR"/>
     <Column Name="create_time" Required="true" Type="DATE"/>
     <Column Name="create_by" Required="true" Type="INTEGER"/>
+    <Unique Name="activity_uuid">
+        <UniqueColumn Name="dbcrud_uuid"/>
+    </Unique>
     <ForeignKey ForeignTable="users">
         <Reference Local="user_id" Foreign="id"/>
         <Reference Local="create_by" Foreign="id"/>
@@ -2606,7 +2610,7 @@
 <!-- calendar appointment plugin -->
 <Table Name="calendar_appointment_plugin">
     <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="INTEGER"/>
-    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/> <!-- not required because up until 6.5 this column was added "on the fly" -->
+    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/>
     <Column Name="appointment_id" Required="true" Type="BIGINT"/>
     <Column Name="plugin_key" Required="true" Size="1000" Type="VARCHAR"/>
     <Column Name="config" Required="false" Size="1000000" Type="VARCHAR"/>
@@ -2826,7 +2830,7 @@
 <!-- OAuth 2 tokens and configs -->
 <Table Name="oauth2_token_config">
     <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="INTEGER"/>
-    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/> <!-- not required because up until 6.5 this column was added "on the fly" -->
+    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/>
     <Column Name="name" Required="true" Size="250" Type="VARCHAR"/>
     <Column Name="config" Required="true" Size="100000" Type="VARCHAR"/>
     <Column Name="valid_id" Required="true" Type="SMALLINT"/>
@@ -2851,7 +2855,7 @@
 
 <Table Name="oauth2_token">
     <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="INTEGER"/>
-    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/> <!-- not required because up until 6.5 this column was added "on the fly" -->
+    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/>
     <Column Name="token_config_id" Required="true" Type="INTEGER"/>
     <Column Name="authorization_code" Required="false" Size="100000" Type="VARCHAR"/>
     <Column Name="token" Required="false" Size="100000" Type="VARCHAR"/>

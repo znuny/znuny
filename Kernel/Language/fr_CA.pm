@@ -34,7 +34,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.327314510833881;
+    $Self->{Completeness}        = 0.328390179601252;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1693,7 +1693,7 @@ sub Data {
         'Available Fields' => '',
         'Filter available fields' => '',
         'Assigned Fields' => '',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '',
         'Is visible for customer' => '',
         'Text Template' => '',
@@ -2372,23 +2372,16 @@ sub Data {
         'in' => 'dans',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
+        'All' => 'Tout',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'plus',
         'No Data Available.' => '',
         'Available Columns' => '',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => '',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '',
@@ -2628,7 +2621,7 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '',
         'Date Invalid!' => 'Date invalide',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => '',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2638,12 +2631,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'Merci de retirer cette entrée et de la remplacer par une valeur correcte.',
         'This address already exists on the address list.' => 'Cette adresse est déjà dans la liste.',
-        ' Cc' => '',
         'Remove Cc' => 'Retirer le Cc',
         'Bcc' => 'Copie invisible ',
-        ' Bcc' => '',
         'Remove Bcc' => 'Retirer le Bcc',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '',
@@ -2652,23 +2642,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'Créer une nouvelle demande courriel',
-        ' Example Template' => '',
         'Example Template' => '',
         'To customer user' => 'Au client utilisateur',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => '',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => '',
         'Remove Ticket Customer User' => '',
         'From queue' => 'De la file ',
-        ' Get all' => '',
         'Get all' => 'Tout prendre',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2721,18 +2704,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'Aucune donnée relative à la demande n\'a été trouvée.',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'Émetteur',
         'Customer User Name' => '',
         'Impact' => '',
         'Update Time' => 'Délai de mise à jour ',
         'Solution Time' => 'Délai de résolution ',
         'First Response Time' => 'Délai de la première réponse',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'Déplacer la demande vers une autre file',
         'Change queue' => 'Changer de file',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2741,21 +2722,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => 'Retirer de la liste des demandes sous surveillance',
         'Tickets per page' => 'Demandes par page ',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => '',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => '',
         'Create New Phone Ticket' => 'Créer une nouvelle demande téléphonique',
         'Please include at least one customer for the ticket.' => 'Veuillez ajouter au moins un client à la demande.',
-        'Select this customer as the main customer.' => '',
         'To queue' => 'Vers la file ',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2768,7 +2746,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => '',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => '',
@@ -2812,7 +2789,6 @@ sub Data {
         'Save as default' => '',
         'Drafts' => '',
         'by' => 'par',
-        'Move ticket to a different queue' => 'Déplacer la demande vers une autre file',
         'Change Queue' => 'Changer de file',
         'There are no dialogs available at this point in the process.' =>
             '',
@@ -2954,11 +2930,10 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'Nouvelle demande',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Demandes',
         'Welcome!' => 'Bienvenue !',
         'Please click the button below to create your first ticket.' => 'Veuillez cliquer sur le bouton ci-dessous pour créer votre première demande.',
         'Create your first ticket' => 'Créer votre première demande',
@@ -2967,13 +2942,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Nom de modèle',
         'e. g. 10*5155 or 105658*' => 'p. ex. 10*5155 ou 105658*',
         'CustomerID' => 'Numéro de client ',
         'Types' => 'Types',
         'Limitation' => '',
         'No time settings' => 'Pas de réglages de temps',
-        'All' => 'Tout',
         'Specific date' => '',
         'Only tickets created' => 'Seulement les demandes créées',
         'Date range' => '',
@@ -2982,7 +2958,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Sauver comme Modèle',
         'Save as Template?' => 'Sauvegarder comme modèle',
-        'Template Name' => 'Nom de modèle',
         'Pick a profile name' => 'Choisir un nom de profil',
         'Output to' => 'Sortie vers',
 
@@ -3212,7 +3187,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '',
-        ' e. g.' => ' p. ex.',
+        'e. g.' => 'p. ex.',
         'To get the first 20 character of the appointment title.' => '',
         'To get the calendar attribute' => '',
         'Attributes of the recipient user for the notification' => '',
@@ -3244,9 +3219,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => '',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             '',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'p. ex.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5046,6 +5018,8 @@ sub Data {
         'Server Database Charset' => '',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => '',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 
@@ -5217,7 +5191,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Demandes',
         'Ticket History Entries' => '',
         'Articles' => 'Articles',
         'Attachments (DB, Without HTML)' => '',
@@ -5643,6 +5616,8 @@ sub Data {
             'Saut de ligne automatique dans les messages texte tous les x charactères.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Établit le nombre de lignes affichées dans les messages (p. ex. lignes affichées par demande dans la file de synthèse (QueueZoom).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
             'Détermine le format de date utilisé dans les formulaires (champs d\'entrée ou d\'option).',
@@ -7907,6 +7882,8 @@ sub Data {
             '',
         'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".' =>
             '',
+        'Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.' =>
+            '',
 
         # XML Definition: scripts/database/initial_insert.xml
         'invalid-temporarily' => 'temporairement non valide',
@@ -8839,6 +8816,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Marquer comme pourriel!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Marquer cette demande comme pourriel!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9079,7 +9057,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'État des files',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

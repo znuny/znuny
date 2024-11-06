@@ -2,13 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2023-03-23 09:27+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2024-10-19 00:17+0000\n"
+"Last-Translator: BuilderNSV <nikitin.sergey.v@gmail.com>\n"
+"Language-Team: Russian <https://translations.znuny.org/projects/znuny/znuny/ru/>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
 msgid "Actions"
@@ -812,7 +814,7 @@ msgstr "Нет активных учетных записей"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminCommunicationLog.tt
 msgid "Number of accounts with problems: %s"
-msgstr "Количество учетных записей с проблемами:%s"
+msgstr "Количество учетных записей с проблемами: %s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminCommunicationLog.tt
 msgid "Number of accounts with warnings: %s"
@@ -1108,11 +1110,11 @@ msgstr "Изменить связь клиентов с группой"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminCustomerGroup.tt
 msgid "Toggle %s Permission for all"
-msgstr "Переключить разрешение «%s» для всех"
+msgstr "Переключить разрешение \"%s\" для всех"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminCustomerGroup.tt
 msgid "Toggle %s permission for %s"
-msgstr "Переключить разрешение «%s» для %s"
+msgstr "Переключить разрешение \"%s\" для %s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminCustomerGroup.tt
 msgid "Customer Default Groups:"
@@ -1576,7 +1578,7 @@ msgstr "Здесь можно указать необязательную HTTP-�
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldDateTime.tt
 msgid "If special characters (&, @, :, /, etc.) should not be encoded, use 'url' instead of 'uri' filter."
-msgstr "Если специальные символы (&, @, :, /, т.п.) не должны быть закодированы, вместо «uri» используйте фильтр «url»."
+msgstr "Если специальные символы (&, @, :, /, т.п.) не должны быть закодированы, вместо \"uri\" используйте фильтр \"url\"."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldDateTime.tt
 msgid "Example"
@@ -2552,7 +2554,7 @@ msgstr "Общие настройки"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceErrorHandlingDefault.tt
 msgid "The name can be used to distinguish different error handling configurations."
-msgstr "Имя может быть использовано для для отличия настроек обработки ошибок."
+msgstr "Имя может быть использовано для отличия настроек обработки ошибок."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceErrorHandlingDefault.tt
 msgid "Please provide a unique name for this web service."
@@ -2848,7 +2850,7 @@ msgstr "Синхронные триггеры событий будут обра
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceInvokerDefault.tt
 msgid "Add all attachments"
-msgstr ""
+msgstr "Добавьте все вложения"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceInvokerDefault.tt
 msgid "Add all attachments to invoker payload."
@@ -3328,7 +3330,7 @@ msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
 msgid "ATTENTION: Key file and/or password (if needed, see below) seem to be invalid."
-msgstr ""
+msgstr "ВНИМАНИЕ: Файл ключа и/или пароль (при необходимости см. ниже) выглядят недействительными."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
 msgid "Path to private key file (PEM or DER). The key will be used to sign the JWT."
@@ -3340,7 +3342,7 @@ msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
 msgid "ATTENTION: Password and/or key file (see above) seem to be invalid."
-msgstr ""
+msgstr "ВНИМАНИЕ: Пароль и/или файл ключа (см. выше) кажутся недействительными."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
 msgid "JWT authentication: Certificate file"
@@ -3348,11 +3350,11 @@ msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
 msgid "ATTENTION: Certificate file could not be parsed."
-msgstr ""
+msgstr "ВНИМАНИЕ: Не удалось разобрать файл сертификата."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
 msgid "ATTENTION: Certificate is expired."
-msgstr ""
+msgstr "ВНИМАНИЕ: Срок действия сертификата истек."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
 msgid "Path to X.509 certificate file (PEM). Data of the certificate can be used for the payload and/or header data of the JWT."
@@ -3664,7 +3666,7 @@ msgstr "Текст, который будет использоваться ка�
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPSOAP.tt
 msgid "Please consider XML element naming restrictions (e.g. don't use '<' and '&')."
-msgstr "Обратите внимание на ограничения именования XML элементов (например, нельзя использовать «<» и «&»)."
+msgstr "Обратите внимание на ограничения именования XML элементов (например, нельзя использовать \"<\" и \"&\")."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPSOAP.tt
 msgid "Response name scheme"
@@ -3808,7 +3810,7 @@ msgstr "После сохранения конфигурации вы будет
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceWebservice.tt
 msgid "If you want to return to overview please click the \"Go to overview\" button."
-msgstr "Чтобы вернуться к обзору, нажмите кнопку «Перейти к обзору»."
+msgstr "Чтобы вернуться к обзору, нажмите кнопку \"Перейти к обзору\"."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceWebservice.tt
 msgid "Edit Web Service"
@@ -4236,7 +4238,7 @@ msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminOAuth2TokenManagement/Edit.tt
 msgid "Access token scope"
-msgstr ""
+msgstr "Область действия токена доступа"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminOAuth2TokenManagement/Edit.tt
 msgid "Template"
@@ -5095,7 +5097,7 @@ msgid "Assigned Fields"
 msgstr "Назначенные поля"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementActivityDialog.tt
-msgid " Filter assigned fields"
+msgid "Filter assigned fields"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementActivityDialog.tt
@@ -5632,7 +5634,7 @@ msgstr "Если ничего не выбрано, тогда в этой гру
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminRoleGroup.tt
 msgid "Toggle %s permission for all"
-msgstr "Переключить разрешение «%s» для всех"
+msgstr "Переключить разрешение \"%s\" для всех"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminRoleGroup.tt
 msgid "move_into"
@@ -6208,7 +6210,7 @@ msgstr "Искать среди всех настроек..."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemConfiguration.tt
 msgid "There are currently no settings available. Please make sure to run 'znuny.Console.pl Maint::Config::Rebuild' before using the software."
-msgstr "В настоящий момент нет доступных настроек. Убедитесь, что перед началом использования приложения была выполнена команда «znuny.Console.pl Maint::Config::Rebuild»."
+msgstr "В настоящий момент нет доступных настроек. Убедитесь, что перед началом использования приложения была выполнена команда 'znuny.Console.pl Maint::Config::Rebuild'."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemConfigurationDeployment.tt
 msgid "Help"
@@ -7051,47 +7053,19 @@ msgid "in"
 msgstr "в"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Show or hide the content"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Search inactive widgets"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Active Widgets"
-msgstr ""
+msgstr "Активные Виджеты"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Save changes"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Save"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid "Save changes"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Settings"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Refresh"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Close this widget"
+msgid "Close this widget"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Hide"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Cancel"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
@@ -7107,16 +7081,8 @@ msgid "Available Columns"
 msgstr "Колонки, доступные для отображения"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Filter available fields"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Visible Columns (order by drag & drop)"
 msgstr "Отображаемые (порядок устанавливается перетаскиванием)"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Submit"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
 msgid "Change Customer Relations"
@@ -7532,7 +7498,7 @@ msgstr "Редактировать отчет \"%s\"."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsOverview.tt
 msgid "Export statistic \"%s\""
-msgstr "Экспортировать отчёт «%s»"
+msgstr "Экспортировать отчёт \"%s\""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsOverview.tt
 msgid "Export statistic %s"
@@ -7723,10 +7689,6 @@ msgid "Bounce %s%s%s"
 msgstr "Перенаправить %s%s%s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBounce.tt
-msgid "cancel"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBounce.tt
 msgid "Bounce to"
 msgstr "Перенаправить на"
 
@@ -7799,10 +7761,6 @@ msgid "Date Invalid!"
 msgstr "Неверная дата!"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Select one or more recipients from the customer user address book."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
 msgid "Customer user address book"
 msgstr "Адресная книга клиентов"
 
@@ -7827,10 +7785,6 @@ msgid "This address already exists on the address list."
 msgstr "Такой адрес уже существует в списке адресов."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Cc"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
 msgid "Remove Cc"
 msgstr "Удалить из копии"
 
@@ -7839,16 +7793,8 @@ msgid "Bcc"
 msgstr "Скрытая копия"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Bcc"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
 msgid "Remove Bcc"
 msgstr "Удалить из скрытой копии"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Send mail"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
 msgid "Change Customer of %s%s%s"
@@ -7867,10 +7813,6 @@ msgid "Create New Email Ticket"
 msgstr "Создать заявку по email"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Example Template"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Example Template"
 msgstr "Пример шаблона"
 
@@ -7879,20 +7821,8 @@ msgid "To customer user"
 msgstr "Клиенту"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " To"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Please include at least one customer user for the ticket."
 msgstr "Укажите, пожалуйста, хотя бы одного клиента"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Select this customer as the main customer."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " To customer user"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Remove Ticket Customer User"
@@ -7903,22 +7833,14 @@ msgid "From queue"
 msgstr "Из очереди"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Get all"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Get all"
 msgstr "Получить всех"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Message body"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
 msgid "Outbound Email for %s%s%s"
 msgstr "Исходящее письмо для %s%s%s"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
 msgid "Select one or more recipients from the customer user address book."
 msgstr "Выберите одного или более получателей из адресной книги клиентов."
 
@@ -8063,19 +7985,15 @@ msgid "NoteToTicket invalid."
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Select all"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "No ticket data found."
 msgstr "Не найдено данных о заявках."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Open / Close ticket action menu"
+msgid "Open / Close ticket action menu"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Select this ticket"
+msgid "Select this ticket"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
@@ -8103,14 +8021,6 @@ msgid "First Response Time"
 msgstr "Время до первого ответа"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Service Time"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Move ticket to a different queue"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "Change queue"
 msgstr "Сменить очередь"
 
@@ -8130,14 +8040,6 @@ msgstr ""
 msgid "Tickets per page"
 msgstr "Заявок на страницу"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
-msgid "Filter assigned fields"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-msgid " Missing channel"
-msgstr ""
-
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
 msgid "Missing channel"
 msgstr "Ошибочный канал"
@@ -8147,7 +8049,7 @@ msgid "Reset overview"
 msgstr "Сбросить настройки просмотра"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
-msgid " Column Filters Form"
+msgid "Column Filters Form"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
@@ -8162,7 +8064,7 @@ msgstr "Создать телефонную заявку"
 msgid "Please include at least one customer for the ticket."
 msgstr "Пожалуйста, введите хотя бы одного клиента для заявки."
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Select this customer as the main customer."
 msgstr "Выбрать этого клиента главным клиентом"
 
@@ -8189,10 +8091,6 @@ msgstr "Скачать это письмо"
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
 msgid "Create New Process Ticket"
 msgstr "Создать новую процессную заявку"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
-msgid " Loading"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
 msgid "Enroll Ticket into a Process"
@@ -8342,7 +8240,7 @@ msgstr "Черновики"
 msgid "by"
 msgstr "кем"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "Move ticket to a different queue"
 msgstr "Переместить заявку в другую очередь"
 
@@ -8727,15 +8625,11 @@ msgid "New Ticket"
 msgstr "Новая заявка"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
-msgid " Service level agreement"
+msgid "Service level agreement"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
 msgid "Dymanic Info"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
-msgid " Subject"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
@@ -8774,7 +8668,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "Без указания времени"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Все"
 
@@ -8884,15 +8778,15 @@ msgstr "Сохранить как новый черновик"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/FormElements/DraftNotifications.tt
 msgid "You have loaded the draft \"%s\"."
-msgstr "Вы загрузили черновик «%s»."
+msgstr "Вы загрузили черновик \"%s\"."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/FormElements/DraftNotifications.tt
 msgid "You have loaded the draft \"%s\". You last changed it %s."
-msgstr "Вы загрузили черновик «%s». Последнее раз вы обновляли его %s."
+msgstr "Вы загрузили черновик \"%s\". Последний раз Вы обновляли его %s."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/FormElements/DraftNotifications.tt
 msgid "You have loaded the draft \"%s\". It was last changed %s by %s."
-msgstr "Вы загрузили черновик «%s». Последнее обновление его было %s."
+msgstr "Вы загрузили черновик \"%s\". Последнее его обновление было %s."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/FormElements/DraftNotifications.tt
 msgid "Please note that this draft is outdated because the ticket was modified since this draft was created."
@@ -8916,7 +8810,7 @@ msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Header.tt
 msgid "Mark all activities as seen"
-msgstr ""
+msgstr "Пометить все активности как прочитанные"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Header.tt
 msgid "Seen all"
@@ -9395,8 +9289,8 @@ msgid "To get the appointment attribute"
 msgstr "Чтобы получить атрибут мероприятия"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
-msgid " e. g."
-msgstr " например,"
+msgid "e. g."
+msgstr "например,"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
 msgid "To get the first 20 character of the appointment title."
@@ -9481,10 +9375,6 @@ msgstr "Значения внутренних ключей динамическ�
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminNotificationEvent.tt
 msgid "Ticket dynamic fields display values, useful for Dropdown and Multiselect fields"
 msgstr "Отображаемые значения динамических полей заявки, полезно при использовании полей типа Dropdown и Multiselect"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-msgid "e. g."
-msgstr "например,"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
 msgid "To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types."
@@ -9616,7 +9506,7 @@ msgstr "Настройка фильтров"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Statistics/RestrictionsWidget.tt
 msgid "Please select only one element or turn off the button 'Fixed'."
-msgstr "Выберите только один пункт или уберите флажок «Фиксировано»."
+msgstr "Выберите только один пункт или уберите флажок 'Фиксировано'."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Statistics/RestrictionsWidget.tt
 msgid "Absolute period"
@@ -12232,7 +12122,7 @@ msgstr "Клиент автоматически добавлен копию со
 
 #. Perl Module: Kernel/Modules/AgentTicketEmail.pm
 msgid "Ticket \"%s\" created!"
-msgstr "Создана заявка «%s»!"
+msgstr "Создана заявка \"%s\"!"
 
 #. Perl Module: Kernel/Modules/AgentTicketEmail.pm
 msgid "No Subaction!"
@@ -12976,7 +12866,7 @@ msgstr "Разделить это сообщение"
 
 #. Perl Module: Kernel/Output/HTML/ArticleAction/AgentTicketPlain.pm
 msgid "View the source for this Article"
-msgstr "Посмотреть исходный текст этой Статьи "
+msgstr "Посмотреть исходный текст этого Сообщения"
 
 #. Perl Module: Kernel/Output/HTML/ArticleAction/AgentTicketPlain.pm
 msgid "Plain Format"
@@ -14486,7 +14376,7 @@ msgstr "Служба не запущена."
 msgid "Database Records"
 msgstr "Записи базы данных"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Tickets"
 msgstr "Заявки"
 
@@ -15436,7 +15326,7 @@ msgstr "Задает способ ввода даты (выбором (option) �
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Defines the available steps in time selections. Select \"Minute\" to be able to select all minutes of one hour from 1-59. Select \"30 Minutes\" to only make full and half hours available."
-msgstr "Определяет доступные шаги при выборе временнОго интервала. Выберите «Минуты», чтобы выбрать все минуты одного часа от 1 до 59. Выберите «30 минут», чтобы получить полные часы и полчаса."
+msgstr "Определяет доступные шаги при выборе временнОго интервала. Выберите \"Минуты\", чтобы выбрать все минуты одного часа от 1 до 59. Выберите \"30 минут\", чтобы сделать доступными только полные часы и полчаса."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Shows time in long format (days, hours, minutes), if enabled; or in short format (days, hours), if not enabled."
@@ -15572,7 +15462,7 @@ msgstr "Настройки конфигурации MailQueue."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Define which avatar engine should be used for the agent avatar on the header and the sender images in AgentTicketZoom. If 'None' is selected, initials will be displayed instead. Please note that selecting anything other than 'None' will transfer the encrypted email address of the particular user to an external service."
-msgstr "Определите, какой движок аватара следует использовать для аватара агента в заголовке и изображения отправителя в AgentTicketZoom. Если выбрано «Нет», вместо него будут отображаться инициалы. Обратите внимание, что выбор чего-либо другого, кроме «Нет», переносит зашифрованный адрес электронной почты конкретного пользователя на внешнюю службу."
+msgstr "Определите, какой движок аватара следует использовать для аватара агента в заголовке и изображениях отправителя в AgentTicketZoom. Если выбрано 'Нет', вместо него будут отображаться инициалы. Обратите внимание, что выбор чего-либо другого, кроме 'Нет', переносит зашифрованный адрес электронной почты конкретного пользователя на внешнюю службу."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Define which avatar default image should be used for the current agent if no gravatar is assigned to the mail address of the agent. Check https://gravatar.com/site/implement/images/ for further information."
@@ -16332,7 +16222,7 @@ msgstr "Задает параметры личных настроек для к�
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Defines all the parameters for this item in the customer preferences. 'PasswordRegExp' allows to match passwords against a regular expression. Define the minimum number of characters using 'PasswordMinSize'. Define if at least 2 lowercase and 2 uppercase letter characters are needed by setting the appropriate option to '1'. 'PasswordMin2Characters' defines if the password needs to contain at least 2 letter characters (set to 0 or 1). 'PasswordNeedDigit' controls the need of at least 1 digit (set to 0 or 1 to control)."
-msgstr "Определяет все параметры этого элемента в личных настройках клиента. «PasswordRegExp» позволяет сопоставлять пароли с регулярным выражением. Определите минимальное количество символов, используя 'PasswordMinSize'. Определите, требуется ли как минимум 2 строчных буквы и 2 буквы в верхнем регистре, установив соответствующую опцию в «1». «PasswordMin2Characters» определяет, должен ли пароль содержать не менее двух буквенных символов (установите в 0 или 1). «PasswordNeedDigit» управляет потребностью не менее 1 цифры (устанавливается в 0 или 1 )."
+msgstr "Определяет все параметры этого элемента в личных настройках клиента. 'PasswordRegExp' позволяет сопоставлять пароли с регулярным выражением. Определите минимальное количество символов, используя 'PasswordMinSize'. Определите, требуется ли как минимум 2 строчных буквы и 2 буквы в верхнем регистре, установив соответствующую опцию в '1'. 'PasswordMin2Characters' определяет, должен ли пароль содержать не менее 2 буквенных символов (устанавливается в 0 или 1). 'PasswordNeedDigit' управляет необходимостью указывать не менее 1 цифры (устанавливается в 0 или 1 )."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Defines the config parameters of this item, to be shown in the preferences view."
@@ -16728,7 +16618,7 @@ msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Activates week number for datepickers."
-msgstr ""
+msgstr "Активирует номер недели при выборе даты."
 
 #. XML Definition: Kernel/Config/Files/XML/GenericInterface.xml
 msgid "Performs the configured action for each event (as an Invoker) for each configured web service."
@@ -16988,7 +16878,7 @@ msgstr "Включить функцию архивирования заявок 
 
 #. XML Definition: Kernel/Config/Files/XML/Ticket.xml
 msgid "Controls if the ticket and article seen flags are removed when a ticket is archived."
-msgstr "Управляет удалением флагов просмотра заявок и сообщений при архивирвании заявки."
+msgstr "Управляет удалением флагов просмотра заявок и сообщений при архивировании заявки."
 
 #. XML Definition: Kernel/Config/Files/XML/Ticket.xml
 msgid "Removes the ticket watcher information when a ticket is archived."
@@ -17408,7 +17298,7 @@ msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Ticket.xml
 msgid "Activates a blinking mechanism of the service that contains the oldest ticket."
-msgstr ""
+msgstr "Активирует механизм моргания сервиса, который содержит самую старую заявку."
 
 #. XML Definition: Kernel/Config/Files/XML/Ticket.xml
 msgid "Activates time accounting."
@@ -20224,7 +20114,7 @@ msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Activates the selection if a note in NoteToLinkedTicket screen should be created in this origin ticket."
-msgstr ""
+msgstr "Активирует выбор, если в этой исходной заявке должна быть создана заметка на NoteToLinkedTicket экране."
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Defines the default value if a note in NoteToLinkedTicket screen should be created in this origin ticket."
@@ -20720,11 +20610,11 @@ msgstr ""
 
 #. JS File: var/httpd/htdocs/js/Core.Activity.js
 msgid "The activity could not be marked as seen."
-msgstr ""
+msgstr "Активность не может быть помечена как прочитанная."
 
 #. JS File: var/httpd/htdocs/js/Core.Activity.js
 msgid "The activities could not be marked as seen."
-msgstr ""
+msgstr "Активности не могут быть помечены как прочитанные."
 
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.ACL.js
 msgid "Add all"
@@ -20864,7 +20754,7 @@ msgstr "Удалить invoker"
 
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.Group.js
 msgid "WARNING: When you change the name of the group 'admin', before making the appropriate changes in the SysConfig, you will be locked out of the administrations panel! If this happens, please rename the group back to admin per SQL statement."
-msgstr "ВНИМАНИЕ! Если вы измените имя группы «admin» до того, как поменяете название этой группы конфигурации системы, у вас не будет прав доступа на панель администрирования. Если это произошло, верните прежнее название группы (admin) вручную командой SQL."
+msgstr "ВНИМАНИЕ! Если вы измените имя группы 'admin' до того, как поменяете название этой группы конфигурации системы, у вас не будет прав доступа на панель администрирования. Если это произошло, верните прежнее название группы (admin) вручную командой SQL."
 
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.MailAccount.js
 msgid "Delete this Mail Account"
@@ -21048,7 +20938,7 @@ msgstr "Обновите вручную"
 
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.SysConfig.Entity.js
 msgid "You can either have the affected settings updated automatically to reflect the changes you just made or do it on your own by pressing 'update manually'."
-msgstr "Вы можете либо автоматически изменять затронутые параметры, чтобы отразить изменения, которые вы только что сделали, либо сделать это самостоятельно, нажав «обновить вручную»."
+msgstr "Вы можете либо автоматически изменять затронутые параметры, чтобы отразить изменения, которые Вы только что сделали, либо сделать это самостоятельно, нажав 'обновить вручную'."
 
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.SysConfig.Entity.js
 msgid "Save and update automatically"
@@ -21512,15 +21402,15 @@ msgstr "Следующие типы файлов не разрешены для 
 
 #. JS File: var/httpd/htdocs/js/Core.UI.js
 msgid "The following files exceed the maximum allowed size per file of %s and were not uploaded: %s"
-msgstr ""
+msgstr "Следующие файлы превысили максимальный допустимый размер одного файла (%s) и не были загружены: %s"
 
 #. JS File: var/httpd/htdocs/js/Core.UI.js
 msgid "The names of the following files exceed the maximum allowed length of %s characters and were not uploaded: %s"
-msgstr ""
+msgstr "Следующие файлы превысили максимальное допустимое количество символов в имени (%s) и не были загружены: %s"
 
 #. JS File: var/httpd/htdocs/js/Core.UI.js
 msgid "The following files were already uploaded and have not been uploaded again: %s"
-msgstr ""
+msgstr "Следующие файлы уже загружены и не были загружены снова: %s"
 
 #. JS File: var/httpd/htdocs/js/Core.UI.js
 msgid "No space left for the following files: %s"
@@ -21528,7 +21418,7 @@ msgstr "Недостаточно места для следующих файло
 
 #. JS File: var/httpd/htdocs/js/Core.UI.js
 msgid "Available space %s of %s."
-msgstr "Доступное место 1%s из 1%s"
+msgstr "Доступное место %s из %s"
 
 #. JS File: var/httpd/htdocs/js/Core.UI.js
 msgid "Upload information"
@@ -21710,7 +21600,7 @@ msgstr "Затраченное время"
 
 #. SysConfig
 msgid "Activation of dynamic fields for screens."
-msgstr ""
+msgstr "Активация динамических полей для экранов."
 
 #. SysConfig
 msgid "Activity LinkTarget"
@@ -21754,7 +21644,7 @@ msgstr "Добавлено дополнение к заявке [%s]. %s"
 
 #. SysConfig
 msgid "Added link to ticket \"%s\"."
-msgstr "К заявке «%s» добавлена связь."
+msgstr "К заявке \"%s\" добавлена связь."
 
 #. SysConfig
 msgid "Added note (%s)."
@@ -21770,7 +21660,7 @@ msgstr "Добавлена запись звонка клиенту."
 
 #. SysConfig
 msgid "Added subscription for user \"%s\"."
-msgstr "Добавлена подписка для пользователя «%s»."
+msgstr "Добавлена подписка для пользователя \"%s\"."
 
 #. SysConfig
 msgid "Added system request (%s)."
@@ -21942,7 +21832,7 @@ msgstr "Основано на глобальной настройке RichText"
 
 #. SysConfig
 msgid "Bounced to \"%s\"."
-msgstr "Перенаправлено «%s»."
+msgstr "Перенаправлено \"%s\"."
 
 #. SysConfig
 msgid "Bulgarian"
@@ -22026,7 +21916,7 @@ msgstr "Время ожидания изменено на \"%s\"."
 
 #. SysConfig
 msgid "Changed priority from \"%s\" (%s) to \"%s\" (%s)."
-msgstr "Изменен приоритет с «%s» (%s) на «%s» (%s)."
+msgstr "Изменен приоритет с \"%s\" (%s) на \"%s\" (%s)."
 
 #. SysConfig
 msgid "Changed queue to \"%s\" (%s) from \"%s\" (%s)."
@@ -22434,7 +22324,7 @@ msgstr "Удалить эту заявку"
 
 #. SysConfig
 msgid "Deleted link to ticket \"%s\"."
-msgstr "Связь с заявкой «%s» удалена."
+msgstr "Связь с заявкой \"%s\" удалена."
 
 #. SysConfig
 msgid "Detached"
@@ -22658,7 +22548,7 @@ msgstr "Имя Фамилия (UserLogin)"
 
 #. SysConfig
 msgid "Forwarded to \"%s\"."
-msgstr "Переcлано «%s»."
+msgstr "Переcлано \"%s\"."
 
 #. SysConfig
 msgid "Free Fields"
@@ -23438,7 +23328,7 @@ msgstr "Заявки с напоминанием"
 
 #. SysConfig
 msgid "Removed subscription for user \"%s\"."
-msgstr "Удалена подписка для пользователя «%s»."
+msgstr "Удалена подписка для пользователя \"%s\"."
 
 #. SysConfig
 msgid "Reports"
@@ -23526,7 +23416,7 @@ msgstr "Выберите период, после которого просмо�
 
 #. SysConfig
 msgid "Select how many last views should be shown."
-msgstr ""
+msgstr "Выбрать количество отображаемых последних просмотренных страниц."
 
 #. SysConfig
 msgid "Select how many tickets should be shown in overviews by default."
@@ -23914,15 +23804,15 @@ msgstr "Исходящая почта для заявки."
 
 #. SysConfig
 msgid "Ticket Overview \"Medium\" Limit"
-msgstr "Обзор заявок - лимит режима «Средний»"
+msgstr "Обзор заявок - лимит режима \"Средний\""
 
 #. SysConfig
 msgid "Ticket Overview \"Preview\" Limit"
-msgstr "Обзор заявок - лимит режима «Предварительный просмотр»"
+msgstr "Обзор заявок - лимит режима \"Предварительный просмотр\""
 
 #. SysConfig
 msgid "Ticket Overview \"Small\" Limit"
-msgstr "Обзор заявок - лимит режима «Краткий»"
+msgstr "Обзор заявок - лимит режима \"Краткий\""
 
 #. SysConfig
 msgid "Ticket Owner."
@@ -23948,7 +23838,7 @@ msgstr "Итоги по очередям"
 msgid "Ticket Responsible."
 msgstr "Ответственность за Заявку"
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 
@@ -24146,7 +24036,7 @@ msgstr "Ваше письмо с номером заявки \"<OTRS_TICKET>\" �
 
 #. SysConfig
 msgid "Your email with ticket number \"<OTRS_TICKET>\" is merged to \"<OTRS_MERGE_TO_TICKET>\"."
-msgstr "Ваш email с номером заявки «<OTRS_TICKET>» объединен с \"<OTRS_MERGE_TO_TICKET>\"."
+msgstr "Ваш email с номером заявки \"<OTRS_TICKET>\" объединен с \"<OTRS_MERGE_TO_TICKET>\"."
 
 #. SysConfig
 msgid "Your queue selection of your preferred queues. You also get notified about those queues via email if enabled."
@@ -24250,95 +24140,95 @@ msgstr "отчеты"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBulk.tt
 msgid "Watch tickets"
-msgstr ""
+msgstr "Наблюдать за заявками"
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "The shortcut icon for the customer interface."
-msgstr ""
+msgstr "Иконка ярлыка интерфейса клиента."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "The Apple touch icon for the customer interface."
-msgstr ""
+msgstr "Apple touch иконка для интерфейса клиента."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "The shortcut icon for the agent interface."
-msgstr ""
+msgstr "Иконка ярлыка для интерфейса агента."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "The Apple touch icon for the agent interface."
-msgstr ""
+msgstr "Apple touch иконка для интерфейса агента."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "The shortcut icon for the customer interface for the skin \"default\"."
-msgstr ""
+msgstr "Иконка ярлыка для интерфейса клиента с внешним видом (skin) \"по умолчанию\"."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "The Apple touch icon for the customer interface for skin \"default\"."
-msgstr ""
+msgstr "Apple touch иконка для интерфейса клиента с внешним видом (skin) \"по умолчанию\"."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "The shortcut icon for the agent interface fot the skin \"default\"."
-msgstr ""
+msgstr "Иконка ярлыка для интерфейса агента с внешним видом (skin) \"по умолчанию\"."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "The Apple touch icon for the agent interface for the skin \"default\"."
-msgstr ""
+msgstr "Apple touch иконка для интерфейса агента с внешним видом (skin) \"по умолчанию\"."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBulk.tt
 msgid "Mark tickets as seen"
-msgstr ""
+msgstr "Пометить заявки как прочитанные"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBulk.tt
 msgid "Mark tickets as unseen"
-msgstr ""
+msgstr "Пометить заявки как непрочитанные"
 
 #. Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
 msgid "Mark article as unseen"
-msgstr ""
+msgstr "Пометить сообщение как непрочитанное"
 
 #. Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
 msgid "Mark as unseen"
-msgstr ""
+msgstr "Пометить как непрочитанное"
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Defines the config parameters available in the preferences view. The default redirect URL from SysConfig 'MarkTicketUnseenRedirectDefaultURL' is used if no selection is made by the agent."
-msgstr ""
+msgstr "Определяет параметр конфигурации, доступный в персональных настройках. Если пользователь не выберет значение, то по умолчанию для перенаправления будет использован URL, заданный 'MarkTicketUnseenRedirectDefaultURL' параметром системной конфигурации."
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Defines the redirect URL for setting a ticket article to 'unseen'."
-msgstr ""
+msgstr "Определяет URL-адрес страницы для пометки сообщения заявки как 'непрочитанное'."
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Defines the config parameters available in the preferences view. The default redirect URL from SysConfig 'MarkTicketSeenRedirectDefaultURL' is used if no selection is made by the agent."
-msgstr ""
+msgstr "Определяет параметры конфигурации, доступные в персональных настройках. Если пользователь не выберет значение, то по умолчанию будет использован URL-адрес страницы, заданный 'MarkTicketSeenRedirectDefaultURL' параметром системной конфигурации."
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Defines the redirect URL for setting a ticket article to 'seen'."
-msgstr ""
+msgstr "Определяет URL-адрес страницы для пометки сообщения заявки как 'прочитанное'."
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Registers a link in the ticket menu to mark a ticket as unseen."
-msgstr ""
+msgstr "Регистрирует ссылку в меню заявки для пометки заявки как непрочитанной."
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Registers a link in the ticket menu to mark a ticket as seen."
-msgstr ""
+msgstr "Регистрирует ссылку в меню заявки для пометки заявки как прочитанной."
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as unseen."
-msgstr ""
+msgstr "Регистрирует ссылку в меню заявки в обзоре заявок для пометки всех сообщений заявки как непрочитанные."
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as seen."
-msgstr ""
+msgstr "Регистрирует ссылку в меню заявки в обзоре заявок для пометки всех сообщений заявки как прочитанные."
 
 #. SysConfig
 msgid "Configure which screen should be shown after marking a ticket or article as seen."
-msgstr ""
+msgstr "Настраивает экран, который должен отображаться после пометки заявки или сообщения как прочитанное."
 
 #. SysConfig
 msgid "Configure which screen should be shown after marking a ticket or article as unseen."
-msgstr ""
+msgstr "Настраивает экран, который должен отображаться после пометки заявки или сообщения как непрочитанное."
 
 #. SysConfig
 msgid "Last viewed overview"
@@ -24350,19 +24240,19 @@ msgstr ""
 
 #. SysConfig
 msgid "Mark ticket as seen"
-msgstr ""
+msgstr "Пометить заявку как прочитанную"
 
 #. SysConfig
 msgid "Mark ticket as unseen"
-msgstr ""
+msgstr "Пометить заявку как непрочитанную"
 
 #. SysConfig
 msgid "Screen after marking as seen"
-msgstr ""
+msgstr "Страница после пометки как прочитанное"
 
 #. SysConfig
 msgid "Screen after marking as unseen"
-msgstr ""
+msgstr "Страница после пометки как непрочитанное"
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel \"agent\"."
@@ -24426,5 +24316,29 @@ msgstr ""
 
 #. SysConfig
 msgid "This is the dark skin for the customer interface."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+msgid "Save changes"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBounce.tt
+msgid "cancel"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
+msgid "There were non-system tables found which do not have 'utf8mb4' as charset."
+msgstr ""
+
+#. SysConfig
+msgid "Mark as seen"
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized."
 msgstr ""
 

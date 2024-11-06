@@ -43,7 +43,7 @@
                     <ul>
                         [% RenderBlockStart("Preferences") %]
                         <li class="[% Data.Class | html %]">
-                            <label>Account</label>
+                            <label>[% Translate("Account") | html %]</label>
                             <a href="[% Env('Baselink') %]Action=CustomerPreferences" title="[% Translate('Edit personal preferences') | html %]">
                                 <i class="fa fa-gear"></i>
                                 <span>[% Translate("Personal preferences") | html %]</span>

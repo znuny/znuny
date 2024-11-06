@@ -189,6 +189,11 @@ Znuny.Form.Input = (function (TargetNS) {
             return Attribute;
         }
 
+        // Use the common field ID mapping of AgentTicketActionCommon for unknown modules
+        if (!AttributFieldIDMapping[Module] && Core.Config.Get('AutoAttributFieldIDMapping')) {
+            AttributFieldIDMapping[Module] = AttributFieldIDMapping['AgentTicketActionCommon'];
+        }
+
         if (
             !AttributFieldIDMapping[ Module ]
             || !AttributFieldIDMapping[ Module ][ Attribute ]

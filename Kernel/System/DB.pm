@@ -924,6 +924,76 @@ sub ListTables {
     return @Tables;
 }
 
+=head2 GetSystemTables
+
+Retrieves tables of Znuny and optionally its installed packages and ignores any other tables that
+might have been added manually to the database.
+
+    my @SystemTables = $DBObject->GetSystemTables(
+        IncludePackageTables => 1, # Also include tables of installed packages
+    );
+
+Returns array with system table names.
+
+=cut
+
+sub GetSystemTables {
+    my ( $Self, %Param ) = @_;
+
+    my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
+    my $PackageObject = $Kernel::OM->Get('Kernel::System::Package');
+    my $XMLObject     = $Kernel::OM->Get('Kernel::System::XML');
+
+    #
+    # Assemble Znuny tables.
+    #
+    my $SQLDirectory   = $ConfigObject->Get('Home') . '/scripts/database';
+    my $SchemaFilePath = $SQLDirectory . '/' . 'schema.xml';
+
+    my $SchemaXML = $Kernel::OM->Get('Kernel::System::Main')->FileRead(
+        Location => $SchemaFilePath,
+    );
+    my @SchemaXML = $XMLObject->XMLParse(
+        String => $SchemaXML,
+    );
+
+    my @TableTags = grep {
+        defined $_->{Tag}
+            && $_->{Tag} eq 'Table'
+            && $_->{TagType} eq 'Start'
+    } @SchemaXML;
+    my @SystemTables = sort map { $_->{Name} } @TableTags;
+
+    return @SystemTables if !$Param{IncludePackageTables};
+
+    #
+    # Assemble tables of installed packages.
+    #
+    my @Packages = $Kernel::OM->Get('Kernel::System::Package')->RepositoryList();
+    PACKAGE:
+    for my $Package (@Packages) {
+        my $DatabaseInstall = $Package->{DatabaseInstall};
+        next PACKAGE if !IsHashRefWithData($DatabaseInstall);
+
+        for my $Type ( sort keys %{$DatabaseInstall} ) {
+            my @PackageTableTags = grep {
+                defined $_->{Tag}
+                    && $_->{Tag} eq 'TableCreate'
+                    && $_->{TagType} eq 'Start'
+            } @{ $DatabaseInstall->{$Type} };
+            my @PackageTables = sort map { $_->{Name} } @PackageTableTags;
+
+            push @SystemTables, @PackageTables;
+        }
+    }
+
+    # Ensure that every table is unique.
+    my %SystemTables = map { $_ => 1 } @SystemTables;
+    @SystemTables = sort keys %SystemTables;
+
+    return @SystemTables;
+}
+
 =head2 GetColumnNames()
 
 to retrieve the column names of a database statement

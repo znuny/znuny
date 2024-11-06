@@ -10,7 +10,7 @@
 [% RenderBlockStart("Body") %]
 <div id="MainBox" class="Preferences ARIARoleMain FormScreen">
     <div class="ContentWrapper flex-column">
-    <h1 class="PageTitle">Preferences</h1>
+    <h1 class="PageTitle">[% Translate("Preferences") | html %]</h1>
 [% RenderBlockStart("Head") %]
 #        <h1>[% Translate(Data.Header) | html %]</h1>
 [% RenderBlockEnd("Head") %]

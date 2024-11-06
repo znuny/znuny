@@ -146,7 +146,7 @@
                             <label>[% Translate("Customer ID") | html %]:</label>
                             <p class="Value">
 [% RenderBlockStart("CustomerIDRW") %]
-                                <a href="[% Config("CustomerDBLink") | Interpolate %]" class="AsPopup PopupType_TicketAction" [% Config("CustomerDBLinkTarget") %] title="[% Data.CustomerID | html %]">[% Data.CustomerID | html %]</a>
+                                <a href="[% Config("CustomerDBLink") | Interpolate %]" class="[% Config("CustomerDBLinkClass") | html %]" [% Config("CustomerDBLinkTarget") %]>[% Data.CustomerID | html %]</a>
 [% RenderBlockEnd("CustomerIDRW") %]
 [% RenderBlockStart("CustomerIDRO") %]
                                 [% Data.CustomerID | html %]

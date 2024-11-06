@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.222586999343401;
+    $Self->{Completeness}        = 0.223265776898995;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -1692,7 +1692,7 @@ sub Data {
         'Available Fields' => 'שדות זמינים',
         'Filter available fields' => 'שדות זמינים למסננים',
         'Assigned Fields' => 'שדות משוייכים',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '',
         'Is visible for customer' => '',
         'Text Template' => 'תבנית טקסט',
@@ -2371,23 +2371,16 @@ sub Data {
         'in' => 'in',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
+        'All' => 'כל',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'עוד',
         'No Data Available.' => '',
         'Available Columns' => 'עמודות זמינות',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'עמודות נראות (סדר בגרירה של העמודות)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '',
@@ -2627,7 +2620,7 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '',
         'Date Invalid!' => 'תאריך לא תקין!',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => '',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2637,12 +2630,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             '',
         'This address already exists on the address list.' => 'כתובת זו כבר קיימת ברשימת הכתובות',
-        ' Cc' => '',
         'Remove Cc' => 'הסר Cc',
         'Bcc' => 'העתק נסתר',
-        ' Bcc' => '',
         'Remove Bcc' => 'הסר Bcc',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '',
@@ -2651,23 +2641,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'צור פניית דוא"ל חדשה',
-        ' Example Template' => '',
         'Example Template' => '',
         'To customer user' => 'למשתמש לקוח',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'נא לכלול לפחות משתמש לקוח אחד עבור הפניה',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'בחר לקוח זה כלקוח העיקרי.',
         'Remove Ticket Customer User' => 'הסר משתמש לקוח מהפניה',
         'From queue' => 'מהתור',
-        ' Get all' => '',
         'Get all' => 'קבל הכל',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2720,18 +2703,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'לא נמצאו נתוני פניה.',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'שולח',
         'Customer User Name' => '',
         'Impact' => '',
         'Update Time' => 'זמן העדכון',
         'Solution Time' => 'זמן הפתרון',
         'First Response Time' => 'זמן המענה הראשוני',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'העבר פניה לתור אחר',
         'Change queue' => 'שנה תור',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2740,21 +2721,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => 'הסר מרשימת פניות במעקב',
         'Tickets per page' => 'פניות בעמוד',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'אפס מבט-על',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => '',
         'Create New Phone Ticket' => 'צור פניית טלפון חדשה',
         'Please include at least one customer for the ticket.' => 'נא לכלול לפחות לקוח אחד לפניה.',
-        'Select this customer as the main customer.' => 'בחר לקוח זה כלקוח העיקרי.',
         'To queue' => 'לתור',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2767,7 +2745,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => 'צור פניית תהליך חדשה',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => '',
@@ -2811,7 +2788,6 @@ sub Data {
         'Save as default' => '',
         'Drafts' => '',
         'by' => 'על ידי ',
-        'Move ticket to a different queue' => 'העבר פניה לתור אחר',
         'Change Queue' => 'שנה תור',
         'There are no dialogs available at this point in the process.' =>
             'אין תיבות שיח זמינות בשלב זה של התהליך.',
@@ -2953,11 +2929,10 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'פניה חדשה',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'פניות',
         'Welcome!' => 'ברוכים הבאים!',
         'Please click the button below to create your first ticket.' => 'נא ללחוץ על הכפתור למטה על מנת ליצור את הפניה הראשונה שלכם.',
         'Create your first ticket' => 'צרו את הפניה הראשונה שלכם',
@@ -2966,13 +2941,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'פרופיל',
+        'Template Name' => 'שם התבנית',
         'e. g. 10*5155 or 105658*' => 'למשל 10*5155 או 105658*',
         'CustomerID' => 'מספר זיהוי לקוח',
         'Types' => 'סוגים',
         'Limitation' => '',
         'No time settings' => 'Keine Zeiteinstellungen',
-        'All' => 'כל',
         'Specific date' => '',
         'Only tickets created' => 'רק פניות שנוצרו',
         'Date range' => '',
@@ -2981,7 +2957,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'שמור כתבנית',
         'Save as Template?' => 'שמור כתבנית?',
-        'Template Name' => 'שם התבנית',
         'Pick a profile name' => 'בחר שם פרופיל',
         'Output to' => 'פלט אל',
 
@@ -3211,7 +3186,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '',
-        ' e. g.' => 'למשל',
+        'e. g.' => 'למשל',
         'To get the first 20 character of the appointment title.' => '',
         'To get the calendar attribute' => '',
         'Attributes of the recipient user for the notification' => '',
@@ -3243,9 +3218,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => '',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             '',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'למשל',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5045,6 +5017,8 @@ sub Data {
         'Server Database Charset' => '',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => '',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 
@@ -5216,7 +5190,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'פניות',
         'Ticket History Entries' => '',
         'Articles' => '',
         'Attachments (DB, Without HTML)' => '',
@@ -5641,6 +5614,8 @@ sub Data {
         'Automated line break in text messages after x number of chars.' =>
             '',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
+            '',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
             '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
@@ -7906,6 +7881,8 @@ sub Data {
             '',
         'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".' =>
             '',
+        'Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.' =>
+            '',
 
         # XML Definition: scripts/database/initial_insert.xml
         'invalid-temporarily' => 'לא תקף זמנית',
@@ -8838,6 +8815,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'סמן כספאם!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9078,7 +9056,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'מבט-על על תורים של פניות',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',
