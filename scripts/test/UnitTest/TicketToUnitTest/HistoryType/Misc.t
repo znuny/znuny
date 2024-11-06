@@ -45,7 +45,7 @@ my $ExpectedOutout = <<OUTPUT;
 
 \$Self->True(
     \$Success,
-    'TicketUnlockTimeoutUpdate was successfull.',
+    'TicketUnlockTimeoutUpdate was successful.',
 );
 
 OUTPUT

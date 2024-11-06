@@ -11,7 +11,7 @@
 #  -->> Most Znuny configuration should be done via the Znuny web interface
 #       and the SysConfig. Only for some configuration, such as database
 #       credentials and customer data source changes, you should edit this
-#       file. For changes do customer data sources you can copy the definitions
+#       file. For changes to customer data sources you can copy the definitions
 #       from Kernel/Config/Defaults.pm and paste them in this file.
 #       Config.pm will not be overwritten when updating Znuny.
 # --

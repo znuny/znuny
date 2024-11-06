@@ -426,7 +426,7 @@ sub GetReturnContentType {
     my $Self = shift;
 
     my $ContentType = $Self->GetContentType();
-    $ContentType =~ s/(charset=)(.*)/$1utf-8/ig;
+    $ContentType =~ s/charset\s*=.*/charset=utf-8/ig;
 
     # debug
     if ( $Self->{Debug} > 0 ) {
@@ -848,7 +848,7 @@ sub PartsAttachments {
 
         # Also replace charset in meta tags of HTML emails.
         if ( $MimeType eq 'text/html' ) {
-            $PartData{Content} =~ s/(<meta[^>]+charset=("|'|))\Q$OldCharset\E/$1utf-8/gi;
+            $PartData{Content} =~ s/(<meta[^>]+charset\s*=\s*("|'|))\Q$OldCharset\E/$1utf-8/gi;
         }
 
         $PartData{Filesize} = bytes::length( $PartData{Content} );

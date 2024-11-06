@@ -19,6 +19,7 @@
 
 use strict;
 use warnings;
+use utf8;
 
 use Digest::MD5;
 use Pod::Usage;

@@ -14,6 +14,7 @@ sub Load {
 $Self->{'Frontend::RichTextPath'}   = '<OTRS_CONFIG_Frontend::WebPath>js/thirdparty/ckeditor-4.17.1/';
 $Self->{'Frontend::RichTextWidth'}  = '320';
 $Self->{'Frontend::RichTextHeight'} = '620';
+$Self->{'MigrateSysConfigSettings'} = 1;
 
 }
 

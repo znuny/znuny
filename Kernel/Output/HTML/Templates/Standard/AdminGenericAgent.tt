@@ -166,7 +166,7 @@
                         <div class="field-wrapper">
                             <label for="Profile" class="Mandatory"><span class="Marker">*</span> [% Translate("Job name") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="Profile" id="Profile" class="Validate_Required W50pc [% Data.ProfileInvalid | html %]" value="[% Data.Profile | html %]" />
+                                <input type="text" name="Profile" id="Profile" class="Validate_Required W50pc [% Data.ProfileInvalid | html %]" value="[% Data.Profile | html %]" maxlength="200" />
                                 <div id="ProfileError" class="TooltipErrorMessage">
                                     <p>[% Translate("This field is required.") | html %]</p>
                                 </div>
@@ -335,7 +335,7 @@
                         <div class="field-wrapper">
                             <label for="TicketNumber">[% Config("Ticket::Hook") %]</label>
                             <div class="Field">
-                                <input type="text" name="TicketNumber" id="TicketNumber" size="30" value="[% Data.TicketNumber | html %]"/>
+                                <input type="text" name="TicketNumber" id="TicketNumber" size="30" value="[% Data.TicketNumber | html %]" maxlength="50" />
                                 <p class="FieldExplanation">
                                     [% Translate("(e. g. 10*5155 or 105658*)") | html %]
                                 </p>
@@ -345,14 +345,14 @@
                         <div class="field-wrapper">
                             <label for="Title">[% Translate("Title") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="Title" id="Title" class="W33pc" value="[% Data.Title | html %]"/>
+                                <input type="text" name="Title" id="Title" class="W33pc" value="[% Data.Title | html %]" maxlength="255" />
                             </div>
                         </div>
 
                         <div class="field-wrapper">
                             <label for="CustomerID">[% Translate("Customer ID") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="CustomerID" id="CustomerID" class="W33pc" value="[% Data.CustomerID | html %]"/>
+                                <input type="text" name="CustomerID" id="CustomerID" class="W33pc" value="[% Data.CustomerID | html %]" maxlength="150" />
                                 <p class="FieldExplanation">
                                     [% Translate("(e. g. 234321)") | html %]
                                 </p>
@@ -362,7 +362,7 @@
                         <div class="field-wrapper">
                             <label for="CustomerUserLogin">[% Translate("Customer user ID") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="CustomerUserLogin" id="CustomerUserLogin" class="W33pc" value="[% Data.CustomerUserLogin | html %]"/>
+                                <input type="text" name="CustomerUserLogin" id="CustomerUserLogin" class="W33pc" value="[% Data.CustomerUserLogin | html %]" maxlength="250" />
                                 <p class="FieldExplanation">
                                     [% Translate("(e. g. U5150)") | html %]
                                 </p>
@@ -379,7 +379,7 @@
                         <div class="field-wrapper">
                             <label for="MIMEBase_From">[% Translate("From") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="MIMEBase_From" id="MIMEBase_From" class="W30pc [% Data.MIMEBase_FromInvalid | html %]" value="[% Data.MIMEBase_From | html %]"/>
+                                <input type="text" name="MIMEBase_From" id="MIMEBase_From" class="W30pc [% Data.MIMEBase_FromInvalid | html %]" value="[% Data.MIMEBase_From | html %]" maxlength="3800" />
                                 <p class="FieldExplanation">
                                     [% Translate("Fulltext-search in article (e. g. \"Mar*in\" or \"Baue*\").") | html %]
                                 </p>
@@ -392,7 +392,7 @@
                         <div class="field-wrapper">
                             <label for="MIMEBase_To">[% Translate("To") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="MIMEBase_To" id="MIMEBase_To" class="W33pc [% Data.MIMEBase_ToInvalid | html %]" value="[% Data.MIMEBase_To | html %]"/>
+                                <input type="text" name="MIMEBase_To" id="MIMEBase_To" class="W33pc [% Data.MIMEBase_ToInvalid | html %]" value="[% Data.MIMEBase_To | html %]" maxlength="3800" />
                                 <p class="FieldExplanation">
                                     [% Translate("Fulltext-search in article (e. g. \"Mar*in\" or \"Baue*\").") | html %]
                                 </p>
@@ -405,7 +405,7 @@
                         <div class="field-wrapper">
                             <label for="MIMEBase_Cc">[% Translate("Cc") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="MIMEBase_Cc" id="MIMEBase_Cc" class="W33pc [% Data.MIMEBase_CcInvalid | html %]" value="[% Data.MIMEBase_Cc | html %]"/>
+                                <input type="text" name="MIMEBase_Cc" id="MIMEBase_Cc" class="W33pc [% Data.MIMEBase_CcInvalid | html %]" value="[% Data.MIMEBase_Cc | html %]" maxlength="3800" />
                                 <p class="FieldExplanation">
                                     [% Translate("Fulltext-search in article (e. g. \"Mar*in\" or \"Baue*\").") | html %]
                                 </p>
@@ -418,7 +418,7 @@
                         <div class="field-wrapper">
                             <label for="MIMEBase_Subject">[% Translate("Subject") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="MIMEBase_Subject" id="MIMEBase_Subject" class="W33pc [% Data.MIMEBase_SubjectInvalid | html %]" value="[% Data.MIMEBase_Subject | html %]"/>
+                                <input type="text" name="MIMEBase_Subject" id="MIMEBase_Subject" class="W33pc [% Data.MIMEBase_SubjectInvalid | html %]" value="[% Data.MIMEBase_Subject | html %]" maxlength="3800" />
                                 <p class="FieldExplanation">
                                     [% Translate("Fulltext-search in article (e. g. \"Mar*in\" or \"Baue*\").") | html %]
                                 </p>
@@ -431,7 +431,7 @@
                         <div class="field-wrapper">
                             <label for="MIMEBase_Body">[% Translate("Text") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="MIMEBase_Body" id="MIMEBase_Body" class="W33pc [% Data.MIMEBase_BodyInvalid | html %]" value="[% Data.MIMEBase_Body | html %]"/>
+                                <input type="text" name="MIMEBase_Body" id="MIMEBase_Body" class="W33pc [% Data.MIMEBase_BodyInvalid | html %]" value="[% Data.MIMEBase_Body | html %]" maxlength="3800" />
                                 <p class="FieldExplanation">
                                     [% Translate("Fulltext-search in article (e. g. \"Mar*in\" or \"Baue*\").") | html %]
                                 </p>
@@ -499,25 +499,25 @@
                             </div>
                         </div>
 
-                    <div class="field-wrapper">
-                        <label class="card-title title">[% Translate("Dynamic fields") | html %]</label>
-                    </div>
+                        <div class="field-wrapper">
+                            <label class="card-title title">[% Translate("Dynamic fields") | html %]</label>
+                        </div>
 [% RenderBlockStart("AddDynamicFields") %]
-                            <div class="field-wrapper">
-                                <label>[% Translate("Add dynamic field") | html %]</label>
-                                <div class="Field" data-widget="Select">
-                                    [% Data.DynamicFieldsStrg %]
-                                </div>
+                        <div class="field-wrapper">
+                            <label>[% Translate("Add dynamic field") | html %]</label>
+                            <div class="Field" data-widget="Select">
+                                [% Data.DynamicFieldsStrg %]
                             </div>
+                        </div>
 [% RenderBlockEnd("AddDynamicFields") %]
 
                         <fieldset id="SelectedDynamicFields" class="TableLike">
 [% RenderBlockStart("SelectedDynamicFields") %]
-                            <div class="field-wrapper">
+                            <div class="label-wrapper">
                                 [% Data.Label %]
-                                <div class="Field" data-id="[% Data.ID %]">
-                                    [% Data.Field %]
-                                </div>
+                            </div>
+                            <div class="Field flex-row" data-id="[% Data.ID %]">
+                                [% Data.Field %]
                             </div>
 [% RenderBlockEnd("SelectedDynamicFields") %]
                         </fieldset>
@@ -935,21 +935,21 @@
                         <div class="field-wrapper">
                             <label for="NewCustomerUserLogin">[% Translate("New customer user ID") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="NewCustomerUserLogin" id="NewCustomerUserLogin" value="[% Data.NewCustomerUserLogin | html %]" class="W33pc"/>
+                                <input type="text" name="NewCustomerUserLogin" id="NewCustomerUserLogin" value="[% Data.NewCustomerUserLogin | html %]" class="W33pc" maxlength="250" />
                             </div>
                         </div>
 
                         <div class="field-wrapper">
                             <label for="NewCustomerID">[% Translate("New customer ID") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="NewCustomerID" id="NewCustomerID" value="[% Data.NewCustomerID | html %]" class="W33pc"/>
+                                <input type="text" name="NewCustomerID" id="NewCustomerID" value="[% Data.NewCustomerID | html %]" class="W33pc" maxlength="150" />
                             </div>
                         </div>
 
                         <div class="field-wrapper">
                             <label for="NewTitle">[% Translate("New title") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="NewTitle" id="NewTitle" class="W33pc" value="[% Data.NewTitle | html %]"/>
+                                <input type="text" name="NewTitle" id="NewTitle" class="W33pc" value="[% Data.NewTitle | html %]" maxlength="255" />
                             </div>
                         </div>
 [% RenderBlockStart("NewTicketType") %]
@@ -963,28 +963,28 @@
 
                         <div class="field-wrapper">
                             <label class="card-title title">[% Translate("Dynamic fields") | html %]</label>
+                        </div>
 [% RenderBlockStart("AddNewDynamicFields") %]
-                            <fieldset class="TableLike top-container-wrapper">
-                                <div class="field-wrapper">
-                                    <label>[% Translate("Add dynamic field") | html %]</label>
-                                    <div class="Field" data-widget="Update">
-                                        [% Data.NewDynamicFieldsStrg %]
-                                    </div>
-                                </div>
-                            </fieldset>
+                        <div class="field-wrapper">
+                            <label>[% Translate("Add dynamic field") | html %]</label>
+                            <div class="Field" data-widget="Update">
+                                [% Data.NewDynamicFieldsStrg %]
+                            </div>
+                        </div>
 [% RenderBlockEnd("AddNewDynamicFields") %]
 
-                            <fieldset id="SelectedNewDynamicFields" class="TableLike new-field-wrapper">
+
+                        <fieldset id="SelectedNewDynamicFields" class="TableLike">
 [% RenderBlockStart("SelectedNewDynamicFields") %]
-                                <div class="field-wrapper">
-                                    [% Data.Label %]
-                                    <div class="Field flex-row" data-id="[% Data.ID %]">
-                                        [% Data.Field %]
-                                    </div>
-                                </div>
+                            [% Data.Label %]
+                            <div class="Field" data-id="[% Data.ID %]" style="flex-flow: row">
+                                [% Data.Field %]
+                            </div>
 [% RenderBlockEnd("SelectedNewDynamicFields") %]
-                            </fieldset>
-                        </div>
+                        </fieldset>
+
+
+
 [% RenderBlockStart("NewArchiveFlag") %]
                         <div class="field-wrapper">
                             <label for="NewArchiveFlag">[% Translate("Archive selected tickets") | html %]</label>
@@ -1008,7 +1008,7 @@
                         <div class="field-wrapper">
                             <label for="NewNoteFrom">[% Translate("From") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="NewNoteFrom" id="NewNoteFrom" value="[% Data.NewNoteFrom | html %]" class="W50pc [% Data.NewNoteFromServerError | html %]" maxlength="200"/>
+                                <input type="text" name="NewNoteFrom" id="NewNoteFrom" value="[% Data.NewNoteFrom | html %]" class="W50pc [% Data.NewNoteFromServerError | html %]" maxlength="3800"/>
                                 <div id="NewNoteFromServerError" class="TooltipErrorMessage"><p>[% Translate("This field must have less then 200 characters.") | html %]</p></div>
                             </div>
                         </div>
@@ -1016,7 +1016,7 @@
                         <div class="field-wrapper">
                             <label for="NewNoteSubject">[% Translate("Subject") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="NewNoteSubject" id="NewNoteSubject" value="[% Data.NewNoteSubject | html %]" size="60" [% IF Data.NewNoteSubjectServerError == 'ServerError' %]class="[% Data.NewNoteSubjectServerError | html %]"[% END %] maxlength="200"/>
+                                <input type="text" name="NewNoteSubject" id="NewNoteSubject" value="[% Data.NewNoteSubject | html %]" size="60" [% IF Data.NewNoteSubjectServerError == 'ServerError' %]class="[% Data.NewNoteSubjectServerError | html %]"[% END %] maxlength="3800"/>
                                 <div id="NewNoteSubjectServerError" class="TooltipErrorMessage"><p>[% Translate("This field must have less then 200 characters.") | html %]</p></div>
                             </div>
                         </div>
@@ -1024,7 +1024,7 @@
                         <div class="field-wrapper">
                             <label for="NewNoteBody">[% Translate("Text") | html %]</label>
                             <div class="Field">
-                                <textarea name="NewNoteBody" id="NewNoteBody" class="Validate_MaxLength [% Data.NewNoteBodyServerError | html %]" rows="7" cols="60" data-maxlength="200">[% Data.NewNoteBody | html %]</textarea>
+                                <textarea name="NewNoteBody" id="NewNoteBody" class="Validate_MaxLength [% Data.NewNoteBodyServerError | html %]" rows="7" cols="60" data-maxlength="3800">[% Data.NewNoteBody | html %]</textarea>
                                 <div id="NewNoteBodyError" class="TooltipErrorMessage"><p>[% Translate("This field must have less then 200 characters.") | html %]</p></div>
                                 <div id="NewNoteBodyServerError" class="TooltipErrorMessage"><p>[% Translate("This field must have less then 200 characters.") | html %]</p></div>
                             </div>
@@ -1038,7 +1038,7 @@
                         <div class="field-wrapper">
                             <label for="NewNoteTimeUnits">[% Translate("Time units") | html %] [% Translate(Config("Ticket::Frontend::TimeUnits")) | html %]</label>
                             <div class="Field">
-                                <input type="text" name="NewNoteTimeUnits" id="NewNoteTimeUnits" value="[% Data.NewNoteTimeUnits | html %]" class="W20pc"/>
+                                <input type="text" name="NewNoteTimeUnits" id="NewNoteTimeUnits" value="[% Data.NewNoteTimeUnits | html %]" class="W20pc" maxlength="12" />
                             </div>
                         </div>
                     </fieldset>
@@ -1086,19 +1086,19 @@
                         <div class="field-wrapper">
                             <label for="NewModule">[% Translate("Module") | html %]</label>
                             <div class="Field">
-                                <input type="text" name="NewModule" id="NewModule" value="[% Data.NewModule | html %]" size="45"/>
+                                <input type="text" name="NewModule" id="NewModule" value="[% Data.NewModule | html %]" size="45" maxlength="200" />
                             </div>
                         </div>
                         <div class="single-row-inputs">
                             <div class="field-wrapper flex-column">
                                 <label for="NewParamKey1">[% Translate("Param %s key", "1") | html %]</label>
                                 <div class="Field full-width">
-                                    <input type="text" name="NewParamKey1" id="NewParamKey1" value="[% Data.NewParamKey1 | html %]" class="W20pc"/>
+                                    <input type="text" name="NewParamKey1" id="NewParamKey1" value="[% Data.NewParamKey1 | html %]" class="W20pc" maxlength="200" />
                                 </div>
                             </div>
                             <div class="field-wrapper flex-column">
                                 <label for="NewParamValue1"> [% Translate("Param %s value", "1") | html %]</label>
-                                <input type="text" name="NewParamValue1" id="NewParamValue1" value="[% Data.NewParamValue1 | html %]" class="W20pc"/>
+                                <input type="text" name="NewParamValue1" id="NewParamValue1" value="[% Data.NewParamValue1 | html %]" class="W20pc" maxlength="200" />
                             </div>
                         </div>
 
@@ -1106,12 +1106,12 @@
                             <div class="field-wrapper flex-column">
                                 <label for="NewParamKey2">[% Translate("Param %s key", "2") | html %]</label>
                                 <div class="Field full-width">
-                                    <input type="text" name="NewParamKey2" id="NewParamKey2" value="[% Data.NewParamKey2 | html %]" class="W20pc"/>
+                                    <input type="text" name="NewParamKey2" id="NewParamKey2" value="[% Data.NewParamKey2 | html %]" class="W20pc" maxlength="200" />
                                 </div>
                             </div>
                             <div class="field-wrapper flex-column">
                                 <label for="NewParamValue2"> [% Translate("Param %s value", "2") | html %]</label>
-                                <input type="text" name="NewParamValue2" id="NewParamValue2" value="[% Data.NewParamValue2 | html %]" class="W20pc"/>
+                                <input type="text" name="NewParamValue2" id="NewParamValue2" value="[% Data.NewParamValue2 | html %]" class="W20pc" maxlength="200" />
                             </div>
                         </div>
 
@@ -1119,12 +1119,12 @@
                             <div class="field-wrapper flex-column">
                                 <label for="NewParamKey3">[% Translate("Param %s key", "3") | html %]</label>
                                 <div class="Field full-width">
-                                    <input type="text" name="NewParamKey3" id="NewParamKey3" value="[% Data.NewParamKey3 | html %]" class="W20pc"/>
+                                    <input type="text" name="NewParamKey3" id="NewParamKey3" value="[% Data.NewParamKey3 | html %]" class="W20pc" maxlength="200" />
                                 </div>
                             </div>
                             <div class="field-wrapper flex-column">
                                 <label for="NewParamValue3">[% Translate("Param %s value", "3") | html %]</label>
-                                <input type="text" name="NewParamValue3" id="NewParamValue3" value="[% Data.NewParamValue3 | html %]" class="W20pc"/>
+                                <input type="text" name="NewParamValue3" id="NewParamValue3" value="[% Data.NewParamValue3 | html %]" class="W20pc" maxlength="200" />
                             </div>
                         </div>
 
@@ -1132,12 +1132,12 @@
                             <div class="field-wrapper flex-column">
                                 <label for="NewParamKey4">[% Translate("Param %s key", "4") | html %]</label>
                                 <div class="Field full-width">
-                                    <input type="text" name="NewParamKey4" id="NewParamKey4" value="[% Data.NewParamKey4 | html %]" class="W20pc"/>
+                                    <input type="text" name="NewParamKey4" id="NewParamKey4" value="[% Data.NewParamKey4 | html %]" class="W20pc" maxlength="200" />
                                 </div>
                             </div>
                             <div class="field-wrapper flex-column">
                                 <label for="NewParamValue4"> [% Translate("Param %s value", "4") | html %]</label>
-                                <input type="text" name="NewParamValue4" id="NewParamValue4" value="[% Data.NewParamValue4 | html %]" class="W20pc"/>
+                                <input type="text" name="NewParamValue4" id="NewParamValue4" value="[% Data.NewParamValue4 | html %]" class="W20pc" maxlength="200" />
                             </div>
                         </div>
 
@@ -1145,12 +1145,12 @@
                             <div class="field-wrapper flex-column">
                                 <label for="NewParamKey5">[% Translate("Param %s key", "5") | html %]</label>
                                 <div class="Field full-width">
-                                    <input type="text" name="NewParamKey5" id="NewParamKey5" value="[% Data.NewParamKey5 | html %]" class="W20pc"/>
+                                    <input type="text" name="NewParamKey5" id="NewParamKey5" value="[% Data.NewParamKey5 | html %]" class="W20pc" maxlength="200" />
                                 </div>
                             </div>
                             <div class="field-wrapper flex-column">
                                 <label for="NewParamValue5"> [% Translate("Param %s value", "5") | html %]</label>
-                                <input type="text" name="NewParamValue5" id="NewParamValue5" value="[% Data.NewParamValue5 | html %]" class="W20pc"/>
+                                <input type="text" name="NewParamValue5" id="NewParamValue5" value="[% Data.NewParamValue5 | html %]" class="W20pc" maxlength="200" />
                             </div>
                         </div>
 
@@ -1158,12 +1158,12 @@
                             <div class="field-wrapper flex-column">
                                 <label for="NewParamKey6">[% Translate("Param %s key", "6") | html %]</label>
                                 <div class="Field full-width">
-                                    <input type="text" name="NewParamKey6" id="NewParamKey6" value="[% Data.NewParamKey6 | html %]" class="W20pc"/>
+                                    <input type="text" name="NewParamKey6" id="NewParamKey6" value="[% Data.NewParamKey6 | html %]" class="W20pc" maxlength="200" />
                                 </div>
                             </div>
                             <div class="field-wrapper flex-column">
                                 <label for="NewParamValue6"> [% Translate("Param %s value", "6") | html %]</label>
-                                <input type="text" name="NewParamValue6" id="NewParamValue6" value="[% Data.NewParamValue6 | html %]" class="W20pc"/>
+                                <input type="text" name="NewParamValue6" id="NewParamValue6" value="[% Data.NewParamValue6 | html %]" class="W20pc" maxlength="200" />
                             </div>
                         </div>
                     </fieldset>

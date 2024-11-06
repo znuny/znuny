@@ -11,6 +11,7 @@ package Kernel::Modules::AgentTicketPrint;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::System::DateTime;
 use Kernel::System::VariableCheck qw(IsHashRefWithData);

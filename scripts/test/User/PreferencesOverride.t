@@ -64,6 +64,9 @@ for my $Key ( sort keys %UserData ) {
     # Skip dropdown-values of User Activity LinkTarget
     next KEY if $Key =~ m{\AUserActivityLinkTarget};
 
+    # Skip dropdown-values of UserMarkTicketSeenRedirectURL and UserMarkTicketUnseenRedirectURL
+    next KEY if $Key =~ m{\AUserMarkTicket};
+
     $Self->False(
         $UserObject->SetPreferences(
             Key    => $Key,

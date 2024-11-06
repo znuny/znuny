@@ -189,6 +189,11 @@ Znuny.Form.Input = (function (TargetNS) {
             return Attribute;
         }
 
+        // Use the common field ID mapping of AgentTicketActionCommon for unknown modules
+        if (!AttributFieldIDMapping[Module] && Core.Config.Get('AutoAttributFieldIDMapping')) {
+            AttributFieldIDMapping[Module] = AttributFieldIDMapping['AgentTicketActionCommon'];
+        }
+
         if (
             !AttributFieldIDMapping[ Module ]
             || !AttributFieldIDMapping[ Module ][ Attribute ]
@@ -853,6 +858,21 @@ Znuny.Form.Input = (function (TargetNS) {
                 $('#'+ FieldID +' option').remove();
 
                 function AppendOptions() {
+
+                    // Add empty option as first option for single-selects/dropdowns
+                    // because otherwise somehow the first element will be selected
+                    // automatically. Somehow this is not the case for multi-select fields.
+                    // Also, the single-select/dropdown would not display the 'x' button to
+                    // clear the field if this option won't be added.
+                    // To avoid unknown side effects, leave it as optional via flag AddEmptyOption.
+                    if (
+                        Modernize
+                        && $('#'+ FieldID).hasClass('Modernize')
+                        && !$('#'+ FieldID).prop('multiple')
+                        && Options.AddEmptyOption
+                    ) {
+                        $('#'+ FieldID).append($('<option>', { value: '', selected: true }).text('-'));
+                    }
                     $.each(Content, function(Key, Value) {
                         if (Value !== '') {
                             $('#'+ FieldID).append($('<option>', { value: Key }).text(Value));

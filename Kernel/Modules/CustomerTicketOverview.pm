@@ -481,11 +481,11 @@ sub Run {
                 {
                     if ( $OrderByCurrent && ( $OrderByCurrent eq 'Up' ) ) {
                         $OrderBy = 'Down';
-                        $CSS .= ' SortDescending';
+                        $CSS .= ' SortAscending';
                     }
                     else {
                         $OrderBy = 'Up';
-                        $CSS .= ' SortAscending';
+                        $CSS .= ' SortDescending';
                     }
                 }
 
@@ -787,6 +787,7 @@ sub ShowTicketStatus {
                 Name => 'RecordDynamicFieldLink',
                 Data => {
                     Value                       => $ValueStrg->{Value},
+                    ValueKey                    => $Value,
                     Title                       => $ValueStrg->{Title},
                     Link                        => $ValueStrg->{Link},
                     $DynamicFieldConfig->{Name} => $ValueStrg->{Title},

@@ -69,7 +69,7 @@ create a new process id lock
 
     $PIDObject->PIDCreate(
         Name  => 'PostMasterPOP3',
-        TTL   => 60 * 60 * 24 * 3, # for 3 days, per default 1h is used
+        TTL   => 60 * 60 * 24 * 3,  # for 3 days, per default 1h is used
     );
 
 =cut
@@ -236,7 +236,7 @@ update the process id change time.
 this might be useful as a keep alive signal.
 
     my $Success = $PIDObject->PIDUpdate(
-        Name    => 'PostMasterPOP3',
+        Name => 'PostMasterPOP3',
     );
 
 =cut

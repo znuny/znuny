@@ -55,15 +55,39 @@ $Self->True(
     "File location",
 );
 
-# Import
+# Import wrong FileClass
 my %ZnunyConfig;
+my $FileClass = 'Kernel::Config::Files::ZZZAAuto';
+delete $INC{$TestPath};
+$MainObject->Require($FileClass);
+$FileClass->Load( \%ZnunyConfig );
+
+$Self->True(
+    \%ZnunyConfig,
+    "ZZZAAuto Config was loaded",
+);
+
+$Self->Is(
+    $ZnunyConfig{MigrateSysConfigSettings},
+    undef,
+    'MigrateSysConfigSettings is undef',
+);
+
+# Import
+%ZnunyConfig = ();
 delete $INC{$TestPath};
 $MainObject->Require($TestFileClass);
 $TestFileClass->Load( \%ZnunyConfig );
 
 $Self->True(
     \%ZnunyConfig,
-    "Config was loaded",
+    "Test Config was loaded",
+);
+
+$Self->Is(
+    $ZnunyConfig{MigrateSysConfigSettings},
+    1,
+    'MigrateSysConfigSettings is 1',
 );
 
 # Load sample XML file.

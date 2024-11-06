@@ -93,9 +93,9 @@
                 <input type="hidden" name="Subaction" value="Search"/>
                 <input type="hidden" name="SearchTemplate" value="[% Translate("Search") | html %]"/>
                 <input type="hidden" name="CheckTicketNumberAndRedirect" value="1"/>
-                [% IF Data.SearchInArchive %]
+[% RenderBlockStart("SearchInArchive") %]
                     <input type="hidden" name="SearchInArchive" value="[% Data.SearchInArchive | html %]"/>
-                [% END %]
+[% RenderBlockEnd("SearchInArchive") %]
                 [% FOREACH Parameter IN Data.AdditionalSearchParameters %]
                     <input type="hidden" name="[% Parameter.key | html %]" value="[% Parameter.value | html %]">
                 [% END %]
@@ -113,7 +113,7 @@
 [% RenderBlockStart("ToolBarSearchProfile") %]
                     <div class="search-dropdown-bottom">
                         <div class="title">
-                            <label>Search profiles</label>
+                            <label>[% Translate('SearchTemplate') | html %]</label>
                         </div>
                         <div class="search-profiles-list">
                             [% Data.Link %]

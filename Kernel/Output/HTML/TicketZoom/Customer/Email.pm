@@ -9,13 +9,12 @@
 
 package Kernel::Output::HTML::TicketZoom::Customer::Email;
 
-use strict;
-use warnings;
-
 use parent 'Kernel::Output::HTML::TicketZoom::Customer::MIMEBase';
 
-our @ObjectDependencies = (
+use strict;
+use warnings;
+use utf8;
 
-);
+our @ObjectDependencies = ();
 
 1;

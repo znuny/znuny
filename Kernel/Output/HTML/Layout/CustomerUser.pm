@@ -12,8 +12,6 @@ package Kernel::Output::HTML::Layout::CustomerUser;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
-
 our $ObjectManagerDisabled = 1;
 
 =head1 NAME

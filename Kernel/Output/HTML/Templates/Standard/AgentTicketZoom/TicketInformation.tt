@@ -145,7 +145,18 @@
                         <span>
                             <label>[% Translate("Customer ID") | html %]:</label>
                             <p class="Value">
-                                <a href="[% Config("CustomerDBLink") | Interpolate %]" class="[% Config("CustomerDBLinkClass") | html %]" [% Config("CustomerDBLinkTarget") %]>[% Data.CustomerID | html %]</a>[% RenderBlockStart("CustomerIDTickets") %] - <a href="[% Env("Baselink") %]Action=AgentTicketSearch;Subaction=Search;CustomerID=[% Data.CustomerID | uri %]">[% Translate("%s Ticket(s)", Data.CustomerIDTickets) | html %]</a>[% RenderBlockEnd("CustomerIDTickets") %]
+[% RenderBlockStart("CustomerIDRW") %]
+                                <a href="[% Config("CustomerDBLink") | Interpolate %]" class="[% Config("CustomerDBLinkClass") | html %]" [% Config("CustomerDBLinkTarget") %]>[% Data.CustomerID | html %]</a>
+[% RenderBlockEnd("CustomerIDRW") %]
+[% RenderBlockStart("CustomerIDRO") %]
+                                [% Data.CustomerID | html %]
+[% RenderBlockEnd("CustomerIDRO") %]
+
+[% RenderBlockStart("CustomerIDTickets") %]
+                                &nbsp;-&nbsp;
+                                <a href="[% Env("Baselink") %]Action=AgentTicketSearch;Subaction=Search;CustomerID=[% Data.CustomerID | uri %]" title="[% Translate('Open tickets') | html %]">[% Translate('Open tickets') | html %]: [% Data.CustomerIDTickets %]
+                                </a>
+[% RenderBlockEnd("CustomerIDTickets") %]
                             </p>
                         </span>
 

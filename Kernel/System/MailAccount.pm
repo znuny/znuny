@@ -393,12 +393,12 @@ update a new mail account
         Password            => 'SomePassword',
         Host                => 'pop3.example.com',
         Type                => 'POP3',
-        IMAPFolder          => 'Some Folder', # optional, only valid for IMAP-type accounts
+        IMAPFolder          => 'Some Folder',   # optional, only valid for IMAP-type accounts
         ValidID             => 1,
         Trusted             => 0,
-        AuthenticationType  => 'oauth2_token', # optional; defaults to 'password'
+        AuthenticationType  => 'oauth2_token',  # optional; defaults to 'password'
         OAuth2TokenConfigID => 2, # optional
-        DispatchingBy       => 'Queue', # Queue|From
+        DispatchingBy       => 'Queue',         # Queue|From
         QueueID             => 12,
         UserID              => 123,
     );
@@ -612,9 +612,9 @@ fetch emails by using backend
         Login         => 'mail',
         Password      => 'SomePassword',
         Host          => 'pop3.example.com',
-        Type          => 'POP3', # POP3,POP3s,IMAP,IMAPS
+        Type          => 'POP3',    # POP3,POP3s,IMAP,IMAPS
         Trusted       => 0,
-        DispatchingBy => 'Queue', # Queue|From
+        DispatchingBy => 'Queue',   # Queue|From
         QueueID       => 12,
         UserID        => 123,
     );
@@ -654,12 +654,12 @@ sub MailAccountFetch {
 Check inbound mail configuration
 
     my %Check = $MailAccount->MailAccountCheck(
-        Login         => 'mail',
-        Password      => 'SomePassword',
-        Host          => 'pop3.example.com',
-        Type          => 'POP3', # POP3|POP3S|IMAP|IMAPS
-        Timeout       => '60',
-        Debug         => '0',
+        Login    => 'mail',
+        Password => 'SomePassword',
+        Host     => 'pop3.example.com',
+        Type     => 'POP3',             # POP3|POP3S|IMAP|IMAPS
+        Timeout  => '60',
+        Debug    => '0',
     );
 
 =cut

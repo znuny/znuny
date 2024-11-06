@@ -45,7 +45,7 @@ Znuny.Agent.Admin.DynamicFieldScreenConfiguration = (function (TargetNS) {
                 $('#SelectAll' + ElementSelector + 'Elements').on('click', function () {
                     var Checked = $(this).prop('checked');
 
-                    $('input:checkbox[name="Select' + ElementSelector + 'Element"]').prop('checked', Checked);
+                    $('input:checkbox[name="Select' + ElementSelector + 'Element"]').filter(":visible").prop('checked', Checked);
                 });
             }
         );

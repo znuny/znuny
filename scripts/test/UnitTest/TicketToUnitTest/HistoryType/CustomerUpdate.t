@@ -42,7 +42,7 @@ my $ExpectedOutout = <<OUTPUT;
 );
 \$Self->True(
     \$Success,
-    'TicketCustomerSet to "$Param{CustomerUser}" was successfull.',
+    'TicketCustomerSet to "$Param{CustomerUser}" was successful.',
 );
 
 OUTPUT

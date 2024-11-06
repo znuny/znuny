@@ -1066,3 +1066,8 @@ var/httpd/htdocs/js/Survey.Agent.SurveyZoom.js
 var/httpd/htdocs/skins/Agent/default/css/Survey.Agent.Default.css
 var/httpd/htdocs/skins/Customer/default/css/Survey.Customer.Default.css
 var/packagesetup/Survey.pm
+
+.idea
+./.idea
+/.idea
+

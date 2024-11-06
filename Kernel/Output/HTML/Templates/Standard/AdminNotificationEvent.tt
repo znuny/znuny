@@ -324,21 +324,29 @@
                                 <input type="text" name="CustomerUserID" id="CustomerUserID" class="W75pc" value="[% Data.CustomerUserID | html %]"/>
                             </div>
                         </div>
-[% RenderBlockStart("DynamicField") %]
-                        <div class="field-wrapper">
-                            <label class="title"><h4>[% Translate("Dynamic Fields") | html %]</h4></label>
-                        </div>
-[% RenderBlockStart("DynamicFieldElement") %]
-                        <div class="field-wrapper">
-                            [% Data.Label %]
-                            <div class="Field">
+
+                    <div class="field-wrapper">
+                        <label class="card-title title">[% Translate("Dynamic fields") | html %]</label>
+                    </div>
+[% RenderBlockStart("AddDynamicFields") %]
+                            <div class="field-wrapper">
+                                <label>[% Translate("Add dynamic field") | html %]</label>
+                                <div class="Field" data-widget="Select">
+                                    [% Data.DynamicFieldsStrg %]
+                                </div>
+                            </div>
+[% RenderBlockEnd("AddDynamicFields") %]
+
+                        <fieldset id="SelectedDynamicFields" class="TableLike">
+[% RenderBlockStart("SelectedDynamicFields") %]
+                            <div class="label-wrapper">
+                                [% Data.Label %]
+                            </div>
+                            <div class="Field flex-row" data-id="[% Data.ID %]">
                                 [% Data.Field %]
                             </div>
-                        </div>
-[% RenderBlockEnd("DynamicFieldElement") %]
-
-[% RenderBlockEnd("DynamicField") %]
-
+[% RenderBlockEnd("SelectedDynamicFields") %]
+                        </fieldset>
                     </fieldset>
                 </div>
             </div>

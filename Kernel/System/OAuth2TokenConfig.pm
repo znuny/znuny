@@ -330,7 +330,7 @@ Returns:
                 TemplateName  => Google Mail,
                 Notifications => {
                     NotifyOnExpiredRefreshToken => 1,
-                    NotifyOnExpiredToken        => 1
+                    NotifyOnExpiredToken        => 1,
                 },
             },
             ValidID    => 1,

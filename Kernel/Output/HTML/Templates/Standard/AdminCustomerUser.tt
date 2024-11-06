@@ -68,6 +68,8 @@
                 </p>
             </div>
         </div>
+
+        [% IF Data.Nav != 'None' %]
         <div class='WidgetSimple'>
             <div class='Header'>
                 <h2>[% Translate('Related Actions') | html %]</h2>
@@ -105,27 +107,31 @@
                 </ul>
             </div>
         </div>
+        [% END %]
     </div>
     <div class="ContentColumn">
         <h1 class="InvisibleText">[% Translate("Customer User Management") | html %]</h1>
 
-        [% BreadcrumbPath = [
-                {
-                    Name => Translate('Customer User Management'),
-                    Link => Env("Action"),
-                },
-            ]
-        %]
+        [% IF Data.Nav != 'None' %]
+            [% BreadcrumbPath = [
+                    {
+                        Name => Translate('Customer User Management'),
+                        Link => Env("Action"),
+                    },
+                ]
+            %]
 
-        [% SWITCH Data.Action %]
-            [% CASE 'Add' %]
-                [% BreadcrumbPath.push({ Name => Translate('Add Customer User'),}) %]
-            [% CASE 'Change' %]
-                [% USE EditTitle = String(Translate("Edit Customer User")) %]
-                [% BreadcrumbPath.push({ Name => EditTitle.append( ': ', Data.ID ) }) %]
+
+            [% SWITCH Data.Action %]
+                [% CASE 'Add' %]
+                    [% BreadcrumbPath.push({ Name => Translate('Add Customer User'),}) %]
+                [% CASE 'Change' %]
+                    [% USE EditTitle = String(Translate("Edit Customer User")) %]
+                    [% BreadcrumbPath.push({ Name => EditTitle.append( ': ', Data.ID ) }) %]
+            [% END %]
+
+            [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
         [% END %]
-
-        [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
 
         <div class="WidgetSimple">
 [% RenderBlockStart("OverviewHeader") %]

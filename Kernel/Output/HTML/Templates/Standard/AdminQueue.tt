@@ -142,7 +142,6 @@
             <div class="Header filter-items">
                 <h2>[% Translate("List") | html %]</h2>
                 <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
-#                    <i class="fa fa-filter"></i>
                     <span class="show-valid">[% Translate("Show Valid") | html %]</span>
                     <span class="show-all">[% Translate("Show All") | html %]</span>
                 </a>

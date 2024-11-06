@@ -12,6 +12,7 @@ use Kernel::System::Valid;
 package Kernel::System::Valid;    ## no critic
 use strict;
 use warnings;
+use utf8;
 
 #
 # This file demonstrates how to use the autoload mechanism of OTRS to change existing functionality,

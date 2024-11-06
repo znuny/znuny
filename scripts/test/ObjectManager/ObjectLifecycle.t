@@ -10,6 +10,7 @@
 use strict;
 use warnings;
 use vars (qw($Self));
+use utf8;
 
 use Scalar::Util qw/weaken/;
 

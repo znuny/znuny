@@ -121,7 +121,7 @@ sub Run {
             # log error
             $LogObject->Log(
                 Priority => 'error',
-                Message  => "Cant write $Filename: $!",
+                Message  => "Can't write $Filename: $!",
             );
             return $LayoutObject->ErrorScreen();
         }

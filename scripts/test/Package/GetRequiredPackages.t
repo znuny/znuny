@@ -63,7 +63,7 @@ my @Tests = (
                 {
                     'Name'                       => 'ITSMCore',
                     'Version'                    => '',
-                    'IsInstalled'                => 'Problem',
+                    'IsInstalled'                => 0,
                     'IsRequiredVersionInstalled' => 1,
                 }
             ]
@@ -88,7 +88,7 @@ my @Tests = (
                 {
                     'Name'                       => 'GetRequiredPackages',
                     'Version'                    => '',
-                    'IsInstalled'                => 'OK',
+                    'IsInstalled'                => 1,
                     'IsRequiredVersionInstalled' => 1,
                 }
             ]
@@ -114,7 +114,7 @@ my @Tests = (
                 {
                     'Name'                       => 'GetRequiredPackages',
                     'Version'                    => '2.0.0',
-                    'IsInstalled'                => 'Problem',
+                    'IsInstalled'                => 0,
                     'IsRequiredVersionInstalled' => 0,
                 }
             ]

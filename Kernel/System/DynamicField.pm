@@ -879,16 +879,16 @@ Returns:
 
     $List = (
         {
-            ID          => 123,
+            ID            => 123,
             InternalField => 0,
-            Name        => 'nameforfield',
-            Label       => 'The label to show',
-            FieldType   => 'Text',
-            ObjectType  => 'Article',
-            Config      => $ConfigHashRef,
-            ValidID     => 1,
-            CreateTime  => '2011-02-08 15:08:00',
-            ChangeTime  => '2011-06-11 17:22:00',
+            Name          => 'nameforfield',
+            Label         => 'The label to show',
+            FieldType     => 'Text',
+            ObjectType    => 'Article',
+            Config        => $ConfigHashRef,
+            ValidID       => 1,
+            CreateTime    => '2011-02-08 15:08:00',
+            ChangeTime    => '2011-06-11 17:22:00',
         },
         {
             ID            => 321,
@@ -1129,8 +1129,8 @@ checks for duplicate order numbers and gaps in the numbering.
 
 Returns:
 
-    $Success = 1;                       # or 0 in case duplicates or gaps in the dynamic fields
-                                        #    order numbering
+    $Success = 1;   # or 0 in case duplicates or gaps in the dynamic fields
+                    # order numbering
 
 =cut
 
@@ -1178,11 +1178,11 @@ NOTE: Only use object mappings for dynamic fields that must support non-integer 
 like customer user logins and customer company IDs.
 
     my $ObjectMapping = $DynamicFieldObject->ObjectMappingGet(
-        ObjectName            => $ObjectName,    # Name or array ref of names of the object(s) to get the ID(s) for
+        ObjectName => $ObjectName,    # Name or array ref of names of the object(s) to get the ID(s) for
                                                  # Note: either give ObjectName or ObjectID
-        ObjectID              => $ObjectID,      # ID or array ref of IDs of the object(s) to get the name(s) for
+        ObjectID   => $ObjectID,      # ID or array ref of IDs of the object(s) to get the name(s) for
                                                  # Note: either give ObjectName or ObjectID
-        ObjectType            => 'CustomerUser', # Type of object to get mapping for
+        ObjectType => 'CustomerUser', # Type of object to get mapping for
     );
 
     Returns for parameter ObjectID:

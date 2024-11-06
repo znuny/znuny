@@ -7,5 +7,5 @@
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
 
-# check OTRS daemon status
+# check Znuny daemon status
 */5 * * * *    $HOME/bin/znuny.Daemon.pl start >> /dev/null

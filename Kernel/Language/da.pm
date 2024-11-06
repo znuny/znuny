@@ -9,6 +9,8 @@
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
+## nofilter(TidyAll::Plugin::Znuny::Translation::JavaScriptStrings)
+
 package Kernel::Language::da;
 
 use strict;
@@ -27,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.34710061126714;
+    $Self->{Completeness}        = 0.349151425275993;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -567,7 +569,7 @@ sub Data {
         'Assignment of dynamic fields to screens' => '',
         'Overview' => 'Oversigt',
         'Screens' => '',
-        'Default columns' => '',
+        'Overview Default Columns' => '',
         'Add dynamic field' => '',
         'You can assign elements by dragging and dropping them to the lists of available, disabled, assigned and required elements.' =>
             '',
@@ -617,6 +619,9 @@ sub Data {
         'Backend' => '',
         'Backend which will be used for this dynamic field.' => '',
         'Backend documentation' => '',
+        'Cache TTL' => '',
+        'TTL (in seconds) for caching request results. Leave empty or set to 0 to disable caching.' =>
+            '',
         'Key for search' => '',
         'The keys (separated by comma) that will be searched when using the autocomplete while entering a value for the dynamic field.' =>
             '',
@@ -639,9 +644,6 @@ sub Data {
             '',
         'Query delay' => '',
         'Delay (in milliseconds) until the AJAX request will be sent.' =>
-            '',
-        'Autocompletion for search fields' => '',
-        'Use autocompletion for search fields instead of a static selection of values that are currently selected in Znuny (in tickets, articles, etc.). This increases performance if many thousands of values of the dynamic field have been selected. This setting does not affect the search field displayed in AgentTicketSearch and CustomerTicketSearch.' =>
             '',
         'Input field width' => '',
         'Width of the input field (percentage).' => '',
@@ -1089,9 +1091,6 @@ sub Data {
         'Send Keep-Alive' => 'Send Keep-Alive',
         'This configuration defines if incoming connections should get closed or kept alive.' =>
             '',
-        'Additional response headers' => '',
-        'Header' => 'Overskrift',
-        'Add response header' => '',
         'Endpoint' => '',
         'URI to indicate specific location for accessing a web service.' =>
             '',
@@ -1180,7 +1179,10 @@ sub Data {
             '',
         'Default command' => 'Standard kommando',
         'The default HTTP command to use for the requests.' => '',
+        'Additional response headers' => '',
         'Additional request headers' => '',
+        'Header' => 'Overskrift',
+        'Add response header' => '',
         'Add request header' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPSOAP.tt
@@ -1542,9 +1544,11 @@ sub Data {
         'Date' => 'Dato',
         'List of Files' => 'Liste af filer',
         'Permission' => 'Tilladdelse',
+        'Size' => 'Størrelse',
+        'Problem' => 'Problem',
+        'OK' => 'OK',
         'Download file from package!' => 'Download fil fra pakke!',
         'Required' => 'Påkrævet',
-        'Size' => 'Størrelse',
         'Primary Key' => '',
         'Auto Increment' => '',
         'SQL' => 'SQL',
@@ -1684,7 +1688,7 @@ sub Data {
         'Available Fields' => 'Tilgængelige felter',
         'Filter available fields' => '',
         'Assigned Fields' => 'Tildelte felter',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '',
         'Is visible for customer' => '',
         'Text Template' => 'Tekst-skabelon',
@@ -1743,6 +1747,8 @@ sub Data {
         'Do you really want to delete this Activity?' => 'Vil du virkelig slette denne aktivitet?',
         'Do you really want to delete this Activity Dialog?' => 'Vil du virkelig slette denne aktivitets-dialog?',
         'Do you really want to delete this Transition?' => 'Vil du virkelig slette denne overgang?',
+        'You can not edit a transition before it\'s connected to two activities.' =>
+            '',
         'Do you really want to delete this Transition Action?' => '',
         'Do you really want to remove this activity from the canvas? This can only be undone by leaving this screen without saving.' =>
             '',
@@ -1965,7 +1971,7 @@ sub Data {
             'Der mangler mindst et parameter for bindingen. Tjek det venligst.',
         'Result format' => 'Resultatformat',
         'Run Query' => 'Kør forespørgsel',
-        '%s Results' => '',
+        '%s Results' => '%s resultater',
         'Query is executed.' => 'Forespørgslen er udført',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminService.tt
@@ -2029,6 +2035,7 @@ sub Data {
         'Support Data' => '',
         'Error: Support data could not be collected (%s).' => 'Fejl: Supportdata kunne ikke indsamles (%s).',
         'Support Data Collector' => 'Indsamling af support-data',
+        'Delete cache' => '',
         'Details' => 'Detaljer',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemAddress.tt
@@ -2126,7 +2133,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemFiles.tt
         'System file support' => '',
-        'Delete cache' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemFiles/Widget.tt
         'Permissions' => 'Rettigheder',
@@ -2361,30 +2367,27 @@ sub Data {
         'in' => 'om',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
+        'All' => 'Alle',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'mere',
         'No Data Available.' => '',
         'Available Columns' => 'Tilgængelige kolonner',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'Synlige kolonner (flyt dem med musen)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '',
         'Open' => 'Åben',
         'Closed' => 'Lukket',
+        'Phone ticket' => 'Sager',
+        'Email ticket' => 'Mail-sager',
         '%s open ticket(s) of %s' => '%s åbne sager af %s',
         '%s closed ticket(s) of %s' => '%s lukkede sager af %s',
+        'New phone ticket from %s' => 'Nye sager fra %s',
+        'New email ticket to %s' => 'Nye mail-sager til %s',
         'Edit customer ID' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDStatus.tt
@@ -2399,10 +2402,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
         'Customer user information' => '',
-        'Phone ticket' => 'Sager',
-        'Email ticket' => 'Mail-sager',
-        'New phone ticket from %s' => 'Nye sager fra %s',
-        'New email ticket to %s' => 'Nye mail-sager til %s',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardMyLastChangedTickets.tt
         'No tickets found.' => '',
@@ -2510,7 +2509,6 @@ sub Data {
         'Split' => 'Opdel',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsAdd.tt
-        'Read more about statistics in Znuny' => '',
         'Statistics Management' => '',
         'Add Statistics' => '',
         'Dynamic Matrix' => 'Dynamisk matrix',
@@ -2610,12 +2608,15 @@ sub Data {
         'Link together' => 'Kæd sammen',
         'Link to parent' => 'Kæd til forælder',
         'Unlock tickets' => 'Frigiv sager',
+        'Watch tickets' => '',
+        'Mark tickets as seen' => '',
+        'Mark tickets as unseen' => '',
         'Execute Bulk Action' => 'Udfør massehandling',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '',
         'Date Invalid!' => 'Ugyldig dato!',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => '',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2625,12 +2626,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'Fjern venligst denne indtastning og skriv en ny med den korrekte værdi.',
         'This address already exists on the address list.' => 'Denne adresse eksisterer allerede i adresselisten.',
-        ' Cc' => '',
         'Remove Cc' => 'Fjern Cc',
         'Bcc' => 'Bcc',
-        ' Bcc' => '',
         'Remove Bcc' => 'Fjern Bcc',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '',
@@ -2639,23 +2637,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'Opret ny mail-sag',
-        ' Example Template' => '',
         'Example Template' => 'Eksempel-skabelon',
         'To customer user' => 'Til kundebruger',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'Inkluder venligst mindst en kundebruger til sagen',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'Vælg denne kunde som sagens hovedkunde',
         'Remove Ticket Customer User' => 'Fjern kundebruger fra sagen',
         'From queue' => 'Fra kø',
-        ' Get all' => '',
         'Get all' => 'Hent alle',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2708,40 +2699,36 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'Ingen sager fundet.',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'Afsender',
+        'Customer User Name' => 'Kundenavn',
         'Impact' => 'Påvirkning',
-        'CustomerID' => 'Kunde-ID',
         'Update Time' => 'Opdateringstid',
         'Solution Time' => 'Løsningstid',
         'First Response Time' => 'Frist til første svar',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'Flyt sag til anden kø',
         'Change queue' => 'Skift kø',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
         'Remove active filters for this screen.' => 'Fjern aktive filtre for dette billede.',
         'Clear all filters' => '',
         'Remove mention' => '',
+        'Remove from list of watched tickets' => 'Fjern fra listen over fulgte sager',
         'Tickets per page' => 'Sager pr. side',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'Nulstil oversigt',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => '',
         'Create New Phone Ticket' => 'Opret ny sag',
         'Please include at least one customer for the ticket.' => 'Der skal være mindst én kunde til sagen.',
-        'Select this customer as the main customer.' => 'Vælg denne kunde som sagens hovedkunde',
         'To queue' => 'Til kø',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2754,7 +2741,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => '',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => '',
@@ -2798,7 +2784,6 @@ sub Data {
         'Save as default' => 'Gem som standard',
         'Drafts' => '',
         'by' => 'af',
-        'Move ticket to a different queue' => 'Flyt sag til anden kø',
         'Change Queue' => 'Skift kø',
         'There are no dialogs available at this point in the process.' =>
             'Der er ingen dialoger tilgængelige på dette sted i processen.',
@@ -2839,7 +2824,6 @@ sub Data {
         'Close this message' => 'Luk denne besked',
         'Image' => '',
         'PDF' => 'PDF',
-        'Unknown' => 'Ukendt',
         'View' => 'Vis',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/LinkTable.tt
@@ -2854,7 +2838,6 @@ sub Data {
         'is invalid' => '',
         'Pending till' => 'Afventer til',
         'Locked' => 'Tildelt',
-        '%s Ticket(s)' => '',
         'Accounted time' => 'Benyttet tid',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/ArticleContent/Invalid.tt
@@ -2879,7 +2862,6 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerAccept.tt
         'Dear Customer,' => '',
         'thank you for using our services.' => '',
-        'Yes, I accept your license.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerCompany/TicketCustomerIDSelection.tt
         'The customer ID is not changeable, no other customer ID can be assigned to this ticket.' =>
@@ -2891,8 +2873,8 @@ sub Data {
         'From assigned Customer IDs' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerError.tt
+        'Error' => 'Fejl',
         'An Error Occurred' => '',
-        'Error Details' => 'Fejldetaljer',
         'Traceback' => 'Tilbagesporing',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerFooter.tt
@@ -2900,7 +2882,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerFooterJS.tt
         '%s detected possible network issues. You could either try reloading this page manually or wait until your browser has re-established the connection on its own.' =>
-            '',
+            '%s oplever udfald på forbindelsen. Du kan enten forsøge at opdatere siden eller vente til din browser automatisk forsøger igen.',
         'The connection has been re-established after a temporary connection loss. Due to this, elements on this page could have stopped to work correctly. In order to be able to use all elements correctly again, it is strongly recommended to reload this page.' =>
             '',
 
@@ -2931,6 +2913,7 @@ sub Data {
         'Request New Password' => 'Bed om nyt password',
         'Your User Name' => 'Dit brugernavn',
         'A new password will be sent to your email address.' => 'Et nyt password bliver sendt til din mail-adresse.',
+        'Back to login' => 'Tilbage til login',
         'Create Account' => 'Opret konto',
         'Please fill out this form to receive login credentials.' => 'Udfyld venligst denne formular for at modtage login-oplysninger',
         'How we should address you' => 'Hvordan skal vi tiltale dig',
@@ -2942,11 +2925,10 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'Ny sag',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Sager',
         'Welcome!' => 'Velkommen!',
         'Please click the button below to create your first ticket.' => 'Klik på knappen herunder for at oprette din første sag.',
         'Create your first ticket' => 'Opret din første sag',
@@ -2955,12 +2937,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Navn på skabelon',
         'e. g. 10*5155 or 105658*' => 'f.eks. 10*55 eller 105658*',
+        'CustomerID' => 'Kunde-ID',
         'Types' => 'Typer',
         'Limitation' => '',
         'No time settings' => 'Ingen tidsindstillinger',
-        'All' => 'Alle',
         'Specific date' => 'Specifik dato',
         'Only tickets created' => 'Kun oprettede sager',
         'Date range' => 'Datointerval',
@@ -2969,7 +2953,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Gem som skabelon',
         'Save as Template?' => 'Gem som skabelon?',
-        'Template Name' => 'Navn på skabelon',
         'Pick a profile name' => 'Vælg et profilnavn',
         'Output to' => 'Output til',
 
@@ -2994,6 +2977,7 @@ sub Data {
         'Ticket fields' => 'Sagsfelter',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Error.tt
+        'Error Details' => 'Fejldetaljer',
         'Expand' => 'Udvid',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/FormElements/AttachmentList.tt
@@ -3007,6 +2991,8 @@ sub Data {
         'You have loaded the draft "%s".' => '',
         'You have loaded the draft "%s". You last changed it %s.' => '',
         'You have loaded the draft "%s". It was last changed %s by %s.' =>
+            '',
+        'Please note that you have already one or more saved drafts for this action.' =>
             '',
         'Please note that this draft is outdated because the ticket was modified since this draft was created.' =>
             '',
@@ -3024,6 +3010,7 @@ sub Data {
         'Personal views' => '',
         'Last Views' => '',
         'Search tools' => '',
+        'SearchTemplate' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
         'JavaScript not available' => 'JavaScript ikke tilgængeligt',
@@ -3068,7 +3055,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBResult.tt
         'Done' => 'Færdig',
-        'Error' => 'Fejl',
         'Database setup successful!' => 'Database konfigureret!',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBStart.tt
@@ -3138,7 +3124,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Login.tt
         'Lost your password?' => 'Mistet din adgangskode?',
-        'Back to login' => 'Tilbage til login',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/MetaFloater.tt
         'Scale preview content' => '',
@@ -3197,7 +3182,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '',
-        ' e. g.' => 'f.eks.',
+        'e. g.' => 'f.eks.',
         'To get the first 20 character of the appointment title.' => '',
         'To get the calendar attribute' => '',
         'Attributes of the recipient user for the notification' => '',
@@ -3229,9 +3214,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => '',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             '',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'f.eks.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -3326,7 +3308,7 @@ sub Data {
             '',
         'Changing this setting is only available in a higher config level!' =>
             '',
-        '%s (%s) is currently working on this setting.' => '',
+        '%s (%s) is currently working on this setting.' => '%s (%s) arbejder i øjeblikket på denne indstilling.',
         'Toggle advanced options for this setting' => '',
         'Disable this setting, so it is no longer effective' => '',
         'Disable' => '',
@@ -3334,8 +3316,6 @@ sub Data {
         'Enable' => '',
         'Reset this setting to its default state' => '',
         'Reset setting' => '',
-        'Show user specific changes for this setting' => '',
-        'Show user settings' => '',
         'Copy a direct link to this setting to your clipboard' => '',
         'Copy direct link' => '',
         'Remove this setting from your favorites setting' => '',
@@ -3417,6 +3397,7 @@ sub Data {
         'Process state' => '',
         'Running' => '',
         'Finished' => 'Færdig',
+        'Unknown' => 'Ukendt',
         'No package information available.' => '',
 
         # JS Template: Kernel/Output/JavaScript/Templates/Standard/SysConfig/AddButton.html.tmpl
@@ -3474,7 +3455,7 @@ sub Data {
         'There was an error synchronizing the ACLs.' => '',
         'ACL %s could not be deleted' => '',
         'There was an error getting data for ACL with ID %s' => '',
-        '%s (copy) %s' => '',
+        '%s (copy) %s' => '%s (kopi) %s',
         'Please note that ACL restrictions will be ignored for the Superuser account (UserID 1).' =>
             '',
         'Exact match' => '',
@@ -3513,7 +3494,7 @@ sub Data {
         'There was an error getting data for Notification with ID:%s!' =>
             'Der var en fejl med at hente data for beskeden med ID:%s!',
         'Unknown Notification %s!' => 'Ukendt besked %s!',
-        '%s (copy)' => '',
+        '%s (copy)' => '%s (kopi)',
         'There was an error creating the Notification' => 'Der opstod en fejl ved oprettelse af beskeden',
         'Notifications could not be Imported due to a unknown error, please check Znuny logs for more information' =>
             'Beskeder kunne ikke importeres grundet en ukendt fejl. Tjek Znuny-loggen for mere information.',
@@ -3851,7 +3832,6 @@ sub Data {
         'No such file %s in package!' => '',
         'No such file %s in local file system!' => '',
         'Can\'t read %s!' => 'Kan ikke læse %s!',
-        'File is OK' => '',
         'Package has locally modified files.' => '',
         'Not Started' => '',
         'Updated' => '',
@@ -4117,8 +4097,8 @@ sub Data {
         'until %s' => '',
         'No notification' => '',
         '%s minute(s) before' => '',
-        '%s hour(s) before' => '',
-        '%s day(s) before' => '',
+        '%s hour(s) before' => '%s time(r) før',
+        '%s day(s) before' => '%s dag(e) før',
         '%s week before' => '',
         'before the appointment starts' => '',
         'after the appointment has been started' => '',
@@ -4135,7 +4115,7 @@ sub Data {
         'Customer History' => 'Kunde-historik',
 
         # Perl Module: Kernel/Modules/AgentCustomerUserAddressBook.pm
-        'No RecipientField is given!' => '',
+        'No RecipientField is given!' => 'Modtagerfeltet er ikke angivet',
 
         # Perl Module: Kernel/Modules/AgentDashboardCommon.pm
         'No such config for %s' => '',
@@ -4144,13 +4124,12 @@ sub Data {
         'Can\'t get element data of %s!' => '',
         'Can\'t get filter content data of %s!' => '',
         'Customer Name' => '',
-        'Customer User Name' => 'Kundenavn',
 
         # Perl Module: Kernel/Modules/AgentLinkObject.pm
         'Need SourceObject and SourceKey!' => '',
         'You need ro permission!' => '',
         'Can not delete link with %s!' => 'Kan ikke slette link med %s!',
-        '%s Link(s) deleted successfully.' => '',
+        '%s Link(s) deleted successfully.' => '%s Link slettet.',
         'Can not create link with %s! Object already linked as %s.' => '',
         'Can not create link with %s!' => 'Kan ikke oprette link med %s!',
         '%s links added successfully.' => '',
@@ -4283,7 +4262,7 @@ sub Data {
 
         # Perl Module: Kernel/Modules/AgentTicketProcess.pm
         'Couldn\'t get ActivityDialogEntityID "%s"!' => '',
-        'No Process configured!' => '',
+        'No Process configured!' => 'Processen er ikke konfigureret!',
         'The selected process is invalid!' => 'Den valgte proces er ugyldig.',
         'Process %s is invalid!' => '',
         'Subaction is invalid!' => '',
@@ -4472,11 +4451,17 @@ sub Data {
             '',
         'Can\'t connect to database, read comment!' => '',
         'Database already contains data - it should be empty!' => 'Databasen indeholder allerede data - den burde være tom!',
+        'Error: You have the wrong database version installed (%s). You need at least version %s! ' =>
+            '',
         'Error: Please make sure your database accepts packages over %s MB in size (it currently only accepts packages up to %s MB). Please adapt the max_allowed_packet setting of your database in order to avoid errors.' =>
             'Fejl: Sørg for at din database accepterer pakker over %s MB i størrelse (I øjeblikket accepterer den kun pakker op til %s MB). Tilpas max_allowed_packet indstillingen i din database for at undgå fejl.',
         'Error: Please set the value for innodb_log_file_size on your database to at least %s MB (current: %s MB, recommended: %s MB). For more information, please have a look at %s.' =>
             'Fejl: Sæt venligst værdien for innodb_log_file_size i din database til mindst %s MB (nuværende: %s MB, anbefalet: %s MB). For mere info, se %s.',
-        'Wrong database collation (%s is %s, but it needs to be utf8).' =>
+        'Error: Please set the value for innodb_file_per_table on your database to ON.' =>
+            '',
+        'Error: Please set the value for innodb_default_row_format on your database to dynamic.' =>
+            '',
+        'Wrong default storage engine (%s is %s, but it needs to be InnoDB).' =>
             '',
 
         # Perl Module: Kernel/Modules/Mentions.pm
@@ -4528,6 +4513,10 @@ sub Data {
         # Perl Module: Kernel/Output/HTML/ArticleAction/AgentTicketPrint.pm
         'Print this article' => 'Udskriv dette indlæg',
 
+        # Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
+        'Mark article as unseen' => '',
+        'Mark as unseen' => '',
+
         # Perl Module: Kernel/Output/HTML/ArticleAction/MarkAsImportant.pm
         'Mark' => 'Marker',
         'Unmark' => 'Fjern markering',
@@ -4540,10 +4529,10 @@ sub Data {
         'Crypted' => 'Krypteret',
         'Sent message encrypted to recipient!' => '',
         'Signed' => 'Underskrevet',
-        '"PGP SIGNED MESSAGE" header found, but invalid!' => '',
+        '"PGP SIGNED MESSAGE" header found, but invalid!' => '"PGP SIGNED MESSAGE" header fundet, men den er invalid!',
 
         # Perl Module: Kernel/Output/HTML/ArticleCheck/SMIME.pm
-        '"S/MIME SIGNED MESSAGE" header found, but invalid!' => '',
+        '"S/MIME SIGNED MESSAGE" header found, but invalid!' => '"S/MIME SIGNED MESSAGE" header fundet, men den er invalid!',
         'Ticket decrypted before' => '',
         'Impossible to decrypt: private key for email was not found!' => '',
         'Successful decryption' => '',
@@ -4633,13 +4622,13 @@ sub Data {
         'Hours' => 'Timer',
         'Minutes' => 'Minutter',
         'Check to activate this date' => 'Marker for at aktivere denne dato',
-        '%s TB' => '',
-        '%s GB' => '',
-        '%s MB' => '',
-        '%s KB' => '',
-        '%s B' => '',
+        '%s TB' => '%s TB',
+        '%s GB' => '%s GB',
+        '%s MB' => '%s MB',
+        '%s KB' => '%s KB',
+        '%s B' => '%s B',
         'No Permission!' => 'Ingen tilladelse.',
-        'No Permission' => '',
+        'No Permission' => 'Ingen tilladelse',
         'Show Tree Selection' => 'Vis træ',
         'Split Quote' => '',
         'Remove Quote' => '',
@@ -4785,7 +4774,6 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/TicketMenu/TicketWatcher.pm
         'Unwatch' => 'Følg ikke',
-        'Remove from list of watched tickets' => 'Fjern fra listen over fulgte sager',
         'Watch' => 'Følg',
         'Add to list of watched tickets' => 'Føj til listen over fulgte sager',
 
@@ -5021,13 +5009,13 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
         'Client Connection Charset' => 'Karaktersæt til klient-forbindelser',
-        'Setting character_set_client needs to be utf8.' => 'Indstillingen character_set_client skal være utf8.',
+        'Setting character_set_client needs to be utf8mb4.' => '',
         'Server Database Charset' => 'Karaktersæt i databasen.',
-        'This character set is not yet supported, please see https://bugs.otrs.org/show_bug.cgi?id=12361. Please convert your database to the character set \'utf8\'.' =>
-            '',
-        'The setting character_set_database needs to be \'utf8\'.' => '',
+        'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'Karakterset i tabeller',
-        'There were tables found which do not have \'utf8\' as charset.' =>
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
+        'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/InnoDBLogFileSize.pm
@@ -5082,7 +5070,7 @@ sub Data {
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/postgresql/Version.pm
         'PostgreSQL 9.2 or higher is required.' => '',
 
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionOTRS.pm
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionZnuny.pm
         'Operating System' => 'Operativ-system',
         'Znuny Disk Partition' => 'Znuny Disk Partition',
 
@@ -5129,165 +5117,6 @@ sub Data {
         'There should be more than 60% free swap space.' => 'Der bør være mere end 60% ledigt swap.',
         'There should be no more than 200 MB swap space used.' => 'Der bør ikke være mere end 200 MB brugt swap.',
 
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticleSearchIndexStatus.pm
-        'Znuny' => '',
-        'Article Search Index Status' => '',
-        'Indexed Articles' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticlesPerCommunicationChannel.pm
-        'Articles Per Communication Channel' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLog.pm
-        'Incoming communications' => '',
-        'Outgoing communications' => '',
-        'Failed communications' => '',
-        'Average processing time of communications (s)' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-        'Communication Log Account Status (last 24 hours)' => '',
-        'No connections found.' => '',
-        'ok' => '',
-        'permanent connection errors' => '',
-        'intermittent connection errors' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ConfigSettings.pm
-        'Config Settings' => 'Konfigurationsindstillinger',
-        'Could not determine value.' => 'Kunne ikke fastslå værdi.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DaemonRunning.pm
-        'Daemon' => 'Tjeneste',
-        'Daemon is running.' => 'Dæmonen kører.',
-        'Daemon is not running.' => 'Tjeneste kører ikke.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-        'Database Records' => '',
-        'Tickets' => 'Sager',
-        'Ticket History Entries' => 'Sagens Historik',
-        'Articles' => 'Indlæg',
-        'Attachments (DB, Without HTML)' => '',
-        'Customers With At Least One Ticket' => 'Kunder med mindst én sag',
-        'Dynamic Field Values' => '',
-        'Invalid Dynamic Fields' => '',
-        'Invalid Dynamic Field Values' => '',
-        'GenericInterface Webservices' => '',
-        'Process Tickets' => '',
-        'Months Between First And Last Ticket' => 'Måneder mellem første og sidste sag',
-        'Tickets Per Month (avg)' => 'Sager pr. måned (gennemsnit)',
-        'Open Tickets' => 'Åbne Sager',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultSOAPUser.pm
-        'Default SOAP Username And Password' => '',
-        'Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultUser.pm
-        'Default Admin Password' => '',
-        'Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/EmailQueue.pm
-        'Email Sending Queue' => '',
-        'Emails queued for sending' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FQDN.pm
-        'FQDN (domain name)' => 'FQDN (domæne navn)',
-        'Please configure your FQDN setting.' => '',
-        'Domain Name' => 'Domæne-navn',
-        'Your FQDN setting is invalid.' => 'Din FQDN-indstilling er ugyldig.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FileSystemWritable.pm
-        'File System Writable' => 'Filsystem skrivbart',
-        'The file system on your Znuny partition is not writable.' => 'Filsystemet på din Znuny-partition er ikke skrivbart.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/LegacyConfigBackups.pm
-        'Legacy Configuration Backups' => '',
-        'No legacy configuration backup files found.' => '',
-        'Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages.' =>
-            '',
-        'Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/MultipleJSFileLoad.pm
-        'Views with multiple loaded JavaScript files' => '',
-        'The following JavaScript files loaded multiple times:' => '',
-        'Files' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-        'Package Installation Status' => '',
-        'Some packages have locally modified files.' => '',
-        'Some packages are not correctly installed.' => 'Nogle pakker er ikke korrekt installeret.',
-        'Package Framework Version Status' => '',
-        'Some packages are not allowed for the current framework version.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageList.pm
-        'Package List' => 'Pakkeliste',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SessionConfigSettings.pm
-        'Session Config Settings' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SpoolMails.pm
-        'Spooled Emails' => '',
-        'There are emails in var/spool that Znuny could not process.' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SystemID.pm
-        'Your SystemID setting is invalid, it should only contain digits.' =>
-            'Din System-ID-instilling er ugyldig; den må kun indeholde tal.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/DefaultType.pm
-        'Default Ticket Type' => '',
-        'The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/IndexModule.pm
-        'Ticket Index Module' => '',
-        'You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information.' =>
-            'Du har mere end 60.000 sager og bør bruge StaticDB-backend. Se admin-manualen (performance tuning) for mere information.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/InvalidUsersWithLockedTickets.pm
-        'Invalid Users with Locked Tickets' => '',
-        'There are invalid users with locked tickets.' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/OpenTickets.pm
-        'You should not have more than 8,000 open tickets in your system.' =>
-            'Du bør ikke have mere end 8.000 åbne sager i dit system.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/SearchIndexModule.pm
-        'Ticket Search Index Module' => '',
-        'The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/StaticDBOrphanedRecords.pm
-        'Orphaned Records In ticket_lock_index Table' => '',
-        'Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
-            '',
-        'Orphaned Records In ticket_index Table' => '',
-        'Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-        'Time Settings' => '',
-        'Server time zone' => 'Server tidszone',
-        'Znuny time zone' => '',
-        'Znuny time zone is not set.' => '',
-        'User default time zone' => '',
-        'User default time zone is not set.' => '',
-        'Calendar time zone is not set.' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentSkinUsage.pm
-        'UI - Agent Skin Usage' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentThemeUsage.pm
-        'UI - Agent Theme Usage' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/SpecialStats.pm
-        'UI - Special Statistics' => '',
-        'Agents using custom main menu ordering' => '',
-        'Agents using favourites for the admin overview' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Version.pm
-        'Znuny Version' => 'Znuny-version',
-
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Webserver/Apache/LoadedModules.pm
         'Webserver' => 'Web-server',
         'Loaded Apache Modules' => 'Indlæste Apache-moduler',
@@ -5325,13 +5154,167 @@ sub Data {
         'Webserver Version' => 'Webserver-version',
         'Could not determine webserver version.' => 'Kunne ikke fastslå webserver-version.',
 
-        # Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/OTRS/ConcurrentUsers.pm
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticleSearchIndexStatus.pm
+        'Znuny' => '',
+        'Article Search Index Status' => '',
+        'Indexed Articles' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticlesPerCommunicationChannel.pm
+        'Articles Per Communication Channel' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLog.pm
+        'Incoming communications' => '',
+        'Outgoing communications' => '',
+        'Failed communications' => '',
+        'Average processing time of communications (s)' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+        'Communication Log Account Status (last 24 hours)' => '',
+        'No connections found.' => '',
+        'ok' => '',
+        'permanent connection errors' => '',
+        'intermittent connection errors' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ConfigSettings.pm
+        'Config Settings' => 'Konfigurationsindstillinger',
+        'Could not determine value.' => 'Kunne ikke fastslå værdi.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DaemonRunning.pm
+        'Daemon' => 'Tjeneste',
+        'Daemon is running.' => 'Dæmonen kører.',
+        'Daemon is not running.' => 'Tjeneste kører ikke.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+        'Database Records' => '',
+        'Ticket History Entries' => 'Sagens Historik',
+        'Articles' => 'Indlæg',
+        'Attachments (DB, Without HTML)' => '',
+        'Customers With At Least One Ticket' => 'Kunder med mindst én sag',
+        'Dynamic Field Values' => '',
+        'Invalid Dynamic Fields' => '',
+        'Invalid Dynamic Field Values' => '',
+        'GenericInterface Webservices' => '',
+        'Process Tickets' => '',
+        'Months Between First And Last Ticket' => 'Måneder mellem første og sidste sag',
+        'Tickets Per Month (avg)' => 'Sager pr. måned (gennemsnit)',
+        'Open Tickets' => 'Åbne Sager',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultSOAPUser.pm
+        'Default SOAP Username And Password' => '',
+        'Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it.' =>
+            '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultUser.pm
+        'Default Admin Password' => '',
+        'Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account.' =>
+            '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/EmailQueue.pm
+        'Email Sending Queue' => '',
+        'Emails queued for sending' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FQDN.pm
+        'FQDN (domain name)' => 'FQDN (domæne navn)',
+        'Please configure your FQDN setting.' => '',
+        'Domain Name' => 'Domæne-navn',
+        'Your FQDN setting is invalid.' => 'Din FQDN-indstilling er ugyldig.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FileSystemWritable.pm
+        'File System Writable' => 'Filsystem skrivbart',
+        'The file system on your Znuny partition is not writable.' => 'Filsystemet på din Znuny-partition er ikke skrivbart.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/LegacyConfigBackups.pm
+        'Legacy Configuration Backups' => '',
+        'No legacy configuration backup files found.' => '',
+        'Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages.' =>
+            '',
+        'Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder.' =>
+            '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/MultipleJSFileLoad.pm
+        'The following JavaScript files loaded multiple times:' => '',
+        'Files' => '',
+        'Views with multiple loaded JavaScript files' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+        'Package Installation Status' => '',
+        'Some packages have locally modified files.' => '',
+        'Some packages are not correctly installed.' => 'Nogle pakker er ikke korrekt installeret.',
+        'Package Framework Version Status' => '',
+        'Some packages are not allowed for the current framework version.' =>
+            '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageList.pm
+        'Package List' => 'Pakkeliste',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SessionConfigSettings.pm
+        'Session Config Settings' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SpoolMails.pm
+        'Spooled Emails' => '',
+        'There are emails in var/spool that Znuny could not process.' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SystemID.pm
+        'Your SystemID setting is invalid, it should only contain digits.' =>
+            'Din System-ID-instilling er ugyldig; den må kun indeholde tal.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/DefaultType.pm
+        'Default Ticket Type' => '',
+        'The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type.' =>
+            '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/IndexModule.pm
+        'Ticket Index Module' => '',
+        'You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information.' =>
+            'Du har mere end 60.000 sager og bør bruge StaticDB-backend. Se admin-manualen (performance tuning) for mere information.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/InvalidUsersWithLockedTickets.pm
+        'Invalid Users with Locked Tickets' => '',
+        'There are invalid users with locked tickets.' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/OpenTickets.pm
+        'You should not have more than 8,000 open tickets in your system.' =>
+            'Du bør ikke have mere end 8.000 åbne sager i dit system.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/SearchIndexModule.pm
+        'Ticket Search Index Module' => '',
+        'The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches.' =>
+            '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/StaticDBOrphanedRecords.pm
+        'Orphaned Records In ticket_lock_index Table' => '',
+        'Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
+            '',
+        'Orphaned Records In ticket_index Table' => '',
+        'Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
+            '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+        'Time Settings' => '',
+        'Server time zone' => 'Server tidszone',
+        'Znuny time zone' => '',
+        'Znuny time zone is not set.' => '',
+        'User default time zone' => '',
+        'User default time zone is not set.' => '',
+        'Calendar time zone is not set.' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentSkinUsage.pm
+        'UI - Agent Skin Usage' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentThemeUsage.pm
+        'UI - Agent Theme Usage' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/SpecialStats.pm
+        'UI - Special Statistics' => '',
+        'Agents using custom main menu ordering' => '',
+        'Agents using favourites for the admin overview' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Version.pm
+        'Znuny Version' => 'Znuny-version',
+
+        # Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/Znuny/ConcurrentUsers.pm
         'Concurrent Users Details' => '',
         'Concurrent Users' => 'Samtidige brugere',
-
-        # Perl Module: Kernel/System/SupportDataCollector/PluginBase.pm
-        'OK' => 'OK',
-        'Problem' => 'Problem',
 
         # Perl Module: Kernel/System/SysConfig.pm
         'Setting %s does not exists!' => '',
@@ -5389,7 +5372,7 @@ sub Data {
         'Invalid Token!' => 'Ugyldigt Token!',
         'Sent new password to %s. Please check your email.' => 'Nyt password sendt til %s. Tjek venligst din mail.',
         'Error: invalid session.' => '',
-        'No Permission to use this frontend module!' => '',
+        'No Permission to use this frontend module!' => 'Ingen tilladelse til at anvende frontend modulet',
 
         # Perl Module: Kernel/System/Web/InterfaceCustomer.pm
         'Authentication succeeded, but no customer record is found in the customer backend. Please contact the administrator.' =>
@@ -5578,11 +5561,23 @@ sub Data {
         'The headline shown in the customer interface.' => '',
         'The logo shown in the header of the customer interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             '',
+        'The shortcut icon for the customer interface.' => '',
+        'The shortcut icon for the customer interface for the skin "default".' =>
+            '',
+        'The Apple touch icon for the customer interface.' => '',
+        'The Apple touch icon for the customer interface for skin "default".' =>
+            '',
         'The logo shown in the header of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             '',
         'The logo shown in the header of the agent interface for the skin "default". See "AgentLogo" for further description.' =>
             '',
         'The logo shown on top of the login box of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
+            '',
+        'The shortcut icon for the agent interface.' => '',
+        'The shortcut icon for the agent interface fot the skin "default".' =>
+            '',
+        'The Apple touch icon for the agent interface.' => '',
+        'The Apple touch icon for the agent interface for the skin "default".' =>
             '',
         'Defines the URL base path of icons, CSS and Java Script.' => '',
         'Defines the URL image path of icons for navigation.' => '',
@@ -5616,6 +5611,8 @@ sub Data {
             '',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             '',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
             '',
@@ -5629,6 +5626,7 @@ sub Data {
             '',
         'Defines the address of a dedicated DNS server, if necessary, for the "CheckMXRecord" look-ups.' =>
             '',
+        'Sets the timeout (in seconds) for DNS resolver queries.' => '',
         'Makes the application check the syntax of email addresses.' => '',
         'Defines a regular expression that excludes some addresses from the syntax check (if "CheckEmailAddresses" is set to "Yes"). Please enter a regex in this field for email addresses, that aren\'t syntactically valid, but are necessary for the system (i.e. "root@localhost").' =>
             '',
@@ -5909,7 +5907,6 @@ sub Data {
             '',
         'Defines the users avatar. Please note: setting \'Active\' to 0 will only prevent agents from editing settings of this group in their personal preferences, but will still allow administrators to edit the settings of another user\'s behalf. Use \'PreferenceGroup\' to control in which area these settings should be shown in the user interface.' =>
             '',
-        'Defines the global users popup profile.' => '',
         'Defines the user identifier for the customer panel.' => '',
         'Activates support for customer and customer user groups.' => '',
         'Defines the groups every customer user will be in (if CustomerGroupSupport is enabled and you don\'t want to manage every customer user for these groups).' =>
@@ -6003,7 +6000,7 @@ sub Data {
             '',
         'If "LDAP" was selected for Customer::AuthModule and if you want to add a suffix to every customer login name, specifiy it here, e. g. you just want to write the username user but in your LDAP directory exists user@domain.' =>
             '',
-        'If "LDAP" was selected for Customer::AuthModule and special paramaters are needed for the Net::LDAP perl module, you can specify them here. See "perldoc Net::LDAP" for more information about the parameters.' =>
+        'If "LDAP" was selected for Customer::AuthModule and special parameters are needed for the Net::LDAP perl module, you can specify them here. See "perldoc Net::LDAP" for more information about the parameters.' =>
             '',
         'If "LDAP" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             '',
@@ -6063,8 +6060,10 @@ sub Data {
         'Defines all the possible stats output formats.' => '',
         'Allows agents to exchange the axis of a stat if they generate one.' =>
             '',
-        'Allows agents to generate individual-related stats.' => '',
-        'Allows invalid agents to generate individual-related stats.' => '',
+        'Adds the following elements for use in stats: "Agent/Owner", "Created by Agent/Owner", "Responsible", "Accounted time by Agent".' =>
+            '',
+        'Allows invalid agents to be used in stats. Stats::UseAgentElementInStats must be active.' =>
+            '',
         'Shows all the customer identifiers in a multi-select field (not useful if you have a lot of customer identifiers).' =>
             '',
         'Shows all the customer user identifiers in a multi-select field (not useful if you have a lot of customer user identifiers).' =>
@@ -6120,11 +6119,13 @@ sub Data {
         'Specifies the order in which the firstname and the lastname of agents will be displayed.' =>
             'Definerer hvilken rækkefølge agenters for og efternavn vises.',
         'Default skin for the agent interface.' => '',
+        'Dark skin for the agent interface.' => '',
         'The agent skin\'s InternalName which should be used in the agent interface. Please check the available skins in Frontend::Agent::Skins.' =>
             '',
         'It is possible to configure different skins, for example to distinguish between diferent agents, to be used on a per-domain basis within the application. Using a regular expression (regex), you can configure a Key/Content pair to match a domain. The value in "Key" should match the domain, and the value in "Content" should be a valid skin on your system. Please see the example entries for the proper form of the regex.' =>
             '',
         'Default skin for the customer interface.' => '',
+        'Dark skin for the customer interface.' => '',
         'The customer skin\'s InternalName which should be used in the customer interface. Please check the available skins in Frontend::Customer::Skins.' =>
             '',
         'It is possible to configure different skins, for example to distinguish between diferent customers, to be used on a per-domain basis within the application. Using a regular expression (regex), you can configure a Key/Content pair to match a domain. The value in "Key" should match the domain, and the value in "Content" should be a valid skin on your system. Please see the example entries for the proper form of the regex.' =>
@@ -6498,6 +6499,13 @@ sub Data {
         'Defines if a pre-sorting by priority should be done in the service view.' =>
             '',
         'Defines the default sort order for all services in the service view, after priority sort.' =>
+            '',
+        'Enable highlighting services based on ticket age.' => '',
+        'Sets the age in minutes (first level) for highlighting services that contain untouched tickets.' =>
+            '',
+        'Sets the age in minutes (second level) for highlighting services that contain untouched tickets.' =>
+            '',
+        'Activates a blinking mechanism of the service that contains the oldest ticket.' =>
             '',
         'Activates time accounting.' => '',
         'Sets the prefered time units (e.g. work units, hours, minutes).' =>
@@ -7846,6 +7854,31 @@ sub Data {
             '',
         'Shows the title field in the NoteToLinkedTicket screen of the agent interface.' =>
             '',
+        'User preferences backend to use.' => '',
+        'Loader module registration for the public interface.' => '',
+        'Deletes orphaned sessions.' => '',
+        'Defines the config parameters available in the preferences view. The default redirect URL from SysConfig \'MarkTicketUnseenRedirectDefaultURL\' is used if no selection is made by the agent.' =>
+            '',
+        'Defines the redirect URL for setting a ticket article to \'unseen\'.' =>
+            '',
+        'Defines the config parameters available in the preferences view. The default redirect URL from SysConfig \'MarkTicketSeenRedirectDefaultURL\' is used if no selection is made by the agent.' =>
+            '',
+        'Defines the redirect URL for setting a ticket article to \'seen\'.' =>
+            '',
+        'Registers a link in the ticket menu to mark a ticket as unseen.' =>
+            '',
+        'Registers a link in the ticket menu to mark a ticket as seen.' =>
+            '',
+        'Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as unseen.' =>
+            '',
+        'Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as seen.' =>
+            '',
+        'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "agent".' =>
+            '',
+        'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".' =>
+            '',
+        'Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.' =>
+            '',
 
         # XML Definition: scripts/database/initial_insert.xml
         'invalid-temporarily' => 'ugyldig-midlertidigt',
@@ -8245,7 +8278,7 @@ sub Data {
 
         # JS File: var/httpd/htdocs/js/Core.Agent.TicketBulk.js
         ' ...and %s more' => '',
-        ' ...show less' => '',
+        ' ...show less' => ' ... vis færre',
 
         # JS File: var/httpd/htdocs/js/Core.Agent.TicketFormDraft.js
         'Add new draft' => '',
@@ -8484,7 +8517,6 @@ Thanks for your help!
         'Change the priority for this ticket' => 'Ændr denne sags prioritet',
         'Change the responsible for this ticket' => 'Skift sagens ansvarlige',
         'Change your avatar image.' => '',
-        'Change your default popup profile settings.' => '',
         'Change your password and more.' => 'Skift password og andet',
         'Changed SLA to "%s" (%s).' => '',
         'Changed archive state to "%s".' => '',
@@ -8529,6 +8561,10 @@ Thanks for your help!
         'Configure and manage ACLs.' => 'Konfigurer og håndter ACL\'er.',
         'Configure which screen should be shown after a new ticket has been created.' =>
             'Konfigurer hvilken side der skal vises efter en ny sag er oprettet.',
+        'Configure which screen should be shown after marking a ticket or article as seen.' =>
+            '',
+        'Configure which screen should be shown after marking a ticket or article as unseen.' =>
+            '',
         'Create New process ticket.' => '',
         'Create Process Ticket' => '',
         'Create Ticket' => '',
@@ -8592,6 +8628,7 @@ Thanks for your help!
         'CustomerUser' => '',
         'Czech' => '',
         'Danish' => 'Dansk',
+        'Dark' => '',
         'Dashboard overview.' => '',
         'Date / Time' => 'Dato / Tid',
         'Default agent name' => '',
@@ -8726,6 +8763,8 @@ Thanks for your help!
         'Last view - limit' => '',
         'Last view - position' => '',
         'Last view - types' => '',
+        'Last viewed overview' => '',
+        'Last viewed screen' => '',
         'Lastname Firstname' => 'Efternavn Fornavn',
         'Lastname Firstname (UserLogin)' => 'Efternavn Fornavn (BrugerLogin)',
         'Lastname, Firstname' => 'Efternavn, Fornavn',
@@ -8772,7 +8811,10 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => 'Administrer opgaver, der bliver udført på baggrund af hændelser eller tid.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Marker som spam.',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Marker denne sag som junk!',
+        'Mark ticket as seen' => '',
+        'Mark ticket as unseen' => '',
         'Mattermost Username' => '',
         'Max. number of articles per page in TicketZoom' => '',
         'Medium' => 'Medium',
@@ -8845,7 +8887,6 @@ Thanks for your help!
         'Plugin search' => '',
         'Plugin search module for autocomplete.' => '',
         'Polish' => '',
-        'Popup Profile' => '',
         'Portuguese' => '',
         'Portuguese (Brasil)' => '',
         'PostMaster Filters' => 'Postmaster-filtre',
@@ -8880,13 +8921,14 @@ Thanks for your help!
         'Russian' => '',
         'S/MIME Certificates' => 'S/MIME-certifikater',
         'Schedule a maintenance period.' => 'Planlæg et vedligeholdelses tidspunkt.',
+        'Screen after marking as seen' => '',
+        'Screen after marking as unseen' => '',
         'Screen after new ticket' => 'Skærm efter oprettelse af ny sag',
         'Search Customer' => 'Søg kunde',
         'Search Ticket.' => 'Søg sag.',
         'Search Tickets.' => 'Søg sager.',
         'Search User' => 'Søg Bruger',
         'Search tickets.' => '',
-        'SearchTemplate' => '',
         'Second Christmas Day' => 'Anden juledag',
         'Second Queue' => '',
         'Seconds' => '',
@@ -8981,6 +9023,8 @@ Thanks for your help!
         'Theme' => 'Tema',
         'This is a Description for Comment on Framework.' => '',
         'This is a Description for DynamicField on Framework.' => '',
+        'This is the dark skin for the agent interface.' => '',
+        'This is the dark skin for the customer interface.' => '',
         'This is the default orange - black skin for the customer interface.' =>
             '',
         'This is the default orange - black skin.' => '',
@@ -9008,7 +9052,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'Sagskø oversigt',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',
@@ -9217,6 +9260,7 @@ Thanks for your help!
         'Duplicate event.',
         'Duplicated entry',
         'Edit Field Details',
+        'Edit Transition "%s"',
         'Edit this setting',
         'Edit this transition',
         'End date',

@@ -73,11 +73,11 @@ div.InputField_InputContainer {
 .InputField_InputContainer i.fa.fa-caret-down {
     position: absolute;
     right: 12px;
-    /*top: 23%;*/
     height: 100%;
     display: flex;
     align-items: center;
     z-index: 100;
+    pointer-events: none;
 }
 
 .InputField_Search:focus + i {
@@ -568,10 +568,6 @@ a.cke_button:hover {
 
 .cke_inner {
     border-radius: 10px !important;
-}
-
-.cke_bottom {
-    display: none !important;
 }
 
 .jstree-InputField .jstree-ocl {

@@ -55,7 +55,7 @@ add new standard template
         Name         => 'New Standard Template',
         Template     => 'Thank you for your email.',
         ContentType  => 'text/plain; charset=utf-8',
-        TemplateType => 'Answer',                     # or 'Forward' or 'Create'
+        TemplateType => 'Answer,Forward',
         ValidID      => 1,
         UserID       => 123,
     );
@@ -84,6 +84,9 @@ sub StandardTemplateAdd {
         );
         return;
     }
+
+    # sort TemplateType
+    $Param{TemplateType} = join ',', sort split( /\s*,\s*/, $Param{TemplateType} );
 
     # get database object
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
@@ -134,7 +137,7 @@ Returns:
         Comment             => 'Some comment',
         Template            => 'Template content',
         ContentType         => 'text/plain',
-        TemplateType        => 'Answer',
+        TemplateType        => 'Answer,Forward',
         ValidID             => '1',
         CreateTime          => '2010-04-07 15:41:15',
         CreateBy            => '321',
@@ -163,7 +166,7 @@ sub StandardTemplateGet {
     return if !$DBObject->Prepare(
         SQL => '
             SELECT name, valid_id, comments, text, content_type, create_time, create_by,
-                change_time, change_by ,template_type
+                change_time, change_by, template_type
             FROM standard_template
             WHERE id = ?',
         Bind => [ \$Param{ID} ],
@@ -249,7 +252,7 @@ update standard template attributes
         Name         => 'New Standard Template',
         Template     => 'Thank you for your email.',
         ContentType  => 'text/plain; charset=utf-8',
-        TemplateType => 'Answer',
+        TemplateType => 'Answer,Forward',
         ValidID      => 1,
         UserID       => 123,
     );
@@ -260,7 +263,7 @@ sub StandardTemplateUpdate {
     my ( $Self, %Param ) = @_;
 
     # check needed stuff
-    for my $Needed (qw(ID Name ValidID TemplateType ContentType UserID TemplateType)) {
+    for my $Needed (qw(ID Name ValidID TemplateType ContentType UserID)) {
         if ( !defined( $Param{$Needed} ) ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'error',
@@ -284,6 +287,9 @@ sub StandardTemplateUpdate {
         );
         return;
     }
+
+    # sort TemplateType
+    $Param{TemplateType} = join ',', sort split( /\s*,\s*/, $Param{TemplateType} );
 
     # sql
     return if !$Kernel::OM->Get('Kernel::System::DB')->Do(
@@ -409,7 +415,7 @@ Returns:
         2 => 'Some Name2',
     );
 
-get standard templates from a certain type
+get standard templates of a single type
     my %StandardTemplates = $StandardTemplateObject->StandardTemplateList(
         Valid => 0,
         Type  => 'Answer',
@@ -417,7 +423,25 @@ get standard templates from a certain type
 
 Returns:
     %StandardTemplates = (
-        1 => 'Answer - Some Name',
+        1 => 'Some Name',
+    );
+
+get standard templates for multiple types
+    my %StandardTemplates = $StandardTemplateObject->StandardTemplateList(
+        Valid => 0,
+        Type  => 'Answer,Forward',
+    );
+
+Returns:
+    %StandardTemplates = (
+        'Answer' => {
+            '1' => 'Some Name',
+            '4' => 'AW FWD',
+        },
+        'Forward' => {
+            '3' => 'Some Name3',
+            '4' => 'AW FWD',
+        }
     );
 
 =cut
@@ -431,7 +455,7 @@ sub StandardTemplateList {
     }
 
     my $SQL = '
-        SELECT id, name
+        SELECT id, name, template_type
         FROM standard_template';
 
     if ($Valid) {
@@ -439,29 +463,50 @@ sub StandardTemplateList {
             $Kernel::OM->Get('Kernel::System::Valid')->ValidIDsGet() . ')';
     }
 
-    my @Bind;
-    if ( defined $Param{Type} && $Param{Type} ne '' ) {
-        if ($Valid) {
-            $SQL .= ' AND';
-        }
-        else {
-            $SQL .= ' WHERE';
-        }
-        $SQL .= ' template_type = ?';
-        push @Bind, \$Param{Type};
-    }
-
-    # get database object
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
     return if !$DBObject->Prepare(
-        SQL  => $SQL,
-        Bind => \@Bind,
+        SQL => $SQL,
     );
 
+    my %TemplateTypes;
     my %Data;
+
     while ( my @Row = $DBObject->FetchrowArray() ) {
-        $Data{ $Row[0] } = $Row[1];
+        my @DBTypes = split( /\s*,\s*/, $Row[2] );
+        if ( scalar @DBTypes > 1 ) {
+            for my $Type (@DBTypes) {
+                $TemplateTypes{$Type}->{ $Row[0] } = $Row[1];
+            }
+        }
+        else {
+            $TemplateTypes{ $Row[2] }->{ $Row[0] } = $Row[1];
+        }
+    }
+
+    if ( defined $Param{Type} && $Param{Type} ne '' ) {
+        my @ParamTypes = split( /\s*,\s*/, $Param{Type} );
+
+        if ( scalar @ParamTypes > 1 ) {
+
+            # Multiple types. Data should contain a hash of types with template names.
+            for my $ParamType (@ParamTypes) {
+                $Data{$ParamType} = $TemplateTypes{$ParamType};
+            }
+        }
+        else {
+            # Single type. Data should contain only the template names of specified type.
+            %Data = %{ $TemplateTypes{ $Param{Type} } } if $TemplateTypes{ $Param{Type} };
+        }
+    }
+    else {
+        # No type specified. Data should contain all template names of all types.
+        for my $Type ( sort keys %TemplateTypes ) {
+            %Data = (
+                %Data,
+                %{ $TemplateTypes{$Type} }
+            );
+        }
     }
 
     return %Data;
@@ -473,7 +518,7 @@ sub StandardTemplateList {
 
         $Exist = $StandardTemplateObject->NameExistsCheck(
             Name => 'Some::Template',
-            ID => 1, # optional
+            ID   => 1,                  # optional
         );
 
 =cut

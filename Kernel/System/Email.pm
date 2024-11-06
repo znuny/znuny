@@ -109,21 +109,20 @@ To send an email without already created header:
     );
 
     my $Sent = $SendObject->Send(                   (Backwards compatibility)
-        From                 => 'me@example.com',
-        To                   => 'friend@example.com',
-        Subject              => 'Some words!',
-        Charset              => 'iso-8859-15',
-        MimeType             => 'text/plain', # "text/plain" or "text/html"
-        Body                 => 'Some nice text',
-        InReplyTo            => '<somemessageid-2@example.com>',
-        References           => '<somemessageid-1@example.com> <somemessageid-2@example.com>',
-        Sign => {
+        From       => 'me@example.com',
+        To         => 'friend@example.com',
+        Subject    => 'Some words!',
+        Charset    => 'iso-8859-15',
+        MimeType   => 'text/plain', # "text/plain" or "text/html"
+        Body       => 'Some nice text',
+        InReplyTo  => '<somemessageid-2@example.com>',
+        References => '<somemessageid-1@example.com> <somemessageid-2@example.com>',
+        Sign       => {
             Type    => 'PGP',
             SubType => 'Inline|Detached',
             Key     => '81877F5E',
-
-            Type => 'SMIME',
-            Key  => '3b630c80',
+            Type    => 'SMIME',
+            Key     => '3b630c80',
         },
         Crypt => {
             Type    => 'PGP',
@@ -1100,7 +1099,7 @@ sub _CreateMimeEntity {
     }
     else {
         $Header{'X-Mailer'}     = "$Product Mail Service ($Version)";
-        $Header{'X-Powered-By'} = 'OTRS (https://otrs.com/)';
+        $Header{'X-Powered-By'} = 'Znuny (https://www.znuny.com/)';
     }
     $Header{Type} = $Param{MimeType} || 'text/plain';
 

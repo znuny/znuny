@@ -35,42 +35,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     margin: 13px 0 26px;
 }
 
-/**
- * @subsection  Container
- */
-#Container {
-    display: flex;
-    border: var(--border-width) var(--border-solid) var(--border-color);
-    border-radius: var(--border-radius-sm);
-    width: 100%;
-    max-width: 400px;
-    overflow: hidden;
-    background: var(--white);
-}
-
-#Container form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-md);
-}
-
-#Container h2 {
-    line-height: 22px;
-    padding-bottom: var(--padding-lg);
-}
-
-#Container .header-content {
-    padding-bottom: var(--padding-md);
-}
-
-#Container .header-content h2 {
-    padding-bottom: 0;
-}
-
-#Container form .Marker {
-    display: none;
-}
-
 #Login,
 #Reset,
 #Signup,
@@ -219,9 +183,9 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 }
 
 .Option a:hover {
-    color: var(--black);
-    border-color: var(--black);
+    color: var(--primary-color);
 }
+
 /**
  * @subsection  Custom Field Sizes
  */
@@ -282,9 +246,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 }
 
 
-
-
-
 /**
  * @subsection  Login Content
  * @note        if you want to place some content into the login (for example CustomerAccept.tt)
@@ -298,6 +259,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 .RTL .Login .Content {
     margin-right: 142px;
     margin-left: 0;
+}
+
+#Container form div {
+    gap: var(--gap-sm);
 }
 
 } /* end @media */

@@ -167,7 +167,7 @@ sub Auth {
             $EncodeObject->EncodeOutput( \$Pw );
             $SHAObject->add($Pw);
             $CryptedPw = $SHAObject->hexdigest();
-            $Method    = 'sha256';
+            $Method    = 'sha512';
         }
 
         elsif ( $GetPw =~ m{^BCRYPT:} ) {

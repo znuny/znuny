@@ -11,6 +11,7 @@ package Kernel::Output::HTML::Layout::AJAX;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::System::JSON ();
 

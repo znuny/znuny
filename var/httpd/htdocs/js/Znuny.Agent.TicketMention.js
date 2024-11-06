@@ -22,7 +22,9 @@ Znuny.Agent.TicketMention = (function (TargetNS) {
             BulkAction: 1
         };
 
-        $('#RemoveMention').on('click',function(){
+        $('#RemoveMention').on('click',function(Event){
+            Event.preventDefault();
+
             $('.MasterAction').each(function(){
                 var TicketID  = $(this).attr('id').replace('TicketID_', '');
                 Data.TicketID = TicketID;

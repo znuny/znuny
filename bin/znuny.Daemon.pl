@@ -100,66 +100,49 @@ if ( !@ARGV ) {
     exit 0;
 }
 
+my $Action     = lc shift @ARGV;
+my $Debug      = ( grep { lc $_ eq '--debug' } @ARGV ) ? 1 : 0;
+my $Foreground = ( grep { lc $_ eq '--foreground' } @ARGV ) ? 1 : 0;
+my $ForceStop  = ( grep { lc $_ eq '--force' } @ARGV ) ? 1 : 0;
+
+# Remove options: --debug, --foreground, --force so that only daemon names are left
+my @Daemons = grep { lc $_ !~ m{\A--(?:debug|foreground|force)\z} } @ARGV;
+
+# use Data::Dumper;
+# print STDERR Dumper(\@ARGV) . "\n";
+
 # to wait until all daemon stops (in seconds)
 my $DaemonStopWait = 30;
-my $ForceStop;
 
-# check for debug mode
 my %DebugDaemons;
-my $Debug;
+
 if (
-    lc $ARGV[0] eq 'start'
-    && $ARGV[1]
-    && lc $ARGV[1] eq '--debug'
+    $Action eq 'start'
+    && $Debug
     )
 {
-    $Debug = 1;
 
     # if no more arguments, then use debug mode for all daemons
-    if ( !$ARGV[2] ) {
+    if ( !@Daemons ) {
         $DebugDaemons{All} = 1;
     }
 
     # otherwise set debug mode specific for named daemons
     else {
-
-        ARGINDEX:
-        for my $ArgIndex ( 2 .. 99 ) {
-
-            # stop checking if there are no more arguments
-            last ARGINDEX if !$ARGV[$ArgIndex];
-
-            # remember debug mode for each daemon
-            $DebugDaemons{ $ARGV[$ArgIndex] } = 1;
-        }
+        %DebugDaemons = map { $_ => 1 } @Daemons;
     }
-}
-elsif (
-    lc $ARGV[0] eq 'stop'
-    && $ARGV[1]
-    && lc $ARGV[1] eq '--force'
-    )
-{
-    $ForceStop = 1;
-}
-elsif ( $ARGV[1] ) {
-    print STDERR "Invalid option: $ARGV[1]\n\n";
-    PrintUsage();
-    exit 0;
 }
 
 # check for action
-if ( lc $ARGV[0] eq 'start' ) {
+if ( $Action eq 'start' ) {
     exit 1 if !Start();
     exit 0;
 }
-elsif ( lc $ARGV[0] eq 'stop' ) {
-
+elsif ( $Action eq 'stop' ) {
     exit 1 if !Stop();
     exit 0;
 }
-elsif ( lc $ARGV[0] eq 'status' ) {
-
+elsif ( $Action eq 'status' ) {
     exit 1 if !Status();
     exit 0;
 }
@@ -170,16 +153,17 @@ else {
 
 sub PrintUsage {
     my $UsageText = "Usage:\n";
-    $UsageText .= " znuny.Daemon.pl action [--debug] [--force]\n";
+    $UsageText .= " znuny.Daemon.pl action [--debug] [--force] [--foreground]\n";
     $UsageText .= "\nOptions:\n";
     $UsageText .= sprintf " %-22s - %s", '[--debug]', 'Run the daemon in debug mode.' . "\n";
     $UsageText .= sprintf " %-22s - %s", '[--force]',
         'Reduce the time the main daemon waits other daemons to stop.' . "\n";
+    $UsageText .= sprintf " %-22s - %s", '[--foreground]', 'Run the daemon in foreground.' . "\n";
     $UsageText .= "\nActions:\n";
-    $UsageText .= sprintf " %-22s - %s", 'start', 'Start the daemon process.' . "\n";
-    $UsageText .= sprintf " %-22s - %s", 'stop', 'Stop the daemon process.' . "\n";
-    $UsageText .= sprintf " %-22s - %s", 'status', 'Show daemon process current state.' . "\n";
-    $UsageText .= sprintf " %-22s - %s", 'help', 'Display help for this command.' . "\n";
+    $UsageText .= sprintf " %-22s - %s", 'start',          'Start the daemon process.' . "\n";
+    $UsageText .= sprintf " %-22s - %s", 'stop',           'Stop the daemon process.' . "\n";
+    $UsageText .= sprintf " %-22s - %s", 'status',         'Show daemon process current state.' . "\n";
+    $UsageText .= sprintf " %-22s - %s", 'help',           'Display help for this command.' . "\n";
     $UsageText .= "\nHelp:\n";
     $UsageText
         .= "In debug mode if a daemon module is specified the debug mode will be activated only for that daemon.\n";
@@ -195,16 +179,20 @@ sub PrintUsage {
 
 sub Start {
 
-    # Create a fork of the current process.
-    #   Parent gets the PID of the child.
-    #   Child gets PID = 0.
-    my $DaemonPID = fork;
+    # Detach daemon if should not be run in foreground.
+    if ( !$Foreground ) {
 
-    # Check if fork was not possible.
-    die "Can not create daemon process: $!" if !defined $DaemonPID || $DaemonPID < 0;
+        # Create a fork of the current process.
+        #   Parent gets the PID of the child.
+        #   Child gets PID = 0.
+        my $DaemonPID = fork;
 
-    # Close parent gracefully.
-    exit 0 if $DaemonPID;
+        # Check if fork was not possible.
+        die "Can not create daemon process: $!" if !defined $DaemonPID || $DaemonPID < 0;
+
+        # Close parent gracefully.
+        exit 0 if $DaemonPID;
+    }
 
     # Lock PID.
     my $LockSuccess = _PIDLock();

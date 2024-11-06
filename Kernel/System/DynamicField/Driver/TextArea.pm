@@ -172,8 +172,8 @@ sub EditFieldRender {
 <textarea class="$FieldClass" id="$FieldName" name="$FieldName" title="$FieldLabelEscaped" rows="$RowsNumber" cols="$ColsNumber" data-maxlength="$MaxLength">$ValueEscaped</textarea>
 EOF
 
-    # for client side validation
-    my $DivID = $FieldName . 'Error';
+    # Tooltip for client side validation
+    my $ClientErrorTooltipDivID = $FieldName . 'Error';
 
     my $ErrorMessage1 = $Param{LayoutObject}->{LanguageObject}->Translate("This field is required or");
     my $ErrorMessage2 = $Param{LayoutObject}->{LanguageObject}->Translate("The field content is too long!");
@@ -186,29 +186,26 @@ EOF
     }
 
     $HTMLString .= <<"EOF";
-<div id="$DivID" class="TooltipErrorMessage">
+<div id="$ClientErrorTooltipDivID" class="TooltipErrorMessage">
     <p>
         $ErrorMessage
     </p>
 </div>
 EOF
 
-    if ( $Param{ServerError} ) {
-        if ( $Param{ErrorMessage} ) {
-            $ErrorMessage = $Param{LayoutObject}->{LanguageObject}->Translate( $Param{ErrorMessage} );
-        }
-
-        my $DivID = $FieldName . 'ServerError';
-
-        # for server side validation
-        $HTMLString .= <<"EOF";
-<div id="$DivID" class="TooltipErrorMessage">
-    <p>
-        $ErrorMessage
-    </p>
-</div>
-EOF
+    # for server side validation
+    if ( $Param{ErrorMessage} ) {
+        $ErrorMessage = $Param{LayoutObject}->{LanguageObject}->Translate( $Param{ErrorMessage} );
     }
+    my $ServerErrorTooltipDivID = $FieldName . 'ServerError';
+
+    $HTMLString .= <<"EOF";
+<div id="$ServerErrorTooltipDivID" class="TooltipErrorMessage">
+    <p>
+        $ErrorMessage
+    </p>
+</div>
+EOF
 
     # call EditLabelRender on the common Driver
     my $LabelString = $Self->EditLabelRender(

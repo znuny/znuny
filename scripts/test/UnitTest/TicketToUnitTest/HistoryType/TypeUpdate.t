@@ -41,7 +41,7 @@ my $ExpectedOutout = <<OUTPUT;
 
 \$Self->True(
     \$Success,
-    'TicketTypeSet to "$Param{Type}" was successfull.',
+    'TicketTypeSet to "$Param{Type}" was successful.',
 );
 
 OUTPUT

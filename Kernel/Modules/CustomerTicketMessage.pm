@@ -825,7 +825,7 @@ sub Run {
         );
     }
     else {
-        return $LayoutObject->ErrorScreen(
+        return $LayoutObject->CustomerErrorScreen(
             Message => Translatable('No Subaction!'),
             Comment => Translatable('Please contact the administrator.'),
         );
@@ -1011,6 +1011,7 @@ sub _MaskNew {
             SelectedID => $Param{ToSelected} || $Param{QueueID},
             TreeView   => $TreeView,
         );
+        $Param{RenderTeamData} = 1;
         $LayoutObject->Block(
             Name => 'Queue',
             Data => {

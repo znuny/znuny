@@ -7,17 +7,18 @@
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
 
-<!-- start form -->
-<div id="MainBox" class="Login">
-    <div class="Content">
-        <h2>[% Translate("Information") | html %]</h2>
-        <p>
-            [% Translate("Dear Customer,") | html %]<br/>
-            [% Translate("thank you for using our services.") | html %]
-        </p>
-        <p>
-            <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Accept=1">[% Translate("Yes, I accept your license.") | html %]</a>
-        </p>
+<div class="MainBox ARIARoleMain ContainerCenter">
+    <div id="Container">
+        <div class="ContainerBox">
+            <div class="header-content">
+                <h2>[% Translate("Information") | html %]</h2>
+            </div>
+            <div>
+                [% Translate("Dear Customer,") | html %]<br>
+                [% Translate("thank you for using our services.") | html %]
+
+                <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Accept=1" class="btn-main btn-primary">[% Translate("Yes, accepted.") | html %]</a>
+            </div>
+        </div>
     </div>
 </div>
-<!-- end form -->

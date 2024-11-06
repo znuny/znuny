@@ -15,7 +15,6 @@ our @ObjectDependencies = (
     'Kernel::System::Log',
 );
 
-use Kernel::System::VariableCheck qw(:all);
 use parent qw( Kernel::System::UnitTest::TicketToUnitTest::Base );
 
 sub Run {
@@ -51,7 +50,7 @@ sub Run {
 
 \$Self->True(
     \$Success,
-    'TicketPendingTimeSet to "$Param{PendingTime}" was successfull.',
+    'TicketPendingTimeSet to "$Param{PendingTime}" was successful.',
 );
 
 OUTPUT

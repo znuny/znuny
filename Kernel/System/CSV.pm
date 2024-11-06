@@ -124,7 +124,7 @@ sub Array2CSV {
 
         if ( scalar @WithHeader ) {
 
-            # Adds \@WithHeader to the beggining of @Rows, if not empty.
+            # Adds \@WithHeader to the beginning of @Rows, if not empty.
             #    Otherwise it adds empty first row - see bug#12467.
             unshift @Rows, \@WithHeader;
         }
@@ -229,8 +229,8 @@ Returns an array with parsed csv data.
 
     my $RefArray = $CSVObject->CSV2Array(
         String    => $CSVString,
-        Separator => ';', # optional separator (default is ;)
-        Quote     => '"', # optional quote (default is ")
+        Separator => ';',           # optional separator (default is ;)
+        Quote     => '"',           # optional quote (default is ")
     );
 
 =cut

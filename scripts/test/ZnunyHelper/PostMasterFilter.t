@@ -93,7 +93,7 @@ $Self->True(
     '_PostMasterFilterCreateIfNotExists',
 );
 
-# _PostMasterFilterCreateIfNotExists yml
+# _PostMasterFilterConfigImport yml
 my $Name = 'PostmasterFilterYML' . $RandomNumber;
 my $YML  = "---
 - Match:
@@ -114,7 +114,7 @@ $Result = $ZnunyHelperObject->_PostMasterFilterConfigImport(
 
 $Self->True(
     $Result,
-    '_PostMasterFilterCreateIfNotExists',
+    '_PostMasterFilterConfigImport',
 );
 
 %Data = $PMFilterObject->FilterGet(
@@ -130,7 +130,7 @@ $Self->IsDeeply(
                 'Value' => '333'
             }
         ],
-        'Name' => 'PostmasterFilterYML' . $RandomNumber,
+        'Name' => $Name,
         'Not'  => [
             {
                 'Key'   => 'Body',
@@ -145,7 +145,61 @@ $Self->IsDeeply(
         ],
         'StopAfterMatch' => 0
     },
-    '_PostMasterFilterCreate',
+    '_PostMasterFilterConfigImport',
+);
+
+# Update filter with same name via _PostMasterFilterConfigImport
+$YML = "---
+- Match:
+  - Key: Body
+    Value: 444
+  Name: $Name
+  Not:
+  - Key: Body
+    Value: ~
+  Set:
+  - Key: X-OTRS-DynamicField-test2
+    Value: 555
+  StopAfterMatch: 0";
+
+$Result = $ZnunyHelperObject->_PostMasterFilterConfigImport(
+    Filter => \$YML,
+);
+
+$Self->True(
+    $Result,
+    '_PostMasterFilterConfigImport',
+);
+
+%Data = $PMFilterObject->FilterGet(
+    Name => $Name
+);
+
+$Self->IsDeeply(
+    \%Data,
+    {
+        'Match' => [
+            {
+                'Key'   => 'Body',
+                'Value' => '444'
+            }
+        ],
+        'Name' => $Name,
+        'Not'  => [
+            {
+                'Key'   => 'Body',
+                'Value' => undef,
+            }
+        ],
+        'Set' => [
+            {
+                'Key'   => 'X-OTRS-DynamicField-test2',
+                'Value' => '555'
+            }
+        ],
+        'StopAfterMatch' => 0
+    },
+    '_PostMasterFilterConfigImport',
 );
 
 1;

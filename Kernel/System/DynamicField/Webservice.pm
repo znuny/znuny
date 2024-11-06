@@ -14,6 +14,7 @@ use warnings;
 our @ObjectDependencies = (
     'Kernel::Config',
     'Kernel::Output::HTML::Layout',
+    'Kernel::System::Cache',
     'Kernel::System::DynamicField',
     'Kernel::System::DynamicField::Backend',
     'Kernel::System::HTMLUtils',
@@ -21,6 +22,7 @@ our @ObjectDependencies = (
     'Kernel::System::Main',
     'Kernel::System::Ticket',
     'Kernel::System::Util',
+    'Kernel::System::Web::Request',
 );
 
 use Kernel::System::VariableCheck qw(:all);
@@ -48,15 +50,16 @@ sub new {
 
     $Self->{RequiredAttributes} = [ 'Webservice', 'InvokerSearch', 'InvokerGet', 'Backend', 'StoredValue', ];
     $Self->{OptionalAttributes} = [
-        'SearchKeys', 'DisplayedValues', 'DisplayedValuesSeparator', 'Limit', 'AutocompleteMinLength', 'QueryDelay',
-        'AdditionalDFStorage', 'InputFieldWidth',
-        'DefaultValue',        'Link',
+        'SearchKeys', 'CacheTTL', 'DisplayedValues', 'DisplayedValuesSeparator', 'Limit', 'AutocompleteMinLength',
+        'QueryDelay', 'AdditionalDFStorage', 'InputFieldWidth', 'DefaultValue', 'Link',
     ];
 
     $Self->{SupportedDynamicFieldTypes} = {
         WebserviceDropdown    => 1,
         WebserviceMultiselect => 1,
     };
+
+    $Self->{CacheType} = 'DynamicFieldWebservice';
 
     return $Self;
 }
@@ -79,6 +82,7 @@ Tests given web-service configuration by connecting and querying the web-service
         },
         DynamicFieldName => 'DFName1',      # optional
         FieldType        => 'WebserviceDropdown',
+        TicketID         => 65, # optional
         UserID           => 1,
         UserType         => 'Agent',                                        # optional 'Agent' or 'Customer'
     );
@@ -138,6 +142,7 @@ sub Test {
         DynamicFieldConfig => $DynamicFieldConfig,
         SearchTerms        => $Param{SearchTerms} || $DynamicFieldConfig->{SearchTerms} || '***',
         SearchType         => 'LIKE',
+        TicketID           => $Param{TicketID},                                                     # optional
         UserID             => $Param{UserID},
         Attributes         => \@Attributes,
         UserType           => $Param{UserType},
@@ -170,6 +175,7 @@ Retrieves data for auto-complete list of given dynamic field config.
     my $Results = $DynamicFieldWebserviceObject->Autocomplete(
         DynamicFieldConfig => {},
         SearchTerms        => 'my search',
+        TicketID           => 65, # optional
         UserID             => 1,
         UserType           => 'Agent',                # optional 'Agent' or 'Customer'
     );
@@ -204,6 +210,7 @@ sub Autocomplete {
         SearchTerms        => $Param{SearchTerms},
         SearchKeys         => $Param{SearchKeys},
         SearchType         => 'LIKE',
+        TicketID           => $Param{TicketID},                  # optional
         UserID             => $Param{UserID},
         UserType           => $Param{UserType},
         FieldValues        => $Param{GetParam}->{FieldValues},
@@ -236,6 +243,7 @@ Retrieves data for auto-fill list of given dynamic field config.
     my $Results = $DynamicFieldWebserviceObject->AutoFill(
         DynamicFieldConfig => {},
         SearchTerms        => 'my search',
+        TicketID           => 65, # optional
         UserID             => 1,
         UserType           => 'Agent',                # optional 'Agent' or 'Customer'
     );
@@ -274,6 +282,7 @@ sub AutoFill {
         SearchKeys         => [ $BackendConfig->{StoredValue} ],
         SearchType         => 'EQUALS',
         Attributes         => \@Attributes,
+        TicketID           => $Param{TicketID},                    # optional
         UserID             => $Param{UserID},
         UserType           => $Param{UserType},
     );
@@ -318,7 +327,8 @@ Executes search in configured dynamic field web-service.
             'Name',
             'ID',
         ],
-        UserID => 1,
+        TicketID => 65, # optional
+        UserID   => 1,
     );
 
     $Results is an (empty) array ref of the follwing form or undef on failure.
@@ -359,6 +369,7 @@ sub Search {
     my $LogObject    = $Kernel::OM->Get('Kernel::System::Log');
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
     my $UtilObject   = $Kernel::OM->Get('Kernel::System::Util');
+    my $CacheObject  = $Kernel::OM->Get('Kernel::System::Cache');
 
     NEEDED:
     for my $Needed (qw(DynamicFieldConfig SearchTerms)) {
@@ -468,6 +479,26 @@ sub Search {
         %Data = ( %Data, %{ $Param{FieldValues} } );
     }
 
+    if ( !$Data{TicketID} ) {
+        my $IsFrontendContext = $UtilObject->IsFrontendContext();
+
+        if ( $Param{TicketID} ) {
+            $Data{TicketID} = $Param{TicketID};
+        }
+        elsif ($IsFrontendContext) {
+
+            # Fallback: Try to get ticket ID from param object.
+            my $ParamObject = $Kernel::OM->Get('Kernel::System::Web::Request');
+            $Data{TicketID} = $ParamObject->GetParam( Param => 'TicketID' );
+
+            # Fallback: Try to get ticket ID from layout object.
+            if ( !$Data{TicketID} ) {
+                my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+                $Data{TicketID} = $LayoutObject->{TicketID};
+            }
+        }
+    }
+
     # Use one request per search term if InvokerGet is being used because
     # some web services don't report the needed data when using InvokerSearch for this.
     if ( $InvokerType eq 'InvokerGet' ) {
@@ -485,16 +516,51 @@ sub Search {
                 UserID      => $Param{UserID},
             );
 
-            my $Results = $BackendObject->Request(
-                %{$BackendConfig},
-                %RequestData,
-                Data => \%Data,
-            );
+            my $CacheKey = $Param{DynamicFieldConfig}->{Name}
+                . '::'
+                . $InvokerType
+                . '::'
+                . $InvokerName
+                . '::'
+                . $SearchTerm
+                . '::'
+                . $Param{UserID};
+
+            my $Results;
+            if ( $BackendConfig->{CacheTTL} ) {
+                $Results = $CacheObject->Get(
+                    Type => $Self->{CacheType},
+                    Key  => $CacheKey,
+                );
+            }
+            my $RequestExecuted;
+            if ( !defined $Results ) {
+                $Results = $BackendObject->Request(
+                    %{$BackendConfig},
+                    %RequestData,
+                    Data => \%Data,
+                );
+
+                $RequestExecuted = 1;
+            }
 
             next SEARCHTERM if !IsArrayRefWithData($Results) && !IsHashRefWithData($Results);
 
             if ( !IsArrayRefWithData($Results) ) {
                 $Results = [$Results];
+            }
+
+            if (
+                $BackendConfig->{CacheTTL}
+                && $RequestExecuted
+                )
+            {
+                $CacheObject->Set(
+                    Type  => $Self->{CacheType},
+                    Key   => $CacheKey,
+                    Value => $Results,
+                    TTL   => $BackendConfig->{CacheTTL},
+                );
             }
 
             push @RequestResults, @{$Results};
@@ -510,16 +576,51 @@ sub Search {
             UserID      => $Param{UserID},
         );
 
-        my $Results = $BackendObject->Request(
-            %{$BackendConfig},
-            %RequestData,
-            Data => \%Data,
-        );
+        my $CacheKey = $Param{DynamicFieldConfig}->{Name}
+            . '::'
+            . $InvokerType
+            . '::'
+            . $InvokerName
+            . '::'
+            . $Param{SearchTerms}
+            . '::'
+            . $Param{UserID};
+
+        my $Results;
+        if ( $BackendConfig->{CacheTTL} ) {
+            $Results = $CacheObject->Get(
+                Type => $Self->{CacheType},
+                Key  => $CacheKey,
+            );
+        }
+        my $RequestExecuted;
+        if ( !defined $Results ) {
+            $Results = $BackendObject->Request(
+                %{$BackendConfig},
+                %RequestData,
+                Data => \%Data,
+            );
+
+            $RequestExecuted = 1;
+        }
 
         return if !IsArrayRefWithData($Results) && !IsHashRefWithData($Results);
 
         if ( !IsArrayRefWithData($Results) ) {
             $Results = [$Results];
+        }
+
+        if (
+            $BackendConfig->{CacheTTL}
+            && $RequestExecuted
+            )
+        {
+            $CacheObject->Set(
+                Type  => $Self->{CacheType},
+                Key   => $CacheKey,
+                Value => $Results,
+                TTL   => $BackendConfig->{CacheTTL},
+            );
         }
 
         push @RequestResults, @{$Results};
@@ -840,7 +941,8 @@ Hashref is used for BuildSelection or input fields.
     my $DisplayValue = $DynamicFieldWebserviceObject->DisplayValueGet(
         DynamicFieldConfig => {},
         Value              => 'My value', # or array of values
-        UserID             => 1,
+        TicketID           => 65, # optional
+        UserID             => 1, # optional
     );
 
     If one value was given, it returns its display value as a string
@@ -914,6 +1016,7 @@ sub DisplayValueGet {
         SearchTerms        => $Param{Value},
         SearchType         => 'EQUALS',
         SearchKeys         => \@SearchKeys,
+        TicketID           => $Param{TicketID},             # optional
         UserID             => $Param{UserID} || 1,
         UserType           => $Param{UserType},
     );
@@ -1339,6 +1442,7 @@ sub _BackendConfigGet {
     BACKENDCONFIGFIELD:
     for my $BackendConfigField ( @{ $Self->{OptionalAttributes} } ) {
         $BackendConfig->{$BackendConfigField} = $Param{DynamicFieldConfig}->{Config}->{$BackendConfigField};
+
         next BACKENDCONFIGFIELD
             if defined $BackendConfig->{$BackendConfigField} && length $BackendConfig->{$BackendConfigField};
 

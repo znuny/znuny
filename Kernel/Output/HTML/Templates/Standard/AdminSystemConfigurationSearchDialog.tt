@@ -6,6 +6,7 @@
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
+## nofilter(TidyAll::Plugin::Znuny::TT::Breadcrumb)
 
 <div class="InnerContent">
     <form action="[% Env("CGIHandle") %]" method="post" class="AdminSystemConfigurationSearchForm" id="SearchForm">
@@ -28,7 +29,7 @@
     </form>
 </div>
 <div class="ContentFooter Center main-search-component-btns">
-    <button id="Cancel" class="btn-main btn-width-md btn-cancel-ghost DontPrint" type="submit" value=" Cancel"><span>[% Translate("Cancel") | html %]</span></button>
+    <button id="Cancel" class="btn-main btn-width-md btn-cancel-ghost DontPrint" type="submit" value="Cancel"><span>[% Translate("Cancel") | html %]</span></button>
 
     <button id="SearchFormSubmit" class="Primary CallForAction btn-primary btn-main btn-width-md" value="[% Translate("Run search") | html %]"><span><i class="fa fa-search"></i> [% Translate("Run search") | html %]</span></button>
 </div>

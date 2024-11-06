@@ -99,7 +99,7 @@
                             <div>
                                 <label>[% Translate("Pending date") | html %]:</label>
                                 <div class="Field no-background">
-                                    [% Data.DateString %]
+                                    <div class="select-field-wrapper">[% Data.DateString %]</div>
                                     <div id="DayServerError" class="TooltipErrorMessage"><p>[% Translate("Date invalid!") | html %]</p></div>
                                     <div id="HourServerError" class="TooltipErrorMessage"><p>[% Translate("Date invalid!") | html %]</p></div>
                                     <p class="FieldExplanation">[% Translate("For all pending* states.") | html %]</p>

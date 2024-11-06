@@ -10,6 +10,7 @@ package Kernel::Modules::AdminDynamicFieldConfigurationImportExport;
 
 use strict;
 use warnings;
+use utf8;
 
 our @ObjectDependencies = (
     'Kernel::Config',

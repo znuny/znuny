@@ -21,21 +21,21 @@
                 [% SmartTagTemplate = "SmartTags/" _ Env("Action") _ ".tt" %]
                 [% INCLUDE $SmartTagTemplate %]
 
-                <dt><code>&lt;OTRS_RESPONSIBLE_*&gt;</code></dt>
-                <dd>
-                    [% Translate("Ticket responsible options") | html %] ([% Translate("e. g.") | html %]
-                    <code>&lt;OTRS_RESPONSIBLE_UserFirstname&gt;</code>).
+                <dt><code class="bold">&lt;OTRS_RESPONSIBLE_*&gt;</code></dt>
+                <dd class="flex-row">
+                    [% Translate("Ticket responsible options") | html %] [% Translate("e. g.") | html %]
+                    <code>&lt;OTRS_RESPONSIBLE_UserFirstname&gt;</code>
                 </dd>
 
-                <dt><code>&lt;OTRS_CURRENT_*&gt;</code></dt>
-                <dd>
-                    [% Translate("Options of the current user who requested this action") | html %] ([% Translate("e. g.") | html %]
-                    <code>&lt;OTRS_CURRENT_UserFirstname&gt;</code>).
+                <dt><code class="bold">&lt;OTRS_CURRENT_*&gt;</code></dt>
+                <dd class="flex-row">
+                    [% Translate("Options of the current user who requested this action") | html %] [% Translate("e. g.") | html %]
+                    <code>&lt;OTRS_CURRENT_UserFirstname&gt;</code>
                 </dd>
 
-                <dt><code>&lt;OTRS_CONFIG_*&gt;</code></dt>
-                <dd>
-                    [% Translate("Config options") | html %] ([% Translate("e. g.") | html %] <code>&lt;OTRS_CONFIG_HttpType&gt;</code>).
+                <dt><code class="bold">&lt;OTRS_CONFIG_*&gt;</code></dt>
+                <dd class="flex-row">
+                    [% Translate("Config options") | html %] [% Translate("e. g.") | html %] <code>&lt;OTRS_CONFIG_HttpType&gt;</code>
                 </dd>
             </dl>
             <div class="WidgetSimple SpacingTop Collapsed">

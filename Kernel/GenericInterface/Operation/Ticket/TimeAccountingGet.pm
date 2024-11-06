@@ -11,8 +11,6 @@ package Kernel::GenericInterface::Operation::Ticket::TimeAccountingGet;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
-
 use parent qw(
     Kernel::GenericInterface::Operation::Common
     Kernel::GenericInterface::Operation::Ticket::Common

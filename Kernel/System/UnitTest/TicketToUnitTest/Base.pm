@@ -13,8 +13,6 @@ use warnings;
 
 our @ObjectDependencies = ();
 
-use Kernel::System::VariableCheck qw(:all);
-
 sub new {
     my ( $Type, %Param ) = @_;
 

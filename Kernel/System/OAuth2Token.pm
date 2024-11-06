@@ -1790,8 +1790,8 @@ sub _GetRequestTypes {
     Creates an expiration DateTime object for a TTL (time to live).
 
     my $DateTimeObject = $OAuth2TokenObject->_CreateExpirationDateTimeObject(
-        StartDateTimeObject => $StartDateTimeObject, # optional, offset for TTL. Current date/time will be used if omitted.
-        TTL                 => 3600, # seconds (>= 0)
+        StartDateTimeObject => $StartDateTimeObject,    # optional, offset for TTL. Current date/time will be used if omitted.
+        TTL                 => 3600,                    # seconds (>= 0)
     );
 
     Returns DateTime object.

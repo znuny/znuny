@@ -145,7 +145,7 @@
                         <div class="field-wrapper">
                             <label>[% Translate("Pending date") | html %]</label>
                             <div class="Field">
-                                [% Data.DateString %]
+                                <div class="select-field-wrapper">[% Data.DateString %]</div>
                                 <div id="DayServerError" class="TooltipErrorMessage">
                                     <p>[% Translate("Date invalid!") | html %]</p>
                                 </div>
@@ -276,7 +276,26 @@
                                 [% Data.UnlockYesNoOption %]
                             </div>
                         </div>
-
+[% RenderBlockStart("Watch") %]
+                        <div class="field-wrapper">
+                            <label for="Watch">[% Translate("Watch tickets") | html %]</label>
+                            <div class="Field">
+                                [% Data.WatchYesNoOption %]
+                            </div>
+                        </div>
+[% RenderBlockEnd("Watch") %]
+                        <div class="field-wrapper">
+                            <label for="MarkTicketsAsSeen">[% Translate("Mark tickets as seen") | html %]</label>
+                            <div class="Field">
+                                [% Data.MarkTicketsAsSeenOption %]
+                            </div>
+                        </div>
+                        <div class="field-wrapper">
+                            <label for="MarkTicketsAsUneen">[% Translate("Mark tickets as unseen") | html %]</label>
+                            <div class="Field">
+                                [% Data.MarkTicketsAsUnseenOption %]
+                            </div>
+                        </div>
                         [% FOREACH CONTENT IN Data.BulkModuleContent %]
                             <div class="field-wrapper">
                                 [% CONTENT %]

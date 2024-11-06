@@ -41,9 +41,11 @@
                     </button>
                 </div>
 
-                <label for="SaveProfile">[% Translate("Save changes in template") | html %]</label>
-                <div class="Field align-item-left">
-                    <input type="checkbox" name="SaveProfile" id="SaveProfile" value="1"/>
+                <div class="search-tmp-opt-wrapper">
+                    <div class="align-item-left">
+                        <input type="checkbox" name="SaveProfile" id="SaveProfile" value="1">
+                    </div>
+                    <label for="SaveProfile">[% Translate("Save changes in template") | html %]</label>
                 </div>
             </fieldset>
         </div>
@@ -506,7 +508,7 @@
 </div>
 
 <div class="ContentFooter main-search-component-btns">
-    <button id="Cancel" class="btn-main btn-width-md btn-cancel-ghost DontPrint" type="submit" value=" Cancel"><span>[% Translate("Cancel") | html %]</span></button>
+    <button id="Cancel" class="btn-main btn-width-md btn-cancel-ghost DontPrint" type="submit" value="Cancel"><span>[% Translate("Cancel") | html %]</span></button>
 
     <button id="SearchFormSubmit" class="btn-primary btn-main btn-width-md" value="[% Translate("Search") | html %]"><span> [% Translate("Search") | html %]</span></button>
 </div>

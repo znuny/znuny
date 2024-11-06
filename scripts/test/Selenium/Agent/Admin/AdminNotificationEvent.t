@@ -440,7 +440,7 @@ $Selenium->RunTest(
 
         }
 
-        # Delete first added test notificaton text.
+        # Delete first added test notification text.
         $Selenium->execute_script("\$('#$Languages[0]->{LangCode}_Language_Remove').click();");
 
         $Selenium->WaitFor( AlertPresent => 1 );

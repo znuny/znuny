@@ -218,11 +218,10 @@ sub ExistsTicketAttributeRelationsFilename {
 Fetches a ticket attribute relations record.
 
     my $TicketAttributeRelations = $TicketAttributeRelationsObject->GetTicketAttributeRelations(
-        ID => 123,
+        ID         => 123,
         # or
         # Filename => 'test.csv',
-
-        UserID  => 1,
+        UserID     => 1,
     );
 
 Returns:

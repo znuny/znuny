@@ -12,6 +12,8 @@ use parent 'Kernel::Output::HTML::Base';
 
 use strict;
 use warnings;
+use utf8;
+
 use Kernel::System::VariableCheck qw(:all);
 
 our $ObjectManagerDisabled = 1;
@@ -48,28 +50,29 @@ sub Run {
         $LayoutObject->Block(
             Name => "User",
             Data => {
-                UserLogin => $User{UserLogin},
-                UserEmail => $User{UserEmail},
-                UserID    => $User{UserID},
-                Removable => $UserCanRemoveMention,
+                UserFullname => $User{UserFullname},
+                UserEmail    => $User{UserEmail},
+                UserID       => $User{UserID},
+                Removable    => $UserCanRemoveMention,
             }
         );
     }
 
-    if ( !IsArrayRefWithData($Mentions) ) {
-        $LayoutObject->Block(
-            Name => "NoMentions",
-            Data => {},
-        );
-    }
+    # Hide widget when empty.
+    return if !IsArrayRefWithData($Mentions);
 
     my $Output = $LayoutObject->Output(
         TemplateFile => 'AgentTicketZoom/MentionsTable',
         Data         => {},
     );
 
+    my $Config = $Param{Config};
+    my %Rank;
+    %Rank = ( Rank => $Config->{Rank} ) if exists $Config->{Rank} && defined $Config->{Rank};
+
     return {
         Output => $Output,
+        %Rank,
     };
 }
 

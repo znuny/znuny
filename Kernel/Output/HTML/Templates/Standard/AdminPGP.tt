@@ -99,10 +99,7 @@
         </div>
 [% RenderBlockEnd("Hint") %]
     </div>
-[% RenderBlockStart("OverviewResult") %]
-
     <div class="ContentColumn">
-        <h1 class="InvisibleText">[% Translate("PGP Management") | html %]</h1>
 
         [% BreadcrumbPath = [
                 {
@@ -118,6 +115,7 @@
 
         [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
 
+[% RenderBlockStart("OverviewResult") %]
         <div class="WidgetSimple">
             <div class="Header">
                 <h2>[% Translate("List") | html %]</h2>
@@ -171,10 +169,8 @@
                 </table>
             </div>
         </div>
-    </div>
 [% RenderBlockEnd("OverviewResult") %]
 [% RenderBlockStart("AddKey") %]
-    <div class="ContentColumn">
         <div class="WidgetSimple">
             <div class="Header">
                 <h2>[% Translate("Add PGP Key") | html %]</h2>
@@ -206,7 +202,7 @@
                 </form>
             </div>
         </div>
-    </div>
 [% RenderBlockEnd("AddKey") %]
+    </div>
 </div>
 [% RenderBlockEnd("Overview") %]

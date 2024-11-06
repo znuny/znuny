@@ -10,7 +10,6 @@ package Kernel::GenericInterface::Invoker::Test::DynamicFieldWebservice::TestGet
 
 use strict;
 use warnings;
-
 use utf8;
 
 our @ObjectDependencies;

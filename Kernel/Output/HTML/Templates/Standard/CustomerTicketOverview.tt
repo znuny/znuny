@@ -12,7 +12,7 @@
 
 <div id="MainBox" class="TicketView ARIARoleMain [% Config("Ticket::Frontend::CustomerTicketOverviewSortable") %] ">
     <div class="ContentWrapper flex-column">
-        <h1 class="PageTitle">Tickets</h1>
+        <h1 class="PageTitle">[% Translate("Tickets") | html %]</h1>
         <div class="Content">
 [% RenderBlockStart("Filled") %]
             <div class="ActionRow ActionRow-full-width">

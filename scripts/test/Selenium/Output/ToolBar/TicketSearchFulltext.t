@@ -118,6 +118,12 @@ $Selenium->RunTest(
             };
         }
 
+        # Open search.
+        $Selenium->find_element( "#ToolBarSearchTerm", 'css' )->click();
+
+        # Select Fulltext search.
+        $Selenium->find_element( "#ToolBarSearchBackendFulltext", 'css' )->click();
+
         # Search for test created ticket in Fulltext search.
         $Selenium->find_element( "#ToolBarSearchTerm", 'css' )->send_keys( $RandomID, "\N{U+E007}" );
 
@@ -175,6 +181,12 @@ $Selenium->RunTest(
             );
 
             $Selenium->VerifiedGet("${ScriptAlias}index.pl?Action=AgentDashboard");
+
+            # Open search.
+            $Selenium->find_element( "#ToolBarSearchTerm", 'css' )->click();
+
+            # Select Fulltext search.
+            $Selenium->find_element( "#ToolBarSearchBackendFulltext", 'css' )->click();
 
             # Search in Fulltext search.
             $Selenium->find_element( "#ToolBarSearchTerm", 'css' )->send_keys( $RandomID, "\N{U+E007}" );

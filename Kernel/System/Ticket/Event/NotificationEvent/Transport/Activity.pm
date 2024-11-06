@@ -11,7 +11,6 @@ package Kernel::System::Ticket::Event::NotificationEvent::Transport::Activity;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
 use Kernel::Language qw(Translatable);
 
 use parent qw(Kernel::System::Ticket::Event::NotificationEvent::Transport::Base);

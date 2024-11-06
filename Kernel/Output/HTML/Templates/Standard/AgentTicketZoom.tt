@@ -340,9 +340,90 @@
         <div class="AdditionalInformation ControlRow">
 [% RenderBlockStart("ArticlePages") %]
             <div class="ArticlePages Icons">
-        [% FOREACH page IN [1 .. Data.Pages]; %]
-                <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %];ArticlePage=[% page %]" title="[% Translate('Page %s', page) | html %]" data-page="[% page %]" [% IF page == Data.CurrentPage %]class="Active"[% END %]>[% page %]</a>
-        [% END; %]
+                <!-- Pagination for ArticlePages for more than 7 pages -->
+                [% IF Data.Pages > 7 %]
+                    [% FirstPages = 2 %]
+
+                    [% FirstPagesPlus = FirstPages+(1) %]
+                    [% FirstPagesPlusPlus = FirstPages+(2) %]
+
+                    [% LastPagesMinusMinus = Data.Pages-FirstPages %]
+                    [% LastPagesMinus = LastPagesMinusMinus+(1) %]
+
+                    [% CurrentPageMinus = Data.CurrentPage-(1) %]
+                    [% CurrentPagePlus = Data.CurrentPage+(1) %]
+
+                    <!-- Permanent show the first pages -->
+                    [% FOREACH page IN [1 .. FirstPages]; %]
+                        <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %];ArticlePage=[% page %]" title="[% Translate('Page %s', page) | html %]" data-page="[% page %]" [% IF page == Data.CurrentPage %]class="Active"[% END %]>[% page %]</a>
+                    [% END %]
+
+                    [% IF Data.CurrentPage < FirstPages %]
+                        <a>...</a>
+                    [% END %]
+
+                    <!-- Special handlings for some special positions of the begin -->
+                    [% IF Data.CurrentPage == FirstPages %]
+                        <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %];ArticlePage=[% FirstPagesPlus %]" title="[% Translate('Page %s', FirstPagesPlus) | html %]" data-page="[% FirstPagesPlus %]" >[% FirstPagesPlus %]</a>
+                        <a>...</a>
+                    [% END %]
+
+                    [% IF Data.CurrentPage == FirstPagesPlus %]
+                        [% FOREACH page IN [FirstPagesPlus .. FirstPagesPlusPlus]; %]
+                            <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %];ArticlePage=[% page %]" title="[% Translate('Page %s', page) | html %]" data-page="[% page %]" [% IF page == Data.CurrentPage %]class="Active"[% END %]>[% page %]</a>
+                        [% END %]
+                        <a>...</a>
+                    [% END %]
+
+                    [% IF Data.CurrentPage == FirstPagesPlusPlus %]
+                        [% FOREACH page IN [FirstPagesPlus .. CurrentPagePlus]; %]
+                            <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %];ArticlePage=[% page %]" title="[% Translate('Page %s', page) | html %]" data-page="[% page %]" [% IF page == Data.CurrentPage %]class="Active"[% END %]>[% page %]</a>
+                        [% END %]
+                        <a>...</a>
+                    [% END %]
+
+                    <!-- The normal pagination loop -->
+                    [% IF Data.CurrentPage > FirstPagesPlusPlus && CurrentPagePlus < LastPagesMinusMinus %]
+                        <a>...</a>
+                        [% FOREACH page IN [CurrentPageMinus .. CurrentPagePlus]; %]
+                            <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %];ArticlePage=[% page %]" title="[% Translate('Page %s', page) | html %]" data-page="[% page %]" [% IF page == Data.CurrentPage %]class="Active"[% END %]>[% page %]</a>
+                        [% END %]
+                        <a>...</a>
+                    [% END %]
+
+                    <!-- Special handlings for some special positions of the end -->
+                    [% IF CurrentPagePlus == LastPagesMinusMinus %]
+                        <a>...</a>
+                        [% FOREACH page IN [CurrentPageMinus .. LastPagesMinusMinus]; %]
+                            <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %];ArticlePage=[% page %]" title="[% Translate('Page %s', page) | html %]" data-page="[% page %]" [% IF page == Data.CurrentPage %]class="Active"[% END %]>[% page %]</a>
+                        [% END %]
+                    [% END %]
+
+                    [% IF CurrentPagePlus == LastPagesMinus %]
+                        <a>...</a>
+                        [% FOREACH page IN [CurrentPageMinus .. Data.CurrentPage]; %]
+                            <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %];ArticlePage=[% page %]" title="[% Translate('Page %s', page) | html %]" data-page="[% page %]" [% IF page == Data.CurrentPage %]class="Active"[% END %]>[% page %]</a>
+                        [% END %]
+                    [% END %]
+
+                    [% IF Data.CurrentPage == LastPagesMinus %]
+                        <a>...</a>
+                        <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %];ArticlePage=[% LastPagesMinusMinus %]" title="[% Translate('Page %s', LastPagesMinusMinus) | html %]" data-page="[% page %]">[% LastPagesMinusMinus %]</a>
+                    [% END %]
+
+                    [% IF Data.CurrentPage == Data.Pages %]
+                        <a>...</a>
+                    [% END %]
+
+                    <!-- Permanent show last pages -->
+                    [% FOREACH page IN [LastPagesMinus .. Data.Pages]; %]
+                        <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %];ArticlePage=[% page %]" title="[% Translate('Page %s', page) | html %]" data-page="[% page %]" [% IF page == Data.CurrentPage %]class="Active"[% END %]>[% page %]</a>
+                    [% END %]
+                [% ELSE %]
+                    [% FOREACH page IN [1 .. Data.Pages]; %]
+                        <a href="[% Env("Baselink") %]Action=AgentTicketZoom;TicketID=[% Data.TicketID | uri %];ArticlePage=[% page %]" title="[% Translate('Page %s', page) | html %]" data-page="[% page %]" [% IF page == Data.CurrentPage %]class="Active"[% END %]>[% page %]</a>
+                    [% END %]
+                [% END %]
             </div>
 [% RenderBlockEnd("ArticlePages") %]
 [% RenderBlockStart("ArticleFilterDialogLink") %]

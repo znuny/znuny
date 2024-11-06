@@ -40,6 +40,19 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     float: none;
 }
 
+.ServiceOverview .OlderLevel1 {
+    color: var(--primary-color);
+}
+
+.ServiceOverview .OlderLevel2 {
+    color: var(--error-color);
+}
+
+.ServiceOverview .Oldest {
+    animation: Blinking 1s steps(10, start) infinite;
+    -webkit-animation: Blinking 1s steps(10, start) infinite;
+}
+
 /*.ServiceOverviewList.Level_1 {
     margin-left: 0px;
 }

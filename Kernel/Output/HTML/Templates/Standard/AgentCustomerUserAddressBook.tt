@@ -68,8 +68,10 @@
         <fieldset class="TableLike Hidden" id="SearchAttributesHidden">
 
         [% FOR SearchField IN Data.OutputSearchFields %]
-            <div>
-                <label for="[% SearchField.Name | html %]" id="Label[% SearchField.Name | html %]">[% Translate(SearchField.Label) | html %]:</label>
+            <div class="field-wrapper">
+                <div class="label-wrapper">
+                    <label for="[% SearchField.Name | html %]" id="Label[% SearchField.Name | html %]">[% Translate(SearchField.Label) | html %]:</label>
+                </div>
                 <div class="Field">
                 [% IF SearchField.SelectionString %]
                     [% SearchField.SelectionString %]
@@ -81,7 +83,7 @@
             </div>
         [% END %]
 [% RenderBlockStart("DynamicField") %]
-            <div>
+            <div class="field-wrapper">
                 [% Data.Label %]
                 <div class="Field">
                     [% Data.Field %]

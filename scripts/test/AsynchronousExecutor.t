@@ -30,7 +30,7 @@ my $PreviousDaemonStatus = `$Daemon status`;
 if ( !defined $PreviousDaemonStatus ) {
     $Self->False(
         0,
-        'Permission denied for deamon commands, skipping test',
+        'Permission denied for daemon commands, skipping test',
     );
     return 1;
 }

@@ -13,6 +13,7 @@ use parent 'Kernel::Output::HTML::Base';
 
 use strict;
 use warnings;
+use utf8;
 
 sub Run {
     my ( $Self, %Param ) = @_;

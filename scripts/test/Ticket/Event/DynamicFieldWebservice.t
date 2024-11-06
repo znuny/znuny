@@ -299,14 +299,14 @@ for my $Test (@Tests) {
         $Self->IsDeeply(
             $Ticket{ 'DynamicField_' . $DynamicFieldName },
             $Test->{DynamicField}->{Value},
-            "$Test->{DynamicField}->{FieldType} is set correct.",
+            "$Test->{DynamicField}->{FieldType} is set correctly.",
         );
     }
     else {
         $Self->Is(
             $Ticket{ 'DynamicField_' . $DynamicFieldName },
             $Test->{DynamicField}->{Value},
-            "$Test->{DynamicField}->{FieldType} is set correct.",
+            "$Test->{DynamicField}->{FieldType} is set correctly.",
         );
     }
 
@@ -314,7 +314,7 @@ for my $Test (@Tests) {
         $Self->Is(
             $Ticket{ 'DynamicField_' . $AdditionalDFStorage },
             $ExpectedResult{$AdditionalDFStorage},
-            "DynamicField_$AdditionalDFStorage is set correct.",
+            "DynamicField_$AdditionalDFStorage is set correctly.",
         );
     }
 }

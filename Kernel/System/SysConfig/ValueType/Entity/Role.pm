@@ -13,8 +13,6 @@ package Kernel::System::SysConfig::ValueType::Entity::Role;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
-
 use parent qw(Kernel::System::SysConfig::ValueType::Entity);
 
 our @ObjectDependencies = (

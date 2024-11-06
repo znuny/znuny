@@ -18,8 +18,6 @@ X-OTRS-Login: [% Env("Baselink") %]
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
-    <link rel="shortcut icon" href="[% Config("Frontend::ImagePath") %]icons/product.ico" type="image/ico" />
-    <link rel="apple-touch-icon" href="[% Config("Frontend::ImagePath") %]icons/apple-touch-icon.png" />
 [% RenderBlockStart("CommonCSS") %]
     <link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Agent/[% Data.Skin | uri %]/[% Data.CSSDirectory %]/[% Data.Filename %]" />
 [% RenderBlockEnd("CommonCSS") %]
@@ -68,6 +66,11 @@ X-OTRS-Login: [% Env("Baselink") %]
           catch (Exception) {}
       }(document, window));
     </script>
+
+[% RenderBlockStart("ShortcutIcon") %]
+    <link rel="shortcut icon" href="[% Config("Frontend::WebPath") %][% Data.AgentShortcutIcon %]" type="image/ico" />
+    <link rel="apple-touch-icon" href="[% Config("Frontend::WebPath") %][% Data.AgentAppleTouchIcon %]" />
+[% RenderBlockEnd("ShortcutIcon") %]
 
     <title>[% Translate(Data.Title) | html %] - [% Config("ProductName") %]</title>
 
@@ -199,6 +202,7 @@ X-OTRS-Login: [% Env("Baselink") %]
             <div id="PasswordBox" class="Hidden">
                 <div class="WidgetSimple">
                     <div class="Content">
+                        <h2>[% Translate("Request New Password") | html %]</h2>
                         <p class="Error Center Spacing"></p>
                         <form action="[% Env("CGIHandle") %]" method="post" enctype="application/x-www-form-urlencoded" class="Validate PreventMultipleSubmits">
                             <input type="hidden" name="Action" value="LostPassword"/>

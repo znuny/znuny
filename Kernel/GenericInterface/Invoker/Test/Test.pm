@@ -11,6 +11,7 @@ package Kernel::GenericInterface::Invoker::Test::Test;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::System::VariableCheck qw(IsString IsStringWithData);
 

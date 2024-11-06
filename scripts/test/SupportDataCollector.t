@@ -21,6 +21,7 @@ use Kernel::System::SupportDataCollector::PluginBase;
 
 # get needed objects
 my $CacheObject                = $Kernel::OM->Get('Kernel::System::Cache');
+my $ConfigObject               = $Kernel::OM->Get('Kernel::Config');
 my $MainObject                 = $Kernel::OM->Get('Kernel::System::Main');
 my $SupportDataCollectorObject = $Kernel::OM->Get('Kernel::System::SupportDataCollector');
 my $HelperObject               = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
@@ -30,14 +31,14 @@ $HelperObject->ConfigSettingChange(
     Valid => 1,
     Key   => 'SupportDataCollector::DisablePlugins',
     Value => [
-        'Kernel::System::SupportDataCollector::Plugin::OTRS::PackageDeployment',
+        'Kernel::System::SupportDataCollector::Plugin::Znuny::PackageDeployment',
     ],
 );
 $HelperObject->ConfigSettingChange(
     Valid => 1,
     Key   => 'SupportDataCollector::IdentifierFilterBlacklist',
     Value => [
-        'Kernel::System::SupportDataCollector::Plugin::OTRS::TimeSettings::UserDefaultTimeZone',
+        'Kernel::System::SupportDataCollector::Plugin::Znuny::TimeSettings::UserDefaultTimeZone',
     ],
 );
 
@@ -55,7 +56,7 @@ my $TimeElapsed = Time::HiRes::tv_interval($TimeStart);
 
 # Look for all plug-ins in the FS
 my @PluginFiles = $MainObject->DirectoryRead(
-    Directory => $Kernel::OM->Get('Kernel::Config')->Get('Home')
+    Directory => $ConfigObject->Get('Home')
         . "/Kernel/System/SupportDataCollector/PluginAsynchronous",
     Filter    => "*.pm",
     Recursive => 1,
@@ -149,7 +150,7 @@ for my $ResultEntry ( @{ $Result{Result} || [] } ) {
 
 # Check if the identifier from the disabled plugions are not present.
 for my $DisabledPluginsIdentifier (
-    qw(Kernel::System::SupportDataCollector::Plugin::OTRS::PackageDeployment Kernel::System::SupportDataCollector::Plugin::OTRS::PackageDeployment::Verification Kernel::System::SupportDataCollector::Plugin::OTRS::PackageDeployment::FrameworkVersion)
+    qw(Kernel::System::SupportDataCollector::Plugin::Znuny::PackageDeployment Kernel::System::SupportDataCollector::Plugin::Znuny::PackageDeployment::Verification Kernel::System::SupportDataCollector::Plugin::Znuny::PackageDeployment::FrameworkVersion)
     )
 {
     $Self->False(
@@ -160,8 +161,8 @@ for my $DisabledPluginsIdentifier (
 
 # Check if the identifiers from the identifier filter blacklist are not present.
 $Self->False(
-    $SeenIdentifier{'Kernel::System::SupportDataCollector::Plugin::OTRS::TimeSettings::UserDefaultTimeZone'},
-    "Collect() - SupportDataCollector::IdentifierFilterBlacklist - Kernel::System::SupportDataCollector::Plugin::OTRS::TimeSettings::UserDefaultTimeZone should not be present"
+    $SeenIdentifier{'Kernel::System::SupportDataCollector::Plugin::Znuny::TimeSettings::UserDefaultTimeZone'},
+    "Collect() - SupportDataCollector::IdentifierFilterBlacklist - Kernel::System::SupportDataCollector::Plugin::Znuny::TimeSettings::UserDefaultTimeZone should not be present"
 );
 
 # cache tests

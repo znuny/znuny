@@ -16,8 +16,6 @@ our @ObjectDependencies = (
     'Kernel::System::Main',
 );
 
-use Kernel::System::VariableCheck qw(:all);
-
 =head1 SYNOPSIS
 
 Support for parsing X.509 certificates.

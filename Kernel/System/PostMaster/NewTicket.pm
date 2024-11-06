@@ -21,6 +21,7 @@ our @ObjectDependencies = (
     'Kernel::System::LinkObject',
     'Kernel::System::Priority',
     'Kernel::System::Queue',
+    'Kernel::System::SLA',
     'Kernel::System::Service',
     'Kernel::System::State',
     'Kernel::System::Ticket',
@@ -75,6 +76,13 @@ sub Run {
 
     # get state
     my $State = $ConfigObject->Get('PostmasterDefaultState') || 'new';
+
+    if ( $GetParam{'X-OTRS-StateID'} ) {
+        $GetParam{'X-OTRS-State'} = $Kernel::OM->Get('Kernel::System::State')->StateLookup(
+            StateID => $GetParam{'X-OTRS-StateID'},
+        );
+    }
+
     if ( $GetParam{'X-OTRS-State'} ) {
 
         my $StateID = $Kernel::OM->Get('Kernel::System::State')->StateLookup(
@@ -97,6 +105,12 @@ sub Run {
     # get priority
     my $Priority = $ConfigObject->Get('PostmasterDefaultPriority') || '3 normal';
 
+    if ( $GetParam{'X-OTRS-PriorityID'} ) {
+        $GetParam{'X-OTRS-Priority'} = $Kernel::OM->Get('Kernel::System::Priority')->PriorityLookup(
+            PriorityID => $GetParam{'X-OTRS-PriorityID'},
+        );
+    }
+
     if ( $GetParam{'X-OTRS-Priority'} ) {
 
         my $PriorityID = $Kernel::OM->Get('Kernel::System::Priority')->PriorityLookup(
@@ -117,6 +131,11 @@ sub Run {
     }
 
     my $TypeID;
+
+    if ( $GetParam{'X-OTRS-TypeID'} ) {
+        $GetParam{'X-OTRS-Type'}
+            = $Kernel::OM->Get('Kernel::System::Type')->TypeLookup( TypeID => $GetParam{'X-OTRS-TypeID'} );
+    }
 
     if ( $GetParam{'X-OTRS-Type'} ) {
 
@@ -272,6 +291,12 @@ sub Run {
 
     # Ticket service handling.
 
+    if ( $GetParam{'X-OTRS-ServiceID'} ) {
+        $GetParam{'X-OTRS-Service'} = $Kernel::OM->Get('Kernel::System::Service')->ServiceLookup(
+            ServiceID => $GetParam{'X-OTRS-ServiceID'},
+        );
+    }
+
     if ( $GetParam{'X-OTRS-Service'} ) {
 
         # Get all valid services.
@@ -295,6 +320,12 @@ sub Run {
 
             $GetParam{'X-OTRS-Service'} = '';
         }
+    }
+
+    if ( $GetParam{'X-OTRS-SLAID'} ) {
+        $GetParam{'X-OTRS-SLA'} = $Kernel::OM->Get('Kernel::System::SLA')->SLALookup(
+            SLAID => $GetParam{'X-OTRS-SLAID'},
+        );
     }
 
     # create new ticket

@@ -7,79 +7,79 @@
 # --
 ## nofilter(TidyAll::Plugin::Znuny::TT::Breadcrumb)
 
-<dt><code>&lt;OTRS_AGENT_SUBJECT[20]&gt;</code></dt>
-<dd>
+<dt><code class="bold">&lt;OTRS_AGENT_SUBJECT[20]&gt;</code></dt>
+<dd class="flex-row">
     [% Translate("To get the first 20 character of the subject (of the latest agent article).") | html %]
 </dd>
 
-<dt><code>&lt;OTRS_AGENT_BODY[5]&gt;</code></dt>
-<dd>
+<dt><code class="bold">&lt;OTRS_AGENT_BODY[5]&gt;</code></dt>
+<dd class="flex-row">
     [% Translate("To get the first 5 lines of the body (of the latest agent article).") | html %]
 </dd>
 
-<dt><code>&lt;OTRS_AGENT_*&gt;</code></dt>
-<dd>
+<dt><code class="bold">&lt;OTRS_AGENT_*&gt;</code></dt>
+<dd class="flex-row">
     [% Translate("To get the article attribute") | html %]
-    ([% Translate(" e. g.") | html %] <code>&lt;OTRS_AGENT_From&gt;, &lt;OTRS_AGENT_To&gt;, &lt;OTRS_AGENT_Cc&gt;</code>).
+    ([% Translate("e. g.") | html %] <code>&lt;OTRS_AGENT_From&gt;, &lt;OTRS_AGENT_To&gt;, &lt;OTRS_AGENT_Cc&gt;</code>).
 </dd>
 
-<dt><code>&lt;OTRS_CUSTOMER_SUBJECT[20]&gt;</code></dt>
-<dd>
+<dt><code class="bold">&lt;OTRS_CUSTOMER_SUBJECT[20]&gt;</code></dt>
+<dd class="flex-row">
     [% Translate("To get the first 20 character of the subject (of the latest customer article).") | html %]
 </dd>
 
-<dt><code>&lt;OTRS_CUSTOMER_BODY[5]&gt;</code></dt>
-<dd>
+<dt><code class="bold">&lt;OTRS_CUSTOMER_BODY[5]&gt;</code></dt>
+<dd class="flex-row">
     [% Translate("To get the first 5 lines of the body (of the latest customer article).") | html %]
 </dd>
 
-<dt><code>&lt;OTRS_CUSTOMER_REALNAME&gt;</code></dt>
-<dd>
+<dt><code class="bold">&lt;OTRS_CUSTOMER_REALNAME&gt;</code></dt>
+<dd class="flex-row">
     [% Translate("To get the name of the ticket's customer user (if given).") | html %]
 </dd>
 
-<dt><code>&lt;OTRS_CUSTOMER_*&gt;</code></dt>
-<dd>
+<dt><code class="bold">&lt;OTRS_CUSTOMER_*&gt;</code></dt>
+<dd class="flex-row">
     [% Translate("To get the article attribute") | html %]
-    ([% Translate(" e. g.") | html %] <code>&lt;OTRS_CUSTOMER_From&gt;, &lt;OTRS_CUSTOMER_To&gt;,
-    &lt;OTRS_CUSTOMER_Cc&gt;</code>).
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_CUSTOMER_From&gt;, &lt;OTRS_CUSTOMER_To&gt;,
+    &lt;OTRS_CUSTOMER_Cc&gt;</code>
 </dd>
 
-<dt><code>&lt;OTRS_CUSTOMER_DATA_*&gt;</code></dt>
-<dd>
+<dt><code class="bold">&lt;OTRS_CUSTOMER_DATA_*&gt;</code></dt>
+<dd class="flex-row">
     [% Translate("Attributes of the current customer user data") | html %]
-    ([% Translate(" e. g.") | html %] <code>&lt;OTRS_CUSTOMER_DATA_UserFirstname&gt;</code>).
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_CUSTOMER_DATA_UserFirstname&gt;</code>
 </dd>
 
-<dt><code>&lt;OTRS_OWNER_*&gt;</code> [% Translate("or") | html %] <code>&lt;OTRS_TICKET_OWNER_*&gt;</code></dt>
-<dd>
+<dt><code class="bold">&lt;OTRS_OWNER_*&gt;</code> [% Translate("or") | html %] <code>&lt;OTRS_TICKET_OWNER_*&gt;</code></dt>
+<dd class="flex-row">
     [% Translate("Attributes of the current ticket owner user data") | html %]
-    ([% Translate(" e. g.") | html %] <code>&lt;OTRS_OWNER_UserFirstname&gt;</code> [% Translate("or") | html %] <code>&lt;OTRS_TICKET_OWNER_UserFirstname&gt;</code>).
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_OWNER_UserFirstname&gt;</code> [% Translate("or") | html %] <code>&lt;OTRS_TICKET_OWNER_UserFirstname&gt;</code>
 </dd>
 
-<dt><code>&lt;OTRS_*&gt;</code> [% Translate("or") | html %] <code>&lt;OTRS_NOTIFICATION_RECIPIENT_*&gt;</code></dt>
-<dd>
+<dt><code class="bold">&lt;OTRS_*&gt;</code> [% Translate("or") | html %] <code>&lt;OTRS_NOTIFICATION_RECIPIENT_*&gt;</code></dt>
+<dd class="flex-row">
     [% Translate("Attributes of the recipient user for the notification") | html %]
-    ([% Translate(" e. g.") | html %] <code>&lt;OTRS_UserFullname&gt;</code> [% Translate("or") | html %] <code>&lt;OTRS_NOTIFICATION_RECIPIENT_UserFullname&gt;</code>).
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_UserFullname&gt;</code> [% Translate("or") | html %] <code>&lt;OTRS_NOTIFICATION_RECIPIENT_UserFullname&gt;</code>
 </dd>
 
-<dt><code>&lt;OTRS_TICKET_*&gt;</code></dt>
-<dd>
+<dt><code class="bold">&lt;OTRS_TICKET_*&gt;</code></dt>
+<dd class="flex-row">
     [% Translate("Attributes of the ticket data") | html %]
-    ([% Translate(" e. g.") | html %] <code>&lt;OTRS_TICKET_TicketNumber&gt;, &lt;OTRS_TICKET_TicketID&gt;,
-    &lt;OTRS_TICKET_Queue&gt;, &lt;OTRS_TICKET_State&gt;</code>).
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_TICKET_TicketNumber&gt;, &lt;OTRS_TICKET_TicketID&gt;,
+    &lt;OTRS_TICKET_Queue&gt;, &lt;OTRS_TICKET_State&gt;</code>
 </dd>
 
-<dt><code>&lt;OTRS_TICKET_DynamicField_*&gt;</code></dt>
-<dd>
+<dt><code class="bold">&lt;OTRS_TICKET_DynamicField_*&gt;</code></dt>
+<dd class="flex-row">
     [% Translate("Ticket dynamic fields internal key values") | html %]
-    ([% Translate(" e. g.") | html %] <code>&lt;OTRS_TICKET_DynamicField_TestField&gt;,
-    &lt;OTRS_TICKET_DynamicField_TicketFreeText1&gt;</code>).
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_TICKET_DynamicField_TestField&gt;,
+    &lt;OTRS_TICKET_DynamicField_TicketFreeText1&gt;</code>
 </dd>
 
-<dt><code>&lt;OTRS_TICKET_DynamicField_*_Value&gt;</code></dt>
-<dd>
+<dt><code class="bold">&lt;OTRS_TICKET_DynamicField_*_Value&gt;</code></dt>
+<dd class="flex-row">
     [% Translate("Ticket dynamic fields display values, useful for Dropdown and Multiselect fields") | html %]
-    ([% Translate(" e. g.") | html %] <code>&lt;OTRS_TICKET_DynamicField_TestField_Value&gt;,
-    &lt;OTRS_TICKET_DynamicField_TicketFreeText1_Value&gt;</code>).
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_TICKET_DynamicField_TestField_Value&gt;,
+    &lt;OTRS_TICKET_DynamicField_TicketFreeText1_Value&gt;</code>
 </dd>

@@ -1243,7 +1243,9 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
                                     FieldConfigElement.Config = {};
                                 }
 
-                                CKEDITOR.instances['Body'].updateElement();
+                                if (typeof CKEDITOR !== 'undefined') {
+                                    CKEDITOR.instances['Body'].updateElement();
+                                }
                                 FieldConfigElement.Config.Subject = $('#Subject').val();
                                 FieldConfigElement.Config.Body = $('#Body').val();
 
@@ -1642,7 +1644,7 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
 
         // set current start and end activity (just for information purposes, not changeable)
         $.each(PathInfo, function(Activity, Transition) {
-            if (Activity === StartActivityID && typeof Transition[CurrentTransitionEntityID] !== 'undefined') {
+            if (Activity === StartActivityID && typeof Transition[CurrentTransitionEntityID].ActivityEntityID !== 'undefined') {
                 $('#StartActivity').attr('title', ActivityInfo[Activity].Name).text(ActivityInfo[Activity].Name);
                 $('#EndActivity').attr('title', ActivityInfo[Transition[CurrentTransitionEntityID].ActivityEntityID].Name).text(ActivityInfo[Transition[CurrentTransitionEntityID].ActivityEntityID].Name);
 

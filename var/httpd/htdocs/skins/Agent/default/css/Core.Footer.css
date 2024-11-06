@@ -37,13 +37,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     text-decoration: underline;
 }
 
-#Footer ul {
-    position: absolute;
-    top: 12px;
-    left: 212px;
-    right: auto;
-}
-
 .RTL #Footer ul {
     left: auto;
     right: 212px;
@@ -52,13 +45,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 #Footer ul li {
     float: left;
     padding: 0 4px 0 4px;
-    border-left: 1px solid #9E9E9E;
 }
 
 .RTL #Footer ul li {
     float: right;
-    border-left: none;
-    border-right: 1px solid #9E9E9E;
 }
 
 #Footer ul li:first-child {

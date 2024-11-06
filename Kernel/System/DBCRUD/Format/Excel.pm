@@ -22,7 +22,6 @@ our @ObjectDependencies = (
 
 use MIME::Base64 qw();
 use Spreadsheet::XLSX;
-use Kernel::System::VariableCheck qw(:all);
 
 =head1 NAME
 

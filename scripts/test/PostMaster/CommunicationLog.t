@@ -355,7 +355,7 @@ my @Tests = (
     },
 
     {
-        Name          => 'Everything successfull',
+        Name          => 'Everything successful',
         FakeClientEnv => {
             'connect' => 1,
             'emails'  => {%Emails},

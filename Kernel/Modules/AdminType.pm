@@ -11,6 +11,7 @@ package Kernel::Modules::AdminType;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::System::VariableCheck qw(:all);
 use Kernel::Language qw(Translatable);

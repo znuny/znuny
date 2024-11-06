@@ -24,16 +24,19 @@ CREATE TABLE acl (
 #  create table acl_sync
 # ----------------------------------------------------------
 CREATE TABLE acl_sync (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     acl_id VARCHAR (200) NOT NULL,
     sync_state VARCHAR (30) NOT NULL,
     create_time DATETIME NOT NULL,
-    change_time DATETIME NOT NULL
+    change_time DATETIME NOT NULL,
+    PRIMARY KEY(id)
 );
 # ----------------------------------------------------------
 #  create table activity
 # ----------------------------------------------------------
 CREATE TABLE activity (
     id INTEGER NOT NULL AUTO_INCREMENT,
+    dbcrud_uuid VARCHAR (36) NULL,
     user_id INTEGER NOT NULL,
     activity_type VARCHAR (200) NOT NULL,
     activity_title VARCHAR (255) NOT NULL,
@@ -42,7 +45,8 @@ CREATE TABLE activity (
     activity_link VARCHAR (255) NULL,
     create_time DATETIME NOT NULL,
     create_by INTEGER NOT NULL,
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    UNIQUE INDEX activity_uuid (dbcrud_uuid)
 );
 # ----------------------------------------------------------
 #  create table acl_ticket_attribute_relations
@@ -96,9 +100,11 @@ CREATE TABLE users (
 #  create table user_preferences
 # ----------------------------------------------------------
 CREATE TABLE user_preferences (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     user_id INTEGER NOT NULL,
     preferences_key VARCHAR (150) NOT NULL,
     preferences_value LONGBLOB NULL,
+    PRIMARY KEY(id),
     INDEX user_preferences_user_id (user_id)
 );
 # ----------------------------------------------------------
@@ -120,6 +126,7 @@ CREATE TABLE permission_groups (
 #  create table group_user
 # ----------------------------------------------------------
 CREATE TABLE group_user (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     user_id INTEGER NOT NULL,
     group_id INTEGER NOT NULL,
     permission_key VARCHAR (20) NOT NULL,
@@ -127,6 +134,7 @@ CREATE TABLE group_user (
     create_by INTEGER NOT NULL,
     change_time DATETIME NOT NULL,
     change_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
     INDEX group_user_group_id (group_id),
     INDEX group_user_user_id (user_id)
 );
@@ -134,6 +142,7 @@ CREATE TABLE group_user (
 #  create table group_role
 # ----------------------------------------------------------
 CREATE TABLE group_role (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     role_id INTEGER NOT NULL,
     group_id INTEGER NOT NULL,
     permission_key VARCHAR (20) NOT NULL,
@@ -142,6 +151,7 @@ CREATE TABLE group_role (
     create_by INTEGER NOT NULL,
     change_time DATETIME NOT NULL,
     change_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
     INDEX group_role_group_id (group_id),
     INDEX group_role_role_id (role_id)
 );
@@ -149,6 +159,7 @@ CREATE TABLE group_role (
 #  create table group_customer_user
 # ----------------------------------------------------------
 CREATE TABLE group_customer_user (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     user_id VARCHAR (100) NOT NULL,
     group_id INTEGER NOT NULL,
     permission_key VARCHAR (20) NOT NULL,
@@ -157,6 +168,7 @@ CREATE TABLE group_customer_user (
     create_by INTEGER NOT NULL,
     change_time DATETIME NOT NULL,
     change_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
     INDEX group_customer_user_group_id (group_id),
     INDEX group_customer_user_user_id (user_id)
 );
@@ -164,6 +176,7 @@ CREATE TABLE group_customer_user (
 #  create table group_customer
 # ----------------------------------------------------------
 CREATE TABLE group_customer (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     customer_id VARCHAR (150) NOT NULL,
     group_id INTEGER NOT NULL,
     permission_key VARCHAR (20) NOT NULL,
@@ -173,6 +186,7 @@ CREATE TABLE group_customer (
     create_by INTEGER NOT NULL,
     change_time DATETIME NOT NULL,
     change_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
     INDEX group_customer_customer_id (customer_id),
     INDEX group_customer_group_id (group_id)
 );
@@ -195,12 +209,14 @@ CREATE TABLE roles (
 #  create table role_user
 # ----------------------------------------------------------
 CREATE TABLE role_user (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     user_id INTEGER NOT NULL,
     role_id INTEGER NOT NULL,
     create_time DATETIME NOT NULL,
     create_by INTEGER NOT NULL,
     change_time DATETIME NOT NULL,
     change_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
     INDEX role_user_role_id (role_id),
     INDEX role_user_user_id (user_id)
 );
@@ -208,8 +224,10 @@ CREATE TABLE role_user (
 #  create table personal_queues
 # ----------------------------------------------------------
 CREATE TABLE personal_queues (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     user_id INTEGER NOT NULL,
     queue_id INTEGER NOT NULL,
+    PRIMARY KEY(id),
     INDEX personal_queues_queue_id (queue_id),
     INDEX personal_queues_user_id (user_id)
 );
@@ -217,8 +235,10 @@ CREATE TABLE personal_queues (
 #  create table personal_services
 # ----------------------------------------------------------
 CREATE TABLE personal_services (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     user_id INTEGER NOT NULL,
     service_id INTEGER NOT NULL,
+    PRIMARY KEY(id),
     INDEX personal_services_service_id (service_id),
     INDEX personal_services_user_id (user_id)
 );
@@ -342,9 +362,11 @@ CREATE TABLE queue (
 #  create table queue_preferences
 # ----------------------------------------------------------
 CREATE TABLE queue_preferences (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     queue_id INTEGER NOT NULL,
     preferences_key VARCHAR (150) NOT NULL,
     preferences_value VARCHAR (250) NULL,
+    PRIMARY KEY(id),
     INDEX queue_preferences_queue_id (queue_id)
 );
 # ----------------------------------------------------------
@@ -476,11 +498,13 @@ CREATE TABLE ticket (
 #  create table ticket_flag
 # ----------------------------------------------------------
 CREATE TABLE ticket_flag (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     ticket_id BIGINT NOT NULL,
     ticket_key VARCHAR (50) NOT NULL,
     ticket_value VARCHAR (50) NULL,
     create_time DATETIME NOT NULL,
     create_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
     UNIQUE INDEX ticket_flag_per_user (ticket_id, ticket_key, create_by),
     INDEX ticket_flag_ticket_id (ticket_id),
     INDEX ticket_flag_ticket_id_create_by (ticket_id, create_by),
@@ -534,12 +558,14 @@ CREATE TABLE ticket_history_type (
 #  create table ticket_watcher
 # ----------------------------------------------------------
 CREATE TABLE ticket_watcher (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     ticket_id BIGINT NOT NULL,
     user_id INTEGER NOT NULL,
     create_time DATETIME NOT NULL,
     create_by INTEGER NOT NULL,
     change_time DATETIME NOT NULL,
     change_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
     INDEX ticket_watcher_ticket_id (ticket_id),
     INDEX ticket_watcher_user_id (user_id)
 );
@@ -547,6 +573,7 @@ CREATE TABLE ticket_watcher (
 #  create table ticket_index
 # ----------------------------------------------------------
 CREATE TABLE ticket_index (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     ticket_id BIGINT NOT NULL,
     queue_id INTEGER NOT NULL,
     queue VARCHAR (200) NOT NULL,
@@ -554,6 +581,7 @@ CREATE TABLE ticket_index (
     s_lock VARCHAR (200) NOT NULL,
     s_state VARCHAR (200) NOT NULL,
     create_time DATETIME NOT NULL,
+    PRIMARY KEY(id),
     INDEX ticket_index_group_id (group_id),
     INDEX ticket_index_queue_id (queue_id),
     INDEX ticket_index_ticket_id (ticket_id)
@@ -562,15 +590,19 @@ CREATE TABLE ticket_index (
 #  create table ticket_lock_index
 # ----------------------------------------------------------
 CREATE TABLE ticket_lock_index (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     ticket_id BIGINT NOT NULL,
+    PRIMARY KEY(id),
     INDEX ticket_lock_index_ticket_id (ticket_id)
 );
 # ----------------------------------------------------------
 #  create table ticket_loop_protection
 # ----------------------------------------------------------
 CREATE TABLE ticket_loop_protection (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     sent_to VARCHAR (250) NOT NULL,
     sent_date VARCHAR (150) NOT NULL,
+    PRIMARY KEY(id),
     INDEX ticket_loop_protection_sent_date (sent_date),
     INDEX ticket_loop_protection_sent_to (sent_to)
 );
@@ -593,11 +625,13 @@ CREATE TABLE article_sender_type (
 #  create table article_flag
 # ----------------------------------------------------------
 CREATE TABLE article_flag (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     article_id BIGINT NOT NULL,
     article_key VARCHAR (50) NOT NULL,
     article_value VARCHAR (50) NULL,
     create_time DATETIME NOT NULL,
     create_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
     INDEX article_flag_article_id (article_id),
     INDEX article_flag_article_id_create_by (article_id, create_by)
 );
@@ -764,9 +798,9 @@ CREATE TABLE time_accounting (
 CREATE TABLE standard_template (
     id INTEGER NOT NULL AUTO_INCREMENT,
     name VARCHAR (200) NOT NULL,
-    text TEXT NULL,
+    text LONGTEXT NULL,
     content_type VARCHAR (250) NULL,
-    template_type VARCHAR (100) NOT NULL DEFAULT 'Answer',
+    template_type VARCHAR (250) NOT NULL DEFAULT 'Answer',
     comments VARCHAR (250) NULL,
     valid_id SMALLINT NOT NULL,
     create_time DATETIME NOT NULL,
@@ -780,12 +814,14 @@ CREATE TABLE standard_template (
 #  create table queue_standard_template
 # ----------------------------------------------------------
 CREATE TABLE queue_standard_template (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     queue_id INTEGER NOT NULL,
     standard_template_id INTEGER NOT NULL,
     create_time DATETIME NOT NULL,
     create_by INTEGER NOT NULL,
     change_time DATETIME NOT NULL,
-    change_by INTEGER NOT NULL
+    change_by INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 # ----------------------------------------------------------
 #  create table standard_attachment
@@ -885,19 +921,23 @@ CREATE TABLE service (
 #  create table service_preferences
 # ----------------------------------------------------------
 CREATE TABLE service_preferences (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     service_id INTEGER NOT NULL,
     preferences_key VARCHAR (150) NOT NULL,
     preferences_value VARCHAR (250) NULL,
+    PRIMARY KEY(id),
     INDEX service_preferences_service_id (service_id)
 );
 # ----------------------------------------------------------
 #  create table service_customer_user
 # ----------------------------------------------------------
 CREATE TABLE service_customer_user (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     customer_user_login VARCHAR (200) NOT NULL,
     service_id INTEGER NOT NULL,
     create_time DATETIME NOT NULL,
     create_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
     INDEX service_customer_user_customer_user_login (customer_user_login(10)),
     INDEX service_customer_user_service_id (service_id)
 );
@@ -927,17 +967,21 @@ CREATE TABLE sla (
 #  create table sla_preferences
 # ----------------------------------------------------------
 CREATE TABLE sla_preferences (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     sla_id INTEGER NOT NULL,
     preferences_key VARCHAR (150) NOT NULL,
     preferences_value VARCHAR (250) NULL,
+    PRIMARY KEY(id),
     INDEX sla_preferences_sla_id (sla_id)
 );
 # ----------------------------------------------------------
 #  create table service_sla
 # ----------------------------------------------------------
 CREATE TABLE service_sla (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     service_id INTEGER NOT NULL,
     sla_id INTEGER NOT NULL,
+    PRIMARY KEY(id),
     UNIQUE INDEX service_sla_service_sla (service_id, sla_id)
 );
 # ----------------------------------------------------------
@@ -985,9 +1029,11 @@ CREATE TABLE customer_user (
 #  create table customer_preferences
 # ----------------------------------------------------------
 CREATE TABLE customer_preferences (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     user_id VARCHAR (250) NOT NULL,
     preferences_key VARCHAR (150) NOT NULL,
     preferences_value VARCHAR (250) NULL,
+    PRIMARY KEY(id),
     INDEX customer_preferences_user_id (user_id)
 );
 # ----------------------------------------------------------
@@ -1014,12 +1060,14 @@ CREATE TABLE customer_company (
 #  create table customer_user_customer
 # ----------------------------------------------------------
 CREATE TABLE customer_user_customer (
-    user_id VARCHAR (100) NOT NULL,
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    user_id VARCHAR (200) NOT NULL,
     customer_id VARCHAR (150) NOT NULL,
     create_time DATETIME NOT NULL,
     create_by INTEGER NOT NULL,
     change_time DATETIME NOT NULL,
     change_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
     INDEX customer_user_customer_customer_id (customer_id),
     INDEX customer_user_customer_user_id (user_id)
 );
@@ -1049,32 +1097,38 @@ CREATE TABLE mail_account (
 #  create table postmaster_filter
 # ----------------------------------------------------------
 CREATE TABLE postmaster_filter (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     f_name VARCHAR (200) NOT NULL,
     f_stop SMALLINT NULL,
     f_type VARCHAR (20) NOT NULL,
     f_key VARCHAR (200) NOT NULL,
     f_value VARCHAR (200) NOT NULL,
     f_not SMALLINT NULL,
+    PRIMARY KEY(id),
     INDEX postmaster_filter_f_name (f_name)
 );
 # ----------------------------------------------------------
 #  create table generic_agent_jobs
 # ----------------------------------------------------------
 CREATE TABLE generic_agent_jobs (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     job_name VARCHAR (200) NOT NULL,
-    job_key VARCHAR (200) NOT NULL,
-    job_value VARCHAR (200) NULL,
+    job_key VARCHAR (255) NOT NULL,
+    job_value TEXT NULL,
+    PRIMARY KEY(id),
     INDEX generic_agent_jobs_job_name (job_name)
 );
 # ----------------------------------------------------------
 #  create table search_profile
 # ----------------------------------------------------------
 CREATE TABLE search_profile (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     login VARCHAR (200) NOT NULL,
     profile_name VARCHAR (200) NOT NULL,
     profile_type VARCHAR (30) NOT NULL,
     profile_key VARCHAR (200) NOT NULL,
     profile_value VARCHAR (200) NULL,
+    PRIMARY KEY(id),
     INDEX search_profile_login (login),
     INDEX search_profile_profile_name (profile_name)
 );
@@ -1082,16 +1136,19 @@ CREATE TABLE search_profile (
 #  create table process_id
 # ----------------------------------------------------------
 CREATE TABLE process_id (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     process_name VARCHAR (200) NOT NULL,
     process_id VARCHAR (200) NOT NULL,
     process_host VARCHAR (200) NOT NULL,
     process_create INTEGER NOT NULL,
-    process_change INTEGER NOT NULL
+    process_change INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 # ----------------------------------------------------------
 #  create table web_upload_cache
 # ----------------------------------------------------------
 CREATE TABLE web_upload_cache (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     form_id VARCHAR (250) NULL,
     filename VARCHAR (250) NULL,
     content_id VARCHAR (250) NULL,
@@ -1099,7 +1156,8 @@ CREATE TABLE web_upload_cache (
     content_type VARCHAR (250) NULL,
     disposition VARCHAR (15) NULL,
     content LONGBLOB NOT NULL,
-    create_time_unix BIGINT NOT NULL
+    create_time_unix BIGINT NOT NULL,
+    PRIMARY KEY(id)
 );
 # ----------------------------------------------------------
 #  create table notification_event
@@ -1123,7 +1181,7 @@ CREATE TABLE notification_event_message (
     id INTEGER NOT NULL AUTO_INCREMENT,
     notification_id INTEGER NOT NULL,
     subject VARCHAR (200) NOT NULL,
-    text TEXT NOT NULL,
+    text LONGTEXT NOT NULL,
     content_type VARCHAR (250) NOT NULL,
     language VARCHAR (60) NOT NULL,
     PRIMARY KEY(id),
@@ -1135,9 +1193,11 @@ CREATE TABLE notification_event_message (
 #  create table notification_event_item
 # ----------------------------------------------------------
 CREATE TABLE notification_event_item (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     notification_id INTEGER NOT NULL,
     event_key VARCHAR (200) NOT NULL,
     event_value VARCHAR (200) NOT NULL,
+    PRIMARY KEY(id),
     INDEX notification_event_item_event_key (event_key),
     INDEX notification_event_item_event_value (event_value),
     INDEX notification_event_item_notification_id (notification_id)
@@ -1183,6 +1243,7 @@ CREATE TABLE link_object (
 #  create table link_relation
 # ----------------------------------------------------------
 CREATE TABLE link_relation (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     source_object_id SMALLINT NOT NULL,
     source_key VARCHAR (50) NOT NULL,
     target_object_id SMALLINT NOT NULL,
@@ -1191,6 +1252,7 @@ CREATE TABLE link_relation (
     state_id SMALLINT NOT NULL,
     create_time DATETIME NOT NULL,
     create_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
     UNIQUE INDEX link_relation_view (source_object_id, source_key, target_object_id, target_key, type_id),
     INDEX link_relation_list_source (source_object_id, source_key, state_id),
     INDEX link_relation_list_target (target_object_id, target_key, state_id)
@@ -1211,10 +1273,12 @@ CREATE TABLE system_data (
 #  create table xml_storage
 # ----------------------------------------------------------
 CREATE TABLE xml_storage (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     xml_type VARCHAR (200) NOT NULL,
     xml_key VARCHAR (250) NOT NULL,
     xml_content_key VARCHAR (250) NOT NULL,
     xml_content_value MEDIUMTEXT NULL,
+    PRIMARY KEY(id),
     INDEX xml_storage_key_type (xml_key(10), xml_type(10)),
     INDEX xml_storage_xml_content_key (xml_content_key(100))
 );
@@ -1235,9 +1299,11 @@ CREATE TABLE virtual_fs (
 #  create table virtual_fs_preferences
 # ----------------------------------------------------------
 CREATE TABLE virtual_fs_preferences (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     virtual_fs_id BIGINT NOT NULL,
     preferences_key VARCHAR (150) NOT NULL,
     preferences_value TEXT NULL,
+    PRIMARY KEY(id),
     INDEX virtual_fs_preferences_key_value (preferences_key, preferences_value(150)),
     INDEX virtual_fs_preferences_virtual_fs_id (virtual_fs_id)
 );
@@ -1470,11 +1536,13 @@ CREATE TABLE pm_transition_action (
 #  create table pm_entity_sync
 # ----------------------------------------------------------
 CREATE TABLE pm_entity_sync (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     entity_type VARCHAR (30) NOT NULL,
     entity_id VARCHAR (50) NOT NULL,
     sync_state VARCHAR (30) NOT NULL,
     create_time DATETIME NOT NULL,
     change_time DATETIME NOT NULL,
+    PRIMARY KEY(id),
     UNIQUE INDEX pm_entity_sync_list (entity_type, entity_id)
 );
 # ----------------------------------------------------------
@@ -1730,10 +1798,12 @@ CREATE TABLE calendar_appointment_plugin (
 #  create table calendar_appointment_ticket
 # ----------------------------------------------------------
 CREATE TABLE calendar_appointment_ticket (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     calendar_id BIGINT NOT NULL,
     ticket_id BIGINT NOT NULL,
     rule_id VARCHAR (32) NOT NULL,
     appointment_id BIGINT NOT NULL,
+    PRIMARY KEY(id),
     UNIQUE INDEX calendar_appointment_ticket_calendar_id_ticket_id_rule_id (calendar_id, ticket_id, rule_id),
     INDEX calendar_appointment_ticket_appointment_id (appointment_id),
     INDEX calendar_appointment_ticket_calendar_id (calendar_id),

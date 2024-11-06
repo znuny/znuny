@@ -251,7 +251,7 @@ $Selenium->RunTest(
             Element => '#EditDialog select',
             Value   => 'XAxisServiceIDs',
         );
-        $Selenium->find_element( "#DialogButton1", 'css' )->click();
+        $Selenium->find_element( "#DialogButton2", 'css' )->click();
         $Selenium->WaitFor( JavaScript => "return !\$('.Dialog.Modal').length;" );
 
         sleep 1;
@@ -267,7 +267,7 @@ $Selenium->RunTest(
             Element => '#EditDialog select',
             Value   => 'YAxisSLAIDs',
         );
-        $Selenium->find_element( "#DialogButton1", 'css' )->click();
+        $Selenium->find_element( "#DialogButton2", 'css' )->click();
         $Selenium->WaitFor( JavaScript => "return !\$('.Dialog.Modal').length;" );
 
         # Check Restrictions configuration dialog.
@@ -288,7 +288,7 @@ $Selenium->RunTest(
             Element => '#EditDialog #RestrictionsQueueIDs',
             Value   => 3,
         );
-        $Selenium->find_element( "#DialogButton1", 'css' )->click();
+        $Selenium->find_element( "#DialogButton2", 'css' )->click();
         $Selenium->WaitFor( JavaScript => "return !\$('.Dialog.Modal').length;" );
 
         # Save and finish edit.
@@ -301,11 +301,15 @@ $Selenium->RunTest(
 
         # Delete imported test stats.
         $Selenium->find_element(
-            "//a[contains(\@href, \'Action=AgentStatistics;Subaction=DeleteAction;StatID=$StatsIDLast\')]"
+            "a.DeleteStat[data-statid=\"$StatsIDLast\"]", 'css'
         )->click();
+        $Selenium->WaitFor(
+            JavaScript => "return typeof(\$) === 'function' && \$('.Dialog.Modal #DialogButton2').length;"
+        );
 
-        $Selenium->WaitFor( AlertPresent => 1 );
-        $Selenium->accept_alert();
+        # Confirm JS error.
+        $Selenium->find_element( "#DialogButton2", 'css' )->click();
+        $Selenium->WaitFor( JavaScript => "return !\$('.Dialog.Modal').length;" );
 
         $Selenium->WaitFor(
             JavaScript =>

@@ -11,6 +11,7 @@ package scripts::test::ObjectManager::Disabled;    ## no critic
 
 use strict;
 use warnings;
+use utf8;
 
 our $ObjectManagerDisabled = 1;
 our @ObjectDependencies    = ();

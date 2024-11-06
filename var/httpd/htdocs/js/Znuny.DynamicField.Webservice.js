@@ -24,16 +24,16 @@ Znuny.DynamicField.Webservice = (function (TargetNS) {
         // Subscribe to event which triggers when dynamic fields will be dynamically
         // added to the DOM. This way, the InitAutoComplete() can be executed for these fields.
         // This is being done e. g. in AdminGenericAgent when configuring the dynamic fields.
-        Core.App.Subscribe('Event.DynamicField.Init', InitDynamicField);
+        Core.App.Subscribe('Event.DynamicField.InitByInputFieldUUID', InitDynamicField);
     }
 
-    function InitDynamicField(DynamicFieldElementID) {
+    function InitDynamicField(InputFieldUUID) {
 
         // If the dynamic field is present in the HTML retrieved from the web server,
         // InitAutocomplete() below will be automatically called.
         // However, if the dynamic field will be added dynamically, this function
         // will execute InitAutocomplete() for the field.
-        var $DynamicFieldElement = $('#' + DynamicFieldElementID),
+        var $DynamicFieldElement = $(':input[data-input-field-uuid="' + InputFieldUUID + '"]').first(),
             DynamicFieldName,
             DynamicFieldType,
             SelectedValueFieldName,
@@ -74,7 +74,7 @@ Znuny.DynamicField.Webservice = (function (TargetNS) {
         }
 
         TargetNS.InitSelect(
-            DynamicFieldName, SelectedValueFieldName, AutocompleteFieldName, AutocompleteMinLength, QueryDelay, DefaultSearchTerm, TicketID
+            InputFieldUUID, DynamicFieldName, SelectedValueFieldName, AutocompleteFieldName, AutocompleteMinLength, QueryDelay, DefaultSearchTerm, TicketID
         );
         return;
     }
@@ -93,12 +93,25 @@ Znuny.DynamicField.Webservice = (function (TargetNS) {
         });
     };
 
-    TargetNS.InitSelect = function (DynamicFieldName, SelectedValueFieldName, AutocompleteFieldName, AutocompleteMinLength, QueryDelay, DefaultSearchTerm, TicketID, AdditionalDFs) {
-        var ActiveAJAXCall = false;
+    TargetNS.InitSelect = function (InputFieldUUID, DynamicFieldName, SelectedValueFieldName, AutocompleteFieldName, AutocompleteMinLength, QueryDelay, DefaultSearchTerm, TicketID, AdditionalDFs) {
+        var ActiveAJAXCall  = false,
 
+            // Find input field with matching UUID.
+            $InputField = $(':input[data-input-field-uuid="' + InputFieldUUID +'"]').first(),
+
+            // Set $InputDiv to the surrounding div of the input field with the matching UUID.
+            $InputDiv = $InputField.closest('div');
+
+        // Remove read-only attribute from autocompletion dropdown
+        // because the field might be empty initially.
+        $('#' + AutocompleteFieldName).removeAttr('readonly');
+
+        //
         // Use "live" update for the following events because the autocomplete field might not
-        // be present in the DOM yet (e.g. in AdminGenericAgent).
-        $('form')
+        // be present in the DOM yet (e.g. in AgentTicketSearch, AdminGenericAgent).
+        //
+        // Click on search field with configured default search term.
+        $InputDiv
             .off('click.AutocompleteSelect', '#' + AutocompleteFieldName)
             .on('click.AutocompleteSelect', '#' + AutocompleteFieldName, function() {
                 if (DefaultSearchTerm){
@@ -106,7 +119,8 @@ Znuny.DynamicField.Webservice = (function (TargetNS) {
                 }
             });
 
-        $('form')
+        // Execute autocompletion when typing in search field
+        $InputDiv
             .off('keyup.AutocompleteSelect', '#' + AutocompleteFieldName)
             .on('keyup.AutocompleteSelect', '#' + AutocompleteFieldName, function() {
                 var $ThisAutocompleteElement = $(this);
@@ -121,9 +135,9 @@ Znuny.DynamicField.Webservice = (function (TargetNS) {
                 );
             });
 
-        function AutocompleteSelect($AutocompleteElement, SearchTerm) {
+        function AutocompleteSelect($AutocompleteField, SearchTerm) {
             var URL   = Core.Config.Get('Baselink'),
-                Value = SearchTerm || $AutocompleteElement.val() || '',
+                Value = SearchTerm || $AutocompleteField.val() || '',
                 Data  = {
                     Action:           'AJAXDynamicFieldWebservice',
                     Subaction:        'Autocomplete',
@@ -131,8 +145,8 @@ Znuny.DynamicField.Webservice = (function (TargetNS) {
                     SearchTerms:      Value,
                     TicketID:         TicketID
                 },
-                SerializedFormData = TargetNS.SerializeForm($('#DynamicField_' + DynamicFieldName)),
-                InputValues        = TargetNS.GetInputValues($('#DynamicField_' + DynamicFieldName));
+                SerializedFormData = TargetNS.SerializeForm($InputField),
+                InputValues        = TargetNS.GetInputValues($InputField);
 
             if (Value.length < AutocompleteMinLength) {
                 return;
@@ -142,27 +156,26 @@ Znuny.DynamicField.Webservice = (function (TargetNS) {
             Data.FormFields = InputValues;
 
             ActiveAJAXCall = true;
-            Core.AJAX.ToggleAJAXLoader(SelectedValueFieldName, true);
+            ToggleAJAXLoader(true);
             Core.AJAX.FunctionCall(
                 URL,
                 Data,
                 function (Response) {
                     var CurrentValue,
                         Options  = {},
-                        Selected = [],
                         SelectedIDs;
 
                     ActiveAJAXCall = false;
 
-                    Core.AJAX.ToggleAJAXLoader(SelectedValueFieldName, false);
+                    ToggleAJAXLoader(false);
                     if (!Response || (Array.isArray(Response) && !Response.length)) {
                         return;
                     }
 
                     // additional check if current search term is equal to sent search term
-                    CurrentValue = SearchTerm || $AutocompleteElement.val() || '';
+                    CurrentValue = SearchTerm || $AutocompleteField.val() || '';
                     if (CurrentValue != Value){
-                        AutocompleteSelect($AutocompleteElement);
+                        AutocompleteSelect($AutocompleteField);
                         return;
                     }
 
@@ -172,35 +185,149 @@ Znuny.DynamicField.Webservice = (function (TargetNS) {
                         }
                     });
 
-                    SelectedIDs = Znuny.Form.Input.Get(SelectedValueFieldName);
-                    if (SelectedIDs){
-                        $('#' + SelectedValueFieldName + ' option').each(function(Index, Element) {
+                    SelectedIDs = $InputField.val();
+                    if (SelectedIDs) {
+                        $InputField.find('option').each(function(Index, Element) {
                             var Key        = $(Element).val(),
                                 Value      = $(Element).text(),
                                 IsSelected = SelectedIDs.includes(Key);
 
+                            // Add previously selected options to result to keep them
+                            // available and selected.
                             if (IsSelected){
-                                Selected[Key] = Value;
-                                Options[Key]  = Value;
+                                Options[Key] = Value;
                             }
                         });
                     }
 
-                    // add empty option to be able to remove the selection
-                    // via "x" button in modernized view.
-                    Options[''] = '-';
-
-                    Znuny.Form.Input.Set(SelectedValueFieldName, Options, {SelectOption: true, Modernize: true, TriggerChange: true});
+                    // Use own 'Set' function to be able to set options and values for a given element instead of a field ID.
+                    // Znuny.Form.Input.Set does not support this.
+                    // Znuny.Form.Input.Set(SelectedValueFieldName, Options, {SelectOption: true, Modernize: true, TriggerChange: true, AddEmptyOption: true});
+                    SetInputFieldSelectableOptions(Options, $AutocompleteField);
 
                     if (!jQuery.isEmptyObject(SelectedIDs)){
-                        Znuny.Form.Input.Set(SelectedValueFieldName, SelectedIDs);
+
+                        // Znuny.Form.Input.Set(SelectedValueFieldName, SelectedIDs);
+                        SetInputFieldSelectedOptions(SelectedIDs);
                     }
                 },
                 'json'
             );
         }
 
-        // prepare AutoFill
+        function ToggleAJAXLoader(Show) {
+            var AJAXLoaderPrefix = 'AJAXLoader',
+                $Loader = $InputDiv.find('#' + AJAXLoaderPrefix + DynamicFieldName),
+                LoaderHTML = '<span id="' + AJAXLoaderPrefix + DynamicFieldName + '" class="AJAXLoader"></span>';
+
+            if (Show) {
+                if (!$Loader.length) {
+                    $InputField.after(LoaderHTML);
+                }
+                else {
+                    $Loader.show();
+                }
+
+                return;
+            }
+
+            $Loader.hide();
+        }
+
+        function SetInputFieldSelectableOptions(Options, $AutocompleteField) {
+            var SearchValue = $AutocompleteField.val();
+            $InputField.find('option').remove();
+
+            function AppendOptions() {
+
+                // Add empty option as first option for single-selects/dropdowns
+                // because otherwise somehow the first element will be selected
+                // automatically. Somehow this is not the case for multi-select fields.
+                // Also, the single-select/dropdown would not display the 'x' button to
+                // clear the field if this option won't be added.
+                // To avoid unknown side effects, leave it as optional via flag AddEmptyOption.
+                if (
+                    $InputField.hasClass('Modernize')
+                    && !$InputField.prop('multiple')
+                ) {
+                    $InputField.append($('<option>', { value: '', selected: true }).text('-'));
+                }
+                $.each(Options, function(Key, Value) {
+                    if (Value !== '') {
+                        $InputField.append($('<option>', { value: Key }).text(Value));
+                    }
+                });
+            }
+
+            function RedrawInputField() {
+                $InputField.trigger('redraw.InputField').trigger('redraw.InputField');
+                $InputField.data('tree', true);
+            }
+
+            $.when(AppendOptions()).then(function(){
+                $.when(RedrawInputField()).then(function(){
+                    $InputField.triggerHandler('change');
+                    $AutocompleteField.triggerHandler('focus.InputField');
+                    $AutocompleteField.val(SearchValue);
+                    $AutocompleteField.focus();
+                })
+            })
+
+            Core.App.Publish('Znuny.Form.Input.Change.' + DynamicFieldName);
+
+            // trigger redraw on modernized fields
+            if ($InputField.hasClass('Modernize')) {
+                $InputField.trigger('redraw.InputField');
+            }
+        }
+
+        function SetInputFieldSelectedOptions(SelectedIDs) {
+            var SetSelected = [];
+
+            // reset selection
+            $InputField.find('option').prop('selected', false);
+
+            // get selected values as an array
+            if (SelectedIDs) {
+                if (
+                    $InputField.prop('multiple')
+                    && $.isArray(SelectedIDs)
+                ) {
+                    SetSelected = SelectedIDs;
+                }
+                else {
+                    SetSelected = [SelectedIDs];
+                }
+            }
+
+            // cast to strings
+            SetSelected = jQuery.map(SetSelected, function(Element) {
+              return Element.toString();
+            });
+
+            $InputField.find('option').filter(function() {
+                var Selected = false;
+
+                // may want to use $.trim in here?
+                if (SetSelected.indexOf($.trim($(this).val())) != -1) {
+                    Selected = true;
+                }
+
+                return Selected;
+            }).prop('selected', true);
+
+            $InputField.trigger('change');
+
+            Core.App.Publish('Znuny.Form.Input.Change.'+ DynamicFieldName);
+
+            // trigger redraw on modernized fields
+            if ($InputField.hasClass('Modernize')) {
+                $InputField.trigger('redraw.InputField');
+            }
+
+        }
+
+        // prepare AutoFill for additional dynamic fields
         $('#' + SelectedValueFieldName).off('change.Multiselect').on('change.Multiselect', function () {
             var SelectedIDs = Znuny.Form.Input.Get(SelectedValueFieldName),
                 InitAutoFill;
@@ -272,7 +399,7 @@ Znuny.DynamicField.Webservice = (function (TargetNS) {
                     AutocompleteFieldName,
                     URL                      = Core.Config.Get('Baselink'),
                     Config                   = [
-                        'Webservice', 'InvokerSearch', 'InvokerGet', 'Backend', 'StoredValue', 'SearchKeys', 'DisplayedValues', 'DisplayedValuesSeparator', 'Limit', 'AutocompleteMinLength', 'QueryDelay', 'AdditionalDFStorage', 'InputFieldWidth', 'DefaultValue', 'Link', 'SearchTerms',                     ],
+                        'Webservice', 'InvokerSearch', 'InvokerGet', 'Backend', 'CacheTTL', 'StoredValue', 'SearchKeys', 'DisplayedValues', 'DisplayedValuesSeparator', 'Limit', 'AutocompleteMinLength', 'QueryDelay', 'AdditionalDFStorage', 'InputFieldWidth', 'DefaultValue', 'Link', 'SearchTerms',                     ],
                     Data = {
                         Action:           'AJAXDynamicFieldWebservice',
                         Subaction:        'Test',

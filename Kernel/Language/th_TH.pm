@@ -6,6 +6,7 @@
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
+## nofilter(TidyAll::Plugin::Znuny::Translation::JavaScriptStrings)
 
 package Kernel::Language::th_TH;
 
@@ -25,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.526020155294895;
+    $Self->{Completeness}        = 0.523974295600593;
 
     # csv separator
     $Self->{Separator}         = ',';
@@ -565,7 +566,7 @@ sub Data {
         'Assignment of dynamic fields to screens' => '',
         'Overview' => 'ภาพรวม',
         'Screens' => '',
-        'Default columns' => '',
+        'Overview Default Columns' => '',
         'Add dynamic field' => '',
         'You can assign elements by dragging and dropping them to the lists of available, disabled, assigned and required elements.' =>
             '',
@@ -615,6 +616,9 @@ sub Data {
         'Backend' => '',
         'Backend which will be used for this dynamic field.' => '',
         'Backend documentation' => '',
+        'Cache TTL' => '',
+        'TTL (in seconds) for caching request results. Leave empty or set to 0 to disable caching.' =>
+            '',
         'Key for search' => '',
         'The keys (separated by comma) that will be searched when using the autocomplete while entering a value for the dynamic field.' =>
             '',
@@ -637,9 +641,6 @@ sub Data {
             '',
         'Query delay' => '',
         'Delay (in milliseconds) until the AJAX request will be sent.' =>
-            '',
-        'Autocompletion for search fields' => '',
-        'Use autocompletion for search fields instead of a static selection of values that are currently selected in Znuny (in tickets, articles, etc.). This increases performance if many thousands of values of the dynamic field have been selected. This setting does not affect the search field displayed in AgentTicketSearch and CustomerTicketSearch.' =>
             '',
         'Input field width' => '',
         'Width of the input field (percentage).' => '',
@@ -1087,9 +1088,6 @@ sub Data {
         'Send Keep-Alive' => 'ส่ง Keep-Alive',
         'This configuration defines if incoming connections should get closed or kept alive.' =>
             'การกำหนดค่านี้ถูกกำหนดไว้ถ้าการติดต่อเข้ามาควรจะได้รับการปิดหรือคงถูกรักษาไว้',
-        'Additional response headers' => '',
-        'Header' => 'หัวข้อ',
-        'Add response header' => '',
         'Endpoint' => 'จุดสิ้นสุด',
         'URI to indicate specific location for accessing a web service.' =>
             '',
@@ -1178,7 +1176,10 @@ sub Data {
             'คำสั่ง HTTP ที่เฉพาะเจาะจงที่จะใช้สำหรับการร้องขอด้วย Invoker นี้ (ถ้ามี)',
         'Default command' => 'คำสั่งเริ่มต้น',
         'The default HTTP command to use for the requests.' => 'คำสั่ง HTTP เริ่มต้นที่จะใช้สำหรับการร้องขอ',
+        'Additional response headers' => '',
         'Additional request headers' => '',
+        'Header' => 'หัวข้อ',
+        'Add response header' => '',
         'Add request header' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPSOAP.tt
@@ -1540,9 +1541,11 @@ sub Data {
         'Date' => 'วัน',
         'List of Files' => 'รายการไฟล์',
         'Permission' => 'การอนุญาต',
+        'Size' => 'ขนาด',
+        'Problem' => 'ปัญหา',
+        'OK' => 'โอเค',
         'Download file from package!' => 'ดาวน์โหลดไฟล์จากแพคเกจ',
         'Required' => 'ที่จำเป็น',
-        'Size' => 'ขนาด',
         'Primary Key' => '',
         'Auto Increment' => '',
         'SQL' => 'SQL',
@@ -1684,7 +1687,7 @@ sub Data {
         'Available Fields' => 'ฟิลด์ที่สามารถใช้ได้',
         'Filter available fields' => 'ตัวกรองฟิลด์ที่สามารถใช้ได้',
         'Assigned Fields' => 'ฟิลด์ที่ได้รับมอบหมาย',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '',
         'Is visible for customer' => '',
         'Text Template' => 'รูปแบบข้อความ',
@@ -1743,6 +1746,8 @@ sub Data {
         'Do you really want to delete this Activity?' => 'คุณต้องการลบกิจกรรมนี้หรือไม่?',
         'Do you really want to delete this Activity Dialog?' => 'คุณต้องการลบกิจกรรมไดอะล็อกนี้หรือไม่?',
         'Do you really want to delete this Transition?' => 'คุณต้องการที่จะลบการเปลี่ยนผ่านนี้หรือไม่?',
+        'You can not edit a transition before it\'s connected to two activities.' =>
+            '',
         'Do you really want to delete this Transition Action?' => 'คุณต้องการที่จะลบการดำเนินการเปลี่ยนผ่านนี้หรือไม่?',
         'Do you really want to remove this activity from the canvas? This can only be undone by leaving this screen without saving.' =>
             'คุณต้องการที่จะลบกิจกรรมนี้จากผ้าใบหรือไม่? ซึ่งคุณสามารถยกเลิกได้โดยการออกจากหน้าจอนี้โดยไม่มีการบันทึกเท่านั้น',
@@ -2030,6 +2035,7 @@ sub Data {
         'Support Data' => 'ข้อมูลการสนับสนุน',
         'Error: Support data could not be collected (%s).' => 'ข้อผิดพลาด: ไม่สามารถเก็บรวบรวมข้อมูลสนับสนุน (%s)',
         'Support Data Collector' => 'สนับสนุนการเก็บรวบรวมข้อมูล',
+        'Delete cache' => '',
         'Details' => 'รายละเอียด',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemAddress.tt
@@ -2127,7 +2133,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemFiles.tt
         'System file support' => '',
-        'Delete cache' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemFiles/Widget.tt
         'Permissions' => 'การอนุญาต',
@@ -2362,30 +2367,27 @@ sub Data {
         'in' => 'ใน',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
+        'All' => 'ทั้งหมด',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'มากขึ้น',
         'No Data Available.' => '',
         'Available Columns' => 'คอลัมน์ที่พร้อมใช้งาน',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'คอลัมน์ที่มองเห็นได้ (จัดเรียงโดยการลากและวาง)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '',
         'Open' => 'เปิด',
         'Closed' => 'ปิด',
+        'Phone ticket' => 'ตั๋วจากโทรศัพท์',
+        'Email ticket' => 'อีเมล์ตั๋ว',
         '%s open ticket(s) of %s' => '% s ตั๋วเปิด (s) ของ% s',
         '%s closed ticket(s) of %s' => '% s ตั๋วที่ปิดแล้ว (s) ของ% s',
+        'New phone ticket from %s' => 'ตั๋วทางโทรศัพท์ใหม่จาก% s',
+        'New email ticket to %s' => 'ตั๋วอีเมลใหม่% s',
         'Edit customer ID' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDStatus.tt
@@ -2400,10 +2402,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
         'Customer user information' => '',
-        'Phone ticket' => 'ตั๋วจากโทรศัพท์',
-        'Email ticket' => 'อีเมล์ตั๋ว',
-        'New phone ticket from %s' => 'ตั๋วทางโทรศัพท์ใหม่จาก% s',
-        'New email ticket to %s' => 'ตั๋วอีเมลใหม่% s',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardMyLastChangedTickets.tt
         'No tickets found.' => '',
@@ -2511,7 +2509,6 @@ sub Data {
         'Split' => 'แยก',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsAdd.tt
-        'Read more about statistics in Znuny' => '',
         'Statistics Management' => '',
         'Add Statistics' => '',
         'Dynamic Matrix' => 'เมทริกซ์ไดนามิค',
@@ -2611,12 +2608,15 @@ sub Data {
         'Link together' => 'เชื่อมโยงกัน',
         'Link to parent' => 'เชื่อมโยงไปยัง parent',
         'Unlock tickets' => 'ปลดล็อคตั๋ว',
+        'Watch tickets' => '',
+        'Mark tickets as seen' => '',
+        'Mark tickets as unseen' => '',
         'Execute Bulk Action' => 'เริ่มดำเนินการเป็นกลุ่ม',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '',
         'Date Invalid!' => 'วันที่ไม่ถูกต้อง!',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => '',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2626,12 +2626,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'โปรดลบข้อมูลนี้และป้อนใหม่ด้วยค่าที่ถูกต้อง',
         'This address already exists on the address list.' => 'ที่อยู่นี้มีอยู่แล้วในรายการที่อยู่',
-        ' Cc' => '',
         'Remove Cc' => 'ลบสำเนา',
         'Bcc' => 'Bcc',
-        ' Bcc' => '',
         'Remove Bcc' => 'ลบสำเนาลับ',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '',
@@ -2640,23 +2637,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'สร้างอีเมล์ตั๋วใหม่',
-        ' Example Template' => '',
         'Example Template' => 'ตัวอย่างแม่แบบ',
         'To customer user' => 'ถึงลูกค้าผู้ใช้',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'โปรดระบุอย่างน้อยหนึ่งลูกค้าผู้ใช้สำหรับตั๋ว',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'เลือกลูกค้ารายนี้เป็นลูกค้าหลัก',
         'Remove Ticket Customer User' => 'นำตั๋วลูกค้าผู้ใช้ออก',
         'From queue' => 'จากคิว',
-        ' Get all' => '',
         'Get all' => 'ได้รับทั้งหมด',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2709,40 +2699,36 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'ไม่พบข้อมูลตั๋ว',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'ผู้ส่ง',
+        'Customer User Name' => '',
         'Impact' => 'ผลกระทบ',
-        'CustomerID' => 'ไอดีลูกค้า',
         'Update Time' => 'เวลาการอัพเดต',
         'Solution Time' => 'เวลาการแก้ปัญหา',
         'First Response Time' => 'เวลาตอบสนองครั้งแรก',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'ย้ายตั๋วไปคิวอื่น',
         'Change queue' => 'เปลี่ยนคิว',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
         'Remove active filters for this screen.' => 'ลบตัวกรองที่ใช้งานอยู่สำหรับหน้าจอนี้',
         'Clear all filters' => '',
         'Remove mention' => '',
+        'Remove from list of watched tickets' => 'ลบออกจากรายการของตั๋วที่ดูแล้ว',
         'Tickets per page' => 'ตั๋วต่อหนึ่งหน้า',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'รีเซ็ตภาพรวม',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => 'แบ่งออกเป็นตั๋วโทรศัพท์ใหม่',
         'Create New Phone Ticket' => 'สร้างตั๋วจากโทรศัพท์ใหม่ ',
         'Please include at least one customer for the ticket.' => 'กรุณาระบุลูกค้าอย่างน้อยหนึ่งคนสำหรับตั๋ว',
-        'Select this customer as the main customer.' => 'เลือกลูกค้ารายนี้เป็นลูกค้าหลัก',
         'To queue' => 'ไปยังคิว',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2755,7 +2741,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => 'สร้างการประมวลผลตั๋วใหม่',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => 'ลงทะเบียนตั๋วเข้าไปในการประมวลผล',
@@ -2799,7 +2784,6 @@ sub Data {
         'Save as default' => 'บันทึกเป็นค่าเริ่มต้น',
         'Drafts' => '',
         'by' => 'โดย',
-        'Move ticket to a different queue' => 'ย้ายตั๋วไปคิวอื่น',
         'Change Queue' => 'เปลี่ยนคิว',
         'There are no dialogs available at this point in the process.' =>
             'ไม่มีไดอะล็อกที่สามารถใช้ได้ในกระบวนการนี้',
@@ -2840,7 +2824,6 @@ sub Data {
         'Close this message' => 'ปิดข้อความนี้',
         'Image' => '',
         'PDF' => '',
-        'Unknown' => 'ไม่ระบุ',
         'View' => 'มุมมอง',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/LinkTable.tt
@@ -2855,7 +2838,6 @@ sub Data {
         'is invalid' => '',
         'Pending till' => 'รอดำเนินการจนถึง',
         'Locked' => 'ถูกล็อค',
-        '%s Ticket(s)' => '',
         'Accounted time' => 'เวลาที่คิด',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/ArticleContent/Invalid.tt
@@ -2880,7 +2862,6 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerAccept.tt
         'Dear Customer,' => '',
         'thank you for using our services.' => '',
-        'Yes, I accept your license.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerCompany/TicketCustomerIDSelection.tt
         'The customer ID is not changeable, no other customer ID can be assigned to this ticket.' =>
@@ -2892,8 +2873,8 @@ sub Data {
         'From assigned Customer IDs' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerError.tt
+        'Error' => 'ข้อผิดพลาด',
         'An Error Occurred' => '',
-        'Error Details' => 'รายละเอียด ข้อผิดพลาด',
         'Traceback' => 'ตรวจสอบย้อนกลับ',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerFooter.tt
@@ -2932,6 +2913,7 @@ sub Data {
         'Request New Password' => 'การร้องขอรหัสผ่านใหม่',
         'Your User Name' => 'ชื่อผู้ใช้ของคุณ',
         'A new password will be sent to your email address.' => 'รหัสผ่านใหม่จะถูกส่งไปยังที่อยู่อีเมลของคุณ',
+        'Back to login' => 'กลับไปเข้าสู่ระบบ',
         'Create Account' => 'สร้างบัญชี',
         'Please fill out this form to receive login credentials.' => 'กรุณากรอกแบบฟอร์มนี้เพื่อจะได้รับสิทธิเข้าสู่ระบบ',
         'How we should address you' => 'เราควรทำอย่างไรเพื่อตามหาคุณ',
@@ -2943,11 +2925,10 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'ตั๋วใหม่',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'ตั๋ว',
         'Welcome!' => 'ยินดีต้อนรับ!',
         'Please click the button below to create your first ticket.' => 'กรุณาคลิกที่ปุ่มด้านล่างเพื่อสร้างตั๋วของคุณครั้งแรก',
         'Create your first ticket' => 'สร้างตั๋วของคุณครั้งแรก',
@@ -2956,12 +2937,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'โปรไฟล์',
+        'Template Name' => 'ชื่อแม่แบบ',
         'e. g. 10*5155 or 105658*' => 'เช่น 10*5155 หรือ 105658*',
+        'CustomerID' => 'ไอดีลูกค้า',
         'Types' => 'ประเภท',
         'Limitation' => '',
         'No time settings' => 'ไม่มีการตั้งค่าเวลา',
-        'All' => 'ทั้งหมด',
         'Specific date' => 'วันที่เฉพาะเจาะจง',
         'Only tickets created' => 'เฉพาะตั๋วที่สร้างแล้ว',
         'Date range' => 'ช่วงวันที่',
@@ -2970,7 +2953,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'บันทึกเป็นแม่แบบ',
         'Save as Template?' => 'บันทึกเป็นแม่แบบ?',
-        'Template Name' => 'ชื่อแม่แบบ',
         'Pick a profile name' => 'เลือกชื่อโปรไฟล์',
         'Output to' => 'ส่งออกไปยัง',
 
@@ -2995,6 +2977,7 @@ sub Data {
         'Ticket fields' => 'ช่องข้อมูลตั๋ว',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Error.tt
+        'Error Details' => 'รายละเอียด ข้อผิดพลาด',
         'Expand' => 'การขยาย',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/FormElements/AttachmentList.tt
@@ -3008,6 +2991,8 @@ sub Data {
         'You have loaded the draft "%s".' => '',
         'You have loaded the draft "%s". You last changed it %s.' => '',
         'You have loaded the draft "%s". It was last changed %s by %s.' =>
+            '',
+        'Please note that you have already one or more saved drafts for this action.' =>
             '',
         'Please note that this draft is outdated because the ticket was modified since this draft was created.' =>
             '',
@@ -3025,6 +3010,7 @@ sub Data {
         'Personal views' => '',
         'Last Views' => '',
         'Search tools' => '',
+        'SearchTemplate' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
         'JavaScript not available' => 'ไม่พร้อมใช้งาน JavaScript',
@@ -3069,7 +3055,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBResult.tt
         'Done' => 'ดำเนินการเสร็จแล้ว',
-        'Error' => 'ข้อผิดพลาด',
         'Database setup successful!' => 'การติดตั้งฐานข้อมูลประสบความสำเร็จ!',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBStart.tt
@@ -3139,7 +3124,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Login.tt
         'Lost your password?' => 'ลืมรหัสผ่านของคุณ?',
-        'Back to login' => 'กลับไปเข้าสู่ระบบ',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/MetaFloater.tt
         'Scale preview content' => 'ตัวอย่างสเกลเนื้อหา',
@@ -3198,7 +3182,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '',
-        ' e. g.' => 'ตัวอย่างเช่น',
+        'e. g.' => 'ตัวอย่างเช่น',
         'To get the first 20 character of the appointment title.' => '',
         'To get the calendar attribute' => '',
         'Attributes of the recipient user for the notification' => 'คุณลักษณะของผู้ใช้ผู้รับสำหรับการแจ้งเตือน',
@@ -3230,9 +3214,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => 'ค่าคีย์ภายในช่องตั๋วแบบไดนามิก',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             'ช่องตั๋วแบบไดนามิกแสดงค่าที่มีประโยชน์สำหรับDropdownและช่องสำหรับเลือกหลายรายการ',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'ตัวอย่างเช่น',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -3335,8 +3316,6 @@ sub Data {
         'Enable' => '',
         'Reset this setting to its default state' => '',
         'Reset setting' => '',
-        'Show user specific changes for this setting' => '',
-        'Show user settings' => '',
         'Copy a direct link to this setting to your clipboard' => '',
         'Copy direct link' => '',
         'Remove this setting from your favorites setting' => '',
@@ -3418,6 +3397,7 @@ sub Data {
         'Process state' => '',
         'Running' => '',
         'Finished' => 'เสร็จสิ้น',
+        'Unknown' => 'ไม่ระบุ',
         'No package information available.' => '',
 
         # JS Template: Kernel/Output/JavaScript/Templates/Standard/SysConfig/AddButton.html.tmpl
@@ -3852,7 +3832,6 @@ sub Data {
         'No such file %s in package!' => 'ไม่มีไฟล์ดังกล่าว% s ในแพคเกจ!',
         'No such file %s in local file system!' => 'ไม่มีไฟล์ดังกล่าว% s ในระบบแฟ้มท้องถิ่น!',
         'Can\'t read %s!' => 'ไม่สามารถอ่าน% s!',
-        'File is OK' => '',
         'Package has locally modified files.' => 'แพคเกจมีการปรับเปลี่ยนไฟล์ภายในเครื่อง',
         'Not Started' => '',
         'Updated' => '',
@@ -4145,7 +4124,6 @@ sub Data {
         'Can\'t get element data of %s!' => 'ไม่สามารถรับองค์ประกอบของข้อมูลของ %s!',
         'Can\'t get filter content data of %s!' => 'ไม่สามารถรับข้อมูลกรองเนื้อหา',
         'Customer Name' => '',
-        'Customer User Name' => '',
 
         # Perl Module: Kernel/Modules/AgentLinkObject.pm
         'Need SourceObject and SourceKey!' => 'ต้องการ SourceObject และ SourceKey!',
@@ -4473,11 +4451,17 @@ sub Data {
             'ไม่สามารถเชื่อมต่อกับฐานข้อมูล,ไม่ได้ติดตั้ง Perl โมดูล DBD::%s!',
         'Can\'t connect to database, read comment!' => 'ไม่สามารถเชื่อมต่อกับฐานข้อมูลกรุณาอ่านความคิดเห็น!',
         'Database already contains data - it should be empty!' => 'ฐานข้อมูลมีข้อมูลอยู่แล้ว - มันควรจะว่างเปล่า!',
+        'Error: You have the wrong database version installed (%s). You need at least version %s! ' =>
+            '',
         'Error: Please make sure your database accepts packages over %s MB in size (it currently only accepts packages up to %s MB). Please adapt the max_allowed_packet setting of your database in order to avoid errors.' =>
             'ข้อผิดพลาด: โปรดตรวจสอบฐานข้อมูลของคุณว่าสามารถรับแพคเกจได้มากกว่า% s MB (ปัจจุบันรับเฉพาะแพคเกจขนาด% s MB) กรุณาปรับให้เข้าการตั้งค่า max_allowed_packet ของฐานข้อมูลของคุณเพื่อหลีกเลี่ยงข้อผิดพลาด',
         'Error: Please set the value for innodb_log_file_size on your database to at least %s MB (current: %s MB, recommended: %s MB). For more information, please have a look at %s.' =>
             'ข้อผิดพลาด: กรุณาระบุค่าสำหรับ innodb_log_file_size ในฐานข้อมูลของคุณอย่างน้อย% s MB (ปัจจุบัน:% s MB แนะนำ:% s MB) สำหรับข้อมูลเพิ่มเติมโปรดดูได้ที่',
-        'Wrong database collation (%s is %s, but it needs to be utf8).' =>
+        'Error: Please set the value for innodb_file_per_table on your database to ON.' =>
+            '',
+        'Error: Please set the value for innodb_default_row_format on your database to dynamic.' =>
+            '',
+        'Wrong default storage engine (%s is %s, but it needs to be InnoDB).' =>
             '',
 
         # Perl Module: Kernel/Modules/Mentions.pm
@@ -4528,6 +4512,10 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/AgentTicketPrint.pm
         'Print this article' => 'พิมพ์บทความนี้',
+
+        # Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
+        'Mark article as unseen' => '',
+        'Mark as unseen' => '',
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/MarkAsImportant.pm
         'Mark' => 'มาร์ค',
@@ -4786,7 +4774,6 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/TicketMenu/TicketWatcher.pm
         'Unwatch' => 'ยังไม่ได้ดู',
-        'Remove from list of watched tickets' => 'ลบออกจากรายการของตั๋วที่ดูแล้ว',
         'Watch' => 'ดู',
         'Add to list of watched tickets' => 'เพิ่มไปยังรายการของตั๋วที่ดูแล้ว',
 
@@ -5022,13 +5009,13 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
         'Client Connection Charset' => 'การเชื่อมต่อลูกค้ากับชุดรหัสอักขระ',
-        'Setting character_set_client needs to be utf8.' => 'การตั้งค่า character_set_client จะต้องเป็น utf8',
+        'Setting character_set_client needs to be utf8mb4.' => '',
         'Server Database Charset' => 'ฐานข้อมูลชุดรหัสอักขระของเซิร์ฟเวอร์',
-        'This character set is not yet supported, please see https://bugs.otrs.org/show_bug.cgi?id=12361. Please convert your database to the character set \'utf8\'.' =>
-            '',
-        'The setting character_set_database needs to be \'utf8\'.' => '',
+        'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'ตารางชุดรหัสอักขระ',
-        'There were tables found which do not have \'utf8\' as charset.' =>
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
+        'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/InnoDBLogFileSize.pm
@@ -5083,7 +5070,7 @@ sub Data {
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/postgresql/Version.pm
         'PostgreSQL 9.2 or higher is required.' => '',
 
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionOTRS.pm
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionZnuny.pm
         'Operating System' => 'ระบบปฏิบัติการ',
         'Znuny Disk Partition' => 'แบ่งดิสก์ Znuny ',
 
@@ -5130,165 +5117,6 @@ sub Data {
         'There should be more than 60% free swap space.' => 'พื้นที่การแลกเปลี่ยนฟรีควรจะมีมากกว่า 60%',
         'There should be no more than 200 MB swap space used.' => 'พื้นที่การแลกเปลี่ยนที่ถูกใช้ควรจะมีมากกว่า 200 MB ',
 
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticleSearchIndexStatus.pm
-        'Znuny' => '',
-        'Article Search Index Status' => '',
-        'Indexed Articles' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticlesPerCommunicationChannel.pm
-        'Articles Per Communication Channel' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLog.pm
-        'Incoming communications' => '',
-        'Outgoing communications' => '',
-        'Failed communications' => '',
-        'Average processing time of communications (s)' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-        'Communication Log Account Status (last 24 hours)' => '',
-        'No connections found.' => '',
-        'ok' => '',
-        'permanent connection errors' => '',
-        'intermittent connection errors' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ConfigSettings.pm
-        'Config Settings' => '',
-        'Could not determine value.' => 'ไม่สามารถกำหนดค่า',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DaemonRunning.pm
-        'Daemon' => 'Daemon',
-        'Daemon is running.' => '',
-        'Daemon is not running.' => ' Daemon ไม่ทำงาน',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-        'Database Records' => '',
-        'Tickets' => 'ตั๋ว',
-        'Ticket History Entries' => 'ประวัติการป้อนตั๋ว',
-        'Articles' => 'บทความ',
-        'Attachments (DB, Without HTML)' => 'สิ่งที่แนบมา (DB ปราศจาก HTML)',
-        'Customers With At Least One Ticket' => 'ลูกค้ามีอย่างน้อยหนึ่งตั๋ว',
-        'Dynamic Field Values' => 'ค่าไดนามิกฟิลด์',
-        'Invalid Dynamic Fields' => 'ฟิลด์แบบไดนามิกที่ไม่ถูกต้อง',
-        'Invalid Dynamic Field Values' => 'ค่าฟิลด์แบบไดนามิกที่ไม่ถูกต้อง',
-        'GenericInterface Webservices' => 'GenericInterface Webservices',
-        'Process Tickets' => '',
-        'Months Between First And Last Ticket' => 'เดือนที่อยู่ระหว่างตั๋วใบแรกและใบสุดท้าย',
-        'Tickets Per Month (avg)' => 'ตั๋วต่อเดือน (เฉลี่ย)',
-        'Open Tickets' => 'เปิดตั๋ว',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultSOAPUser.pm
-        'Default SOAP Username And Password' => 'ชื่อและรหัสผ่านเริ่มต้นของSOAP',
-        'Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it.' =>
-            'ความเสี่ยงด้านความปลอดภัย: คุณใช้การตั้งค่าเริ่มต้นสำหรับ SOAP :: ผู้ใช้และSOAP ::รหัสผ่าน กรุณาเปลี่ยนมัน',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultUser.pm
-        'Default Admin Password' => 'รหัสผ่านเริ่มต้นของผู้ดูแลระบบ',
-        'Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account.' =>
-            'ความเสี่ยงด้านความปลอดภัย: บัญชีเอเย่นต์ root@localhost ยังคงใช้รหัสผ่านเริ่มต้น กรุณาเปลี่ยนหรือโมฆะบัญชี',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/EmailQueue.pm
-        'Email Sending Queue' => '',
-        'Emails queued for sending' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FQDN.pm
-        'FQDN (domain name)' => 'FQDN (ชื่อโดเมน)',
-        'Please configure your FQDN setting.' => 'โปรดกำหนดการตั้งค่า FQDN ของคุณ',
-        'Domain Name' => 'ชื่อโดเมน',
-        'Your FQDN setting is invalid.' => 'การตั้งค่า FQDN คุณไม่ถูกต้อง',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FileSystemWritable.pm
-        'File System Writable' => 'ระบบไฟล์สามารถเขียนได้',
-        'The file system on your Znuny partition is not writable.' => 'ระบบไฟล์ในการแบ่งZnuny ของคุณไม่สามารถเขียนได้',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/LegacyConfigBackups.pm
-        'Legacy Configuration Backups' => '',
-        'No legacy configuration backup files found.' => '',
-        'Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages.' =>
-            '',
-        'Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/MultipleJSFileLoad.pm
-        'Views with multiple loaded JavaScript files' => '',
-        'The following JavaScript files loaded multiple times:' => '',
-        'Files' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-        'Package Installation Status' => 'สถานะการติดตั้งแพคเกจ',
-        'Some packages have locally modified files.' => 'แพคเกจบางส่วนมีการปรับเปลี่ยนไฟล์ภายในเครื่อง',
-        'Some packages are not correctly installed.' => 'แพคเกจบางแพคเกจไม่ถูกติดตั้งอย่างถูกต้อง',
-        'Package Framework Version Status' => '',
-        'Some packages are not allowed for the current framework version.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageList.pm
-        'Package List' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SessionConfigSettings.pm
-        'Session Config Settings' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SpoolMails.pm
-        'Spooled Emails' => '',
-        'There are emails in var/spool that Znuny could not process.' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SystemID.pm
-        'Your SystemID setting is invalid, it should only contain digits.' =>
-            'การตั้งค่า SystemID ของคุณไม่ถูกต้อง มันประกอบด้วยตัวเลขเพียงอย่างเดียว',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/DefaultType.pm
-        'Default Ticket Type' => 'สถานะเริ่มต้นของประเภทตั๋ว',
-        'The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type.' =>
-            'กำหนดค่าประเภทตั๋วเริ่มต้นนี้ไม่ถูกต้องหรือขาดหายไป กรุณาเปลี่ยนการตั้งค่า Ticket::Type::Default และเลือกประเภทของตั๋วที่ถูกต้อง',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/IndexModule.pm
-        'Ticket Index Module' => 'โมดูลตั๋วดัชนี',
-        'You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information.' =>
-            'คุณมีมากกว่า 60,000 ตั๋วและควรใช้แบ็กเอนด์ StaticDB ดูคู่มือผู้ดูแลระบบ (ปรับแต่งประสิทธิภาพ) สำหรับข้อมูลเพิ่มเติม',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/InvalidUsersWithLockedTickets.pm
-        'Invalid Users with Locked Tickets' => 'ผู้ใช้ไม่ถูกต้องกับตั๋วล็อค',
-        'There are invalid users with locked tickets.' => 'มีผู้ใช้ที่ไม่ถูกต้องกับตั๋วที่ถูกล็อคอยู่',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/OpenTickets.pm
-        'You should not have more than 8,000 open tickets in your system.' =>
-            'คุณไม่ควรมีตั๋วที่เปิดอยู่มากกว่า 8,000 ตั๋วในระบบของคุณ',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/SearchIndexModule.pm
-        'Ticket Search Index Module' => 'โมดูลการค้นหาตั๋วดัชนี',
-        'The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/StaticDBOrphanedRecords.pm
-        'Orphaned Records In ticket_lock_index Table' => 'บันทึกกำพร้าในตาราง ticket_lock_index ',
-        'Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
-            ' ตาราง ticket_lock_index ประกอบด้วยบันทึกกำพร้า โปรดเรียกใช้ bin / znuny.Console.pl"Maint::Ticket::QueueIndexCleanup" เพื่อลบดัชนี StaticDB',
-        'Orphaned Records In ticket_index Table' => 'บันทึกกำพร้าในตาราง ticket_index ',
-        'Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-        'Time Settings' => '',
-        'Server time zone' => 'โซนเวลาเซิร์ฟเวอร์',
-        'Znuny time zone' => '',
-        'Znuny time zone is not set.' => '',
-        'User default time zone' => '',
-        'User default time zone is not set.' => '',
-        'Calendar time zone is not set.' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentSkinUsage.pm
-        'UI - Agent Skin Usage' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentThemeUsage.pm
-        'UI - Agent Theme Usage' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/SpecialStats.pm
-        'UI - Special Statistics' => '',
-        'Agents using custom main menu ordering' => '',
-        'Agents using favourites for the admin overview' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Version.pm
-        'Znuny Version' => 'เวอร์ชั่นของ Znuny',
-
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Webserver/Apache/LoadedModules.pm
         'Webserver' => 'Webserver',
         'Loaded Apache Modules' => '',
@@ -5326,13 +5154,167 @@ sub Data {
         'Webserver Version' => 'เวอร์ชั่นของ Webserver',
         'Could not determine webserver version.' => 'ไม่สามารถตรวจสอบเวอร์ชั่นของเว็บเซิร์ฟเวอร์',
 
-        # Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/OTRS/ConcurrentUsers.pm
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticleSearchIndexStatus.pm
+        'Znuny' => '',
+        'Article Search Index Status' => '',
+        'Indexed Articles' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticlesPerCommunicationChannel.pm
+        'Articles Per Communication Channel' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLog.pm
+        'Incoming communications' => '',
+        'Outgoing communications' => '',
+        'Failed communications' => '',
+        'Average processing time of communications (s)' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+        'Communication Log Account Status (last 24 hours)' => '',
+        'No connections found.' => '',
+        'ok' => '',
+        'permanent connection errors' => '',
+        'intermittent connection errors' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ConfigSettings.pm
+        'Config Settings' => '',
+        'Could not determine value.' => 'ไม่สามารถกำหนดค่า',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DaemonRunning.pm
+        'Daemon' => 'Daemon',
+        'Daemon is running.' => '',
+        'Daemon is not running.' => ' Daemon ไม่ทำงาน',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+        'Database Records' => '',
+        'Ticket History Entries' => 'ประวัติการป้อนตั๋ว',
+        'Articles' => 'บทความ',
+        'Attachments (DB, Without HTML)' => 'สิ่งที่แนบมา (DB ปราศจาก HTML)',
+        'Customers With At Least One Ticket' => 'ลูกค้ามีอย่างน้อยหนึ่งตั๋ว',
+        'Dynamic Field Values' => 'ค่าไดนามิกฟิลด์',
+        'Invalid Dynamic Fields' => 'ฟิลด์แบบไดนามิกที่ไม่ถูกต้อง',
+        'Invalid Dynamic Field Values' => 'ค่าฟิลด์แบบไดนามิกที่ไม่ถูกต้อง',
+        'GenericInterface Webservices' => 'GenericInterface Webservices',
+        'Process Tickets' => '',
+        'Months Between First And Last Ticket' => 'เดือนที่อยู่ระหว่างตั๋วใบแรกและใบสุดท้าย',
+        'Tickets Per Month (avg)' => 'ตั๋วต่อเดือน (เฉลี่ย)',
+        'Open Tickets' => 'เปิดตั๋ว',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultSOAPUser.pm
+        'Default SOAP Username And Password' => 'ชื่อและรหัสผ่านเริ่มต้นของSOAP',
+        'Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it.' =>
+            'ความเสี่ยงด้านความปลอดภัย: คุณใช้การตั้งค่าเริ่มต้นสำหรับ SOAP :: ผู้ใช้และSOAP ::รหัสผ่าน กรุณาเปลี่ยนมัน',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultUser.pm
+        'Default Admin Password' => 'รหัสผ่านเริ่มต้นของผู้ดูแลระบบ',
+        'Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account.' =>
+            'ความเสี่ยงด้านความปลอดภัย: บัญชีเอเย่นต์ root@localhost ยังคงใช้รหัสผ่านเริ่มต้น กรุณาเปลี่ยนหรือโมฆะบัญชี',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/EmailQueue.pm
+        'Email Sending Queue' => '',
+        'Emails queued for sending' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FQDN.pm
+        'FQDN (domain name)' => 'FQDN (ชื่อโดเมน)',
+        'Please configure your FQDN setting.' => 'โปรดกำหนดการตั้งค่า FQDN ของคุณ',
+        'Domain Name' => 'ชื่อโดเมน',
+        'Your FQDN setting is invalid.' => 'การตั้งค่า FQDN คุณไม่ถูกต้อง',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FileSystemWritable.pm
+        'File System Writable' => 'ระบบไฟล์สามารถเขียนได้',
+        'The file system on your Znuny partition is not writable.' => 'ระบบไฟล์ในการแบ่งZnuny ของคุณไม่สามารถเขียนได้',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/LegacyConfigBackups.pm
+        'Legacy Configuration Backups' => '',
+        'No legacy configuration backup files found.' => '',
+        'Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages.' =>
+            '',
+        'Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder.' =>
+            '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/MultipleJSFileLoad.pm
+        'The following JavaScript files loaded multiple times:' => '',
+        'Files' => '',
+        'Views with multiple loaded JavaScript files' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+        'Package Installation Status' => 'สถานะการติดตั้งแพคเกจ',
+        'Some packages have locally modified files.' => 'แพคเกจบางส่วนมีการปรับเปลี่ยนไฟล์ภายในเครื่อง',
+        'Some packages are not correctly installed.' => 'แพคเกจบางแพคเกจไม่ถูกติดตั้งอย่างถูกต้อง',
+        'Package Framework Version Status' => '',
+        'Some packages are not allowed for the current framework version.' =>
+            '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageList.pm
+        'Package List' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SessionConfigSettings.pm
+        'Session Config Settings' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SpoolMails.pm
+        'Spooled Emails' => '',
+        'There are emails in var/spool that Znuny could not process.' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SystemID.pm
+        'Your SystemID setting is invalid, it should only contain digits.' =>
+            'การตั้งค่า SystemID ของคุณไม่ถูกต้อง มันประกอบด้วยตัวเลขเพียงอย่างเดียว',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/DefaultType.pm
+        'Default Ticket Type' => 'สถานะเริ่มต้นของประเภทตั๋ว',
+        'The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type.' =>
+            'กำหนดค่าประเภทตั๋วเริ่มต้นนี้ไม่ถูกต้องหรือขาดหายไป กรุณาเปลี่ยนการตั้งค่า Ticket::Type::Default และเลือกประเภทของตั๋วที่ถูกต้อง',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/IndexModule.pm
+        'Ticket Index Module' => 'โมดูลตั๋วดัชนี',
+        'You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information.' =>
+            'คุณมีมากกว่า 60,000 ตั๋วและควรใช้แบ็กเอนด์ StaticDB ดูคู่มือผู้ดูแลระบบ (ปรับแต่งประสิทธิภาพ) สำหรับข้อมูลเพิ่มเติม',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/InvalidUsersWithLockedTickets.pm
+        'Invalid Users with Locked Tickets' => 'ผู้ใช้ไม่ถูกต้องกับตั๋วล็อค',
+        'There are invalid users with locked tickets.' => 'มีผู้ใช้ที่ไม่ถูกต้องกับตั๋วที่ถูกล็อคอยู่',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/OpenTickets.pm
+        'You should not have more than 8,000 open tickets in your system.' =>
+            'คุณไม่ควรมีตั๋วที่เปิดอยู่มากกว่า 8,000 ตั๋วในระบบของคุณ',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/SearchIndexModule.pm
+        'Ticket Search Index Module' => 'โมดูลการค้นหาตั๋วดัชนี',
+        'The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches.' =>
+            '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/StaticDBOrphanedRecords.pm
+        'Orphaned Records In ticket_lock_index Table' => 'บันทึกกำพร้าในตาราง ticket_lock_index ',
+        'Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
+            ' ตาราง ticket_lock_index ประกอบด้วยบันทึกกำพร้า โปรดเรียกใช้ bin / znuny.Console.pl"Maint::Ticket::QueueIndexCleanup" เพื่อลบดัชนี StaticDB',
+        'Orphaned Records In ticket_index Table' => 'บันทึกกำพร้าในตาราง ticket_index ',
+        'Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
+            '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+        'Time Settings' => '',
+        'Server time zone' => 'โซนเวลาเซิร์ฟเวอร์',
+        'Znuny time zone' => '',
+        'Znuny time zone is not set.' => '',
+        'User default time zone' => '',
+        'User default time zone is not set.' => '',
+        'Calendar time zone is not set.' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentSkinUsage.pm
+        'UI - Agent Skin Usage' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentThemeUsage.pm
+        'UI - Agent Theme Usage' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/SpecialStats.pm
+        'UI - Special Statistics' => '',
+        'Agents using custom main menu ordering' => '',
+        'Agents using favourites for the admin overview' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Version.pm
+        'Znuny Version' => 'เวอร์ชั่นของ Znuny',
+
+        # Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/Znuny/ConcurrentUsers.pm
         'Concurrent Users Details' => '',
         'Concurrent Users' => 'ผู้ใช้งานร่วมกัน',
-
-        # Perl Module: Kernel/System/SupportDataCollector/PluginBase.pm
-        'OK' => 'โอเค',
-        'Problem' => 'ปัญหา',
 
         # Perl Module: Kernel/System/SysConfig.pm
         'Setting %s does not exists!' => '',
@@ -5579,11 +5561,23 @@ sub Data {
         'The headline shown in the customer interface.' => '',
         'The logo shown in the header of the customer interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             '',
+        'The shortcut icon for the customer interface.' => '',
+        'The shortcut icon for the customer interface for the skin "default".' =>
+            '',
+        'The Apple touch icon for the customer interface.' => '',
+        'The Apple touch icon for the customer interface for skin "default".' =>
+            '',
         'The logo shown in the header of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             '',
         'The logo shown in the header of the agent interface for the skin "default". See "AgentLogo" for further description.' =>
             '',
         'The logo shown on top of the login box of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
+            '',
+        'The shortcut icon for the agent interface.' => '',
+        'The shortcut icon for the agent interface fot the skin "default".' =>
+            '',
+        'The Apple touch icon for the agent interface.' => '',
+        'The Apple touch icon for the agent interface for the skin "default".' =>
             '',
         'Defines the URL base path of icons, CSS and Java Script.' => 'กำหนดฐานเส้นทาง URL ของไอคอน CSS และ Java Script',
         'Defines the URL image path of icons for navigation.' => 'กำหนดภาพเส้นทาง URL ของไอคอนสำหรับการนำทาง',
@@ -5617,6 +5611,8 @@ sub Data {
             'แบ่งบรรทัดอัตโนมัติในข้อความหลังจากจำนวนตัวอักษร  x ',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             '',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
             'กำหนดรูปแบบการป้อนวันที่ ที่ใช้ในแบบฟอร์ม (ตัวเลือกหรือช่องใส่)',
@@ -5631,6 +5627,7 @@ sub Data {
         'Defines the address of a dedicated DNS server, if necessary, for the "CheckMXRecord" look-ups.' =>
             'กำหนดที่อยู่ของเซิร์ฟเวอร์ DNS ในกรณีที่จำเป็น
 สำหรับ "CheckMXRecord" ',
+        'Sets the timeout (in seconds) for DNS resolver queries.' => '',
         'Makes the application check the syntax of email addresses.' => '',
         'Defines a regular expression that excludes some addresses from the syntax check (if "CheckEmailAddresses" is set to "Yes"). Please enter a regex in this field for email addresses, that aren\'t syntactically valid, but are necessary for the system (i.e. "root@localhost").' =>
             'กำหนดนิพจน์ปกติที่ไม่รวมที่อยู่บางส่วนจากการตรวจสอบไวยากรณ์ (ถ้า "CheckEmailAddresses" ตั้งค่าเป็น "ใช่")กรุณากด regexในช่องนี้สำหรับที่อยู่อีเมล มีนไม่ใช่การสร้างประโยคที่ถูกต้อง แต่เป็นสิ่งจำเป็นสำหรับระบบ (เช่น "root@localhost")',
@@ -5911,7 +5908,6 @@ sub Data {
             '',
         'Defines the users avatar. Please note: setting \'Active\' to 0 will only prevent agents from editing settings of this group in their personal preferences, but will still allow administrators to edit the settings of another user\'s behalf. Use \'PreferenceGroup\' to control in which area these settings should be shown in the user interface.' =>
             '',
-        'Defines the global users popup profile.' => '',
         'Defines the user identifier for the customer panel.' => 'กำหนดตัวระบุผู้ใช้สำหรับแผงลูกค้า',
         'Activates support for customer and customer user groups.' => '',
         'Defines the groups every customer user will be in (if CustomerGroupSupport is enabled and you don\'t want to manage every customer user for these groups).' =>
@@ -6005,7 +6001,7 @@ sub Data {
             'หาก "LDAP" ถูกเลือก คุณสามารถเพิ่มตัวกรองให้แต่ละแบบสอบถาม LDAP เช่น (mail=*), (objectclass=user) หรือ (!objectclass=computer).',
         'If "LDAP" was selected for Customer::AuthModule and if you want to add a suffix to every customer login name, specifiy it here, e. g. you just want to write the username user but in your LDAP directory exists user@domain.' =>
             'หาก "LDAP" ถูกเลือกให้ Customer::AuthModule และถ้าคุณต้องการที่จะเพิ่มคำต่อท้ายชื่อสำหรับเข้าสู่ระบบให้ลูกค้าทุกคน โปรดระบุที่นี่ เช่น คุณเพียงแค่เขียนชื่อผู้ใช้ แต่ในไดเรกทอรี LDAP จะเป็น user@domain.',
-        'If "LDAP" was selected for Customer::AuthModule and special paramaters are needed for the Net::LDAP perl module, you can specify them here. See "perldoc Net::LDAP" for more information about the parameters.' =>
+        'If "LDAP" was selected for Customer::AuthModule and special parameters are needed for the Net::LDAP perl module, you can specify them here. See "perldoc Net::LDAP" for more information about the parameters.' =>
             'หาก "LDAP" ถูกเลือกให้ Customer::AuthModule และพารามิเตอร์พิเศษที่มีความจำเป็นสำหรับโมดูล Perl Net::LDAP คุณสามารถระบุพวกเขาที่นี่ โปรดดูที่ "perldoc Net::LDAP" สำหรับข้อมูลเพิ่มเติมเกี่ยวกับพารามิเตอร์',
         'If "LDAP" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             'หาก "LDAP" ถูกเลือกให้ Customer::AuthModule คุณสามารถระบุได้ว่าการใช้งานจะหยุดถ้าการเชื่อมต่อไปยังเซิร์ฟเวอร์ไม่สามารถสร้างเนื่องจากปัญหาเครือข่าย',
@@ -6065,8 +6061,10 @@ sub Data {
         'Defines all the possible stats output formats.' => 'กำหนดรูปแบบผลผลิตสถิติที่เป็นไปได้ทั้งหมด',
         'Allows agents to exchange the axis of a stat if they generate one.' =>
             'อนุญาตให้ตัวแทนแลกเปลี่ยนแกนของสถิติถ้าพวกเขาสร้างแค่หนึ่ง',
-        'Allows agents to generate individual-related stats.' => 'อนุญาตให้เอเย่นต์สร้างสถิติของแต่ละบุคคลที่เกี่ยวข้อง',
-        'Allows invalid agents to generate individual-related stats.' => 'อนุญาตให้เอเย่นต์ที่ไม่ถูกต้องสร้างสถิติของแต่ละบุคคลที่เกี่ยวข้อง',
+        'Adds the following elements for use in stats: "Agent/Owner", "Created by Agent/Owner", "Responsible", "Accounted time by Agent".' =>
+            '',
+        'Allows invalid agents to be used in stats. Stats::UseAgentElementInStats must be active.' =>
+            '',
         'Shows all the customer identifiers in a multi-select field (not useful if you have a lot of customer identifiers).' =>
             '',
         'Shows all the customer user identifiers in a multi-select field (not useful if you have a lot of customer user identifiers).' =>
@@ -6122,11 +6120,13 @@ sub Data {
         'Specifies the order in which the firstname and the lastname of agents will be displayed.' =>
             '',
         'Default skin for the agent interface.' => 'สกีนเริ่มต้นสำหรับอินเตอร์เฟซเอเย่นต์',
+        'Dark skin for the agent interface.' => '',
         'The agent skin\'s InternalName which should be used in the agent interface. Please check the available skins in Frontend::Agent::Skins.' =>
             '',
         'It is possible to configure different skins, for example to distinguish between diferent agents, to be used on a per-domain basis within the application. Using a regular expression (regex), you can configure a Key/Content pair to match a domain. The value in "Key" should match the domain, and the value in "Content" should be a valid skin on your system. Please see the example entries for the proper form of the regex.' =>
             '',
         'Default skin for the customer interface.' => 'สกีนเริ่มต้นสำหรับอินเตอร์เฟซเลูกค้า (รุ่นบาง)',
+        'Dark skin for the customer interface.' => '',
         'The customer skin\'s InternalName which should be used in the customer interface. Please check the available skins in Frontend::Customer::Skins.' =>
             '',
         'It is possible to configure different skins, for example to distinguish between diferent customers, to be used on a per-domain basis within the application. Using a regular expression (regex), you can configure a Key/Content pair to match a domain. The value in "Key" should match the domain, and the value in "Content" should be a valid skin on your system. Please see the example entries for the proper form of the regex.' =>
@@ -6501,6 +6501,13 @@ sub Data {
             'กำหนด หากการจัดเรียงล่วงหน้าตามลำดับความสำคัญที่ควรทำในมุมมองการบริการ',
         'Defines the default sort order for all services in the service view, after priority sort.' =>
             'กำหนดเกณฑ์การจัดเรียงเริ่มต้นสำหรับการบริการทั้งหมดที่แสดงในมุมมองการบริการหลังจากการจัดเรียงลำดับความสำคัญ',
+        'Enable highlighting services based on ticket age.' => '',
+        'Sets the age in minutes (first level) for highlighting services that contain untouched tickets.' =>
+            '',
+        'Sets the age in minutes (second level) for highlighting services that contain untouched tickets.' =>
+            '',
+        'Activates a blinking mechanism of the service that contains the oldest ticket.' =>
+            '',
         'Activates time accounting.' => 'เปิดใช้งานการนับเวลา',
         'Sets the prefered time units (e.g. work units, hours, minutes).' =>
             '',
@@ -7850,6 +7857,31 @@ sub Data {
             '',
         'Shows the title field in the NoteToLinkedTicket screen of the agent interface.' =>
             '',
+        'User preferences backend to use.' => '',
+        'Loader module registration for the public interface.' => '',
+        'Deletes orphaned sessions.' => '',
+        'Defines the config parameters available in the preferences view. The default redirect URL from SysConfig \'MarkTicketUnseenRedirectDefaultURL\' is used if no selection is made by the agent.' =>
+            '',
+        'Defines the redirect URL for setting a ticket article to \'unseen\'.' =>
+            '',
+        'Defines the config parameters available in the preferences view. The default redirect URL from SysConfig \'MarkTicketSeenRedirectDefaultURL\' is used if no selection is made by the agent.' =>
+            '',
+        'Defines the redirect URL for setting a ticket article to \'seen\'.' =>
+            '',
+        'Registers a link in the ticket menu to mark a ticket as unseen.' =>
+            '',
+        'Registers a link in the ticket menu to mark a ticket as seen.' =>
+            '',
+        'Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as unseen.' =>
+            '',
+        'Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as seen.' =>
+            '',
+        'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "agent".' =>
+            '',
+        'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".' =>
+            '',
+        'Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.' =>
+            '',
 
         # XML Definition: scripts/database/initial_insert.xml
         'invalid-temporarily' => 'ไม่ถูกต้องชั่วคราว',
@@ -8499,7 +8531,6 @@ Thanks for your help!
         'Change the priority for this ticket' => 'เปลี่ยนลำดับความสำคัญสำหรับตั๋วนี้',
         'Change the responsible for this ticket' => 'เปลี่ยนผู้รับผิดชอบสำหรับตั๋วนี้',
         'Change your avatar image.' => '',
-        'Change your default popup profile settings.' => '',
         'Change your password and more.' => '',
         'Changed SLA to "%s" (%s).' => '',
         'Changed archive state to "%s".' => '',
@@ -8544,6 +8575,10 @@ Thanks for your help!
         'Configure and manage ACLs.' => 'กำหนดค่าและจัดการ ACLs',
         'Configure which screen should be shown after a new ticket has been created.' =>
             'กำหนดค่าว่าหน้าจอใดควรจะแสดงหลังจากที่ตั๋วใหม่ถูกสร้างขึ้น',
+        'Configure which screen should be shown after marking a ticket or article as seen.' =>
+            '',
+        'Configure which screen should be shown after marking a ticket or article as unseen.' =>
+            '',
         'Create New process ticket.' => 'สร้างตั๋วกระบวนการใหม่',
         'Create Process Ticket' => '',
         'Create Ticket' => '',
@@ -8607,6 +8642,7 @@ Thanks for your help!
         'CustomerUser' => 'CustomerUser',
         'Czech' => 'ภาษาเช็ก',
         'Danish' => 'ภาษาเดนมาร์ก',
+        'Dark' => '',
         'Dashboard overview.' => '',
         'Date / Time' => 'วัน / เวลา',
         'Default agent name' => '',
@@ -8741,6 +8777,8 @@ Thanks for your help!
         'Last view - limit' => '',
         'Last view - position' => '',
         'Last view - types' => '',
+        'Last viewed overview' => '',
+        'Last viewed screen' => '',
         'Lastname Firstname' => 'ชื่อนามสกุล',
         'Lastname Firstname (UserLogin)' => 'ชื่อนามสกุล (ผู้ใช้เข้าสู่ระบบ)',
         'Lastname, Firstname' => 'ชื่อ, นามสกุล',
@@ -8787,7 +8825,10 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'มาร์คว่าเป็นสแปม!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'ทำเครื่องหมายตั๋วนี้เป็นขยะ!',
+        'Mark ticket as seen' => '',
+        'Mark ticket as unseen' => '',
         'Mattermost Username' => '',
         'Max. number of articles per page in TicketZoom' => '',
         'Medium' => 'ขนาดกลาง',
@@ -8860,7 +8901,6 @@ Thanks for your help!
         'Plugin search' => '',
         'Plugin search module for autocomplete.' => '',
         'Polish' => 'ภาษาโปแลนด์',
-        'Popup Profile' => '',
         'Portuguese' => 'ภาษาโปรตุเกส',
         'Portuguese (Brasil)' => 'ภาษาโปรตุเกส (บราซิล)',
         'PostMaster Filters' => 'ตัวกรอง PostMaster',
@@ -8895,13 +8935,14 @@ Thanks for your help!
         'Russian' => 'ภาษารัสเซีย',
         'S/MIME Certificates' => 'ใบรับรอง S/MIME',
         'Schedule a maintenance period.' => '',
+        'Screen after marking as seen' => '',
+        'Screen after marking as unseen' => '',
         'Screen after new ticket' => 'หน้าจอหลังจากตั๋วใหม่',
         'Search Customer' => 'ค้นหาลูกค้า',
         'Search Ticket.' => 'ค้นหาตั๋ว',
         'Search Tickets.' => 'ค้นหาตั๋ว',
         'Search User' => 'ค้นหาผู้ใช้',
         'Search tickets.' => '',
-        'SearchTemplate' => '',
         'Second Christmas Day' => 'วันที่สองของ',
         'Second Queue' => 'คิวที่สอง',
         'Seconds' => '',
@@ -8996,6 +9037,8 @@ Thanks for your help!
         'Theme' => 'ตีม',
         'This is a Description for Comment on Framework.' => '',
         'This is a Description for DynamicField on Framework.' => '',
+        'This is the dark skin for the agent interface.' => '',
+        'This is the dark skin for the customer interface.' => '',
         'This is the default orange - black skin for the customer interface.' =>
             '',
         'This is the default orange - black skin.' => '',
@@ -9023,7 +9066,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => '',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',
@@ -9232,6 +9274,7 @@ Thanks for your help!
         'Duplicate event.',
         'Duplicated entry',
         'Edit Field Details',
+        'Edit Transition "%s"',
         'Edit this setting',
         'Edit this transition',
         'End date',

@@ -83,6 +83,14 @@ msgid "Filter"
 msgstr "ตัวกรอง"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
+msgid "Show Valid"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
+msgid "Show All"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
 msgid "Please note: This table represents the execution order of the ACLs. If you need to change the order in which ACLs are executed, please change the names of the affected ACLs."
 msgstr "โปรดทราบ: ตารางนี้แสดงถึงลำดับการดำเนินการของ ACLsถ้าคุณต้องการที่จะเปลี่ยนลำดับดำเนินการของ ACLs โปรดเปลี่ยนชื่อ ACLs ที่ ได้รับผลกระทบ"
 
@@ -535,20 +543,20 @@ msgid "Send to all role members"
 msgstr "ส่งให้กับสมาชิกที่มีบทบาททั้งหมด"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
-msgid "Send on out of office"
-msgstr "ส่งออกจากสำนักงาน"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
 msgid "Also send if the user is currently out of office."
 msgstr "ส่งเช่นกันหากผู้ใช้ปัจจุบันอยู่นอกออฟฟิศ"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
-msgid "Once per day"
-msgstr "วันละครั้ง"
+msgid "Send on out of office"
+msgstr "ส่งออกจากสำนักงาน"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
 msgid "Notify user just once per day about a single appointment using a selected transport."
 msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
+msgid "Once per day"
+msgstr "วันละครั้ง"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
 msgid "Notification Methods"
@@ -1659,7 +1667,7 @@ msgid "Screens"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldScreenConfiguration.tt
-msgid "Default columns"
+msgid "Overview Default Columns"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldScreenConfiguration.tt
@@ -1807,6 +1815,14 @@ msgid "Backend documentation"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
+msgid "Cache TTL"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
+msgid "TTL (in seconds) for caching request results. Leave empty or set to 0 to disable caching."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
 msgid "Key for search"
 msgstr ""
 
@@ -1868,14 +1884,6 @@ msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
 msgid "Delay (in milliseconds) until the AJAX request will be sent."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
-msgid "Autocompletion for search fields"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
-msgid "Use autocompletion for search fields instead of a static selection of values that are currently selected in Znuny (in tickets, articles, etc.). This increases performance if many thousands of values of the dynamic field have been selected. This setting does not affect the search field displayed in AgentTicketSearch and CustomerTicketSearch."
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
@@ -2023,6 +2031,10 @@ msgid "Run this task"
 msgstr "รันงานนี้"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
+msgid "Do you really want to delete this generic agent job?"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
 msgid "Job Settings"
 msgstr "การตั้งค่าการทำงาน"
 
@@ -2091,16 +2103,16 @@ msgid "If a ticket event is fired, the ticket filter will be applied to check if
 msgstr "หากตั๋วกิจกรรมถูกยกเลิก ตัวกรองตั๋วจะถูกนำมาใช้เพื่อตรวจสอบว่าตรงกับตั๋ว แล้วงานจะรันบนตั๋วที่ว่า"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
-msgid "Do you really want to delete this event trigger?"
-msgstr "คุณต้องการลบตัวกระตุ้นกิจกรรมนี้หรือไม่?"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
 msgid "Add Event Trigger"
 msgstr "เพิ่มตัวกระตุ้นกิจกรรม"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
 msgid "To add a new event select the event object and event name"
 msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
+msgid "Do you really want to delete this event trigger?"
+msgstr "คุณต้องการลบตัวกระตุ้นกิจกรรมนี้หรือไม่?"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
 msgid "Select Tickets"
@@ -3259,18 +3271,6 @@ msgid "This configuration defines if incoming connections should get closed or k
 msgstr "การกำหนดค่านี้ถูกกำหนดไว้ถ้าการติดต่อเข้ามาควรจะได้รับการปิดหรือคงถูกรักษาไว้"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
-msgid "Additional response headers"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
-msgid "Header"
-msgstr "หัวข้อ"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
-msgid "Add response header"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
 msgid "Endpoint"
 msgstr "จุดสิ้นสุด"
 
@@ -3539,7 +3539,19 @@ msgid "The default HTTP command to use for the requests."
 msgstr "คำสั่ง HTTP เริ่มต้นที่จะใช้สำหรับการร้องขอ"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
+msgid "Additional response headers"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
 msgid "Additional request headers"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
+msgid "Header"
+msgstr "หัวข้อ"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
+msgid "Add response header"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
@@ -4434,10 +4446,6 @@ msgstr "ยกเลิกการติดตั้งแพคเกจ"
 msgid "Do you really want to uninstall this package?"
 msgstr "คุณต้องการยกเลิกการติดตั้งแพคเกจนี้หรือไม่?"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/InstallerConfigureMail.tt
-msgid "or"
-msgstr "หรือ"
-
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
 msgid "Reinstall package"
 msgstr "ติดตั้งแพคเกจอีกครั้ง"
@@ -4631,16 +4639,24 @@ msgid "Permission"
 msgstr "การอนุญาต"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
+msgid "Size"
+msgstr "ขนาด"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
+msgid "Problem"
+msgstr "ปัญหา"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
+msgid "OK"
+msgstr "โอเค"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
 msgid "Download file from package!"
 msgstr "ดาวน์โหลดไฟล์จากแพคเกจ"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
 msgid "Required"
 msgstr "ที่จำเป็น"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
-msgid "Size"
-msgstr "ขนาด"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
 msgid "Primary Key"
@@ -5081,7 +5097,7 @@ msgid "Assigned Fields"
 msgstr "ฟิลด์ที่ได้รับมอบหมาย"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementActivityDialog.tt
-msgid " Filter assigned fields"
+msgid "Filter assigned fields"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementActivityDialog.tt
@@ -5267,6 +5283,10 @@ msgstr "คุณต้องการลบกิจกรรมไดอะล
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementProcessEdit.tt
 msgid "Do you really want to delete this Transition?"
 msgstr "คุณต้องการที่จะลบการเปลี่ยนผ่านนี้หรือไม่?"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementProcessEdit.tt
+msgid "You can not edit a transition before it's connected to two activities."
+msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementProcessEdit.tt
 msgid "Do you really want to delete this Transition Action?"
@@ -6073,6 +6093,10 @@ msgid "It's not possible to invalidate this entry because there is no other merg
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminState.tt
+msgid "This field must be a hexadecimal color code."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminState.tt
 msgid "This state is used in the following config settings:"
 msgstr ""
 
@@ -6337,7 +6361,7 @@ msgstr ""
 msgid "System file support"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemFiles.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminSupportDataCollector.tt
 msgid "Delete cache"
 msgstr ""
 
@@ -7030,14 +7054,6 @@ msgid "in"
 msgstr "ใน"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid "No Data Available."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Show or hide the content"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Search inactive widgets"
 msgstr ""
 
@@ -7046,27 +7062,7 @@ msgid "Active Widgets"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Save changes"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Save"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid "Save changes"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Settings"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Refresh"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Close this widget"
+msgid "Close this widget"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
@@ -7074,28 +7070,20 @@ msgid "Hide"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Cancel"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "more"
 msgstr "มากขึ้น"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+msgid "No Data Available."
+msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Available Columns"
 msgstr "คอลัมน์ที่พร้อมใช้งาน"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Filter available fields"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Visible Columns (order by drag & drop)"
 msgstr "คอลัมน์ที่มองเห็นได้ (จัดเรียงโดยการลากและวาง)"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Submit"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
 msgid "Change Customer Relations"
@@ -7110,12 +7098,28 @@ msgid "Closed"
 msgstr "ปิด"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
+msgid "Phone ticket"
+msgstr "ตั๋วจากโทรศัพท์"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
+msgid "Email ticket"
+msgstr "อีเมล์ตั๋ว"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
 msgid "%s open ticket(s) of %s"
 msgstr "% s ตั๋วเปิด (s) ของ% s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
 msgid "%s closed ticket(s) of %s"
 msgstr "% s ตั๋วที่ปิดแล้ว (s) ของ% s"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
+msgid "New phone ticket from %s"
+msgstr "ตั๋วทางโทรศัพท์ใหม่จาก% s"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
+msgid "New email ticket to %s"
+msgstr "ตั๋วอีเมลใหม่% s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
 msgid "Edit customer ID"
@@ -7148,22 +7152,6 @@ msgstr ""
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
 msgid "Customer user information"
 msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
-msgid "Phone ticket"
-msgstr "ตั๋วจากโทรศัพท์"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
-msgid "Email ticket"
-msgstr "อีเมล์ตั๋ว"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
-msgid "New phone ticket from %s"
-msgstr "ตั๋วทางโทรศัพท์ใหม่จาก% s"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
-msgid "New email ticket to %s"
-msgstr "ตั๋วอีเมลใหม่% s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardMyLastChangedTickets.tt
 msgid "No tickets found."
@@ -7358,6 +7346,38 @@ msgid "End"
 msgstr "จบ"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "Left"
+msgstr "ซ้าย"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "The horizontal distance of the window relative to the screen, in pixels."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "Top"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "The vertical distance of the window relative to the screen, in pixels."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "Width"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "Width in pixels or percent."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "Height"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "Height in pixels or percent."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
 msgid "This setting can currently not be saved."
 msgstr ""
 
@@ -7486,12 +7506,12 @@ msgid "Export statistic %s"
 msgstr "แก้ไขสถิติ %s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsOverview.tt
-msgid "Delete statistic \"%s\""
-msgstr "ลบสถิติ \"%s\""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsOverview.tt
 msgid "Delete statistic %s"
 msgstr "ลบสถิติ %s"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsOverview.tt
+msgid "Do you really want to delete this statistic?"
+msgstr "คุณต้องการที่จะลบสถิตินี้หรือไม่?"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsView.tt
 msgid "Statistics Information"
@@ -7670,10 +7690,6 @@ msgid "Bounce %s%s%s"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBounce.tt
-msgid "cancel"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBounce.tt
 msgid "Bounce to"
 msgstr "การตีกลับไปยัง"
 
@@ -7746,7 +7762,7 @@ msgid "Date Invalid!"
 msgstr "วันที่ไม่ถูกต้อง!"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Select one or more recipients from the customer user address book."
+msgid "Select one or more recipients from the customer user address book."
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
@@ -7774,10 +7790,6 @@ msgid "This address already exists on the address list."
 msgstr "ที่อยู่นี้มีอยู่แล้วในรายการที่อยู่"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Cc"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
 msgid "Remove Cc"
 msgstr "ลบสำเนา"
 
@@ -7786,16 +7798,8 @@ msgid "Bcc"
 msgstr "Bcc"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Bcc"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
 msgid "Remove Bcc"
 msgstr "ลบสำเนาลับ"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Send mail"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
 msgid "Change Customer of %s%s%s"
@@ -7814,10 +7818,6 @@ msgid "Create New Email Ticket"
 msgstr "สร้างอีเมล์ตั๋วใหม่"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Example Template"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Example Template"
 msgstr "ตัวอย่างแม่แบบ"
 
@@ -7826,20 +7826,8 @@ msgid "To customer user"
 msgstr "ถึงลูกค้าผู้ใช้"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " To"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Please include at least one customer user for the ticket."
 msgstr "โปรดระบุอย่างน้อยหนึ่งลูกค้าผู้ใช้สำหรับตั๋ว"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Select this customer as the main customer."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " To customer user"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Remove Ticket Customer User"
@@ -7850,24 +7838,8 @@ msgid "From queue"
 msgstr "จากคิว"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Get all"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Get all"
 msgstr "ได้รับทั้งหมด"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Message body"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
-msgid "Outbound Email for %s%s%s"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
-msgid "Select one or more recipients from the customer user address book."
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
 msgid "Resend Email for %s%s%s"
@@ -8010,19 +7982,15 @@ msgid "NoteToTicket invalid."
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Select all"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "No ticket data found."
 msgstr "ไม่พบข้อมูลตั๋ว"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Open / Close ticket action menu"
+msgid "Open / Close ticket action menu"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Select this ticket"
+msgid "Select this ticket"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
@@ -8033,7 +8001,7 @@ msgstr "ผู้ส่ง"
 msgid "Impact"
 msgstr "ผลกระทบ"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "CustomerID"
 msgstr "ไอดีลูกค้า"
 
@@ -8048,14 +8016,6 @@ msgstr "เวลาการแก้ปัญหา"
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "First Response Time"
 msgstr "เวลาตอบสนองครั้งแรก"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Service Time"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Move ticket to a different queue"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "Change queue"
@@ -8077,14 +8037,6 @@ msgstr ""
 msgid "Tickets per page"
 msgstr "ตั๋วต่อหนึ่งหน้า"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
-msgid "Filter assigned fields"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-msgid " Missing channel"
-msgstr ""
-
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
 msgid "Missing channel"
 msgstr ""
@@ -8094,7 +8046,7 @@ msgid "Reset overview"
 msgstr "รีเซ็ตภาพรวม"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
-msgid " Column Filters Form"
+msgid "Column Filters Form"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
@@ -8109,7 +8061,7 @@ msgstr "สร้างตั๋วจากโทรศัพท์ใหม่
 msgid "Please include at least one customer for the ticket."
 msgstr "กรุณาระบุลูกค้าอย่างน้อยหนึ่งคนสำหรับตั๋ว"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Select this customer as the main customer."
 msgstr "เลือกลูกค้ารายนี้เป็นลูกค้าหลัก"
 
@@ -8136,10 +8088,6 @@ msgstr "ดาวน์โหลดอีเมล์นี้"
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
 msgid "Create New Process Ticket"
 msgstr "สร้างการประมวลผลตั๋วใหม่"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
-msgid " Loading"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
 msgid "Enroll Ticket into a Process"
@@ -8289,7 +8237,7 @@ msgstr ""
 msgid "by"
 msgstr "โดย"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "Move ticket to a different queue"
 msgstr "ย้ายตั๋วไปคิวอื่น"
 
@@ -8426,10 +8374,6 @@ msgid "PDF"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/ArticleRender/MIMEBase.tt
-msgid "Unknown"
-msgstr "ไม่ระบุ"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/ArticleRender/MIMEBase.tt
 msgid "View"
 msgstr "มุมมอง"
 
@@ -8450,8 +8394,8 @@ msgid "This ticket is archived."
 msgstr "จัดเก็บตั๋วนี่แล้ว"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/TicketInformation.tt
-msgid "Note: Type is invalid!"
-msgstr "หมายเหตุ: ประเภทไม่ถูกต้อง!"
+msgid "is invalid"
+msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/TicketInformation.tt
 msgid "Pending till"
@@ -8509,10 +8453,6 @@ msgstr ""
 msgid "thank you for using our services."
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerAccept.tt
-msgid "Yes, I accept your license."
-msgstr ""
-
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerCompany/TicketCustomerIDSelection.tt
 msgid "The customer ID is not changeable, no other customer ID can be assigned to this ticket."
 msgstr ""
@@ -8534,12 +8474,12 @@ msgid "From assigned Customer IDs"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerError.tt
-msgid "An Error Occurred"
-msgstr ""
+msgid "Error"
+msgstr "ข้อผิดพลาด"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerError.tt
-msgid "Error Details"
-msgstr "รายละเอียด ข้อผิดพลาด"
+msgid "An Error Occurred"
+msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerError.tt
 msgid "Traceback"
@@ -8642,6 +8582,10 @@ msgid "A new password will be sent to your email address."
 msgstr "รหัสผ่านใหม่จะถูกส่งไปยังที่อยู่อีเมลของคุณ"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerLogin.tt
+msgid "Back to login"
+msgstr "กลับไปเข้าสู่ระบบ"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerLogin.tt
 msgid "Create Account"
 msgstr "สร้างบัญชี"
 
@@ -8678,15 +8622,11 @@ msgid "New Ticket"
 msgstr "ตั๋วใหม่"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
-msgid " Service level agreement"
+msgid "Service level agreement"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
 msgid "Dymanic Info"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
-msgid " Subject"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
@@ -8700,6 +8640,10 @@ msgstr "กรุณาคลิกที่ปุ่มด้านล่าง
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Create your first ticket"
 msgstr "สร้างตั๋วของคุณครั้งแรก"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketProcess.tt
+msgid "New Process Ticket"
+msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Profile"
@@ -8721,7 +8665,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "ไม่มีการตั้งค่าเวลา"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "ทั้งหมด"
 
@@ -8810,6 +8754,10 @@ msgid "Ticket fields"
 msgstr "ช่องข้อมูลตั๋ว"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Error.tt
+msgid "Error Details"
+msgstr "รายละเอียด ข้อผิดพลาด"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/Error.tt
 msgid "Expand"
 msgstr "การขยาย"
 
@@ -8881,13 +8829,13 @@ msgstr ""
 msgid "Search tools"
 msgstr ""
 
+#. TT Template: Kernel/Output/HTML/Templates/Standard/HeaderToolbar.tt
+msgid "SearchTemplate"
+msgstr ""
+
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
 msgid "JavaScript not available"
 msgstr "ไม่พร้อมใช้งาน JavaScript"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
-msgid "Step %s"
-msgstr "ขั้นตอน %s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
 msgid "License"
@@ -8908,6 +8856,10 @@ msgstr "เสร็จ"
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
 msgid "Welcome to %s"
 msgstr "ยินดีต้อนรับสู่ %s"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
+msgid "Address"
+msgstr "ที่อยู่"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
 msgid "Phone"
@@ -9022,16 +8974,16 @@ msgid "Check mail configuration"
 msgstr "ตรวจสอบการตั้งค่าอีเมล"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/InstallerConfigureMail.tt
+msgid "or"
+msgstr "หรือ"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/InstallerConfigureMail.tt
 msgid "Skip this step"
 msgstr "ข้ามขั้นตอนนี้"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBResult.tt
 msgid "Done"
 msgstr "ดำเนินการเสร็จแล้ว"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBResult.tt
-msgid "Error"
-msgstr "ข้อผิดพลาด"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBResult.tt
 msgid "Database setup successful!"
@@ -9217,10 +9169,6 @@ msgstr "ลบการเชื่อมโยง"
 msgid "Lost your password?"
 msgstr "ลืมรหัสผ่านของคุณ?"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/Login.tt
-msgid "Back to login"
-msgstr "กลับไปเข้าสู่ระบบ"
-
 #. TT Template: Kernel/Output/HTML/Templates/Standard/MetaFloater.tt
 msgid "Scale preview content"
 msgstr "ตัวอย่างสเกลเนื้อหา"
@@ -9338,7 +9286,7 @@ msgid "To get the appointment attribute"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
-msgid " e. g."
+msgid "e. g."
 msgstr "ตัวอย่างเช่น"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
@@ -9424,10 +9372,6 @@ msgstr "ค่าคีย์ภายในช่องตั๋วแบบไ
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminNotificationEvent.tt
 msgid "Ticket dynamic fields display values, useful for Dropdown and Multiselect fields"
 msgstr "ช่องตั๋วแบบไดนามิกแสดงค่าที่มีประโยชน์สำหรับDropdownและช่องสำหรับเลือกหลายรายการ"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-msgid "e. g."
-msgstr "ตัวอย่างเช่น"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
 msgid "To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types."
@@ -9678,14 +9622,6 @@ msgid "Reset setting"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SystemConfiguration/SettingsList.tt
-msgid "Show user specific changes for this setting"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/SystemConfiguration/SettingsList.tt
-msgid "Show user settings"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/SystemConfiguration/SettingsList.tt
 msgid "Copy a direct link to this setting to your clipboard"
 msgstr ""
 
@@ -9890,6 +9826,10 @@ msgid "Finished"
 msgstr "เสร็จสิ้น"
 
 #. JS Template: Kernel/Output/JavaScript/Templates/Standard/PackageManager/InformationDialog.html.tmpl
+msgid "Unknown"
+msgstr "ไม่ระบุ"
+
+#. JS Template: Kernel/Output/JavaScript/Templates/Standard/PackageManager/InformationDialog.html.tmpl
 msgid "No package information available."
 msgstr ""
 
@@ -9972,10 +9912,6 @@ msgstr "นาย"
 #. Perl Module: Kernel/Config/Defaults.pm
 msgid "Mrs."
 msgstr "นาง"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
-msgid "Address"
-msgstr "ที่อยู่"
 
 #. Perl Module: Kernel/Config/Defaults.pm
 msgid "View system log messages."
@@ -11170,10 +11106,6 @@ msgid "Can't read %s!"
 msgstr "ไม่สามารถอ่าน% s!"
 
 #. Perl Module: Kernel/Modules/AdminPackageManager.pm
-msgid "File is OK"
-msgstr ""
-
-#. Perl Module: Kernel/Modules/AdminPackageManager.pm
 msgid "Package has locally modified files."
 msgstr "แพคเกจมีการปรับเปลี่ยนไฟล์ภายในเครื่อง"
 
@@ -11961,7 +11893,7 @@ msgstr "ไม่สามารถรับข้อมูลกรองเน
 msgid "Customer Name"
 msgstr ""
 
-#. Perl Module: Kernel/Modules/AgentDashboardCommon.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "Customer User Name"
 msgstr ""
 
@@ -12842,6 +12774,10 @@ msgid "Error: Please set the value for innodb_log_file_size on your database to 
 msgstr "ข้อผิดพลาด: กรุณาระบุค่าสำหรับ innodb_log_file_size ในฐานข้อมูลของคุณอย่างน้อย% s MB (ปัจจุบัน:% s MB แนะนำ:% s MB) สำหรับข้อมูลเพิ่มเติมโปรดดูได้ที่"
 
 #. Perl Module: Kernel/Modules/Installer.pm
+msgid "Wrong default storage engine (%s is %s, but it needs to be InnoDB)."
+msgstr ""
+
+#. Perl Module: Kernel/Modules/Installer.pm
 msgid "Wrong database collation (%s is %s, but it needs to be utf8)."
 msgstr ""
 
@@ -13505,7 +13441,7 @@ msgstr "ล็อคไว้เพื่อทำงานกับมัน"
 msgid "Unwatch"
 msgstr "ยังไม่ได้ดู"
 
-#. Perl Module: Kernel/Output/HTML/TicketMenu/TicketWatcher.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
 msgid "Remove from list of watched tickets"
 msgstr "ลบออกจากรายการของตั๋วที่ดูแล้ว"
 
@@ -14074,7 +14010,7 @@ msgid "Server Database Charset"
 msgstr "ฐานข้อมูลชุดรหัสอักขระของเซิร์ฟเวอร์"
 
 #. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
-msgid "This character set is not yet supported, please see https://bugs.otrs.org/show_bug.cgi?id=12361. Please convert your database to the character set 'utf8'."
+msgid "This character set is not yet supported. Please convert your database to the character set 'utf8'."
 msgstr ""
 
 #. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
@@ -14185,11 +14121,11 @@ msgstr ""
 msgid "PostgreSQL 9.2 or higher is required."
 msgstr ""
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionOTRS.pm
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionZnuny.pm
 msgid "Operating System"
 msgstr "ระบบปฏิบัติการ"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionOTRS.pm
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionZnuny.pm
 msgid "Znuny Disk Partition"
 msgstr "แบ่งดิสก์ Znuny "
 
@@ -14277,354 +14213,6 @@ msgstr "พื้นที่การแลกเปลี่ยนฟรีค
 msgid "There should be no more than 200 MB swap space used."
 msgstr "พื้นที่การแลกเปลี่ยนที่ถูกใช้ควรจะมีมากกว่า 200 MB "
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticleSearchIndexStatus.pm
-msgid "Znuny"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticleSearchIndexStatus.pm
-msgid "Article Search Index Status"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticleSearchIndexStatus.pm
-msgid "Indexed Articles"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticlesPerCommunicationChannel.pm
-msgid "Articles Per Communication Channel"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLog.pm
-msgid "Incoming communications"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLog.pm
-msgid "Outgoing communications"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLog.pm
-msgid "Failed communications"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLog.pm
-msgid "Average processing time of communications (s)"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-msgid "Communication Log Account Status (last 24 hours)"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-msgid "No connections found."
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-msgid "ok"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-msgid "permanent connection errors"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-msgid "intermittent connection errors"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ConfigSettings.pm
-msgid "Config Settings"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ConfigSettings.pm
-msgid "Could not determine value."
-msgstr "ไม่สามารถกำหนดค่า"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DaemonRunning.pm
-msgid "Daemon"
-msgstr "Daemon"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DaemonRunning.pm
-msgid "Daemon is running."
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DaemonRunning.pm
-msgid "Daemon is not running."
-msgstr " Daemon ไม่ทำงาน"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Database Records"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Tickets"
-msgstr "ตั๋ว"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Ticket History Entries"
-msgstr "ประวัติการป้อนตั๋ว"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Articles"
-msgstr "บทความ"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Attachments (DB, Without HTML)"
-msgstr "สิ่งที่แนบมา (DB ปราศจาก HTML)"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Customers With At Least One Ticket"
-msgstr "ลูกค้ามีอย่างน้อยหนึ่งตั๋ว"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Dynamic Field Values"
-msgstr "ค่าไดนามิกฟิลด์"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Invalid Dynamic Fields"
-msgstr "ฟิลด์แบบไดนามิกที่ไม่ถูกต้อง"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Invalid Dynamic Field Values"
-msgstr "ค่าฟิลด์แบบไดนามิกที่ไม่ถูกต้อง"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "GenericInterface Webservices"
-msgstr "GenericInterface Webservices"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Process Tickets"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Months Between First And Last Ticket"
-msgstr "เดือนที่อยู่ระหว่างตั๋วใบแรกและใบสุดท้าย"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Tickets Per Month (avg)"
-msgstr "ตั๋วต่อเดือน (เฉลี่ย)"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Open Tickets"
-msgstr "เปิดตั๋ว"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultSOAPUser.pm
-msgid "Default SOAP Username And Password"
-msgstr "ชื่อและรหัสผ่านเริ่มต้นของSOAP"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultSOAPUser.pm
-msgid "Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it."
-msgstr "ความเสี่ยงด้านความปลอดภัย: คุณใช้การตั้งค่าเริ่มต้นสำหรับ SOAP :: ผู้ใช้และSOAP ::รหัสผ่าน กรุณาเปลี่ยนมัน"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultUser.pm
-msgid "Default Admin Password"
-msgstr "รหัสผ่านเริ่มต้นของผู้ดูแลระบบ"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultUser.pm
-msgid "Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account."
-msgstr "ความเสี่ยงด้านความปลอดภัย: บัญชีเอเย่นต์ root@localhost ยังคงใช้รหัสผ่านเริ่มต้น กรุณาเปลี่ยนหรือโมฆะบัญชี"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/EmailQueue.pm
-msgid "Email Sending Queue"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/EmailQueue.pm
-msgid "Emails queued for sending"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FQDN.pm
-msgid "FQDN (domain name)"
-msgstr "FQDN (ชื่อโดเมน)"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FQDN.pm
-msgid "Please configure your FQDN setting."
-msgstr "โปรดกำหนดการตั้งค่า FQDN ของคุณ"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FQDN.pm
-msgid "Domain Name"
-msgstr "ชื่อโดเมน"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FQDN.pm
-msgid "Your FQDN setting is invalid."
-msgstr "การตั้งค่า FQDN คุณไม่ถูกต้อง"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FileSystemWritable.pm
-msgid "File System Writable"
-msgstr "ระบบไฟล์สามารถเขียนได้"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FileSystemWritable.pm
-msgid "The file system on your Znuny partition is not writable."
-msgstr "ระบบไฟล์ในการแบ่งZnuny ของคุณไม่สามารถเขียนได้"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/LegacyConfigBackups.pm
-msgid "Legacy Configuration Backups"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/LegacyConfigBackups.pm
-msgid "No legacy configuration backup files found."
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/LegacyConfigBackups.pm
-msgid "Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages."
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/LegacyConfigBackups.pm
-msgid "Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder."
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/MultipleJSFileLoad.pm
-msgid "Views with multiple loaded JavaScript files"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/MultipleJSFileLoad.pm
-msgid "The following JavaScript files loaded multiple times:"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/MultipleJSFileLoad.pm
-msgid "Files"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-msgid "Package Installation Status"
-msgstr "สถานะการติดตั้งแพคเกจ"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-msgid "Some packages have locally modified files."
-msgstr "แพคเกจบางส่วนมีการปรับเปลี่ยนไฟล์ภายในเครื่อง"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-msgid "Some packages are not correctly installed."
-msgstr "แพคเกจบางแพคเกจไม่ถูกติดตั้งอย่างถูกต้อง"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-msgid "Package Framework Version Status"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-msgid "Some packages are not allowed for the current framework version."
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageList.pm
-msgid "Package List"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SessionConfigSettings.pm
-msgid "Session Config Settings"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SpoolMails.pm
-msgid "Spooled Emails"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SpoolMails.pm
-msgid "There are emails in var/spool that Znuny could not process."
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SystemID.pm
-msgid "Your SystemID setting is invalid, it should only contain digits."
-msgstr "การตั้งค่า SystemID ของคุณไม่ถูกต้อง มันประกอบด้วยตัวเลขเพียงอย่างเดียว"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/DefaultType.pm
-msgid "Default Ticket Type"
-msgstr "สถานะเริ่มต้นของประเภทตั๋ว"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/DefaultType.pm
-msgid "The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type."
-msgstr "กำหนดค่าประเภทตั๋วเริ่มต้นนี้ไม่ถูกต้องหรือขาดหายไป กรุณาเปลี่ยนการตั้งค่า Ticket::Type::Default และเลือกประเภทของตั๋วที่ถูกต้อง"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/IndexModule.pm
-msgid "Ticket Index Module"
-msgstr "โมดูลตั๋วดัชนี"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/IndexModule.pm
-msgid "You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information."
-msgstr "คุณมีมากกว่า 60,000 ตั๋วและควรใช้แบ็กเอนด์ StaticDB ดูคู่มือผู้ดูแลระบบ (ปรับแต่งประสิทธิภาพ) สำหรับข้อมูลเพิ่มเติม"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/InvalidUsersWithLockedTickets.pm
-msgid "Invalid Users with Locked Tickets"
-msgstr "ผู้ใช้ไม่ถูกต้องกับตั๋วล็อค"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/InvalidUsersWithLockedTickets.pm
-msgid "There are invalid users with locked tickets."
-msgstr "มีผู้ใช้ที่ไม่ถูกต้องกับตั๋วที่ถูกล็อคอยู่"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/OpenTickets.pm
-msgid "You should not have more than 8,000 open tickets in your system."
-msgstr "คุณไม่ควรมีตั๋วที่เปิดอยู่มากกว่า 8,000 ตั๋วในระบบของคุณ"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/SearchIndexModule.pm
-msgid "Ticket Search Index Module"
-msgstr "โมดูลการค้นหาตั๋วดัชนี"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/SearchIndexModule.pm
-msgid "The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches."
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/StaticDBOrphanedRecords.pm
-msgid "Orphaned Records In ticket_lock_index Table"
-msgstr "บันทึกกำพร้าในตาราง ticket_lock_index "
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/StaticDBOrphanedRecords.pm
-msgid "Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl \"Maint::Ticket::QueueIndexCleanup\" to clean the StaticDB index."
-msgstr " ตาราง ticket_lock_index ประกอบด้วยบันทึกกำพร้า โปรดเรียกใช้ bin / znuny.Console.pl\"Maint::Ticket::QueueIndexCleanup\" เพื่อลบดัชนี StaticDB"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/StaticDBOrphanedRecords.pm
-msgid "Orphaned Records In ticket_index Table"
-msgstr "บันทึกกำพร้าในตาราง ticket_index "
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/StaticDBOrphanedRecords.pm
-msgid "Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl \"Maint::Ticket::QueueIndexCleanup\" to clean the StaticDB index."
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "Time Settings"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "Server time zone"
-msgstr "โซนเวลาเซิร์ฟเวอร์"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "Znuny time zone"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "Znuny time zone is not set."
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "User default time zone"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "User default time zone is not set."
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "Calendar time zone is not set."
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentSkinUsage.pm
-msgid "UI - Agent Skin Usage"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentThemeUsage.pm
-msgid "UI - Agent Theme Usage"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/SpecialStats.pm
-msgid "UI - Special Statistics"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/SpecialStats.pm
-msgid "Agents using custom main menu ordering"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/SpecialStats.pm
-msgid "Agents using favourites for the admin overview"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Version.pm
-msgid "Znuny Version"
-msgstr "เวอร์ชั่นของ Znuny"
-
 #. Perl Module: Kernel/System/SupportDataCollector/Plugin/Webserver/Apache/LoadedModules.pm
 msgid "Webserver"
 msgstr "Webserver"
@@ -14709,21 +14297,361 @@ msgstr "เวอร์ชั่นของ Webserver"
 msgid "Could not determine webserver version."
 msgstr "ไม่สามารถตรวจสอบเวอร์ชั่นของเว็บเซิร์ฟเวอร์"
 
-#. Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/OTRS/ConcurrentUsers.pm
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticleSearchIndexStatus.pm
+msgid "Znuny"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticleSearchIndexStatus.pm
+msgid "Article Search Index Status"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticleSearchIndexStatus.pm
+msgid "Indexed Articles"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticlesPerCommunicationChannel.pm
+msgid "Articles Per Communication Channel"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLog.pm
+msgid "Incoming communications"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLog.pm
+msgid "Outgoing communications"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLog.pm
+msgid "Failed communications"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLog.pm
+msgid "Average processing time of communications (s)"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+msgid "Communication Log Account Status (last 24 hours)"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+msgid "No connections found."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+msgid "ok"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+msgid "permanent connection errors"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+msgid "intermittent connection errors"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ConfigSettings.pm
+msgid "Config Settings"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ConfigSettings.pm
+msgid "Could not determine value."
+msgstr "ไม่สามารถกำหนดค่า"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DaemonRunning.pm
+msgid "Daemon"
+msgstr "Daemon"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DaemonRunning.pm
+msgid "Daemon is running."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DaemonRunning.pm
+msgid "Daemon is not running."
+msgstr " Daemon ไม่ทำงาน"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Database Records"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+msgid "Tickets"
+msgstr "ตั๋ว"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Ticket History Entries"
+msgstr "ประวัติการป้อนตั๋ว"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Articles"
+msgstr "บทความ"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Attachments (DB, Without HTML)"
+msgstr "สิ่งที่แนบมา (DB ปราศจาก HTML)"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Customers With At Least One Ticket"
+msgstr "ลูกค้ามีอย่างน้อยหนึ่งตั๋ว"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Dynamic Field Values"
+msgstr "ค่าไดนามิกฟิลด์"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Invalid Dynamic Fields"
+msgstr "ฟิลด์แบบไดนามิกที่ไม่ถูกต้อง"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Invalid Dynamic Field Values"
+msgstr "ค่าฟิลด์แบบไดนามิกที่ไม่ถูกต้อง"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "GenericInterface Webservices"
+msgstr "GenericInterface Webservices"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Process Tickets"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Months Between First And Last Ticket"
+msgstr "เดือนที่อยู่ระหว่างตั๋วใบแรกและใบสุดท้าย"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Tickets Per Month (avg)"
+msgstr "ตั๋วต่อเดือน (เฉลี่ย)"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Open Tickets"
+msgstr "เปิดตั๋ว"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultSOAPUser.pm
+msgid "Default SOAP Username And Password"
+msgstr "ชื่อและรหัสผ่านเริ่มต้นของSOAP"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultSOAPUser.pm
+msgid "Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it."
+msgstr "ความเสี่ยงด้านความปลอดภัย: คุณใช้การตั้งค่าเริ่มต้นสำหรับ SOAP :: ผู้ใช้และSOAP ::รหัสผ่าน กรุณาเปลี่ยนมัน"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultUser.pm
+msgid "Default Admin Password"
+msgstr "รหัสผ่านเริ่มต้นของผู้ดูแลระบบ"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultUser.pm
+msgid "Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account."
+msgstr "ความเสี่ยงด้านความปลอดภัย: บัญชีเอเย่นต์ root@localhost ยังคงใช้รหัสผ่านเริ่มต้น กรุณาเปลี่ยนหรือโมฆะบัญชี"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/EmailQueue.pm
+msgid "Email Sending Queue"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/EmailQueue.pm
+msgid "Emails queued for sending"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FQDN.pm
+msgid "FQDN (domain name)"
+msgstr "FQDN (ชื่อโดเมน)"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FQDN.pm
+msgid "Please configure your FQDN setting."
+msgstr "โปรดกำหนดการตั้งค่า FQDN ของคุณ"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FQDN.pm
+msgid "Domain Name"
+msgstr "ชื่อโดเมน"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FQDN.pm
+msgid "Your FQDN setting is invalid."
+msgstr "การตั้งค่า FQDN คุณไม่ถูกต้อง"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FileSystemWritable.pm
+msgid "File System Writable"
+msgstr "ระบบไฟล์สามารถเขียนได้"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FileSystemWritable.pm
+msgid "The file system on your Znuny partition is not writable."
+msgstr "ระบบไฟล์ในการแบ่งZnuny ของคุณไม่สามารถเขียนได้"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/LegacyConfigBackups.pm
+msgid "Legacy Configuration Backups"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/LegacyConfigBackups.pm
+msgid "No legacy configuration backup files found."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/LegacyConfigBackups.pm
+msgid "Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/LegacyConfigBackups.pm
+msgid "Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/MultipleJSFileLoad.pm
+msgid "The following JavaScript files loaded multiple times:"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/MultipleJSFileLoad.pm
+msgid "Files"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/MultipleJSFileLoad.pm
+msgid "Views with multiple loaded JavaScript files"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+msgid "Package Installation Status"
+msgstr "สถานะการติดตั้งแพคเกจ"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+msgid "Some packages have locally modified files."
+msgstr "แพคเกจบางส่วนมีการปรับเปลี่ยนไฟล์ภายในเครื่อง"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+msgid "Some packages are not correctly installed."
+msgstr "แพคเกจบางแพคเกจไม่ถูกติดตั้งอย่างถูกต้อง"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+msgid "Package Framework Version Status"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+msgid "Some packages are not allowed for the current framework version."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageList.pm
+msgid "Package List"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SessionConfigSettings.pm
+msgid "Session Config Settings"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SpoolMails.pm
+msgid "Spooled Emails"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SpoolMails.pm
+msgid "There are emails in var/spool that Znuny could not process."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SystemID.pm
+msgid "Your SystemID setting is invalid, it should only contain digits."
+msgstr "การตั้งค่า SystemID ของคุณไม่ถูกต้อง มันประกอบด้วยตัวเลขเพียงอย่างเดียว"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/DefaultType.pm
+msgid "Default Ticket Type"
+msgstr "สถานะเริ่มต้นของประเภทตั๋ว"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/DefaultType.pm
+msgid "The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type."
+msgstr "กำหนดค่าประเภทตั๋วเริ่มต้นนี้ไม่ถูกต้องหรือขาดหายไป กรุณาเปลี่ยนการตั้งค่า Ticket::Type::Default และเลือกประเภทของตั๋วที่ถูกต้อง"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/IndexModule.pm
+msgid "Ticket Index Module"
+msgstr "โมดูลตั๋วดัชนี"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/IndexModule.pm
+msgid "You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information."
+msgstr "คุณมีมากกว่า 60,000 ตั๋วและควรใช้แบ็กเอนด์ StaticDB ดูคู่มือผู้ดูแลระบบ (ปรับแต่งประสิทธิภาพ) สำหรับข้อมูลเพิ่มเติม"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/InvalidUsersWithLockedTickets.pm
+msgid "Invalid Users with Locked Tickets"
+msgstr "ผู้ใช้ไม่ถูกต้องกับตั๋วล็อค"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/InvalidUsersWithLockedTickets.pm
+msgid "There are invalid users with locked tickets."
+msgstr "มีผู้ใช้ที่ไม่ถูกต้องกับตั๋วที่ถูกล็อคอยู่"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/OpenTickets.pm
+msgid "You should not have more than 8,000 open tickets in your system."
+msgstr "คุณไม่ควรมีตั๋วที่เปิดอยู่มากกว่า 8,000 ตั๋วในระบบของคุณ"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/SearchIndexModule.pm
+msgid "Ticket Search Index Module"
+msgstr "โมดูลการค้นหาตั๋วดัชนี"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/SearchIndexModule.pm
+msgid "The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/StaticDBOrphanedRecords.pm
+msgid "Orphaned Records In ticket_lock_index Table"
+msgstr "บันทึกกำพร้าในตาราง ticket_lock_index "
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/StaticDBOrphanedRecords.pm
+msgid "Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl \"Maint::Ticket::QueueIndexCleanup\" to clean the StaticDB index."
+msgstr " ตาราง ticket_lock_index ประกอบด้วยบันทึกกำพร้า โปรดเรียกใช้ bin / znuny.Console.pl\"Maint::Ticket::QueueIndexCleanup\" เพื่อลบดัชนี StaticDB"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/StaticDBOrphanedRecords.pm
+msgid "Orphaned Records In ticket_index Table"
+msgstr "บันทึกกำพร้าในตาราง ticket_index "
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/StaticDBOrphanedRecords.pm
+msgid "Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl \"Maint::Ticket::QueueIndexCleanup\" to clean the StaticDB index."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "Time Settings"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "Server time zone"
+msgstr "โซนเวลาเซิร์ฟเวอร์"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "Znuny time zone"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "Znuny time zone is not set."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "User default time zone"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "User default time zone is not set."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "Calendar time zone is not set."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentSkinUsage.pm
+msgid "UI - Agent Skin Usage"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentThemeUsage.pm
+msgid "UI - Agent Theme Usage"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/SpecialStats.pm
+msgid "UI - Special Statistics"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/SpecialStats.pm
+msgid "Agents using custom main menu ordering"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/SpecialStats.pm
+msgid "Agents using favourites for the admin overview"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Version.pm
+msgid "Znuny Version"
+msgstr "เวอร์ชั่นของ Znuny"
+
+#. Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/Znuny/ConcurrentUsers.pm
 msgid "Concurrent Users Details"
 msgstr ""
 
-#. Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/OTRS/ConcurrentUsers.pm
+#. Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/Znuny/ConcurrentUsers.pm
 msgid "Concurrent Users"
 msgstr "ผู้ใช้งานร่วมกัน"
-
-#. Perl Module: Kernel/System/SupportDataCollector/PluginBase.pm
-msgid "OK"
-msgstr "โอเค"
-
-#. Perl Module: Kernel/System/SupportDataCollector/PluginBase.pm
-msgid "Problem"
-msgstr "ปัญหา"
 
 #. Perl Module: Kernel/System/SysConfig.pm
 msgid "Setting %s does not exists!"
@@ -15226,6 +15154,10 @@ msgid "Defines the fully qualified domain name of the system. This setting is us
 msgstr "กำหนดชื่อโดเมนที่มีคุณสมบัติครบถ้วนของระบบ การตั้งค่านี้จะถูกใช้เป็นตัวแปร OTRS_CONFIG_FQDN ซึ่งพบได้ในรูปแบบของการส่งข้อความทั้งหมดที่ใช้โดยแอพลิเคชั่นเพื่อใช้ในการสร้างการเชื่อมโยงไปตั๋วภายในระบบของคุณ"
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Defines the fully qualified domain name for external IDs generation (i.e. Message-ID, ContentID)."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Defines the HTTP hostname for the support data collection with the public module 'PublicSupportDataCollector' (e.g. used from the Znuny Daemon)."
 msgstr ""
 
@@ -15355,6 +15287,10 @@ msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Defines extra content that is allowed for use in the rich text editor."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Global settings for all popup profiles."
 msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
@@ -16247,7 +16183,7 @@ msgid "If \"LDAP\" was selected for Customer::AuthModule and if you want to add 
 msgstr "หาก \"LDAP\" ถูกเลือกให้ Customer::AuthModule และถ้าคุณต้องการที่จะเพิ่มคำต่อท้ายชื่อสำหรับเข้าสู่ระบบให้ลูกค้าทุกคน โปรดระบุที่นี่ เช่น คุณเพียงแค่เขียนชื่อผู้ใช้ แต่ในไดเรกทอรี LDAP จะเป็น user@domain."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "If \"LDAP\" was selected for Customer::AuthModule and special paramaters are needed for the Net::LDAP perl module, you can specify them here. See \"perldoc Net::LDAP\" for more information about the parameters."
+msgid "If \"LDAP\" was selected for Customer::AuthModule and special parameters are needed for the Net::LDAP perl module, you can specify them here. See \"perldoc Net::LDAP\" for more information about the parameters."
 msgstr "หาก \"LDAP\" ถูกเลือกให้ Customer::AuthModule และพารามิเตอร์พิเศษที่มีความจำเป็นสำหรับโมดูล Perl Net::LDAP คุณสามารถระบุพวกเขาที่นี่ โปรดดูที่ \"perldoc Net::LDAP\" สำหรับข้อมูลเพิ่มเติมเกี่ยวกับพารามิเตอร์"
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
@@ -16391,12 +16327,12 @@ msgid "Allows agents to exchange the axis of a stat if they generate one."
 msgstr "อนุญาตให้ตัวแทนแลกเปลี่ยนแกนของสถิติถ้าพวกเขาสร้างแค่หนึ่ง"
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Allows agents to generate individual-related stats."
-msgstr "อนุญาตให้เอเย่นต์สร้างสถิติของแต่ละบุคคลที่เกี่ยวข้อง"
+msgid "Adds the following elements for use in stats: \"Agent/Owner\", \"Created by Agent/Owner\", \"Responsible\", \"Accounted time by Agent\"."
+msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Allows invalid agents to generate individual-related stats."
-msgstr "อนุญาตให้เอเย่นต์ที่ไม่ถูกต้องสร้างสถิติของแต่ละบุคคลที่เกี่ยวข้อง"
+msgid "Allows invalid agents to be used in stats. Stats::UseAgentElementInStats must be active."
+msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Shows all the customer identifiers in a multi-select field (not useful if you have a lot of customer identifiers)."
@@ -16509,22 +16445,6 @@ msgstr ""
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Default skin for the agent interface."
 msgstr "สกีนเริ่มต้นสำหรับอินเตอร์เฟซเอเย่นต์"
-
-#. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Default skin for the agent interface (slim version)."
-msgstr "สกีนเริ่มต้นสำหรับอินเตอร์เฟซเอเย่นต์ (รุ่นบาง)"
-
-#. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Balanced white skin by Felix Niklas."
-msgstr "รักษาความสมดุลของสกีนสีขาวโดย Felix Niklas"
-
-#. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Balanced white skin by Felix Niklas (slim version)."
-msgstr "รักษาความสมดุลของสกีนสีขาวโดย Felix Niklas (รุ่นบาง)"
-
-#. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "High contrast skin for visually impaired users."
-msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "The agent skin's InternalName which should be used in the agent interface. Please check the available skins in Frontend::Agent::Skins."
@@ -17361,6 +17281,22 @@ msgstr "กำหนด หากการจัดเรียงล่วง�
 #. XML Definition: Kernel/Config/Files/XML/Ticket.xml
 msgid "Defines the default sort order for all services in the service view, after priority sort."
 msgstr "กำหนดเกณฑ์การจัดเรียงเริ่มต้นสำหรับการบริการทั้งหมดที่แสดงในมุมมองการบริการหลังจากการจัดเรียงลำดับความสำคัญ"
+
+#. XML Definition: Kernel/Config/Files/XML/Ticket.xml
+msgid "Enable highlighting services based on ticket age."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Ticket.xml
+msgid "Sets the age in minutes (first level) for highlighting services that contain untouched tickets."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Ticket.xml
+msgid "Sets the age in minutes (second level) for highlighting services that contain untouched tickets."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Ticket.xml
+msgid "Activates a blinking mechanism of the service that contains the oldest ticket."
+msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Ticket.xml
 msgid "Activates time accounting."
@@ -20252,6 +20188,14 @@ msgstr ""
 msgid "Shows the title field in the NoteToLinkedTicket screen of the agent interface."
 msgstr ""
 
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "User preferences backend to use."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Loader module registration for the public interface."
+msgstr ""
+
 #. XML Definition: scripts/database/initial_insert.xml
 msgid "invalid-temporarily"
 msgstr "ไม่ถูกต้องชั่วคราว"
@@ -20267,6 +20211,10 @@ msgstr "กลุ่มของผู้บริหารทั้งหมด
 #. XML Definition: scripts/database/initial_insert.xml
 msgid "Group for statistics access."
 msgstr "กลุ่มสำหรับการเข้าถึงสถิติ"
+
+#. XML Definition: scripts/database/initial_insert.xml
+msgid "Group for time accounting web service access."
+msgstr ""
 
 #. XML Definition: scripts/database/initial_insert.xml
 msgid "new"
@@ -20720,13 +20668,9 @@ msgstr ""
 msgid "Remove selection"
 msgstr "ลบการคัดเลือก"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
-msgid "Do you really want to delete this generic agent job?"
-msgstr ""
-
-#. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericInterfaceInvoker.js
-msgid "Delete this Event Trigger"
-msgstr "ลบกระตุ้นกิจกรรมนี้"
+#. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericAgent.js
+msgid "An error occurred during communication."
+msgstr "เกิดข้อผิดพลาดในระหว่างการสื่อสาร"
 
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericAgent.js
 msgid "Duplicate event."
@@ -20735,10 +20679,6 @@ msgstr "กิจกรรมที่ซ้ำกัน"
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericAgent.js
 msgid "This event is already attached to the job, Please use a different one."
 msgstr "กิจกรรมนี้แนบมากับงานเป็นที่เรียบร้อยแล้ว โปรดใช้กิจกรรมอื่นแทน"
-
-#. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericAgent.js
-msgid "An error occurred during communication."
-msgstr "เกิดข้อผิดพลาดในระหว่างการสื่อสาร"
 
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericInterfaceDebugger.js
 msgid "Request Details"
@@ -20767,6 +20707,10 @@ msgstr ""
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericInterfaceInvoker.js
 msgid "Delete this Invoker"
 msgstr "ลบผู้ร้องขอนี้"
+
+#. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericInterfaceInvoker.js
+msgid "Delete this Event Trigger"
+msgstr "ลบกระตุ้นกิจกรรมนี้"
 
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericInterfaceInvokerEvent.js
 msgid "Sorry, the only existing condition can't be removed."
@@ -21240,10 +21184,6 @@ msgstr ""
 msgid "This element has children elements and can currently not be removed."
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsOverview.tt
-msgid "Do you really want to delete this statistic?"
-msgstr "คุณต้องการที่จะลบสถิตินี้หรือไม่?"
-
 #. JS File: var/httpd/htdocs/js/Core.Agent.TicketAction.js
 msgid "Select a customer ID to assign to this ticket"
 msgstr ""
@@ -21561,10 +21501,6 @@ msgstr "5 นาที"
 #. SysConfig
 msgid " 7 minutes"
 msgstr "7 นาที"
-
-#. SysConfig
-msgid "\"Slim\" skin which tries to save screen space for power users."
-msgstr "สกีน \"สลิม\" ซึ่งพยายามที่จะประหยัดพื้นที่หน้าจอสำหรับผู้ใช้ไฟฟ้า"
 
 #. SysConfig
 msgid "%s"
@@ -22363,10 +22299,6 @@ msgid "Date / Time"
 msgstr "วัน / เวลา"
 
 #. SysConfig
-msgid "Default (Slim)"
-msgstr "เริ่มต้น (Slim)"
-
-#. SysConfig
 msgid "Default agent name"
 msgstr ""
 
@@ -22739,10 +22671,6 @@ msgid "Hebrew"
 msgstr "ภาษาฮิบรู"
 
 #. SysConfig
-msgid "High Contrast"
-msgstr ""
-
-#. SysConfig
 msgid "Hindi"
 msgstr "ภาษาฮินดี"
 
@@ -22807,14 +22735,6 @@ msgid "Italian"
 msgstr "ภาษาอิตาลี"
 
 #. SysConfig
-msgid "Ivory"
-msgstr "ดิไอวอรี่"
-
-#. SysConfig
-msgid "Ivory (Slim)"
-msgstr "ดิไอวอรี่ (บาง)"
-
-#. SysConfig
 msgid "Japanese"
 msgstr "ภาษาญี่ปุ่น"
 
@@ -22877,10 +22797,6 @@ msgstr ""
 #. SysConfig
 msgid "Latvian"
 msgstr "ภาษาแลทเวีย"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "Left"
-msgstr "ซ้าย"
 
 #. SysConfig
 msgid "Link Object"
@@ -23483,10 +23399,6 @@ msgid "Search tickets."
 msgstr ""
 
 #. SysConfig
-msgid "SearchTemplate"
-msgstr ""
-
-#. SysConfig
 msgid "Second Christmas Day"
 msgstr "วันที่สองของ"
 
@@ -23926,7 +23838,7 @@ msgstr ""
 msgid "Ticket Responsible."
 msgstr ""
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 
@@ -24226,79 +24138,211 @@ msgstr "ย้อนกลับ"
 msgid "stats"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
-msgid "Show Valid"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
-msgid "Show All"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketProcess.tt
-msgid "New Process Ticket"
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBulk.tt
+msgid "Watch tickets"
 msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Defines the fully qualified domain name for external IDs generation (i.e. Message-ID, ContentID)."
-msgstr ""
-
-#. XML Definition: scripts/database/initial_insert.xml
-msgid "Group for time accounting web service access."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminState.tt
-msgid "This field must be a hexadecimal color code."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/TicketInformation.tt
-msgid "is invalid!"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/TicketInformation.tt
-msgid "is invalid"
+msgid "The shortcut icon for the customer interface."
 msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Global settings for all popup profiles."
+msgid "The Apple touch icon for the customer interface."
 msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Defines the global users popup profile."
+msgid "The shortcut icon for the agent interface."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "The Apple touch icon for the agent interface."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "The shortcut icon for the customer interface for the skin \"default\"."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "The Apple touch icon for the customer interface for skin \"default\"."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "The shortcut icon for the agent interface fot the skin \"default\"."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "The Apple touch icon for the agent interface for the skin \"default\"."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBulk.tt
+msgid "Mark tickets as seen"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBulk.tt
+msgid "Mark tickets as unseen"
+msgstr ""
+
+#. Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
+msgid "Mark article as unseen"
+msgstr ""
+
+#. Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
+msgid "Mark as unseen"
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Defines the config parameters available in the preferences view. The default redirect URL from SysConfig 'MarkTicketUnseenRedirectDefaultURL' is used if no selection is made by the agent."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Defines the redirect URL for setting a ticket article to 'unseen'."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Defines the config parameters available in the preferences view. The default redirect URL from SysConfig 'MarkTicketSeenRedirectDefaultURL' is used if no selection is made by the agent."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Defines the redirect URL for setting a ticket article to 'seen'."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Registers a link in the ticket menu to mark a ticket as unseen."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Registers a link in the ticket menu to mark a ticket as seen."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as unseen."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as seen."
 msgstr ""
 
 #. SysConfig
-msgid "Change your default popup profile settings."
+msgid "Configure which screen should be shown after marking a ticket or article as seen."
 msgstr ""
 
 #. SysConfig
-msgid "Popup Profile"
+msgid "Configure which screen should be shown after marking a ticket or article as unseen."
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "The horizontal distance of the window relative to the screen, in pixels."
+#. SysConfig
+msgid "Last viewed overview"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "Top"
+#. SysConfig
+msgid "Last viewed screen"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "The vertical distance of the window relative to the screen, in pixels."
+#. SysConfig
+msgid "Mark ticket as seen"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "Width"
+#. SysConfig
+msgid "Mark ticket as unseen"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "Width in pixels or percent."
+#. SysConfig
+msgid "Screen after marking as seen"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "Height"
+#. SysConfig
+msgid "Screen after marking as unseen"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "Height in pixels or percent."
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel \"agent\"."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel \"system\"."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Deletes orphaned sessions."
+msgstr ""
+
+#. Perl Module: Kernel/Modules/Installer.pm
+msgid "Error: You have the wrong database version installed (%s). You need at least version %s! "
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Sets the timeout (in seconds) for DNS resolver queries."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/FormElements/DraftNotifications.tt
+msgid "Please note that you have already one or more saved drafts for this action."
+msgstr ""
+
+#. Perl Module: Kernel/Modules/Installer.pm
+msgid "Error: Please set the value for innodb_file_per_table on your database to ON."
+msgstr ""
+
+#. Perl Module: Kernel/Modules/Installer.pm
+msgid "Error: Please set the value for innodb_default_row_format on your database to dynamic."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
+msgid "Setting character_set_client needs to be utf8mb4."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
+msgid "The setting character_set_database needs to be 'utf8mb4'."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
+msgid "There were tables found which do not have 'utf8mb4' as charset."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Dark skin for the agent interface."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Dark skin for the customer interface."
+msgstr ""
+
+#. SysConfig
+msgid "Dark"
+msgstr ""
+
+#. SysConfig
+msgid "This is the dark skin for the agent interface."
+msgstr ""
+
+#. SysConfig
+msgid "This is the dark skin for the customer interface."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+msgid "Save changes"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBounce.tt
+msgid "cancel"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
+msgid "Outbound Email for %s%s%s"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
+msgid "There were non-system tables found which do not have 'utf8mb4' as charset."
+msgstr ""
+
+#. SysConfig
+msgid "Mark as seen"
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized."
 msgstr ""
 

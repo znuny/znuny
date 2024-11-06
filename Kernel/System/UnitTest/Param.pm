@@ -14,8 +14,6 @@ use warnings;
 
 use File::Spec;
 
-use Kernel::System::VariableCheck qw(:all);
-
 our @ObjectDependencies = (
     'Kernel::System::Log',
     'Kernel::System::Web::Request',

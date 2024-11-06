@@ -41,7 +41,7 @@ my $ExpectedOutout = <<OUTPUT;
 
 \$Self->True(
     \$Success,
-    'TicketResponsibleSet to "NewTestUser" was successfull.',
+    'TicketResponsibleSet to "NewTestUser" was successful.',
 );
 
 OUTPUT

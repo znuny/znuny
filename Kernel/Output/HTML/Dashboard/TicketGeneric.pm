@@ -1215,26 +1215,10 @@ sub Run {
         if ( $HeaderColumn !~ m{\A DynamicField_}xms ) {
 
             $CSS = '';
-            my $Title = $LayoutObject->{LanguageObject}->Translate($HeaderColumn);
-
-            # Set title description.
-            if ( $Self->{SortBy} && $Self->{SortBy} eq $HeaderColumn ) {
-                my $TitleDesc = '';
-                if ( $TicketSearch{OrderBy} eq 'Down' ) {
-                    $CSS .= ' SortDescendingLarge';
-                    $TitleDesc = Translatable('sorted descending');
-                }
-                else {
-                    $CSS .= ' SortAscendingLarge';
-                    $TitleDesc = Translatable('sorted ascending');
-                }
-
-                $TitleDesc = $LayoutObject->{LanguageObject}->Translate($TitleDesc);
-                $Title .= ', ' . $TitleDesc;
-            }
 
             # translate the column name to write it in the current language
             my $TranslatedWord;
+
             if ( $HeaderColumn eq 'EscalationTime' ) {
                 $TranslatedWord = $LayoutObject->{LanguageObject}->Translate('Service Time');
             }
@@ -1264,6 +1248,25 @@ sub Run {
             }
             else {
                 $TranslatedWord = $LayoutObject->{LanguageObject}->Translate($HeaderColumn);
+            }
+
+            # Use the translated word also as title.
+            my $Title = $TranslatedWord;
+
+            # Set title description.
+            if ( $Self->{SortBy} && $Self->{SortBy} eq $HeaderColumn ) {
+                my $TitleDesc = '';
+                if ( $TicketSearch{OrderBy} eq 'Down' ) {
+                    $CSS .= ' SortDescendingLarge';
+                    $TitleDesc = Translatable('sorted descending');
+                }
+                else {
+                    $CSS .= ' SortAscendingLarge';
+                    $TitleDesc = Translatable('sorted ascending');
+                }
+
+                $TitleDesc = $LayoutObject->{LanguageObject}->Translate($TitleDesc);
+                $Title .= ', ' . $TitleDesc;
             }
 
             # add surrounding container
@@ -1941,7 +1944,7 @@ sub Run {
                     $BlockType = 'Translatable';
                     $DataValue = $Ticket{$Column};
                 }
-                elsif ( $Column eq 'Created' || $Column eq 'Changed' ) {
+                elsif ( $Column eq 'Created' || $Column eq 'Changed' || $Column eq 'LastMention' ) {
                     $BlockType = 'Time';
                     $DataValue = $Ticket{$Column};
                 }
@@ -2040,6 +2043,7 @@ sub Run {
                         Name => 'ContentLargeTicketGenericDynamicFieldLink',
                         Data => {
                             Value                       => $ValueStrg->{Value},
+                            ValueKey                    => $Value,
                             Title                       => $ValueStrg->{Title},
                             Link                        => $ValueStrg->{Link},
                             $DynamicFieldConfig->{Name} => $ValueStrg->{Title},
@@ -2170,6 +2174,7 @@ sub _InitialColumnFilter {
         Class       => $Class . ' Modernize',
         Translation => $TranslationOption,
         SelectedID  => '',
+        TreeView    => 1,
     );
 
     return $ColumnFilterHTML;
@@ -2279,7 +2284,7 @@ sub _ColumnFilterJSON {
     my $Data = [
         {
             Key   => 'DeleteFilter',
-            Value => uc $Label,
+            Value => '-',
         },
         {
             Key      => '-',

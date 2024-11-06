@@ -8,23 +8,23 @@ assignees: ''
 
 <!--
   You are amazing! 🚀
-  Thanks for reporting to Znuny Community project!
+  Thanks for reporting to the Znuny Community project!
   Please, DO NOT DELETE ANY TEXT from this template! (unless instructed).
 -->
 
-<!-- ❗If you believe your issue is security related please follow the [security guidelines](https://github.com/znuny/Znuny/blob/rel-6_0/SECURITY.md).❗ -->
+<!-- ❗If you believe your issue is security related please follow the [security guidelines](https://github.com/znuny/Znuny/blob/dev/SECURITY.md).❗ -->
 
 ### Environment
 
-- OS:           <!-- [e.g. Windows, MacOS, Linux] -->
-- Browser:      <!-- [e. g. Chrome, Firefox, Safari] -->
-- Znuny version: <!-- [e. g. 6.0.15] -->
+- Server OS: <!-- [e.g. Windows, MacOS, Linux] -->
+- Browser: <!-- [e. g. Chrome, Firefox, Safari] -->
+- Znuny version: <!-- [e. g. 7.0.12] -->
 
-### Expected behaviour
+### Expected behavior
 
 <!-- A clear and concise description of what you expected to happen. -->
 
-### Actual behaviour
+### Actual behavior
 
 <!-- A clear and concise description of what happened (the issue/bug/problem). -->
 

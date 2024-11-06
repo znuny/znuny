@@ -346,7 +346,7 @@ Returns:
 
     %List = {
         'example.com' => 'example.com Customer Inc.',
-        'acme.com'    => 'acme.com Acme, Inc.'
+        'acme.com'    => 'acme.com Acme, Inc.',
     };
 
 =cut

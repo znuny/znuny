@@ -185,7 +185,7 @@ Get URL used for article sender image.
 
 Returns:
 
-    $SenderImage = '//gravatar.com/avatar/28a58af1db24962e81212115e7cac685?s=80';
+    $SenderImage = 'https://gravatar.com/avatar/28a58af1db24962e81212115e7cac685?s=80';
 
 =cut
 
@@ -218,7 +218,7 @@ sub _ArticleSenderImage {
                 }
             }
             $Kernel::OM->Get('Kernel::System::Encode')->EncodeOutput( \$Email );
-            $Result = '//www.gravatar.com/avatar/' . md5_hex( lc $Email ) . '?s=' . $Size . '&d=' . $DefaultIcon;
+            $Result = 'https://www.gravatar.com/avatar/' . md5_hex( lc $Email ) . '?s=' . $Size . '&d=' . $DefaultIcon;
         }
     }
 

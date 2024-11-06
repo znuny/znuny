@@ -10,10 +10,9 @@ package Kernel::Modules::PreApplicationLastViews;
 
 use strict;
 use warnings;
+use utf8;
 
 our $ObjectManagerDisabled = 1;
-
-use Kernel::System::VariableCheck qw(:all);
 
 sub new {
     my ( $Type, %Param ) = @_;

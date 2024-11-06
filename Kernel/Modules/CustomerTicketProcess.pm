@@ -2229,8 +2229,8 @@ sub _RenderArticle {
         Name             => 'Article',
         MandatoryClass   => '',
         ValidateRequired => '',
-        Subject          => $Param{GetParam}{Subject},
-        Body             => $Param{GetParam}{Body},
+        Subject          => $Param{GetParam}->{Subject} || $Param{ActivityDialogField}->{Config}->{Subject},
+        Body             => $Param{GetParam}->{Body} || $Param{ActivityDialogField}->{Config}->{Body},
         LabelSubject     => $Param{ActivityDialogField}->{Config}->{LabelSubject}
             || $LayoutObject->{LanguageObject}->Translate("Subject"),
         LabelBody => $Param{ActivityDialogField}->{Config}->{LabelBody}
@@ -4310,7 +4310,7 @@ sub _CheckField {
     my $ParamObject  = $Kernel::OM->Get('Kernel::System::Web::Request');
     my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
 
-    # if no Display (or Display == 0) is commited
+    # if no Display (or Display == 0) is committed
     if ( !$Param{Display} ) {
 
         # Check if a DefaultValue is given

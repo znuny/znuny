@@ -10,6 +10,7 @@ package Kernel::Output::HTML::Preferences::LastViewsTypes;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::Language qw(Translatable);
 
@@ -105,11 +106,20 @@ sub Run {
         );
     }
 
-    if ( $Param{UserData}->{UserID} eq $Self->{UserID} ) {
+    # Update session data when the preference is updated by the user himself.
+    if ( $Param{UpdateSessionData} ) {
         $SessionObject->UpdateSessionID(
             SessionID => $Self->{SessionID},
             Key       => $Self->{ConfigItem}->{PrefKey},
             Value     => $LastViewTypes,
+        );
+    }
+    else {
+
+        # Delete the session when the preference is updated by an admin user
+        # to force a login with fresh session data for the affected user.
+        $SessionObject->RemoveSessionByUser(
+            UserLogin => $Param{UserData}->{UserLogin},
         );
     }
 

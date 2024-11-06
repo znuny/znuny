@@ -1,7 +1,8 @@
 <!--                                                                           -->
-<!--        Znuny: Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+<!--        Znuny: Copyright (C) 2021 Znuny GmbH, https://znuny.org/           -->
 <!--        OTRS: Copyright (C) 2001-2021 OTRS AG, https://otrs.com/           -->
 <!--    GNU General Public License: https://www.gnu.org/licenses/gpl-3.0.txt   -->
 <!--                                                                           -->
 
 ## nofilter(TidyAll::Plugin::Znuny::Legal::LicenseValidator)
+## nofilter(TidyAll::Plugin::Znuny::Legal::UpdateZnunyCopyright)

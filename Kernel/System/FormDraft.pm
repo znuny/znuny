@@ -65,22 +65,22 @@ sub new {
 get draft attributes
 
     my $FormDraft = $FormDraftObject->FormDraftGet(
-        FormDraftID    => 123,
-        GetContent => 1,                # optional, default 1
-        UserID     => 123,
+        FormDraftID => 123,
+        GetContent  => 1,                # optional, default 1
+        UserID      => 123,
     );
 
 Returns (with GetContent = 0):
 
     $FormDraft = {
-        FormDraftID    => 123,
-        ObjectType => 'Ticket',
-        ObjectID   => 12,
-        Action     => 'AgentTicketCompose',
-        CreateTime => '2016-04-07 15:41:15',
-        CreateBy   => 1,
-        ChangeTime => '2016-04-07 15:59:45',
-        ChangeBy   => 2,
+        FormDraftID => 123,
+        ObjectType  => 'Ticket',
+        ObjectID    => 12,
+        Action      => 'AgentTicketCompose',
+        CreateTime  => '2016-04-07 15:41:15',
+        CreateBy    => 1,
+        ChangeTime  => '2016-04-07 15:59:45',
+        ChangeBy    => 2,
     };
 
 Returns (without GetContent or GetContent = 1):
@@ -103,15 +103,15 @@ Returns (without GetContent or GetContent = 1):
             },
             # ...
         ],
-        FormDraftID    => 123,
-        ObjectType => 'Ticket',
-        ObjectID   => 12,
-        Action     => 'AgentTicketCompose',
-        CreateTime => '2016-04-07 15:41:15',
-        CreateBy   => 1,
-        ChangeTime => '2016-04-07 15:59:45',
-        ChangeBy   => 2,
-        Title      => 'my draft',
+        FormDraftID => 123,
+        ObjectType  => 'Ticket',
+        ObjectID    => 12,
+        Action      => 'AgentTicketCompose',
+        CreateTime  => '2016-04-07 15:41:15',
+        CreateBy    => 1,
+        ChangeTime  => '2016-04-07 15:59:45',
+        ChangeBy    => 2,
+        Title       => 'my draft',
     };
 
 =cut
@@ -448,7 +448,7 @@ remove draft
 
     my $Success = $FormDraftObject->FormDraftDelete(
         FormDraftID => 123,
-        UserID  => 123,
+        UserID      => 123,
     );
 
 =cut
@@ -609,10 +609,10 @@ sub FormDraftListGet {
 remove all potentially affected caches
 
     my $Success = $FormDraftObject->_DeleteAffectedCaches(
-        FormDraftID    => 1,                               # optional
-        ObjectType => 'Ticket',
-        ObjectID   => 12,
-        Action     => 'AgentTicketCompose',
+        FormDraftID => 1,                               # optional
+        ObjectType  => 'Ticket',
+        ObjectID    => 12,
+        Action      => 'AgentTicketCompose',
     );
 
 =cut

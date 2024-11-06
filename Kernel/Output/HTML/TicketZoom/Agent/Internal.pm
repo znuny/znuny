@@ -11,11 +11,10 @@ package Kernel::Output::HTML::TicketZoom::Agent::Internal;
 
 use strict;
 use warnings;
+use utf8;
 
 use parent 'Kernel::Output::HTML::TicketZoom::Agent::MIMEBase';
 
-our @ObjectDependencies = (
-
-);
+our @ObjectDependencies = ();
 
 1;

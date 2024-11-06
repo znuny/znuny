@@ -24,24 +24,11 @@ use Kernel::System::VariableCheck qw(:all);
 
 Kernel::System::DynamicField::Webservice::DirectRequest - Dynamic field web service direct request backend lib
 
+=head1 INHERITS
+
+L<Kernel::System::DynamicField::Webservice::Base>
+
 =head1 PUBLIC INTERFACE
-
-=head2 new()
-
-Creates an object
-
-    my $DynamicFieldWebserviceDirectRequestObject = $Kernel::OM->Get('Kernel::System::DynamicField::Webservice::DirectRequest');
-
-=cut
-
-sub new {
-    my ( $Type, %Param ) = @_;
-
-    my $Self = {};
-    bless( $Self, $Type );
-
-    return $Self;
-}
 
 =head2 Request()
 
@@ -103,6 +90,7 @@ sub Request {
         Invoker      => $Param{Invoker},
         Data         => {
             %{ $Param{Data} },
+            Limit       => $Param{Limit},
             SearchTerms => $Param{SearchTerms},
             UserID      => $Param{UserID},
         },

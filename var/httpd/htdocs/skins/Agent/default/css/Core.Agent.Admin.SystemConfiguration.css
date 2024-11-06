@@ -423,6 +423,7 @@ h2.SearchResults {
 .WidgetSimple.Setting .Header {
     cursor: pointer;
     overflow: hidden;
+    z-index: 5;
 }
 
 .Comparing .WidgetSimple.Setting .Header .ActionMenu {
@@ -642,6 +643,7 @@ h2.SearchResults {
 
 .WidgetSimple.Setting.IsLockedByMe .SettingContainer .Setting {
     overflow: unset;
+    overflow-x: auto;
 }
 
 .WidgetSimple.Setting:not(.IsLockedByMe):not(.MenuExpanded) .SettingContainer > fieldset {
@@ -749,6 +751,8 @@ h2.SearchResults {
 /* Widget Menu */
 .WidgetSimple.Setting  > .WidgetMenu.Hidden {
     margin-top: -58px;
+    opacity: 0;
+    height: 50px;
 }
 
 .WidgetSimple.Setting  > .WidgetMenu {
@@ -1028,6 +1032,10 @@ li > div:not(.IsLockedByMe) .HashItem .HashItem > .SettingContent > div.InputFie
     border-radius: var(--border-radius-sm);
     /*min-width: calc(100% + 20px);*/
     border: var(--border-width) var(--border-solid) var(--border-color);
+}
+
+.SettingContainer > fieldset > .Setting > .Hash {
+    min-width: 700px;
 }
 
 .Hash.FrontendNavigationHash {
@@ -1430,7 +1438,7 @@ li > div:not(.IsLockedByMe) .HashItem .HashItem > .SettingContent > div.InputFie
 }
 
 .IsLockedByMe .HashItem .SettingContent {
-    min-width: calc(100% - 190px); /* full width minus key + arrow width */
+    min-width: calc(100% - 196px); /* full width minus key + arrow width */
 }
 
 .ArrayItem .HashItem .SettingContent,
@@ -1677,6 +1685,12 @@ form.ImportExport fieldset {
 }
 
 /* Responsive */
+@media only screen and (min-width: 0px) and (max-width: 480px) {
+    .WidgetSimple.Setting > .WidgetMenu {
+        flex-flow: column;
+        align-items: stretch;
+    }
+}
 
 @media only screen and (min-width: 0px) and (max-width: 750px) {
 

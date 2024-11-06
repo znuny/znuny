@@ -736,7 +736,7 @@ sub _ReplaceAdditionalAttributes {
                 );
 
                 my $Charset = $AttachmentHTML{ContentType} || '';
-                $Charset =~ s/.+?charset=("|'|)(\w+)/$2/gi;
+                $Charset =~ s/.+?charset\s*=\s*("|'|)(\w+)/$2/gi;
                 $Charset =~ s/"|'//g;
                 $Charset =~ s/(.+?);.*/$1/g;
 

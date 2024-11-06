@@ -12,8 +12,6 @@ package Kernel::Output::HTML::Dashboard::Stats;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
-
 use Kernel::System::Stats;
 use Kernel::Output::HTML::Statistics::View;
 

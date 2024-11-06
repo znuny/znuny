@@ -412,11 +412,11 @@ Private methods
 Create a new communication entry.
 
     my $Success = $CommunicationLogObject->CommunicationStart(
-        Status => 'Processing', # (optional) Needs to be either 'Successful', 'Processing', 'Warning' or 'Failed'
-                                # In most of the cases, just 'Processing' will make sense at the very beginning
-                                # of a communication (Default: 'Processing').
-        AccountType =>          # (optional) The used account type
-        AccountID   =>          # (optional) The used account id
+        Status      => 'Processing',    # (optional) Needs to be either 'Successful', 'Processing', 'Warning' or 'Failed'
+                                        # In most of the cases, just 'Processing' will make sense at the very beginning
+                                        # of a communication (Default: 'Processing').
+        AccountType => 'AccountType',   # (optional) The used account type
+        AccountID   => 123,             # (optional) The used account id
     );
 
 Returns:

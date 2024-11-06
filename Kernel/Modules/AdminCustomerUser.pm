@@ -1040,8 +1040,8 @@ sub _Overview {
 sub _Edit {
     my ( $Self, %Param ) = @_;
 
-    # Get layout object.
-    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $LayoutObject    = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $HTMLUtilsObject = $Kernel::OM->Get('Kernel::System::HTMLUtils');
 
     my $Output = '';
 
@@ -1245,9 +1245,24 @@ sub _Edit {
             my $UseAutoComplete = $Kernel::OM->Get('Kernel::Config')->Get('AdminCustomerUser::UseAutoComplete');
 
             if ($UseAutoComplete) {
+                my $Value = $Param{ $Entry->[0] } || $Param{CustomerID} || '';
 
-                my $Value = $Param{ $Entry->[0] } || $Param{CustomerID};
-                $Param{Option} = '<input type="text" id="UserCustomerID" name="UserCustomerID" value="' . $Value . '"
+                my %SafeValue = $HTMLUtilsObject->Safety(
+                    String       => $Value,
+                    NoApplet     => 1,
+                    NoObject     => 1,
+                    NoEmbed      => 1,
+                    NoSVG        => 1,
+                    NoImg        => 1,
+                    NoIntSrcLoad => 0,
+                    NoExtSrcLoad => 1,
+                    NoJavaScript => 1,
+                );
+
+                my $SafeValue = $HTMLUtilsObject->ToHTML( String => $SafeValue{String} // '' );
+
+                $Param{Option}
+                    = '<input type="text" id="UserCustomerID" name="UserCustomerID" value="' . $SafeValue . '"
                     class="W50pc CustomerAutoCompleteSimple '
                     . $Param{RequiredClass} . ' '
                     . $Param{Errors}->{ $Entry->[0] . 'Invalid' }

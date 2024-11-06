@@ -124,7 +124,7 @@ Core.UI = (function (TargetNS) {
                 return false;
             }
 
-            // if tab doesnt exist or is already active, do nothing
+            // if tab doesn't exist or is already active, do nothing
             if ($TargetObj.length && !$TargetObj.hasClass('Active')) {
 
                 $ContainerObj.find('.Header > a').removeClass('Active');

@@ -11,8 +11,6 @@ package Kernel::System::UnitTest::ITSMConfigItem;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
-
 our @ObjectDependencies = (
     'Kernel::System::GeneralCatalog',
     'Kernel::System::ITSMConfigItem',

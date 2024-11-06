@@ -705,9 +705,11 @@ sub Run {
 
         push @ContainerNames, \%JSData;
 
-        if ( $BackendConfigKey eq 'DashboardBackend' && $Element{Config}->{Block} eq 'ContentLarge' ) {
-
+        if ( $Element{Config}->{Block} eq 'ContentLarge' ) {
             $Param{ActiveContentLargeWidgets}++;
+        }
+
+        if ( $BackendConfigKey eq 'DashboardBackend' && $Element{Config}->{Block} eq 'ContentLarge' ) {
             my $WidgetName = $Name;
             my $Class;
             if ( $Self->{UserDashboardWidgetExpand} && $Self->{UserDashboardWidgetExpand} eq $WidgetName ) {

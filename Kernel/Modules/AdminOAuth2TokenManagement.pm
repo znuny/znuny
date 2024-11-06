@@ -10,6 +10,7 @@ package Kernel::Modules::AdminOAuth2TokenManagement;
 
 use strict;
 use warnings;
+use utf8;
 
 use File::Basename;
 
@@ -184,6 +185,10 @@ sub _Overview {
 
     my @TokenConfigs = $OAuth2TokenConfigObject->DataListGet(
         UserID => $Self->{UserID},
+    );
+
+    $LayoutObject->Block(
+        Name => 'Filter',
     );
 
     TOKENCONFIG:

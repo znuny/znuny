@@ -300,7 +300,7 @@ my @Tests = (
 
 for my $Test (@Tests) {
 
-    $Kernel::OM->Get('Kernel::Config')->Set(
+    $ConfigObject->Set(
         Key   => 'TimeWorkingHours',
         Value => $Test->{WorkingHours},
     );
@@ -310,7 +310,7 @@ for my $Test (@Tests) {
         Value => $Test->{VacationDays},
     );
 
-    $Kernel::OM->Get('Kernel::Config')->Set(
+    $ConfigObject->Set(
         Key   => 'OTRSTimeZone',
         Value => $Test->{OTRSTimeZone},
     );

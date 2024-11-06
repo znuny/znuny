@@ -217,7 +217,7 @@ $Selenium->RunTest(
             $Selenium->execute_script('$(".EditXAxis").click();');
             $Selenium->WaitFor(
                 JavaScript =>
-                    'return typeof($) === "function" && $(".Dialog.Modal").length && $("#DialogButton1").length;'
+                    'return typeof($) === "function" && $(".Dialog.Modal").length && $("#DialogButton2").length;'
             );
 
             if ( $StatsData->{Object} ne 'Kernel::System::Stats::Dynamic::TicketList' ) {
@@ -239,7 +239,7 @@ $Selenium->RunTest(
                     );
                 }
             }
-            $Selenium->find_element( "#DialogButton1", 'css' )->click();
+            $Selenium->find_element( "#DialogButton2", 'css' )->click();
             $Selenium->WaitFor( JavaScript => 'return typeof($) === "function" && !$(".Dialog.Modal").length;' );
 
             # Check error message if there is set wrong invalid date for x-axis
@@ -253,7 +253,7 @@ $Selenium->RunTest(
                 $Selenium->find_element( ".EditXAxis", 'css' )->click();
                 $Selenium->WaitFor(
                     JavaScript =>
-                        'return typeof($) === "function" && $(".Dialog.Modal").length && $("#DialogButton1").length;'
+                        'return typeof($) === "function" && $(".Dialog.Modal").length && $("#DialogButton2").length;'
                 );
 
                 $Selenium->InputFieldValueSet(
@@ -265,7 +265,7 @@ $Selenium->RunTest(
                     Value   => 31,
                 );
 
-                $Selenium->find_element( "#DialogButton1", 'css' )->click();
+                $Selenium->find_element( "#DialogButton2", 'css' )->click();
                 $Selenium->WaitFor( JavaScript => 'return typeof($) === "function" && !$(".Dialog.Modal").length;' );
             }
 
@@ -274,7 +274,7 @@ $Selenium->RunTest(
             $Selenium->execute_script('$(".EditYAxis").click();');
 
             $Selenium->WaitFor( JavaScript => 'return typeof($) === "function" && $(".Dialog.Modal").length;' );
-            $Selenium->WaitFor( JavaScript => 'return $("#EditDialog select").length && $("#DialogButton1").length;' );
+            $Selenium->WaitFor( JavaScript => 'return $("#EditDialog select").length && $("#DialogButton2").length;' );
 
             $Selenium->InputFieldValueSet(
                 Element => '#EditDialog select',
@@ -294,7 +294,7 @@ $Selenium->RunTest(
                     Value   => $StatsData->{OrderBy},
                 );
             }
-            $Selenium->find_element( "#DialogButton1", 'css' )->click();
+            $Selenium->find_element( "#DialogButton2", 'css' )->click();
             $Selenium->WaitFor( JavaScript => 'return typeof($) === "function" && !$(".Dialog.Modal").length;' );
 
             # Check Restrictions configuration dialog.
@@ -321,7 +321,7 @@ $Selenium->RunTest(
                 Value   => $StatsData->{Restrictionvalue},
             );
 
-            $Selenium->find_element( "#DialogButton1", 'css' )->click();
+            $Selenium->find_element( "#DialogButton2", 'css' )->click();
             $Selenium->WaitFor( JavaScript => 'return typeof($) === "function" && !$(".Dialog.Modal").length;' );
 
             sleep 2;
@@ -457,13 +457,11 @@ $Selenium->RunTest(
 
             # Delete created test statistics.
             $Selenium->execute_script('window.Core.App.PageLoadComplete = false;');
-            $Selenium->find_element(
-                "//a[contains(\@href, \'Action=AgentStatistics;Subaction=DeleteAction;StatID=$StatsIDLast\' )]"
-            )->click();
+            $Selenium->find_element("//a[contains(\@data-statid, \'$StatsIDLast\' )]")->click();
 
-            $Selenium->WaitFor( AlertPresent => 1 );
-            sleep 1;
-            $Selenium->accept_alert();
+            $Selenium->WaitFor( JavaScript => 'return typeof($) === "function" && $(".Dialog.Modal").length;' );
+            $Selenium->find_element( "#DialogButton2", 'css' )->click();
+
             $Selenium->WaitFor(
                 JavaScript =>
                     'return typeof(Core) == "object" && typeof(Core.App) == "object" && Core.App.PageLoadComplete'

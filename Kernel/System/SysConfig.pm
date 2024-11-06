@@ -12,7 +12,6 @@ package Kernel::System::SysConfig;
 use strict;
 use warnings;
 
-use File::Copy;
 use Time::HiRes();
 use utf8;
 
@@ -394,15 +393,15 @@ sub SettingGet {
 Update an existing SysConfig Setting.
 
     my %Result = $SysConfigObject->SettingUpdate(
-        Name                   => 'Setting::Name',           # (required) setting name
-        IsValid                => 1,                         # (optional) 1 or 0, modified 0
-        EffectiveValue         => $SettingEffectiveValue,    # (optional)
-        UserModificationActive => 0,                         # (optional) 1 or 0, modified 0
-        TargetUserID           => 2,                         # (optional) ID of the user for which the modified setting is meant,
-                                                             #   leave it undef for global changes.
-        ExclusiveLockGUID      => $LockingString,            # the GUID used to locking the setting
-        UserID                 => 1,                         # (required) UserID
-        NoValidation           => 1,                         # (optional) no value type validation.
+        Name                   => 'Setting::Name',          # (required) setting name
+        IsValid                => 1,                        # (optional) 1 or 0, modified 0
+        EffectiveValue         => $SettingEffectiveValue,   # (optional)
+        UserModificationActive => 0,                        # (optional) 1 or 0, modified 0
+        TargetUserID           => 2,                        # (optional) ID of the user for which the modified setting is meant,
+                                                            #   leave it undef for global changes.
+        ExclusiveLockGUID      => $LockingString,           # the GUID used to locking the setting
+        UserID                 => 1,                        # (required) UserID
+        NoValidation           => 1,                        # (optional) no value type validation.
     );
 
 Returns:
@@ -786,9 +785,9 @@ Returns:
                                             # 1 - locked to another user
                                             # 2 - locked to provided user
         User   => {                         # User data, provided only if Locked = 1
-            UserLogin => ...,
+            UserLogin     => ...,
             UserFirstname => ...,
-            UserLastname => ...,
+            UserLastname  => ...,
             # ...
         },
     );
@@ -858,14 +857,14 @@ Calculate effective value for a given parsed XML structure.
             {
                 'Item' => [
                     {
-                        'ValueType' => 'String',
-                        'Content' => '3600',
+                        'ValueType'  => 'String',
+                        'Content'    => '3600',
                         'ValueRegex' => ''
                     },
                 ],
             },
             Objects => {
-                Select => { ... },
+                Select     => { ... },
                 PerlModule => { ... },
                 # ...
             }
@@ -1197,10 +1196,10 @@ Wrapper for Kernel::Output::HTML::SysConfig::SettingAddItem() - Returns response
         SettingStructure  => [],         # (required) array that contains structure
                                          #  where a new item should be inserted (can be empty)
         Setting           => {           # (required) Setting hash (from SettingGet())
-            'DefaultID' => '8905',
+            'DefaultID'    => '8905',
             'DefaultValue' => [ 'Item 1', 'Item 2' ],
-            'Description' => 'Simple array item(Min 1, Max 3).',
-            'Name' => 'TestArray',
+            'Description'  => 'Simple array item(Min 1, Max 3).',
+            'Name'         => 'TestArray',
             # ...
         },
         Key               => 'HashKey',  # (optional) hash key
@@ -1327,7 +1326,7 @@ sub SettingsUpdatedList {
 Check if provided EffectiveValue matches structure defined in DefaultSetting. Also returns EffectiveValue that might be changed.
 
     my %Result = $SysConfigObject->SettingEffectiveValueCheck(
-        EffectiveValue => 'open',     # (optional)
+        EffectiveValue   => 'open',     # (optional)
         XMLContentParsed => {         # (required)
             Value => [
                 {
@@ -1339,12 +1338,12 @@ Check if provided EffectiveValue matches structure defined in DefaultSetting. Al
                 },
             ],
         },
-        StoreCache            => 1,               # (optional) Store result in the Cache. Default 0.
-        SettingUID            => 'Default1234',   # (required if StoreCache)
-        NoValidation          => 1,               # (optional) no value type validation.
-        CurrentSystemTime     => 1507894796935,   # (optional) Use provided 1507894796935, otherwise calculate
-        ExpireTime            => 1507894896935,   # (optional) Use provided ExpireTime for cache, otherwise calculate
-        UserID                => 1,               # (required) UserID
+        StoreCache        => 1,               # (optional) Store result in the Cache. Default 0.
+        SettingUID        => 'Default1234',   # (required if StoreCache)
+        NoValidation      => 1,               # (optional) no value type validation.
+        CurrentSystemTime => 1507894796935,   # (optional) Use provided 1507894796935, otherwise calculate
+        ExpireTime        => 1507894896935,   # (optional) Use provided ExpireTime for cache, otherwise calculate
+        UserID            => 1,               # (required) UserID
     );
 
 Returns:
@@ -1983,11 +1982,11 @@ sub SettingEffectiveValueCheck {
 Reset the modified value to the default value.
 
     my $Result = $SysConfigObject->SettingReset(
-        Name                  => 'Setting Name',                # (required) Setting name
-        TargetUserID          => 2,                             # (optional) UserID for settings in AgentPreferences
-                                                                # or
-        ExclusiveLockGUID     => $LockingString,                # (optional) the GUID used to locking the setting
-        UserID                => 1,                             # (required) UserID that creates modification
+        Name              => 'Setting Name',                # (required) Setting name
+        TargetUserID      => 2,                             # (optional) UserID for settings in AgentPreferences
+                                                            # or
+        ExclusiveLockGUID => $LockingString,                # (optional) the GUID used to locking the setting
+        UserID            => 1,                             # (required) UserID that creates modification
     );
 
 Returns:
@@ -2090,9 +2089,9 @@ Returns:
 
     %Result = (
        'ACL::CacheTTL' => {
-            'Category' => 'OTRS',
+            'Category'    => 'OTRS',
             'IsInvisible' => '0',
-            'Metadata' => "ACL::CacheTTL--- '3600'
+            'Metadata'    => "ACL::CacheTTL--- '3600'
 Cache-Zeit in Sekunden f\x{fc}r Datenbank ACL-Backends.",
         # ...
     );
@@ -2156,11 +2155,11 @@ Returns:
     @Path = (
         {
             'Value' => 'Frontend',
-            'Name' => 'Frontend',
+            'Name'  => 'Frontend',
         },
         {
             'Value' => 'Frontend::Agent',
-            'Name' => 'Agent',
+            'Name'  => 'Agent',
         },
         # ...
     );
@@ -2745,17 +2744,17 @@ Returns navigation tree in the hash format.
         RootNavigation         => 'Parent',     # (optional) If provided only sub groups of the root navigation are returned.
         UserModificationActive => 1,            # (optional) Return settings that can be modified on user level only.
         IsValid                => 1,            # (optional) By default, display all settings.
-        Category               => 'OTRS'        # (optional)
+        Category               => 'OTRS',       # (optional)
     );
 
 Returns:
 
     %Result = (
         'Core' => {
-            'Core::Cache' => {},
+            'Core::Cache'           => {},
             'Core::CustomerCompany' => {},
-            'Core::CustomerUser' => {},
-            'Core::Daemon' => {
+            'Core::CustomerUser'    => {},
+            'Core::Daemon'          => {
                 'Core::Daemon::ModuleRegistration' => {},
             },
             # ...
@@ -2982,7 +2981,7 @@ Returns:
             ExclusiveLockExpiryTime  => '2016-05-29 11:09:04',
             CreateTime               => "2016-05-29 11:04:04",
             ChangeTime               => "2016-05-29 11:04:04",
-            OverriddenFileName        => 'ZZZDefauls.pm'
+            OverriddenFileName       => 'ZZZDefauls.pm',
         },
         {
             DefaultID     => 321,
@@ -3151,7 +3150,7 @@ Returns:
         {
             DefaultID => '124',
             Name      => 'SettingName2',
-            IsDirty   => 0
+            IsDirty   => 0,
         },
         # ...
     );
@@ -3178,7 +3177,7 @@ Returns list of enabled settings that have invalid effective value.
 
 Returns:
 
-    @List = ( "Setting1", "Setting5", ... );
+    @List = ( "Setting1", "Setting5" );
 
 =cut
 
@@ -3265,13 +3264,13 @@ sub ConfigurationInvalidList {
 Write configuration items from database into a perl module file.
 
     my %Result = $SysConfigObject->ConfigurationDeploy(
-        Comments            => "Some comments",     # (optional)
-        NoValidation        => 0,                   # (optional) 1 or 0, default 0, skips settings validation
-        UserID              => 123,                 # if ExclusiveLockGUID is used, UserID must match the user that creates the lock
-        Force               => 1,                   # (optional) proceed even if lock is set to another user
-        NotDirty            => 1,                   # (optional) do not use any values from modified dirty settings
-        AllSettings         => 1,                   # (optional) use dirty modified settings from all users
-        DirtySettings       => [                    # (optional) use only this dirty modified settings from the current user
+        Comments      => "Some comments",     # (optional)
+        NoValidation  => 0,                   # (optional) 1 or 0, default 0, skips settings validation
+        UserID        => 123,                 # if ExclusiveLockGUID is used, UserID must match the user that creates the lock
+        Force         => 1,                   # (optional) proceed even if lock is set to another user
+        NotDirty      => 1,                   # (optional) do not use any values                 from modified dirty settings
+        AllSettings   => 1,                   # (optional) use dirty modified settings           from all users
+        DirtySettings => [                    # (optional) use only this dirty modified settings from the current user
             'SettingOne',
             'SettingTwo',
         ],
@@ -4379,7 +4378,7 @@ Returns:
     %Categories = (
         All => {
             DisplayName => 'All Settings',
-            Files => [],
+            Files       => [],
         },
         OTRS => {
             DisplayName => 'Znuny',
@@ -4454,6 +4453,7 @@ sub ConfigurationCategoriesGet {
         my $DisplayName = $ConfigObject->Get("SystemConfiguration::Category::Name::$PackageName") || $PackageName;
 
         $Result{$PackageName} = {
+            PackageName => $PackageName,
             DisplayName => $DisplayName,
             Files       => \@XMLFiles,
         };
@@ -6309,7 +6309,14 @@ sub CreateZZZAAutoBackup {
     my $BackupDir              = "$Home/Kernel/Config/Backups/";
     my $ZZZAAutoFilePath       = "$Home/Kernel/Config/Files/ZZZAAuto.pm";
     my $ZZZAAutoBackupFilePath = "$Home/Kernel/Config/Backups/ZZZAAuto.pm";
+    my $FileClass              = "Kernel::Config::Files::ZZZAAuto";
+    my $BackupFileClass        = "Kernel::Config::Backups::ZZZAAuto";
 
+    if ( -f $ZZZAAutoBackupFilePath ) {
+        $MainObject->FileDelete(
+            Location => $ZZZAAutoBackupFilePath
+        );
+    }
     return if !-f $ZZZAAutoFilePath;
 
     # create backups directory if not existing
@@ -6317,7 +6324,22 @@ sub CreateZZZAAutoBackup {
         return if !mkdir $BackupDir;
     }
 
-    return if !copy( $ZZZAAutoFilePath, $ZZZAAutoBackupFilePath );
+    my $ContentSCALARRef = $MainObject->FileRead(
+        Location => $ZZZAAutoFilePath,
+        Mode     => 'utf8',
+        Type     => 'Local',
+        Result   => 'SCALAR',
+    );
+
+    my $ZZZAAutoData = ${$ContentSCALARRef};
+
+    # Search and replace package from Files to Backups
+    $ZZZAAutoData =~ s{package $FileClass}{package $BackupFileClass}g;
+
+    return if !$MainObject->FileWrite(
+        Location => $ZZZAAutoBackupFilePath,
+        Content  => \$ZZZAAutoData,
+    );
 
     return 1;
 }

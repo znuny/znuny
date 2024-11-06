@@ -26,7 +26,6 @@ $Selenium->RunTest(
         my $ArticleBackendInternalObject = $Kernel::OM->Get('Kernel::System::Ticket::Article::Backend::Internal');
         my $SystemAddressObject          = $Kernel::OM->Get('Kernel::System::SystemAddress');
         my $QueueObject                  = $Kernel::OM->Get('Kernel::System::Queue');
-        my $CryptPGPObject               = $Kernel::OM->Get('Kernel::System::Crypt::PGP');
         my $TicketObject                 = $Kernel::OM->Get('Kernel::System::Ticket');
         my $ArticleObject                = $Kernel::OM->Get('Kernel::System::Ticket::Article');
         my $DBObject                     = $Kernel::OM->Get('Kernel::System::DB');
@@ -303,7 +302,7 @@ $Selenium->RunTest(
 
         # Delete test PGP keys.
         for my $Count ( 1 .. 2 ) {
-            my @Keys = $CryptPGPObject->KeySearch(
+            my @Keys = $Kernel::OM->Get('Kernel::System::Crypt::PGP')->KeySearch(
                 Search => $SystemAddressEmail,
             );
 

@@ -422,8 +422,8 @@ sub _SubmitResults {
     $Kernel::OM->Get('Kernel::Config')->Set(
         Key   => 'SupportDataCollector::DisablePlugins',
         Value => [
-            'Kernel::System::SupportDataCollector::Plugin::OTRS::DaemonRunning',
-            'Kernel::System::SupportDataCollector::Plugin::OTRS::DefaultUser',
+            'Kernel::System::SupportDataCollector::Plugin::Znuny::DaemonRunning',
+            'Kernel::System::SupportDataCollector::Plugin::Znuny::DefaultUser',
         ],
     );
 

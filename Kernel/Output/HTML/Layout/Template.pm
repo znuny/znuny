@@ -76,7 +76,7 @@ sub Output {
         $Self->FatalError();
     }
 
-    # asure compatibility with old KeepScriptTags parameter
+    # ensure compatibility with old KeepScriptTags parameter
     if ( $Param{KeepScriptTags} && !$Param{AJAX} ) {
         $Param{AJAX} = $Param{KeepScriptTags};
     }

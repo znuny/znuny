@@ -593,7 +593,7 @@ $Selenium->RunTest(
                     'return typeof($) === "function" && !$("#Dashboard0120-TicketNew-box.Loading").length'
             );
 
-            # Verify if dynamic field values containing tree seperators (::) are filtered correctly.
+            # Verify if dynamic field values containing tree separators (::) are filtered correctly.
             $Selenium->WaitFor(
                 JavaScript => 'return typeof($) === "function" && $("a[title=\"' . $DynamicFieldName . '\"]").length'
             );

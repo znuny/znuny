@@ -20,6 +20,13 @@ $Kernel::OM->ObjectParamAdd(
     },
 );
 
+my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+$ConfigObject->Set(
+    Key   => 'DefaultLanguage',
+    Value => 'en',
+);
+
+my $HelperObject              = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
 my $ZnunyHelperObject         = $Kernel::OM->Get('Kernel::System::ZnunyHelper');
 my $LayoutObject              = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
 my $DynamicFieldObject        = $Kernel::OM->Get('Kernel::System::DynamicField');
@@ -27,7 +34,6 @@ my $DynamicFieldBackendObject = $Kernel::OM->Get('Kernel::System::DynamicField::
 my $ParamObject               = $Kernel::OM->Get('Kernel::System::Web::Request');
 my $UnitTestWebserviceObject  = $Kernel::OM->Get('Kernel::System::UnitTest::Webservice');
 my $WebserviceObject          = $Kernel::OM->Get('Kernel::System::GenericInterface::Webservice');
-my $HelperObject              = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
 
 my $WebserviceName = 'DynamicFieldWebservice';
 my $DynamicField   = $WebserviceName . 'Driver';
@@ -138,18 +144,32 @@ my $DynamicFieldHTML = $DynamicFieldBackendObject->EditFieldRender(
     AJAXUpdate         => 1,
 );
 
+my ($InputFieldUUID) = $DynamicFieldHTML->{Field} =~ m{data-input-field-uuid="(.+?)"};
+
 $Self->IsDeeply(
     $DynamicFieldHTML,
     {
         'Label' =>
             "<div class='label-wrapper'><label id='LabelDynamicField_DynamicFieldWebserviceDriverMultiselect' for='DynamicField_DynamicFieldWebserviceDriverMultiselect'>DynamicFieldWebserviceDriverMultiselect</label></div>",
         'Field' =>
-            '<select data-dynamic-field-name="DynamicFieldWebserviceDriverMultiselect" data-dynamic-field-type="WebserviceMultiselect" data-selected-value-field-name="DynamicField_DynamicFieldWebserviceDriverMultiselect" data-autocomplete-field-name="DynamicField_DynamicFieldWebserviceDriverMultiselect_Search" data-autocomplete-min-length="3" data-query-delay="1" data-default-search-term="" data-ticket-id="'
+            '<select  data-dynamic-field-name="DynamicFieldWebserviceDriverMultiselect" data-dynamic-field-type="WebserviceMultiselect" data-selected-value-field-name="DynamicField_DynamicFieldWebserviceDriverMultiselect" data-autocomplete-field-name="DynamicField_DynamicFieldWebserviceDriverMultiselect_Search" data-autocomplete-min-length="3" data-query-delay="1" data-default-search-term="" data-ticket-id="'
             . $TicketID
-            . '" class="DynamicFieldText Modernize W50pc" id="DynamicField_DynamicFieldWebserviceDriverMultiselect" multiple="multiple" name="DynamicField_DynamicFieldWebserviceDriverMultiselect">
+            . '" data-input-field-uuid="'
+            . $InputFieldUUID
+            . '" class="DynamicFieldMultiselect Modernize W50pc" id="DynamicField_DynamicFieldWebserviceDriverMultiselect" multiple="multiple" name="DynamicField_DynamicFieldWebserviceDriverMultiselect">
   <option value="">-</option>
   <option value=" "></option>
-</select>',
+</select><div id="DynamicField_DynamicFieldWebserviceDriverMultiselectError" class="TooltipErrorMessage">
+    <p>
+        This field is required.
+    </p>
+</div>
+<div id="DynamicField_DynamicFieldWebserviceDriverMultiselectServerError" class="TooltipErrorMessage">
+    <p>
+        This field is required.
+    </p>
+</div>
+',
     },
     'EditFieldRender',
 );

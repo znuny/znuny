@@ -213,10 +213,10 @@ get signature list
 
 returns:
 
-        %List = (
-          '1' => 'Some Name' ( Filname ),
-          '2' => 'Some Name' ( Filname ),
-          '3' => 'Some Name' ( Filname ),
+    %List = (
+        '1' => 'Some Name',
+        '2' => 'Some Name',
+        '3' => 'Some Name',
     );
 
 =cut

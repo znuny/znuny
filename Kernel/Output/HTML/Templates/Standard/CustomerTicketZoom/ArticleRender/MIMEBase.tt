@@ -6,12 +6,21 @@
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
+## nofilter(TidyAll::Plugin::Znuny::TT::ScriptUsage)
 
 <li class="[% Data.SenderType | html %]-[% Data.IsVisibleForCustomer | html %] [% Data.Class | html %]">
     <div class="MessageHeader">
         <a href="[% Env("Baselink") %]Action=[% Env("Action") %];TicketNumber=[% Data.TicketNumber | uri %];TicketID=[% Data.TicketID | uri %];ArticleID=[% Data.ArticleID | uri %]">
-            <div class="message-user-avatar">
-                <img src="//www.gravatar.com/avatar/98c188b4d137054757d5659a26994c81?s=100&amp;d=mp">
+            <div class="Avatar">
+                [% IF Config("Frontend::AvatarEngine") == 'Gravatar' && Data.SenderImage %]
+                    <div class="ArticleSenderImage">
+                        <img src="[% Data.SenderImage | url %]" title="[% Data.From | html %]" />
+                    </div>
+                [% ELSE %]
+                    <div class="ArticleSenderInitials">
+                        <span>[% Data.SenderInitials | html %]</span>
+                    </div>
+                [% END %]
             </div>
 
             <div class="message-info">
@@ -92,6 +101,21 @@
         </div>
 
         <div class="MessageContent">
+# execute IFrame JS asynchronously. Otherwise it could happen before our API was loaded
+# the following JS code must be within the template, otherwise it could happen, that also this code itself is not loaded yet
+<script>
+function CheckIFrameHeight(IFrameID) {
+    if (typeof Core === 'object' && typeof Core.Customer === 'object' && typeof Core.Customer.TicketZoom === 'object') {
+        Core.Customer.TicketZoom.CalculateHeight($('#' + IFrameID));
+    }
+    else {
+        window.setTimeout(function () {
+            CheckIFrameHeight(IFrameID);
+        }, 500);
+    }
+}
+</script>
+
 [% IF Data.HTML %]
     [% IF Data.BodyHTMLLoad %]
         [% IF Data.BrowserLinkMessage %]

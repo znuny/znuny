@@ -14,7 +14,7 @@
 [% RenderBlockStart("LabelSpan") %]
     <span class="Marker">*</span>
 [% RenderBlockEnd("LabelSpan") %]
-    <a href="#" id="OwnerSelectionGetAll" class="GetAllAJAX icon-hover" title="[% Translate(" Get all") | html %]">
+    <a href="#" id="OwnerSelectionGetAll" class="GetAllAJAX icon-hover" title="[% Translate("Get all") | html %]">
         <span>[% Translate("Get all") | html %]</span>
         <i class="fa fa-refresh"></i>
     </a>

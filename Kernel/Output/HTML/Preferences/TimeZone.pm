@@ -11,6 +11,7 @@ package Kernel::Output::HTML::Preferences::TimeZone;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::Language qw(Translatable);
 use Kernel::System::DateTime;
@@ -38,8 +39,10 @@ sub new {
 sub Param {
     my ( $Self, %Param ) = @_;
 
+    my $ParamObject = $Kernel::OM->Get('Kernel::System::Web::Request');
+
     my $PreferencesKey   = $Self->{ConfigItem}->{PrefKey};
-    my $SelectedTimeZone = $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => $PreferencesKey );
+    my $SelectedTimeZone = $ParamObject->GetParam( Param => $PreferencesKey );
 
     # Use stored time zone only if it's valid. It can happen that user preferences store an old-style offset which is
     #   not valid anymore. Please see bug#13374 for more information.
@@ -78,11 +81,13 @@ sub Param {
 sub Run {
     my ( $Self, %Param ) = @_;
 
+    my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
+    my $SessionObject = $Kernel::OM->Get('Kernel::System::AuthSession');
+
     for my $Key ( sort keys %{ $Param{GetParam} } ) {
         for my $Value ( @{ $Param{GetParam}->{$Key} } ) {
 
-            # pref update db
-            if ( !$Kernel::OM->Get('Kernel::Config')->Get('DemoSystem') ) {
+            if ( !$ConfigObject->Get('DemoSystem') ) {
                 $Self->{UserObject}->SetPreferences(
                     UserID => $Param{UserData}->{UserID},
                     Key    => $Key,
@@ -90,15 +95,23 @@ sub Run {
                 );
             }
 
-            # update SessionID
-            if ( $Param{UserData}->{UserID} eq $Self->{UserID} ) {
-                $Kernel::OM->Get('Kernel::System::AuthSession')->UpdateSessionID(
+            # Update session data when the preference is updated by the user himself.
+            if ( $Param{UpdateSessionData} ) {
+                $SessionObject->UpdateSessionID(
                     SessionID => $Self->{SessionID},
                     Key       => $Key,
                     Value     => $Value,
                 );
             }
         }
+    }
+
+    # Delete the session when the preference is updated by an admin user
+    # to force a login with fresh session data for the affected user.
+    if ( !$Param{UpdateSessionData} ) {
+        $SessionObject->RemoveSessionByUser(
+            UserLogin => $Param{UserData}->{UserLogin},
+        );
     }
 
     $Self->{Message} = Translatable('Time zone updated successfully!');

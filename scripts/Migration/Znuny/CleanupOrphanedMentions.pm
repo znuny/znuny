@@ -11,6 +11,7 @@ package scripts::Migration::Znuny::CleanupOrphanedMentions;    ## no critic
 
 use strict;
 use warnings;
+use utf8;
 
 use parent qw(scripts::Migration::Base);
 

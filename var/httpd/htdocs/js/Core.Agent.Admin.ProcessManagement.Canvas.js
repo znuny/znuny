@@ -794,7 +794,7 @@ Core.Agent.Admin.ProcessManagement.Canvas = (function (TargetNS) {
                             StartElement: StartElement,
                             EndElement: EndElement
                         };
-                        TargetNS.HighlightTransitionLabel(labelOverlay, StartElement, EndElement);
+                        TargetNS.HighlightTransitionLabel(labelOverlay);
                         originalEvent.stopPropagation();
                         return false;
                     },
@@ -834,7 +834,7 @@ Core.Agent.Admin.ProcessManagement.Canvas = (function (TargetNS) {
             // Do not open path dialog for dummy connections
             // dblclick on overlays (e.g. labels) propagate to the connection
             // prevent opening path dialog twice if clicked on label
-            if (EndActivityObject !== 'Dummy' && !$(Event.srcElement).hasClass('TransitionLabel')) {
+            if (EndActivityObject.elementId !== 'Dummy' && !$(Event.srcElement).hasClass('TransitionLabel')) {
                 Core.Agent.Admin.ProcessManagement.ShowOverlay();
 
                 if (!Core.Config.Get('SessionIDCookie') && PopupPath.indexOf(SessionData[Core.Config.Get('SessionName')]) === -1) {
@@ -842,6 +842,22 @@ Core.Agent.Admin.ProcessManagement.Canvas = (function (TargetNS) {
                 }
 
                 Core.UI.Popup.OpenPopup(PopupPath, 'Path');
+            } else {
+                Core.UI.Dialog.ShowContentDialog(
+                    $('#Dialogs #TransitionMissingActivityDialog'),
+                    Core.Language.Translate('Edit Transition "%s"', Core.App.EscapeHTML(TransitionName)),
+                    '240px',
+                    'Center',
+                    true,
+                    [
+                        {
+                            Label: Core.Language.Translate('OK'),
+                            Function: function () {
+                                Core.UI.Dialog.CloseDialog($('.Dialog'));
+                            }
+                        },
+                    ]
+                );
             }
             Event.stopImmediatePropagation();
             return false;
@@ -852,14 +868,11 @@ Core.Agent.Admin.ProcessManagement.Canvas = (function (TargetNS) {
      * @name HighlightTransitionLabel
      * @memberof Core.Agent.Admin.ProcessManagement.Canvas
      * @function
-     * @param {String} Connection
-     * @param {String} StartActivity
-     * @param {String} EndActivity
+     * @param {Object} Connection
      * @description
      *      Highlight transition label.
      */
-    TargetNS.HighlightTransitionLabel = function(Connection, StartActivity, EndActivity) {
-
+    TargetNS.HighlightTransitionLabel = function(Connection) {
         var Config = Core.Agent.Admin.ProcessManagement.ProcessData,
             ConfigProcess = Config = Core.Config.Get('ConfigProcess'),
             ProcessEntityID = $('#ProcessEntityID').val(),
@@ -867,7 +880,8 @@ Core.Agent.Admin.ProcessManagement.Canvas = (function (TargetNS) {
             TransitionEntityID = Connection.component.getParameter('TransitionID'),
             StartActivityID = Connection.component.sourceId,
             PopupPath = ConfigProcess.PopupPathPath + "ProcessEntityID=" + ProcessEntityID + ";TransitionEntityID=" + TransitionEntityID + ";StartActivityID=" + StartActivityID,
-            SessionData = Core.App.GetSessionInformation();
+            SessionData = Core.App.GetSessionInformation(),
+            EndActivity = Connection.component.targetId;
 
         if (TargetNS.DragTransitionAction) {
             $(Connection.canvas).addClass('ReadyToDrop');
@@ -891,7 +905,7 @@ Core.Agent.Admin.ProcessManagement.Canvas = (function (TargetNS) {
             });
         }
 
-        if (!$(Connection.canvas).find('.Edit').length) {
+        if (!$(Connection.canvas).find('.Edit').length && EndActivity !== 'Dummy') {
             $(Connection.canvas).append('<a class="Edit" title="' + Core.Language.Translate('Edit this transition') + '" href="#"><i class="fa fa-edit"></i></a>').find('.Edit').on('click', function(Event) {
                 if (EndActivity !== 'Dummy') {
                     if (!Core.Config.Get('SessionIDCookie') && PopupPath.indexOf(SessionData[Core.Config.Get('SessionName')]) === -1) {
@@ -910,7 +924,7 @@ Core.Agent.Admin.ProcessManagement.Canvas = (function (TargetNS) {
         Connection.component.setPaintStyle({ strokeStyle: "#FF9922", lineWidth: '2' });
 
         // show tooltip with assigned transition actions
-        TargetNS.ShowTransitionTooltip(Connection, StartActivity);
+        TargetNS.ShowTransitionTooltip(Connection, StartActivityID);
 
         $(Connection.canvas).off('dblclick.Transition').on('dblclick.Transition', function(Event) {
             if (EndActivity !== 'Dummy') {

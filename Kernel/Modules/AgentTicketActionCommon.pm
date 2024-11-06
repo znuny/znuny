@@ -102,10 +102,11 @@ sub Run {
     my ( $Self, %Param ) = @_;
 
     # get needed objects
-    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
-    my $TicketObject = $Kernel::OM->Get('Kernel::System::Ticket');
-    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
-    my $ParamObject  = $Kernel::OM->Get('Kernel::System::Web::Request');
+    my $LayoutObject    = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $TicketObject    = $Kernel::OM->Get('Kernel::System::Ticket');
+    my $ConfigObject    = $Kernel::OM->Get('Kernel::Config');
+    my $ParamObject     = $Kernel::OM->Get('Kernel::System::Web::Request');
+    my $FormDraftObject = $Kernel::OM->Get('Kernel::System::FormDraft');
 
     # check needed stuff
     if ( !$Self->{TicketID} ) {
@@ -174,9 +175,17 @@ sub Run {
         DynamicFields => 1,
     );
 
+    # Check if the user has already any form draft for this action
+    my $FormDraftList = $FormDraftObject->FormDraftListGet(
+        ObjectType => 'Ticket',
+        ObjectID   => $Self->{TicketID},
+        Action     => $Self->{Action},
+        UserID     => $Self->{UserID},
+    ) // [];
+
     my $LoadedFormDraft;
     if ( $Self->{LoadedFormDraftID} ) {
-        $LoadedFormDraft = $Kernel::OM->Get('Kernel::System::FormDraft')->FormDraftGet(
+        $LoadedFormDraft = $FormDraftObject->FormDraftGet(
             FormDraftID => $Self->{LoadedFormDraftID},
             GetContent  => 0,
             UserID      => $Self->{UserID},
@@ -225,12 +234,13 @@ sub Run {
     $LayoutObject->Block(
         Name => 'Properties',
         Data => {
-            FormDraft      => $Config->{FormDraft},
-            FormDraftID    => $Self->{LoadedFormDraftID},
-            FormDraftTitle => $LoadedFormDraft ? $LoadedFormDraft->{Title} : '',
-            FormDraftMeta  => $LoadedFormDraft,
-            FormID         => $Self->{FormID},
-            ReplyToArticle => $Self->{ReplyToArticle},
+            FormDraft          => $Config->{FormDraft},
+            FormDraftID        => $Self->{LoadedFormDraftID},
+            FormDraftTitle     => $LoadedFormDraft ? $LoadedFormDraft->{Title} : '',
+            FormDraftMeta      => $LoadedFormDraft,
+            FormDraftForAction => scalar @{$FormDraftList},
+            FormID             => $Self->{FormID},
+            ReplyToArticle     => $Self->{ReplyToArticle},
             %Ticket,
             %Param,
         },
@@ -574,12 +584,13 @@ sub Run {
 
             # Chosen draft name must be unique.
             else {
-                my $FormDraftList = $Kernel::OM->Get('Kernel::System::FormDraft')->FormDraftListGet(
+                my $FormDraftList = $FormDraftObject->FormDraftListGet(
                     ObjectType => 'Ticket',
                     ObjectID   => $Self->{TicketID},
                     Action     => $Self->{Action},
                     UserID     => $Self->{UserID},
-                );
+                ) // [];
+
                 DRAFT:
                 for my $FormDraft ( @{$FormDraftList} ) {
 
@@ -1319,12 +1330,13 @@ sub Run {
 
         # set dynamic fields
         # cycle through the activated Dynamic Fields for this screen
-        DYNAMICFIELD:
+        DYNAMICFIELDCONFIG:
         for my $DynamicFieldConfig ( @{$DynamicField} ) {
-            next DYNAMICFIELD if !IsHashRefWithData($DynamicFieldConfig);
+            next DYNAMICFIELDCONFIG if !IsHashRefWithData($DynamicFieldConfig);
 
-            # set the object ID (TicketID or ArticleID) depending on the field configration
+            # set the object ID (TicketID or ArticleID) depending on the field configuration
             my $ObjectID = $DynamicFieldConfig->{ObjectType} eq 'Article' ? $ArticleID : $Self->{TicketID};
+            next DYNAMICFIELDCONFIG if !$ObjectID;
 
             # set the value
             my $Success = $DynamicFieldBackendObject->ValueSet(
@@ -1339,7 +1351,7 @@ sub Run {
         #   delete draft since its content has now been used.
         if (
             $GetParam{FormDraftID}
-            && !$Kernel::OM->Get('Kernel::System::FormDraft')->FormDraftDelete(
+            && !$FormDraftObject->FormDraftDelete(
                 FormDraftID => $GetParam{FormDraftID},
                 UserID      => $Self->{UserID},
             )
@@ -2425,6 +2437,12 @@ sub _Mask {
         );
     }
 
+    if ( IsArrayRefWithData( $Param{TicketTypeDynamicFields} ) ) {
+        $LayoutObject->Block(
+            Name => 'TicketTypeDynamicFields',
+        );
+    }
+
     # Get Ticket type dynamic fields.
     for my $TicketTypeDynamicField ( @{ $Param{TicketTypeDynamicFields} } ) {
         $LayoutObject->Block(
@@ -2763,10 +2781,8 @@ sub _Mask {
         );
 
         if (
-            IsHashRefWithData(
-                $QueueStandardTemplates
-                    || ( $Config->{Queue} && IsHashRefWithData( \%StandardTemplates ) )
-            )
+            IsHashRefWithData($QueueStandardTemplates)
+            || ( $Config->{Queue} && %StandardTemplates )
             )
         {
             $Param{StandardTemplateStrg} = $LayoutObject->BuildSelection(

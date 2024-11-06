@@ -619,12 +619,12 @@ and an empty list is returned in list context.
     $CellData = [
         [
             {
-                Content => "Cell 1 (Row 1, Column 1)",  # (optional)
-                Font => 'Monospaced',                   # (optional) (see DocumentNew())
-                FontSize => 13,                         # (optional)
-                FontColor => '#00FF00',                 # (optional)
-                Align => 'center',                      # (optional)
-                Lead => 7,                              # (optional)
+                Content         => "Cell 1 (Row 1, Column 1)",  # (optional)
+                Font            => 'Monospaced',                   # (optional) (see DocumentNew())
+                FontSize        => 13,                         # (optional)
+                FontColor       => '#00FF00',                 # (optional)
+                Align           => 'center',                      # (optional)
+                Lead            => 7,                              # (optional)
                 BackgroundColor => '#101010',           # (optional)
             },
             {
@@ -2706,7 +2706,7 @@ sub _TextCalculate {
                     FontSize => $Param{FontSize},
                 );
 
-                # caculate exactly point of cut
+                # calculate exact point of cut
                 while ( $RowForeWidth < $Param{Width} ) {
                     $RowFore .= substr( $RowRear, 0, 1 );
                     $RowRear      = substr( $RowRear, 1 );
@@ -2750,7 +2750,7 @@ sub _TextCalculate {
             push( @PossibleRows, $Row );
             $Return{RequiredHeight} += $RowHeight;
 
-            # check, if min one character can count (protection of infinite loop)
+            # check, if min one character can count (protection from infinite loop)
             if ( defined( $Param{Text} ) ) {
                 if ( length( $Param{Text} ) >= $TextLength ) {
                     $Return{RequiredWidth}  = 0;

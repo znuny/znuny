@@ -91,9 +91,7 @@ $Selenium->RunTest(
 
             # check delete link
             $Self->True(
-                $Selenium->find_element(
-                    "//a[contains(\@href, \'Action=AgentStatistics;Subaction=DeleteAction;StatID=$StatID\' )]"
-                ),
+                $Selenium->find_element("//a[contains(\@data-statid, \'$StatID\' )]"),
                 "There is Delete link.",
             );
 

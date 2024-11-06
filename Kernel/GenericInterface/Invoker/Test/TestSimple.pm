@@ -11,8 +11,7 @@ package Kernel::GenericInterface::Invoker::Test::TestSimple;
 
 use strict;
 use warnings;
-
-use Kernel::System::VariableCheck qw(IsString IsStringWithData);
+use utf8;
 
 our $ObjectManagerDisabled = 1;
 

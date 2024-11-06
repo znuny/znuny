@@ -27,11 +27,19 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         gap: var(--gap-md);
         padding: var(--main-page-padding);
     }
-    
+
     .ContentWrapper .Content {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
+    }
+
+    .LayoutPopup > .PopupHeader p {
+        padding: var(--padding-xs) 0 0 0;
+        font-size: var(--font-size-sm);
+        color: var(--gray-dark);
+        font-weight: var(--semi-bold);
+        letter-spacing: 0.2px;
     }
 
     /**
@@ -46,7 +54,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         align-items: flex-start;
         gap: var(--gap-md);
     }
-    
+
     .SidebarLast .SidebarColumn {
         display: flex;
         flex-direction: column;
@@ -61,7 +69,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         flex: 1;
     }
 
-        /**
+    /**
     * @subsection  LayoutFixedSidebar
     */
 
@@ -95,7 +103,6 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         display: flex;
         flex-flow: row;
     }
-
 
     /**
     * @subsection  mainStructure LayoutFixedSidebar
@@ -174,7 +181,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     .padding-md {
         padding: var(--padding-md) !important;
     }
-    
+
     .padding-none {
         padding: var(--padding-none) !important;
     }
@@ -193,17 +200,17 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         width: 100%;
         max-width: calc(33.33% - var(--margin-lg));
     }
-    
+
     .col-wide-50 {
         width: 50%;
         max-width: calc(50% - var(--margin-sm));
     }
-    
+
     .col-wide-66 {
         width: 100%;
         max-width: calc(66.66% - var(--margin-lg));
     }
-    
+
     .col-wide-100 {
         width: 100%;
         max-width: 100%;
@@ -222,17 +229,17 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         width: 33%;
         max-width: calc(33.33% - var(--margin-lg));
     }
-    
+
     .col-desktop-50 {
         width: 50%;
         max-width: calc(50% - var(--margin-lg));
     }
-    
+
     .col-desktop-66 {
         width: 66%;
         max-width: calc(66.66% - var(--margin-lg));
     }
-    
+
     .col-desktop-100 {
         width: 100%;
         max-width: 100%;
@@ -247,17 +254,17 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         width: 100%;
         max-width: calc(33.33% - var(--margin-md));
     }
-    
+
     .col-tablet-50 {
         width: 100%;
         max-width: calc(50% - var(--margin-md));
     }
-    
+
     .col-tablet-66 {
         width: 100%;
         max-width: calc(66.66% - var(--margin-md));
     }
-    
+
     .col-tablet-100 {
         width: 100%;
         max-width: 100%;
@@ -269,17 +276,17 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         width: 100%;
         max-width: 33.33%;
     }
-    
+
     .card-item.col-tablet-50 {
         width: 100%;
         max-width: 50%;
     }
-    
+
     .card-item.col-tablet-66 {
         width: 100%;
         max-width: 66.66%;
     }
-    
+
     .card-item.col-tablet-100 {
         width: 100%;
         max-width: 100%;

@@ -11,8 +11,6 @@ package Kernel::System::UnitTest::DBCRUD;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
-
 our @ObjectDependencies = (
     'Kernel::Config',
 );

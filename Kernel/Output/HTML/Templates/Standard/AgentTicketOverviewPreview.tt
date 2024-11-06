@@ -11,7 +11,7 @@
 [% RenderBlockStart("DocumentActionRowBulk") %]
     <li class="AlwaysPresent">
         <span>
-            <input type="checkbox" title="[% Translate(" Select all") | html %]" id="SelectAllTickets" autocomplete="off" />
+            <input type="checkbox" title="[% Translate("Select all") | html %]" id="SelectAllTickets" autocomplete="off" />
             <label class="InvisibleText" for="SelectAllTickets">[% Translate("Select all") | html %]</label>
         </span>
     </li>
@@ -40,7 +40,7 @@
         <div class="Content [% Data.AdditionalClasses | html %]">
 [% RenderBlockStart("InlineActionRow") %]
             <ul class="Actions InlineActions">
-                <li class="ResponsiveActionMenu"><a href="#" id="ResponsiveActionMenu[% Data.TicketID | html %]" title="[% Translate(" Open / Close ticket action menu") | html %]"><i class="fa fa-bars"></i></a></li>
+                <li class="ResponsiveActionMenu"><a href="#" id="ResponsiveActionMenu[% Data.TicketID | html %]" title="[% Translate("Open / Close ticket action menu") | html %]"><i class="fa fa-bars"></i></a></li>
 [% RenderBlockStart("InlineActionRowItem") %]
                 <li><a id="[% Data.ID | html %][% Data.TicketID | html %]" class="[% Data.Class | html %]" href="[% Data.Link | Interpolate | html %]" title="[% Translate(Data.Description) | html %]">[% Translate(Data.Name) | html %]</a></li>
 [% RenderBlockEnd("InlineActionRowItem") %]
@@ -52,7 +52,7 @@
             <span>
 [% RenderBlockStart("Bulk") %]
                 <div class="Checkbox">
-                    <input class="Checkbox" type="checkbox" name="TicketID" title="[% Translate(" Select this ticket") | html %]" value="[% Data.TicketID | html %]" autocomplete="off" />
+                    <input class="Checkbox" type="checkbox" name="TicketID" title="[% Translate("Select this ticket") | html %]" value="[% Data.TicketID | html %]" autocomplete="off" />
                 </div>
 [% RenderBlockEnd("Bulk") %]
                 <h2>
@@ -135,20 +135,32 @@
 [% RenderBlockStart("CustomerID") %]
                                         <label>[% Translate("Customer ID") | html %]</label>
 [% RenderBlockStart("CustomerIDRW") %]
-                                        <div title="[% Data.CustomerID | html %]"><a href="[% Config(" CustomerDBLink") | Interpolate %]" class="AsPopup PopupType_TicketAction" [% Config("CustomerDBLinkTarget") %]>[% Data.CustomerID | html %]</a></div>
+                                        <div title="[% Data.CustomerID | html %]">
+                                            <a href="[% Config("CustomerDBLink") | Interpolate %]" class="AsPopup PopupType_TicketAction" [% Config("CustomerDBLinkTarget") %]>[% Data.CustomerID | html %]</a>
+                                        </div>
 [% RenderBlockEnd("CustomerIDRW") %]
 [% RenderBlockStart("CustomerIDRO") %]
                                         <div title="[% Data.CustomerID | html %]">[% Data.CustomerID | html %]</div>
 [% RenderBlockEnd("CustomerIDRO") %]
-[% RenderBlockStart("CustomerName") %]
-                                        <div title="[% Data.CustomerName | html %]">[% Data.CustomerName | html %]</div>
-[% RenderBlockEnd("CustomerName") %]
 [% RenderBlockEnd("CustomerID") %]
+
+[% RenderBlockStart("CustomerName") %]
+                                        <br>
+                                        <label>[% Translate("Customer User Name") | html %]</label>
+[% RenderBlockStart("CustomerNameRW") %]
+                                        <div title="[% Data.CustomerName | html %]">
+                                            <a href="[% Env("Baselink") %]Action=AgentCustomerUserInformationCenter;CustomerUserID=[% Data.CustomerUserID | uri %]" class="AsPopup PopupType_TicketAction">[% Data.CustomerName | html %]</a>
+                                        </div>
+[% RenderBlockEnd("CustomerNameRW") %]
+[% RenderBlockStart("CustomerNameRO") %]
+                                        <div title="[% Data.CustomerName | html %]">[% Data.CustomerName | html %]</div>
+[% RenderBlockEnd("CustomerNameRO") %]
+[% RenderBlockEnd("CustomerName") %]
                                     </td>
                                     <td>
 [% RenderBlockStart("FirstResponseTime") %]
                                         <label>[% Translate("First Response Time") | html %]</label>
-                                        <div title="[% Translate(" Service Time") | html %]: [% Data.FirstResponseTimeWorkingTime | html %]" class="[% Data.FirstResponseTimeClass | html %]">[% Data.FirstResponseTimeHuman | html %] / [% Data.FirstResponseTimeDestinationDate | Localize("TimeShort") %]</div>
+                                        <div title="[% Translate("Service Time") | html %]: [% Data.FirstResponseTimeWorkingTime | html %]" class="[% Data.FirstResponseTimeClass | html %]">[% Data.FirstResponseTimeHuman | html %] / [% Data.FirstResponseTimeDestinationDate | Localize("TimeShort") %]</div>
 [% RenderBlockEnd("FirstResponseTime") %]
                                     </td>
                                 </tr>
@@ -162,7 +174,7 @@
                                     <td>
 [% RenderBlockStart("UpdateTime") %]
                                         <label>[% Translate("Update Time") | html %]</label>
-                                        <div title="[% Translate(" Service Time") | html %]: [% Data.UpdateTimeWorkingTime | html %]" class="[% Data.UpdateTimeClass | html %]">[% Data.UpdateTimeHuman | html %] / [% Data.UpdateTimeDestinationDate | Localize("TimeShort") %]</div>
+                                        <div title="[% Translate("Service Time") | html %]: [% Data.UpdateTimeWorkingTime | html %]" class="[% Data.UpdateTimeClass | html %]">[% Data.UpdateTimeHuman | html %] / [% Data.UpdateTimeDestinationDate | Localize("TimeShort") %]</div>
 [% RenderBlockEnd("UpdateTime") %]
                                     </td>
                                 </tr>
@@ -171,7 +183,7 @@
                                     <td>
 [% RenderBlockStart("SolutionTime") %]
                                         <label>[% Translate("Solution Time") | html %]</label>
-                                        <div title="[% Translate(" Service Time") | html %]: [% Data.SolutionTimeWorkingTime | html %]" class="[% Data.SolutionTimeClass | html %]">[% Data.SolutionTimeHuman | html %] / [% Data.SolutionTimeDestinationDate | Localize("TimeShort") %]</div>
+                                        <div title="[% Translate("Service Time") | html %]: [% Data.SolutionTimeWorkingTime | html %]" class="[% Data.SolutionTimeClass | html %]">[% Data.SolutionTimeHuman | html %] / [% Data.SolutionTimeDestinationDate | Localize("TimeShort") %]</div>
 [% RenderBlockEnd("SolutionTime") %]
                                     </td>
                                 </tr>
@@ -245,7 +257,7 @@
 [% RenderBlockStart("ArticlePreview") %]
                             <li class="[% Data.Class | html %]">
                                 <h3>
-                                    <a href="#" title="[% IF Data.ChannelInvalid %][% Translate(" Missing channel") | html %][% ELSE %][% Data.ArticleFields.Sender.Value | html %] &ndash; [% Data.ArticleFields.Subject.Value | html %][% END %] &ndash; [% Data.Created | Localize("TimeShort") %]">
+                                    <a href="#" title="[% IF Data.ChannelInvalid %][% Translate("Missing channel") | html %][% ELSE %][% Data.ArticleFields.Sender.Value | html %] &ndash; [% Data.ArticleFields.Subject.Value | html %][% END %] &ndash; [% Data.Created | Localize("TimeShort") %]">
                                         <span class="Headline">
                                             [% IF Data.ChannelInvalid %]
                                             <i class="fa fa-exclamation-triangle Warning" aria-hidden="true"></i>
@@ -291,7 +303,7 @@
 [% RenderBlockEnd("DocumentFooter") %]
 [% RenderBlockStart("DocumentMenuItemMoveForm") %]
 <li class="[% Data.Class | html %]">
-    <form title="[% Translate(" Move ticket to a different queue") | html %]" action="[% Env("CGIHandle") | html %]" method="get">
+    <form title="[% Translate("Move ticket to a different queue") | html %]" action="[% Env("CGIHandle") | html %]" method="get">
         <input type="hidden" name="Action" value="AgentTicketMove" />
         <input type="hidden" name="QueueID" value="[% Data.QueueID | html %]" />
         <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]" />

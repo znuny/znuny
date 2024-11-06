@@ -58,7 +58,8 @@ Please see the [Roadmap](https://www.znuny.org/en/roadmap) for an EOL overview.
 | 6.3     | :x:                | -                        |
 | 6.4     | :x:                | -                        |
 | 6.5 LTS | :heavy_check_mark: | -                        |
-| 7.0     | :heavy_check_mark: | -                        |
+| 7.0     | :x:                | -                        |
+| 7.1     | :heavy_check_mark: | -                        |
 
 ## How to report a security vulnerability?
 

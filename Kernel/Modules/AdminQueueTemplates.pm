@@ -49,8 +49,8 @@ sub Run {
             StandardTemplateID => $ID,
         );
 
-        my $StandardTemplateType = $LayoutObject->{LanguageObject}->Translate(
-            $StandardTemplateData{TemplateType},
+        my $StandardTemplateType = $Self->_TranslateStandardTemplateTemplateTypes(
+            TemplateType => $StandardTemplateData{TemplateType}
         );
 
         my $Output = $LayoutObject->Header();
@@ -85,10 +85,12 @@ sub Run {
                 my %Data = $StandardTemplateObject->StandardTemplateGet(
                     ID => $StandardTemplateID
                 );
-                $StandardTemplateData{$StandardTemplateID}
-                    = $LayoutObject->{LanguageObject}->Translate( $Data{TemplateType} )
-                    . ' - '
-                    . $Data{Name};
+
+                my $TemplateTypeString = $Self->_TranslateStandardTemplateTemplateTypes(
+                    TemplateType => $Data{TemplateType}
+                );
+
+                $StandardTemplateData{$StandardTemplateID} = $TemplateTypeString . ' - ' . $Data{Name};
             }
         }
 
@@ -346,10 +348,12 @@ sub _Overview {
             my %Data = $StandardTemplateObject->StandardTemplateGet(
                 ID => $StandardTemplateID,
             );
-            $StandardTemplateData{$StandardTemplateID}
-                = $LayoutObject->{LanguageObject}->Translate( $Data{TemplateType} )
-                . ' - '
-                . $Data{Name};
+
+            my $TemplateTypeString = $Self->_TranslateStandardTemplateTemplateTypes(
+                TemplateType => $Data{TemplateType}
+            );
+
+            $StandardTemplateData{$StandardTemplateID} = $TemplateTypeString . ' - ' . $Data{Name};
         }
         for my $StandardTemplateID (
             sort { uc( $StandardTemplateData{$a} ) cmp uc( $StandardTemplateData{$b} ) }
@@ -409,6 +413,32 @@ sub _Overview {
         TemplateFile => 'AdminQueueTemplates',
         Data         => \%Param,
     );
+}
+
+sub _TranslateStandardTemplateTemplateTypes {
+    my ( $Self, %Param ) = @_;
+
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+
+    return if !$Param{TemplateType};
+
+    my $TemplateTypeList = $ConfigObject->Get('StandardTemplate::Types');
+
+    my @TemplateTypes = split( /\s*,\s*/, $Param{TemplateType} );
+    my $TemplateTypeString;
+    if ( scalar @TemplateTypes > 1 ) {
+        for my $TemplateType (@TemplateTypes) {
+            $TemplateTypeString
+                .= $LayoutObject->{LanguageObject}->Translate( $TemplateTypeList->{$TemplateType} ) . ', ';
+        }
+        $TemplateTypeString =~ s{,\s$}{}g;
+    }
+    else {
+        $TemplateTypeString = $LayoutObject->{LanguageObject}->Translate( $TemplateTypeList->{ $TemplateTypes[0] } );
+    }
+
+    return $TemplateTypeString;
 }
 
 1;

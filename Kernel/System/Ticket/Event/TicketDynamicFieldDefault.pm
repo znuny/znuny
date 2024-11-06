@@ -12,8 +12,6 @@ package Kernel::System::Ticket::Event::TicketDynamicFieldDefault;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
-
 our @ObjectDependencies = (
     'Kernel::Config',
     'Kernel::System::DynamicField',

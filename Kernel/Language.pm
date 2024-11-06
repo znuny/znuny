@@ -550,11 +550,11 @@ sub Time {
             my ( $Date, $Time ) = split / - /, $ReturnString;
             $ReturnString = '';
             if ($Date) {
-                $ReturnString .= '<div>' . $Date . '</div>';
+                $ReturnString .= '<div class="DynamicFieldDate">' . $Date . '</div>';
             }
 
             if ($Time) {
-                $ReturnString .= '<div>' . $Time . '</div>';
+                $ReturnString .= '<div class="DynamicFieldTime">' . $Time . '</div>';
             }
         }
 

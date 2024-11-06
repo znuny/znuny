@@ -750,7 +750,7 @@ my @Tests = (
             UserID   => 1,
         },
         ExpectedData => {
-            ErrorMessage => 'SetDynamicFieldValue() Could not set !',
+            ErrorMessage => 'SetDynamicFieldValue() Could not set ObjectID!',
             Success      => 0,
         },
     },

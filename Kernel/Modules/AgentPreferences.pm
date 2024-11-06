@@ -11,6 +11,7 @@ package Kernel::Modules::AgentPreferences;
 
 use strict;
 use warnings;
+use utf8;
 
 our $ObjectManagerDisabled = 1;
 
@@ -33,11 +34,13 @@ sub Run {
     my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
     my $ParamObject  = $Kernel::OM->Get('Kernel::System::Web::Request');
     my $UserObject   = $Kernel::OM->Get('Kernel::System::User');
-    my $EditUserID   = $ParamObject->GetParam( Param => 'EditUserID' );
 
+    my $EditUserID = $ParamObject->GetParam( Param => 'EditUserID' );
     $Self->{CurrentUserID} = $Self->{UserID};
+
     if (
         $EditUserID
+        && $EditUserID != $Self->{UserID}
         && $Self->_CheckEditPreferencesPermission()
         )
     {
@@ -64,7 +67,7 @@ sub Run {
         );
 
         # update session
-        if ($Success) {
+        if ( $Success && !defined $EditUserID ) {
             $Kernel::OM->Get('Kernel::System::AuthSession')->UpdateSessionID(
                 SessionID => $Self->{SessionID},
                 Key       => $Key,
@@ -140,17 +143,30 @@ sub Run {
                 }
             }
 
+            # Check if a reload of the page is needed.
+            if ( $Preferences{$Group}->{NeedsReload} ) {
+                $ConfigNeedsReload = 1;
+            }
+
+            # Enable config reload for all generic modules
+            if ( $Module eq 'Kernel::Output::HTML::Preferences::Generic' ) {
+                $ConfigNeedsReload = 1;
+            }
+
+            # When editing another agent, we don't want to reload the page and don't want to update session data.
+            if ( defined $Self->{EditingAnotherAgent} ) {
+                $ConfigNeedsReload = 0;
+            }
+
             if (
                 $Object->Run(
-                    GetParam => \%GetParam,
-                    UserData => \%UserData
+                    GetParam          => \%GetParam,
+                    UserData          => \%UserData,
+                    UpdateSessionData => $ConfigNeedsReload,
                 )
                 )
             {
                 $Message .= $Object->Message();
-                if ( $Preferences{$Group}->{NeedsReload} ) {
-                    $ConfigNeedsReload = 1;
-                }
             }
             else {
                 $Priority .= 'Error';
@@ -182,8 +198,9 @@ sub Run {
         # challenge token check for write action
         $LayoutObject->ChallengeTokenCheck();
 
-        my $Message  = '';
-        my $Priority = '';
+        my $Message           = '';
+        my $Priority          = '';
+        my $ConfigNeedsReload = 0;
 
         # check group param
         my @Groups = $ParamObject->GetArray( Param => 'Group' );
@@ -229,10 +246,20 @@ sub Run {
                 }
             }
 
+            if ( $Preferences{$Group}->{NeedsReload} ) {
+                $ConfigNeedsReload = 1;
+            }
+
+            # Enable config reload for all generic modules
+            if ( $Module eq 'Kernel::Output::HTML::Preferences::Generic' ) {
+                $ConfigNeedsReload = 1;
+            }
+
             if (
                 $Object->Run(
-                    GetParam => \%GetParam,
-                    UserData => \%UserData
+                    GetParam          => \%GetParam,
+                    UserData          => \%UserData,
+                    UpdateSessionData => $ConfigNeedsReload,
                 )
                 )
             {
@@ -628,7 +655,7 @@ sub _GetCategoriesStrg {
 
     # get selected category
     my %UserPreferences = $Kernel::OM->Get('Kernel::System::User')->GetPreferences(
-        UserID => $Self->{UserID},
+        UserID => $Self->{CurrentUserID},
     );
 
     my $Category = $UserPreferences{UserSystemConfigurationCategory};
@@ -655,15 +682,17 @@ sub _CheckEditPreferencesPermission {
 
     my ( $Self, %Param ) = @_;
 
+    my $GroupObject  = $Kernel::OM->Get('Kernel::System::Group');
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+
     # check if the current user has the permissions to edit another users preferences
-    my $GroupObject                      = $Kernel::OM->Get('Kernel::System::Group');
     my $EditAnotherUsersPreferencesGroup = $GroupObject->GroupLookup(
-        Group => $Kernel::OM->Get('Kernel::Config')->Get('EditAnotherUsersPreferencesGroup'),
+        Group => $ConfigObject->Get('EditAnotherUsersPreferencesGroup'),
     );
 
     # get user groups, where the user has the rw privilege
     my %Groups = $GroupObject->PermissionUserGet(
-        UserID => $Self->{UserID},
+        UserID => $Self->{CurrentUserID},
         Type   => 'rw',
     );
 

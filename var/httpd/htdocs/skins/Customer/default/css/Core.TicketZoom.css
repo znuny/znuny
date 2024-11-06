@@ -773,4 +773,31 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         font-size: 16px;
     }
 
+    /* TicketZoom - Avatars of User & CustomerUser */
+
+    .ArticleSenderInitials,
+    .ArticleSenderImage {
+        width: 100%;
+        height: 100%;
+        max-width: 80px;
+        max-height: 80px;
+        border-radius: var(--border-radius-xxs);
+        overflow: hidden;
+    }
+
+    .ArticleSenderInitials {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+        color: var(--gray-dark-semi);
+        background: #ECECEC;
+        width: 80px;
+        height: 80px;
+    }
+
+    .ArticleSenderInitials span {
+        font-size: 35px;
+    }
+
 } /* end @media */

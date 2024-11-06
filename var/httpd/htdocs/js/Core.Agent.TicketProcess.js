@@ -161,7 +161,7 @@ Core.Agent.TicketProcess = (function (TargetNS) {
                             Core.App.Publish('Event.App.Responsive.SmallerOrEqualScreenL');
                         }
 
-                        // trigget customer auto complete event if field is accesible
+                        // trigget customer auto complete event if field is accessible
                         if ($ElementToUpdate.find('#CustomerAutoComplete').length) {
                             Core.Agent.CustomerSearchAutoComplete.Init();
                         }

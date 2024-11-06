@@ -196,7 +196,7 @@ for my $Test (@Tests) {
 
         $Self->True(
             IsHashRefWithData( \%DefaultSetting ) ? 1 : 0,
-            "$Test->{Name} DefaultSettingGet() - $SettingName, succesful",
+            "$Test->{Name} DefaultSettingGet() - $SettingName, successful",
         );
 
         # Lock setting (so it can be updated).

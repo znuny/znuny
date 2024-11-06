@@ -78,7 +78,7 @@ ActivityDialogs:
       - DynamicField_TicketFreeText1
       - DynamicField_RMAReplacementSN
       - DynamicField_RMAContactPerson
-      - DynamicField_RMAShippingAdress
+      - DynamicField_RMAShippingAddress
       Fields:
         CustomerID:
           DefaultValue: ''
@@ -100,7 +100,7 @@ ActivityDialogs:
           DescriptionLong: ''
           DescriptionShort: ''
           Display: '1'
-        DynamicField_RMAShippingAdress:
+        DynamicField_RMAShippingAddress:
           DefaultValue: ''
           DescriptionLong: ''
           DescriptionShort: ''

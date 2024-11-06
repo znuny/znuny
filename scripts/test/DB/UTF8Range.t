@@ -47,7 +47,7 @@ my @Tests = (
     {
         Name                => "UTF8 4 byte",
         Data                => '💩',          # PILE OF POO (f0 9f 92 a9)
-        ExpectedDataOnMysql => '�',
+        ExpectedDataOnMysql => '💩',
     },
 );
 

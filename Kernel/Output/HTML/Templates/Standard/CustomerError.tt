@@ -7,21 +7,33 @@
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
 
-<div id="MainBox">
-    <div class="Content Error">
-        <h1>[% Translate("An Error Occurred") | html %]</h1>
-        <p>[% Translate(Data.Message) | truncate(200) | html %]</p>
-    [% IF Data.Comment %]
-        <p>[% Translate(Data.Comment) | html %]</p>
-    [% END %]
-    [% IF Data.BackendTraceback %]
-        <p><a href="#" class="TriggerFullErrorDetails">[% Translate("Error Details") | html %]</a></p>
-    [% END %]
+<div id="MainBox" class="ARIARoleMain">
+    <div class="ContentWrapper flex-column ErrorScreen">
+        <h1 class="PageTitle">[% Translate("Error") | html %]</h1>
+
+        <div class="WidgetSimple">
+            <div class="Header">
+                <h2>[% Translate("An Error Occurred") | html %]</h2>
+            </div>
+            <div class="Content">
+                [% Translate(Data.Message) | truncate(200) | html %]<br>
+[% IF Data.Comment %]
+                [% Translate(Data.Comment) | html %]
+[% END %]
+            </div>
+        </div>
+
+[% IF Data.BackendTraceback %]
+        <div class="WidgetSimple">
+            <div class="Header">
+                <h2>[% Translate("Traceback") | html %]</h2>
+            </div>
+            <div class="Content">
+                <code>
+                    <pre>Backend [% Data.BackendTraceback | html %]</pre>
+                </code>
+            </div>
+        </div>
+[% END %]
     </div>
-    [% IF Data.BackendTraceback %]
-    <div class="Content Error Hidden ErrorDetails">
-        <h2>[% Translate("Traceback") | html %]</h2>
-        <pre>[% Data.BackendTraceback | html %]</pre>
-    </div>
-    [% END %]
 </div>

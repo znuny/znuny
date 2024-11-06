@@ -65,7 +65,7 @@ $Selenium->RunTest(
         # After JQuery update, invalid RichText field draws focus,
         #   so dropdown don't stay open. See bug#14997.
         # Queue dropdown should stay open.
-        sleep 1;
+        sleep 2;
 
         $Self->Is(
             $Selenium->execute_script(

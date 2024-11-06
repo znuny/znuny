@@ -98,7 +98,7 @@ sub Load {
         Encode::_utf8_off( $Param{Data} );
     }
 
-    # There is a currently a problem with YAML loader it cant load YAML representations of:
+    # There is a currently a problem with YAML loader it can't load YAML representations of:
     #   0, '0' or ''.
     # This workaround looks for this special cases and returns the correct value without using the
     #   loader

@@ -12,7 +12,29 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
  * @section     Animations
  */
 
+
 @media screen,projection,tv,handheld {
+
+@-webkit-keyframes FadeIn {
+    from { opacity: 0.4; }
+    to { opacity: 0.95; }
+}
+
+@keyframes FadeIn {
+    from { opacity: 0.4; }
+    to { opacity: 0.95; }
+}
+
+@keyframes Blinking {
+    to {
+        color: transparent;
+    }
+}
+@-webkit-keyframes Blinking {
+    to {
+        color: transparent;
+    }
+}
 
 .AnimationShake {
     animation: Shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
@@ -21,7 +43,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     perspective: 1000px;
 }
 
-@keyframes shake {
+@keyframes Shake {
     10%, 90% {
         transform: translate3d(-1px, 0, 0);
     }
@@ -36,6 +58,95 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     40%, 60% {
         transform: translate3d(4px, 0, 0);
+    }
+}
+
+.AnimationBorderFill{
+    animation-name: BorderFill;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes BorderFill {
+    0%   { border-bottom: 2px solid #f92; }
+    25%  { border-bottom: 2px solid #f92; border-left: 2px solid #f92; }
+    50%  { border-bottom: 2px solid #f92; border-left: 2px solid #f92; border-top: 2px solid #f92; }
+    100% { border-bottom: 2px solid #f92; border-left: 2px solid #f92; border-top: 2px solid #f92; border-right: 2px solid #f92; }
+}
+
+.AnimationHighlightGreen {
+    animation: HighlightGreen 0.7s infinite alternate;
+}
+
+@keyframes HighlightGreen {
+    from {
+        box-shadow: none;
+    }
+    to {
+        box-shadow: 0 0 10px var(--green-color,#049E35);
+    }
+}
+
+
+.AnimationHighlightRed {
+    animation: HighlightRed 0.7s infinite alternate;
+}
+
+@keyframes HighlightRed {
+    from {
+        box-shadow: none;
+    }
+    to {
+        box-shadow: 0 0 10px var(--red-color,#b8384e);
+    }
+}
+
+.AnimationHighlightOrange {
+    animation: HighlightOrange 0.7s infinite alternate;
+}
+
+@keyframes HighlightOrange {
+    from {
+        box-shadow: none;
+    }
+    to {
+        box-shadow: 0 0 10px var(--orange-color,#FF9050);
+    }
+}
+
+.AnimationHighlightYellow {
+    animation: HighlightYellow 0.7s infinite alternate;
+}
+
+@keyframes HighlightYellow {
+    from {
+        box-shadow: none;
+    }
+    to {
+        box-shadow: 0 0 10px var(--yellow-color,#FFDD50);
+    }
+}
+
+.AnimationZnunyEat {
+    animation: ZnunyEat 0.7s infinite alternate;
+}
+
+@keyframes ZnunyEat {
+    0% {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%);
+    }
+    25% {
+        clip-path: polygon(0% 30%, 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 75%, 50% 50%);
+    }
+    50% {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    75% {
+        clip-path: polygon(0% 30%, 0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 75%, 50% 50%);
+    }
+    100% {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%);
     }
 }
 

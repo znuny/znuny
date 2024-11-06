@@ -36,8 +36,6 @@
 [% RenderBlockStart("MetaLink") %]
     <link rel="[% Data.Rel | html %]" type="[% Data.Type | html %]" title="[% Data.Title | html %]" href="[% Data.Href %]" />
 [% RenderBlockEnd("MetaLink") %]
-    <link rel="shortcut icon" href="[% Config("Frontend::ImagePath") %]icons/product.ico" type="image/ico" />
-    <link rel="apple-touch-icon" href="[% Config("Frontend::ImagePath") %]icons/apple-touch-icon.png" />
 [% RenderBlockStart("CommonCSS") %]
     <link rel="stylesheet" type="text/css" href="[% Config("Frontend::WebPath") %]skins/Customer/[% Data.Skin | uri %]/[% Data.CSSDirectory | html %]/[% Data.Filename | html %]" />
 [% RenderBlockEnd("CommonCSS") %]
@@ -84,6 +82,11 @@
       }(document, window));
     </script>
 [% END -%]
+
+[% RenderBlockStart("ShortcutIcon") %]
+    <link rel="shortcut icon" href="[% Config("Frontend::WebPath") %][% Data.CustomerShortcutIcon %]" type="image/ico" />
+    <link rel="apple-touch-icon" href="[% Config("Frontend::WebPath") %][% Data.CustomerAppleTouchIcon %]" />
+[% RenderBlockEnd("ShortcutIcon") %]
 
     <title>[% Data.TitleArea | html %] [% Config("ProductName") %]</title>
 

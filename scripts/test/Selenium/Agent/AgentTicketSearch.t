@@ -796,7 +796,7 @@ $Selenium->RunTest(
 
         $Self->Is(
             $Selenium->execute_script(" return \$('#LabelMIMEBase_Body').text()"),
-            $LanguageObject->Translate('Body') . ':',
+            $LanguageObject->Translate('Body'),
             "Article search field 'Body' translated correctly"
         );
 

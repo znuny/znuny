@@ -20,6 +20,7 @@
 
 use strict;
 use warnings;
+use utf8;
 
 use MIME::Base64;
 

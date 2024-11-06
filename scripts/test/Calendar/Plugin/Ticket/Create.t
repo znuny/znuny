@@ -26,6 +26,7 @@ my $GroupObject              = $Kernel::OM->Get('Kernel::System::Group');
 my $PluginObject             = $Kernel::OM->Get('Kernel::System::Calendar::Plugin');
 my $TicketCreatePluginObject = $Kernel::OM->Get('Kernel::System::Calendar::Plugin::Ticket::Create');
 my $LinkObject               = $Kernel::OM->Get('Kernel::System::LinkObject');
+my $TicketObject             = $Kernel::OM->Get('Kernel::System::Ticket');
 
 $HelperObject->FixedTimeSetByTimeStamp('2022-04-07 21:11:00');
 
@@ -263,7 +264,7 @@ my $Success = $PluginObject->DataDelete(
                     TicketPendingTimeOffsetUnit => 60,
                     PriorityID                  => 1,
                     QueueID                     => [ 1, 2 ],
-                    ResponsibleUserID           => 1,
+                    ResponsibleUserID           => $UserID,
                     StateID                     => 1,
                     TicketCreateTime            => '2022-04-07 21:11:00',
                     TicketCreateTimeType        => 'StartTime',
@@ -366,6 +367,34 @@ for my $Test (@Tests) {
         \%LinkKeyList,
         'LinkKeyListWithData',
     );
+
+    $Self->True(
+        $UserID gt 1,
+        'Used responsible User ID is NOT Admin OTRS (Id: 1) but as expected: "' . $UserID ? $UserID : '' . '"',
+    );
+
+    my %Tickets = $TicketObject->TicketSearch(
+        UserID         => 1,
+        ResponsibleIDs => [ $UserID, ],
+        Result         => 'HASH',
+    );
+
+    for my $TicketID ( sort keys %Tickets ) {
+
+        my %Ticket = $TicketObject->TicketGet(
+            $UserID  => 1,
+            TicketID => $TicketID,
+        );
+        $Self->True(
+            $Ticket{ResponsibleID} gt 1,
+            'Ticket responsible UserID is NOT Admin OTRS (Id: 1) but as expected: "' . $UserID ? $UserID : '' . '"',
+        );
+        $Self->Is(
+            $Ticket{ResponsibleID},
+            $UserID,
+            'Ticket responsible UserID is "' . $UserID ? $UserID : '' . '"',
+        );
+    }
 }
 
 1;

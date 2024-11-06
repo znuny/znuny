@@ -23,7 +23,8 @@ Znuny.Agent.MentionAction = (function (TargetNS) {
         };
 
         $('.MentionRow').each(function() {
-            $(this).on('click', function() {
+            $(this).on('click', function(Event) {
+                Event.preventDefault();
                 Data.MentionedUserID = $(this).attr('data-user-id');
 
                 Core.AJAX.FunctionCall(

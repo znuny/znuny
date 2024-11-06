@@ -147,8 +147,11 @@ sub CheckEmail {
         if ($Resolver) {
 
             # it's no fun to have this hanging in the web interface
-            $Resolver->tcp_timeout(3);
-            $Resolver->udp_timeout(3);
+            my $ResolverTimeout = $ConfigObject->Get('CheckMXRecord::Timeout') // 3;
+            $Resolver->tcp_timeout($ResolverTimeout);
+            $Resolver->udp_timeout($ResolverTimeout);
+            $Resolver->retry(1);
+            $Resolver->retrans(1);
 
             # check if we need to use a specific name server
             my $Nameserver = $ConfigObject->Get('CheckMXRecord::Nameserver');
@@ -276,13 +279,13 @@ sub AreEmailAddressesValid {
 clean a given string.
 
     my $StringRef = $CheckItemObject->StringClean(
-        StringRef               => \'String',
-        TrimLeft                => 0,  # (optional) default 1
-        TrimRight               => 0,  # (optional) default 1
-        RemoveAllNewlines       => 1,  # (optional) default 0
-        RemoveAllTabs           => 1,  # (optional) default 0
-        RemoveAllSpaces         => 1,  # (optional) default 0
-        ReplaceWithWhiteSpace   => 1,  # (optional) default 0
+        StringRef             => \'String',
+        TrimLeft              => 0,  # (optional) default 1
+        TrimRight             => 0,  # (optional) default 1
+        RemoveAllNewlines     => 1,  # (optional) default 0
+        RemoveAllTabs         => 1,  # (optional) default 0
+        RemoveAllSpaces       => 1,  # (optional) default 0
+        ReplaceWithWhiteSpace => 1,  # (optional) default 0
     );
 
 =cut

@@ -17,10 +17,14 @@ our @ObjectDependencies = (
     'Kernel::System::DateTime',
     'Kernel::System::DynamicField',
     'Kernel::System::DynamicField::Backend',
-    'Kernel::System::Log',
+    'Kernel::System::Priority',
+    'Kernel::System::Queue',
+    'Kernel::System::SLA',
     'Kernel::System::Service',
+    'Kernel::System::State',
     'Kernel::System::Ticket',
     'Kernel::System::Ticket::Article',
+    'Kernel::System::Type',
     'Kernel::System::User',
 );
 
@@ -178,6 +182,13 @@ sub Run {
     {
         $State = $ConfigObject->Get('PostmasterFollowUpStateClosed');
     }
+
+    if ( $GetParam{'X-OTRS-FollowUp-StateID'} ) {
+        $GetParam{'X-OTRS-FollowUp-State'} = $Kernel::OM->Get('Kernel::System::State')->StateLookup(
+            StateID => $GetParam{'X-OTRS-FollowUp-StateID'},
+        );
+    }
+
     if ( $GetParam{'X-OTRS-FollowUp-State'} ) {
         $State = $GetParam{'X-OTRS-FollowUp-State'};
     }
@@ -254,6 +265,11 @@ sub Run {
     }
 
     # set priority
+    if ( $GetParam{'X-OTRS-FollowUp-PriorityID'} ) {
+        $GetParam{'X-OTRS-FollowUp-Priority'} = $Kernel::OM->Get('Kernel::System::Priority')->PriorityLookup(
+            PriorityID => $GetParam{'X-OTRS-FollowUp-PriorityID'},
+        );
+    }
     if ( $GetParam{'X-OTRS-FollowUp-Priority'} ) {
 
         $TicketObject->TicketPrioritySet(
@@ -272,6 +288,12 @@ sub Run {
     }
 
     # set queue
+    if ( $GetParam{'X-OTRS-FollowUp-QueueID'} ) {
+        $GetParam{'X-OTRS-FollowUp-Queue'} = $Kernel::OM->Get('Kernel::System::Queue')->QueueLookup(
+            QueueID => $GetParam{'X-OTRS-FollowUp-QueueID'},
+        );
+    }
+
     if ( $GetParam{'X-OTRS-FollowUp-Queue'} ) {
 
         $TicketObject->TicketQueueSet(
@@ -308,6 +330,11 @@ sub Run {
     }
 
     # set ticket type
+    if ( $GetParam{'X-OTRS-FollowUp-TypeID'} ) {
+        $GetParam{'X-OTRS-FollowUp-Type'}
+            = $Kernel::OM->Get('Kernel::System::Type')->TypeLookup( TypeID => $GetParam{'X-OTRS-FollowUp-TypeID'} );
+    }
+
     if ( $GetParam{'X-OTRS-FollowUp-Type'} ) {
 
         $TicketObject->TicketTypeSet(
@@ -326,6 +353,12 @@ sub Run {
     }
 
     # Ticket service handling.
+
+    if ( $GetParam{'X-OTRS-FollowUp-ServiceID'} ) {
+        $GetParam{'X-OTRS-FollowUp-Service'} = $Kernel::OM->Get('Kernel::System::Service')->ServiceLookup(
+            ServiceID => $GetParam{'X-OTRS-FollowUp-ServiceID'},
+        );
+    }
 
     if ( $GetParam{'X-OTRS-FollowUp-Service'} ) {
 
@@ -371,6 +404,12 @@ sub Run {
     }
 
     # set ticket sla
+    if ( $GetParam{'X-OTRS-FollowUp-SLAID'} ) {
+        $GetParam{'X-OTRS-FollowUp-SLA'} = $Kernel::OM->Get('Kernel::System::SLA')->SLALookup(
+            SLAID => $GetParam{'X-OTRS-FollowUp-SLAID'},
+        );
+    }
+
     if ( $GetParam{'X-OTRS-FollowUp-SLA'} ) {
 
         $TicketObject->TicketSLASet(

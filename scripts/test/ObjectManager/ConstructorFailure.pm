@@ -11,6 +11,7 @@ package scripts::test::ObjectManager::ConstructorFailure;    ## no critic
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::System::ObjectManager;
 

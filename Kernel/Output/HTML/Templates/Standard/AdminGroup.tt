@@ -98,13 +98,6 @@
                             </span>
                         </a>
                     </li>
-                    <li>
-                        <a href='[% Env("Baselink") %]Action=AdminCustomerGroup' class='CallForAction btn-main btn-primary-ghost btn-width-md'>
-                            <span>
-                                [% Translate('Customer Users ↔ Groups') | html %]
-                            </span>
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>

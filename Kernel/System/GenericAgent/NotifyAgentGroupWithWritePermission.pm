@@ -59,7 +59,7 @@ sub Run {
         }
     );
 
-    my $CountedTime = StartDateTimeObject->Delta(
+    my $CountedTime = $StartDateTimeObject->Delta(
         DateTimeObject => $StopDateTimeObject,
         ForWorkingTime => 1,
         Calendar       => $Calendar,

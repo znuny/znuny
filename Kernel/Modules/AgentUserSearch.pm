@@ -103,7 +103,7 @@ sub Run {
 
             # The values in %UserList are in the form: 'mm Max Mustermann'.
             # So assemble a neater string for display.
-            # (Actually UserSearch() contains code for formating, but that is usually not called.)
+            # (Actually UserSearch() contains code for formatting, but that is usually not called.)
             my %User = $UserObject->GetUserData(
                 UserID => $UserID,
                 Valid  => $Param{Valid},

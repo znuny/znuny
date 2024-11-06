@@ -11,6 +11,7 @@ package Kernel::System::WebUserAgent;
 
 use strict;
 use warnings;
+use utf8;
 
 use HTTP::Headers;
 use List::Util qw(first);

@@ -11,8 +11,6 @@ package Kernel::System::Console::Command::Admin::DynamicField::Export;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
-
 use parent qw(Kernel::System::Console::BaseCommand);
 
 our @ObjectDependencies = (

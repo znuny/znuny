@@ -97,6 +97,9 @@ Core.Customer = (function (TargetNS) {
         $('.TriggerFullErrorDetails').on('click', function() {
             $('.Content.ErrorDetails').toggle();
         });
+
+        InitAvatarFlyout();
+
     };
 
     /**
@@ -123,6 +126,46 @@ Core.Customer = (function (TargetNS) {
     TargetNS.Enhance = function(){
         $('body').removeClass('NoJavaScript').addClass('JavaScriptAvailable');
     };
+
+    /**
+     * @private
+     * @name InitAvatarFlyout
+     * @memberof Core.Agent
+     * @function
+     * @description
+     *      This function initializes the flyout when the avatar on the top left is clicked.
+     */
+    function InitAvatarFlyout() {
+
+        var Timeout = {},
+            ID,
+            TimeoutDuration = 700;
+
+        $.each($('#HeaderToolBar > li'), function () {
+
+            ID = $(this).attr('id');
+
+            // init the HeaderToolBar li toggle
+            $(this).find('a').off('click.HeaderToolBar').on('click.HeaderToolBar', function() {
+                $(this).next('div').fadeToggle('fast');
+                $(this).toggleClass('Active');
+            });
+
+            $(this).find('div').first().off('mouseenter.HeaderToolBar').on('mouseenter.HeaderToolBar', function() {
+                if (Timeout[ID] && $(this).css('opacity') == 1) {
+                    clearTimeout(Timeout[ID]);
+                }
+            });
+
+            $(this).find('div').first().off('mouseleave.HeaderToolBar').on('mouseleave.HeaderToolBar', function() {
+                var $Content = $(this);
+                Timeout[ID] = setTimeout(function() {
+                    $Content.fadeOut('fast');
+                    $Content.prev('a').removeClass('Active');
+                }, TimeoutDuration);
+            });
+        })
+    }
 
     Core.Init.RegisterNamespace(TargetNS, 'APP_GLOBAL_EARLY');
 

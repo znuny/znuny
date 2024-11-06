@@ -1105,11 +1105,23 @@ sub TimeUnits {
             );
         }
 
-        $Param{TimeUnits} //= $DefaultTimeUnits;
+        $Param{TimeUnits} ||= $DefaultTimeUnits;
         $LocalLayoutObject->Block(
             Name => 'TimeUnits',
             Data => \%Param,
         );
+
+        # Initially call SetTimeUnits if default time units are configured.
+        # Otherwise, if time units are configured as required, default values
+        # will be shown as selected (hours, minutes and/or seconds) but not be recognized
+        # as filled out fields, preventing a submit until one of the values
+        # will be re-selected manually.
+        if ($DefaultTimeUnits) {
+            $Self->AddJSOnDocumentCompleteIfNotExists(
+                Key  => 'LayoutTicketSetTimeUnits' . $Param{ID},
+                Code => 'Core.Agent.TicketAction.SetTimeUnits(\'' . $Param{ID} . '\');',
+            );
+        }
     }
 
     my $TimeUnitsStrg = $LocalLayoutObject->Output(

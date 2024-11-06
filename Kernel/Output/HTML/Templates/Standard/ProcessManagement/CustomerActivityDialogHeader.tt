@@ -24,14 +24,16 @@
             <div class="LayoutPopup">
 [% RenderBlockStart("Header") %]
                 <div class="PopupHeader">
-                    <h1>
-                        [% Translate(Data.Name) | html %]
+                    <div>
+                        <h1>
+                            [% Translate(Data.Name) | html %]
 [% RenderBlockStart("DescriptionShort") %]
-                        - [% Translate(Data.DescriptionShort) | html %]
+                            - [% Translate(Data.DescriptionShort) | html %]
 [% RenderBlockEnd("DescriptionShort") %]
-                    </h1>
+                        </h1>
 [% RenderBlockStart("DescriptionLong") %]
                         <p class="DescriptionLong">[% Translate(Data.DescriptionLong) | html %]</p>
+                    </div>
 [% RenderBlockEnd("DescriptionLong") %]
 [% RenderBlockStart("CancelLink") %]
                     <p>

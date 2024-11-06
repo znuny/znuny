@@ -41,7 +41,7 @@ my $ExpectedOutout = <<OUTPUT;
 
 \$Self->True(
     \$Success,
-    'TicketServiceSet to "$Param{Service}" was successfull.',
+    'TicketServiceSet to "$Param{Service}" was successful.',
 );
 
 OUTPUT

@@ -12,8 +12,6 @@ package Kernel::System::Calendar::Ticket::PendingTime;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
-
 our @ObjectDependencies = (
     'Kernel::System::DateTime',
     'Kernel::System::Log',

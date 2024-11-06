@@ -6,10 +6,8 @@
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
-
-<div class="MainBox ARIARoleMain SpacingTopLarge">
-
-    <div class="W33pc CenterBox SpacingBottomLarge">
+<div class="MainBox ARIARoleMain">
+    <div class="W50pc CenterBox SpacingTopLarge SpacingBottomLarge ErrorScreen">
         <div class="WidgetSimple">
             <div class="Header">
                 <h2>[% Translate("Warning") | html %]</h2>
@@ -18,17 +16,13 @@
                 <h4>
                     [% Translate("Message") | html %]: <span class="Error">[% Translate(Data.Message) | html %]</span>
                 </h4>
-
-                <p class="SpacingTop">
+                <p>
                     [% Translate(Data.Comment) | html %]
                 </p>
-
-                <p class="SpacingTop">
+                <p>
                     <a href="#" class="ReturnToPreviousPage">[% Translate("Go back to the previous page") | html %]</a>
                 </p>
-
             </div>
         </div>
     </div>
-
 </div>

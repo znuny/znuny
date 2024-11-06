@@ -44,7 +44,7 @@ my $ExpectedOutout = <<OUTPUT;
 
 \$Self->True(
     \$Success,
-    'TicketAccountTime "$Param{TimeAccounting}" was successfull.',
+    'TicketAccountTime "$Param{TimeAccounting}" was successful.',
 );
 
 OUTPUT

@@ -273,7 +273,7 @@ value:
         Type => 'ObjectName',
         Key  => 'SomeKey',
 
-        CacheInMemory => 0,     # optional, defaults to 1
+        CacheInMemory  => 0,    # optional, defaults to 1
         CacheInBackend => 1,    # optional, defaults to 1
     );
 

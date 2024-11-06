@@ -37,6 +37,11 @@ for my $SourceBackend (qw(ArticleStorageDB ArticleStorageFS)) {
         Value => 'Kernel::System::Ticket::Article::Backend::MIMEBase::' . $SourceBackend,
     );
 
+    $ConfigObject->Set(
+        Key   => 'Ticket::Article::Backend::MIMEBase::CheckAllStorageBackends',
+        Value => '1',
+    );
+
     my $TicketObject         = $Kernel::OM->Get('Kernel::System::Ticket');
     my $ArticleObject        = $Kernel::OM->Get('Kernel::System::Ticket::Article');
     my $ArticleBackendObject = $ArticleObject->BackendForChannel( ChannelName => 'Email' );
@@ -50,7 +55,7 @@ for my $SourceBackend (qw(ArticleStorageDB ArticleStorageFS)) {
     my @TicketIDs;
     my %ArticleIDs;
     my $NamePrefix = "ArticleStorageSwitch ($SourceBackend)";
-    for my $File (qw(1 2 3 4 5 6 7 8 9 10 11 20)) {
+    for my $File (qw(1 2 3 4 5 6 7 8 9 10 11 20 28 29)) {
 
         my $NamePrefix = "$NamePrefix #$File ";
 
@@ -173,6 +178,60 @@ for my $SourceBackend (qw(ArticleStorageDB ArticleStorageFS)) {
             my %Index = $ArticleBackendObject->ArticleAttachmentIndex(
                 ArticleID => $ArticleID,
             );
+
+            if (
+                $ArticleBackendObject->{ArticleStorageModule} eq
+                'Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageFS'
+                )
+            {
+
+                $Self->{ArticleDataDir} = $ConfigObject->Get('Ticket::Article::Backend::MIMEBase::ArticleDataDir');
+
+                my $ContentPath = $Kernel::OM->Get('Kernel::System::Ticket::Article')->ArticleContentPathGet(
+                    ArticleID => $ArticleID,
+                );
+                my @Files = $MainObject->DirectoryRead(
+                    Directory => "$Self->{ArticleDataDir}/$ContentPath/$ArticleID",
+                    Filter    => "*",
+                    Silent    => 1,
+                );
+                FILE:
+                for my $File (@Files) {
+
+                    # get file name
+                    $File =~ s{^.*/([^/]+)$}{$1}smx;
+
+                    # check if file is valid (e.g. file-1 is valid | file-1-1 is not valid)
+                    next FILE if $File !~ m{ -\d-\d }smx;
+
+                    $Self->False(
+                        $File,
+                        "FileName is not valid. $File"
+                    );
+                }
+            }
+            elsif (
+                $ArticleBackendObject->{ArticleStorageModule} eq
+                'Kernel::System::Ticket::Article::Backend::MIMEBase::ArticleStorageDB'
+                )
+            {
+                FILE:
+                for my $Index ( sort keys %Index ) {
+
+                    my $File = $Index{$Index}->{Filename};
+
+                    # get file name
+                    $File =~ s{^.*/([^/]+)$}{$1}smx;
+
+                    # check if file is valid (e.g. file-1 is valid | file-1-1 is not valid)
+                    next FILE if $File !~ m{ -\d-\d }smx;
+
+                    $Self->False(
+                        $File,
+                        "FileName is not valid. $File"
+                    );
+                }
+            }
 
             # check file attributes
             for my $AttachmentID ( sort keys %{ $ArticleIDs{$ArticleID} } ) {

@@ -165,7 +165,7 @@ $Selenium->RunTest(
         my $Message = 'Article subject will be empty if the subject contains only the ticket hook!';
 
         $Self->True(
-            $Selenium->execute_script("return \$('.MessageBox.Notice:contains(\"$Message\")').length;"),
+            $Selenium->execute_script("return \$('.MessageBox.Warning:contains(\"$Message\")').length;"),
             "Notification about empty subject is found",
         );
 

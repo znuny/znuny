@@ -104,13 +104,20 @@ $Selenium->RunTest(
             "DynamicFieldID $DynamicFieldID is set to '$ValueText' successfully",
         );
 
-        # Set SysConfig to show dynamic field in CustomerTicketZoom screen.
+        # Set SysConfig to show dynamic field in AgentTicketZoom screen.
         $HelperObject->ConfigSettingChange(
             Valid => 1,
             Key   => 'Ticket::Frontend::AgentTicketZoom###DynamicField',
             Value => {
                 $DynamicFieldName => 1,
             },
+        );
+
+        # Set SysConfig to shorten the length of dynamic field text.
+        $HelperObject->ConfigSettingChange(
+            Valid => 1,
+            Key   => 'Ticket::Frontend::DynamicFieldsZoomMaxSizeSidebar',
+            Value => 18,
         );
 
         # create test user and login

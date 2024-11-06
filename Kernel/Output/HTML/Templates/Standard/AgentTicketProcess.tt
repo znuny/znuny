@@ -33,7 +33,7 @@
             </fieldset>
         </form>
         <div id="AJAXLoader" class="Center Hidden">
-            <span class="AJAXLoader" title="[% Translate(" Loading") | html %]"></span>
+            <span class="AJAXLoader" title="[% Translate("Loading") | html %]"></span>
         </div>
         <div id="ActivityDialogContent"></div>
     </div>

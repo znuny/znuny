@@ -298,14 +298,23 @@ $Selenium->RunTest(
         # Check 'NewNoteBody' length validation from Add Note section (see bug#13912).
         my $FieldValue = "a" x 201;
         $Selenium->find_element( "#NewNoteBody", 'css' )->send_keys($FieldValue);
-        $Selenium->find_element( "#Submit",      'css' )->click();
+
+        $Element = $Selenium->find_element( '#Submit', 'css' );
+        $Selenium->mouse_move_to_location( element => $Element );
+        $Element->click();
+
         $Selenium->WaitFor( JavaScript => "return \$('#NewNoteBody.Error').length === 1;" );
 
         $Self->True(
             $Selenium->execute_script("return \$('#NewNoteBody.Error').length === 1;"),
             "Validation for 'NewNoteBody' field is correct",
         );
-        $Selenium->find_element( "#NewNoteBody", 'css' )->clear();
+
+        $Selenium->find_element( "#DialogButton1", 'css' )->click();
+        $Selenium->find_element( "#NewNoteBody",   'css' )->clear();
+
+        $FieldValue = "b" x 100;
+        $Selenium->find_element( "#NewNoteBody", 'css' )->send_keys($FieldValue);
 
         # Insert needed dynamic fields.
         $Selenium->execute_script(
@@ -335,11 +344,15 @@ $Selenium->RunTest(
             "Dynamic field '$DynamicFieldName' is added",
         );
 
-        $Selenium->find_element( "#DynamicField_${DynamicFieldName}Year", 'css' )->send_keys($Year);
-        $Selenium->find_element( "#DynamicField_${DynamicFieldName}Used", 'css' )->click();
+        $Selenium->find_element( "div:nth-child(7) > div.Header > div > a", 'css' )->click();
+        $Selenium->find_element( "#DynamicField_${DynamicFieldName}Year",   'css' )->send_keys($Year);
+        $Selenium->find_element( "#DynamicField_${DynamicFieldName}Used",   'css' )->click();
 
         # save job
-        $Selenium->find_element( "#Submit", 'css' )->VerifiedClick();
+        $Element = $Selenium->find_element( '#Submit', 'css' );
+        $Selenium->mouse_move_to_location( element => $Element );
+        $Element->click();
+
         $Selenium->WaitFor( ElementExists => "//a[contains(.,\'$GenericAgentJob\')]" );
 
         # check if test job show on AdminGenericAgent
@@ -518,7 +531,7 @@ $Selenium->RunTest(
             "AdminValidFilter - All invalid entries are displayed again.",
         );
 
-        $Selenium->execute_script("\$('#GenericAgentJobs tbody tr:eq(1) .DeleteTask').click();");
+        $Selenium->execute_script("\$('#GenericAgentJobs tbody tr:eq(0) .DeleteTask').click();");
 
         # wait for dialog to show up, if necessary
         $Selenium->WaitFor(

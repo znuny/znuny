@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <otrs_config version="2.0" init="Application">
+    <!-- nofilter(TidyAll::Plugin::Znuny::Config::ACLKeysLevel3Actions) -->
     <Setting Name="Frontend::Module###AdminProcessManagement" Required="0" Valid="1">
         <Description Translatable="1">Frontend module registration for the agent interface.</Description>
         <Navigation>Frontend::Admin::ModuleRegistration</Navigation>
@@ -918,7 +919,7 @@
                         <Item Key="Lock">(* required) unlock|lock</Item>
                         <Item Key="Owner">(* required) someuserlogin</Item>
                         <Item Key="PendingTime">2021-09-01 09:00:00</Item>
-                        <Item Key="PendingTimeDiff">123</Item>
+                        <Item Key="PendingTimeDiff">123 (diff in seconds)</Item>
                         <Item Key="Priority">(* required) 3 normal</Item>
                         <Item Key="Queue">(* required) Raw</Item>
                         <Item Key="Responsible">someuserlogin</Item>
@@ -986,6 +987,8 @@
                 <Item Key="TicketStateSet">
                     <Hash>
                         <Item Key="State">(* required) open</Item>
+                        <Item Key="PendingTime">2021-09-01 09:00:00</Item>
+                        <Item Key="PendingTimeDiff">123 (diff in seconds)</Item>
                         <Item Key="UserID">1 (use to overwrite the logged user)</Item>
                     </Hash>
                 </Item>

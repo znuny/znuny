@@ -29,6 +29,15 @@
             <th>[% Translate("Name") | html %]</th>
             <th>[% Translate("Open") | html %]</th>
             <th>[% Translate("Closed") | html %]</th>
+        [% IF Data.AgentTicketPhonePermission %]
+            <th>[% Translate("Phone ticket") | html %]</th>
+        [% END %]
+        [% IF Data.AgentTicketEmailPermission %]
+            <th>[% Translate("Email ticket") | html %]</th>
+        [% END %]
+        [% IF Data.SwitchToCustomerPermission %]
+            <th>[% Translate("Login as") | html %]</th>
+        [% END %]
         [% IF Data.EditCustomerIDPermission %]
             <th class="Center">[% Translate("Edit") | html %]</th>
         [% END %]
@@ -59,13 +68,32 @@
                 </a>
             </td>
 [% RenderBlockEnd("ContentLargeCustomerIDListRowCustomerIDTicketsClosed") %]
-            <td class="Center">
+            [% IF Data.AgentTicketPhonePermission %]
+            <td class="PhoneTicket">
+                <a class="table-actions-button" href="[% Env("Baselink") %]Action=AgentTicketPhone;Subaction=StoreNew;ExpandCustomerName=2;CustomerUser=[% Data.CustomerUserID | uri %]" title="[% Translate("New phone ticket from %s", Data.CustomerUserID) | html %]">
+                    <span>[% Translate("Create") | html %]</span>
+                </a>
+            </td>
+            [% END %]
+            [% IF Data.AgentTicketEmailPermission %]
+                <td class="EmailTicket">
+                    <a class="table-actions-button" href="[% Env("Baselink") %]Action=AgentTicketEmail;Subaction=StoreNew;ExpandCustomerName=2;CustomerUser=[% Data.CustomerUserID | uri %]" title="[% Translate("New email ticket to %s", Data.CustomerUserID) | html %]">
+                        <span>[% Translate("Create") | html %]</span>
+                    </a>
+                </td>
+            [% END %]
+            [% IF Data.SwitchToCustomerPermission %]
+                <td>
+                    <a class="AsBlock table-actions-button" href="[% Env("Baselink") %]Action=AdminCustomerUser;Subaction=Switch;ID=[% Data.CustomerUserID | uri %];[% Env("ChallengeTokenParam") | html %]" target="_blank">[% Translate("Switch to customer") | html %]</a>
+                </td>
+            [% END %]
             [% IF Data.EditCustomerIDPermission %]
+            <td class="Center">
                 <a class="table-icon-hover-md" href="[% Env("Baselink") %]Action=AdminCustomerCompany;Subaction=Change;CustomerID=[% Data.CustomerID | uri %];Nav=Agent" title="[% Translate("Edit customer ID") | html %]">
                     <i class="fa fa-pencil-square-o"></i>
                 </a>
-            [% END %]
             </td>
+            [% END %]
         </tr>
 [% RenderBlockEnd("ContentLargeCustomerIDListRow") %]
 [% RenderBlockStart("ContentLargeCustomerIDListNone") %]

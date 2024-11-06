@@ -173,6 +173,7 @@ Core.Agent.Dashboard = (function (TargetNS) {
         );
 
         TargetNS.InitDashboardWidgetSettings();
+
         TargetNS.InitDashboardWidgetExpand();
 
         TargetNS.InitDashboardWidgetBinding();
@@ -1552,6 +1553,10 @@ Core.Agent.Dashboard = (function (TargetNS) {
 
         // move DashboardActions to the <div class="Header"> after <h2>
         var $DashboardActions = $('#Dashboard' + Core.App.EscapeSelector(WidgetFilterData.Name)).find('.DashboardActions').detach();
+
+        if ($DashboardActions.length == 0){
+            return;
+        }
 
         // created $FilterContainer var, added it to Header and prepended $DashboardActions to it
         if($('#Dashboard' + Core.App.EscapeSelector(WidgetFilterData.Name) + '-box').find('.HeaderFilter').length) {

@@ -101,7 +101,7 @@ sub RenderOutput {
                 LinkID   => $LinkID,
                 LinkName => ( ref $LinkData ? $LinkData->{Subject} : $LinkData ),
                 LinkURL  => sprintf(
-                    $Param{PluginList}->{ $Param{GetParam}->{PluginKey} }->{URL},
+                    $Param{Plugin}->{URL},
                     $LinkID
                 ),
             };

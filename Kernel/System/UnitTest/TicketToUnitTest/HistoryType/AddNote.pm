@@ -18,7 +18,6 @@ our @ObjectDependencies = (
     'Kernel::System::Ticket::Article',
 );
 
-use Kernel::System::VariableCheck qw(:all);
 use parent qw( Kernel::System::UnitTest::TicketToUnitTest::Base );
 
 sub Run {

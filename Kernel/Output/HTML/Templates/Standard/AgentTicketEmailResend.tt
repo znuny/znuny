@@ -80,7 +80,6 @@
                         </div>
 
                         <div id="TicketCustomerContentToCustomer" class="CustomerContainer">
-                            <span class="BoxLabel">[% Translate("To") | html %]</span>
 [% RenderBlockStart("MultipleCustomer") %]
                             <div class="SpacingTopSmall ">
                                 <input name="CustomerKey_[% Data.Count | html %]" id="CustomerKey_[% Data.Count | html %]" class="CustomerKey" type="hidden" value="[% Data.CustomerKey | html %]"/>
@@ -155,7 +154,6 @@
                         </div>
 
                         <div id="TicketCustomerContentCcCustomer" class="CcCustomerContainer">
-                            <span class="BoxLabel">[% Translate("Cc") | html %]</span>
 [% RenderBlockStart("CcMultipleCustomer") %]
                             <div>
                                 <input name="CcCustomerKey_[% Data.Count | html %]" id="CcCustomerKey_[% Data.Count | html %]" class="CustomerKey" type="hidden" value="[% Data.CustomerKey | html %]"/>
@@ -230,7 +228,6 @@
                         </div>
 
                         <div id="TicketCustomerContentBccCustomer" class="BccCustomerContainer">
-                            <span class="BoxLabel">[% Translate("Bcc") | html %]</span>
 [% RenderBlockStart("BccMultipleCustomer") %]
                             <div class="SpacingTopSmall ">
                                 <input name="BccCustomerKey_[% Data.Count | html %]" id="BccCustomerKey_[% Data.Count | html %]" class="CustomerKey" type="hidden" value="[% Data.CustomerKey | html %]"/>

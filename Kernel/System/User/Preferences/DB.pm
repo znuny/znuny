@@ -38,6 +38,9 @@ sub new {
     $Self->{PreferencesTableUserID} = $Self->{ConfigObject}->Get('PreferencesTableUserID')
         || 'user_id';
 
+    # Needed to exclude potential preferences that were stored by the DBJSON backend.
+    $Self->{PreferencesTableKeyDBJSONPreferences} = 'DBJSONPreferences';
+
     $Self->{CacheType} = 'User';
     $Self->{CacheTTL}  = 60 * 60 * 24 * 20;
 
@@ -130,7 +133,12 @@ sub GetPreferences {
 
     # fetch the result
     my %Data;
+    ROW:
     while ( my @Row = $DBObject->FetchrowArray() ) {
+
+        # Skip preferences stored with DBJSON backend
+        next ROW if $Row[0] eq $Self->{PreferencesTableKeyDBJSONPreferences};
+
         $Data{ $Row[0] } = $Row[1];
     }
 
@@ -150,6 +158,9 @@ sub SearchPreferences {
 
     my $Key   = $Param{Key}   || '';
     my $Value = $Param{Value} || '';
+
+    # Skip preferences stored with DBJSON backend
+    return if $Key eq $Self->{PreferencesTableKeyDBJSONPreferences};
 
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 

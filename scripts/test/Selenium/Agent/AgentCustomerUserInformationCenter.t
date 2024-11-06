@@ -233,6 +233,10 @@ $Selenium->RunTest(
             );
         }
 
+        # Show ActionMenu - usually this is done when user hovers, however it's not possible to simulate this behavior.
+        $Selenium->execute_script(
+            "\$('#Dashboard0130-CUIC-TicketOpenAll').next().show();"
+        );
         $Selenium->find_element( "#DashboardAdditionalFilter0130-CUIC-TicketOpenAccessibleForCustomerUser", 'css' )
             ->click();
         $Selenium->WaitFor(
@@ -248,7 +252,7 @@ $Selenium->RunTest(
         for my $AccessibleTicketNumber (@AccessibleTicketNumbers) {
             $Self->True(
                 index( $Selenium->get_page_source(), $AccessibleTicketNumber ) > -1,
-                "Accesible ticket $AccessibleTicketNumber found in widget on page",
+                "Accessible ticket $AccessibleTicketNumber found in widget on page",
             );
         }
 

@@ -10,6 +10,7 @@
 use strict;
 use warnings;
 use vars (qw($Self));
+use utf8;
 
 $Self->True(
     $Kernel::OM->Get('scripts::test::ObjectManager::Dummy'),

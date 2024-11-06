@@ -23,6 +23,8 @@ Core.Agent.Admin.OAuth2TokenManagement = (function (TargetNS) {
 
     TargetNS.Init = function () {
 
+        Core.UI.Table.InitTableFilter($("#FilterTokens"), $("#OAuth2Tokens"));
+
         // Adding token configuration based on template file
         $('#TokenConfigTemplateFilePath').on('change', function() {
             var TokenConfigTemplateFilename = $(this).val(),

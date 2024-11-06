@@ -83,6 +83,14 @@ msgid "Filter"
 msgstr "Филтер"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
+msgid "Show Valid"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
+msgid "Show All"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
 msgid "Please note: This table represents the execution order of the ACLs. If you need to change the order in which ACLs are executed, please change the names of the affected ACLs."
 msgstr "Напомена: Ова табела представља редослед извршавања у ACL листама. Ако је потребно да промените редослед којим се извршавају ACL листе, молимо промените имена тих ACL листа."
 
@@ -535,20 +543,20 @@ msgid "Send to all role members"
 msgstr "Пошаљи свим припадницима улоге"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
-msgid "Send on out of office"
-msgstr "Пошаљи и кад је ван канцеларије"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
 msgid "Also send if the user is currently out of office."
 msgstr "Такође пошаљи и када је корисник ван канцеларије."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
-msgid "Once per day"
-msgstr "Једном дневно"
+msgid "Send on out of office"
+msgstr "Пошаљи и кад је ван канцеларије"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
 msgid "Notify user just once per day about a single appointment using a selected transport."
 msgstr "Обавести корисника само једном дневно о појединачном термину коришћењем изабраног транспорта."
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
+msgid "Once per day"
+msgstr "Једном дневно"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
 msgid "Notification Methods"
@@ -1659,7 +1667,7 @@ msgid "Screens"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldScreenConfiguration.tt
-msgid "Default columns"
+msgid "Overview Default Columns"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldScreenConfiguration.tt
@@ -1807,6 +1815,14 @@ msgid "Backend documentation"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
+msgid "Cache TTL"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
+msgid "TTL (in seconds) for caching request results. Leave empty or set to 0 to disable caching."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
 msgid "Key for search"
 msgstr ""
 
@@ -1868,14 +1884,6 @@ msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
 msgid "Delay (in milliseconds) until the AJAX request will be sent."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
-msgid "Autocompletion for search fields"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
-msgid "Use autocompletion for search fields instead of a static selection of values that are currently selected in Znuny (in tickets, articles, etc.). This increases performance if many thousands of values of the dynamic field have been selected. This setting does not affect the search field displayed in AgentTicketSearch and CustomerTicketSearch."
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminDynamicFieldWebservice/Config.tt
@@ -2023,6 +2031,10 @@ msgid "Run this task"
 msgstr "Покрени овај посао"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
+msgid "Do you really want to delete this generic agent job?"
+msgstr "Да ли стварно желите да обришете овај посао генеричког оператера?"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
 msgid "Job Settings"
 msgstr "Подешавање посла"
 
@@ -2091,16 +2103,16 @@ msgid "If a ticket event is fired, the ticket filter will be applied to check if
 msgstr "Уколико је догађај тикета отказао, биће примењен тикет филтер да потврди да ли тикет одговара. Само тада ће се посао на тикету покренути."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
-msgid "Do you really want to delete this event trigger?"
-msgstr "Да ли стварно желите да обришете овај окидач догађаја?"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
 msgid "Add Event Trigger"
 msgstr "Додај окидач догађаја"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
 msgid "To add a new event select the event object and event name"
 msgstr "За додавање новог догађаја изаберите објекат и назив догађаја"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
+msgid "Do you really want to delete this event trigger?"
+msgstr "Да ли стварно желите да обришете овај окидач догађаја?"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
 msgid "Select Tickets"
@@ -3259,18 +3271,6 @@ msgid "This configuration defines if incoming connections should get closed or k
 msgstr "Конфигурација дефинише да ли долазна конекција треба да се затвори и одржава."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
-msgid "Additional response headers"
-msgstr "Додатна заглавља у одговорима"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
-msgid "Header"
-msgstr "Заглавље"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
-msgid "Add response header"
-msgstr "Додај заглавље у одговору"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
 msgid "Endpoint"
 msgstr "Крајња тачка"
 
@@ -3539,8 +3539,20 @@ msgid "The default HTTP command to use for the requests."
 msgstr "Подразумевена HTTP команда за захтеве."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
+msgid "Additional response headers"
+msgstr "Додатна заглавља у одговорима"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
 msgid "Additional request headers"
 msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
+msgid "Header"
+msgstr "Заглавље"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
+msgid "Add response header"
+msgstr "Додај заглавље у одговору"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPREST.tt
 msgid "Add request header"
@@ -4434,10 +4446,6 @@ msgstr "Деинсталирај пакет"
 msgid "Do you really want to uninstall this package?"
 msgstr "Да ли стварно желите да деинсталирате овај пакет?"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/InstallerConfigureMail.tt
-msgid "or"
-msgstr "или"
-
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
 msgid "Reinstall package"
 msgstr "Инсталирај поново пакет"
@@ -4631,16 +4639,24 @@ msgid "Permission"
 msgstr "Дозвола"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
+msgid "Size"
+msgstr "Величина"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
+msgid "Problem"
+msgstr "Проблем"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
+msgid "OK"
+msgstr "У реду"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
 msgid "Download file from package!"
 msgstr "Преузми датотеку из пакета!"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
 msgid "Required"
 msgstr "Обавезно"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
-msgid "Size"
-msgstr "Величина"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminPackageManager.tt
 msgid "Primary Key"
@@ -5079,7 +5095,7 @@ msgid "Assigned Fields"
 msgstr "Додељена поља"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementActivityDialog.tt
-msgid " Filter assigned fields"
+msgid "Filter assigned fields"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementActivityDialog.tt
@@ -5265,6 +5281,10 @@ msgstr "Да ли стварно желите да обришете овај д�
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementProcessEdit.tt
 msgid "Do you really want to delete this Transition?"
 msgstr "Да ли стварно желите да обришете ову транзицију?"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementProcessEdit.tt
+msgid "You can not edit a transition before it's connected to two activities."
+msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminProcessManagementProcessEdit.tt
 msgid "Do you really want to delete this Transition Action?"
@@ -6071,6 +6091,10 @@ msgid "It's not possible to invalidate this entry because there is no other merg
 msgstr "Није могуће обележити ову ставку као неважећу јер не постоји више статуса спојених тикета у систему!"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminState.tt
+msgid "This field must be a hexadecimal color code."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminState.tt
 msgid "This state is used in the following config settings:"
 msgstr "Ово стање се користи у следећим системским подешавањима: "
 
@@ -6334,7 +6358,7 @@ msgstr "Преглед појединачног подешавања: %s"
 msgid "System file support"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemFiles.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminSupportDataCollector.tt
 msgid "Delete cache"
 msgstr ""
 
@@ -7027,14 +7051,6 @@ msgid "in"
 msgstr "у"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid "No Data Available."
-msgstr "Нема информација."
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Show or hide the content"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Search inactive widgets"
 msgstr ""
 
@@ -7043,27 +7059,7 @@ msgid "Active Widgets"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Save changes"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Save"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid "Save changes"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Settings"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Refresh"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Close this widget"
+msgid "Close this widget"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
@@ -7071,28 +7067,20 @@ msgid "Hide"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Cancel"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "more"
 msgstr "још"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+msgid "No Data Available."
+msgstr "Нема информација."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Available Columns"
 msgstr "Расположиве колоне"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Filter available fields"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Visible Columns (order by drag & drop)"
 msgstr "Видљиве колоне (редослед према превуци и пусти)"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-msgid " Submit"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
 msgid "Change Customer Relations"
@@ -7107,12 +7095,28 @@ msgid "Closed"
 msgstr "Затворени"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
+msgid "Phone ticket"
+msgstr "Тикет позива"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
+msgid "Email ticket"
+msgstr "Имејл тикет"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
 msgid "%s open ticket(s) of %s"
 msgstr "%s отворених тикета од %s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
 msgid "%s closed ticket(s) of %s"
 msgstr "%s затворених тикета од %s"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
+msgid "New phone ticket from %s"
+msgstr "Нови тикет позива од %s"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
+msgid "New email ticket to %s"
+msgstr "Нови имејл тикет од %s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
 msgid "Edit customer ID"
@@ -7145,22 +7149,6 @@ msgstr "Напомена: клијент корисник је неважећи!
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
 msgid "Customer user information"
 msgstr "Информације о клијент кориснику"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
-msgid "Phone ticket"
-msgstr "Тикет позива"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
-msgid "Email ticket"
-msgstr "Имејл тикет"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
-msgid "New phone ticket from %s"
-msgstr "Нови тикет позива од %s"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
-msgid "New email ticket to %s"
-msgstr "Нови имејл тикет од %s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardMyLastChangedTickets.tt
 msgid "No tickets found."
@@ -7355,6 +7343,38 @@ msgid "End"
 msgstr "Крај"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "Left"
+msgstr "Лево"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "The horizontal distance of the window relative to the screen, in pixels."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "Top"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "The vertical distance of the window relative to the screen, in pixels."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "Width"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "Width in pixels or percent."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "Height"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
+msgid "Height in pixels or percent."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
 msgid "This setting can currently not be saved."
 msgstr "Ово подешавање тренутно не може бити сачувано."
 
@@ -7483,12 +7503,12 @@ msgid "Export statistic %s"
 msgstr "Измени статистику %s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsOverview.tt
-msgid "Delete statistic \"%s\""
-msgstr "Обриши статистику \"%s\""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsOverview.tt
 msgid "Delete statistic %s"
 msgstr "Обриши статистику %s"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsOverview.tt
+msgid "Do you really want to delete this statistic?"
+msgstr "Да ли стварно желите да обришете ову статистику?"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsView.tt
 msgid "Statistics Information"
@@ -7667,10 +7687,6 @@ msgid "Bounce %s%s%s"
 msgstr "Одбаци %s%s%s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBounce.tt
-msgid "cancel"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBounce.tt
 msgid "Bounce to"
 msgstr "Преусмери на"
 
@@ -7743,10 +7759,6 @@ msgid "Date Invalid!"
 msgstr "Неисправан датум!"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Select one or more recipients from the customer user address book."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
 msgid "Customer user address book"
 msgstr "Адресар клијент корисника"
 
@@ -7771,10 +7783,6 @@ msgid "This address already exists on the address list."
 msgstr "Ова адреса већ постоји у листи."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Cc"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
 msgid "Remove Cc"
 msgstr "Уклони Cc"
 
@@ -7783,16 +7791,8 @@ msgid "Bcc"
 msgstr "Bcc"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Bcc"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
 msgid "Remove Bcc"
 msgstr "Уклони Bcc"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
-msgid " Send mail"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
 msgid "Change Customer of %s%s%s"
@@ -7811,10 +7811,6 @@ msgid "Create New Email Ticket"
 msgstr "Отвори нови имејл тикет"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Example Template"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Example Template"
 msgstr "Пример шаблона"
 
@@ -7823,20 +7819,8 @@ msgid "To customer user"
 msgstr "За клијента корисника"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " To"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Please include at least one customer user for the ticket."
 msgstr "Молимо вас укључите барем једног клијента корисника за тикет."
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Select this customer as the main customer."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " To customer user"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Remove Ticket Customer User"
@@ -7847,22 +7831,14 @@ msgid "From queue"
 msgstr "из реда"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Get all"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Get all"
 msgstr "Узми све"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
-msgid " Message body"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
 msgid "Outbound Email for %s%s%s"
 msgstr "Одлазни имејл за %s%s%s"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
 msgid "Select one or more recipients from the customer user address book."
 msgstr "Одаберите једног или више примаоца из адресара клијент корисника."
 
@@ -8007,19 +7983,15 @@ msgid "NoteToTicket invalid."
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Select all"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "No ticket data found."
 msgstr "Нису нађени подаци о тикету"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Open / Close ticket action menu"
+msgid "Open / Close ticket action menu"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Select this ticket"
+msgid "Select this ticket"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
@@ -8030,7 +8002,7 @@ msgstr "Пошиљаоц"
 msgid "Impact"
 msgstr "Утицај"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "CustomerID"
 msgstr "ID клијента"
 
@@ -8045,14 +8017,6 @@ msgstr "Време решавања"
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "First Response Time"
 msgstr "Време првог одговора"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Service Time"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-msgid " Move ticket to a different queue"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "Change queue"
@@ -8074,14 +8038,6 @@ msgstr ""
 msgid "Tickets per page"
 msgstr "Тикета по страни"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
-msgid "Filter assigned fields"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-msgid " Missing channel"
-msgstr ""
-
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
 msgid "Missing channel"
 msgstr "Недостаје канал"
@@ -8091,7 +8047,7 @@ msgid "Reset overview"
 msgstr "Поништи преглед"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
-msgid " Column Filters Form"
+msgid "Column Filters Form"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
@@ -8106,7 +8062,7 @@ msgstr "Отвори нови тикет позива"
 msgid "Please include at least one customer for the ticket."
 msgstr "Молимо да укључите бар једног клијента за тикет."
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
 msgid "Select this customer as the main customer."
 msgstr "Означи овог клијента као главног клијента."
 
@@ -8133,10 +8089,6 @@ msgstr "Preuzmi ovu poruku"
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
 msgid "Create New Process Ticket"
 msgstr "Направи нови процес тикет"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
-msgid " Loading"
-msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
 msgid "Enroll Ticket into a Process"
@@ -8286,7 +8238,7 @@ msgstr "Нацрти"
 msgid "by"
 msgstr "од"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "Move ticket to a different queue"
 msgstr "Премести тикет у други ред"
 
@@ -8423,10 +8375,6 @@ msgid "PDF"
 msgstr "PDF"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/ArticleRender/MIMEBase.tt
-msgid "Unknown"
-msgstr "Непознато"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/ArticleRender/MIMEBase.tt
 msgid "View"
 msgstr "Преглед"
 
@@ -8447,8 +8395,8 @@ msgid "This ticket is archived."
 msgstr "Овај тикет је архивиран"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/TicketInformation.tt
-msgid "Note: Type is invalid!"
-msgstr "Напомена: тип је неважећи!"
+msgid "is invalid"
+msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/TicketInformation.tt
 msgid "Pending till"
@@ -8506,10 +8454,6 @@ msgstr "Драги клијенте,"
 msgid "thank you for using our services."
 msgstr "хвала вам на коришћењу наших услуга."
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerAccept.tt
-msgid "Yes, I accept your license."
-msgstr "Да, прихватам вашу лиценцу."
-
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerCompany/TicketCustomerIDSelection.tt
 msgid "The customer ID is not changeable, no other customer ID can be assigned to this ticket."
 msgstr "ID клијента не може бити промењен, ниједан други ID не може бити додељен овом тикету."
@@ -8531,12 +8475,12 @@ msgid "From assigned Customer IDs"
 msgstr "Из листе додељених ID клијента"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerError.tt
-msgid "An Error Occurred"
-msgstr "Догодила се грешка"
+msgid "Error"
+msgstr "Грешка"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerError.tt
-msgid "Error Details"
-msgstr "Детаљи грешке"
+msgid "An Error Occurred"
+msgstr "Догодила се грешка"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerError.tt
 msgid "Traceback"
@@ -8639,6 +8583,10 @@ msgid "A new password will be sent to your email address."
 msgstr "Нова лозинка ће бити послата на вашу имејл адресу."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerLogin.tt
+msgid "Back to login"
+msgstr "Назад на пријављивање"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerLogin.tt
 msgid "Create Account"
 msgstr "Креирајте налог"
 
@@ -8675,15 +8623,11 @@ msgid "New Ticket"
 msgstr "Нови тикет"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
-msgid " Service level agreement"
+msgid "Service level agreement"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
 msgid "Dymanic Info"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
-msgid " Subject"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
@@ -8697,6 +8641,10 @@ msgstr "Молимо да притиснете дугме испод за кре
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Create your first ticket"
 msgstr "Креирајте ваш први тикет"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketProcess.tt
+msgid "New Process Ticket"
+msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Profile"
@@ -8718,7 +8666,7 @@ msgstr ""
 msgid "No time settings"
 msgstr "Нема подешавања времена"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "All"
 msgstr "Све"
 
@@ -8807,6 +8755,10 @@ msgid "Ticket fields"
 msgstr "Поља тикета"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Error.tt
+msgid "Error Details"
+msgstr "Детаљи грешке"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/Error.tt
 msgid "Expand"
 msgstr "Прошири"
 
@@ -8878,13 +8830,13 @@ msgstr ""
 msgid "Search tools"
 msgstr ""
 
+#. TT Template: Kernel/Output/HTML/Templates/Standard/HeaderToolbar.tt
+msgid "SearchTemplate"
+msgstr ""
+
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
 msgid "JavaScript not available"
 msgstr "JavaScript nije dostupan."
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
-msgid "Step %s"
-msgstr "Корак %s"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
 msgid "License"
@@ -8905,6 +8857,10 @@ msgstr "Заврши"
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
 msgid "Welcome to %s"
 msgstr "Добродошли у %s"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
+msgid "Address"
+msgstr "Адреса"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
 msgid "Phone"
@@ -9019,16 +8975,16 @@ msgid "Check mail configuration"
 msgstr "Провери конфигурацију мејла"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/InstallerConfigureMail.tt
+msgid "or"
+msgstr "или"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/InstallerConfigureMail.tt
 msgid "Skip this step"
 msgstr "Прескочи овај корак"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBResult.tt
 msgid "Done"
 msgstr "Урађено"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBResult.tt
-msgid "Error"
-msgstr "Грешка"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBResult.tt
 msgid "Database setup successful!"
@@ -9214,10 +9170,6 @@ msgstr "Обриши везе"
 msgid "Lost your password?"
 msgstr "Изгубили сте лозинку?"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/Login.tt
-msgid "Back to login"
-msgstr "Назад на пријављивање"
-
 #. TT Template: Kernel/Output/HTML/Templates/Standard/MetaFloater.tt
 msgid "Scale preview content"
 msgstr "Скалирај садржај за приказ"
@@ -9335,8 +9287,8 @@ msgid "To get the appointment attribute"
 msgstr "Да видите атрибуте термина"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
-msgid " e. g."
-msgstr " нпр."
+msgid "e. g."
+msgstr "нпр."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
 msgid "To get the first 20 character of the appointment title."
@@ -9421,10 +9373,6 @@ msgstr "Вредности интерних кључева динамичких 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminNotificationEvent.tt
 msgid "Ticket dynamic fields display values, useful for Dropdown and Multiselect fields"
 msgstr "Приказане вредности динамичких поља, корисно за падајућа и поља са вишеструким избором"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-msgid "e. g."
-msgstr "нпр."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
 msgid "To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types."
@@ -9675,14 +9623,6 @@ msgid "Reset setting"
 msgstr "Поништи подешавање"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/SystemConfiguration/SettingsList.tt
-msgid "Show user specific changes for this setting"
-msgstr "Прикажи корисничке промене за ово подешавање"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/SystemConfiguration/SettingsList.tt
-msgid "Show user settings"
-msgstr "Прикажи корисничке промене"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/SystemConfiguration/SettingsList.tt
 msgid "Copy a direct link to this setting to your clipboard"
 msgstr "Копирај директну везу за ово подешавање"
 
@@ -9887,6 +9827,10 @@ msgid "Finished"
 msgstr "Завршено"
 
 #. JS Template: Kernel/Output/JavaScript/Templates/Standard/PackageManager/InformationDialog.html.tmpl
+msgid "Unknown"
+msgstr "Непознато"
+
+#. JS Template: Kernel/Output/JavaScript/Templates/Standard/PackageManager/InformationDialog.html.tmpl
 msgid "No package information available."
 msgstr "Нема информација о пакету."
 
@@ -9969,10 +9913,6 @@ msgstr "Г-дин"
 #. Perl Module: Kernel/Config/Defaults.pm
 msgid "Mrs."
 msgstr "Г-ђа"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
-msgid "Address"
-msgstr "Адреса"
 
 #. Perl Module: Kernel/Config/Defaults.pm
 msgid "View system log messages."
@@ -11167,10 +11107,6 @@ msgid "Can't read %s!"
 msgstr "Немогуће читање %s!"
 
 #. Perl Module: Kernel/Modules/AdminPackageManager.pm
-msgid "File is OK"
-msgstr "Датотека је у реду"
-
-#. Perl Module: Kernel/Modules/AdminPackageManager.pm
 msgid "Package has locally modified files."
 msgstr "Пакет садржи локално измењене датотеке."
 
@@ -11958,7 +11894,7 @@ msgstr "Не могу прибавити податке садржаја фил�
 msgid "Customer Name"
 msgstr "Назив клијента"
 
-#. Perl Module: Kernel/Modules/AgentDashboardCommon.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
 msgid "Customer User Name"
 msgstr "Назив клијент корисника"
 
@@ -12839,6 +12775,10 @@ msgid "Error: Please set the value for innodb_log_file_size on your database to 
 msgstr "Грешка: Молимо да подесете вредност за innodb_log_file_size у вашој бази података на најмање %s MB (тренутно: %s MB, препоручено: %s MB). За више информација, молимо погледајте на %s."
 
 #. Perl Module: Kernel/Modules/Installer.pm
+msgid "Wrong default storage engine (%s is %s, but it needs to be InnoDB)."
+msgstr ""
+
+#. Perl Module: Kernel/Modules/Installer.pm
 msgid "Wrong database collation (%s is %s, but it needs to be utf8)."
 msgstr "Неисправно подешена база података (%s је %s, а требало би да буде utf8)."
 
@@ -13502,7 +13442,7 @@ msgstr "Закључајте за рад на тикету"
 msgid "Unwatch"
 msgstr "Прекини надзор"
 
-#. Perl Module: Kernel/Output/HTML/TicketMenu/TicketWatcher.pm
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
 msgid "Remove from list of watched tickets"
 msgstr "Уклони са листе праћених тикета"
 
@@ -14071,7 +14011,7 @@ msgid "Server Database Charset"
 msgstr "Karakterset serverske baze podataka"
 
 #. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
-msgid "This character set is not yet supported, please see https://bugs.otrs.org/show_bug.cgi?id=12361. Please convert your database to the character set 'utf8'."
+msgid "This character set is not yet supported. Please convert your database to the character set 'utf8'."
 msgstr ""
 
 #. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
@@ -14182,11 +14122,11 @@ msgstr "Пронађене су секвенце са могућим погре�
 msgid "PostgreSQL 9.2 or higher is required."
 msgstr "Неопходан је PostgreSQL 9.2 или више."
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionOTRS.pm
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionZnuny.pm
 msgid "Operating System"
 msgstr "Оперативни систем"
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionOTRS.pm
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionZnuny.pm
 msgid "Znuny Disk Partition"
 msgstr "Znuny партиција на диску"
 
@@ -14274,354 +14214,6 @@ msgstr "Мора постојати више од 60 % слободног swap �
 msgid "There should be no more than 200 MB swap space used."
 msgstr "Не треба да буде више од 200 MB употребљеног Swap простора."
 
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticleSearchIndexStatus.pm
-msgid "Znuny"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticleSearchIndexStatus.pm
-msgid "Article Search Index Status"
-msgstr "Стање индекса претраге чланака"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticleSearchIndexStatus.pm
-msgid "Indexed Articles"
-msgstr "Индексираних чланака"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticlesPerCommunicationChannel.pm
-msgid "Articles Per Communication Channel"
-msgstr "Чланака по комуникационом каналу"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLog.pm
-msgid "Incoming communications"
-msgstr "Долазне комуникације"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLog.pm
-msgid "Outgoing communications"
-msgstr "Одлазне комуникације"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLog.pm
-msgid "Failed communications"
-msgstr "Неуспеле комуникације"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLog.pm
-msgid "Average processing time of communications (s)"
-msgstr "Просечно време трајања комуникација (с)"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-msgid "Communication Log Account Status (last 24 hours)"
-msgstr "Стање налога комуникационог лога (последњих 24 сата)"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-msgid "No connections found."
-msgstr "Нису пронађене конекције."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-msgid "ok"
-msgstr "у реду"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-msgid "permanent connection errors"
-msgstr "трајне грешке у конекцији"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-msgid "intermittent connection errors"
-msgstr "повремене грешке у конекцији"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ConfigSettings.pm
-msgid "Config Settings"
-msgstr "Подешавања конфигурације"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ConfigSettings.pm
-msgid "Could not determine value."
-msgstr "Није могуће утврдити вредност."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DaemonRunning.pm
-msgid "Daemon"
-msgstr "Системски сервис"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DaemonRunning.pm
-msgid "Daemon is running."
-msgstr "Сервис ради."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DaemonRunning.pm
-msgid "Daemon is not running."
-msgstr "Сервис не ради."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Database Records"
-msgstr "Записи у бази података"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Tickets"
-msgstr "Тикети"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Ticket History Entries"
-msgstr "Историја уноса тикета"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Articles"
-msgstr "Чланци"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Attachments (DB, Without HTML)"
-msgstr "Прилози (база података, без HTML)"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Customers With At Least One Ticket"
-msgstr "Клијенти са бар једним тикетом"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Dynamic Field Values"
-msgstr "Вредности динамичког поља"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Invalid Dynamic Fields"
-msgstr "Неважећа динамичка поља."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Invalid Dynamic Field Values"
-msgstr "Неважеће вредности динамичких поља."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "GenericInterface Webservices"
-msgstr "GenericInterface веб сервис"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Process Tickets"
-msgstr "Процес тикети"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Months Between First And Last Ticket"
-msgstr "Месеци између првог и последњег тикета"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Tickets Per Month (avg)"
-msgstr "Тикети месечно (просечно)"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-msgid "Open Tickets"
-msgstr "Отворени тикети"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultSOAPUser.pm
-msgid "Default SOAP Username And Password"
-msgstr "Подразумевано SOAP корисничко име и лозинка"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultSOAPUser.pm
-msgid "Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it."
-msgstr "Сигурносни ризик: користите подразумевана подешавања за SOAP::User i SOAP::Password. Молимо промените га."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultUser.pm
-msgid "Default Admin Password"
-msgstr "Предефинисана лозинка администратора"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultUser.pm
-msgid "Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account."
-msgstr "Сигурносни ризик: агент налог root@localhost још увек има предефинисану лозинку. Молимо промените је или деактивирајте налог."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/EmailQueue.pm
-msgid "Email Sending Queue"
-msgstr "Ред за слање имејлова"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/EmailQueue.pm
-msgid "Emails queued for sending"
-msgstr "Број имејлова заказаних за слање"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FQDN.pm
-msgid "FQDN (domain name)"
-msgstr "FQDN (назив домена)"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FQDN.pm
-msgid "Please configure your FQDN setting."
-msgstr "Молимо да конфигуришете FQDN подешавање."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FQDN.pm
-msgid "Domain Name"
-msgstr "Назив домена"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FQDN.pm
-msgid "Your FQDN setting is invalid."
-msgstr "Ваша FQDN подешавања су неважећа."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FileSystemWritable.pm
-msgid "File System Writable"
-msgstr "Омогућено писање у систем датотека."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FileSystemWritable.pm
-msgid "The file system on your Znuny partition is not writable."
-msgstr "Није могуће писање у систем датотека на вашој Znuny партицији."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/LegacyConfigBackups.pm
-msgid "Legacy Configuration Backups"
-msgstr "Резервне копије прошлих конфигурација"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/LegacyConfigBackups.pm
-msgid "No legacy configuration backup files found."
-msgstr "Нису пронађене резервне копије прошлих конфигурација."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/LegacyConfigBackups.pm
-msgid "Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages."
-msgstr "Пронађене су резервне копије прошлих конфигурација у Kernel/Config/Backups, међутим могу бити неопходне за рад инсталираних пакета."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/LegacyConfigBackups.pm
-msgid "Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder."
-msgstr "Резервне копије прошлих конфигурација више нису неопходне за рад инсталираних пакета, молимо уклоните их из Kernel/Config/Backups."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/MultipleJSFileLoad.pm
-msgid "Views with multiple loaded JavaScript files"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/MultipleJSFileLoad.pm
-msgid "The following JavaScript files loaded multiple times:"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/MultipleJSFileLoad.pm
-msgid "Files"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-msgid "Package Installation Status"
-msgstr "Статус инсталације пакета"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-msgid "Some packages have locally modified files."
-msgstr "Неки пакети садрже локално измењене датотеке."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-msgid "Some packages are not correctly installed."
-msgstr "Неки пакети нису исправно инсталирани."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-msgid "Package Framework Version Status"
-msgstr "Статус пакета за верзију система"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-msgid "Some packages are not allowed for the current framework version."
-msgstr "Неки пакети нису дозвољени за верзију вашег система. "
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageList.pm
-msgid "Package List"
-msgstr "Листа пакета"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SessionConfigSettings.pm
-msgid "Session Config Settings"
-msgstr "Подешавања сесија"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SpoolMails.pm
-msgid "Spooled Emails"
-msgstr "Имејлови у реду чекања"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SpoolMails.pm
-msgid "There are emails in var/spool that Znuny could not process."
-msgstr "Постоје имејлови у var/spool које Znuny не може да обради."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SystemID.pm
-msgid "Your SystemID setting is invalid, it should only contain digits."
-msgstr "Ваша подешавање SystemID је неважеће, треба да садржи само цифре."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/DefaultType.pm
-msgid "Default Ticket Type"
-msgstr "Подразумевани тип тикета"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/DefaultType.pm
-msgid "The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type."
-msgstr "Подешени подразумевани тип тикета је неважећи или недостаје. Молимо промените подешавање Ticket::Type::Default и изаберите важећи тип тикета."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/IndexModule.pm
-msgid "Ticket Index Module"
-msgstr "Тикет индекс модул"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/IndexModule.pm
-msgid "You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information."
-msgstr "Имате више од 60.000 тикета и треба да користите StaticDB модул. Погледајте администраторско упутство (Подешавање перформанси) за више информација."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/InvalidUsersWithLockedTickets.pm
-msgid "Invalid Users with Locked Tickets"
-msgstr "Неисправни корисници са закључаним тикетима"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/InvalidUsersWithLockedTickets.pm
-msgid "There are invalid users with locked tickets."
-msgstr "Постоје неисправни корисници са закључаним тикетима."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/OpenTickets.pm
-msgid "You should not have more than 8,000 open tickets in your system."
-msgstr "Не би требало да имате више од 8.000 отворених тикета у систему."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/SearchIndexModule.pm
-msgid "Ticket Search Index Module"
-msgstr "Модул за индексну претрагу тикета"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/SearchIndexModule.pm
-msgid "The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches."
-msgstr "Процес индексирања ће укључити спремање оригиналног текста чланка у индексу претраге, без извршавања филтера или уклањања зауставних речи. Ово ће увећати величину индекса претраге и може успорити текстуалну претрагу."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/StaticDBOrphanedRecords.pm
-msgid "Orphaned Records In ticket_lock_index Table"
-msgstr "Напуштени записи у ticket_lock_index табели"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/StaticDBOrphanedRecords.pm
-msgid "Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl \"Maint::Ticket::QueueIndexCleanup\" to clean the StaticDB index."
-msgstr "Табела ticket_lock_index садржи неповезане записе. Молимо да покренете bin/znuny.Console.pl Maint::Ticket::QueueIndexCleanup да би очистили StaticDB индекс."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/StaticDBOrphanedRecords.pm
-msgid "Orphaned Records In ticket_index Table"
-msgstr "Напуштени записи у ticket_index табели"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/StaticDBOrphanedRecords.pm
-msgid "Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl \"Maint::Ticket::QueueIndexCleanup\" to clean the StaticDB index."
-msgstr "Табела ticket_lindex садржи неповезане записе. Молимо да покренете bin/znuny.Console.pl Maint::Ticket::QueueIndexCleanup да би очистили StaticDB индекс."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "Time Settings"
-msgstr "Подешавања времена"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "Server time zone"
-msgstr "Временска зона сервера"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "Znuny time zone"
-msgstr "Znuny временска зона"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "Znuny time zone is not set."
-msgstr "Znuny временска зона није подешена."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "User default time zone"
-msgstr "Подразумевана временска зона корисника"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "User default time zone is not set."
-msgstr "Подразумевана временска зона корисника није подешена."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-msgid "Calendar time zone is not set."
-msgstr "Временска зона календара није подешена."
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentSkinUsage.pm
-msgid "UI - Agent Skin Usage"
-msgstr "UI - изгледи интерфејса оператера у коришћењу"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentThemeUsage.pm
-msgid "UI - Agent Theme Usage"
-msgstr "UI - теме интерфејса оператера у коришћењу"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/SpecialStats.pm
-msgid "UI - Special Statistics"
-msgstr "UI - посебне статистике"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/SpecialStats.pm
-msgid "Agents using custom main menu ordering"
-msgstr "Оператери са прилагођеним редоследом главног менија"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/SpecialStats.pm
-msgid "Agents using favourites for the admin overview"
-msgstr "Оператери са омиљеним ставкама за администраторски преглед"
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Version.pm
-msgid "Znuny Version"
-msgstr "Znuny верзија"
-
 #. Perl Module: Kernel/System/SupportDataCollector/Plugin/Webserver/Apache/LoadedModules.pm
 msgid "Webserver"
 msgstr "Веб сервер"
@@ -14706,21 +14298,361 @@ msgstr "Веб сервер верзија"
 msgid "Could not determine webserver version."
 msgstr "Не може да препозна веб сервер верзију."
 
-#. Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/OTRS/ConcurrentUsers.pm
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticleSearchIndexStatus.pm
+msgid "Znuny"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticleSearchIndexStatus.pm
+msgid "Article Search Index Status"
+msgstr "Стање индекса претраге чланака"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticleSearchIndexStatus.pm
+msgid "Indexed Articles"
+msgstr "Индексираних чланака"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticlesPerCommunicationChannel.pm
+msgid "Articles Per Communication Channel"
+msgstr "Чланака по комуникационом каналу"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLog.pm
+msgid "Incoming communications"
+msgstr "Долазне комуникације"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLog.pm
+msgid "Outgoing communications"
+msgstr "Одлазне комуникације"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLog.pm
+msgid "Failed communications"
+msgstr "Неуспеле комуникације"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLog.pm
+msgid "Average processing time of communications (s)"
+msgstr "Просечно време трајања комуникација (с)"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+msgid "Communication Log Account Status (last 24 hours)"
+msgstr "Стање налога комуникационог лога (последњих 24 сата)"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+msgid "No connections found."
+msgstr "Нису пронађене конекције."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+msgid "ok"
+msgstr "у реду"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+msgid "permanent connection errors"
+msgstr "трајне грешке у конекцији"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+msgid "intermittent connection errors"
+msgstr "повремене грешке у конекцији"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ConfigSettings.pm
+msgid "Config Settings"
+msgstr "Подешавања конфигурације"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ConfigSettings.pm
+msgid "Could not determine value."
+msgstr "Није могуће утврдити вредност."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DaemonRunning.pm
+msgid "Daemon"
+msgstr "Системски сервис"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DaemonRunning.pm
+msgid "Daemon is running."
+msgstr "Сервис ради."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DaemonRunning.pm
+msgid "Daemon is not running."
+msgstr "Сервис не ради."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Database Records"
+msgstr "Записи у бази података"
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+msgid "Tickets"
+msgstr "Тикети"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Ticket History Entries"
+msgstr "Историја уноса тикета"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Articles"
+msgstr "Чланци"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Attachments (DB, Without HTML)"
+msgstr "Прилози (база података, без HTML)"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Customers With At Least One Ticket"
+msgstr "Клијенти са бар једним тикетом"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Dynamic Field Values"
+msgstr "Вредности динамичког поља"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Invalid Dynamic Fields"
+msgstr "Неважећа динамичка поља."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Invalid Dynamic Field Values"
+msgstr "Неважеће вредности динамичких поља."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "GenericInterface Webservices"
+msgstr "GenericInterface веб сервис"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Process Tickets"
+msgstr "Процес тикети"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Months Between First And Last Ticket"
+msgstr "Месеци између првог и последњег тикета"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Tickets Per Month (avg)"
+msgstr "Тикети месечно (просечно)"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+msgid "Open Tickets"
+msgstr "Отворени тикети"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultSOAPUser.pm
+msgid "Default SOAP Username And Password"
+msgstr "Подразумевано SOAP корисничко име и лозинка"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultSOAPUser.pm
+msgid "Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it."
+msgstr "Сигурносни ризик: користите подразумевана подешавања за SOAP::User i SOAP::Password. Молимо промените га."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultUser.pm
+msgid "Default Admin Password"
+msgstr "Предефинисана лозинка администратора"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultUser.pm
+msgid "Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account."
+msgstr "Сигурносни ризик: агент налог root@localhost још увек има предефинисану лозинку. Молимо промените је или деактивирајте налог."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/EmailQueue.pm
+msgid "Email Sending Queue"
+msgstr "Ред за слање имејлова"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/EmailQueue.pm
+msgid "Emails queued for sending"
+msgstr "Број имејлова заказаних за слање"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FQDN.pm
+msgid "FQDN (domain name)"
+msgstr "FQDN (назив домена)"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FQDN.pm
+msgid "Please configure your FQDN setting."
+msgstr "Молимо да конфигуришете FQDN подешавање."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FQDN.pm
+msgid "Domain Name"
+msgstr "Назив домена"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FQDN.pm
+msgid "Your FQDN setting is invalid."
+msgstr "Ваша FQDN подешавања су неважећа."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FileSystemWritable.pm
+msgid "File System Writable"
+msgstr "Омогућено писање у систем датотека."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FileSystemWritable.pm
+msgid "The file system on your Znuny partition is not writable."
+msgstr "Није могуће писање у систем датотека на вашој Znuny партицији."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/LegacyConfigBackups.pm
+msgid "Legacy Configuration Backups"
+msgstr "Резервне копије прошлих конфигурација"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/LegacyConfigBackups.pm
+msgid "No legacy configuration backup files found."
+msgstr "Нису пронађене резервне копије прошлих конфигурација."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/LegacyConfigBackups.pm
+msgid "Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages."
+msgstr "Пронађене су резервне копије прошлих конфигурација у Kernel/Config/Backups, међутим могу бити неопходне за рад инсталираних пакета."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/LegacyConfigBackups.pm
+msgid "Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder."
+msgstr "Резервне копије прошлих конфигурација више нису неопходне за рад инсталираних пакета, молимо уклоните их из Kernel/Config/Backups."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/MultipleJSFileLoad.pm
+msgid "The following JavaScript files loaded multiple times:"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/MultipleJSFileLoad.pm
+msgid "Files"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/MultipleJSFileLoad.pm
+msgid "Views with multiple loaded JavaScript files"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+msgid "Package Installation Status"
+msgstr "Статус инсталације пакета"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+msgid "Some packages have locally modified files."
+msgstr "Неки пакети садрже локално измењене датотеке."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+msgid "Some packages are not correctly installed."
+msgstr "Неки пакети нису исправно инсталирани."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+msgid "Package Framework Version Status"
+msgstr "Статус пакета за верзију система"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+msgid "Some packages are not allowed for the current framework version."
+msgstr "Неки пакети нису дозвољени за верзију вашег система. "
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageList.pm
+msgid "Package List"
+msgstr "Листа пакета"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SessionConfigSettings.pm
+msgid "Session Config Settings"
+msgstr "Подешавања сесија"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SpoolMails.pm
+msgid "Spooled Emails"
+msgstr "Имејлови у реду чекања"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SpoolMails.pm
+msgid "There are emails in var/spool that Znuny could not process."
+msgstr "Постоје имејлови у var/spool које Znuny не може да обради."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SystemID.pm
+msgid "Your SystemID setting is invalid, it should only contain digits."
+msgstr "Ваша подешавање SystemID је неважеће, треба да садржи само цифре."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/DefaultType.pm
+msgid "Default Ticket Type"
+msgstr "Подразумевани тип тикета"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/DefaultType.pm
+msgid "The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type."
+msgstr "Подешени подразумевани тип тикета је неважећи или недостаје. Молимо промените подешавање Ticket::Type::Default и изаберите важећи тип тикета."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/IndexModule.pm
+msgid "Ticket Index Module"
+msgstr "Тикет индекс модул"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/IndexModule.pm
+msgid "You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information."
+msgstr "Имате више од 60.000 тикета и треба да користите StaticDB модул. Погледајте администраторско упутство (Подешавање перформанси) за више информација."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/InvalidUsersWithLockedTickets.pm
+msgid "Invalid Users with Locked Tickets"
+msgstr "Неисправни корисници са закључаним тикетима"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/InvalidUsersWithLockedTickets.pm
+msgid "There are invalid users with locked tickets."
+msgstr "Постоје неисправни корисници са закључаним тикетима."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/OpenTickets.pm
+msgid "You should not have more than 8,000 open tickets in your system."
+msgstr "Не би требало да имате више од 8.000 отворених тикета у систему."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/SearchIndexModule.pm
+msgid "Ticket Search Index Module"
+msgstr "Модул за индексну претрагу тикета"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/SearchIndexModule.pm
+msgid "The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches."
+msgstr "Процес индексирања ће укључити спремање оригиналног текста чланка у индексу претраге, без извршавања филтера или уклањања зауставних речи. Ово ће увећати величину индекса претраге и може успорити текстуалну претрагу."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/StaticDBOrphanedRecords.pm
+msgid "Orphaned Records In ticket_lock_index Table"
+msgstr "Напуштени записи у ticket_lock_index табели"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/StaticDBOrphanedRecords.pm
+msgid "Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl \"Maint::Ticket::QueueIndexCleanup\" to clean the StaticDB index."
+msgstr "Табела ticket_lock_index садржи неповезане записе. Молимо да покренете bin/znuny.Console.pl Maint::Ticket::QueueIndexCleanup да би очистили StaticDB индекс."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/StaticDBOrphanedRecords.pm
+msgid "Orphaned Records In ticket_index Table"
+msgstr "Напуштени записи у ticket_index табели"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/StaticDBOrphanedRecords.pm
+msgid "Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl \"Maint::Ticket::QueueIndexCleanup\" to clean the StaticDB index."
+msgstr "Табела ticket_lindex садржи неповезане записе. Молимо да покренете bin/znuny.Console.pl Maint::Ticket::QueueIndexCleanup да би очистили StaticDB индекс."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "Time Settings"
+msgstr "Подешавања времена"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "Server time zone"
+msgstr "Временска зона сервера"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "Znuny time zone"
+msgstr "Znuny временска зона"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "Znuny time zone is not set."
+msgstr "Znuny временска зона није подешена."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "User default time zone"
+msgstr "Подразумевана временска зона корисника"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "User default time zone is not set."
+msgstr "Подразумевана временска зона корисника није подешена."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+msgid "Calendar time zone is not set."
+msgstr "Временска зона календара није подешена."
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentSkinUsage.pm
+msgid "UI - Agent Skin Usage"
+msgstr "UI - изгледи интерфејса оператера у коришћењу"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentThemeUsage.pm
+msgid "UI - Agent Theme Usage"
+msgstr "UI - теме интерфејса оператера у коришћењу"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/SpecialStats.pm
+msgid "UI - Special Statistics"
+msgstr "UI - посебне статистике"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/SpecialStats.pm
+msgid "Agents using custom main menu ordering"
+msgstr "Оператери са прилагођеним редоследом главног менија"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/SpecialStats.pm
+msgid "Agents using favourites for the admin overview"
+msgstr "Оператери са омиљеним ставкама за администраторски преглед"
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Version.pm
+msgid "Znuny Version"
+msgstr "Znuny верзија"
+
+#. Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/Znuny/ConcurrentUsers.pm
 msgid "Concurrent Users Details"
 msgstr "Детаљи истовремених корисника"
 
-#. Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/OTRS/ConcurrentUsers.pm
+#. Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/Znuny/ConcurrentUsers.pm
 msgid "Concurrent Users"
 msgstr "Истовремени корисници"
-
-#. Perl Module: Kernel/System/SupportDataCollector/PluginBase.pm
-msgid "OK"
-msgstr "У реду"
-
-#. Perl Module: Kernel/System/SupportDataCollector/PluginBase.pm
-msgid "Problem"
-msgstr "Проблем"
 
 #. Perl Module: Kernel/System/SysConfig.pm
 msgid "Setting %s does not exists!"
@@ -15223,6 +15155,10 @@ msgid "Defines the fully qualified domain name of the system. This setting is us
 msgstr "Дефинише потпуно квалификовано име домена система. Ово подешавање се користи као променљива OTRS_CONFIG_FQDN, која се налази у свим формама порука и користи од стране апликације, за грађење веза до тикета унутар вашег система."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Defines the fully qualified domain name for external IDs generation (i.e. Message-ID, ContentID)."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Defines the HTTP hostname for the support data collection with the public module 'PublicSupportDataCollector' (e.g. used from the Znuny Daemon)."
 msgstr "Дефинише HTTP хост за слање података подршке преко јавног модуле 'PublicSupportDataCollector' (нпр. од стране Znuny системског сервиса)."
 
@@ -15352,6 +15288,10 @@ msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Defines extra content that is allowed for use in the rich text editor."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Global settings for all popup profiles."
 msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
@@ -16243,7 +16183,7 @@ msgid "If \"LDAP\" was selected for Customer::AuthModule and if you want to add 
 msgstr "Уколико је подешен „LDAP” за „Customer::AuthModule” и желите да додате суфикс сваком корисничком имену, дефинишите га овде, нпр. желите само user за корисничко име, али у вашем LDAP директоријуму постоји user@domain."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "If \"LDAP\" was selected for Customer::AuthModule and special paramaters are needed for the Net::LDAP perl module, you can specify them here. See \"perldoc Net::LDAP\" for more information about the parameters."
+msgid "If \"LDAP\" was selected for Customer::AuthModule and special parameters are needed for the Net::LDAP perl module, you can specify them here. See \"perldoc Net::LDAP\" for more information about the parameters."
 msgstr "Уколико је подешен „LDAP” за „Customer::AuthModule” и неопходни су специјални параметри за „Net::LDAP” перл модул, можете их подесити овде. Погледајте „perldoc Net::LDAP” за више информација о параметрима."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
@@ -16387,12 +16327,12 @@ msgid "Allows agents to exchange the axis of a stat if they generate one."
 msgstr "Дозвољава оператерима да замене осе на статистици ако је генеришу."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Allows agents to generate individual-related stats."
-msgstr "Дозвољава оператерима да генеришу индивидуалну статистику."
+msgid "Adds the following elements for use in stats: \"Agent/Owner\", \"Created by Agent/Owner\", \"Responsible\", \"Accounted time by Agent\"."
+msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Allows invalid agents to generate individual-related stats."
-msgstr "Дозвољава неважећим оператерима да генеришу индивидуално повезане статистике."
+msgid "Allows invalid agents to be used in stats. Stats::UseAgentElementInStats must be active."
+msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Shows all the customer identifiers in a multi-select field (not useful if you have a lot of customer identifiers)."
@@ -16505,22 +16445,6 @@ msgstr "Одређује облик у коме ће бити приказано
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Default skin for the agent interface."
 msgstr "Подразумевани изглед окружења за интерфејс оператера."
-
-#. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Default skin for the agent interface (slim version)."
-msgstr "Подразумевани изглед окружења за интерфејс оператера (слаба верзија)."
-
-#. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Balanced white skin by Felix Niklas."
-msgstr "Избалансирани бели изглед, Феликс Никлас."
-
-#. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Balanced white skin by Felix Niklas (slim version)."
-msgstr "Избалансирани бели изглед, Феликс Никлас (танка верзија)."
-
-#. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "High contrast skin for visually impaired users."
-msgstr "Високо контрастни изглед за особе слабијег вида."
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "The agent skin's InternalName which should be used in the agent interface. Please check the available skins in Frontend::Agent::Skins."
@@ -17357,6 +17281,22 @@ msgstr "Одређује да ли претходно сортирање по п
 #. XML Definition: Kernel/Config/Files/XML/Ticket.xml
 msgid "Defines the default sort order for all services in the service view, after priority sort."
 msgstr "Дефинише подразумевани критеријум сортирања за све сервисе у сервисном прегледу, после  сортирања по приориту."
+
+#. XML Definition: Kernel/Config/Files/XML/Ticket.xml
+msgid "Enable highlighting services based on ticket age."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Ticket.xml
+msgid "Sets the age in minutes (first level) for highlighting services that contain untouched tickets."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Ticket.xml
+msgid "Sets the age in minutes (second level) for highlighting services that contain untouched tickets."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Ticket.xml
+msgid "Activates a blinking mechanism of the service that contains the oldest ticket."
+msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Ticket.xml
 msgid "Activates time accounting."
@@ -20246,6 +20186,14 @@ msgstr ""
 msgid "Shows the title field in the NoteToLinkedTicket screen of the agent interface."
 msgstr ""
 
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "User preferences backend to use."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Loader module registration for the public interface."
+msgstr ""
+
 #. XML Definition: scripts/database/initial_insert.xml
 msgid "invalid-temporarily"
 msgstr "неважећи-привремено"
@@ -20261,6 +20209,10 @@ msgstr "Група свих администратора."
 #. XML Definition: scripts/database/initial_insert.xml
 msgid "Group for statistics access."
 msgstr "Група за приступ статистици."
+
+#. XML Definition: scripts/database/initial_insert.xml
+msgid "Group for time accounting web service access."
+msgstr ""
 
 #. XML Definition: scripts/database/initial_insert.xml
 msgid "new"
@@ -20714,13 +20666,9 @@ msgstr "Уклони ово динамичко поље"
 msgid "Remove selection"
 msgstr "Уклони избор"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericAgent.tt
-msgid "Do you really want to delete this generic agent job?"
-msgstr "Да ли стварно желите да обришете овај посао генеричког оператера?"
-
-#. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericInterfaceInvoker.js
-msgid "Delete this Event Trigger"
-msgstr "Obriši ovaj okidač događaja"
+#. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericAgent.js
+msgid "An error occurred during communication."
+msgstr "Дошло је до грешке приликом комуникације."
 
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericAgent.js
 msgid "Duplicate event."
@@ -20729,10 +20677,6 @@ msgstr "Направи дупликат догађаја."
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericAgent.js
 msgid "This event is already attached to the job, Please use a different one."
 msgstr "Овај догађај је приложен послу. Молимо користите неки други."
-
-#. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericAgent.js
-msgid "An error occurred during communication."
-msgstr "Дошло је до грешке приликом комуникације."
 
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericInterfaceDebugger.js
 msgid "Request Details"
@@ -20761,6 +20705,10 @@ msgstr "Није могуће додати нови окидач догађај�
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericInterfaceInvoker.js
 msgid "Delete this Invoker"
 msgstr "Обриши овог позиваоца"
+
+#. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericInterfaceInvoker.js
+msgid "Delete this Event Trigger"
+msgstr "Obriši ovaj okidač događaja"
 
 #. JS File: var/httpd/htdocs/js/Core.Agent.Admin.GenericInterfaceInvokerEvent.js
 msgid "Sorry, the only existing condition can't be removed."
@@ -21234,10 +21182,6 @@ msgstr "Генериши"
 msgid "This element has children elements and can currently not be removed."
 msgstr "Овај елемент има децу и тренутно не може бити уклоњен."
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsOverview.tt
-msgid "Do you really want to delete this statistic?"
-msgstr "Да ли стварно желите да обришете ову статистику?"
-
 #. JS File: var/httpd/htdocs/js/Core.Agent.TicketAction.js
 msgid "Select a customer ID to assign to this ticket"
 msgstr "Одаберите ID клијента за доделу овом тикету"
@@ -21555,10 +21499,6 @@ msgstr " 5 минута"
 #. SysConfig
 msgid " 7 minutes"
 msgstr " 7 минута"
-
-#. SysConfig
-msgid "\"Slim\" skin which tries to save screen space for power users."
-msgstr "\"Упрошћени\" изглед који покушава да уштеди место за напредне кориснике."
 
 #. SysConfig
 msgid "%s"
@@ -22357,10 +22297,6 @@ msgid "Date / Time"
 msgstr "Датум / Време"
 
 #. SysConfig
-msgid "Default (Slim)"
-msgstr "Подразумевано (упрошћено)"
-
-#. SysConfig
 msgid "Default agent name"
 msgstr "Подразумевано име оператера"
 
@@ -22733,10 +22669,6 @@ msgid "Hebrew"
 msgstr "Хебрејски"
 
 #. SysConfig
-msgid "High Contrast"
-msgstr "Високи контраст"
-
-#. SysConfig
 msgid "Hindi"
 msgstr "Хинди"
 
@@ -22801,14 +22733,6 @@ msgid "Italian"
 msgstr "Италијански"
 
 #. SysConfig
-msgid "Ivory"
-msgstr "Слоновача"
-
-#. SysConfig
-msgid "Ivory (Slim)"
-msgstr "Слоновача (упрошћено)"
-
-#. SysConfig
 msgid "Japanese"
 msgstr "Јапански"
 
@@ -22871,10 +22795,6 @@ msgstr "ПрезимеИме"
 #. SysConfig
 msgid "Latvian"
 msgstr "Летонски"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "Left"
-msgstr "Лево"
 
 #. SysConfig
 msgid "Link Object"
@@ -23477,10 +23397,6 @@ msgid "Search tickets."
 msgstr ""
 
 #. SysConfig
-msgid "SearchTemplate"
-msgstr ""
-
-#. SysConfig
 msgid "Second Christmas Day"
 msgstr "Други дан Божића"
 
@@ -23920,7 +23836,7 @@ msgstr "Преглед реда тикета"
 msgid "Ticket Responsible."
 msgstr "Одговоран за тикет."
 
-#. SysConfig
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Ticket Search"
 msgstr ""
 
@@ -24220,79 +24136,207 @@ msgstr "обрнуто"
 msgid "stats"
 msgstr "статистика"
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
-msgid "Show Valid"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
-msgid "Show All"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketProcess.tt
-msgid "New Process Ticket"
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBulk.tt
+msgid "Watch tickets"
 msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Defines the fully qualified domain name for external IDs generation (i.e. Message-ID, ContentID)."
-msgstr ""
-
-#. XML Definition: scripts/database/initial_insert.xml
-msgid "Group for time accounting web service access."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminState.tt
-msgid "This field must be a hexadecimal color code."
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/TicketInformation.tt
-msgid "is invalid!"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/TicketInformation.tt
-msgid "is invalid"
+msgid "The shortcut icon for the customer interface."
 msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Global settings for all popup profiles."
+msgid "The Apple touch icon for the customer interface."
 msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
-msgid "Defines the global users popup profile."
+msgid "The shortcut icon for the agent interface."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "The Apple touch icon for the agent interface."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "The shortcut icon for the customer interface for the skin \"default\"."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "The Apple touch icon for the customer interface for skin \"default\"."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "The shortcut icon for the agent interface fot the skin \"default\"."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "The Apple touch icon for the agent interface for the skin \"default\"."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBulk.tt
+msgid "Mark tickets as seen"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBulk.tt
+msgid "Mark tickets as unseen"
+msgstr ""
+
+#. Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
+msgid "Mark article as unseen"
+msgstr ""
+
+#. Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
+msgid "Mark as unseen"
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Defines the config parameters available in the preferences view. The default redirect URL from SysConfig 'MarkTicketUnseenRedirectDefaultURL' is used if no selection is made by the agent."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Defines the redirect URL for setting a ticket article to 'unseen'."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Defines the config parameters available in the preferences view. The default redirect URL from SysConfig 'MarkTicketSeenRedirectDefaultURL' is used if no selection is made by the agent."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Defines the redirect URL for setting a ticket article to 'seen'."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Registers a link in the ticket menu to mark a ticket as unseen."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Registers a link in the ticket menu to mark a ticket as seen."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as unseen."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as seen."
 msgstr ""
 
 #. SysConfig
-msgid "Change your default popup profile settings."
+msgid "Configure which screen should be shown after marking a ticket or article as seen."
 msgstr ""
 
 #. SysConfig
-msgid "Popup Profile"
+msgid "Configure which screen should be shown after marking a ticket or article as unseen."
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "The horizontal distance of the window relative to the screen, in pixels."
+#. SysConfig
+msgid "Last viewed overview"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "Top"
+#. SysConfig
+msgid "Last viewed screen"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "The vertical distance of the window relative to the screen, in pixels."
+#. SysConfig
+msgid "Mark ticket as seen"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "Width"
+#. SysConfig
+msgid "Mark ticket as unseen"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "Width in pixels or percent."
+#. SysConfig
+msgid "Screen after marking as seen"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "Height"
+#. SysConfig
+msgid "Screen after marking as unseen"
 msgstr ""
 
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentPreferences.tt
-msgid "Height in pixels or percent."
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel \"agent\"."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel \"system\"."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Deletes orphaned sessions."
+msgstr ""
+
+#. Perl Module: Kernel/Modules/Installer.pm
+msgid "Error: You have the wrong database version installed (%s). You need at least version %s! "
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Sets the timeout (in seconds) for DNS resolver queries."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/FormElements/DraftNotifications.tt
+msgid "Please note that you have already one or more saved drafts for this action."
+msgstr ""
+
+#. Perl Module: Kernel/Modules/Installer.pm
+msgid "Error: Please set the value for innodb_file_per_table on your database to ON."
+msgstr ""
+
+#. Perl Module: Kernel/Modules/Installer.pm
+msgid "Error: Please set the value for innodb_default_row_format on your database to dynamic."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
+msgid "Setting character_set_client needs to be utf8mb4."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
+msgid "The setting character_set_database needs to be 'utf8mb4'."
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
+msgid "There were tables found which do not have 'utf8mb4' as charset."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Dark skin for the agent interface."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Dark skin for the customer interface."
+msgstr ""
+
+#. SysConfig
+msgid "Dark"
+msgstr ""
+
+#. SysConfig
+msgid "This is the dark skin for the agent interface."
+msgstr ""
+
+#. SysConfig
+msgid "This is the dark skin for the customer interface."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+msgid "Save changes"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBounce.tt
+msgid "cancel"
+msgstr ""
+
+#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
+msgid "There were non-system tables found which do not have 'utf8mb4' as charset."
+msgstr ""
+
+#. SysConfig
+msgid "Mark as seen"
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Framework.xml
+msgid "Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized."
 msgstr ""
 

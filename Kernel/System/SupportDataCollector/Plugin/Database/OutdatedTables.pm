@@ -11,6 +11,7 @@ package Kernel::System::SupportDataCollector::Plugin::Database::OutdatedTables;
 
 use strict;
 use warnings;
+use utf8;
 
 use parent qw(Kernel::System::SupportDataCollector::PluginBase);
 
@@ -32,7 +33,7 @@ sub Run {
 
     my @OutdatedTables;
 
-    # This table was removed with OTRS 6 (if empty).
+    # This table was removed with Znuny 6 (if empty).
     if ( $ExistingTables{gi_object_lock_state} ) {
         my $SolManConnectorInstalled;
 

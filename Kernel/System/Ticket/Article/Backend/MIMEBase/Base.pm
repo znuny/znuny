@@ -290,7 +290,7 @@ sub _ArticleDeleteDirectory {
 
 Get the stored content path of an article.
 
-    my $Path = $BackendObject->_ArticleContentPatGeth(
+    my $Path = $BackendObject->_ArticleContentPathGet(
         ArticleID => 123,
     );
 

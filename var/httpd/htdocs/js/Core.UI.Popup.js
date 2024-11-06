@@ -513,6 +513,12 @@ Core.UI.Popup = (function (TargetNS) {
                 if (WindowMode === 'Popup') {
                     PopupFeatures = PopupProfiles[PopupProfile].WindowURLParams;
 
+                    // Convert strings to numbers to avoid surprises like concatenation instead of sum.
+                    PopupProfiles[PopupProfile].Width = Number(PopupProfiles[PopupProfile].Width);
+                    PopupProfiles[PopupProfile].Height = Number(PopupProfiles[PopupProfile].Height);
+                    PopupProfiles[PopupProfile].Top = Number(PopupProfiles[PopupProfile].Top);
+                    PopupProfiles[PopupProfile].Left = Number(PopupProfiles[PopupProfile].Left);
+
                     // get pixel or percent of width and height
                     // convert to a valid pixel value for window.open
                     Regex        = new RegExp('(%|px)$');
@@ -531,7 +537,7 @@ Core.UI.Popup = (function (TargetNS) {
 
                     // Get the position of the current screen on browsers which support it (non-IE) and
                     // use it to open the popup on the same screen
-                    PopupFeatures += ',left=' + ((window.screen.left || 0) + PopupProfiles[PopupProfile].Left);
+                    PopupFeatures += ',left=' + PopupProfiles[PopupProfile].Left;
                     PopupFeatures += ',width=' + PopupProfiles[PopupProfile].Width;
 
                     // Bug#11205 (http://bugs.otrs.org/show_bug.cgi?id=11205)
@@ -543,11 +549,11 @@ Core.UI.Popup = (function (TargetNS) {
                     if (window.screen.availHeight < PopupProfiles[PopupProfile].Height + PopupProfiles[PopupProfile].Top) {
                         PopupFeatures += ',height=' + (window.screen.availHeight - PopupProfiles[PopupProfile].Top - 20);
                         // Adjust top position to have the same distance between top and bottom line.
-                        PopupFeatures += ',top=' + ((window.screen.top || 0) + (PopupProfiles[PopupProfile].Top / 2));
+                        PopupFeatures += ',top=' + (PopupProfiles[PopupProfile].Top / 2);
                     }
                     else {
                         PopupFeatures += ',height=' + PopupProfiles[PopupProfile].Height;
-                        PopupFeatures += ',top=' + ((window.screen.top || 0) + PopupProfiles[PopupProfile].Top);
+                        PopupFeatures += ',top=' + PopupProfiles[PopupProfile].Top;
                     }
 
                     NewWindow = window.open(URL, WindowName, PopupFeatures);

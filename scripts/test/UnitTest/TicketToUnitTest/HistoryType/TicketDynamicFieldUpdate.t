@@ -50,7 +50,7 @@ my $ExpectedOutout = <<OUTPUT;
 
 \$Self->True(
     \$Success,
-    'TicketDynamicFieldUpdate "$FieldName" was successfull.',
+    'TicketDynamicFieldUpdate "$FieldName" was successful.',
 );
 
 OUTPUT

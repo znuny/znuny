@@ -241,7 +241,7 @@
 
                         [% END %]
 
-                        [% IF Data.InvokerType == 'Ticket::Generic' %]
+                        [% IF Data.GetAllArticleAttachmentsStrg %]
                         <div class="field-wrapper">
                             <label for="GetAllArticleAttachments">[% Translate("Add all attachments") | html %]</label>
                             <div class="Field">

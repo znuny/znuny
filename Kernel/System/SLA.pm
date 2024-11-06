@@ -152,12 +152,12 @@ Returns:
         'SLAID'               => '2',
         'Name'                => 'Diamond Pacific - S2',
         'Calendar'            => '2',
-        'FirstResponseTime'   => '60',   # in minutes according to business hours
-        'FirstResponseNotify' => '70',   # in percent
-        'UpdateTime'          => '360',  # in minutes according to business hours
-        'UpdateNotify'        => '70',   # in percent
-        'SolutionTime'        => '960',  # in minutes according to business hours
-        'SolutionNotify'      => '80',   # in percent
+        'FirstResponseTime'   => '60',                  # in minutes according to business hours
+        'FirstResponseNotify' => '70',                  # in percent
+        'UpdateTime'          => '360',                 # in minutes according to business hours
+        'UpdateNotify'        => '70',                  # in percent
+        'SolutionTime'        => '960',                 # in minutes according to business hours
+        'SolutionNotify'      => '80',                  # in percent
         'ServiceIDs'          => [ '4', '7', '8' ],
         'ValidID'             => '1',
         'Comment'             => 'Some Comment',
@@ -169,7 +169,7 @@ Returns:
         # ITSMCore (if installed)
         'TypeID'                  => '5',
         'Type'                    => 'Incident',
-        'MinTimeBetweenIncidents' => '4000',  # in minutes
+        'MinTimeBetweenIncidents' => '4000',            # in minutes
     );
 
 =cut
@@ -191,10 +191,8 @@ sub SLAGet {
     # check if result is already cached
     my $CacheKey = 'Cache::SLAGet::' . $Param{SLAID};
     my $Cached   = $Kernel::OM->Get('Kernel::System::Cache')->Get(
-        Type           => $Self->{CacheType},
-        Key            => $CacheKey,
-        CacheInMemory  => 1,
-        CacheInBackend => 0,
+        Type => $Self->{CacheType},
+        Key  => $CacheKey,
     );
 
     if ( ref $Cached eq 'HASH' ) {
@@ -295,9 +293,7 @@ sub SLAGet {
         Key  => $CacheKey,
 
         # make a local copy of the sla data to avoid it being altered in-memory later
-        Value          => {%SLAData},
-        CacheInMemory  => 1,
-        CacheInBackend => 0,
+        Value => {%SLAData},
     );
 
     return %SLAData;
@@ -339,10 +335,8 @@ sub SLALookup {
         # check cache
         my $CacheKey = 'Cache::SLALookup::ID::' . $Param{SLAID};
         my $Cached   = $Kernel::OM->Get('Kernel::System::Cache')->Get(
-            Type           => $Self->{CacheType},
-            Key            => $CacheKey,
-            CacheInMemory  => 1,
-            CacheInBackend => 0,
+            Type => $Self->{CacheType},
+            Key  => $CacheKey,
         );
         if ( defined $Cached ) {
             return $Cached;
@@ -363,12 +357,10 @@ sub SLALookup {
 
         # cache
         $Kernel::OM->Get('Kernel::System::Cache')->Set(
-            Type           => $Self->{CacheType},
-            TTL            => $Self->{CacheTTL},
-            Key            => $CacheKey,
-            Value          => $Name,
-            CacheInMemory  => 1,
-            CacheInBackend => 0,
+            Type  => $Self->{CacheType},
+            TTL   => $Self->{CacheTTL},
+            Key   => $CacheKey,
+            Value => $Name,
         );
 
         return $Name;
@@ -378,10 +370,8 @@ sub SLALookup {
         # check cache
         my $CacheKey = 'Cache::SLALookup::Name::' . $Param{Name};
         my $Cached   = $Kernel::OM->Get('Kernel::System::Cache')->Get(
-            Type           => $Self->{CacheType},
-            Key            => $CacheKey,
-            CacheInMemory  => 1,
-            CacheInBackend => 0,
+            Type => $Self->{CacheType},
+            Key  => $CacheKey,
         );
         if ( defined $Cached ) {
             return $Cached;
@@ -402,12 +392,10 @@ sub SLALookup {
 
         # cache
         $Kernel::OM->Get('Kernel::System::Cache')->Set(
-            Type           => $Self->{CacheType},
-            TTL            => $Self->{CacheTTL},
-            Key            => $CacheKey,
-            Value          => $SLAID,
-            CacheInMemory  => 1,
-            CacheInBackend => 0,
+            Type  => $Self->{CacheType},
+            TTL   => $Self->{CacheTTL},
+            Key   => $CacheKey,
+            Value => $SLAID,
         );
 
         return $SLAID;
@@ -600,22 +588,22 @@ update a existing sla
 
     my $True = $SLAObject->SLAUpdate(
         SLAID               => 2,
-        ServiceIDs          => [ 1, 2, 3 ],  # (optional)
+        ServiceIDs          => [ 1, 2, 3 ],     # (optional)
         Name                => 'Service Name',
-        Calendar            => 'Calendar1',  # (optional)
-        FirstResponseTime   => 120,          # (optional)
-        FirstResponseNotify => 60,           # (optional) notify agent if first response escalation is 60% reached
-        UpdateTime          => 180,          # (optional)
-        UpdateNotify        => 80,           # (optional) notify agent if update escalation is 80% reached
-        SolutionTime        => 580,          # (optional)
-        SolutionNotify      => 80,           # (optional) notify agent if solution escalation is 80% reached
+        Calendar            => 'Calendar1',     # (optional)
+        FirstResponseTime   => 120,             # (optional)
+        FirstResponseNotify => 60,              # (optional) notify agent if first response escalation is 60% reached
+        UpdateTime          => 180,             # (optional)
+        UpdateNotify        => 80,              # (optional) notify agent if update escalation is 80% reached
+        SolutionTime        => 580,             # (optional)
+        SolutionNotify      => 80,              # (optional) notify agent if solution escalation is 80% reached
         ValidID             => 1,
-        Comment             => 'Comment',    # (optional)
+        Comment             => 'Comment',       # (optional)
         UserID              => 1,
 
         # ITSMCore
         TypeID                  => 2,
-        MinTimeBetweenIncidents => 3443,  # (optional)
+        MinTimeBetweenIncidents => 3443,        # (optional)
     );
 
 =cut

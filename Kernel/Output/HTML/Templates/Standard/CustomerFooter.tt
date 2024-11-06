@@ -24,7 +24,6 @@
         <span></span>
         [% Translate("Powered by %s", Config("Product")) | html %]
     </a>
-    <div class="Clear"></div>
 [% END %]
 </div>
 

@@ -11,6 +11,7 @@ package scripts::Migration::Base::InitializeDefaultCronjobs;    ## no critic
 
 use strict;
 use warnings;
+use utf8;
 
 use File::Copy ();
 

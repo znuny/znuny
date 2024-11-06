@@ -301,31 +301,40 @@ sub _NotificationFilter {
 
     return if !IsHashRefWithData( $Notification{Data} );
 
+    my @KeysToIgnore = qw(
+        Recipients
+        SkipRecipients
+        RecipientAgents
+        RecipientGroups
+        RecipientRoles
+        TransportEmailTemplate
+        Events
+        ArticleTypeID
+        ArticleSenderTypeID
+        ArticleSubjectMatch
+        ArticleBodyMatch
+        ArticleAttachmentInclude
+        NotificationArticleTypeID
+        Transports
+        OncePerDay
+        VisibleForAgent
+        VisibleForAgentTooltip
+        LanguageID
+        SendOnOutOfOffice
+        AgentEnabledByDefault
+        NotificationType
+        EmailSecuritySettings
+        EmailSigningCrypting
+        EmailMissingSigningKeys
+        EmailMissingCryptingKeys
+    );
+    my %KeysToIgnore = map { $_ => 1 } @KeysToIgnore;
+
     KEY:
     for my $Key ( sort keys %{ $Notification{Data} } ) {
 
         # ignore not appointment related attributes
-        next KEY if $Key eq 'Recipients';
-        next KEY if $Key eq 'SkipRecipients';
-        next KEY if $Key eq 'RecipientAgents';
-        next KEY if $Key eq 'RecipientGroups';
-        next KEY if $Key eq 'RecipientRoles';
-        next KEY if $Key eq 'TransportEmailTemplate';
-        next KEY if $Key eq 'Events';
-        next KEY if $Key eq 'ArticleTypeID';
-        next KEY if $Key eq 'ArticleSenderTypeID';
-        next KEY if $Key eq 'ArticleSubjectMatch';
-        next KEY if $Key eq 'ArticleBodyMatch';
-        next KEY if $Key eq 'ArticleAttachmentInclude';
-        next KEY if $Key eq 'NotificationArticleTypeID';
-        next KEY if $Key eq 'Transports';
-        next KEY if $Key eq 'OncePerDay';
-        next KEY if $Key eq 'VisibleForAgent';
-        next KEY if $Key eq 'VisibleForAgentTooltip';
-        next KEY if $Key eq 'LanguageID';
-        next KEY if $Key eq 'SendOnOutOfOffice';
-        next KEY if $Key eq 'AgentEnabledByDefault';
-        next KEY if $Key eq 'NotificationType';
+        next KEY if $KeysToIgnore{$Key};
 
         # check recipient fields from transport methods
         if ( $Key =~ m{\A Recipient}xms ) {

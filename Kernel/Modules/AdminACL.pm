@@ -30,7 +30,8 @@ sub new {
 sub Run {
     my ( $Self, %Param ) = @_;
 
-    my $ParamObject = $Kernel::OM->Get('Kernel::System::Web::Request');
+    my $ParamObject  = $Kernel::OM->Get('Kernel::System::Web::Request');
+    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
 
     $Self->{Subaction} = $ParamObject->GetParam( Param => 'Subaction' ) || '';
 
@@ -50,12 +51,11 @@ sub Run {
         $Param{NotifyData} = [
             {
                 Info => $SynchronizeMessage,
+                Link => $LayoutObject->{Baselink} . 'Action=AdminACL;Subaction=ACLDeploy'
             },
         ];
         $SynchronizedMessageVisible = 1;
     }
-
-    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
 
     # ------------------------------------------------------------ #
     # ACLImport
@@ -574,7 +574,7 @@ sub _ShowOverview {
 
     if ( $Self->{UserID} == 1 ) {
 
-        # show error notfy, don't work with user id 1
+        # show error notify, don't work with user id 1
         $Output .= $LayoutObject->Notify(
             Priority => 'Error',
             Info =>
@@ -757,16 +757,28 @@ sub _ShowEdit {
         AutoComplete   => 'off',
     );
 
-    # get list of all possible dynamic fields
-    my $DynamicFieldList = $Kernel::OM->Get('Kernel::System::DynamicField')->DynamicFieldList(
-        ObjectType => 'Ticket',
-        ResultType => 'HASH',
-    );
-    my %DynamicFieldNames = reverse %{$DynamicFieldList};
     my %DynamicFields;
-    for my $DynamicFieldName ( sort keys %DynamicFieldNames ) {
-        $DynamicFields{ 'DynamicField_' . $DynamicFieldName } = $DynamicFieldName;
+    my $DynamicFieldList = $Kernel::OM->Get('Kernel::System::DynamicField')->DynamicFieldListGet(
+        Valid      => 1,
+        ObjectType => ['Ticket'],
+    );
+
+    DYNAMICFIELDCONFIG:
+    for my $DynamicFieldConfig ( @{$DynamicFieldList} ) {
+        next DYNAMICFIELDCONFIG if !IsHashRefWithData($DynamicFieldConfig);
+
+        my $TranslatedLabel = $LayoutObject->{LanguageObject}->Translate( $DynamicFieldConfig->{Label} );
+        my $CombinedLabel   = (
+            $TranslatedLabel eq $DynamicFieldConfig->{Name}
+            ? $TranslatedLabel
+            : $TranslatedLabel . ' (' . $DynamicFieldConfig->{Name} . ')'
+        );
+
+        $DynamicFields{ 'DynamicField_' . $DynamicFieldConfig->{Name} } = $CombinedLabel;
     }
+
+    %DynamicFields = map { $_ => $DynamicFields{$_} } sort keys %DynamicFields;
+
     $Param{ACLKeysLevel3DynamicFields} = $LayoutObject->BuildSelection(
         Data         => \%DynamicFields,
         Name         => 'NewDataKeyDropdown',

@@ -12,6 +12,7 @@ package scripts::Migration::Base::DatabaseBackupCheck;    ## no critic
 
 use strict;
 use warnings;
+use utf8;
 
 use IO::Interactive qw(is_interactive);
 
