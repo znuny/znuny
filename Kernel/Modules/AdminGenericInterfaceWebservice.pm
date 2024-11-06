@@ -179,7 +179,7 @@ sub Run {
             UserID  => $Self->{UserID},
         );
 
-        # Show error if cant update.
+        # Show error if it can't be updated.
         if ( !$Success ) {
             return $LayoutObject->ErrorScreen(
                 Message => Translatable('There was an error updating the web service.'),

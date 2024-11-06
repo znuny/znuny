@@ -11,6 +11,7 @@ package Kernel::System::VariableCheck;
 
 use strict;
 use warnings;
+use utf8;
 
 use Exporter qw(import);
 use Package::Stash;

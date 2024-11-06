@@ -67,6 +67,7 @@ div.InputField_InputContainer {
     display: flex;
     align-items: center;
     z-index: 100;
+    pointer-events: none;
 }
 
 .InputField_Search::-ms-clear {

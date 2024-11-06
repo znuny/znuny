@@ -10,6 +10,7 @@ package Kernel::System::Mention;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::Language qw(Translatable);
 use Kernel::System::VariableCheck qw(:all);
@@ -301,8 +302,8 @@ Retrieves all mentions of a ticket.
 
     my $Mentions = $MentionObject->GetTicketMentions(
         TicketID  => 3252,
-        OrderBy   => 'create_time', # optional; default
-        SortOrder => 'ASC', # or 'DESC', optional; default
+        OrderBy   => 'create_time',     # optional; default
+        SortOrder => 'ASC',             # or 'DESC', optional; default
     );
 
     Returns:
@@ -381,8 +382,8 @@ Retrieves all mentions of a user.
         # if set to 1, all mentions of every article count separately
         PerArticle => 0,
 
-        OrderBy    => 'create_time', # optional; default
-        SortOrder  => 'ASC', # or 'DESC', optional; default
+        OrderBy    => 'create_time',    # optional; default
+        SortOrder  => 'ASC',            # or 'DESC', optional; default
     );
 
     Returns:
@@ -577,24 +578,31 @@ sub GetMentionedUserIDsFromString {
     my $MentionsTriggerConfig         = $MentionsRichtTextEditorConfig->{Triggers};
     return [] if !IsHashRefWithData($MentionsTriggerConfig);
 
-    my @MentionedUsers = (
+    my @MentionedUsers;
+    my %UserNameByFullname;
+
+    while (
         $Param{HTMLString}
-            =~ m{<a\b[^>]*?\bclass="Mention"[^>]*?>\Q$MentionsTriggerConfig->{User}\E(.*?)<\/a>}sg
-    );
+        =~ m{<a[^>]*class="Mention"[^(id)|>]*id="([^"]*)"[^>]*>\Q$MentionsTriggerConfig->{User}\E(.*?)<\/a>}sg
+        )
+    {
+        $UserNameByFullname{$2} = $1;
+        push @MentionedUsers, $1;
+    }
 
     my @MentionedGroups = (
         $Param{HTMLString}
             =~ m{<a\b[^>]*?\bclass="GroupMention"[^>]*?>\Q$MentionsTriggerConfig->{Group}\E(.*?)<\/a>}sg
     );
 
-    # If plain text has additionally been given, use it to remove quoted text (lines starting
-    # with characters configured in Ticket::Frontend::Quote) and match the remaining
-    # contained mentions with those of the given HTML string.
-    #
-    # This avoids notification for mentions contained in quoted text.
-    #
     # Mentions cannot be removed from quotations in HTML string because
     # parsing is not reliably possible.
+    # Therefore, if plain text has additionally been given, use it to remove quoted text (lines starting
+    # with characters configured in Ticket::Frontend::Quote) and match the remaining
+    # contained mentions with those of the given HTML string. So the sole purpose of giving plain text
+    # is to be able to remove mentions from quotes.
+    #
+    # This avoids notifications for mentions contained in quoted text.
     my $QuoteMarker = $ConfigObject->Get('Ticket::Frontend::Quote');
     if (
         IsStringWithData( $Param{PlainTextString} )
@@ -606,14 +614,15 @@ sub GetMentionedUserIDsFromString {
 
         # Drop found mentioned users that are not part of the plain text without quotes.
         if ( defined $PlainTextStringWithoutQuote ) {
-            @MentionedUsers = grep { $PlainTextStringWithoutQuote =~ m{\[\d+\]\Q$MentionsTriggerConfig->{User}\E$_\b}m }
-                @MentionedUsers;
+            @MentionedUsers = map { $UserNameByFullname{$_} }
+                grep { $PlainTextStringWithoutQuote =~ m{\[\d+\]\Q$MentionsTriggerConfig->{User}\E\Q$_\E(\s|\b)}m }
+                keys %UserNameByFullname;
         }
 
         # Drop found mentioned groups that are not part of the plain text without quotes.
         if ( defined $PlainTextStringWithoutQuote ) {
             @MentionedGroups
-                = grep { $PlainTextStringWithoutQuote =~ m{\[\d+\]\Q$MentionsTriggerConfig->{Group}\E$_\b}m }
+                = grep { $PlainTextStringWithoutQuote =~ m{\[\d+\]\Q$MentionsTriggerConfig->{Group}\E\Q$_\E(\s|\b)}m }
                 @MentionedGroups;
         }
     }
@@ -645,7 +654,7 @@ sub GetMentionedUserIDsFromString {
         push @UniqueMentionedUsers, $MentionedUser;
     }
 
-    if ( $Param{Limit} ) {
+    if ( $Param{Limit} && @UniqueMentionedUsers > $Param{Limit} ) {
         @UniqueMentionedUsers = @UniqueMentionedUsers[ 0 .. $Param{Limit} - 1 ];
     }
 

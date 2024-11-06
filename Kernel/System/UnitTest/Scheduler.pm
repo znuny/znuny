@@ -11,8 +11,6 @@ package Kernel::System::UnitTest::Scheduler;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
-
 our @ObjectDependencies = (
     'Kernel::System::Daemon::SchedulerDB',
     'Kernel::System::Log',

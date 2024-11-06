@@ -250,7 +250,7 @@ my $MergeSuccess = $TicketObject->TicketMerge(
 
 $Self->True(
     $MergeSuccess,
-    "Successfull merge from TicketID $MergeLinkObjectTicketIDs[0] into TicketID $MergeLinkObjectTicketIDs[5].",
+    "Successful merge from TicketID $MergeLinkObjectTicketIDs[0] into TicketID $MergeLinkObjectTicketIDs[5].",
 );
 
 # get list of linked tickets from original ticket after the merge

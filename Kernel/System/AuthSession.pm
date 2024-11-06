@@ -265,7 +265,13 @@ sub RemoveSessionByUser {
             SessionID => $SessionID,
         );
 
-        next SESSIONID if $SessionData{UserLogin} ne $Param{UserLogin};
+        if (
+            defined $SessionData{UserLogin}
+            && ( $SessionData{UserLogin} ne $Param{UserLogin} )
+            )
+        {
+            next SESSIONID;
+        }
 
         $Self->{Backend}->RemoveSessionID(
             SessionID => $SessionID,
@@ -374,6 +380,34 @@ sub GetActiveSessions {
     }
 
     return $Self->{Backend}->GetActiveSessions(%Param);
+}
+
+=head2 GetOrphanedSessionIDs()
+
+returns an array with orphaned session ids,
+missing user-login defines an orphaned session for now
+
+    my @Sessions = $SessionObject->GetOrphanedSessionIDs();
+
+=cut
+
+sub GetOrphanedSessionIDs {
+    my ( $Self, %Param ) = @_;
+
+    my @OrphanedSessionIDs;
+    my @SessionIDs = $Self->GetAllSessionIDs();
+    for my $SessionID (@SessionIDs) {
+
+        my %SessionData = $Self->{Backend}->GetSessionIDData(
+            SessionID => $SessionID,
+        );
+
+        if ( !defined $SessionData{UserLogin} ) {
+            push @OrphanedSessionIDs, $SessionID;
+        }
+    }
+
+    return @OrphanedSessionIDs;
 }
 
 =head2 CleanUp()

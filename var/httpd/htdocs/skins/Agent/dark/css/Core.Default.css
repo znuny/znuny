@@ -1,0 +1,129 @@
+/*
+Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+*/
+
+/**
+ * @package     Skin "Default"
+ * @section     Default Settings
+ */
+
+@media screen,projection,tv,handheld {
+
+    body {
+        filter: invert(90%) hue-rotate(180deg);
+    }
+
+    html {
+        background-color: #111;
+    }
+
+    img,
+    video,
+    svg {
+        filter: invert(0%);
+    }
+
+    div.MessageBox.Error {
+        filter: invert(0%);
+    }
+
+    .icon {
+        filter: invert(15%) hue-rotate(180deg);
+    }
+
+    .UserAvatar img,
+    .Avatar img {
+        filter: invert(180%) hue-rotate(180deg);
+    }
+
+    .toolbar-row-wrapper .toolbar-row ul li a .iconWrapper span.Counter {
+        background: var(--primary-color);
+    }
+
+    pre {
+        filter: invert(6%);
+    }
+
+    li::marker {
+        color: #666;
+    }
+
+    /* Dim headlines */
+    h1,
+    h2,
+    h3,
+    div.Headline h1 {
+        color: var(--bread-crumb);
+    }
+
+    h1>a,
+    h2>a,
+    h3>a {
+        filter: invert(0%);
+    }
+
+    .WidgetSimple>.Header h2,
+    .WidgetSimple>.Header h3 {
+        filter: invert(0%);
+    }
+
+    .MainBox h1>a {
+        color: var(--primary-color-darker);
+        filter: invert(100%) hue-rotate(180deg);
+    }
+
+    /* Admin Menu Header */
+    .ActionsSideBar.LayoutFixedSidebar .ContentGrid .WidgetSimple.GridGroups .Header h2 {
+        background: none;
+    }
+
+    /* Checkboxes in general */
+    input[type=checkbox] {
+        border: var(--border-width) solid #484848;
+    }
+
+    /* AgentTicketPhone/Email CustomerUser */
+    input[readonly] {
+        background: var(--disabled-input);
+        color: #5b5b5b;
+    }
+
+    .OverviewLarge .Preview h3 {
+        filter: invert(0%);
+    }
+
+    .Notice i {
+        color: #313030;
+    }
+
+    .SmallBox,
+    .MessageBrowser,
+    .MessageBox,
+    .ACLNote {
+        background: wheat;
+    }
+
+    /* Different elements that get "colors" */
+    .jscolor,
+    .jscolor-picker-wrap * {
+        filter: invert(100%)hue-rotate(180deg);
+    }
+
+    [class*="PriorityID"] {
+        filter: invert(100%) hue-rotate(180deg) !important;
+    }
+
+    .pill {
+        filter: invert(100%) hue-rotate(180deg) !important;
+    }
+
+    /* Unread star */
+    span.UnreadArticles i,
+    div.UnreadArticles i {
+        color: var(--color-grey9);
+    }
+}

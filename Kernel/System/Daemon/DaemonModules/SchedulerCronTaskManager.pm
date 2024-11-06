@@ -13,8 +13,6 @@ use strict;
 use warnings;
 use utf8;
 
-use Kernel::System::VariableCheck qw(:all);
-
 use parent qw(Kernel::System::Daemon::BaseDaemon);
 
 our @ObjectDependencies = (

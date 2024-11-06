@@ -13,6 +13,7 @@ use utf8;
 
 use vars (qw($Self));
 
+my $ConfigObject         = $Kernel::OM->Get('Kernel::Config');
 my $UserObject           = $Kernel::OM->Get('Kernel::System::User');
 my $TicketObject         = $Kernel::OM->Get('Kernel::System::Ticket');
 my $DateTimeObject       = $Kernel::OM->Create('Kernel::System::DateTime');
@@ -29,7 +30,7 @@ $Kernel::OM->ObjectParamAdd(
 );
 my $HelperObject = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
 
-$Kernel::OM->Get('Kernel::Config')->Set(
+$ConfigObject->Set(
     Key   => 'Ticket::UnlockOnAway',
     Value => 1,
 );

@@ -17,7 +17,6 @@ use Encode ();
 our @ObjectDependencies = (
     'Kernel::Config',
     'Kernel::System::DateTime',
-    'Kernel::System::Encode',
     'Kernel::System::Log',
     'Kernel::System::Main',
 );
@@ -46,10 +45,6 @@ sub LoadPreferences {
     $Self->{'DB::CaseSensitive'}        = 0;
     $Self->{'DB::LikeEscapeString'}     = '';
 
-    # mysql needs to proprocess the data to fix UTF8 issues
-    $Self->{'DB::PreProcessSQL'}      = 1;
-    $Self->{'DB::PreProcessBindData'} = 1;
-
     # how to determine server version
     # version can have package prefix, we need to extract that
     # example of VERSION() output: '5.5.32-0ubuntu0.12.04.1'
@@ -69,7 +64,7 @@ sub LoadPreferences {
     # set current time stamp if different to "current_timestamp"
     $Self->{'DB::CurrentTimestamp'} = '';
 
-    # set encoding of selected data to utf8
+    # set encoding of selected data to utf8mb4
     $Self->{'DB::Encode'} = 1;
 
     # shell setting
@@ -80,54 +75,10 @@ sub LoadPreferences {
 
     # init sql setting on db connect
     if ( !$Kernel::OM->Get('Kernel::Config')->Get('Database::ShellOutput') ) {
-        $Self->{'DB::Connect'} = 'SET NAMES utf8';
+        $Self->{'DB::Connect'} = 'SET NAMES utf8mb4';
     }
 
     return 1;
-}
-
-sub PreProcessSQL {
-    my ( $Self, $SQLRef ) = @_;
-    $Self->_FixMysqlUTF8($SQLRef);
-    $Kernel::OM->Get('Kernel::System::Encode')->EncodeOutput($SQLRef);
-    return;
-}
-
-sub PreProcessBindData {
-    my ( $Self, $BindRef ) = @_;
-
-    my $Size = scalar @{ $BindRef // [] };
-
-    my $EncodeObject = $Kernel::OM->Get('Kernel::System::Encode');
-
-    for ( my $I = 0; $I < $Size; $I++ ) {
-
-        $Self->_FixMysqlUTF8( \$BindRef->[$I] );
-
-        # DBD::mysql 4.042+ requires data to be octets, so we encode the data on our own.
-        #   The mysql_enable_utf8 flag seems to be unusable because it treats ALL data as UTF8 unless
-        #   it has a custom bind data type like SQL_BLOB.
-        #
-        #   See also https://bugs.otrs.org/show_bug.cgi?id=12677.
-        $EncodeObject->EncodeOutput( \$BindRef->[$I] );
-    }
-    return;
-}
-
-# Replace any unicode characters that need more than three bytes in UTF8
-#   with the unicode replacement character. MySQL's utf8 encoding only
-#   supports three bytes. In future we might want to use utf8mb4 (supported
-#   since 5.5.3+), but that will lead to problems with key sizes on mysql.
-# See also http://mathiasbynens.be/notes/mysql-utf8mb4.
-sub _FixMysqlUTF8 {
-    my ( $Self, $StringRef ) = @_;
-
-    return if !$$StringRef;
-    return if !Encode::is_utf8($$StringRef);
-
-    $$StringRef =~ s/([\x{10000}-\x{10FFFF}])/"\x{FFFD}"/eg;
-
-    return;
 }
 
 sub Quote {
@@ -166,7 +117,7 @@ sub DatabaseCreate {
     }
 
     # return SQL
-    return ("CREATE DATABASE $Param{Name} DEFAULT CHARSET=utf8");
+    return ("CREATE DATABASE $Param{Name} DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci");
 }
 
 sub DatabaseDrop {
@@ -449,6 +400,16 @@ sub TableAlter {
                 }
                 else {
                     $SQLAlter .= ' NULL';
+                }
+
+                # auto increment
+                if ( defined $Tag->{AutoIncrement} && $Tag->{AutoIncrement} =~ m{\Atrue\z}i ) {
+                    $SQLAlter .= ' AUTO_INCREMENT';
+                }
+
+                # add primary key
+                if ( defined $Tag->{PrimaryKey} && $Tag->{PrimaryKey} =~ m{\Atrue\z}i ) {
+                    $SQLAlter .= ' PRIMARY KEY FIRST';
                 }
 
                 push @SQL, $SQLAlter;

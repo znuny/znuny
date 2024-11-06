@@ -46,7 +46,7 @@ my @Tests = (
                 {
                     'Name'        => 'Not::Installed::Module',
                     'Version'     => undef,
-                    'IsInstalled' => 'Problem',
+                    'IsInstalled' => 0,
                 }
             ]
         ],
@@ -70,7 +70,7 @@ my @Tests = (
                 {
                     'Name'        => 'Data::Dumper',
                     'Version'     => $DataDumperVersion,
-                    'IsInstalled' => 'OK',
+                    'IsInstalled' => 1,
                 }
             ]
         ],

@@ -279,7 +279,6 @@ sub QueueStandardTemplateMemberList {
         return;
     }
 
-    # get needed objects
     my $ValidObject = $Kernel::OM->Get('Kernel::System::Valid');
     my $DBObject    = $Kernel::OM->Get('Kernel::System::DB');
 
@@ -311,13 +310,28 @@ sub QueueStandardTemplateMemberList {
 
         # fetch the result
         my %StandardTemplates;
+        my %TemplateTypes;
         while ( my @Row = $DBObject->FetchrowArray() ) {
-
-            if ( $Param{TemplateTypes} ) {
-                $StandardTemplates{ $Row[2] }->{ $Row[0] } = $Row[1];
+            my @DBTypes = split( /\s*,\s*/, $Row[2] );
+            if ( scalar @DBTypes > 1 ) {
+                for my $Type (@DBTypes) {
+                    $TemplateTypes{$Type}->{ $Row[0] } = $Row[1];
+                }
             }
             else {
-                $StandardTemplates{ $Row[0] } = $Row[1];
+                $TemplateTypes{ $Row[2] }->{ $Row[0] } = $Row[1];
+            }
+        }
+
+        if ($TemplateTypes) {
+            %StandardTemplates = %TemplateTypes;
+        }
+        else {
+            for my $TemplateType ( sort keys %TemplateTypes ) {
+                %StandardTemplates = (
+                    %StandardTemplates,
+                    %{ $TemplateTypes{$TemplateType} }
+                );
             }
         }
 
@@ -641,10 +655,10 @@ get Follow-Up Option list
 Return:
 
     %FollowUpOptionList = (
-              '1' => 'possible',
-              '3' => 'new ticket',
-              '2' => 'reject'
-            )
+        '1' => 'possible',
+        '3' => 'new ticket',
+        '2' => 'reject',
+    )
 
 =cut
 
@@ -862,39 +876,26 @@ sub QueueAdd {
         Type => $Self->{CacheType},
     );
 
-    my $StandardTemplate2QueueByCreating = $ConfigObject->Get('StandardTemplate2QueueByCreating');
-
     # add default responses (if needed), add response by name
-    if (
-        $StandardTemplate2QueueByCreating
-        && ref $StandardTemplate2QueueByCreating eq 'ARRAY'
-        && @{$StandardTemplate2QueueByCreating}
-        )
-    {
+    my $StandardTemplateObject           = $Kernel::OM->Get('Kernel::System::StandardTemplate');
+    my $StandardTemplate2QueueByCreating = $ConfigObject->Get('StandardTemplate2QueueByCreating') // [];
 
-        # get standard template object
-        my $StandardTemplateObject = $Kernel::OM->Get('Kernel::System::StandardTemplate');
+    ST:
+    for my $ST ( @{$StandardTemplate2QueueByCreating} ) {
 
-        ST:
-        for my $ST ( @{$StandardTemplate2QueueByCreating} ) {
+        my $StandardTemplateID = $StandardTemplateObject->StandardTemplateLookup(
+            StandardTemplate => $ST,
+        );
 
-            my $StandardTemplateID = $StandardTemplateObject->StandardTemplateLookup(
-                StandardTemplate => $ST,
-            );
+        next ST if !$StandardTemplateID;
 
-            next ST if !$StandardTemplateID;
-
-            $Self->QueueStandardTemplateMemberAdd(
-                QueueID            => $QueueID,
-                StandardTemplateID => $StandardTemplateID,
-                Active             => 1,
-                UserID             => $Param{UserID},
-            );
-        }
+        $Self->QueueStandardTemplateMemberAdd(
+            QueueID            => $QueueID,
+            StandardTemplateID => $StandardTemplateID,
+            Active             => 1,
+            UserID             => $Param{UserID},
+        );
     }
-
-    # get standard template id
-    my $StandardTemplateID2QueueByCreating = $ConfigObject->Get(' StandardTemplate2QueueByCreating');
 
     # get queue data with updated name for QueueCreate event
     my %Queue = $Self->QueueGet( Name => $Param{Name} );
@@ -908,21 +909,6 @@ sub QueueAdd {
         UserID => $Param{UserID},
     );
 
-    return $QueueID if !$StandardTemplateID2QueueByCreating;
-    return $QueueID if ref $StandardTemplateID2QueueByCreating ne 'ARRAY';
-    return $QueueID if !@{$StandardTemplateID2QueueByCreating};
-
-    # add template by id
-    for my $StandardTemplateID ( @{$StandardTemplateID2QueueByCreating} ) {
-
-        $Self->QueueStandardTemplateMemberAdd(
-            QueueID            => $QueueID,
-            StandardTemplateID => $StandardTemplateID,
-            Active             => 1,
-            UserID             => $Param{UserID},
-        );
-    }
-
     return $QueueID;
 }
 
@@ -931,7 +917,7 @@ sub QueueAdd {
 get queue attributes
 
     my %Queue = $QueueObject->QueueGet(
-        ID    => 123,
+        ID => 123,
     );
 
     my %Queue = $QueueObject->QueueGet(
@@ -1197,6 +1183,11 @@ sub QueueUpdate {
         ],
     );
 
+    # reset cache
+    $Kernel::OM->Get('Kernel::System::Cache')->CleanUp(
+        Type => $Self->{CacheType},
+    );
+
     # get queue data with updated name for QueueUpdate event
     my %Queue = $Self->QueueGet( Name => $Param{Name} );
 
@@ -1208,11 +1199,6 @@ sub QueueUpdate {
             OldQueue => \%OldQueue,
         },
         UserID => $Param{UserID},
-    );
-
-    # reset cache
-    $Kernel::OM->Get('Kernel::System::Cache')->CleanUp(
-        Type => $Self->{CacheType},
     );
 
     # updated all sub queue names
@@ -1375,7 +1361,7 @@ return 1 if another queue with this name already exists
 
     $Exist = $QueueObject->NameExistsCheck(
         Name => 'Some::Queue',
-        ID => 1, # optional
+        ID   => 1,              # optional
     );
 
 =cut

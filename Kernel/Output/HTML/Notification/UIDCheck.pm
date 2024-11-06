@@ -31,7 +31,7 @@ sub Run {
     # get layout object
     my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
 
-    # show error notfy, don't work with user id 1
+    # show error notify, don't work with user id 1
     return $LayoutObject->Notify(
         Priority => 'Error',
         Link     => $LayoutObject->{Baselink} . 'Action=AdminUser',

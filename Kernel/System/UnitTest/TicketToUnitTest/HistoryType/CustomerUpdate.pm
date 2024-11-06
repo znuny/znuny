@@ -15,7 +15,6 @@ our @ObjectDependencies = (
     'Kernel::System::Log',
 );
 
-use Kernel::System::VariableCheck qw(:all);
 use parent qw( Kernel::System::UnitTest::TicketToUnitTest::Base );
 
 sub Run {
@@ -44,7 +43,7 @@ sub Run {
 );
 \$Self->True(
     \$Success,
-    'TicketCustomerSet to "$Param{CustomerUser}" was successfull.',
+    'TicketCustomerSet to "$Param{CustomerUser}" was successful.',
 );
 
 OUTPUT

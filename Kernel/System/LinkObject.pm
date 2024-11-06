@@ -604,8 +604,8 @@ deletes old links from database
 return true
 
     $True = $LinkObject->LinkCleanup(
-        State  => 'Temporary',
-        Age    => ( 60 * 60 * 24 ),
+        State => 'Temporary',
+        Age   => ( 60 * 60 * 24 ),
     );
 
 =cut
@@ -1180,14 +1180,14 @@ Return
     };
 
     my $LinkList = $LinkObject->LinkListWithData(
-        Object                          => 'Ticket',
-        Key                             => '321',
-        Object2                         => 'FAQ',         # (optional)
-        State                           => 'Valid',
-        Type                            => 'ParentChild', # (optional)
-        Direction                       => 'Target',      # (optional) default Both (Source|Target|Both)
-        UserID                          => 1,
-        ObjectParameters                => {              # (optional) backend specific flags
+        Object           => 'Ticket',
+        Key              => '321',
+        Object2          => 'FAQ',         # (optional)
+        State            => 'Valid',
+        Type             => 'ParentChild', # (optional)
+        Direction        => 'Target',      # (optional) default Both (Source|Target|Both)
+        UserID           => 1,
+        ObjectParameters => {              # (optional) backend specific flags
             Ticket => {
                 IgnoreLinkedTicketStateTypes => 0|1,
             },
@@ -2246,9 +2246,9 @@ sub StateList {
 checks read permission for a given object and UserID.
 
     $Permission = $LinkObject->ObjectPermission(
-        Object  => 'Ticket',
-        Key     => 123,
-        UserID  => 1,
+        Object => 'Ticket',
+        Key    => 123,
+        UserID => 1,
     );
 
 =cut
@@ -2289,9 +2289,9 @@ Return
     );
 
     %Description = $LinkObject->ObjectDescriptionGet(
-        Object  => 'Ticket',
-        Key     => 123,
-        UserID  => 1,
+        Object => 'Ticket',
+        Key    => 123,
+        UserID => 1,
     );
 
 =cut

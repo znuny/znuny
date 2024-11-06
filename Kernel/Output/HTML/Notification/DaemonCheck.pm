@@ -14,8 +14,6 @@ use parent 'Kernel::Output::HTML::Base';
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
-
 our @ObjectDependencies = (
     'Kernel::Config',
     'Kernel::Output::HTML::Layout',

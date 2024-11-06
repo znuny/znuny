@@ -11,6 +11,7 @@ package Kernel::Output::HTML::TicketZoom::Customer::Base;
 
 use strict;
 use warnings;
+use utf8;
 
 use Digest::MD5 qw(md5_hex);
 
@@ -21,8 +22,10 @@ our @ObjectDependencies = (
     'Kernel::Output::HTML::Layout',
     'Kernel::System::DynamicField',
     'Kernel::System::DynamicField::Backend',
+    'Kernel::System::Encode',
     'Kernel::System::Log',
     'Kernel::System::Ticket::Article',
+    'Kernel::System::User',
 );
 
 sub new {
@@ -51,6 +54,7 @@ Returns article html.
     );
 
 Result:
+
     $HTML = "<div>...</div>";
 
 =cut
@@ -182,6 +186,64 @@ sub ArticleMetaFields {
     }
 
     return %Result;
+}
+
+=head1 PRIVATE FUNCTIONS
+
+=head2 _ArticleSenderImage()
+
+Get URL used for article sender image.
+
+    my $SenderImage = $ArticleBaseObject->_ArticleSenderImage(
+        Sender => 'John Doe <jdoe@example.com>',
+    );
+
+Returns:
+
+    $SenderImage = '//gravatar.com/avatar/28a58af1db24962e81212115e7cac685?s=80';
+
+=cut
+
+sub _ArticleSenderImage {
+    my ( $Self, %Param ) = @_;
+
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    my $EncodeObject = $Kernel::OM->Get('Kernel::System::Encode');
+    my $UserObject   = $Kernel::OM->Get('Kernel::System::User');
+
+    my $Result = '';
+    return $Result if !$Param{Sender};
+
+    my $Size = 80;
+
+    # Get email address from sender field.
+    my $EmailParser = Kernel::System::EmailParser->new(
+        %{$Self},
+        Mode => 'Standalone',
+    );
+
+    my @Addresses = $EmailParser->SplitAddressLine( Line => $Param{Sender} );
+    return $Result if !@Addresses;
+
+    my $Email = $EmailParser->GetEmailAddress( Email => $Addresses[0] );
+    return $Result if !$Email;
+
+    my $DefaultIcon = $ConfigObject->Get('Frontend::Gravatar::ArticleDefaultImage') || 'mp';
+
+    # Get current user's email and compare it to the sender's email.
+    if ( $Param{UserID} ) {
+
+        my %CurrentUserData = $UserObject->GetUserData( UserID => $Param{UserID} );
+
+        if ( $Email eq $CurrentUserData{UserEmail} ) {
+            $DefaultIcon = $ConfigObject->Get('Frontend::Gravatar::DefaultImage') | 'mp';
+        }
+    }
+
+    $EncodeObject->EncodeOutput( \$Email );
+    $Result = 'https://www.gravatar.com/avatar/' . md5_hex( lc $Email ) . '?s=' . $Size . '&d=' . $DefaultIcon;
+
+    return $Result;
 }
 
 1;

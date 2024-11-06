@@ -12,8 +12,6 @@ use warnings;
 
 package Kernel::System::Calendar::Plugin::Base;
 
-use Kernel::System::VariableCheck qw(:all);
-
 our @ObjectDependencies = (
     'Kernel::System::Calendar::Appointment',
     'Kernel::System::Calendar::Plugin',

@@ -58,11 +58,14 @@
         <div>
             <label for="FromCustomer" class="Mandatory"><span class="Marker">*</span>[% Translate("Customer user") | html %]:</label>
             <div class="Field">
-                <input id="FromCustomer" type="text" name="FromCustomer" value="" class="CustomerAutoComplete W75pc [% Data.FromInvalid | html %]" autocomplete="off" />
+                <input id="FromCustomer" type="text" name="FromCustomer" value="" class="CustomerAutoComplete W75pc [% Data.FromIsLocalAddress | html %] [% Data.FromInvalid | html %]" autocomplete="off" />
                 <div id="FromCustomerServerError" class="TooltipErrorMessage">
 [% RenderBlockStart("FromServerErrorMsg") %]
                     <p>[% Translate("Please include at least one customer for the ticket.") | html %]</p>
 [% RenderBlockEnd("FromServerErrorMsg") %]
+[% RenderBlockStart("FromIsLocalAddressServerErrorMsg") %]
+                    <p>[% Translate("This address is registered as system address and cannot be used: %s", Data.From) | html %]</p>
+[% RenderBlockEnd("FromIsLocalAddressServerErrorMsg") %]
                 </div>
             </div>
         </div>

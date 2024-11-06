@@ -13,6 +13,7 @@
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
+## nofilter(TidyAll::Plugin::Znuny::Translation::JavaScriptStrings)
 
 package Kernel::Language::zh_CN;
 
@@ -32,7 +33,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y.%M.%D';
     $Self->{DateInputFormat}     = '%Y.%M.%D';
     $Self->{DateInputFormatLong} = '%Y.%M.%D - %T';
-    $Self->{Completeness}        = 0.90203205022303;
+    $Self->{Completeness}        = 0.897347174163783;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -572,7 +573,7 @@ sub Data {
         'Assignment of dynamic fields to screens' => '',
         'Overview' => '概览',
         'Screens' => '',
-        'Default columns' => '',
+        'Overview Default Columns' => '',
         'Add dynamic field' => '添加动态字段',
         'You can assign elements by dragging and dropping them to the lists of available, disabled, assigned and required elements.' =>
             '',
@@ -622,6 +623,9 @@ sub Data {
         'Backend' => '后端',
         'Backend which will be used for this dynamic field.' => '',
         'Backend documentation' => '',
+        'Cache TTL' => '',
+        'TTL (in seconds) for caching request results. Leave empty or set to 0 to disable caching.' =>
+            '',
         'Key for search' => '',
         'The keys (separated by comma) that will be searched when using the autocomplete while entering a value for the dynamic field.' =>
             '',
@@ -644,9 +648,6 @@ sub Data {
             '',
         'Query delay' => '',
         'Delay (in milliseconds) until the AJAX request will be sent.' =>
-            '',
-        'Autocompletion for search fields' => '',
-        'Use autocompletion for search fields instead of a static selection of values that are currently selected in Znuny (in tickets, articles, etc.). This increases performance if many thousands of values of the dynamic field have been selected. This setting does not affect the search field displayed in AgentTicketSearch and CustomerTicketSearch.' =>
             '',
         'Input field width' => '',
         'Width of the input field (percentage).' => '',
@@ -1094,9 +1095,6 @@ sub Data {
         'Send Keep-Alive' => '发送Keep-Alive（保持连接）',
         'This configuration defines if incoming connections should get closed or kept alive.' =>
             '此配置定义传入的连接应该关闭还是保持连接。',
-        'Additional response headers' => '附加响应头',
-        'Header' => '标头',
-        'Add response header' => '添加响应头',
         'Endpoint' => '端点',
         'URI to indicate specific location for accessing a web service.' =>
             '用于指示访问Web服务的特定位置的URI。',
@@ -1185,7 +1183,10 @@ sub Data {
             '调用程序用于请求的特定的HTTP命令。',
         'Default command' => '默认命令',
         'The default HTTP command to use for the requests.' => '用于请求的默认HTTP命令。',
+        'Additional response headers' => '附加响应头',
         'Additional request headers' => '',
+        'Header' => '标头',
+        'Add response header' => '添加响应头',
         'Add request header' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPSOAP.tt
@@ -1547,9 +1548,11 @@ sub Data {
         'Date' => '日期',
         'List of Files' => '文件清单',
         'Permission' => '权限',
+        'Size' => '大小',
+        'Problem' => '问题',
+        'OK' => '好',
         'Download file from package!' => '从软件包中下载这个文件！',
         'Required' => '必需的',
-        'Size' => '大小',
         'Primary Key' => '主密钥',
         'Auto Increment' => '自动增加',
         'SQL' => 'SQL',
@@ -1689,7 +1692,7 @@ sub Data {
         'Available Fields' => '可用的字段',
         'Filter available fields' => '可用字段的过滤器',
         'Assigned Fields' => '分配的字段',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '通信渠道',
         'Is visible for customer' => '对客户可见',
         'Text Template' => '内容模板',
@@ -1748,6 +1751,8 @@ sub Data {
         'Do you really want to delete this Activity?' => '您真的想要删除这个活动吗？',
         'Do you really want to delete this Activity Dialog?' => '您真的想要删除这个活动对话框吗？',
         'Do you really want to delete this Transition?' => '您真的想要删除这个转换吗？',
+        'You can not edit a transition before it\'s connected to two activities.' =>
+            '',
         'Do you really want to delete this Transition Action?' => '您真的想要删除这个转换动作吗？',
         'Do you really want to remove this activity from the canvas? This can only be undone by leaving this screen without saving.' =>
             '您真的想要从画布中删除这个活动吗？不保存并离开此屏幕可撤销删除操作。',
@@ -2034,6 +2039,7 @@ sub Data {
         'Support Data' => '支持数据',
         'Error: Support data could not be collected (%s).' => '错误：%s 无法收集支持数据。',
         'Support Data Collector' => '支持数据收集工具',
+        'Delete cache' => '',
         'Details' => '详情',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemAddress.tt
@@ -2131,7 +2137,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemFiles.tt
         'System file support' => '',
-        'Delete cache' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemFiles/Widget.tt
         'Permissions' => '权限',
@@ -2366,30 +2371,27 @@ sub Data {
         'in' => '之内',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
+        'All' => '全部',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => '更多',
         'No Data Available.' => '没有可用数据。',
         'Available Columns' => '可用的字段',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => '显示的字段(可通过拖放调整顺序)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '变更客户关系',
         'Open' => 'Open（处理中）',
         'Closed' => '已关闭',
+        'Phone ticket' => '电话工单',
+        'Email ticket' => '邮件工单',
         '%s open ticket(s) of %s' => '%s个处理中的工单，共%s个',
         '%s closed ticket(s) of %s' => '%s个已关闭的工单，共%s个',
+        'New phone ticket from %s' => '来自于%s新的电话工单',
+        'New email ticket to %s' => '给%s新的邮件工单',
         'Edit customer ID' => '编辑客户ID',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDStatus.tt
@@ -2404,10 +2406,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
         'Customer user information' => '客户用户信息',
-        'Phone ticket' => '电话工单',
-        'Email ticket' => '邮件工单',
-        'New phone ticket from %s' => '来自于%s新的电话工单',
-        'New email ticket to %s' => '给%s新的邮件工单',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardMyLastChangedTickets.tt
         'No tickets found.' => '',
@@ -2515,7 +2513,6 @@ sub Data {
         'Split' => '拆分',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsAdd.tt
-        'Read more about statistics in Znuny' => '详细了解OTR关于统计的信息',
         'Statistics Management' => '统计管理',
         'Add Statistics' => '添加统计',
         'Dynamic Matrix' => '动态矩阵',
@@ -2615,13 +2612,16 @@ sub Data {
         'Link together' => '相互链接',
         'Link to parent' => '链接到上一级',
         'Unlock tickets' => '解锁工单',
+        'Watch tickets' => '',
+        'Mark tickets as seen' => '',
+        'Mark tickets as unseen' => '',
         'Execute Bulk Action' => '执行批量操作',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '撰写工单%s%s%s的回复邮件',
         'Date Invalid!' => '日期无效！',
-        ' Select one or more recipients from the customer user address book.' =>
-            '',
+        'Select one or more recipients from the customer user address book.' =>
+            '从客户用户通讯录中选择一个或多个收件人。',
         'Customer user address book' => '客户用户通讯录',
         'This address is registered as system address and cannot be used: %s' =>
             '这个邮件地址：%s已被注册为系统邮件地址，不能使用。',
@@ -2630,12 +2630,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             '请删除这个条目并重新输入一个正确的值。',
         'This address already exists on the address list.' => '地址列表已有这个地址。',
-        ' Cc' => '',
         'Remove Cc' => '移除Cc',
         'Bcc' => '暗送',
-        ' Bcc' => '',
         'Remove Bcc' => '移除Bcc',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '变更工单%s%s%s的客户',
@@ -2644,23 +2641,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => '创建邮件工单',
-        ' Example Template' => '',
         'Example Template' => '模板样例',
         'To customer user' => '选择客户用户',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => '请包括至少一个客户用户。',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => '选择这个客户用户作为主要联系人。',
         'Remove Ticket Customer User' => '移除客户用户',
         'From queue' => '从队列',
-        ' Get all' => '',
         'Get all' => '获取全部',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '%s%s%s的外发邮件',
-        'Select one or more recipients from the customer user address book.' =>
-            '从客户用户通讯录中选择一个或多个收件人。',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '重新发送电子邮件给%s%s%s',
@@ -2713,40 +2703,36 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => '没有找到工单数据。',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => '发件人',
+        'Customer User Name' => '客户用户姓名',
         'Impact' => '影响',
-        'CustomerID' => 'CustomerID',
         'Update Time' => '更新时间',
         'Solution Time' => '解决时间',
         'First Response Time' => '首次响应时间',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => '将工单转移到另一个队列',
         'Change queue' => '更改队列',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
         'Remove active filters for this screen.' => '清除这个屏幕的过滤器。',
         'Clear all filters' => '',
         'Remove mention' => '',
+        'Remove from list of watched tickets' => '从关注工单列表中移除',
         'Tickets per page' => '工单数/页',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '频道丢失',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => '刷新概览视图',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => '拆分为新的电话工单',
         'Create New Phone Ticket' => '创建电话工单',
         'Please include at least one customer for the ticket.' => '请包括至少一个客户用户。',
-        'Select this customer as the main customer.' => '选择这个客户用户作为主要联系人。',
         'To queue' => '队列',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2759,7 +2745,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => '创建流程工单',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => '注册工单到一个流程',
@@ -2803,7 +2788,6 @@ sub Data {
         'Save as default' => '保存为默认',
         'Drafts' => '草稿',
         'by' => '由',
-        'Move ticket to a different queue' => '将工单转移到另一个队列',
         'Change Queue' => '改变队列',
         'There are no dialogs available at this point in the process.' =>
             '目前流程中没有可用的活动对话框。',
@@ -2844,7 +2828,6 @@ sub Data {
         'Close this message' => '关闭本消息',
         'Image' => '图片',
         'PDF' => 'PDF',
-        'Unknown' => '未知',
         'View' => '查看',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/LinkTable.tt
@@ -2859,7 +2842,6 @@ sub Data {
         'is invalid' => '',
         'Pending till' => '挂起至',
         'Locked' => '锁定状态',
-        '%s Ticket(s)' => '%s个工单',
         'Accounted time' => '所用工时',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/ArticleContent/Invalid.tt
@@ -2884,7 +2866,6 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerAccept.tt
         'Dear Customer,' => '尊敬的客户，',
         'thank you for using our services.' => '感谢您使用我们的服务。',
-        'Yes, I accept your license.' => '是，同意许可。',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerCompany/TicketCustomerIDSelection.tt
         'The customer ID is not changeable, no other customer ID can be assigned to this ticket.' =>
@@ -2896,8 +2877,8 @@ sub Data {
         'From assigned Customer IDs' => '从已分配的客户ID',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerError.tt
+        'Error' => 'Error（错误）',
         'An Error Occurred' => '发生了一个错误',
-        'Error Details' => '详细错误信息',
         'Traceback' => '追溯',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerFooter.tt
@@ -2936,6 +2917,7 @@ sub Data {
         'Request New Password' => '请求新密码',
         'Your User Name' => '你的用户名',
         'A new password will be sent to your email address.' => '新密码将会发送到您的邮箱中。',
+        'Back to login' => '重新登录',
         'Create Account' => '创建帐户',
         'Please fill out this form to receive login credentials.' => '请填写这个表单以便接收登录凭证。',
         'How we should address you' => '称谓',
@@ -2947,11 +2929,10 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => '新建工单',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => '工单',
         'Welcome!' => '欢迎！',
         'Please click the button below to create your first ticket.' => '请点击下面的按钮创建第一个工单。',
         'Create your first ticket' => '创建第一个工单',
@@ -2960,12 +2941,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => '搜索条件',
+        'Template Name' => '模板名称',
         'e. g. 10*5155 or 105658*' => '例如: 10*5155 或 105658*',
+        'CustomerID' => 'CustomerID',
         'Types' => '类型',
         'Limitation' => '',
         'No time settings' => '没有设置时间',
-        'All' => '全部',
         'Specific date' => '指定日期',
         'Only tickets created' => '仅工单创建时间',
         'Date range' => '日期范围',
@@ -2974,7 +2957,6 @@ sub Data {
         'Save Search as Template?' => '将搜索保存为模板吗？',
         'Save as Template' => '保存为模板',
         'Save as Template?' => '保存为模板吗？',
-        'Template Name' => '模板名称',
         'Pick a profile name' => '输入模板名称',
         'Output to' => '输出为',
 
@@ -2999,6 +2981,7 @@ sub Data {
         'Ticket fields' => '工单字段',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Error.tt
+        'Error Details' => '详细错误信息',
         'Expand' => '展开',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/FormElements/AttachmentList.tt
@@ -3013,6 +2996,8 @@ sub Data {
         'You have loaded the draft "%s". You last changed it %s.' => '你已加载草稿“%s”。 你最后更改了%s。',
         'You have loaded the draft "%s". It was last changed %s by %s.' =>
             '你已加载草稿“%s”。 最后更改了%s的是%s。',
+        'Please note that you have already one or more saved drafts for this action.' =>
+            '',
         'Please note that this draft is outdated because the ticket was modified since this draft was created.' =>
             '请注意，这个草稿已经过时了，因为这个草稿创建后该工单已经被修改过了。',
 
@@ -3029,6 +3014,7 @@ sub Data {
         'Personal views' => '',
         'Last Views' => '',
         'Search tools' => '',
+        'SearchTemplate' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
         'JavaScript not available' => 'JavaScript没有启用',
@@ -3073,7 +3059,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBResult.tt
         'Done' => '完成',
-        'Error' => 'Error（错误）',
         'Database setup successful!' => '数据库设置成功！',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBStart.tt
@@ -3143,7 +3128,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Login.tt
         'Lost your password?' => '忘记密码?',
-        'Back to login' => '重新登录',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/MetaFloater.tt
         'Scale preview content' => '缩放预览内容',
@@ -3202,7 +3186,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '获取预约的属性',
-        ' e. g.' => ' 例如：',
+        'e. g.' => '例如：',
         'To get the first 20 character of the appointment title.' => '获取预约的前20个字符。',
         'To get the calendar attribute' => '获取日历的属性',
         'Attributes of the recipient user for the notification' => '通知收件人的属性',
@@ -3234,9 +3218,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => '工单动态字段内部键值',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             '工单动态字段显示值，对下拉式和多项选择字段有用',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => '例如：',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -3339,8 +3320,6 @@ sub Data {
         'Enable' => '启用',
         'Reset this setting to its default state' => '将此设置重置为默认状态',
         'Reset setting' => '重置设置',
-        'Show user specific changes for this setting' => '显示这个设置的用户特定变更',
-        'Show user settings' => '显示用户设置',
         'Copy a direct link to this setting to your clipboard' => '将这个设置的直接链接复制到剪贴板',
         'Copy direct link' => '复制直接链接',
         'Remove this setting from your favorites setting' => '从你的收藏夹中删除这个设置',
@@ -3422,6 +3401,7 @@ sub Data {
         'Process state' => '流程状态',
         'Running' => '正在运行',
         'Finished' => '完成',
+        'Unknown' => '未知',
         'No package information available.' => '没有可用的软件包信息。',
 
         # JS Template: Kernel/Output/JavaScript/Templates/Standard/SysConfig/AddButton.html.tmpl
@@ -3856,7 +3836,6 @@ sub Data {
         'No such file %s in package!' => '软件包中没有%s 文件！',
         'No such file %s in local file system!' => '本地文件系统中没有%s 文件！',
         'Can\'t read %s!' => '不能读取%s！',
-        'File is OK' => '文件正常',
         'Package has locally modified files.' => '软件包中有本地修改过的文件。',
         'Not Started' => '没有启动',
         'Updated' => '更新时间',
@@ -4149,7 +4128,6 @@ sub Data {
         'Can\'t get element data of %s!' => '不能获得%s 的元素数据！',
         'Can\'t get filter content data of %s!' => '不能获得%s 的过滤器内容数据！',
         'Customer Name' => '客户名字',
-        'Customer User Name' => '客户用户姓名',
 
         # Perl Module: Kernel/Modules/AgentLinkObject.pm
         'Need SourceObject and SourceKey!' => '需要SourceObject（源对象）和SourceKey（源键）！',
@@ -4477,12 +4455,18 @@ sub Data {
             '不能连接到数据库，没有安装Perl模块 DBD::%s！',
         'Can\'t connect to database, read comment!' => '不能连接到数据库，读取注释！',
         'Database already contains data - it should be empty!' => '数据库中已包含数据 - 应该清空它！',
+        'Error: You have the wrong database version installed (%s). You need at least version %s! ' =>
+            '',
         'Error: Please make sure your database accepts packages over %s MB in size (it currently only accepts packages up to %s MB). Please adapt the max_allowed_packet setting of your database in order to avoid errors.' =>
             '错误：请确认你的数据库能够接收大于%sMB的数据包（目前能够接收的最大数据包为%sMB）。为了避免程序报错，请调整数据库max_allowed_packet参数。',
         'Error: Please set the value for innodb_log_file_size on your database to at least %s MB (current: %s MB, recommended: %s MB). For more information, please have a look at %s.' =>
             '错误：请设置数据库参数innodb_log_file_size至少为%s MB（当前：%s MB，推荐：%s MB），请参阅 %s 获取更多信息。',
-        'Wrong database collation (%s is %s, but it needs to be utf8).' =>
-            '错误的数据库排序规则（%s是%s，但需要是utf8）。',
+        'Error: Please set the value for innodb_file_per_table on your database to ON.' =>
+            '',
+        'Error: Please set the value for innodb_default_row_format on your database to dynamic.' =>
+            '',
+        'Wrong default storage engine (%s is %s, but it needs to be InnoDB).' =>
+            '',
 
         # Perl Module: Kernel/Modules/Mentions.pm
         '%s users will be mentioned' => '',
@@ -4532,6 +4516,10 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/AgentTicketPrint.pm
         'Print this article' => '打印信件',
+
+        # Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
+        'Mark article as unseen' => '',
+        'Mark as unseen' => '',
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/MarkAsImportant.pm
         'Mark' => '标记',
@@ -4790,7 +4778,6 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/TicketMenu/TicketWatcher.pm
         'Unwatch' => '取消关注',
-        'Remove from list of watched tickets' => '从关注工单列表中移除',
         'Watch' => '关注',
         'Add to list of watched tickets' => '添加到关注工单列表',
 
@@ -5026,14 +5013,14 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
         'Client Connection Charset' => '客户端连接字符集',
-        'Setting character_set_client needs to be utf8.' => 'character_set_client 需要设置为utf8。',
+        'Setting character_set_client needs to be utf8mb4.' => '',
         'Server Database Charset' => '服务器端数据库字符集',
-        'This character set is not yet supported, please see https://bugs.otrs.org/show_bug.cgi?id=12361. Please convert your database to the character set \'utf8\'.' =>
-            '尚不支持此字符集，请参阅https://bugs.otrs.org/show_bug.cgi?id=12361。请将您的数据库转换为字符集‘utf8’。',
-        'The setting character_set_database needs to be \'utf8\'.' => 'character_set_database 需要设置为\'utf8\'。',
+        'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => '表字符集',
-        'There were tables found which do not have \'utf8\' as charset.' =>
-            '字符集没有设置成 \'utf8\'的表。',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
+        'There were tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/InnoDBLogFileSize.pm
         'InnoDB Log File Size' => 'InnoDB日志文件大小',
@@ -5087,7 +5074,7 @@ sub Data {
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/postgresql/Version.pm
         'PostgreSQL 9.2 or higher is required.' => '需要PostgreSQL 9.2或更高版本。',
 
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionOTRS.pm
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionZnuny.pm
         'Operating System' => '操作系统',
         'Znuny Disk Partition' => 'Znuny磁盘分区',
 
@@ -5134,165 +5121,6 @@ sub Data {
         'There should be more than 60% free swap space.' => '需要至少60%的可用交换空间。',
         'There should be no more than 200 MB swap space used.' => '交换空间不应该使用超过200MB。',
 
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticleSearchIndexStatus.pm
-        'Znuny' => '',
-        'Article Search Index Status' => '信件搜索索引状态',
-        'Indexed Articles' => '索引过的信件',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticlesPerCommunicationChannel.pm
-        'Articles Per Communication Channel' => '信件/通信渠道',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLog.pm
-        'Incoming communications' => '传入的通信',
-        'Outgoing communications' => '外发的通信',
-        'Failed communications' => '失败的通信',
-        'Average processing time of communications (s)' => '通信平均处理时间',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-        'Communication Log Account Status (last 24 hours)' => '通讯日志帐号状态（最近24小时）',
-        'No connections found.' => '找不到连接。',
-        'ok' => 'OK',
-        'permanent connection errors' => '永久性连接错误',
-        'intermittent connection errors' => '间歇性连接错误',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ConfigSettings.pm
-        'Config Settings' => '配置设置',
-        'Could not determine value.' => '不能确定参数值。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DaemonRunning.pm
-        'Daemon' => '守护进程',
-        'Daemon is running.' => '守护进程正在运行。',
-        'Daemon is not running.' => '守护进程没有运行。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-        'Database Records' => '数据库记录',
-        'Tickets' => '工单',
-        'Ticket History Entries' => '工单历史条目',
-        'Articles' => '信件',
-        'Attachments (DB, Without HTML)' => '附件（DB，不包括HTML文件）',
-        'Customers With At Least One Ticket' => '至少有一个工单的客户',
-        'Dynamic Field Values' => '动态字段值',
-        'Invalid Dynamic Fields' => '无效的动态字段',
-        'Invalid Dynamic Field Values' => '无效的动态字段值',
-        'GenericInterface Webservices' => '通用接口Web服务',
-        'Process Tickets' => '流程工单',
-        'Months Between First And Last Ticket' => '最早和最后工单的月数',
-        'Tickets Per Month (avg)' => '平均每月工单数',
-        'Open Tickets' => '处理中的工单',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultSOAPUser.pm
-        'Default SOAP Username And Password' => '默认的SOAP用户名和密码',
-        'Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it.' =>
-            '安全风险：你使用了默认的SOAP::User和SOAP::Password设置，请修改。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultUser.pm
-        'Default Admin Password' => '默认的系统管理员密码',
-        'Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account.' =>
-            '安全风险：服务人员帐户root@localhost还在使用默认密码。请修改密码或禁用此帐户。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/EmailQueue.pm
-        'Email Sending Queue' => '电子邮件发送队列',
-        'Emails queued for sending' => '已排队准备发送的电子邮件',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FQDN.pm
-        'FQDN (domain name)' => '正式域名',
-        'Please configure your FQDN setting.' => '请配置您的正式域名。',
-        'Domain Name' => '域名',
-        'Your FQDN setting is invalid.' => '您的正式域名无效。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FileSystemWritable.pm
-        'File System Writable' => '文件系统是可写的',
-        'The file system on your Znuny partition is not writable.' => 'Znuny分区所有文件系统是不可写的。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/LegacyConfigBackups.pm
-        'Legacy Configuration Backups' => '遗留的配置备份',
-        'No legacy configuration backup files found.' => '找不到遗留的配置备份文件。',
-        'Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages.' =>
-            '在 Kernel/Config/Backups 文件夹中找到的旧版配置备份文件，但某些软件包可能仍然需要它们。',
-        'Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder.' =>
-            '已安装的软件包不再需要旧的配置备份文件，请从 Kernel/Config/Backups 文件夹中删除它们。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/MultipleJSFileLoad.pm
-        'Views with multiple loaded JavaScript files' => '',
-        'The following JavaScript files loaded multiple times:' => '',
-        'Files' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-        'Package Installation Status' => '软件包安装状态',
-        'Some packages have locally modified files.' => '一些软件包有在本地修改过的文件。',
-        'Some packages are not correctly installed.' => '一些软件包没有正确安装。',
-        'Package Framework Version Status' => '软件包框架版本状态',
-        'Some packages are not allowed for the current framework version.' =>
-            '一些软件包无法在当前的框架版本中使用。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageList.pm
-        'Package List' => '软件包列表',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SessionConfigSettings.pm
-        'Session Config Settings' => '会话配置设置',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SpoolMails.pm
-        'Spooled Emails' => '假脱机邮件',
-        'There are emails in var/spool that Znuny could not process.' => 'var/spool 目录下有一些Znuny无法处理的邮件。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SystemID.pm
-        'Your SystemID setting is invalid, it should only contain digits.' =>
-            '您的系统ID设置无效，它只能包含数字。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/DefaultType.pm
-        'Default Ticket Type' => '默认工单类型',
-        'The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type.' =>
-            '配置的默认工单类型无效或缺失，请修改设置Ticket::Type::Default，选择一个有效的工单类型。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/IndexModule.pm
-        'Ticket Index Module' => '工单索引模块',
-        'You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information.' =>
-            '您已经超过60000个工单，应该使用后端静态数据库。请参阅管理员手册（性能调优部分）查阅更多信息。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/InvalidUsersWithLockedTickets.pm
-        'Invalid Users with Locked Tickets' => '有锁定的工单的无效用户',
-        'There are invalid users with locked tickets.' => '出现了有锁定的工单的无效用户。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/OpenTickets.pm
-        'You should not have more than 8,000 open tickets in your system.' =>
-            '您的系统不能有超过8000个处理中的工单。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/SearchIndexModule.pm
-        'Ticket Search Index Module' => '工单搜索索引模块',
-        'The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches.' =>
-            '索引进程强制将原始信件文本存储在信件搜索索引中，而不执行过滤器或应用停用词列表。 这将增加搜索索引的大小，从而可能减慢全文搜索。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/StaticDBOrphanedRecords.pm
-        'Orphaned Records In ticket_lock_index Table' => 'ticket_lock_index 表中的孤儿记录',
-        'Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
-            'ticket_lock_index 表中包含孤儿记录。请运行bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup"清理静态数据库的索引。',
-        'Orphaned Records In ticket_index Table' => 'ticket_index 表中的孤儿记录',
-        'Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
-            'ticket_index表中包含孤儿记录，请运行bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup"，清理静态数据库的索引。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-        'Time Settings' => '时间设置',
-        'Server time zone' => '服务器时区',
-        'Znuny time zone' => 'Znuny时区',
-        'Znuny time zone is not set.' => 'Znuny时区未设置。',
-        'User default time zone' => '用户默认时区',
-        'User default time zone is not set.' => '用户默认时区未设置。',
-        'Calendar time zone is not set.' => '日历时区未设置。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentSkinUsage.pm
-        'UI - Agent Skin Usage' => '用户界面 - 服务人员皮肤用法',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentThemeUsage.pm
-        'UI - Agent Theme Usage' => '用户界面 - 服务人员主题用法',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/SpecialStats.pm
-        'UI - Special Statistics' => '用户界面 - 特殊的统计',
-        'Agents using custom main menu ordering' => '服务人员使用定制的主菜单排序',
-        'Agents using favourites for the admin overview' => '服务人员在系统管理概览使用收藏夹',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Version.pm
-        'Znuny Version' => 'Znuny版本',
-
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Webserver/Apache/LoadedModules.pm
         'Webserver' => 'WEB服务器',
         'Loaded Apache Modules' => '已载入的Apache模块',
@@ -5330,13 +5158,167 @@ sub Data {
         'Webserver Version' => 'WEB服务器版本',
         'Could not determine webserver version.' => '不能确定WEB服务器版本。',
 
-        # Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/OTRS/ConcurrentUsers.pm
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticleSearchIndexStatus.pm
+        'Znuny' => '',
+        'Article Search Index Status' => '信件搜索索引状态',
+        'Indexed Articles' => '索引过的信件',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticlesPerCommunicationChannel.pm
+        'Articles Per Communication Channel' => '信件/通信渠道',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLog.pm
+        'Incoming communications' => '传入的通信',
+        'Outgoing communications' => '外发的通信',
+        'Failed communications' => '失败的通信',
+        'Average processing time of communications (s)' => '通信平均处理时间',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+        'Communication Log Account Status (last 24 hours)' => '通讯日志帐号状态（最近24小时）',
+        'No connections found.' => '找不到连接。',
+        'ok' => 'OK',
+        'permanent connection errors' => '永久性连接错误',
+        'intermittent connection errors' => '间歇性连接错误',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ConfigSettings.pm
+        'Config Settings' => '配置设置',
+        'Could not determine value.' => '不能确定参数值。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DaemonRunning.pm
+        'Daemon' => '守护进程',
+        'Daemon is running.' => '守护进程正在运行。',
+        'Daemon is not running.' => '守护进程没有运行。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+        'Database Records' => '数据库记录',
+        'Ticket History Entries' => '工单历史条目',
+        'Articles' => '信件',
+        'Attachments (DB, Without HTML)' => '附件（DB，不包括HTML文件）',
+        'Customers With At Least One Ticket' => '至少有一个工单的客户',
+        'Dynamic Field Values' => '动态字段值',
+        'Invalid Dynamic Fields' => '无效的动态字段',
+        'Invalid Dynamic Field Values' => '无效的动态字段值',
+        'GenericInterface Webservices' => '通用接口Web服务',
+        'Process Tickets' => '流程工单',
+        'Months Between First And Last Ticket' => '最早和最后工单的月数',
+        'Tickets Per Month (avg)' => '平均每月工单数',
+        'Open Tickets' => '处理中的工单',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultSOAPUser.pm
+        'Default SOAP Username And Password' => '默认的SOAP用户名和密码',
+        'Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it.' =>
+            '安全风险：你使用了默认的SOAP::User和SOAP::Password设置，请修改。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultUser.pm
+        'Default Admin Password' => '默认的系统管理员密码',
+        'Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account.' =>
+            '安全风险：服务人员帐户root@localhost还在使用默认密码。请修改密码或禁用此帐户。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/EmailQueue.pm
+        'Email Sending Queue' => '电子邮件发送队列',
+        'Emails queued for sending' => '已排队准备发送的电子邮件',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FQDN.pm
+        'FQDN (domain name)' => '正式域名',
+        'Please configure your FQDN setting.' => '请配置您的正式域名。',
+        'Domain Name' => '域名',
+        'Your FQDN setting is invalid.' => '您的正式域名无效。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FileSystemWritable.pm
+        'File System Writable' => '文件系统是可写的',
+        'The file system on your Znuny partition is not writable.' => 'Znuny分区所有文件系统是不可写的。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/LegacyConfigBackups.pm
+        'Legacy Configuration Backups' => '遗留的配置备份',
+        'No legacy configuration backup files found.' => '找不到遗留的配置备份文件。',
+        'Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages.' =>
+            '在 Kernel/Config/Backups 文件夹中找到的旧版配置备份文件，但某些软件包可能仍然需要它们。',
+        'Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder.' =>
+            '已安装的软件包不再需要旧的配置备份文件，请从 Kernel/Config/Backups 文件夹中删除它们。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/MultipleJSFileLoad.pm
+        'The following JavaScript files loaded multiple times:' => '',
+        'Files' => '',
+        'Views with multiple loaded JavaScript files' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+        'Package Installation Status' => '软件包安装状态',
+        'Some packages have locally modified files.' => '一些软件包有在本地修改过的文件。',
+        'Some packages are not correctly installed.' => '一些软件包没有正确安装。',
+        'Package Framework Version Status' => '软件包框架版本状态',
+        'Some packages are not allowed for the current framework version.' =>
+            '一些软件包无法在当前的框架版本中使用。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageList.pm
+        'Package List' => '软件包列表',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SessionConfigSettings.pm
+        'Session Config Settings' => '会话配置设置',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SpoolMails.pm
+        'Spooled Emails' => '假脱机邮件',
+        'There are emails in var/spool that Znuny could not process.' => 'var/spool 目录下有一些Znuny无法处理的邮件。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SystemID.pm
+        'Your SystemID setting is invalid, it should only contain digits.' =>
+            '您的系统ID设置无效，它只能包含数字。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/DefaultType.pm
+        'Default Ticket Type' => '默认工单类型',
+        'The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type.' =>
+            '配置的默认工单类型无效或缺失，请修改设置Ticket::Type::Default，选择一个有效的工单类型。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/IndexModule.pm
+        'Ticket Index Module' => '工单索引模块',
+        'You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information.' =>
+            '您已经超过60000个工单，应该使用后端静态数据库。请参阅管理员手册（性能调优部分）查阅更多信息。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/InvalidUsersWithLockedTickets.pm
+        'Invalid Users with Locked Tickets' => '有锁定的工单的无效用户',
+        'There are invalid users with locked tickets.' => '出现了有锁定的工单的无效用户。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/OpenTickets.pm
+        'You should not have more than 8,000 open tickets in your system.' =>
+            '您的系统不能有超过8000个处理中的工单。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/SearchIndexModule.pm
+        'Ticket Search Index Module' => '工单搜索索引模块',
+        'The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches.' =>
+            '索引进程强制将原始信件文本存储在信件搜索索引中，而不执行过滤器或应用停用词列表。 这将增加搜索索引的大小，从而可能减慢全文搜索。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/StaticDBOrphanedRecords.pm
+        'Orphaned Records In ticket_lock_index Table' => 'ticket_lock_index 表中的孤儿记录',
+        'Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
+            'ticket_lock_index 表中包含孤儿记录。请运行bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup"清理静态数据库的索引。',
+        'Orphaned Records In ticket_index Table' => 'ticket_index 表中的孤儿记录',
+        'Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
+            'ticket_index表中包含孤儿记录，请运行bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup"，清理静态数据库的索引。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+        'Time Settings' => '时间设置',
+        'Server time zone' => '服务器时区',
+        'Znuny time zone' => 'Znuny时区',
+        'Znuny time zone is not set.' => 'Znuny时区未设置。',
+        'User default time zone' => '用户默认时区',
+        'User default time zone is not set.' => '用户默认时区未设置。',
+        'Calendar time zone is not set.' => '日历时区未设置。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentSkinUsage.pm
+        'UI - Agent Skin Usage' => '用户界面 - 服务人员皮肤用法',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentThemeUsage.pm
+        'UI - Agent Theme Usage' => '用户界面 - 服务人员主题用法',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/SpecialStats.pm
+        'UI - Special Statistics' => '用户界面 - 特殊的统计',
+        'Agents using custom main menu ordering' => '服务人员使用定制的主菜单排序',
+        'Agents using favourites for the admin overview' => '服务人员在系统管理概览使用收藏夹',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Version.pm
+        'Znuny Version' => 'Znuny版本',
+
+        # Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/Znuny/ConcurrentUsers.pm
         'Concurrent Users Details' => '并发用户详细信息',
         'Concurrent Users' => '并发用户数',
-
-        # Perl Module: Kernel/System/SupportDataCollector/PluginBase.pm
-        'OK' => '好',
-        'Problem' => '问题',
 
         # Perl Module: Kernel/System/SysConfig.pm
         'Setting %s does not exists!' => '设置%s不存在！',
@@ -5583,12 +5565,24 @@ sub Data {
         'The headline shown in the customer interface.' => '客户界面显示的标题。',
         'The logo shown in the header of the customer interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             '客户界面显示在顶部的LOGO，图片的URL地址可以是皮肤图片目录的相对URL，也可以是远程WEB服务器的完整URL。',
+        'The shortcut icon for the customer interface.' => '',
+        'The shortcut icon for the customer interface for the skin "default".' =>
+            '',
+        'The Apple touch icon for the customer interface.' => '',
+        'The Apple touch icon for the customer interface for skin "default".' =>
+            '',
         'The logo shown in the header of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             '服务人员界面显示在顶部的LOGO，图片的URL地址可以是皮肤图片目录的相对URL，也可以是远程WEB服务器的完整URL。',
         'The logo shown in the header of the agent interface for the skin "default". See "AgentLogo" for further description.' =>
             '服务人员界面“默认”皮肤显示在顶部的LOGO，查看“AgentLogo”以获得更多描述。',
         'The logo shown on top of the login box of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             '服务人员界面显示在登录窗口顶部的LOGO，图片的URL地址可以是皮肤图片目录的相对路径，也可以是远程WEB服务器的完整地址。',
+        'The shortcut icon for the agent interface.' => '',
+        'The shortcut icon for the agent interface fot the skin "default".' =>
+            '',
+        'The Apple touch icon for the agent interface.' => '',
+        'The Apple touch icon for the agent interface for the skin "default".' =>
+            '',
         'Defines the URL base path of icons, CSS and Java Script.' => '定义图标、CSS和Javascript的URL基本路径。',
         'Defines the URL image path of icons for navigation.' => '定义导航栏图标的URL图像地址。',
         'Defines the URL CSS path.' => '定义CSS路径的URL地址。',
@@ -5621,6 +5615,8 @@ sub Data {
             '文本消息中在X个字符后自动换行。',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             '设置文本消息显示的行数（例如：队列视图中工单的行）。',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => '开启主菜单的拖放功能。',
         'Defines the date input format used in forms (option or input fields).' =>
             '定义表单中数据的输入格式（选项或输入字段）。',
@@ -5634,6 +5630,7 @@ sub Data {
             '在发送邮件或提交电话工单/邮件工单前让系统检查邮件地址的MX记录。',
         'Defines the address of a dedicated DNS server, if necessary, for the "CheckMXRecord" look-ups.' =>
             '定义专用的DNS服务器地址，如果需要，用于“检查MX记录”时查找。',
+        'Sets the timeout (in seconds) for DNS resolver queries.' => '',
         'Makes the application check the syntax of email addresses.' => '让系统检查邮件地址的语法。',
         'Defines a regular expression that excludes some addresses from the syntax check (if "CheckEmailAddresses" is set to "Yes"). Please enter a regex in this field for email addresses, that aren\'t syntactically valid, but are necessary for the system (i.e. "root@localhost").' =>
             '定义一个执行语法检查以排除某些地址的正则表达式（如果参数“检查邮件地址”设置为“是”）。请在这里为语句构成上无效但系统需要的邮件地址输入一个正则表达式（如root@localhost）。',
@@ -5914,7 +5911,6 @@ sub Data {
             '使最终用户能够覆盖转换文件中定义的CSV文件分隔符。 请注意：将\'Active（激活）\'设置为0只会阻止服务人员在个人偏好设置中编辑此组的设置，但仍然允许管理员以其他用户的名义编辑这些设置。 使用\'PreferenceGroup\'来控制这些设置应该显示在用户界面的哪个区域。',
         'Defines the users avatar. Please note: setting \'Active\' to 0 will only prevent agents from editing settings of this group in their personal preferences, but will still allow administrators to edit the settings of another user\'s behalf. Use \'PreferenceGroup\' to control in which area these settings should be shown in the user interface.' =>
             '定义用户头像。 请注意：将\'Active（激活）\'设置为0只会阻止服务人员在个人偏好设置中编辑此组的设置，但仍然允许管理员以其他用户的名义编辑这些设置。 使用\'PreferenceGroup\'来控制这些设置应该显示在用户界面的哪个区域。',
-        'Defines the global users popup profile.' => '',
         'Defines the user identifier for the customer panel.' => '定义客户门户的用户标识符。',
         'Activates support for customer and customer user groups.' => '激活对客户和客户用户组的支持。',
         'Defines the groups every customer user will be in (if CustomerGroupSupport is enabled and you don\'t want to manage every customer user for these groups).' =>
@@ -6008,7 +6004,7 @@ sub Data {
             '如果选用了LDAP，您可以为每个LDAP查询添加一个过滤器，例如：(mail=*)、 (objectclass=user) 或 (!objectclass=computer)。',
         'If "LDAP" was selected for Customer::AuthModule and if you want to add a suffix to every customer login name, specifiy it here, e. g. you just want to write the username user but in your LDAP directory exists user@domain.' =>
             '如果Customer::AuthModule（客户认证模块）选择“LDAP”，并且如果您想给每个客户登录名添加一个前缀，则在这里指定，例如，你只想写入用户名user，但在您的LDAP目录存在user@domain。',
-        'If "LDAP" was selected for Customer::AuthModule and special paramaters are needed for the Net::LDAP perl module, you can specify them here. See "perldoc Net::LDAP" for more information about the parameters.' =>
+        'If "LDAP" was selected for Customer::AuthModule and special parameters are needed for the Net::LDAP perl module, you can specify them here. See "perldoc Net::LDAP" for more information about the parameters.' =>
             '如果Customer::AuthModule（客户认证模块）选择“LDAP”，并且perl模块Net::LDAP需要一些特殊参数，您可以在这里指定它们。查阅"perldoc Net::LDAP"获取这些参数的更多信息。',
         'If "LDAP" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             '如果Customer::AuthModule（客户认证模块）选择“LDAP”，您可以指定系统是否要停止的条件（例如由于网络问题无法建立到服务器的连接）。',
@@ -6068,8 +6064,10 @@ sub Data {
         'Defines all the possible stats output formats.' => '定义所有可能的统计输出格式。',
         'Allows agents to exchange the axis of a stat if they generate one.' =>
             '允许服务人员交换生成的统计的X轴和Y轴。',
-        'Allows agents to generate individual-related stats.' => '允许服务人员生成其个人相关的统计。',
-        'Allows invalid agents to generate individual-related stats.' => '允许失效的服务人员生成个人相关的统计。',
+        'Adds the following elements for use in stats: "Agent/Owner", "Created by Agent/Owner", "Responsible", "Accounted time by Agent".' =>
+            '',
+        'Allows invalid agents to be used in stats. Stats::UseAgentElementInStats must be active.' =>
+            '',
         'Shows all the customer identifiers in a multi-select field (not useful if you have a lot of customer identifiers).' =>
             '在多选框字段中显示所有的客户ID（如果客户ID过多则不可用）。',
         'Shows all the customer user identifiers in a multi-select field (not useful if you have a lot of customer user identifiers).' =>
@@ -6125,11 +6123,13 @@ sub Data {
         'Specifies the order in which the firstname and the lastname of agents will be displayed.' =>
             '指定服务人员显示姓和名的先后顺序。',
         'Default skin for the agent interface.' => '服务人员界面的默认皮肤。',
+        'Dark skin for the agent interface.' => '',
         'The agent skin\'s InternalName which should be used in the agent interface. Please check the available skins in Frontend::Agent::Skins.' =>
             '服务人员界面皮肤的内部名称，请在Frontend::Agent::Loader::Agent::Skin中检查可用的皮肤。',
         'It is possible to configure different skins, for example to distinguish between diferent agents, to be used on a per-domain basis within the application. Using a regular expression (regex), you can configure a Key/Content pair to match a domain. The value in "Key" should match the domain, and the value in "Content" should be a valid skin on your system. Please see the example entries for the proper form of the regex.' =>
             '配置不同皮肤是可能的，例如：区分系统中基于域名的不同服务人员。您可以使用一个正则表达式配置一个键/内容组合来匹配一个域名。“键”应该匹配域名，“值”是一个系统中有效的皮肤。请参照样例条目修改正则表达式的合适格式。',
         'Default skin for the customer interface.' => '客户界面的默认皮肤。',
+        'Dark skin for the customer interface.' => '',
         'The customer skin\'s InternalName which should be used in the customer interface. Please check the available skins in Frontend::Customer::Skins.' =>
             '客户界面皮肤的内部名称，请在Frontend::Customer::Loader::Customer::Skin中检查可用的皮肤。',
         'It is possible to configure different skins, for example to distinguish between diferent customers, to be used on a per-domain basis within the application. Using a regular expression (regex), you can configure a Key/Content pair to match a domain. The value in "Key" should match the domain, and the value in "Content" should be a valid skin on your system. Please see the example entries for the proper form of the regex.' =>
@@ -6504,6 +6504,13 @@ sub Data {
             '定义服务视图是否按优先级预先排序。',
         'Defines the default sort order for all services in the service view, after priority sort.' =>
             '定义在工单服务视图中在优先级排序后默认的排序顺序。',
+        'Enable highlighting services based on ticket age.' => '',
+        'Sets the age in minutes (first level) for highlighting services that contain untouched tickets.' =>
+            '',
+        'Sets the age in minutes (second level) for highlighting services that contain untouched tickets.' =>
+            '',
+        'Activates a blinking mechanism of the service that contains the oldest ticket.' =>
+            '',
         'Activates time accounting.' => '激活工时管理。',
         'Sets the prefered time units (e.g. work units, hours, minutes).' =>
             '设置首选的时间单位（如 工作日、小时、分钟）。',
@@ -7851,6 +7858,31 @@ sub Data {
             '',
         'Shows the title field in the NoteToLinkedTicket screen of the agent interface.' =>
             '',
+        'User preferences backend to use.' => '',
+        'Loader module registration for the public interface.' => '',
+        'Deletes orphaned sessions.' => '',
+        'Defines the config parameters available in the preferences view. The default redirect URL from SysConfig \'MarkTicketUnseenRedirectDefaultURL\' is used if no selection is made by the agent.' =>
+            '',
+        'Defines the redirect URL for setting a ticket article to \'unseen\'.' =>
+            '',
+        'Defines the config parameters available in the preferences view. The default redirect URL from SysConfig \'MarkTicketSeenRedirectDefaultURL\' is used if no selection is made by the agent.' =>
+            '',
+        'Defines the redirect URL for setting a ticket article to \'seen\'.' =>
+            '',
+        'Registers a link in the ticket menu to mark a ticket as unseen.' =>
+            '',
+        'Registers a link in the ticket menu to mark a ticket as seen.' =>
+            '',
+        'Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as unseen.' =>
+            '',
+        'Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as seen.' =>
+            '',
+        'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "agent".' =>
+            '',
+        'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".' =>
+            '',
+        'Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.' =>
+            '',
 
         # XML Definition: scripts/database/initial_insert.xml
         'invalid-temporarily' => '暂时无效',
@@ -8499,7 +8531,6 @@ Thanks for your help!
         'Change the priority for this ticket' => '更改这个工单的优先级',
         'Change the responsible for this ticket' => '更改这个工单的负责人',
         'Change your avatar image.' => '更改你的头像图片。',
-        'Change your default popup profile settings.' => '',
         'Change your password and more.' => '更改你的密码及其它。',
         'Changed SLA to "%s" (%s).' => '已修改SLA为"%s" (%s)。',
         'Changed archive state to "%s".' => '已修改归档状态为"%s" 。',
@@ -8544,6 +8575,10 @@ Thanks for your help!
         'Configure and manage ACLs.' => '配置和管理ACL。',
         'Configure which screen should be shown after a new ticket has been created.' =>
             '配置创建新工单后显示的界面。',
+        'Configure which screen should be shown after marking a ticket or article as seen.' =>
+            '',
+        'Configure which screen should be shown after marking a ticket or article as unseen.' =>
+            '',
         'Create New process ticket.' => '创建新的流程工单。',
         'Create Process Ticket' => '',
         'Create Ticket' => '创建工单',
@@ -8607,6 +8642,7 @@ Thanks for your help!
         'CustomerUser' => '客户',
         'Czech' => '捷克语',
         'Danish' => '丹麦语',
+        'Dark' => '',
         'Dashboard overview.' => '仪表板概览。',
         'Date / Time' => '日期 / 时间',
         'Default agent name' => '默认的服务人员姓名',
@@ -8741,6 +8777,8 @@ Thanks for your help!
         'Last view - limit' => '',
         'Last view - position' => '',
         'Last view - types' => '',
+        'Last viewed overview' => '',
+        'Last viewed screen' => '',
         'Lastname Firstname' => '姓 名',
         'Lastname Firstname (UserLogin)' => '姓 名（登录用户名）',
         'Lastname, Firstname' => '姓, 名',
@@ -8787,7 +8825,10 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '管理事件触发或基于时间执行的任务。',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => '标记为垃圾!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '标记这个工单为垃圾!',
+        'Mark ticket as seen' => '',
+        'Mark ticket as unseen' => '',
         'Mattermost Username' => '',
         'Max. number of articles per page in TicketZoom' => '',
         'Medium' => '基本',
@@ -8860,7 +8901,6 @@ Thanks for your help!
         'Plugin search' => '搜索插件',
         'Plugin search module for autocomplete.' => '用于自动完成的搜索插件模块。',
         'Polish' => '波兰语',
-        'Popup Profile' => '',
         'Portuguese' => '葡萄牙语',
         'Portuguese (Brasil)' => '葡萄牙语（巴西）',
         'PostMaster Filters' => '邮箱管理员过滤器',
@@ -8895,13 +8935,14 @@ Thanks for your help!
         'Russian' => '俄语',
         'S/MIME Certificates' => 'S/MIME证书',
         'Schedule a maintenance period.' => '计划一个系统维护期。',
+        'Screen after marking as seen' => '',
+        'Screen after marking as unseen' => '',
         'Screen after new ticket' => '创建新工单后的视图',
         'Search Customer' => '搜索客户',
         'Search Ticket.' => '搜索工单。',
         'Search Tickets.' => '搜索工单。',
         'Search User' => '搜索用户',
         'Search tickets.' => '',
-        'SearchTemplate' => '',
         'Second Christmas Day' => '圣诞节的第二天',
         'Second Queue' => '第二队列',
         'Seconds' => '',
@@ -8996,6 +9037,8 @@ Thanks for your help!
         'Theme' => '主题',
         'This is a Description for Comment on Framework.' => '这是在框架中关于注释的描述信息。',
         'This is a Description for DynamicField on Framework.' => '这是在框架中关于动态字段的描述信息。',
+        'This is the dark skin for the agent interface.' => '',
+        'This is the dark skin for the customer interface.' => '',
         'This is the default orange - black skin for the customer interface.' =>
             '这是客户界面默认的橙色-黑色皮肤。',
         'This is the default orange - black skin.' => '这是默认的橙色-黑色皮肤。',
@@ -9023,7 +9066,6 @@ Thanks for your help!
         'Ticket Priority.' => '工单优先级。',
         'Ticket Queue Overview' => '工单队列概览',
         'Ticket Responsible.' => '工单负责人。',
-        'Ticket Search' => '',
         'Ticket Watcher' => '工单关注人',
         'Ticket Zoom' => '工单详情',
         'Ticket Zoom.' => '工单详情。',
@@ -9232,6 +9274,7 @@ Thanks for your help!
         'Duplicate event.',
         'Duplicated entry',
         'Edit Field Details',
+        'Edit Transition "%s"',
         'Edit this setting',
         'Edit this transition',
         'End date',

@@ -12,8 +12,6 @@ use strict;
 use warnings;
 use utf8;
 
-use Kernel::System::VariableCheck qw(:all);
-
 use parent qw(Kernel::System::ProcessManagement::TransitionAction::Base);
 
 our @ObjectDependencies = (
@@ -97,6 +95,8 @@ Runs TransitionAction ArticleSend.
             Attachments   => 'Attachment 1, Attachment 2, Attachment 3',           # Add attachment of the admin interface for the ArticleSend
             AttachmentIDs => '15,34,42',                                           # Add attachment ids of the admin interface for the ArticleSend
 
+            AttachmentsReuse => 1                                                  # optional, 1|0 - Reuse of attachments stored in the dynamic field configured in Process::DynamicFieldProcessManagementAttachment.
+
             Template   => 'Template 1',                                            # Use template to replace in Body by Tag <OTRS_TA_TEMPLATE>
             TemplateID => 1,                                                       # Use template id to replace in Body by Tag <OTRS_TA_TEMPLATE>
 
@@ -106,7 +106,7 @@ Runs TransitionAction ArticleSend.
             Signature   => 'Signature 1',                                          # Use signature to replace in Body by Tag <OTRS_TA_SIGNATURE>
             SignatureID => 1,                                                      # Use signature id to replace in Body by Tag <OTRS_TA_SIGNATURE>
 
-            UseTicketHook => 0,                                                    # optional, default: 1 - if you dont want to a ticket hook
+            UseTicketHook => 0,                                                    # optional, default: 1 - if you don't want to a ticket hook
         }
     );
 
@@ -129,6 +129,7 @@ sub Run {
     my $StdAttachmentObject     = $Kernel::OM->Get('Kernel::System::StdAttachment');
     my $TemplateGeneratorObject = $Kernel::OM->Get('Kernel::System::TemplateGenerator');
     my $TicketObject            = $Kernel::OM->Get('Kernel::System::Ticket');
+    my $LogObject               = $Kernel::OM->Get('Kernel::System::Log');
 
     # define a common message to output in case of any error
     my $CommonMessage = "Process: $Param{ProcessEntityID} Activity: $Param{ActivityEntityID}"
@@ -185,6 +186,19 @@ sub Run {
                 ID => $ID,
             );
             next ATTACHMENT if !%Data;
+
+            if ( $Data{ValidID} != 1 ) {
+                $LogObject->Log(
+                    Priority => 'error',
+                    Message  => $CommonMessage
+                        . 'Attachment (ID: '
+                        . $ID
+                        . ', Name: '
+                        . $Data{Name}
+                        . ') is invalid. Skip Attachment!',
+                );
+                next ATTACHMENT;
+            }
 
             push @{ $Param{Config}->{Attachment} }, {
                 Content     => $Data{Content},

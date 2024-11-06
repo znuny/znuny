@@ -11,6 +11,8 @@ package scripts::Migration::Znuny::MigrateSysConfigSettings;    ## no critic
 
 use strict;
 use warnings;
+use utf8;
+
 use IO::Interactive qw(is_interactive);
 use Kernel::System::VariableCheck qw(:all);
 
@@ -44,85 +46,17 @@ sub _GetMigrateSysConfigSettings {
 
     my %MigrateSysConfigSettings = (
 
-        # Integration Znuny-NoteToLinkedTicket
-
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###Permission" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###Permission'
+        "Loader::Agent::CommonJS###000-Framework" => {
+            UpdateEffectiveValue => {
+                'thirdparty/jquery-jstree-3.3.7/jquery.jstree.js' => 'thirdparty/jquery-jstree-3.3.8/jquery.jstree.js',
+                'thirdparty/nunjucks-3.2.2/nunjucks.min.js'       => 'thirdparty/nunjucks-3.2.3/nunjucks.min.js',
+            },
         },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###LinkedTicketState" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###LinkedTicketState'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###LinkedTicketStateDefault" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###LinkedTicketStateDefault'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###NoteToTicket" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###NoteToTicket'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###NoteToTicketDefault" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###NoteToTicketDefault'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###Subject" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###Subject'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###Body" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###Body'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###Note" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###Note'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###NoteMandatory" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###NoteMandatory'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###HistoryType" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###HistoryType'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###HistoryComment" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###HistoryComment'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###IsVisibleForCustomerDefault" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###IsVisibleForCustomerDefault'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###TicketType" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###TicketType'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###Service" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###Service'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###ServiceMandatory" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###ServiceMandatory'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###SLAMandatory" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###SLAMandatory'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###Queue" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###Queue'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###Owner" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###Owner'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###OwnerMandatory" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###OwnerMandatory'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###Responsible" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###Responsible'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###State" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###State'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###StateType" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###StateType'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###StateDefault" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###StateDefault'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###Priority" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###Priority'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###PriorityDefault" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###PriorityDefault'
-        },
-        "Ticket::Frontend::AgentZnunyNoteToLinkedTicket###Title" => {
-            UpdateName => 'Ticket::Frontend::AgentTicketNoteToLinkedTicket###Title'
+        "Loader::Customer::CommonJS###000-Framework" => {
+            UpdateEffectiveValue => {
+                'thirdparty/jquery-jstree-3.3.7/jquery.jstree.js' => 'thirdparty/jquery-jstree-3.3.8/jquery.jstree.js',
+                'thirdparty/nunjucks-3.2.2/nunjucks.min.js'       => 'thirdparty/nunjucks-3.2.3/nunjucks.min.js',
+            },
         },
     );
 

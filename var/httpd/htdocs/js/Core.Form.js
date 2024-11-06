@@ -181,13 +181,14 @@ Core.Form = (function (TargetNS) {
             SelectAllID = $SelectAllCheckbox.attr('id');
             $Elements = $('input[type="checkbox"][name="' + Core.App.EscapeSelector(ElementName) + '"]').filter('[id!="' + Core.App.EscapeSelector(SelectAllID) + '"]:visible');
             Status = $ClickedBox.prop('checked');
-            RWMasterSwitch = $('#SelectAllrw');
-            HeadElements = $('table th input:not([name="rw"]:visible)');
+            // search for a element start starts with SelectAll and ends with rw
+            RWMasterSwitch = $('input[id^="SelectAll"][id$="rw"]');
+            HeadElements = $('table th input:not([name$="rw"]:visible)');
             CheckAll = $('input[type="checkbox"]:visible');
 
-            if(ElementName === 'rw'){
+            if (ElementName.endsWith('rw')) {
 
-                if($ClickedBox.attr('id') === 'SelectAllrw'){
+                if ($ClickedBox.attr('id') && $ClickedBox.attr('id') === SelectAllID) {
 
                     if(RWMasterSwitch.hasClass('Disabled')){
                         CheckAll.prop('disabled', false);
@@ -196,7 +197,7 @@ Core.Form = (function (TargetNS) {
                         return;
                     } else {
                         CheckAll.prop('checked', true);
-                        $('input[type="checkbox"]:visible:not([name="rw"])').not(RWMasterSwitch).prop('disabled', true);
+                        $('input[type="checkbox"]:visible:not([name$="rw"])').not(RWMasterSwitch).prop('disabled', true);
                         $Elements.addClass('Disabled');
                         RWMasterSwitch.addClass('Disabled');
                         return;
@@ -236,7 +237,7 @@ Core.Form = (function (TargetNS) {
                 CountSelectedCheckboxes = $Elements.filter(':checked').length;
                 if (CountCheckboxes === CountSelectedCheckboxes) {
                     $SelectAllCheckbox.prop('checked', true);
-                    if(ElementName === 'rw'){
+                    if (ElementName.endsWith('rw')) {
                         CheckAll.prop('checked', true).not(RWMasterSwitch);
                         RWMasterSwitch.addClass('Disabled');
                         HeadElements.prop('disabled', true);
@@ -302,7 +303,7 @@ Core.Form = (function (TargetNS) {
         if ((Event.ctrlKey || Event.metaKey) && Event.keyCode == 13) {
             // We need to click() instead of submit(), since click() has
             // a few useful event handlers tied to it, like validation.
-            $(this.form).find(':submit').first().click();
+            $(this.form).find(':submit').last().click();
         }
     });
 

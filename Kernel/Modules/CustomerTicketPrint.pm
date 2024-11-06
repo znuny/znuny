@@ -34,7 +34,7 @@ sub Run {
 
     # Check needed stuff.
     if ( !$Self->{TicketID} ) {
-        return $LayoutObject->ErrorScreen(
+        return $LayoutObject->CustomerErrorScreen(
             Message => Translatable('Need TicketID!'),
         );
     }

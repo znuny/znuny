@@ -68,6 +68,14 @@
                                 </a>
                             </li>
                         [% END %]
+                        [% IF Env('Action') == 'AgentTicketWatchView' %]
+                            <li class="Unsubscribe ContextSettings">
+                                <a href="#" id="UnsubscribeWatchedTickets" class="icon-hover" title="[% Translate("Remove from list of watched tickets") | html %]">
+                                    <i class="fa fa-eye-slash"></i>
+                                    <span>[% Translate("Remove from list of watched tickets") | html %]</span>
+                                </a>
+                            </li>
+                        [% END %]
 
                         <li class="ContextSettings">
                             <a class="icon-hover" href="#" id="ShowContextSettingsDialog" title="[% Translate("Settings") | html %]">

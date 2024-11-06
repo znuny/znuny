@@ -37,8 +37,8 @@ $Selenium->RunTest(
         $Selenium->delete_all_cookies();
 
         # Check Secure::DisableBanner functionality.
-        my $Product = $Kernel::OM->Get('Kernel::Config')->Get('Product');
-        my $Version = $Kernel::OM->Get('Kernel::Config')->Get('Version');
+        my $Product = $ConfigObject->Get('Product');
+        my $Version = $ConfigObject->Get('Version');
 
         for my $Disabled ( reverse 0 .. 1 ) {
             $HelperObject->ConfigSettingChange(
@@ -107,17 +107,7 @@ $Selenium->RunTest(
         );
 
         # logout again
-        $Selenium->mouse_move_to_location(
-            element => $Selenium->find_element( '.UserAvatar', 'css' ),
-        );
-
-        # Check if submenu is visible now.
-        $Selenium->WaitFor(
-            JavaScript => "return \$('.UserAvatar_submenu').length"
-        );
-        $Selenium->WaitFor(
-            JavaScript => "return \$('a#LogoutButton').length"
-        );
+        $Selenium->find_element( '.UserAvatar',    'css' )->click();
         $Selenium->find_element( 'a#LogoutButton', 'css' )->click();
 
         # Check if autocomplete is enabled in login form.

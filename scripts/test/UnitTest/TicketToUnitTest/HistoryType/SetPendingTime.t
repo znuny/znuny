@@ -42,7 +42,7 @@ my $ExpectedOutout = <<OUTPUT;
 
 \$Self->True(
     \$Success,
-    'TicketPendingTimeSet to "$Param{PendingTime}" was successfull.',
+    'TicketPendingTimeSet to "$Param{PendingTime}" was successful.',
 );
 
 OUTPUT

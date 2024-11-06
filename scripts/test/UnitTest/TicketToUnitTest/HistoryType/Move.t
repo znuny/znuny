@@ -41,7 +41,7 @@ my $ExpectedOutout = <<OUTPUT;
 
 \$Self->True(
     \$Success,
-    'TicketQueueSet to "$Param{Queue}" was successfull.',
+    'TicketQueueSet to "$Param{Queue}" was successful.',
 );
 
 OUTPUT

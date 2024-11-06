@@ -15,6 +15,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 @media screen,projection,tv,handheld {
 
+.LayoutFixedSidebar>.SidebarColumn {
+    overflow-x: visible;
+}
+
 /**
  * @subsubsection     Icon Definition
  */
@@ -244,14 +248,8 @@ ul#ProcessElements li.AccordionElement div.Content ul li > span a {
     right: 30px;
     overflow: hidden;
     gap: var(--gap-sm);
+    z-index: 1;
 }
-
-/*.CanvasActions a {
-    float: left;
-    width: 20px;
-    height: 20px;
-    opacity: 0.4;
-}*/
 
 .CanvasActions a#ShowEntityIDs {
     margin-right: var(--margin-sm);
@@ -260,7 +258,6 @@ ul#ProcessElements li.AccordionElement div.Content ul li > span a {
     font-size: 14px;
     font-weight: var(--semi-bold);
     letter-spacing: .2px;
-    /*font-family: 'Inter';*/
 }
 
 .CanvasActions a:hover {
@@ -706,7 +703,7 @@ ul.Path li.Transition {
     padding: var(--padding-xxl) 0;
 }
 
-ul.Path li.StartActivity, 
+ul.Path li.StartActivity,
 ul.Path li.EndActivity {
     background-color: var(--white);
     border: 1px solid gray;
@@ -717,7 +714,7 @@ ul.Path li.EndActivity {
     text-overflow: ellipsis;
 }
 
-ul.Path li.StartActivity + i, 
+ul.Path li.StartActivity + i,
 ul.Path li.EndActivity + i {
     position: relative;
     top: -28px;

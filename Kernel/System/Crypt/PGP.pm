@@ -899,7 +899,7 @@ sub SecretKeyDelete {
 
     my %LogMessage = $Self->_HandleLog( LogString => $Message );
 
-    # waiting for better solution, some times gpg returns just enviroment warnings and
+    # waiting for better solution, some times gpg returns just environment warnings and
     # with next code lines is wrong detected like an error
     #    if ($Message) {
     #        $Message =~ s/\n//g;

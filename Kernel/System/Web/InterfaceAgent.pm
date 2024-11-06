@@ -390,7 +390,7 @@ sub Run {
             Name                     => 'PluginAsynchronous::ConcurrentUser',
             MaximumParallelInstances => 1,
             Data                     => {
-                Object   => 'Kernel::System::SupportDataCollector::PluginAsynchronous::OTRS::ConcurrentUsers',
+                Object   => 'Kernel::System::SupportDataCollector::PluginAsynchronous::Znuny::ConcurrentUsers',
                 Function => 'RunAsynchronous',
             },
         );

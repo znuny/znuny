@@ -11,6 +11,7 @@ package Kernel::Modules::AgentTicketCompose;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::System::VariableCheck qw(:all);
 use Kernel::Language qw(Translatable);
@@ -837,22 +838,25 @@ sub Run {
                 }
             }
 
-            my $ValidationResult = $DynamicFieldBackendObject->EditFieldValueValidate(
-                DynamicFieldConfig   => $DynamicFieldConfig,
-                PossibleValuesFilter => $PossibleValuesFilter,
-                ParamObject          => $ParamObject,
-                Mandatory =>
-                    $Config->{DynamicField}->{ $DynamicFieldConfig->{Name} } == 2,
-            );
-
-            if ( !IsHashRefWithData($ValidationResult) ) {
-                return $LayoutObject->ErrorScreen(
-                    Message => $LayoutObject->{LanguageObject}->Translate(
-                        'Could not perform validation on field %s!',
-                        $DynamicFieldConfig->{Label},
-                    ),
-                    Comment => Translatable('Please contact the administrator.'),
+            my $ValidationResult;
+            if ( $Self->{LoadedFormDraftID} && $Self->{Subaction} && $Self->{Subaction} ne '' ) {
+                $ValidationResult = $DynamicFieldBackendObject->EditFieldValueValidate(
+                    DynamicFieldConfig   => $DynamicFieldConfig,
+                    PossibleValuesFilter => $PossibleValuesFilter,
+                    ParamObject          => $ParamObject,
+                    Mandatory =>
+                        $Config->{DynamicField}->{ $DynamicFieldConfig->{Name} } == 2,
                 );
+
+                if ( !IsHashRefWithData($ValidationResult) ) {
+                    return $LayoutObject->ErrorScreen(
+                        Message => $LayoutObject->{LanguageObject}->Translate(
+                            'Could not perform validation on field %s!',
+                            $DynamicFieldConfig->{Label},
+                        ),
+                        Comment => Translatable('Please contact the administrator.'),
+                    );
+                }
             }
 
             # propagate validation error to the Error variable to be detected by the frontend
@@ -1968,9 +1972,9 @@ sub _Mask {
         OnlyDynamicFields => 1
     );
 
-    # get needed objects
-    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
-    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    my $LayoutObject    = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $ConfigObject    = $Kernel::OM->Get('Kernel::Config');
+    my $FormDraftObject = $Kernel::OM->Get('Kernel::System::FormDraft');
 
     # get config for frontend module
     my $Config = $ConfigObject->Get("Ticket::Frontend::$Self->{Action}");
@@ -2333,7 +2337,7 @@ sub _Mask {
 
     my $LoadedFormDraft;
     if ( $Self->{LoadedFormDraftID} ) {
-        $LoadedFormDraft = $Kernel::OM->Get('Kernel::System::FormDraft')->FormDraftGet(
+        $LoadedFormDraft = $FormDraftObject->FormDraftGet(
             FormDraftID => $Self->{LoadedFormDraftID},
             GetContent  => 0,
             UserID      => $Self->{UserID},
@@ -2379,15 +2383,24 @@ sub _Mask {
         );
     }
 
+    # Check if the user has already any form draft for this action
+    my $FormDraftList = $FormDraftObject->FormDraftListGet(
+        ObjectType => 'Ticket',
+        ObjectID   => $Self->{TicketID},
+        Action     => $Self->{Action},
+        UserID     => $Self->{UserID},
+    ) // [];
+
     # create & return output
     return $LayoutObject->Output(
         TemplateFile => 'AgentTicketCompose',
         Data         => {
-            FormID         => $Self->{FormID},
-            FormDraft      => $Config->{FormDraft},
-            FormDraftID    => $Self->{LoadedFormDraftID},
-            FormDraftTitle => $LoadedFormDraft ? $LoadedFormDraft->{Title} : '',
-            FormDraftMeta  => $LoadedFormDraft,
+            FormID             => $Self->{FormID},
+            FormDraft          => $Config->{FormDraft},
+            FormDraftID        => $Self->{LoadedFormDraftID},
+            FormDraftTitle     => $LoadedFormDraft ? $LoadedFormDraft->{Title} : '',
+            FormDraftMeta      => $LoadedFormDraft,
+            FormDraftForAction => scalar @{$FormDraftList},
             %Param,
         },
     );

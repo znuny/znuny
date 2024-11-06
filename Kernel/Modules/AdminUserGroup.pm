@@ -11,6 +11,7 @@ package Kernel::Modules::AdminUserGroup;
 
 use strict;
 use warnings;
+use utf8;
 
 our $ObjectManagerDisabled = 1;
 

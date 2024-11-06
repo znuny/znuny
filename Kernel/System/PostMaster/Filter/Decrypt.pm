@@ -213,40 +213,61 @@ sub _DecryptSMIME {
         return;
     }
 
-    my $IncomingMailAddress;
-    for my $Email (qw(From)) {
-
+    my %EmailsToSearch;
+    for my $Email (qw(Resent-To Envelope-To To Cc Delivered-To X-Original-To)) {
         my @EmailAddressOnField = $Self->{ParserObject}->SplitAddressLine(
             Line => $Self->{ParserObject}->GetParam( WHAT => $Email ),
         );
 
         for my $EmailAddress (@EmailAddressOnField) {
-            $IncomingMailAddress = $Self->{ParserObject}->GetEmailAddress(
+            my $CleanEmailAddress = $Self->{ParserObject}->GetEmailAddress(
                 Email => $EmailAddress,
             );
+            $EmailsToSearch{$CleanEmailAddress} = '1';
         }
     }
 
-    my @PrivateList = $CryptObject->PrivateSearch(
-        Search => $IncomingMailAddress,
-    );
+    # look for private keys for every email address
+    my %PrivateKeys;
+    for my $EmailAddress ( sort keys %EmailsToSearch ) {
+        my @PrivateKeysResult = $CryptObject->PrivateSearch(
+            Search => $EmailAddress,
+        );
+        for my $Cert (@PrivateKeysResult) {
+            $PrivateKeys{ $Cert->{Filename} } = $Cert;
+        }
+    }
+
+    if ( !%PrivateKeys ) {
+        $Self->{CommunicationLogObject}->ObjectLog(
+            ObjectLogType => 'Message',
+            Priority      => 'Info',
+            Key           => 'Kernel::System::PostMaster::Filter::Decrypt',
+            Value         => 'No S/MIME private key found for recipient address(es).',
+        );
+        return;
+    }
 
     my %Decrypt;
     PRIVATESEARCH:
-    for my $PrivateFilename (@PrivateList) {
-
-        # Try to decrypt
+    for my $CertResult ( values %PrivateKeys ) {
         %Decrypt = $CryptObject->Decrypt(
             Message            => $DecryptBody,
             SearchingNeededKey => 1,
-            Filename           => $PrivateFilename->{Filename},
+            %{$CertResult},
         );
-
-        # Stop loop if successful
-        last PRIVATESEARCH if ( $Decrypt{Successful} );
+        last PRIVATESEARCH if $Decrypt{Successful};
     }
 
-    return if !$Decrypt{Successful};
+    if ( !$Decrypt{Successful} ) {
+        $Self->{CommunicationLogObject}->ObjectLog(
+            ObjectLogType => 'Message',
+            Priority      => 'Error',
+            Key           => 'Kernel::System::PostMaster::Filter::Decrypt',
+            Value         => 'Error decrypting message.',
+        );
+        return;
+    }
 
     my $ParserObject = Kernel::System::EmailParser->new(
         %{$Self},

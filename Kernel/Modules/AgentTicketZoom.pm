@@ -161,6 +161,7 @@ sub Run {
     # get needed objects
     my $TicketObject  = $Kernel::OM->Get('Kernel::System::Ticket');
     my $ArticleObject = $Kernel::OM->Get('Kernel::System::Ticket::Article');
+    my $MentionObject = $Kernel::OM->Get('Kernel::System::Mention');
 
     # check permissions
     my $Access = $TicketObject->TicketPermission(
@@ -183,13 +184,23 @@ sub Run {
         DynamicFields => 1,
     );
 
-    # Set ticket mentions as seen.
-    $TicketObject->TicketFlagSet(
+    # Get mentions for the current ticket.
+    my $Mentions = $MentionObject->GetTicketMentions(
         TicketID => $Self->{TicketID},
-        Key      => 'MentionSeen',
-        Value    => 1,
-        UserID   => $Self->{UserID},
     );
+
+    # Get mentions only for the current user.
+    my @UserTicketMentions = grep { $_->{UserID} eq $Self->{UserID} } @{$Mentions};
+
+    # Set ticket mentions as seen.
+    if (@UserTicketMentions) {
+        $TicketObject->TicketFlagSet(
+            TicketID => $Self->{TicketID},
+            Key      => 'MentionSeen',
+            Value    => 1,
+            UserID   => $Self->{UserID},
+        );
+    }
 
     # get ACL restrictions
     my %PossibleActions;
@@ -1649,19 +1660,32 @@ sub MaskAgentZoom {
 
         # output dynamic fields registered for a group in the process widget
         my @FieldsInAGroup;
+
+        GROUP:
         for my $GroupName (
             sort keys %{ $Self->{DisplaySettings}->{ProcessWidgetDynamicFieldGroups} }
             )
         {
 
-            $LayoutObject->Block(
-                Name => 'ProcessWidgetDynamicFieldGroups',
-            );
-
             my $GroupFieldsString = $Self->{DisplaySettings}->{ProcessWidgetDynamicFieldGroups}->{$GroupName};
 
             $GroupFieldsString =~ s{\s}{}xmsg;
             my @GroupFields = split( ',', $GroupFieldsString );
+
+            my $ShowBlock = 0;
+            for my $FieldChecker (@FieldsWidget) {
+
+                my $DynamicFieldExists = grep { $_ eq $FieldChecker->{Name} } @GroupFields;
+                if ( !$ShowBlock && $DynamicFieldExists ) {
+                    $ShowBlock = 1;
+                }
+            }
+
+            next GROUP if !$ShowBlock;
+
+            $LayoutObject->Block(
+                Name => 'ProcessWidgetDynamicFieldGroups',
+            );
 
             if ( $#GroupFields + 1 ) {
 
@@ -1693,6 +1717,7 @@ sub MaskAgentZoom {
                                     # alias for ticket title, Title will be overwritten
                                     TicketTitle => $Ticket{Title},
                                     Value       => $Field->{Value},
+                                    ValueKey    => $Ticket{"DynamicField_$Field->{Name}"},
                                     Title       => $Field->{Title},
                                     Link        => $Field->{Link},
                                     LinkPreview => $Field->{LinkPreview},
@@ -1774,6 +1799,7 @@ sub MaskAgentZoom {
                         # alias for ticket title, Title will be overwritten
                         TicketTitle => $Ticket{Title},
                         Value       => $Field->{Value},
+                        ValueKey    => $Ticket{"DynamicField_$Field->{Name}"},
                         Title       => $Field->{Title},
                         Link        => $Field->{Link},
 

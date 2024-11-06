@@ -37,6 +37,9 @@ sub Run {
     elsif ( $Self->{Subaction} eq 'DownloadSupportBundle' ) {
         return $Self->_DownloadSupportBundle();
     }
+    elsif ( $Self->{Subaction} eq 'DeleteCache' ) {
+        return $Self->_DeleteCache();
+    }
 
     return $Self->_SupportDataCollectorView(%Param);
 }
@@ -362,6 +365,12 @@ sub _DownloadSupportBundle {
         ContentType => 'application/octet-stream; charset=' . $LayoutObject->{UserCharset},
         Content     => $$Content,
     );
+}
+
+sub _DeleteCache {
+    my ($Self) = @_;
+    $Kernel::OM->Get('Kernel::System::SupportDataCollector')->DeleteCache();
+    return $Self->_SupportDataCollectorView();
 }
 
 1;

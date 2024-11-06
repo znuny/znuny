@@ -30,7 +30,9 @@ sub new {
 sub PreRun {
     my ( $Self, %Param ) = @_;
 
-    my $Output;
+    my $SessionObject = $Kernel::OM->Get('Kernel::System::AuthSession');
+    my $LayoutObject  = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+
     if ( !$Self->{RequestedURL} ) {
         $Self->{RequestedURL} = 'Action=';
     }
@@ -39,12 +41,12 @@ sub PreRun {
     if ( !$Self->{ $Self->{InfoKey} } && $Self->{Action} ne 'CustomerAccept' ) {
 
         # remove requested url from session storage
-        $Kernel::OM->Get('Kernel::System::AuthSession')->UpdateSessionID(
+        $SessionObject->UpdateSessionID(
             SessionID => $Self->{SessionID},
             Key       => 'UserRequestedURL',
             Value     => $Self->{RequestedURL},
         );
-        return $Kernel::OM->Get('Kernel::Output::HTML::Layout')->Redirect( OP => 'Action=CustomerAccept' );
+        return $LayoutObject->Redirect( OP => 'Action=CustomerAccept' );
     }
     else {
         return;
@@ -58,9 +60,13 @@ sub Run {
     if ( !$Self->{RequestedURL} ) {
         $Self->{RequestedURL} = 'Action=';
     }
-    my $Accept        = $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'Accept' ) || '';
-    my $LayoutObject  = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
-    my $SessionObject = $Kernel::OM->Get('Kernel::System::AuthSession');
+
+    my $ParamObject        = $Kernel::OM->Get('Kernel::System::Web::Request');
+    my $LayoutObject       = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $SessionObject      = $Kernel::OM->Get('Kernel::System::AuthSession');
+    my $CustomerUserObject = $Kernel::OM->Get('Kernel::System::CustomerUser');
+
+    my $Accept = $ParamObject->GetParam( Param => 'Accept' ) || '';
 
     if ( $Self->{ $Self->{InfoKey} } ) {
 
@@ -84,7 +90,7 @@ sub Run {
         );
 
         # set preferences
-        $Kernel::OM->Get('Kernel::System::CustomerUser')->SetPreferences(
+        $CustomerUserObject->SetPreferences(
             UserID => $Self->{UserID},
             Key    => $Self->{InfoKey},
             Value  => 1,

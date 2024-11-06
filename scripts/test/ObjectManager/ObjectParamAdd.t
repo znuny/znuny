@@ -10,6 +10,7 @@
 use strict;
 use warnings;
 use vars (qw($Self));
+use utf8;
 
 use Kernel::System::ObjectManager;
 

@@ -11,6 +11,7 @@ package Kernel::Modules::AgentTicketMove;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::System::VariableCheck qw(:all);
 use Kernel::Language qw(Translatable);
@@ -1667,9 +1668,11 @@ sub AgentMove {
         }
     }
 
+    my $FormDraftObject = $Kernel::OM->Get('Kernel::System::FormDraft');
+
     my $LoadedFormDraft;
     if ( $Self->{LoadedFormDraftID} ) {
-        $LoadedFormDraft = $Kernel::OM->Get('Kernel::System::FormDraft')->FormDraftGet(
+        $LoadedFormDraft = $FormDraftObject->FormDraftGet(
             FormDraftID => $Self->{LoadedFormDraftID},
             GetContent  => 0,
             UserID      => $Self->{UserID},
@@ -1715,14 +1718,23 @@ sub AgentMove {
         );
     }
 
+    # Check if the user has already any form draft for this action
+    my $FormDraftList = $FormDraftObject->FormDraftListGet(
+        ObjectType => 'Ticket',
+        ObjectID   => $Self->{TicketID},
+        Action     => $Self->{Action},
+        UserID     => $Self->{UserID},
+    ) // [];
+
     return $LayoutObject->Output(
         TemplateFile => 'AgentTicketMove',
         Data         => {
             %Param,
-            FormDraft      => $Config->{FormDraft},
-            FormDraftID    => $Self->{LoadedFormDraftID},
-            FormDraftTitle => $LoadedFormDraft ? $LoadedFormDraft->{Title} : '',
-            FormDraftMeta  => $LoadedFormDraft,
+            FormDraft          => $Config->{FormDraft},
+            FormDraftID        => $Self->{LoadedFormDraftID},
+            FormDraftTitle     => $LoadedFormDraft ? $LoadedFormDraft->{Title} : '',
+            FormDraftMeta      => $LoadedFormDraft,
+            FormDraftForAction => scalar @{$FormDraftList},
         },
     );
 }

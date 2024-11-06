@@ -11,6 +11,7 @@ package Kernel::Output::HTML::Preferences::Password;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::Language qw(Translatable);
 

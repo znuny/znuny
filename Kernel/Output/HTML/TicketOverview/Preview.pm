@@ -11,6 +11,7 @@ package Kernel::Output::HTML::TicketOverview::Preview;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::System::VariableCheck qw(:all);
 use Kernel::Language qw(Translatable);
@@ -30,6 +31,7 @@ our @ObjectDependencies = (
     'Kernel::System::Ticket',
     'Kernel::System::Ticket::Article',
     'Kernel::System::User',
+    'Kernel::System::Util',
 );
 
 sub new {
@@ -277,7 +279,7 @@ sub Run {
     if ( IsHashRefWithData($PreviewArticleSenderTypes) ) {
 
         KEY:
-        for my $Key ( %{$PreviewArticleSenderTypes} ) {
+        for my $Key ( sort keys %{$PreviewArticleSenderTypes} ) {
             next KEY if !$PreviewArticleSenderTypes->{$Key};
 
             my $ID = $ArticleObject->ArticleSenderTypeLookup( SenderType => $Key );
@@ -489,13 +491,11 @@ sub _Show {
         Data  => $StandardTemplates{Answer} || {},
     );
 
-    # customer info
-    if ( $Param{Config}->{CustomerInfo} ) {
-        if ( $Article{CustomerUserID} ) {
-            $Article{CustomerName} = $Kernel::OM->Get('Kernel::System::CustomerUser')->CustomerName(
-                UserLogin => $Article{CustomerUserID},
-            );
-        }
+    # Add CustomerName
+    if ( $Article{CustomerUserID} ) {
+        $Article{CustomerName} = $Kernel::OM->Get('Kernel::System::CustomerUser')->CustomerName(
+            UserLogin => $Article{CustomerUserID},
+        );
     }
 
     # get ACL restrictions
@@ -871,7 +871,6 @@ sub _Show {
         }
     }
 
-    # CustomerID and CustomerName
     if ( defined $Article{CustomerID} ) {
         $LayoutObject->Block(
             Name => 'CustomerID',
@@ -881,48 +880,41 @@ sub _Show {
             },
         );
 
-        # test access to frontend module
-        my $Access = $LayoutObject->Permission(
-            Action => 'AgentTicketCustomer',
+        my $CICRWAccess = $LayoutObject->Permission(
+            Action => 'AgentCustomerInformationCenter',
             Type   => 'rw',
         );
-        if ($Access) {
-
-            # test access to ticket
-            my $Config = $ConfigObject->Get('Ticket::Frontend::AgentTicketCustomer');
-            if ( $Config->{Permission} ) {
-                my $OK = $TicketObject->Permission(
-                    Type     => $Config->{Permission},
-                    TicketID => $Param{TicketID},
-                    UserID   => $Self->{UserID},
-                    LogNo    => 1,
-                );
-                if ( !$OK ) {
-                    $Access = 0;
-                }
-            }
-        }
-
-        # define proper tt block based on permissions
-        my $CustomerIDBlock = $Access ? 'CustomerIDRW' : 'CustomerIDRO';
 
         $LayoutObject->Block(
-            Name => $CustomerIDBlock,
+            Name => $CICRWAccess ? 'CustomerIDRW' : 'CustomerIDRO',
+            Data => {
+                %Param,
+                %Article,
+            },
+        );
+    }
+
+    if ( defined $Article{CustomerName} ) {
+        $LayoutObject->Block(
+            Name => 'CustomerName',
             Data => {
                 %Param,
                 %Article,
             },
         );
 
-        if ( defined $Article{CustomerName} ) {
-            $LayoutObject->Block(
-                Name => 'CustomerName',
-                Data => {
-                    %Param,
-                    %Article,
-                },
-            );
-        }
+        my $CUICRWAccess = $LayoutObject->Permission(
+            Action => 'AgentCustomerUserInformationCenter',
+            Type   => 'rw',
+        );
+
+        $LayoutObject->Block(
+            Name => $CUICRWAccess ? 'CustomerNameRW' : 'CustomerNameRO',
+            Data => {
+                %Param,
+                %Article,
+            },
+        );
     }
 
     # show first response time if needed
@@ -1066,6 +1058,7 @@ sub _Show {
                 Name => 'DynamicFieldTableRowRecordLink',
                 Data => {
                     Value                       => $ValueStrg->{Value},
+                    ValueKey                    => $Value,
                     Title                       => $ValueStrg->{Title},
                     Link                        => $ValueStrg->{Link},
                     $DynamicFieldConfig->{Name} => $ValueStrg->{Title},

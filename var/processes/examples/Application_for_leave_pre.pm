@@ -12,6 +12,7 @@ package var::processes::examples::Application_for_leave_pre;
 
 use strict;
 use warnings;
+use utf8;
 
 use parent qw(var::processes::examples::Base);
 

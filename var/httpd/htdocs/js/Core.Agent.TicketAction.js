@@ -323,10 +323,27 @@ Core.Agent.TicketAction = (function (TargetNS) {
 
         $('.TimeUnitDropdown.' + Selector).each(function() {
             Count += Number($(this).val() || 0);
-            $(this).removeClass('Validate_Required');
+
+            if ($(this).hasClass('Validate_Required')) {
+
+                // Remember if ValidateRequired was set (see below check for Count).
+                $(this).attr('data-needs-class-validate-required', '1');
+
+                $(this).removeClass('Validate_Required');
+            }
         });
 
         $TimeUnits.val(Count);
+
+        // Re-add Validate_Required class for required fields if time units have been
+        // removed again.
+        if (!Count) {
+            $('.TimeUnitDropdown.' + Selector).each(function() {
+                if ($(this).attr('data-needs-class-validate-required')) {
+                    $(this).addClass('Validate_Required');
+                }
+            });
+        }
     };
 
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');

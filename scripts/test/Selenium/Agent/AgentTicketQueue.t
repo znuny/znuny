@@ -381,8 +381,12 @@ $Selenium->RunTest(
             "${ScriptAlias}index.pl?Action=AgentTicketQueue;QueueID=$Queues[2]->{QueueID};View=Small;Filter=Unlocked"
         );
 
+        my $HeaderText = $Selenium->execute_script("return \$('.OverviewBox.Small h1').text().trim();");
+
+        # remove whitespaces, that are added by the template
+        $HeaderText =~ s/\s+/ /g;
         $Self->Is(
-            $Selenium->execute_script("return \$('.OverviewBox.Small h1').text().trim();"),
+            $HeaderText,
             $LanguageObject->Translate('QueueView') . ": Delete",
             "Title for filtered AgentTicketQueue screen is not translated.",
         );

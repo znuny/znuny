@@ -13,8 +13,6 @@ use warnings;
 
 our @ObjectDependencies;
 
-use Kernel::System::VariableCheck qw(:all);
-
 =head1 NAME
 
 Kernel::System::DynamicField::Webservice::Base - Dynamic field web service base lib

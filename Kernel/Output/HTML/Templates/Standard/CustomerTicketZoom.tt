@@ -208,10 +208,9 @@
                         </ul>
                         [% END %]
                     </div>
-[% RenderBlockStart("FollowUp") %]
                     <div id="FollowUp" class="main-card-item followup-wrapper [% Data.FollowUpVisible | html %]">
-                        <div id="VisibleMessageContent">
-                        </div>
+                        <div id="VisibleMessageContent"></div>
+[% RenderBlockStart("FollowUp") %]
                         <div id="Messenger">
                             <fieldset class="DontPrint">
                                 <div class="field-wrapper">
@@ -293,8 +292,8 @@
                                 <button class="btn-primary btn-main btn-width-md" type="submit" value="[% Translate("Submit") | html %]">[% Translate("Submit") | html %]</button>
                             </div>
                         </div>
-                    </div>
 [% RenderBlockEnd("FollowUp") %]
+                    </div>
                 </div>
             </form>
         </div>

@@ -11,6 +11,7 @@ package scripts::test::ObjectManager::Dummy;    ## no critic
 
 use strict;
 use warnings;
+use utf8;
 
 ## nofilter(TidyAll::Plugin::Znuny::Perl::ObjectDependencies)
 ## nofilter(TidyAll::Plugin::Znuny::Perl::ObjectDependencies)

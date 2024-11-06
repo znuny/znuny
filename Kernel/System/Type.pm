@@ -133,13 +133,13 @@ get types attributes
 Returns:
 
     Type = (
-        ID                  => '123',
-        Name                => 'Service Request',
-        ValidID             => '1',
-        CreateTime          => '2010-04-07 15:41:15',
-        CreateBy            => '321',
-        ChangeTime          => '2010-04-07 15:59:45',
-        ChangeBy            => '223',
+        ID         => '123',
+        Name       => 'Service Request',
+        ValidID    => '1',
+        CreateTime => '2010-04-07 15:41:15',
+        CreateBy   => '321',
+        ChangeTime => '2010-04-07 15:59:45',
+        ChangeBy   => '223',
     );
 
 =cut
@@ -434,7 +434,7 @@ sub TypeLookup {
 
         $Exist = $TypeObject->NameExistsCheck(
             Name => 'Some::Template',
-            ID => 1, # optional
+            ID   => 1,                  # optional
         );
 
 =cut

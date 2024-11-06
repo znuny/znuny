@@ -11,11 +11,10 @@ package Kernel::Output::HTML::Article::Email;
 
 use strict;
 use warnings;
+use utf8;
 
 use parent 'Kernel::Output::HTML::Article::MIMEBase';
 
-our @ObjectDependencies = (
-
-);
+our @ObjectDependencies = ();
 
 1;

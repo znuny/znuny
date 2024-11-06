@@ -272,8 +272,8 @@ sub Signature {
 generate sender address (FROM string) for emails
 
     my $Sender = $TemplateGeneratorObject->Sender(
-        QueueID    => 123,
-        UserID     => 123,
+        QueueID => 123,
+        UserID  => 123,
     );
 
 returns:
@@ -366,7 +366,7 @@ generate template
 
 Returns:
 
-    $Template =>  'Some text';
+    $Template => 'Some text';
 
 =cut
 
@@ -384,9 +384,15 @@ sub Template {
         }
     }
 
-    my %Template = $Kernel::OM->Get('Kernel::System::StandardTemplate')->StandardTemplateGet(
+    my $StandardTemplateObject = $Kernel::OM->Get('Kernel::System::StandardTemplate');
+
+    my %Template = $StandardTemplateObject->StandardTemplateGet(
         ID => $Param{TemplateID},
     );
+
+    # Convert comma separated TemplateType to array for better searching.
+    my @TemplateTypes = split( /\s*,\s*/, $Template{TemplateType} );
+    $Template{TemplateType} = \@TemplateTypes;
 
     # do text/plain to text/html convert
     if (
@@ -433,8 +439,9 @@ sub Template {
     }
 
     # If template type is 'Create' and there is customer user information, treat it as a ticket param in order to
-    # correctly replace customer user tags. See bug#14455.
-    if ( $Template{TemplateType} eq 'Create' && $Param{CustomerUserID} ) {
+    # correctly replace customer user tags.
+    my $IsCreateTemplate = grep { $_ eq 'Create' } @{ $Template{TemplateType} };
+    if ( $IsCreateTemplate && $Param{CustomerUserID} ) {
         $Ticket{CustomerUserID} = $Param{CustomerUserID};
     }
 
@@ -449,19 +456,20 @@ sub Template {
         Forward => 1,
         Note    => 1,
     );
+    my $IsSupportedType = grep { $SupportedTypes{$_} } @{ $Template{TemplateType} };
 
     my $TemplateText = $Template{Template} || '';
-    my $TemplateType = $Template{TemplateType};
+    my @TemplateType = @{ $Template{TemplateType} };
 
     # Remove unsupported tags only for some template types.
-    if ( !$SupportedTypes{ $Template{TemplateType} } ) {
+    if ( !$IsSupportedType ) {
         $TemplateText = $Self->_RemoveUnSupportedTag(
             Text                 => $Template{Template} || '',
             ListOfUnSupportedTag => \@ListOfUnSupportedTag,
         );
 
         # Reset template type for unsupported tag.
-        $TemplateType = '';
+        @TemplateType = ();
     }
 
     # replace place holder stuff
@@ -472,7 +480,7 @@ sub Template {
         Data       => $Param{Data} || {},
         UserID     => $Param{UserID},
         Language   => $Language,
-        Template   => $TemplateType,
+        Template   => \@TemplateType,
     );
 
     if ( $Self->{RichText} ) {
@@ -491,10 +499,10 @@ sub Template {
 generate internal or external notes
 
     my $GenericAgentArticle = $TemplateGeneratorObject->GenericAgentArticle(
-        Notification    => $NotificationDataHashRef,
-        TicketID        => 123,
-        UserID          => 123,
-        Data            => $ArticleHashRef,             # Optional
+        Notification => $NotificationDataHashRef,
+        TicketID     => 123,
+        UserID       => 123,
+        Data         => $ArticleHashRef,             # Optional
     );
 
 =cut
@@ -1714,7 +1722,12 @@ sub _Replace {
     # - if ArticleID is sent, data is from selected article.
     # - if ArticleID is not sent, data is from last customer/agent/any article.
     if ( $Param{Template} && $Ticket{TicketID} ) {
-        if ( $Param{Template} eq 'Note' ) {
+
+        my $IsNoteTemplate    = grep { $_ eq 'Note' } @{ $Param{Template} };
+        my $IsAnswerTemplate  = grep { $_ eq 'Answer' } @{ $Param{Template} };
+        my $IsForwardTemplate = grep { $_ eq 'Forward' } @{ $Param{Template} };
+
+        if ($IsNoteTemplate) {
 
             # Get last article from agent.
             my @AgentArticles = $ArticleObject->ArticleList(
@@ -1748,7 +1761,7 @@ sub _Replace {
                 $Param{Data}->{Body}    = $CustomerArticle{Body};
             }
         }
-        elsif ( $Param{Template} eq 'Answer' || $Param{Template} eq 'Forward' ) {
+        elsif ( $IsAnswerTemplate || $IsForwardTemplate ) {
 
             # If $Param{Data} has agent article data, we will set subject and body in $Param{DataAgent}
             # to values from $Param{Data} in order to right replacing of OTRS_AGENT_SUBJECT/BODY tags.

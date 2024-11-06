@@ -40,9 +40,9 @@
 [% RenderBlockStart("OverviewResultNewAgentTicketEmail") %]
             <th>[% Translate("Email ticket") | html %]</th>
 [% RenderBlockEnd("OverviewResultNewAgentTicketEmail") %]
-        [% IF Data.EditCustomerPermission %]
+[% IF Data.HasAdminCustomerUserPermission %]
             <th class="Center">[% Translate("Edit") | html %]</th>
-        [% END %]
+[% END %]
 [% RenderBlockStart("OverviewResultSwitchToCustomer") %]
             <th>[% Translate("Login as") | html %]</th>
 [% RenderBlockEnd("OverviewResultSwitchToCustomer") %]
@@ -92,7 +92,7 @@
                 </a>
             </td>
 [% RenderBlockEnd("ContentLargeCustomerUserListNewAgentTicketEmail") %]
-        [% IF Data.EditCustomerPermission %]
+        [% IF Data.HasAdminCustomerUserPermission %]
             <td class="Center">
                 <a class="table-icon-hover-md" href="[% Env("Baselink") %]Action=AdminCustomerUser;Subaction=Change;ID=[% Data.CustomerKey | uri %];Nav=Agent" title="Edit customer user">
                     <i class="fa fa-pencil-square-o"></i>

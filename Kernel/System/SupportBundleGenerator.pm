@@ -593,6 +593,9 @@ sub _GetCustomFileList {
             # do not include documentation
             next FILE if $File =~ /doc/;
 
+            # do not include sessions
+            next FILE if $File =~ /sessions/;
+
             # add directory to list
             push @Files, $Self->_GetCustomFileList( Directory => $File );
         }

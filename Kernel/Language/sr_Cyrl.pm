@@ -7,6 +7,8 @@
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
+## nofilter(TidyAll::Plugin::Znuny::Translation::JavaScriptStrings)
+
 package Kernel::Language::sr_Cyrl;
 
 use strict;
@@ -25,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.898397488848505;
+    $Self->{Completeness}        = 0.893886966551326;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -565,7 +567,7 @@ sub Data {
         'Assignment of dynamic fields to screens' => '',
         'Overview' => 'Преглед',
         'Screens' => '',
-        'Default columns' => '',
+        'Overview Default Columns' => '',
         'Add dynamic field' => 'Додај динамичко поље',
         'You can assign elements by dragging and dropping them to the lists of available, disabled, assigned and required elements.' =>
             '',
@@ -615,6 +617,9 @@ sub Data {
         'Backend' => 'Модул',
         'Backend which will be used for this dynamic field.' => '',
         'Backend documentation' => '',
+        'Cache TTL' => '',
+        'TTL (in seconds) for caching request results. Leave empty or set to 0 to disable caching.' =>
+            '',
         'Key for search' => '',
         'The keys (separated by comma) that will be searched when using the autocomplete while entering a value for the dynamic field.' =>
             '',
@@ -637,9 +642,6 @@ sub Data {
             '',
         'Query delay' => '',
         'Delay (in milliseconds) until the AJAX request will be sent.' =>
-            '',
-        'Autocompletion for search fields' => '',
-        'Use autocompletion for search fields instead of a static selection of values that are currently selected in Znuny (in tickets, articles, etc.). This increases performance if many thousands of values of the dynamic field have been selected. This setting does not affect the search field displayed in AgentTicketSearch and CustomerTicketSearch.' =>
             '',
         'Input field width' => '',
         'Width of the input field (percentage).' => '',
@@ -1087,9 +1089,6 @@ sub Data {
         'Send Keep-Alive' => 'Пошаљи Keep-Alive',
         'This configuration defines if incoming connections should get closed or kept alive.' =>
             'Конфигурација дефинише да ли долазна конекција треба да се затвори и одржава.',
-        'Additional response headers' => 'Додатна заглавља у одговорима',
-        'Header' => 'Заглавље',
-        'Add response header' => 'Додај заглавље у одговору',
         'Endpoint' => 'Крајња тачка',
         'URI to indicate specific location for accessing a web service.' =>
             'URI за идентификацију специфичне локације за приступ сервису.',
@@ -1178,7 +1177,10 @@ sub Data {
             'Специфична HTTP команда за примену на захтеве са овим позиваоцем (необавезно).',
         'Default command' => 'Подразумевана команда',
         'The default HTTP command to use for the requests.' => 'Подразумевена HTTP команда за захтеве.',
+        'Additional response headers' => 'Додатна заглавља у одговорима',
         'Additional request headers' => '',
+        'Header' => 'Заглавље',
+        'Add response header' => 'Додај заглавље у одговору',
         'Add request header' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPSOAP.tt
@@ -1540,9 +1542,11 @@ sub Data {
         'Date' => 'Датум',
         'List of Files' => 'Списак датотека',
         'Permission' => 'Дозвола',
+        'Size' => 'Величина',
+        'Problem' => 'Проблем',
+        'OK' => 'У реду',
         'Download file from package!' => 'Преузми датотеку из пакета!',
         'Required' => 'Обавезно',
-        'Size' => 'Величина',
         'Primary Key' => 'Примарни кључ',
         'Auto Increment' => 'Ауто увећање',
         'SQL' => 'SQL',
@@ -1682,7 +1686,7 @@ sub Data {
         'Available Fields' => 'Расположива поља',
         'Filter available fields' => 'Филтрирај расположива поља',
         'Assigned Fields' => 'Додељена поља',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => 'Комуникациони канал',
         'Is visible for customer' => 'Видљиво клијенту',
         'Text Template' => 'Шаблон текста',
@@ -1741,6 +1745,8 @@ sub Data {
         'Do you really want to delete this Activity?' => 'Да ли стварно желите да обришете ову активност?',
         'Do you really want to delete this Activity Dialog?' => 'Да ли стварно желите да обришете овај дијалог активности?',
         'Do you really want to delete this Transition?' => 'Да ли стварно желите да обришете ову транзицију?',
+        'You can not edit a transition before it\'s connected to two activities.' =>
+            '',
         'Do you really want to delete this Transition Action?' => 'Да ли стварно желите да обришете ову транзициону активност?',
         'Do you really want to remove this activity from the canvas? This can only be undone by leaving this screen without saving.' =>
             'Да ли стварно желите да уклоните ову активност са површине? Ово једино може да се опозове уколико напустите екран, а да претходно не сачувате измене.',
@@ -2027,6 +2033,7 @@ sub Data {
         'Support Data' => 'Подаци подршке',
         'Error: Support data could not be collected (%s).' => 'Подржани подаци не могу бити прикупљени (%s).',
         'Support Data Collector' => 'Сакупљач података подршке',
+        'Delete cache' => '',
         'Details' => 'Детаљи',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemAddress.tt
@@ -2124,7 +2131,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemFiles.tt
         'System file support' => '',
-        'Delete cache' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemFiles/Widget.tt
         'Permissions' => 'Дозволе',
@@ -2359,30 +2365,27 @@ sub Data {
         'in' => 'у',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
+        'All' => 'Све',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'још',
         'No Data Available.' => 'Нема информација.',
         'Available Columns' => 'Расположиве колоне',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'Видљиве колоне (редослед према превуци и пусти)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => 'Промени релације клијената',
         'Open' => 'Отворено',
         'Closed' => 'Затворени',
+        'Phone ticket' => 'Тикет позива',
+        'Email ticket' => 'Имејл тикет',
         '%s open ticket(s) of %s' => '%s отворених тикета од %s',
         '%s closed ticket(s) of %s' => '%s затворених тикета од %s',
+        'New phone ticket from %s' => 'Нови тикет позива од %s',
+        'New email ticket to %s' => 'Нови имејл тикет од %s',
         'Edit customer ID' => 'Уреди ID клијента',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDStatus.tt
@@ -2397,10 +2400,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
         'Customer user information' => 'Информације о клијент кориснику',
-        'Phone ticket' => 'Тикет позива',
-        'Email ticket' => 'Имејл тикет',
-        'New phone ticket from %s' => 'Нови тикет позива од %s',
-        'New email ticket to %s' => 'Нови имејл тикет од %s',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardMyLastChangedTickets.tt
         'No tickets found.' => '',
@@ -2508,7 +2507,6 @@ sub Data {
         'Split' => 'Подели',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsAdd.tt
-        'Read more about statistics in Znuny' => 'Прочитајте више о статистикама у Znuny',
         'Statistics Management' => 'Управљање статистикама',
         'Add Statistics' => 'Додај статистику',
         'Dynamic Matrix' => 'Динамичка матрица',
@@ -2608,13 +2606,16 @@ sub Data {
         'Link together' => 'Повежи заједно',
         'Link to parent' => 'Повежи са надређеним',
         'Unlock tickets' => 'Откључај тикете',
+        'Watch tickets' => '',
+        'Mark tickets as seen' => '',
+        'Mark tickets as unseen' => '',
         'Execute Bulk Action' => 'Изврши масовну акцију',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => 'Напиши одговор за %s%s%s',
         'Date Invalid!' => 'Неисправан датум!',
-        ' Select one or more recipients from the customer user address book.' =>
-            '',
+        'Select one or more recipients from the customer user address book.' =>
+            'Одаберите једног или више примаоца из адресара клијент корисника.',
         'Customer user address book' => 'Адресар клијент корисника',
         'This address is registered as system address and cannot be used: %s' =>
             'Ова адреса је регистрована као системска и не може бити коришћена: %s',
@@ -2623,12 +2624,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'Молимо да уклоните овај унос и унесете нов са исправном вредношћу.',
         'This address already exists on the address list.' => 'Ова адреса већ постоји у листи.',
-        ' Cc' => '',
         'Remove Cc' => 'Уклони Cc',
         'Bcc' => 'Bcc',
-        ' Bcc' => '',
         'Remove Bcc' => 'Уклони Bcc',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => 'Промени клијента за %s%s%s',
@@ -2637,23 +2635,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'Отвори нови имејл тикет',
-        ' Example Template' => '',
         'Example Template' => 'Пример шаблона',
         'To customer user' => 'За клијента корисника',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'Молимо вас укључите барем једног клијента корисника за тикет.',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'Означи овог клијента као главног клијента.',
         'Remove Ticket Customer User' => 'Уклони тикет клијента корисника **',
         'From queue' => 'из реда',
-        ' Get all' => '',
         'Get all' => 'Узми све',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => 'Одлазни имејл за %s%s%s',
-        'Select one or more recipients from the customer user address book.' =>
-            'Одаберите једног или више примаоца из адресара клијент корисника.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => 'Пошаљи поново имејл за %s %s %s',
@@ -2706,40 +2697,36 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'Нису нађени подаци о тикету',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'Пошиљаоц',
+        'Customer User Name' => 'Назив клијент корисника',
         'Impact' => 'Утицај',
-        'CustomerID' => 'ID клијента',
         'Update Time' => 'Време ажурирања',
         'Solution Time' => 'Време решавања',
         'First Response Time' => 'Време првог одговора',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'Премести тикет у други ред',
         'Change queue' => 'Промени ред',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
         'Remove active filters for this screen.' => 'Уклони активне филтере за овај екран.',
         'Clear all filters' => '',
         'Remove mention' => '',
+        'Remove from list of watched tickets' => 'Уклони са листе праћених тикета',
         'Tickets per page' => 'Тикета по страни',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => 'Недостаје канал',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'Поништи преглед',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => 'Подели у нови тикет позива',
         'Create New Phone Ticket' => 'Отвори нови тикет позива',
         'Please include at least one customer for the ticket.' => 'Молимо да укључите бар једног клијента за тикет.',
-        'Select this customer as the main customer.' => 'Означи овог клијента као главног клијента.',
         'To queue' => 'У ред',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2752,7 +2739,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => 'Направи нови процес тикет',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => 'Прикључи тикет процесу',
@@ -2796,7 +2782,6 @@ sub Data {
         'Save as default' => 'Сачувај као подразумевано',
         'Drafts' => 'Нацрти',
         'by' => 'од',
-        'Move ticket to a different queue' => 'Премести тикет у други ред',
         'Change Queue' => 'Промени Ред',
         'There are no dialogs available at this point in the process.' =>
             'У овом тренутку нема слободних дијалога у процесу.',
@@ -2837,7 +2822,6 @@ sub Data {
         'Close this message' => 'Затвори ову поруку',
         'Image' => 'Слика',
         'PDF' => 'PDF',
-        'Unknown' => 'Непознато',
         'View' => 'Преглед',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/LinkTable.tt
@@ -2852,7 +2836,6 @@ sub Data {
         'is invalid' => '',
         'Pending till' => 'На чекању до',
         'Locked' => 'Закључано',
-        '%s Ticket(s)' => '%s тикет(а)',
         'Accounted time' => 'Обрачунато време',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/ArticleContent/Invalid.tt
@@ -2877,7 +2860,6 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerAccept.tt
         'Dear Customer,' => 'Драги клијенте,',
         'thank you for using our services.' => 'хвала вам на коришћењу наших услуга.',
-        'Yes, I accept your license.' => 'Да, прихватам вашу лиценцу.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerCompany/TicketCustomerIDSelection.tt
         'The customer ID is not changeable, no other customer ID can be assigned to this ticket.' =>
@@ -2889,8 +2871,8 @@ sub Data {
         'From assigned Customer IDs' => 'Из листе додељених ID клијента',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerError.tt
+        'Error' => 'Грешка',
         'An Error Occurred' => 'Догодила се грешка',
-        'Error Details' => 'Детаљи грешке',
         'Traceback' => 'Испрати уназад',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerFooter.tt
@@ -2929,6 +2911,7 @@ sub Data {
         'Request New Password' => 'Захтев за нову лозинку',
         'Your User Name' => 'Ваше корисничко име',
         'A new password will be sent to your email address.' => 'Нова лозинка ће бити послата на вашу имејл адресу.',
+        'Back to login' => 'Назад на пријављивање',
         'Create Account' => 'Креирајте налог',
         'Please fill out this form to receive login credentials.' => 'Молимо да попуните овај образац да би сте добили податке за пријаву.',
         'How we should address you' => 'Како да вас ословљавамо',
@@ -2940,11 +2923,10 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'Нови тикет',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Тикети',
         'Welcome!' => 'Добродошли!',
         'Please click the button below to create your first ticket.' => 'Молимо да притиснете дугме испод за креирање вашег првог тикета.',
         'Create your first ticket' => 'Креирајте ваш први тикет',
@@ -2953,12 +2935,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Профил',
+        'Template Name' => 'Назив шаблона',
         'e. g. 10*5155 or 105658*' => 'нпр. 10*5155 или 105658*',
+        'CustomerID' => 'ID клијента',
         'Types' => 'Типови',
         'Limitation' => '',
         'No time settings' => 'Нема подешавања времена',
-        'All' => 'Све',
         'Specific date' => 'Одређени датум',
         'Only tickets created' => 'Само креирани тикети',
         'Date range' => 'Распон датума',
@@ -2967,7 +2951,6 @@ sub Data {
         'Save Search as Template?' => 'Сачувај претрагу као шаблон?',
         'Save as Template' => 'Сачувај као шаблон',
         'Save as Template?' => 'Сачувати као шаблон?',
-        'Template Name' => 'Назив шаблона',
         'Pick a profile name' => 'Изабери назив профила',
         'Output to' => 'Излаз на',
 
@@ -2992,6 +2975,7 @@ sub Data {
         'Ticket fields' => 'Поља тикета',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Error.tt
+        'Error Details' => 'Детаљи грешке',
         'Expand' => 'Прошири',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/FormElements/AttachmentList.tt
@@ -3006,6 +2990,8 @@ sub Data {
         'You have loaded the draft "%s". You last changed it %s.' => 'Већ сте учитали нацрт "%s". Последњи пут сте га променили у %s.',
         'You have loaded the draft "%s". It was last changed %s by %s.' =>
             'Већ сте учитали нацрт "%s". Последњи пут је промењен у %s од стране %s.',
+        'Please note that you have already one or more saved drafts for this action.' =>
+            '',
         'Please note that this draft is outdated because the ticket was modified since this draft was created.' =>
             'Молимо обратите пажњу да је овај нацрт застарео јер је тикет модификован од када је нацрт креиран.',
 
@@ -3022,6 +3008,7 @@ sub Data {
         'Personal views' => '',
         'Last Views' => '',
         'Search tools' => '',
+        'SearchTemplate' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
         'JavaScript not available' => 'JavaScript nije dostupan.',
@@ -3066,7 +3053,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBResult.tt
         'Done' => 'Урађено',
-        'Error' => 'Грешка',
         'Database setup successful!' => 'Успешно инсталирање базе',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBStart.tt
@@ -3136,7 +3122,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Login.tt
         'Lost your password?' => 'Изгубили сте лозинку?',
-        'Back to login' => 'Назад на пријављивање',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/MetaFloater.tt
         'Scale preview content' => 'Скалирај садржај за приказ',
@@ -3195,7 +3180,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => 'Да видите атрибуте термина',
-        ' e. g.' => ' нпр.',
+        'e. g.' => 'нпр.',
         'To get the first 20 character of the appointment title.' => 'Да видите првих 20 карактера наслова термина.',
         'To get the calendar attribute' => 'Да видите атрибуте календара',
         'Attributes of the recipient user for the notification' => 'Атрибути корисника примаоца за обавештење',
@@ -3227,9 +3212,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => 'Вредности интерних кључева динамичких поља тикета',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             'Приказане вредности динамичких поља, корисно за падајућа и поља са вишеструким избором',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'нпр.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -3332,8 +3314,6 @@ sub Data {
         'Enable' => 'Укључи',
         'Reset this setting to its default state' => 'Поништи ово подешавање на подразумевану вредност',
         'Reset setting' => 'Поништи подешавање',
-        'Show user specific changes for this setting' => 'Прикажи корисничке промене за ово подешавање',
-        'Show user settings' => 'Прикажи корисничке промене',
         'Copy a direct link to this setting to your clipboard' => 'Копирај директну везу за ово подешавање',
         'Copy direct link' => 'Копирај директну везу',
         'Remove this setting from your favorites setting' => 'Уклони ово подешавање из омиљених',
@@ -3415,6 +3395,7 @@ sub Data {
         'Process state' => 'Стање процеса',
         'Running' => 'У току',
         'Finished' => 'Завршено',
+        'Unknown' => 'Непознато',
         'No package information available.' => 'Нема информација о пакету.',
 
         # JS Template: Kernel/Output/JavaScript/Templates/Standard/SysConfig/AddButton.html.tmpl
@@ -3849,7 +3830,6 @@ sub Data {
         'No such file %s in package!' => 'Нема такве датотеке %s у пакету!',
         'No such file %s in local file system!' => 'Нема такве датотеке %s у локалном систему!',
         'Can\'t read %s!' => 'Немогуће читање %s!',
-        'File is OK' => 'Датотека је у реду',
         'Package has locally modified files.' => 'Пакет садржи локално измењене датотеке.',
         'Not Started' => 'Није покренуто',
         'Updated' => 'Ажурирано',
@@ -4142,7 +4122,6 @@ sub Data {
         'Can\'t get element data of %s!' => 'Не могу прибавити податке елемента за %s!',
         'Can\'t get filter content data of %s!' => 'Не могу прибавити податке садржаја филтера за %s!',
         'Customer Name' => 'Назив клијента',
-        'Customer User Name' => 'Назив клијент корисника',
 
         # Perl Module: Kernel/Modules/AgentLinkObject.pm
         'Need SourceObject and SourceKey!' => 'Неопходни SourceObject и SourceKey!',
@@ -4470,12 +4449,18 @@ sub Data {
             'Не могу се повезати на базу података, Перл модул DBD::%s није инсталиран!',
         'Can\'t connect to database, read comment!' => 'Не могу се повезати на базу података, прочитајте коментар!',
         'Database already contains data - it should be empty!' => 'База података већ садржи податке - требало би да буде празна.',
+        'Error: You have the wrong database version installed (%s). You need at least version %s! ' =>
+            '',
         'Error: Please make sure your database accepts packages over %s MB in size (it currently only accepts packages up to %s MB). Please adapt the max_allowed_packet setting of your database in order to avoid errors.' =>
             'Грешка: Молимо да проверите да ваша база података прихвата пакете по величини веће од %s MB  (тренутно прихвата пакете величине до %s MB). Молимо да прилагодите параметар max_allowed_packet подешавање у вашој бази података како би избегли грешке.',
         'Error: Please set the value for innodb_log_file_size on your database to at least %s MB (current: %s MB, recommended: %s MB). For more information, please have a look at %s.' =>
             'Грешка: Молимо да подесете вредност за innodb_log_file_size у вашој бази података на најмање %s MB (тренутно: %s MB, препоручено: %s MB). За више информација, молимо погледајте на %s.',
-        'Wrong database collation (%s is %s, but it needs to be utf8).' =>
-            'Неисправно подешена база података (%s је %s, а требало би да буде utf8).',
+        'Error: Please set the value for innodb_file_per_table on your database to ON.' =>
+            '',
+        'Error: Please set the value for innodb_default_row_format on your database to dynamic.' =>
+            '',
+        'Wrong default storage engine (%s is %s, but it needs to be InnoDB).' =>
+            '',
 
         # Perl Module: Kernel/Modules/Mentions.pm
         '%s users will be mentioned' => '',
@@ -4525,6 +4510,10 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/AgentTicketPrint.pm
         'Print this article' => 'Одштампај овај чланак',
+
+        # Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
+        'Mark article as unseen' => '',
+        'Mark as unseen' => '',
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/MarkAsImportant.pm
         'Mark' => 'Означено',
@@ -4783,7 +4772,6 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/TicketMenu/TicketWatcher.pm
         'Unwatch' => 'Прекини надзор',
-        'Remove from list of watched tickets' => 'Уклони са листе праћених тикета',
         'Watch' => 'Посматрај',
         'Add to list of watched tickets' => 'Додај на листу праћених тикета',
 
@@ -5019,14 +5007,14 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
         'Client Connection Charset' => 'Карактерсет за повезивање клијента',
-        'Setting character_set_client needs to be utf8.' => 'Подешавање character_set_client мора бити utf8.',
+        'Setting character_set_client needs to be utf8mb4.' => '',
         'Server Database Charset' => 'Karakterset serverske baze podataka',
-        'This character set is not yet supported, please see https://bugs.otrs.org/show_bug.cgi?id=12361. Please convert your database to the character set \'utf8\'.' =>
-            '',
-        'The setting character_set_database needs to be \'utf8\'.' => 'Подешавање character_set_database мора бити \'utf8\'.',
+        'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'Табела карактерсета',
-        'There were tables found which do not have \'utf8\' as charset.' =>
-            'Пронађене су табеле које немају \'utf8\' као карактерсет.',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
+        'There were tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/InnoDBLogFileSize.pm
         'InnoDB Log File Size' => 'Величина InnoDB лог датотеке',
@@ -5080,7 +5068,7 @@ sub Data {
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/postgresql/Version.pm
         'PostgreSQL 9.2 or higher is required.' => 'Неопходан је PostgreSQL 9.2 или више.',
 
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionOTRS.pm
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionZnuny.pm
         'Operating System' => 'Оперативни систем',
         'Znuny Disk Partition' => 'Znuny партиција на диску',
 
@@ -5127,165 +5115,6 @@ sub Data {
         'There should be more than 60% free swap space.' => 'Мора постојати више од 60 % слободног swap простора',
         'There should be no more than 200 MB swap space used.' => 'Не треба да буде више од 200 MB употребљеног Swap простора.',
 
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticleSearchIndexStatus.pm
-        'Znuny' => '',
-        'Article Search Index Status' => 'Стање индекса претраге чланака',
-        'Indexed Articles' => 'Индексираних чланака',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticlesPerCommunicationChannel.pm
-        'Articles Per Communication Channel' => 'Чланака по комуникационом каналу',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLog.pm
-        'Incoming communications' => 'Долазне комуникације',
-        'Outgoing communications' => 'Одлазне комуникације',
-        'Failed communications' => 'Неуспеле комуникације',
-        'Average processing time of communications (s)' => 'Просечно време трајања комуникација (с)',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-        'Communication Log Account Status (last 24 hours)' => 'Стање налога комуникационог лога (последњих 24 сата)',
-        'No connections found.' => 'Нису пронађене конекције.',
-        'ok' => 'у реду',
-        'permanent connection errors' => 'трајне грешке у конекцији',
-        'intermittent connection errors' => 'повремене грешке у конекцији',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ConfigSettings.pm
-        'Config Settings' => 'Подешавања конфигурације',
-        'Could not determine value.' => 'Није могуће утврдити вредност.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DaemonRunning.pm
-        'Daemon' => 'Системски сервис',
-        'Daemon is running.' => 'Сервис ради.',
-        'Daemon is not running.' => 'Сервис не ради.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-        'Database Records' => 'Записи у бази података',
-        'Tickets' => 'Тикети',
-        'Ticket History Entries' => 'Историја уноса тикета',
-        'Articles' => 'Чланци',
-        'Attachments (DB, Without HTML)' => 'Прилози (база података, без HTML)',
-        'Customers With At Least One Ticket' => 'Клијенти са бар једним тикетом',
-        'Dynamic Field Values' => 'Вредности динамичког поља',
-        'Invalid Dynamic Fields' => 'Неважећа динамичка поља.',
-        'Invalid Dynamic Field Values' => 'Неважеће вредности динамичких поља.',
-        'GenericInterface Webservices' => 'GenericInterface веб сервис',
-        'Process Tickets' => 'Процес тикети',
-        'Months Between First And Last Ticket' => 'Месеци између првог и последњег тикета',
-        'Tickets Per Month (avg)' => 'Тикети месечно (просечно)',
-        'Open Tickets' => 'Отворени тикети',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultSOAPUser.pm
-        'Default SOAP Username And Password' => 'Подразумевано SOAP корисничко име и лозинка',
-        'Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it.' =>
-            'Сигурносни ризик: користите подразумевана подешавања за SOAP::User i SOAP::Password. Молимо промените га.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultUser.pm
-        'Default Admin Password' => 'Предефинисана лозинка администратора',
-        'Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account.' =>
-            'Сигурносни ризик: агент налог root@localhost још увек има предефинисану лозинку. Молимо промените је или деактивирајте налог.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/EmailQueue.pm
-        'Email Sending Queue' => 'Ред за слање имејлова',
-        'Emails queued for sending' => 'Број имејлова заказаних за слање',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FQDN.pm
-        'FQDN (domain name)' => 'FQDN (назив домена)',
-        'Please configure your FQDN setting.' => 'Молимо да конфигуришете FQDN подешавање.',
-        'Domain Name' => 'Назив домена',
-        'Your FQDN setting is invalid.' => 'Ваша FQDN подешавања су неважећа.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FileSystemWritable.pm
-        'File System Writable' => 'Омогућено писање у систем датотека.',
-        'The file system on your Znuny partition is not writable.' => 'Није могуће писање у систем датотека на вашој Znuny партицији.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/LegacyConfigBackups.pm
-        'Legacy Configuration Backups' => 'Резервне копије прошлих конфигурација',
-        'No legacy configuration backup files found.' => 'Нису пронађене резервне копије прошлих конфигурација.',
-        'Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages.' =>
-            'Пронађене су резервне копије прошлих конфигурација у Kernel/Config/Backups, међутим могу бити неопходне за рад инсталираних пакета.',
-        'Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder.' =>
-            'Резервне копије прошлих конфигурација више нису неопходне за рад инсталираних пакета, молимо уклоните их из Kernel/Config/Backups.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/MultipleJSFileLoad.pm
-        'Views with multiple loaded JavaScript files' => '',
-        'The following JavaScript files loaded multiple times:' => '',
-        'Files' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-        'Package Installation Status' => 'Статус инсталације пакета',
-        'Some packages have locally modified files.' => 'Неки пакети садрже локално измењене датотеке.',
-        'Some packages are not correctly installed.' => 'Неки пакети нису исправно инсталирани.',
-        'Package Framework Version Status' => 'Статус пакета за верзију система',
-        'Some packages are not allowed for the current framework version.' =>
-            'Неки пакети нису дозвољени за верзију вашег система. ',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageList.pm
-        'Package List' => 'Листа пакета',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SessionConfigSettings.pm
-        'Session Config Settings' => 'Подешавања сесија',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SpoolMails.pm
-        'Spooled Emails' => 'Имејлови у реду чекања',
-        'There are emails in var/spool that Znuny could not process.' => 'Постоје имејлови у var/spool које Znuny не може да обради.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SystemID.pm
-        'Your SystemID setting is invalid, it should only contain digits.' =>
-            'Ваша подешавање SystemID је неважеће, треба да садржи само цифре.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/DefaultType.pm
-        'Default Ticket Type' => 'Подразумевани тип тикета',
-        'The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type.' =>
-            'Подешени подразумевани тип тикета је неважећи или недостаје. Молимо промените подешавање Ticket::Type::Default и изаберите важећи тип тикета.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/IndexModule.pm
-        'Ticket Index Module' => 'Тикет индекс модул',
-        'You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information.' =>
-            'Имате више од 60.000 тикета и треба да користите StaticDB модул. Погледајте администраторско упутство (Подешавање перформанси) за више информација.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/InvalidUsersWithLockedTickets.pm
-        'Invalid Users with Locked Tickets' => 'Неисправни корисници са закључаним тикетима',
-        'There are invalid users with locked tickets.' => 'Постоје неисправни корисници са закључаним тикетима.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/OpenTickets.pm
-        'You should not have more than 8,000 open tickets in your system.' =>
-            'Не би требало да имате више од 8.000 отворених тикета у систему.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/SearchIndexModule.pm
-        'Ticket Search Index Module' => 'Модул за индексну претрагу тикета',
-        'The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches.' =>
-            'Процес индексирања ће укључити спремање оригиналног текста чланка у индексу претраге, без извршавања филтера или уклањања зауставних речи. Ово ће увећати величину индекса претраге и може успорити текстуалну претрагу.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/StaticDBOrphanedRecords.pm
-        'Orphaned Records In ticket_lock_index Table' => 'Напуштени записи у ticket_lock_index табели',
-        'Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
-            'Табела ticket_lock_index садржи неповезане записе. Молимо да покренете bin/znuny.Console.pl Maint::Ticket::QueueIndexCleanup да би очистили StaticDB индекс.',
-        'Orphaned Records In ticket_index Table' => 'Напуштени записи у ticket_index табели',
-        'Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
-            'Табела ticket_lindex садржи неповезане записе. Молимо да покренете bin/znuny.Console.pl Maint::Ticket::QueueIndexCleanup да би очистили StaticDB индекс.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-        'Time Settings' => 'Подешавања времена',
-        'Server time zone' => 'Временска зона сервера',
-        'Znuny time zone' => 'Znuny временска зона',
-        'Znuny time zone is not set.' => 'Znuny временска зона није подешена.',
-        'User default time zone' => 'Подразумевана временска зона корисника',
-        'User default time zone is not set.' => 'Подразумевана временска зона корисника није подешена.',
-        'Calendar time zone is not set.' => 'Временска зона календара није подешена.',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentSkinUsage.pm
-        'UI - Agent Skin Usage' => 'UI - изгледи интерфејса оператера у коришћењу',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentThemeUsage.pm
-        'UI - Agent Theme Usage' => 'UI - теме интерфејса оператера у коришћењу',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/SpecialStats.pm
-        'UI - Special Statistics' => 'UI - посебне статистике',
-        'Agents using custom main menu ordering' => 'Оператери са прилагођеним редоследом главног менија',
-        'Agents using favourites for the admin overview' => 'Оператери са омиљеним ставкама за администраторски преглед',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Version.pm
-        'Znuny Version' => 'Znuny верзија',
-
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Webserver/Apache/LoadedModules.pm
         'Webserver' => 'Веб сервер',
         'Loaded Apache Modules' => 'Учитани Apache модули',
@@ -5323,13 +5152,167 @@ sub Data {
         'Webserver Version' => 'Веб сервер верзија',
         'Could not determine webserver version.' => 'Не може да препозна веб сервер верзију.',
 
-        # Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/OTRS/ConcurrentUsers.pm
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticleSearchIndexStatus.pm
+        'Znuny' => '',
+        'Article Search Index Status' => 'Стање индекса претраге чланака',
+        'Indexed Articles' => 'Индексираних чланака',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticlesPerCommunicationChannel.pm
+        'Articles Per Communication Channel' => 'Чланака по комуникационом каналу',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLog.pm
+        'Incoming communications' => 'Долазне комуникације',
+        'Outgoing communications' => 'Одлазне комуникације',
+        'Failed communications' => 'Неуспеле комуникације',
+        'Average processing time of communications (s)' => 'Просечно време трајања комуникација (с)',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+        'Communication Log Account Status (last 24 hours)' => 'Стање налога комуникационог лога (последњих 24 сата)',
+        'No connections found.' => 'Нису пронађене конекције.',
+        'ok' => 'у реду',
+        'permanent connection errors' => 'трајне грешке у конекцији',
+        'intermittent connection errors' => 'повремене грешке у конекцији',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ConfigSettings.pm
+        'Config Settings' => 'Подешавања конфигурације',
+        'Could not determine value.' => 'Није могуће утврдити вредност.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DaemonRunning.pm
+        'Daemon' => 'Системски сервис',
+        'Daemon is running.' => 'Сервис ради.',
+        'Daemon is not running.' => 'Сервис не ради.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+        'Database Records' => 'Записи у бази података',
+        'Ticket History Entries' => 'Историја уноса тикета',
+        'Articles' => 'Чланци',
+        'Attachments (DB, Without HTML)' => 'Прилози (база података, без HTML)',
+        'Customers With At Least One Ticket' => 'Клијенти са бар једним тикетом',
+        'Dynamic Field Values' => 'Вредности динамичког поља',
+        'Invalid Dynamic Fields' => 'Неважећа динамичка поља.',
+        'Invalid Dynamic Field Values' => 'Неважеће вредности динамичких поља.',
+        'GenericInterface Webservices' => 'GenericInterface веб сервис',
+        'Process Tickets' => 'Процес тикети',
+        'Months Between First And Last Ticket' => 'Месеци између првог и последњег тикета',
+        'Tickets Per Month (avg)' => 'Тикети месечно (просечно)',
+        'Open Tickets' => 'Отворени тикети',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultSOAPUser.pm
+        'Default SOAP Username And Password' => 'Подразумевано SOAP корисничко име и лозинка',
+        'Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it.' =>
+            'Сигурносни ризик: користите подразумевана подешавања за SOAP::User i SOAP::Password. Молимо промените га.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultUser.pm
+        'Default Admin Password' => 'Предефинисана лозинка администратора',
+        'Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account.' =>
+            'Сигурносни ризик: агент налог root@localhost још увек има предефинисану лозинку. Молимо промените је или деактивирајте налог.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/EmailQueue.pm
+        'Email Sending Queue' => 'Ред за слање имејлова',
+        'Emails queued for sending' => 'Број имејлова заказаних за слање',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FQDN.pm
+        'FQDN (domain name)' => 'FQDN (назив домена)',
+        'Please configure your FQDN setting.' => 'Молимо да конфигуришете FQDN подешавање.',
+        'Domain Name' => 'Назив домена',
+        'Your FQDN setting is invalid.' => 'Ваша FQDN подешавања су неважећа.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FileSystemWritable.pm
+        'File System Writable' => 'Омогућено писање у систем датотека.',
+        'The file system on your Znuny partition is not writable.' => 'Није могуће писање у систем датотека на вашој Znuny партицији.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/LegacyConfigBackups.pm
+        'Legacy Configuration Backups' => 'Резервне копије прошлих конфигурација',
+        'No legacy configuration backup files found.' => 'Нису пронађене резервне копије прошлих конфигурација.',
+        'Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages.' =>
+            'Пронађене су резервне копије прошлих конфигурација у Kernel/Config/Backups, међутим могу бити неопходне за рад инсталираних пакета.',
+        'Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder.' =>
+            'Резервне копије прошлих конфигурација више нису неопходне за рад инсталираних пакета, молимо уклоните их из Kernel/Config/Backups.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/MultipleJSFileLoad.pm
+        'The following JavaScript files loaded multiple times:' => '',
+        'Files' => '',
+        'Views with multiple loaded JavaScript files' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+        'Package Installation Status' => 'Статус инсталације пакета',
+        'Some packages have locally modified files.' => 'Неки пакети садрже локално измењене датотеке.',
+        'Some packages are not correctly installed.' => 'Неки пакети нису исправно инсталирани.',
+        'Package Framework Version Status' => 'Статус пакета за верзију система',
+        'Some packages are not allowed for the current framework version.' =>
+            'Неки пакети нису дозвољени за верзију вашег система. ',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageList.pm
+        'Package List' => 'Листа пакета',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SessionConfigSettings.pm
+        'Session Config Settings' => 'Подешавања сесија',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SpoolMails.pm
+        'Spooled Emails' => 'Имејлови у реду чекања',
+        'There are emails in var/spool that Znuny could not process.' => 'Постоје имејлови у var/spool које Znuny не може да обради.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SystemID.pm
+        'Your SystemID setting is invalid, it should only contain digits.' =>
+            'Ваша подешавање SystemID је неважеће, треба да садржи само цифре.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/DefaultType.pm
+        'Default Ticket Type' => 'Подразумевани тип тикета',
+        'The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type.' =>
+            'Подешени подразумевани тип тикета је неважећи или недостаје. Молимо промените подешавање Ticket::Type::Default и изаберите важећи тип тикета.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/IndexModule.pm
+        'Ticket Index Module' => 'Тикет индекс модул',
+        'You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information.' =>
+            'Имате више од 60.000 тикета и треба да користите StaticDB модул. Погледајте администраторско упутство (Подешавање перформанси) за више информација.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/InvalidUsersWithLockedTickets.pm
+        'Invalid Users with Locked Tickets' => 'Неисправни корисници са закључаним тикетима',
+        'There are invalid users with locked tickets.' => 'Постоје неисправни корисници са закључаним тикетима.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/OpenTickets.pm
+        'You should not have more than 8,000 open tickets in your system.' =>
+            'Не би требало да имате више од 8.000 отворених тикета у систему.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/SearchIndexModule.pm
+        'Ticket Search Index Module' => 'Модул за индексну претрагу тикета',
+        'The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches.' =>
+            'Процес индексирања ће укључити спремање оригиналног текста чланка у индексу претраге, без извршавања филтера или уклањања зауставних речи. Ово ће увећати величину индекса претраге и може успорити текстуалну претрагу.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/StaticDBOrphanedRecords.pm
+        'Orphaned Records In ticket_lock_index Table' => 'Напуштени записи у ticket_lock_index табели',
+        'Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
+            'Табела ticket_lock_index садржи неповезане записе. Молимо да покренете bin/znuny.Console.pl Maint::Ticket::QueueIndexCleanup да би очистили StaticDB индекс.',
+        'Orphaned Records In ticket_index Table' => 'Напуштени записи у ticket_index табели',
+        'Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
+            'Табела ticket_lindex садржи неповезане записе. Молимо да покренете bin/znuny.Console.pl Maint::Ticket::QueueIndexCleanup да би очистили StaticDB индекс.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+        'Time Settings' => 'Подешавања времена',
+        'Server time zone' => 'Временска зона сервера',
+        'Znuny time zone' => 'Znuny временска зона',
+        'Znuny time zone is not set.' => 'Znuny временска зона није подешена.',
+        'User default time zone' => 'Подразумевана временска зона корисника',
+        'User default time zone is not set.' => 'Подразумевана временска зона корисника није подешена.',
+        'Calendar time zone is not set.' => 'Временска зона календара није подешена.',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentSkinUsage.pm
+        'UI - Agent Skin Usage' => 'UI - изгледи интерфејса оператера у коришћењу',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentThemeUsage.pm
+        'UI - Agent Theme Usage' => 'UI - теме интерфејса оператера у коришћењу',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/SpecialStats.pm
+        'UI - Special Statistics' => 'UI - посебне статистике',
+        'Agents using custom main menu ordering' => 'Оператери са прилагођеним редоследом главног менија',
+        'Agents using favourites for the admin overview' => 'Оператери са омиљеним ставкама за администраторски преглед',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Version.pm
+        'Znuny Version' => 'Znuny верзија',
+
+        # Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/Znuny/ConcurrentUsers.pm
         'Concurrent Users Details' => 'Детаљи истовремених корисника',
         'Concurrent Users' => 'Истовремени корисници',
-
-        # Perl Module: Kernel/System/SupportDataCollector/PluginBase.pm
-        'OK' => 'У реду',
-        'Problem' => 'Проблем',
 
         # Perl Module: Kernel/System/SysConfig.pm
         'Setting %s does not exists!' => 'Подешавање %s не постоји!',
@@ -5576,12 +5559,24 @@ sub Data {
         'The headline shown in the customer interface.' => 'Наслов приказан у клијентском интерфејсу.',
         'The logo shown in the header of the customer interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             'Лого приказан у заглављу клијентског интерфејса. URL до слике може бити релативан у односу на директоријум са сликама или апсолутан до удаљеног сервера.',
+        'The shortcut icon for the customer interface.' => '',
+        'The shortcut icon for the customer interface for the skin "default".' =>
+            '',
+        'The Apple touch icon for the customer interface.' => '',
+        'The Apple touch icon for the customer interface for skin "default".' =>
+            '',
         'The logo shown in the header of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             'Лого приказан у заглављу оператерског интерфејса. URL до слике може бити релативан у односу на директоријум са сликама или апсолутан до удаљеног сервера.',
         'The logo shown in the header of the agent interface for the skin "default". See "AgentLogo" for further description.' =>
             'Лого приказан у заглављу интерфејса оператера за изглед "подразумевани". Погледајте "AgentLogo" за детаљнији опис.',
         'The logo shown on top of the login box of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             'Лого приказан у заглављу интерфејса оператера. URL до слике може бити релативан у односу на директоријум са сликама или апсолутан до удаљеног сервера.',
+        'The shortcut icon for the agent interface.' => '',
+        'The shortcut icon for the agent interface fot the skin "default".' =>
+            '',
+        'The Apple touch icon for the agent interface.' => '',
+        'The Apple touch icon for the agent interface for the skin "default".' =>
+            '',
         'Defines the URL base path of icons, CSS and Java Script.' => 'Дефинише URL основну путању за иконе, CSS и Java Script.',
         'Defines the URL image path of icons for navigation.' => 'Дефинише URL путању до слика за навигационе иконе.',
         'Defines the URL CSS path.' => 'Дефинише URL CSS путању.',
@@ -5614,6 +5609,8 @@ sub Data {
             'Аутоматски крај реда у текстуалним порукама после х карактера.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Подешава број линија приказаних у текстуалним порукама (нпр број линија у детаљном прегледу реда).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Активира превуци и отпусти у главној навигацији.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Дефинише форноса датума у формуларе (опционо или поља за унос).',
@@ -5627,6 +5624,7 @@ sub Data {
             'Проверава „MX” запис имејл адресе пре слања поруке или телефонских или имејл тикета.',
         'Defines the address of a dedicated DNS server, if necessary, for the "CheckMXRecord" look-ups.' =>
             'Дефинише адресе наменског „DNS” сервера, уколико је потребно, за „CheckMXRecord” претраге.',
+        'Sets the timeout (in seconds) for DNS resolver queries.' => '',
         'Makes the application check the syntax of email addresses.' => 'Приморава апликацију да проверава синтаксу имејл адереса.',
         'Defines a regular expression that excludes some addresses from the syntax check (if "CheckEmailAddresses" is set to "Yes"). Please enter a regex in this field for email addresses, that aren\'t syntactically valid, but are necessary for the system (i.e. "root@localhost").' =>
             'Дефинише регуларни израз који искључује неке адресе из провере синтаксе (ако је „CheckEmailAddresses” постављена на „Да”). Молимо вас унесите регуларни израз у ово поље за имејл адресе, које нису синтаксно исправне, али су неопходне за систем (нпр. „root@localhost”).',
@@ -5907,7 +5905,6 @@ sub Data {
             'Омогућава крајњим корисницима да замене сепаратор за CSV датотеке, дефинисан у датотекама превода. Напомена: подешавање \'Active\' на 0 ће само онемогућити оператерима да мењају своја лична подешавања из ове групе, али ће администратори и даље моћи да их мењају у њихово име. Подесите \'PreferenceGroup\' да бисте одредили у ком делу интерфејса ова подешавања треба да буду приказана.',
         'Defines the users avatar. Please note: setting \'Active\' to 0 will only prevent agents from editing settings of this group in their personal preferences, but will still allow administrators to edit the settings of another user\'s behalf. Use \'PreferenceGroup\' to control in which area these settings should be shown in the user interface.' =>
             'Дефинише корисникову аватар сличицу. Напомена: подешавање \'Active\' на 0 ће само онемогућити оператерима да мењају своја лична подешавања из ове групе, али ће администратори и даље моћи да их мењају у њихово име. Подесите \'PreferenceGroup\' да бисте одредили у ком делу интерфејса ова подешавања треба да буду приказана.',
-        'Defines the global users popup profile.' => '',
         'Defines the user identifier for the customer panel.' => 'Одређује идентификатор клијента за клијентски панел.',
         'Activates support for customer and customer user groups.' => 'Активира подршку за клијентске и клијент корисничке групе.',
         'Defines the groups every customer user will be in (if CustomerGroupSupport is enabled and you don\'t want to manage every customer user for these groups).' =>
@@ -6001,7 +5998,7 @@ sub Data {
             'Уколико је подешен „LDAP” за „Customer::AuthModule”, можете додати филтер сваком „LDAP” захтеву, нпр. (mail=*), (objectclass=user) или (!objectclass=computer).',
         'If "LDAP" was selected for Customer::AuthModule and if you want to add a suffix to every customer login name, specifiy it here, e. g. you just want to write the username user but in your LDAP directory exists user@domain.' =>
             'Уколико је подешен „LDAP” за „Customer::AuthModule” и желите да додате суфикс сваком корисничком имену, дефинишите га овде, нпр. желите само user за корисничко име, али у вашем LDAP директоријуму постоји user@domain.',
-        'If "LDAP" was selected for Customer::AuthModule and special paramaters are needed for the Net::LDAP perl module, you can specify them here. See "perldoc Net::LDAP" for more information about the parameters.' =>
+        'If "LDAP" was selected for Customer::AuthModule and special parameters are needed for the Net::LDAP perl module, you can specify them here. See "perldoc Net::LDAP" for more information about the parameters.' =>
             'Уколико је подешен „LDAP” за „Customer::AuthModule” и неопходни су специјални параметри за „Net::LDAP” перл модул, можете их подесити овде. Погледајте „perldoc Net::LDAP” за више информација о параметрима.',
         'If "LDAP" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             'Уколико је подешен „LDAP” за „Customer::AuthModule”, можете дефинисати да ли ће апликација престати са радом уколико нпр. конекција са сервером не може бити остварена због проблема са мрежом.',
@@ -6061,8 +6058,10 @@ sub Data {
         'Defines all the possible stats output formats.' => 'Дефинише све могуће излазне формате статистике.',
         'Allows agents to exchange the axis of a stat if they generate one.' =>
             'Дозвољава оператерима да замене осе на статистици ако је генеришу.',
-        'Allows agents to generate individual-related stats.' => 'Дозвољава оператерима да генеришу индивидуалну статистику.',
-        'Allows invalid agents to generate individual-related stats.' => 'Дозвољава неважећим оператерима да генеришу индивидуално повезане статистике.',
+        'Adds the following elements for use in stats: "Agent/Owner", "Created by Agent/Owner", "Responsible", "Accounted time by Agent".' =>
+            '',
+        'Allows invalid agents to be used in stats. Stats::UseAgentElementInStats must be active.' =>
+            '',
         'Shows all the customer identifiers in a multi-select field (not useful if you have a lot of customer identifiers).' =>
             'Приказује све клијентске идентификаторе у пољу вишеструког избора (није корисно ако имате много клијентских идентификатора).',
         'Shows all the customer user identifiers in a multi-select field (not useful if you have a lot of customer user identifiers).' =>
@@ -6118,11 +6117,13 @@ sub Data {
         'Specifies the order in which the firstname and the lastname of agents will be displayed.' =>
             'Одређује облик у коме ће бити приказано име и презиме оператера.',
         'Default skin for the agent interface.' => 'Подразумевани изглед окружења за интерфејс оператера.',
+        'Dark skin for the agent interface.' => '',
         'The agent skin\'s InternalName which should be used in the agent interface. Please check the available skins in Frontend::Agent::Skins.' =>
             'Излед који ће се користити у интерфејсу оператера. Молимо проверите доступне изгледе у Frontend::Agent::Skins.',
         'It is possible to configure different skins, for example to distinguish between diferent agents, to be used on a per-domain basis within the application. Using a regular expression (regex), you can configure a Key/Content pair to match a domain. The value in "Key" should match the domain, and the value in "Content" should be a valid skin on your system. Please see the example entries for the proper form of the regex.' =>
             'Могуће је подесити различите изгледе за различите оператере, који се користе на нивоу домена у апликацији. Коришћењем регуларног израза (regex), можете подесити пар кључ/вредност за препознавање домена. Вредност у Key би требало да препозна домен, а вредност у Content би требало да буде важећи изглед у систему. Молимо консултујте примере за исправан облик регуларног израза.',
         'Default skin for the customer interface.' => 'Подразумевани изглед окружења за интерфејс клијента.',
+        'Dark skin for the customer interface.' => '',
         'The customer skin\'s InternalName which should be used in the customer interface. Please check the available skins in Frontend::Customer::Skins.' =>
             'Излед који ће се користити у интерфејсу корисника. Молимо проверите доступне изгледе у Frontend::Customer::Skins.',
         'It is possible to configure different skins, for example to distinguish between diferent customers, to be used on a per-domain basis within the application. Using a regular expression (regex), you can configure a Key/Content pair to match a domain. The value in "Key" should match the domain, and the value in "Content" should be a valid skin on your system. Please see the example entries for the proper form of the regex.' =>
@@ -6497,6 +6498,13 @@ sub Data {
             'Одређује да ли претходно сортирање по приоритету треба да се уради у сервисном приказу.',
         'Defines the default sort order for all services in the service view, after priority sort.' =>
             'Дефинише подразумевани критеријум сортирања за све сервисе у сервисном прегледу, после  сортирања по приориту.',
+        'Enable highlighting services based on ticket age.' => '',
+        'Sets the age in minutes (first level) for highlighting services that contain untouched tickets.' =>
+            '',
+        'Sets the age in minutes (second level) for highlighting services that contain untouched tickets.' =>
+            '',
+        'Activates a blinking mechanism of the service that contains the oldest ticket.' =>
+            '',
         'Activates time accounting.' => 'Активира мерење времена.',
         'Sets the prefered time units (e.g. work units, hours, minutes).' =>
             'Подеси приоритетне временске јединице (нпр јединице посла, сате, минуте)',
@@ -7844,6 +7852,31 @@ sub Data {
             '',
         'Shows the title field in the NoteToLinkedTicket screen of the agent interface.' =>
             '',
+        'User preferences backend to use.' => '',
+        'Loader module registration for the public interface.' => '',
+        'Deletes orphaned sessions.' => '',
+        'Defines the config parameters available in the preferences view. The default redirect URL from SysConfig \'MarkTicketUnseenRedirectDefaultURL\' is used if no selection is made by the agent.' =>
+            '',
+        'Defines the redirect URL for setting a ticket article to \'unseen\'.' =>
+            '',
+        'Defines the config parameters available in the preferences view. The default redirect URL from SysConfig \'MarkTicketSeenRedirectDefaultURL\' is used if no selection is made by the agent.' =>
+            '',
+        'Defines the redirect URL for setting a ticket article to \'seen\'.' =>
+            '',
+        'Registers a link in the ticket menu to mark a ticket as unseen.' =>
+            '',
+        'Registers a link in the ticket menu to mark a ticket as seen.' =>
+            '',
+        'Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as unseen.' =>
+            '',
+        'Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as seen.' =>
+            '',
+        'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "agent".' =>
+            '',
+        'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".' =>
+            '',
+        'Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.' =>
+            '',
 
         # XML Definition: scripts/database/initial_insert.xml
         'invalid-temporarily' => 'неважећи-привремено',
@@ -8493,7 +8526,6 @@ Thanks for your help!
         'Change the priority for this ticket' => 'Промени приоритете за овај тикет.',
         'Change the responsible for this ticket' => 'Промени одговорног за овај тикет',
         'Change your avatar image.' => 'Промените вашу аватар сличицу.',
-        'Change your default popup profile settings.' => '',
         'Change your password and more.' => 'Промените лозинку и слично.',
         'Changed SLA to "%s" (%s).' => 'Промењен SLA на "%s" (%s).',
         'Changed archive state to "%s".' => 'Промењено стање архивирања на "%s".',
@@ -8538,6 +8570,10 @@ Thanks for your help!
         'Configure and manage ACLs.' => 'Конфигуриши и управљај ACL листама.',
         'Configure which screen should be shown after a new ticket has been created.' =>
             'Конфигурише који екран би требало приказати након креирања новог тикета.',
+        'Configure which screen should be shown after marking a ticket or article as seen.' =>
+            '',
+        'Configure which screen should be shown after marking a ticket or article as unseen.' =>
+            '',
         'Create New process ticket.' => 'Креирај нови процес тикет',
         'Create Process Ticket' => '',
         'Create Ticket' => 'Креирај тикет',
@@ -8601,6 +8637,7 @@ Thanks for your help!
         'CustomerUser' => 'Клијент корисник',
         'Czech' => 'Чешки',
         'Danish' => 'Дански',
+        'Dark' => '',
         'Dashboard overview.' => 'Преглед командне табле.',
         'Date / Time' => 'Датум / Време',
         'Default agent name' => 'Подразумевано име оператера',
@@ -8735,6 +8772,8 @@ Thanks for your help!
         'Last view - limit' => '',
         'Last view - position' => '',
         'Last view - types' => '',
+        'Last viewed overview' => '',
+        'Last viewed screen' => '',
         'Lastname Firstname' => 'Презиме, Име',
         'Lastname Firstname (UserLogin)' => 'Презиме, Име (Корисничко име)',
         'Lastname, Firstname' => 'Презиме, Име',
@@ -8781,7 +8820,10 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => 'Управља задацима покренутим од догађаја или на основу временског извршавања.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Означи као Спам!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Означи овај тикет као бесмислен junk!',
+        'Mark ticket as seen' => '',
+        'Mark ticket as unseen' => '',
         'Mattermost Username' => '',
         'Max. number of articles per page in TicketZoom' => '',
         'Medium' => 'Средње',
@@ -8854,7 +8896,6 @@ Thanks for your help!
         'Plugin search' => 'Модул претраге',
         'Plugin search module for autocomplete.' => 'Модул претраге за аутоматско допуњавање.',
         'Polish' => 'Пољски',
-        'Popup Profile' => '',
         'Portuguese' => 'Португалски',
         'Portuguese (Brasil)' => 'Португалски (Бразил)',
         'PostMaster Filters' => 'PostMaster филтери',
@@ -8889,13 +8930,14 @@ Thanks for your help!
         'Russian' => 'Руски',
         'S/MIME Certificates' => 'S/MIME сертификати',
         'Schedule a maintenance period.' => 'Планирање периода одржавања.',
+        'Screen after marking as seen' => '',
+        'Screen after marking as unseen' => '',
         'Screen after new ticket' => 'Приказ екрана после отварања новог тикета',
         'Search Customer' => 'Тражи клијента',
         'Search Ticket.' => 'Тражи тикет.',
         'Search Tickets.' => 'Претражи тикете.',
         'Search User' => 'Тражи корисника',
         'Search tickets.' => '',
-        'SearchTemplate' => '',
         'Second Christmas Day' => 'Други дан Божића',
         'Second Queue' => 'Други Ред',
         'Seconds' => '',
@@ -8990,6 +9032,8 @@ Thanks for your help!
         'Theme' => 'Тема',
         'This is a Description for Comment on Framework.' => 'Ово је опис за коментар у систему.',
         'This is a Description for DynamicField on Framework.' => 'Ово је опис за динамичко поље у систему.',
+        'This is the dark skin for the agent interface.' => '',
+        'This is the dark skin for the customer interface.' => '',
         'This is the default orange - black skin for the customer interface.' =>
             'Ово је подразумевани наранџасто-црни изглед клијентског интерфејса.',
         'This is the default orange - black skin.' => 'Ово је подразумевани наранџасто-црни изглед.',
@@ -9017,7 +9061,6 @@ Thanks for your help!
         'Ticket Priority.' => 'Приоритет тикета.',
         'Ticket Queue Overview' => 'Преглед реда тикета',
         'Ticket Responsible.' => 'Одговоран за тикет.',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'Праћење тикета.',
         'Ticket Zoom' => 'Детаљи тикета',
         'Ticket Zoom.' => 'Детаљи тикета.',
@@ -9226,6 +9269,7 @@ Thanks for your help!
         'Duplicate event.',
         'Duplicated entry',
         'Edit Field Details',
+        'Edit Transition "%s"',
         'Edit this setting',
         'Edit this transition',
         'End date',

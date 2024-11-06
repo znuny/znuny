@@ -12,6 +12,7 @@ package scripts::Migration::Base::PerlModulesCheck;    ## no critic
 
 use strict;
 use warnings;
+use utf8;
 
 use parent qw(scripts::Migration::Base);
 
@@ -44,8 +45,10 @@ Returns 1 on success
 sub CheckPreviousRequirement {
     my ( $Self, %Param ) = @_;
 
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+
     my $Verbose = $Param{CommandlineOptions}->{Verbose} || 0;
-    my $Home    = $Kernel::OM->Get('Kernel::Config')->Get('Home');
+    my $Home    = $ConfigObject->Get('Home');
 
     my $PerlBinary = $^X;
     my $ScriptPath = "$Home/bin/znuny.CheckModules.pl";

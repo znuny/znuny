@@ -619,14 +619,24 @@ sub _GetCategoriesStrg {
         || $UserPreferences{UserSystemConfigurationCategory};
     my %Categories = $Kernel::OM->Get('Kernel::System::SysConfig')->ConfigurationCategoriesGet();
 
-    my %CategoryData = map { $_ => $Categories{$_}->{DisplayName} } keys %Categories;
+    my %CategoryData;
+    for my $CategoryName ( sort keys %Categories ) {
+        if ( $Categories{$CategoryName}->{PackageName} ) {
+            $CategoryData{$CategoryName} = $Categories{$CategoryName}->{PackageName};
+        }
+        else {
+            my $TranslatedName
+                = $Kernel::OM->Get('Kernel::Language')->Translate( $Categories{$CategoryName}->{DisplayName} );
+            $CategoryData{$CategoryName} = $TranslatedName;
+        }
+    }
 
     my $CategoriesStrg = $Kernel::OM->Get('Kernel::Output::HTML::Layout')->BuildSelection(
         Data         => \%CategoryData,
         Name         => 'Category',
         SelectedID   => $Category || Translatable('All'),
         PossibleNone => 0,
-        Translation  => 1,
+        Translation  => 0,
         Sort         => 'AlphanumericKey',
         Class        => 'Modernize',
         Title        => $Kernel::OM->Get('Kernel::Language')->Translate('Category Search'),

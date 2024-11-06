@@ -164,7 +164,9 @@ Core.Agent.Responsive = (function (TargetNS) {
         $('.WidgetAction.ShowPagination, #ViewModeSwitch').remove();
 
         // show graphs again
-        $('.D3GraphMessage, .D3GraphCanvas').closest('.WidgetSimple').show();
+        if (!$('.D3GraphMessage, .D3GraphCanvas').closest('.WidgetSimple').hasClass('Hidden')) {
+            $('.D3GraphMessage, .D3GraphCanvas').closest('.WidgetSimple').show();
+        }
 
         // remove the additional container again
         $('.ResponsiveSidebarContainer').children('.SidebarColumn, #NavigationContainer').unwrap();

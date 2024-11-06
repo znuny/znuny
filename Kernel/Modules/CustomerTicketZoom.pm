@@ -1262,6 +1262,7 @@ sub _Mask {
                 Name => 'TicketDynamicFieldLink',
                 Data => {
                     Value                       => $ValueStrg->{Value},
+                    ValueKey                    => $Param{"DynamicField_$DynamicFieldConfig->{Name}"},
                     Title                       => $ValueStrg->{Title},
                     Link                        => $DynamicFieldConfig->{Config}->{Link},
                     LinkPreview                 => $DynamicFieldConfig->{Config}->{LinkPreview},

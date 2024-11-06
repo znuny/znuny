@@ -279,8 +279,8 @@ sub Log {
 to get the last log info back
 
     my $Message = $LogObject->GetLogEntry(
-        Type => 'error', # error|info|notice
-        What => 'Message', # Message|Traceback
+        Type => 'error',    # error|info|notice
+        What => 'Message',  # Message|Traceback
     );
 
 =cut

@@ -677,9 +677,9 @@ add a service
 
     my $ServiceID = $ServiceObject->ServiceAdd(
         Name     => 'Service Name',
-        ParentID => 1,           # (optional)
+        ParentID => 1,              # (optional)
         ValidID  => 1,
-        Comment  => 'Comment',    # (optional)
+        Comment  => 'Comment',      # (optional)
         UserID   => 1,
 
         # ITSMCore (if installed)
@@ -816,10 +816,10 @@ update an existing service
 
     my $True = $ServiceObject->ServiceUpdate(
         ServiceID => 123,
-        ParentID  => 1,           # (optional)
+        ParentID  => 1,                 # (optional)
         Name      => 'Service Name',
         ValidID   => 1,
-        Comment   => 'Comment',    # (optional)
+        Comment   => 'Comment',         # (optional)
         UserID    => 1,
 
         # ITSMCore (if installed)

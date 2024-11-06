@@ -10,6 +10,7 @@ package Kernel::Modules::AdminDynamicFieldWebservice;
 
 use strict;
 use warnings;
+use utf8;
 
 our @ObjectDependencies = (
     'Kernel::Config',
@@ -1053,21 +1054,6 @@ sub _AdditionalParamsShow {
         },
     );
 
-    my %AutocompletionForSearchFieldsSelection = (
-        0 => 'No',
-        1 => 'Yes',
-    );
-
-    $ShowParams{AutocompletionForSearchFieldsSelection} = $LayoutObject->BuildSelection(
-        Data         => \%AutocompletionForSearchFieldsSelection,
-        Name         => 'AutocompletionForSearchFields',
-        SelectedID   => $Param{AutocompletionForSearchFields} // 0,
-        PossibleNone => 0,
-        Translation  => 1,
-        Class        => 'Modernize W25pc',
-        Sort         => 'NumericKey',
-    );
-
     return %ShowParams if $Param{FieldType} ne 'WebserviceMultiselect';
 
     my $InitialSearchTerm = defined $Param{InitialSearchTerm} ? $Param{InitialSearchTerm} : '';
@@ -1112,9 +1098,9 @@ sub _AdditionalParamsGet {
     my %AdditionalParams;
     for my $Param (
         qw(
-        Webservice InvokerSearch InvokerGet Backend SearchKeys StoredValue DisplayedValues
+        Webservice InvokerSearch InvokerGet Backend SearchKeys CacheTTL StoredValue DisplayedValues
         TemplateType DisplayedValuesSeparator Limit AutocompleteMinLength QueryDelay
-        InputFieldWidth DefaultSearchTerm InitialSearchTerm AutocompletionForSearchFields
+        InputFieldWidth DefaultSearchTerm InitialSearchTerm
         )
         )
     {
@@ -1145,10 +1131,20 @@ sub _AdditionalParamsValidate {
 
     REQUIREDPARAM:
     for my $RequiredParam (qw(Webservice InvokerSearch InvokerGet Backend)) {
-        next REQUIREDPARAM if defined $Param{$RequiredParam} && length $Param{$RequiredParam};
+        next REQUIREDPARAM if IsStringWithData( $Param{$RequiredParam} );
 
         $Errors{ $RequiredParam . 'ServerError' }        = 'ServerError';
         $Errors{ $RequiredParam . 'ServerErrorMessage' } = 'This field is required.';
+    }
+
+    # Cache TTL must be an integer or empty
+    if (
+        IsStringWithData( $Param{CacheTTL} )
+        && $Param{CacheTTL} !~ m{\A\d+\z}
+        )
+    {
+        $Errors{'CacheTTLServerError'}        = 'ServerError';
+        $Errors{'CacheTTLServerErrorMessage'} = 'This field should be an integer.';
     }
 
     my $DynamicFieldName = $Param{Name};

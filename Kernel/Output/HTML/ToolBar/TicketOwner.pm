@@ -40,7 +40,7 @@ sub Run {
         return;
     }
 
-    return if !$ConfigObject->Get('Frontend::Module')->{AgentTicketLockedView};
+    return if !$ConfigObject->Get('Frontend::Module')->{AgentTicketOwnerView};
 
     # get user lock data
     my $Count = $TicketObject->TicketSearch(

@@ -21,6 +21,10 @@ our @ObjectDependencies = (
 
 use Kernel::System::VariableCheck qw(:all);
 
+=head1 NAME
+
+Kernel::Output::CSS::State - output css state
+
 =head2 CreateCSS()
 
 Creates and returns a CSS string.

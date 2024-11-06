@@ -11,6 +11,7 @@ package Kernel::Modules::AgentDashboard;
 
 use strict;
 use warnings;
+use utf8;
 
 use parent qw( Kernel::Modules::AgentDashboardCommon );
 

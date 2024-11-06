@@ -520,7 +520,7 @@ Returns:
 
     %SystemMaintenanceIsComing = {
         StartDate => 1515614400,
-        StopDate  => 1515607200
+        StopDate  => 1515607200,
     };
 
 =cut

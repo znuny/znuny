@@ -81,7 +81,7 @@ sub Run {
 
         my @NewIDs = $ParamObject->GetArray( Param => 'IDs' );
         my ( %GetParam, %Errors );
-        for my $Parameter (qw(ID Name Comment ValidID TemplateType)) {
+        for my $Parameter (qw(ID Name Comment ValidID)) {
             $GetParam{$Parameter} = $ParamObject->GetParam( Param => $Parameter ) || '';
         }
 
@@ -89,6 +89,9 @@ sub Run {
             Param => 'Template',
             Raw   => 1
         ) || '';
+
+        my @TemplateTypes = $ParamObject->GetArray( Param => 'TemplateType' );
+        $GetParam{'TemplateType'} = join( ',', sort @TemplateTypes ) || '';
 
         # get composed content type
         $GetParam{ContentType} = 'text/plain';
@@ -211,7 +214,7 @@ sub Run {
         my @NewIDs = $ParamObject->GetArray( Param => 'IDs' );
         my ( %GetParam, %Errors );
 
-        for my $Parameter (qw(ID Name Comment ValidID TemplateType)) {
+        for my $Parameter (qw(ID Name Comment ValidID)) {
             $GetParam{$Parameter} = $ParamObject->GetParam( Param => $Parameter ) || '';
         }
 
@@ -219,6 +222,9 @@ sub Run {
             Param => 'Template',
             Raw   => 1
         ) || '';
+
+        my @TemplateTypes = $ParamObject->GetArray( Param => 'TemplateType' );
+        $GetParam{'TemplateType'} = join( ',', sort @TemplateTypes ) || '';
 
         # get composed content type
         $GetParam{ContentType} = 'text/plain';
@@ -362,10 +368,12 @@ sub _Edit {
 
     my $TemplateTypeList = $Kernel::OM->Get('Kernel::Config')->Get('StandardTemplate::Types');
 
+    my @TemplateTypes = split( /\s*,\s*/, $Param{TemplateType} // [] );
     $Param{TemplateTypeString} = $LayoutObject->BuildSelection(
         Data       => $TemplateTypeList,
         Name       => 'TemplateType',
-        SelectedID => $Param{TemplateType},
+        SelectedID => \@TemplateTypes,
+        Multiple   => 1,
         Class      => 'Modernize Validate_Required ' . ( $Param{Errors}->{'TemplateTypeInvalid'} || '' ),
     );
 
@@ -432,7 +440,12 @@ sub _Edit {
 sub _Overview {
     my ( $Self, %Param ) = @_;
 
-    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $ConfigObject           = $Kernel::OM->Get('Kernel::Config');
+    my $LayoutObject           = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $StandardTemplateObject = $Kernel::OM->Get('Kernel::System::StandardTemplate');
+    my $StdAttachmentObject    = $Kernel::OM->Get('Kernel::System::StdAttachment');
+
+    my $TemplateTypeList = $ConfigObject->Get('StandardTemplate::Types');
 
     $LayoutObject->Block(
         Name => 'Overview',
@@ -448,8 +461,7 @@ sub _Overview {
         Data => \%Param,
     );
 
-    my $StandardTemplateObject = $Kernel::OM->Get('Kernel::System::StandardTemplate');
-    my %List                   = $StandardTemplateObject->StandardTemplateList(
+    my %List = $StandardTemplateObject->StandardTemplateList(
         UserID => 1,
         Valid  => 0,
     );
@@ -462,6 +474,24 @@ sub _Overview {
             %{ $ListGet{$ID} } = $StandardTemplateObject->StandardTemplateGet(
                 ID => $ID,
             );
+
+            my @TemplateTypes = split( /\s*,\s*/, $ListGet{$ID}->{TemplateType} );
+            if ( scalar @TemplateTypes > 1 ) {
+                my $TemplateTypeString;
+
+                for my $TemplateType (@TemplateTypes) {
+                    $TemplateTypeString
+                        .= $LayoutObject->{LanguageObject}->Translate( $TemplateTypeList->{$TemplateType} ) . ', ';
+                }
+                $TemplateTypeString =~ s{,\s$}{}g;
+
+                $ListGet{$ID}->{TemplateType} = $TemplateTypeString;
+            }
+            else {
+                $ListGet{$ID}->{TemplateType}
+                    = $LayoutObject->{LanguageObject}->Translate( $TemplateTypeList->{ $TemplateTypes[0] } );
+            }
+
             $ListGet{$ID}->{SortName} = $ListGet{$ID}->{TemplateType} . $ListGet{$ID}->{Name};
         }
 
@@ -472,13 +502,14 @@ sub _Overview {
 
             my %Data = %{ $ListGet{$ID} };
             my @SelectedAttachment;
-            my %SelectedAttachmentData
-                = $Kernel::OM->Get('Kernel::System::StdAttachment')->StdAttachmentStandardTemplateMemberList(
+            my %SelectedAttachmentData = $StdAttachmentObject->StdAttachmentStandardTemplateMemberList(
                 StandardTemplateID => $ID,
-                );
+            );
+
             for my $Key ( sort keys %SelectedAttachmentData ) {
                 push @SelectedAttachment, $Key;
             }
+
             $LayoutObject->Block(
                 Name => 'OverviewResultRow',
                 Data => {

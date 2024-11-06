@@ -18,6 +18,7 @@ package Kernel::Modules::AgentZoom;
 
 use strict;
 use warnings;
+use utf8;
 
 our $ObjectManagerDisabled = 1;
 

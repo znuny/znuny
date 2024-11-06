@@ -890,7 +890,7 @@ Your Znuny Team
 # ----------------------------------------------------------
 INSERT INTO ticket_history (id, name, history_type_id, ticket_id, type_id, article_id, priority_id, owner_id, state_id, queue_id, create_by, create_time, change_by, change_time)
     VALUES
-    (1, 'New Ticket [2021012710123456] created.', 1, 1, 1, 1, 3, 1, 1, 1, 1, current_timestamp, 1, current_timestamp);
+    (1, 'New Ticket [2021012710123456] created.', 1, 1, 1, 1, 3, 1, 1, 2, 1, current_timestamp, 1, current_timestamp);
 # ----------------------------------------------------------
 #  insert into table notification_event
 # ----------------------------------------------------------
@@ -1640,12 +1640,6 @@ INSERT INTO notification_event_item (notification_id, event_key, event_value)
 # ----------------------------------------------------------
 INSERT INTO notification_event_item (notification_id, event_key, event_value)
     VALUES
-    (15, 'TransportEmailTemplate', 'Default');
-# ----------------------------------------------------------
-#  insert into table notification_event_item
-# ----------------------------------------------------------
-INSERT INTO notification_event_item (notification_id, event_key, event_value)
-    VALUES
     (15, 'Transports', 'Email');
 # ----------------------------------------------------------
 #  insert into table notification_event_item
@@ -1683,12 +1677,6 @@ INSERT INTO notification_event_item (notification_id, event_key, event_value)
 INSERT INTO notification_event_item (notification_id, event_key, event_value)
     VALUES
     (16, 'LanguageID', 'en');
-# ----------------------------------------------------------
-#  insert into table notification_event_item
-# ----------------------------------------------------------
-INSERT INTO notification_event_item (notification_id, event_key, event_value)
-    VALUES
-    (16, 'TransportEmailTemplate', 'Default');
 # ----------------------------------------------------------
 #  insert into table notification_event_item
 # ----------------------------------------------------------

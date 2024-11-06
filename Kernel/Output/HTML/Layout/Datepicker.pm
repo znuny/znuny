@@ -11,6 +11,7 @@ package Kernel::Output::HTML::Layout::Datepicker;
 
 use strict;
 use warnings;
+use utf8;
 
 our $ObjectManagerDisabled = 1;
 

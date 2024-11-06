@@ -32,13 +32,12 @@
                     <div class="UserAvatar_submenu btn-divider">
                         <div class="column-wrapper">
                             <span class="UserAvatar_name">[% Env("UserFullname") | html %]</span>
-#                            <span class="UserAvatar_title">Marketing Administrator</span>
                         </div>
 [% RenderBlockStart("LastViewsAvatar") %]
                         <label>[% Translate("Last viewed") | html %]</label>
                         [% Data.AvatarLastViewsHTML %]
 [% RenderBlockEnd("LastViewsAvatar") %]
-                        <label>Account</label>
+                        <label>[%Translate("Account") | html %]</label>
                         <span>
 [% RenderBlockStart("Login") %]
                                 <a href="[% Env("Baselink") %]Action=AgentPreferences" title="[% Translate("Edit personal preferences") | html %]">

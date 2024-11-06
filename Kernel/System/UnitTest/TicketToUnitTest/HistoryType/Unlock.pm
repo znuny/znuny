@@ -13,7 +13,6 @@ use warnings;
 
 our @ObjectDependencies = ();
 
-use Kernel::System::VariableCheck qw(:all);
 use parent qw( Kernel::System::UnitTest::TicketToUnitTest::Base );
 
 sub Run {
@@ -28,7 +27,7 @@ sub Run {
 
 \$Self->True(
     \$Success,
-    'TicketLockSet to "lock" was successfull.',
+    'TicketLockSet to "lock" was successful.',
 );
 
 OUTPUT

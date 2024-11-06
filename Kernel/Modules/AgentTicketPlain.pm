@@ -11,6 +11,7 @@ package Kernel::Modules::AgentTicketPlain;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::Language qw(Translatable);
 

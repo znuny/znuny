@@ -785,19 +785,19 @@ sub TicketCreate {
         $TicketCounter++;
 
         my $TicketID = $TicketObject->TicketCreate(
-            Title             => $Appointment{Title},
-            QueueID           => $QueueID,
-            LockID            => $Param{Config}->{LockID},
-            StateID           => $Param{Config}->{StateID},
-            TypeID            => $Param{Config}->{TypeID},
-            PriorityID        => $Param{Config}->{PriorityID},
-            ServiceID         => $Param{Config}->{ServiceID},
-            SLAID             => $Param{Config}->{SLAID},
-            OwnerID           => $Param{Config}->{OwnerID} || 1,
-            ResponsibleUserID => $Param{Config}->{ResponsibleUserID},
-            CustomerID        => $Param{Config}->{CustomerID},
-            CustomerUser      => $Param{Config}->{CustomerUserID},
-            UserID            => $Param{UserID},
+            Title         => $Appointment{Title},
+            QueueID       => $QueueID,
+            LockID        => $Param{Config}->{LockID},
+            StateID       => $Param{Config}->{StateID},
+            TypeID        => $Param{Config}->{TypeID},
+            PriorityID    => $Param{Config}->{PriorityID},
+            ServiceID     => $Param{Config}->{ServiceID},
+            SLAID         => $Param{Config}->{SLAID},
+            OwnerID       => $Param{Config}->{OwnerID} || 1,
+            ResponsibleID => $Param{Config}->{ResponsibleUserID},
+            CustomerID    => $Param{Config}->{CustomerID},
+            CustomerUser  => $Param{Config}->{CustomerUserID},
+            UserID        => $Param{UserID},
         );
 
         if ( $Param{Config}->{TicketPendingTime} ne '1900-01-01 00:00:00' ) {

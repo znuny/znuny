@@ -18,8 +18,6 @@ our @ObjectDependencies = (
     'Kernel::System::Time',
 );
 
-use Kernel::System::VariableCheck qw(:all);
-
 =head1 NAME
 
 Kernel::System::TimeAccountingWebservice - TimeAccountingWebservice lib

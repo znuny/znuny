@@ -30,8 +30,6 @@ our @ObjectDependencies = (
     'Kernel::System::ZnunyHelper',
 );
 
-use Kernel::System::VariableCheck qw(:all);
-
 =head1 NAME
 
 Kernel::System::UnitTest::TicketToUnitTest - creates unittest

@@ -180,7 +180,7 @@ $Selenium->RunTest(
 
         # Toggle to collapse 'Customer Information' widget.
         $Selenium->find_element(
-            "//div[contains(\@class, 'SidebarColumn')]//a[contains(\@title, \'Show or hide the content' )]"
+            "//div[contains(\@class, 'SidebarColumn')]//a[contains(\@title, 'Show or hide the content')]//i[contains(\@class, 'fa-caret-down')]"
         )->click();
 
         $Selenium->WaitFor(

@@ -11,8 +11,8 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
  * @section     Vars
  */
 
-:root {  
-    
+:root {
+
     /* Page */
     --main-page-padding: 25px;
 
@@ -45,7 +45,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
     /* Spacing */
     --size-6: 6px;
-    --size-8 : 8px; 
+    --size-8 : 8px;
     --size-10: 10px;
     --size-15: 15px;
     --size-20: 20px;
@@ -129,7 +129,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         --table-bg: var(--white);
         --table-th-font-color: var(--black);
         --table-td-hover-opacity: 0.5;
-        --table-tr-border-bottom: var(--gray-light-semi); 
+        --table-tr-border-bottom: var(--gray-light-semi);
         --table-tr-py-18: 18px;
         --table-tr-px-18: 10px;
         --table-tr-line-hight: 40px;

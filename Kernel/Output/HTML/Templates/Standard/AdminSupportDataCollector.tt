@@ -71,6 +71,14 @@
             %]
 
             [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
+            <div style="display:flex; flex-wrap:nowrap">
+                <span class="TableFilterContainer" style="width:75%">
+                    <i class="fa fa-search"></i><input type="text" class="search-bar" id="SupportDataFilter">
+                </span>&nbsp;
+                <a class="CallForAction btn-main btn-primary-ghost" id="DeleteCache" name="DeleteCache" style="width:25%" href="[% Env('Baselink') %]Action=[% Env('Action') %];Subaction=DeleteCache">
+                  <span><i class="fa fa-trash"></i>&nbsp;[% Translate("Delete cache") | html %]</span>
+                </a>
+            </div>
 [% RenderBlockStart("SupportDataGroup") %]
             <div class="WidgetSimple">
                 <div class="Header">

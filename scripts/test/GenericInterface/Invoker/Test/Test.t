@@ -219,7 +219,7 @@ my @InvokerHandleResponseTests = (
         ResultSuccess => 0,
     },
     {
-        Name => 'Test just ResponseSucces param.',
+        Name => 'Test just ResponseSuccess param.',
         Data => {
             TicketNumber => '',
         },

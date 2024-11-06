@@ -349,7 +349,9 @@ $Selenium->RunTest(
         );
 
         # Toggle to collapse 'Ticket Information' widget.
-        $Selenium->find_element("//a[contains(\@title, \'Show or hide the content' )]")->click();
+        $Selenium->find_element(
+            "//a[contains(\@title, \'Show or hide the content' )]//i[contains(\@class, 'fa-caret-down')]"
+        )->click();
 
         $Selenium->WaitFor( JavaScript => 'return typeof($) === "function" && $("div.WidgetSimple.Collapsed").length' );
 

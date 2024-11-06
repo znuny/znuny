@@ -62,13 +62,25 @@
         [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath Type = "Agent" %]
 
         <div class="WidgetSimple">
-            <div class="Header">
+            <div class="Header filter-items">
                 <h2>[% Translate("Statistics") | html %]</h2>
+                <a href="#" id="ValidFilter" title="[% Translate("Filter") | html %]">
+                    <span class="show-valid">[% Translate("Show Valid") | html %]</span>
+                    <span class="show-all">[% Translate("Show All") | html %]</span>
+                </a>
             </div>
+            <span class="Pagination">
+                <ul>
+                    <li>
+                        <span>[% Data.ResultLong %]</span>
+                    </li>
+                    <li class="page-links">[% Data.SiteNavBar %]</li>
+                </ul>
+            </span>
             <div class="Content">
                 <table class="Sortable DataTable">
                     <thead>
-                        <tr [% IF !Data.Valid %]class="Invalid"[% END %]>
+                        <tr>
                             <th class="[% Data.CSSSortID | html %]">
                                 <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Overview;Direction=[% Data.LinkSortID | uri %];OrderBy=ID;StartHit=[% Data.StartHit | uri %]">
                                     [% Config("Stats::StatsHook") | html %]
@@ -142,14 +154,6 @@
                         <div class="SpacingTop"></div>
                     </div>
                 </div>
-                <span class="Pagination">
-                    <ul>
-                        <li>
-                            <span>[% Data.ResultLong %]</span>
-                        </li>
-                        <li class="page-links">[% Data.SiteNavBar %]</li>
-                    </ul>
-                </span>
             </div>
         </div>
     </div>

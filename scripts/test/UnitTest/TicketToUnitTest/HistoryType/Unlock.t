@@ -41,7 +41,7 @@ my $ExpectedOutout = <<OUTPUT;
 
 \$Self->True(
     \$Success,
-    'TicketLockSet to "lock" was successfull.',
+    'TicketLockSet to "lock" was successful.',
 );
 
 OUTPUT

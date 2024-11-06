@@ -370,7 +370,7 @@ for my $Test (@Tests) {
         );
     }
 
-    $Kernel::OM->Get('Kernel::Config')->Set(
+    $ConfigObject->Set(
         Key   => 'OTRSTimeZone',
         Value => $Test->{OTRSTimeZone},
     );

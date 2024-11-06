@@ -13,17 +13,17 @@ use parent 'Kernel::Output::HTML::TicketZoom::Customer::Base';
 
 use strict;
 use warnings;
-
-use Kernel::System::VariableCheck qw(IsPositiveInteger);
+use utf8;
 
 our @ObjectDependencies = (
     'Kernel::Config',
+    'Kernel::Output::HTML::Article::MIMEBase',
     'Kernel::Output::HTML::Layout',
     'Kernel::System::CommunicationChannel',
-    'Kernel::System::Main',
+    'Kernel::System::HTMLUtils',
     'Kernel::System::Log',
+    'Kernel::System::Main',
     'Kernel::System::Ticket::Article',
-    'Kernel::Output::HTML::Article::MIMEBase',
 );
 
 =head2 ArticleRender()
@@ -39,6 +39,7 @@ Returns article html.
     );
 
 Result:
+
     $HTML = "<div>...</div>";
 
 =cut
@@ -61,6 +62,7 @@ sub ArticleRender {
     my $LayoutObject         = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
     my $MainObject           = $Kernel::OM->Get('Kernel::System::Main');
     my $ArticleBackendObject = $Kernel::OM->Get('Kernel::System::Ticket::Article')->BackendForArticle(%Param);
+    my $HTMLUtilsObject      = $Kernel::OM->Get('Kernel::System::HTMLUtils');
 
     my %Article = $ArticleBackendObject->ArticleGet(
         %Param,
@@ -153,6 +155,20 @@ sub ArticleRender {
         );
     }
 
+    my %SafeArticleContent = $HTMLUtilsObject->Safety(
+        String       => $ArticleContent,
+        NoApplet     => 1,
+        NoObject     => 1,
+        NoEmbed      => 1,
+        NoSVG        => 1,
+        NoImg        => 0,
+        NoIntSrcLoad => 0,
+        NoExtSrcLoad => 1,
+        NoJavaScript => 1,
+    );
+
+    my $SafeArticleContent = $SafeArticleContent{String} // '';
+
     my %CommunicationChannel = $Kernel::OM->Get('Kernel::System::CommunicationChannel')->ChannelGet(
         ChannelID => $Article{CommunicationChannelID},
     );
@@ -189,13 +205,19 @@ sub ArticleRender {
             Class                => $Param{Class},
             Attachments          => \@ArticleAttachments,
             MenuItems            => $Param{ArticleActions},
-            Body                 => $ArticleContent,
+            Body                 => $SafeArticleContent,
             HTML                 => $ShowHTML,
             CommunicationChannel => $CommunicationChannel{DisplayName},
             ChannelIcon          => $CommunicationChannel{DisplayIcon},
             BrowserLinkMessage   => $Param{ShowBrowserLinkMessage} && $ShowHTML,
             BodyHTMLLoad         => $Param{ArticleExpanded},
             Age                  => $Param{ArticleAge},
+            SenderImage          => $Self->_ArticleSenderImage(
+                Sender => $Article{From},
+            ),
+            SenderInitials => $LayoutObject->UserInitialsGet(
+                Fullname => $Article{FromRealname},
+            ),
         },
     );
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <otrs_config version="2.0" init="Framework">
+    <!-- nofilter(TidyAll::Plugin::Znuny::Config::ACLKeysLevel3Actions) -->
     <Setting Name="SecureMode" Required="1" Valid="1" ConfigLevel="200">
         <Description Translatable="1">Disables the web installer (http://yourhost.example.com/znuny/installer.pl), to prevent the system from being hijacked. If not enabled, the system can be reinstalled and the current basic configuration will be used to pre-populate the questions within the installer script. If enabled, it also disables the GenericAgent, PackageManager and SQL Box.</Description>
         <Navigation>Core</Navigation>
@@ -286,6 +287,36 @@
             </Hash>
         </Value>
     </Setting>
+    <Setting Name="CustomerShortcutIcon" Required="0" Valid="1">
+        <Description Translatable="1">The shortcut icon for the customer interface.</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/product.ico</Item>
+        </Value>
+    </Setting>
+    <Setting Name="CustomerShortcutIconCustom###default" Required="0" Valid="1">
+        <Description Translatable="1">The shortcut icon for the customer interface for the skin "default".</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/product.ico</Item>
+        </Value>
+    </Setting>
+    <Setting Name="CustomerAppleTouchIcon" Required="0" Valid="1">
+        <Description Translatable="1">The Apple touch icon for the customer interface.</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/apple-touch-icon.png</Item>
+        </Value>
+    </Setting>
+    <Setting Name="CustomerAppleTouchIconCustom###default" Required="0" Valid="1">
+        <Description Translatable="1">The Apple touch icon for the customer interface for skin "default".</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/apple-touch-icon.png</Item>
+        </Value>
+    </Setting>
+
+
     <Setting Name="AgentLogo" Required="0" Valid="1">
         <Description Translatable="1">The logo shown in the header of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.</Description>
         <Navigation>Frontend::Agent</Navigation>
@@ -320,6 +351,34 @@
                 <Item Key="URL">skins/Agent/default/img/logo.png</Item>
                 <Item Key="StyleHeight">60px</Item>
             </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="AgentShortcutIcon" Required="0" Valid="1">
+        <Description Translatable="1">The shortcut icon for the agent interface.</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/product.ico</Item>
+        </Value>
+    </Setting>
+    <Setting Name="AgentShortcutIconCustom###default" Required="0" Valid="1">
+        <Description Translatable="1">The shortcut icon for the agent interface fot the skin "default".</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/product.ico</Item>
+        </Value>
+    </Setting>
+    <Setting Name="AgentAppleTouchIcon" Required="0" Valid="1">
+        <Description Translatable="1">The Apple touch icon for the agent interface.</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/apple-touch-icon.png</Item>
+        </Value>
+    </Setting>
+    <Setting Name="AgentAppleTouchIconCustom###default" Required="0" Valid="1">
+        <Description Translatable="1">The Apple touch icon for the agent interface for the skin "default".</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/apple-touch-icon.png</Item>
         </Value>
     </Setting>
     <Setting Name="Frontend::WebPath" Required="1" Valid="1" ConfigLevel="200">
@@ -361,7 +420,7 @@
         <Description Translatable="1">Defines the URL rich text editor path.</Description>
         <Navigation>Frontend::Base</Navigation>
         <Value>
-            <Item ValueType="String" ValueRegex="">&lt;OTRS_CONFIG_Frontend::WebPath&gt;js/thirdparty/ckeditor-4.17.1/</Item>
+            <Item ValueType="String" ValueRegex="">&lt;OTRS_CONFIG_Frontend::WebPath&gt;js/thirdparty/ckeditor-4.25.1-znuny-min/</Item>
         </Value>
     </Setting>
     <Setting Name="Frontend::RichText::DefaultCSS" Required="1" Valid="1">
@@ -424,7 +483,7 @@
         <Description Translatable="1">Defines additional plugins for use in the rich text editor.</Description>
         <Navigation>Frontend::Base</Navigation>
         <Value>
-            <Item ValueType="String">splitquote,contextmenu_linkopen,textwatcher,autocomplete,textmatch,autolink,image2,mentions</Item>
+            <Item ValueType="String">splitquote,contextmenu_linkopen</Item>
         </Value>
     </Setting>
     <Setting Name="Frontend::RichText::Settings###ExtraAllowedContent" Required="0" Valid="1">
@@ -491,6 +550,13 @@
             <Item ValueType="String" ValueRegex="^[0-9]{1,5}$">6000</Item>
         </Value>
     </Setting>
+    <Setting Name="InputFields::ModernizedSelection::MaxNumberOfOptions" Required="1" Valid="1">
+        <Description Translatable="1">Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.</Description>
+        <Navigation>Frontend::Base</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="^\d+$">1000</Item>
+        </Value>
+    </Setting>
     <Setting Name="Frontend::MenuDragDropEnabled" Required="1" Valid="1">
         <Description Translatable="1">Turns on drag and drop for the main navigation.</Description>
         <Navigation>Frontend::Base</Navigation>
@@ -551,6 +617,13 @@
         <Navigation>Core::Email</Navigation>
         <Value>
             <Item ValueType="String" ValueRegex="">ns.example.com</Item>
+        </Value>
+    </Setting>
+    <Setting Name="CheckMXRecord::Timeout" Required="0" Valid="0">
+        <Description Translatable="1">Sets the timeout (in seconds) for DNS resolver queries.</Description>
+        <Navigation>Core::Email</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="^\d+$">3</Item>
         </Value>
     </Setting>
     <Setting Name="CheckEmailAddresses" Required="1" Valid="1">
@@ -790,7 +863,7 @@
         <Description Translatable="1">Define which avatar engine should be used for the agent avatar on the header and the sender images in AgentTicketZoom. If 'None' is selected, initials will be displayed instead. Please note that selecting anything other than 'None' will transfer the encrypted email address of the particular user to an external service.</Description>
         <Navigation>Frontend::Agent</Navigation>
         <Value>
-            <Item ValueType="Select" SelectedID="Gravatar">
+            <Item ValueType="Select" SelectedID="None">
                 <Item ValueType="Option" Value="None" Translatable="1">None</Item>
                 <Item ValueType="Option" Value="Gravatar">Gravatar.com</Item>
             </Item>
@@ -2650,7 +2723,7 @@
                 <Item>
                     <Hash>
                         <Item Key="Name">Example repository 1</Item>
-                        <Item Key="URL">https://addons.znuny.com/api/addon_repos/</Item>
+                        <Item Key="URL">https://addons.znuny.com/private</Item>
                         <Item Key="AuthHeaderKey">Authorization</Item>
                         <Item Key="AuthHeaderValue">Token token=123</Item>
                     </Hash>
@@ -2692,7 +2765,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Package::Event::SupportDataSend</Item>
-                <Item Key="Event">(PackageInstall|PackageReinstall|PackageUpgrade|PackageUninstall)</Item>
+                <Item Key="Event">\A(PackageInstall|PackageReinstall|PackageUpgrade|PackageUninstall)\z</Item>
                 <Item Key="Transaction">1</Item>
             </Hash>
         </Value>
@@ -3324,6 +3397,7 @@ You can log in via the following URL:
                 <Item Key="Label" Translatable="1">Time Zone</Item>
                 <Item Key="Key" Translatable="1"></Item>
                 <Item Key="PrefKey">UserTimeZone</Item>
+                <Item Key="NeedsReload">1</Item>
                 <Item Key="Prio">3500</Item>
                 <Item Key="Active">1</Item>
             </Hash>
@@ -3383,22 +3457,6 @@ You can log in via the following URL:
                 <Item Key="Key" Translatable="1">Avatar</Item>
                 <Item Key="Desc" Translatable="1">Change your avatar image.</Item>
                 <Item Key="Block">Avatar</Item>
-                <Item Key="Prio">1000</Item>
-                <Item Key="Active">1</Item>
-            </Hash>
-        </Value>
-    </Setting>
-    <Setting Name="PreferencesGroups###PopupProfile" Required="0" Valid="1">
-        <Description Translatable="1">Defines the global users popup profile.</Description>
-        <Navigation>Frontend::Agent::View::Preferences</Navigation>
-        <Value>
-            <Hash>
-                <Item Key="Module">Kernel::Output::HTML::Preferences::PopupProfile</Item>
-                <Item Key="PreferenceGroup">Miscellaneous</Item>
-                <Item Key="Key">UserPopupProfile</Item>
-                <Item Key="Label" Translatable="1">Popup Profile</Item>
-                <Item Key="Desc" Translatable="1">Change your default popup profile settings.</Item>
-                <Item Key="Block">PopupProfile</Item>
                 <Item Key="Prio">1000</Item>
                 <Item Key="Active">1</Item>
             </Hash>
@@ -3878,7 +3936,7 @@ via the Preferences button after logging in.
         </Value>
     </Setting>
     <Setting Name="Customer::AuthModule::LDAP::Params" Required="0" Valid="0" ConfigLevel="200">
-        <Description Translatable="1">If "LDAP" was selected for Customer::AuthModule and special paramaters are needed for the Net::LDAP perl module, you can specify them here. See "perldoc Net::LDAP" for more information about the parameters.</Description>
+        <Description Translatable="1">If "LDAP" was selected for Customer::AuthModule and special parameters are needed for the Net::LDAP perl module, you can specify them here. See "perldoc Net::LDAP" for more information about the parameters.</Description>
         <Navigation>Core::Auth::Customer</Navigation>
         <Value>
             <Hash>
@@ -4030,6 +4088,7 @@ via the Preferences button after logging in.
                 <Item Key="Desc" Translatable="1">Select your personal time zone. All times will be displayed relative to this time zone.</Item>
                 <Item Key="Key" Translatable="1">Time Zone</Item>
                 <Item Key="PrefKey">UserTimeZone</Item>
+                <Item Key="NeedsReload">1</Item>
                 <Item Key="Prio">2500</Item>
                 <Item Key="Active">1</Item>
             </Hash>
@@ -4189,16 +4248,16 @@ via the Preferences button after logging in.
                 </Item>
                 <Item Key="JavaScript">
                     <Array>
-                        <Item>thirdparty/momentjs-2.29.1/moment.min.js</Item>
+                        <Item>thirdparty/momentjs-2.30.1/moment.min.js</Item>
                         <Item>thirdparty/fullcalendar-3.10.2/fullcalendar.min.js</Item>
-                        <Item>thirdparty/d3-3.5.6/d3.min.js</Item>
+                        <Item>thirdparty/d3-3.5.7/d3.min.js</Item>
                         <Item>thirdparty/nvd3-1.7.1/nvd3.min.js</Item>
                         <Item>thirdparty/nvd3-1.7.1/models/OTRSLineChart.js</Item>
                         <Item>thirdparty/nvd3-1.7.1/models/OTRSMultiBarChart.js</Item>
                         <Item>thirdparty/nvd3-1.7.1/models/OTRSStackedAreaChart.js</Item>
-                        <Item>thirdparty/canvg-1.4/rgbcolor.js</Item>
-                        <Item>thirdparty/canvg-1.4/StackBlur.js</Item>
-                        <Item>thirdparty/canvg-1.4/canvg.js</Item>
+                        <Item>thirdparty/canvg-1.5/rgbcolor.js</Item>
+                        <Item>thirdparty/canvg-1.5/StackBlur.js</Item>
+                        <Item>thirdparty/canvg-1.5/canvg.js</Item>
                         <Item>thirdparty/StringView-8/stringview.js</Item>
                         <Item>Core.UI.AdvancedChart.js</Item>
                         <Item>Core.UI.AllocationList.js</Item>
@@ -6942,7 +7001,7 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Public</Navigation>
         <Value>
             <Hash>
-                <Item Key="https://www.otrs.com">OTRS Homepage</Item>
+                <Item Key="https://www.znuny.org">Znuny Open-Source Help Desk Platform</Item>
             </Hash>
         </Value>
     </Setting>
@@ -7052,14 +7111,14 @@ via the Preferences button after logging in.
                 </Item>
                 <Item Key="JavaScript">
                     <Array>
-                        <Item>thirdparty/d3-3.5.6/d3.min.js</Item>
+                        <Item>thirdparty/d3-3.5.7/d3.min.js</Item>
                         <Item>thirdparty/nvd3-1.7.1/nvd3.min.js</Item>
                         <Item>thirdparty/nvd3-1.7.1/models/OTRSLineChart.js</Item>
                         <Item>thirdparty/nvd3-1.7.1/models/OTRSMultiBarChart.js</Item>
                         <Item>thirdparty/nvd3-1.7.1/models/OTRSStackedAreaChart.js</Item>
-                        <Item>thirdparty/canvg-1.4/rgbcolor.js</Item>
-                        <Item>thirdparty/canvg-1.4/StackBlur.js</Item>
-                        <Item>thirdparty/canvg-1.4/canvg.js</Item>
+                        <Item>thirdparty/canvg-1.5/rgbcolor.js</Item>
+                        <Item>thirdparty/canvg-1.5/StackBlur.js</Item>
+                        <Item>thirdparty/canvg-1.5/canvg.js</Item>
                         <Item>thirdparty/StringView-8/stringview.js</Item>
                         <Item>Core.Agent.Statistics.js</Item>
                         <Item>Core.UI.AdvancedChart.js</Item>
@@ -7207,14 +7266,14 @@ via the Preferences button after logging in.
         </Value>
     </Setting>
     <Setting Name="Stats::UseAgentElementInStats" Required="1" Valid="1">
-        <Description Translatable="1">Allows agents to generate individual-related stats.</Description>
+        <Description Translatable="1">Adds the following elements for use in stats: "Agent/Owner", "Created by Agent/Owner", "Responsible", "Accounted time by Agent".</Description>
         <Navigation>Frontend::Agent::View::Stats</Navigation>
         <Value>
             <Item ValueType="Checkbox">0</Item>
         </Value>
     </Setting>
     <Setting Name="Stats::UseInvalidAgentInStats" Required="1" Valid="1">
-        <Description Translatable="1">Allows invalid agents to generate individual-related stats.</Description>
+        <Description Translatable="1">Allows invalid agents to be used in stats. Stats::UseAgentElementInStats must be active.</Description>
         <Navigation>Frontend::Agent::View::Stats</Navigation>
         <Value>
             <Item ValueType="Checkbox">1</Item>
@@ -7719,14 +7778,14 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Base::Loader</Navigation>
         <Value>
             <Array>
-                <Item>thirdparty/jquery-3.6.0/jquery.js</Item>
+                <Item>thirdparty/jquery-3.7.0/jquery.js</Item>
                 <Item>thirdparty/jquery-browser-detection/jquery-browser-detection.js</Item>
-                <Item>thirdparty/jquery-ui-1.13.1/jquery-ui.js</Item>
+                <Item>thirdparty/jquery-ui-1.13.3/jquery-ui.js</Item>
                 <Item>thirdparty/jquery-ui-touch-punch-0.2.3/jquery.ui.touch-punch.js</Item>
                 <Item>thirdparty/jquery-validate-1.16.0/jquery.validate.js</Item>
                 <Item>thirdparty/jquery-pubsub/pubsub.js</Item>
-                <Item>thirdparty/jquery-jstree-3.3.7/jquery.jstree.js</Item>
-                <Item>thirdparty/nunjucks-3.2.2/nunjucks.min.js</Item>
+                <Item>thirdparty/jquery-jstree-3.3.8/jquery.jstree.js</Item>
+                <Item>thirdparty/nunjucks-3.2.3/nunjucks.min.js</Item>
                 <Item>thirdparty/jscolor-2.4.6/jscolor.js</Item>
                 <Item>Core.Init.js</Item>
                 <Item>Core.JavaScriptEnhancements.js</Item>
@@ -7784,7 +7843,7 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Base::Loader</Navigation>
         <Value>
             <Array>
-                <Item>thirdparty/ckeditor-4.17.1/ckeditor.js</Item>
+                <Item>thirdparty/ckeditor-4.25.1-znuny-min/ckeditor.js</Item>
             </Array>
         </Value>
     </Setting>
@@ -7818,6 +7877,7 @@ via the Preferences button after logging in.
                 <Item>Core.Print.css</Item>
                 <Item>Core.Animations.css</Item>
                 <Item>Core.FlexboxModel.css</Item>
+                <Item>Core.Footer.css</Item>
                 <Item>Core.PageLayout.css</Item>
                 <Item>Core.Components.css</Item>
             </Array>
@@ -7837,13 +7897,13 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Base::Loader</Navigation>
         <Value>
             <Array>
-                <Item>thirdparty/jquery-3.6.0/jquery.js</Item>
+                <Item>thirdparty/jquery-3.7.0/jquery.js</Item>
                 <Item>thirdparty/jquery-browser-detection/jquery-browser-detection.js</Item>
                 <Item>thirdparty/jquery-validate-1.16.0/jquery.validate.js</Item>
-                <Item>thirdparty/jquery-ui-1.13.1/jquery-ui.js</Item>
+                <Item>thirdparty/jquery-ui-1.13.3/jquery-ui.js</Item>
                 <Item>thirdparty/jquery-pubsub/pubsub.js</Item>
-                <Item>thirdparty/jquery-jstree-3.3.7/jquery.jstree.js</Item>
-                <Item>thirdparty/nunjucks-3.2.2/nunjucks.min.js</Item>
+                <Item>thirdparty/jquery-jstree-3.3.8/jquery.jstree.js</Item>
+                <Item>thirdparty/nunjucks-3.2.3/nunjucks.min.js</Item>
                 <Item>Core.Init.js</Item>
                 <Item>Core.Debug.js</Item>
                 <Item>Core.Exception.js</Item>
@@ -7888,7 +7948,7 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Base::Loader</Navigation>
         <Value>
             <Array>
-                <Item>thirdparty/ckeditor-4.17.1/ckeditor.js</Item>
+                <Item>thirdparty/ckeditor-4.25.1-znuny-min/ckeditor.js</Item>
             </Array>
         </Value>
     </Setting>
@@ -7927,7 +7987,19 @@ via the Preferences button after logging in.
                 <Item Key="InternalName">default</Item>
                 <Item Key="VisibleName" Translatable="1">Default</Item>
                 <Item Key="Description" Translatable="1">This is the default orange - black skin.</Item>
-                <Item Key="HomePage">www.otrs.org</Item>
+                <Item Key="HomePage">www.znuny.org</Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="Loader::Agent::Skin###000-dark" Required="0" Valid="1">
+        <Description Translatable="1">Dark skin for the agent interface.</Description>
+        <Navigation>Frontend::Base::Loader</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="InternalName">dark</Item>
+                <Item Key="VisibleName" Translatable="1">Dark</Item>
+                <Item Key="Description" Translatable="1">This is the dark skin for the agent interface.</Item>
+                <Item Key="HomePage">www.znuny.org</Item>
             </Hash>
         </Value>
     </Setting>
@@ -7956,7 +8028,19 @@ via the Preferences button after logging in.
                 <Item Key="InternalName">default</Item>
                 <Item Key="VisibleName" Translatable="1">Default</Item>
                 <Item Key="Description" Translatable="1">This is the default orange - black skin for the customer interface.</Item>
-                <Item Key="HomePage">www.otrs.org</Item>
+                <Item Key="HomePage">www.znuny.org</Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="Loader::Customer::Skin###000-dark" Required="0" Valid="1">
+        <Description Translatable="1">Dark skin for the customer interface.</Description>
+        <Navigation>Frontend::Base::Loader</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="InternalName">dark</Item>
+                <Item Key="VisibleName" Translatable="1">Dark</Item>
+                <Item Key="Description" Translatable="1">This is the dark skin for the customer interface.</Item>
+                <Item Key="HomePage">www.znuny.org</Item>
             </Hash>
         </Value>
     </Setting>
@@ -8038,7 +8122,7 @@ via the Preferences button after logging in.
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::CustomerCompany::Event::CustomerUserUpdate</Item>
-                <Item Key="Event">CustomerCompanyUpdate</Item>
+                <Item Key="Event">\ACustomerCompanyUpdate\z</Item>
                 <Item Key="Transaction">0</Item>
             </Hash>
         </Value>
@@ -8049,7 +8133,7 @@ via the Preferences button after logging in.
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::CustomerCompany::Event::DynamicFieldObjectNameUpdate</Item>
-                <Item Key="Event">CustomerCompanyUpdate</Item>
+                <Item Key="Event">\ACustomerCompanyUpdate\z</Item>
                 <Item Key="Transaction">0</Item>
             </Hash>
         </Value>
@@ -8060,7 +8144,7 @@ via the Preferences button after logging in.
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::CustomerUser::Event::SearchProfileUpdate</Item>
-                <Item Key="Event">CustomerUserUpdate</Item>
+                <Item Key="Event">\ACustomerUserUpdate\z</Item>
                 <Item Key="Transaction">0</Item>
             </Hash>
         </Value>
@@ -8071,7 +8155,7 @@ via the Preferences button after logging in.
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::CustomerUser::Event::ServiceMemberUpdate</Item>
-                <Item Key="Event">CustomerUserUpdate</Item>
+                <Item Key="Event">\ACustomerUserUpdate\z</Item>
                 <Item Key="Transaction">0</Item>
             </Hash>
         </Value>
@@ -8082,7 +8166,7 @@ via the Preferences button after logging in.
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::CustomerUser::Event::DynamicFieldObjectNameUpdate</Item>
-                <Item Key="Event">CustomerUserUpdate</Item>
+                <Item Key="Event">\ACustomerUserUpdate\z</Item>
                 <Item Key="Transaction">0</Item>
             </Hash>
         </Value>

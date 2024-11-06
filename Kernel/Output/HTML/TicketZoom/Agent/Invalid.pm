@@ -13,8 +13,7 @@ use parent 'Kernel::Output::HTML::TicketZoom::Agent::Base';
 
 use strict;
 use warnings;
-
-use Kernel::System::VariableCheck qw(IsPositiveInteger);
+use utf8;
 
 our @ObjectDependencies = (
     'Kernel::Config',

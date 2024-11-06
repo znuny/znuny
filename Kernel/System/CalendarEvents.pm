@@ -178,7 +178,7 @@ sub Parse {
     return if !keys %DataToParse && !IsArrayRefWithData( $ParsedData{Attachments} );
 
     # support for specified calendar extensions
-    # select each occurances content
+    # select each occurrences content
     my $CalendarEvents;
     if ( keys %DataToParse ) {
         $CalendarEvents = $Self->FindEvents(

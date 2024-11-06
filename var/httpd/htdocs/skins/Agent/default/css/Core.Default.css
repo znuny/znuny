@@ -42,7 +42,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         }
     }
 
-    /**
+    /***
     * @subsection  Fonts
     */
 
@@ -379,13 +379,13 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     * @subsection  Definition lists
     */
     dl {
-        padding-bottom: var(--padding-lg);
+        padding-bottom: var(--padding-sm);
     }
 
     dt {
         font-size: 14px;
         font-weight: var(--medium);
-        padding: var(--padding-lg) 0;
+        padding: var(--padding-sm) 0;
         color: var(--black);
         /*font-family: 'Inter'*/
         line-height: 1.3em;
@@ -398,7 +398,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     dl > div {
         display: flex;
         gap: var(--gap-xs);
-        padding-bottom: var(--padding-lg);
+        padding-bottom: var(--padding-sm);
         align-items: baseline;
     }
 
@@ -800,7 +800,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding: 0;
         background: transparent;
         position: relative;
-        overflow-y: hidden;
+        overflow-y: visible;
         overflow-x: auto;
         white-space: nowrap;
         box-shadow: none;
@@ -819,6 +819,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         position: relative;
         white-space: nowrap;
         text-transform: uppercase;
+        overflow-y: visible;
     }
 
     /*.BreadCrumb li > a,
@@ -835,9 +836,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     .BreadCrumb li > span {
         color: var(--bread-crumb-active);
-        /*font-size: var(--font-size-lg);*/
+        font-size: var(--font-size-sm);
         font-weight: var(--semi-bold);
-        overflow: hidden;
+        overflow-y: visible;
+        overflow-x: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         line-height: normal;
@@ -847,13 +849,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding-left: 0;
     }
 
-    /*
     .BreadCrumb li:last-child {
-        padding-right: 0;
-        padding-left: var(--padding-md);
-        overflow: hidden;
+        overflow-y: visible;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
     }
-    */
 
     .BreadCrumb li:last-child a{
         color: var(--bread-crumb-active);
@@ -1192,54 +1192,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .ui-menu-item:active,
     .ui-autocomplete .ui-menu-item-wrapper.ui-state-active {
         background: #eee;
-    }
-
-    /**
-    * @subsection  Icons
-    */
-    .IconInline {
-        display: inline-block;
-    }
-
-    .IconReady {
-        width: 16px;
-        height: 16px;
-        background-image: url(../img/icons/tick.png);
-    }
-
-    .IconNotReady {
-        /*width: 16px;
-        height: 16px;
-        background-image: url(../img/icons/cross.png);*/
-        max-width: var(--btn-max-width-md);
-        min-height: var(--btn-min-height);
-        background: var(--primary-color);
-        padding: var(--padding-xs) var(--padding-sm);
-        border-radius: var(--border-radius-xs);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: var(--main-transition);
-    }
-
-    .IconNotReady:hover {
-        background: var(--primary-color-darker);
-        cursor: pointer;
-    }
-
-    .IconNotReady::after {
-        content: 'View changes';
-        color: var(--btn-text-color);
-    }
-
-    .IconNotReady:hover::after {
-        color: var(--btn-primary-text-hover);
-    }
-
-    .IconNotReadyGrey {
-        width: 16px;
-        height: 16px;
-        background-image: url(../img/icons/cross_sw.png);
     }
 
     /**
@@ -1785,17 +1737,24 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border: var(--border-width) var(--border-solid) var(--border-color);
         border-radius: var(--border-radius-sm);
         width: 100%;
-        /*margin-top: var(--margin-md);*/
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-self: center;
+        align-content: center;
+        height: 72px;
+        line-height: 42px;
     }
 
-    input::-webkit-file-upload-button {
+    /* input::-webkit-file-upload-button {
         background: var(--primary-color);
         color: var(--white);
         border-radius: var(--border-radius-xs);
         border: 0;
         padding: 0 var(--padding-lg);
         min-height: var(--btn-min-height);
-    }
+    } */
 
     input::-webkit-file-upload-button:hover {
         color: var(--btn-primary-text-hover);
@@ -1803,10 +1762,113 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         cursor: pointer;
     }
 
-    input#FileUpload[type="file"] {
-        /*display: none;*/
+    /* input#FileUpload[type="file"]::before {
+        content: "Browse...";
+        width: auto;
+        min-height: var(--btn-min-height);
+        border: none;
+        border-radius: var(--border-radius-sm);
+        line-height: var(--btn-min-height);
+        font-weight: var(--semi-bold);
+        transition: var(--main-transition);
+        padding: var(--padding-md);
+        text-align: center;
+        font-size: var(--font-size-sm);
+        color: var(--btn-primary-text);
+        background: var(--primary-color);
+        border: var(--border-width) var(--border-solid) var(--primary-color);
+    } */
+
+
+    input#FileUpload[type="file"]:before {
+        content: "Browse...";
+        display: block;
+        position: absolute;
+        width: auto;
+        top: 14px;
+        left: 20px;
+        height: 30px;
+        border: none;
+        border-radius: 8px;
+        font-weight: var(--semi-bold);
+        transition: var(--main-transition);
+        padding: 5px 10px;
+        line-height: 30px;
+        text-align: center;
+        font-size: var(--font-size-sm);
+        color: var(--btn-primary-text);
+        background: var(--primary-color);
+        border: var(--border-width) var(--border-solid) var(--primary-color);
+        cursor: pointer;
     }
 
+    input#FileUpload[type="file"]:hover:before {
+        color: var(--btn-primary-text-hover);
+        background: var(--primary-color-darker);
+        border: var(--border-width) var(--border-solid) var(--primary-color-darker);
+        cursor: pointer;
+    }
+
+    input#FileUpload[type="file"]::-webkit-file-upload-button {
+        width: 80px;
+        height: 0;
+        margin: 0;
+        border: 0;
+        padding: 0;
+        overflow: hidden;
+        opacity: 0;
+        font-size: 0;
+        line-height: 48px;
+
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+
+        /* width: auto;
+        min-height: var(--btn-min-height);
+        border: none;
+        border-radius: var(--border-radius-sm);
+        line-height: var(--btn-min-height);
+        font-weight: var(--semi-bold);
+        transition: var(--main-transition);
+        padding: 0 var(--padding-md);
+        text-align: center;
+        font-size: var(--font-size-sm);
+        color: var(--btn-primary-text);
+        background: var(--primary-color);
+        border: var(--border-width) var(--border-solid) var(--primary-color); */
+    }
+
+    /*
+     *hack to style input file on firefox
+     */
+    @supports (-moz-appearance: none) {
+        input[type="file"]::file-selector-button {
+            width: auto;
+            min-height: var(--btn-min-height);
+            border: none;
+            border-radius: var(--border-radius-sm);
+            line-height: var(--btn-min-height);
+            font-weight: var(--semi-bold);
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            transition: var(--main-transition);
+            padding: 0 var(--padding-md);
+            text-align: center;
+            font-size: var(--font-size-sm);
+            color: var(--btn-primary-text);
+            background: var(--primary-color);
+            border: var(--border-width) var(--border-solid) var(--primary-color);
+        }
+
+        input[type=file]::file-selector-button:hover {
+            color: var(--btn-primary-text-hover);
+            background: var(--primary-color-darker);
+            border: var(--border-width) var(--border-solid) var(--primary-color-darker);
+            cursor: pointer;
+        }
+      }
 
     /**
     * @subsection AJAX Loader
@@ -1824,7 +1886,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     .AJAXLoader:after,
     #Canvas .Activity .Loader:after,
-    .Loading > .Header h2:after,
+    .Loading > .Header:after,
     .OverviewControl.Loading .ControlRow:after {
         -webkit-animation: fa-spin 2s infinite linear;
         animation: fa-spin 2s infinite linear;

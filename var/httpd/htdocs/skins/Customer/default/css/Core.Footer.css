@@ -1,0 +1,97 @@
+/*
+Copyright (C) 2001-2021 OTRS AG, https://otrs.com/
+Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (GPL). If you
+did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
+*/
+
+/**
+ * @package     Skin "Default"
+ * @section     Footer
+ */
+
+@media screen,projection,tv,handheld {
+
+
+#Footer {
+    margin-top: auto;
+    min-height: 15px;
+    padding: 12px 9px 8px;
+    font-size: 10px;
+    clear: both;
+    border-top: var(--border-width) var(--border-solid) var(--border-color);
+    text-align: center;
+    position: relative;
+    background: var(--white);
+    display: block;
+}
+
+#Footer a,
+#Footer ul li a {
+    color: #bbb;
+}
+
+#Footer a:hover,
+#Footer ul li a:hover {
+    text-decoration: underline;
+}
+
+.RTL #Footer ul {
+    left: auto;
+    right: 212px;
+}
+
+#Footer ul li {
+    float: left;
+    padding: 0 4px 0 4px;
+}
+
+.RTL #Footer ul li {
+    float: right;
+}
+
+#Footer ul li:first-child {
+    border: none;
+}
+
+#Footer a {
+    color: #999;
+    font-size: 11px;
+    display: inline-block;
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 5px;
+    transition: all ease 0.4s;
+    text-transform: none;
+}
+
+#Footer a span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url(../img/signet_small_bw.png);
+    background-size: cover;
+    margin: 0px auto 10px auto;
+    opacity: 0.3;
+    transition: all ease 0.4s;
+}
+
+#Footer a:hover {
+    text-decoration: none;
+    color: #555;
+}
+
+#Footer a:hover span {
+    opacity: 1;
+    width: 20px;
+    height: 20px;
+    background: url(../img/signet_small_bw_closed.png);
+    background-size: cover;
+    animation-name: ZnunyEat;
+    animation-duration: 0.7s;
+    animation-iteration-count: infinite
+}
+
+} /* end @media */

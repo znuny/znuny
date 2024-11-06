@@ -128,13 +128,17 @@ $Selenium->RunTest(
             "${ScriptAlias}index.pl?Action=AgentStatistics;Subaction=Overview;"
         );
 
-        # Delete test stats.
+        # Delete imported test stats.
         $Selenium->find_element(
-            "//a[contains(\@href, \'Action=AgentStatistics;Subaction=DeleteAction;StatID=$StatsIDLast\' )]"
+            "a.DeleteStat[data-statid=\"$StatsIDLast\"]", 'css'
         )->click();
+        $Selenium->WaitFor(
+            JavaScript => "return typeof(\$) === 'function' && \$('.Dialog.Modal #DialogButton2').length;"
+        );
 
-        $Selenium->WaitFor( AlertPresent => 1 );
-        $Selenium->accept_alert();
+        # Confirm JS error.
+        $Selenium->find_element( "#DialogButton2", 'css' )->click();
+        $Selenium->WaitFor( JavaScript => "return !\$('.Dialog.Modal').length;" );
 
         $Selenium->WaitFor(
             JavaScript =>

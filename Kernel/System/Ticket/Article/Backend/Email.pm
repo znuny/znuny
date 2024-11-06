@@ -290,6 +290,30 @@ sub ArticleSend {
     );
     return if !$ArticleID;
 
+    # Set X-Priority email header based on configured ticket priority mapping
+    if ( $Param{SenderType} eq 'agent' || $Param{SenderType} eq 'system' ) {
+        my $PriorityEmailMapping = $ConfigObject->Get('PriorityEmailMapping') || {};
+        my $HeaderPriority;
+
+        my $TicketObject = $Kernel::OM->Get('Kernel::System::Ticket');
+        my %Ticket       = $TicketObject->TicketGet(
+            TicketID => $Param{TicketID},
+            UserID   => 1,
+        );
+
+        if (
+            $PriorityEmailMapping->{ $Param{SenderType} }
+            && $PriorityEmailMapping->{ $Param{SenderType} }->{ $Ticket{Priority} }
+            )
+        {
+            $HeaderPriority = $PriorityEmailMapping->{ $Param{SenderType} }->{ $Ticket{Priority} };
+        }
+
+        if ( $HeaderPriority && $HeaderPriority =~ m{^\d$} ) {
+            $Param{CustomHeaders}->{'X-Priority'} = $HeaderPriority;
+        }
+    }
+
     # Send the mail
     my $Result = $Kernel::OM->Get('Kernel::System::Email')->Send(
         %Param,
@@ -869,7 +893,7 @@ Get the Transmission Error entry for a given article.
         CreateTime => '2017-01-01 01:02:03',
         Status     => 'Failed',
     }
-    or undef in case of failure to retrive a record from the database.
+    or undef in case of failure to retrieve a record from the database.
 
 =cut
 

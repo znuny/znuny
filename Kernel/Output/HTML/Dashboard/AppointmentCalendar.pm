@@ -67,7 +67,7 @@ sub new {
         $Self->{Filter} = $Self->{$PreferencesKey} || $Self->{Config}->{Filter} || 'Today';
     }
 
-    # setup the prefrences keys
+    # setup the preferences keys
     $Self->{PrefKeyShown}   = 'AppointmentDashboardPref' . $Self->{Name} . '-Shown';
     $Self->{PrefKeyRefresh} = 'AppointmentDashboardPref' . $Self->{Name} . '-Refresh';
 

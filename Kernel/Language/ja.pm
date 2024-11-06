@@ -10,6 +10,8 @@
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
+## nofilter(TidyAll::Plugin::Znuny::Translation::JavaScriptStrings)
+
 package Kernel::Language::ja;
 
 use strict;
@@ -28,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y/%M/%D';
     $Self->{DateInputFormat}     = '%Y/%M/%D';
     $Self->{DateInputFormatLong} = '%Y/%M/%D - %T';
-    $Self->{Completeness}        = 0.687758136461259;
+    $Self->{Completeness}        = 0.684462020102159;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -568,7 +570,7 @@ sub Data {
         'Assignment of dynamic fields to screens' => '',
         'Overview' => '一覧',
         'Screens' => '',
-        'Default columns' => '',
+        'Overview Default Columns' => '',
         'Add dynamic field' => 'ダイナミック・フィールドを追加',
         'You can assign elements by dragging and dropping them to the lists of available, disabled, assigned and required elements.' =>
             '',
@@ -618,6 +620,9 @@ sub Data {
         'Backend' => 'バックエンド',
         'Backend which will be used for this dynamic field.' => '',
         'Backend documentation' => '',
+        'Cache TTL' => '',
+        'TTL (in seconds) for caching request results. Leave empty or set to 0 to disable caching.' =>
+            '',
         'Key for search' => '',
         'The keys (separated by comma) that will be searched when using the autocomplete while entering a value for the dynamic field.' =>
             '',
@@ -640,9 +645,6 @@ sub Data {
             '',
         'Query delay' => '',
         'Delay (in milliseconds) until the AJAX request will be sent.' =>
-            '',
-        'Autocompletion for search fields' => '',
-        'Use autocompletion for search fields instead of a static selection of values that are currently selected in Znuny (in tickets, articles, etc.). This increases performance if many thousands of values of the dynamic field have been selected. This setting does not affect the search field displayed in AgentTicketSearch and CustomerTicketSearch.' =>
             '',
         'Input field width' => '',
         'Width of the input field (percentage).' => '',
@@ -1092,9 +1094,6 @@ sub Data {
         'Send Keep-Alive' => 'Keep-Aliveを送信',
         'This configuration defines if incoming connections should get closed or kept alive.' =>
             '',
-        'Additional response headers' => '応答ヘッダーを追加',
-        'Header' => 'ヘッダー',
-        'Add response header' => '応答ヘッダーを追加する',
         'Endpoint' => 'エンドポイント',
         'URI to indicate specific location for accessing a web service.' =>
             '',
@@ -1183,7 +1182,10 @@ sub Data {
             'この呼び出し元のリクエストに使用する、特定のHTTPコマンド(オプション)',
         'Default command' => 'デフォルトコマンド',
         'The default HTTP command to use for the requests.' => '要求に使用される標準のHTTPコマンド',
+        'Additional response headers' => '応答ヘッダーを追加',
         'Additional request headers' => '',
+        'Header' => 'ヘッダー',
+        'Add response header' => '応答ヘッダーを追加する',
         'Add request header' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminGenericInterfaceTransportHTTPSOAP.tt
@@ -1545,9 +1547,11 @@ sub Data {
         'Date' => '日付',
         'List of Files' => 'ファイル一覧',
         'Permission' => '権限',
+        'Size' => 'サイズ',
+        'Problem' => '問題',
+        'OK' => 'OK',
         'Download file from package!' => 'パッケージからファイルをダウンロードしてください。',
         'Required' => '必要項目',
-        'Size' => 'サイズ',
         'Primary Key' => '主キー',
         'Auto Increment' => '自動カウントアップ',
         'SQL' => 'SQL',
@@ -1687,7 +1691,7 @@ sub Data {
         'Available Fields' => '利用可能な領域',
         'Filter available fields' => '利用可能な領域をフィルタ',
         'Assigned Fields' => '割り当てられた領域',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => 'コミュニケーション・チャネル',
         'Is visible for customer' => '顧客が閲覧可能',
         'Text Template' => '本文テンプレート',
@@ -1746,6 +1750,8 @@ sub Data {
         'Do you really want to delete this Activity?' => 'このアクティビティを本当に削除しますか？',
         'Do you really want to delete this Activity Dialog?' => 'このアクティビティダイアログを本当に削除しますか？',
         'Do you really want to delete this Transition?' => 'この遷移を本当に削除しますか？',
+        'You can not edit a transition before it\'s connected to two activities.' =>
+            '',
         'Do you really want to delete this Transition Action?' => 'この遷移動作を本当に削除しますか？',
         'Do you really want to remove this activity from the canvas? This can only be undone by leaving this screen without saving.' =>
             '本当にこのアクティビティをキャンバス上から削除してもよろしいですか？保存せずにこの画面から移動する場合を除いてこの操作の取り消しはできません。',
@@ -2032,6 +2038,7 @@ sub Data {
         'Support Data' => 'サポートデータ',
         'Error: Support data could not be collected (%s).' => 'エラー：サポートデータを収集できませんでした。（%s）',
         'Support Data Collector' => 'サポート情報コレクター',
+        'Delete cache' => '',
         'Details' => '詳細',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemAddress.tt
@@ -2129,7 +2136,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemFiles.tt
         'System file support' => '',
-        'Delete cache' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemFiles/Widget.tt
         'Permissions' => '権限',
@@ -2364,30 +2370,27 @@ sub Data {
         'in' => '＞',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
+        'All' => '全て',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => '続き',
         'No Data Available.' => '',
         'Available Columns' => '利用可能な列',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => '表示する列 (ドラッグ&ドロップで並び替えできます)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '顧客関係を変更',
         'Open' => '対応中',
         'Closed' => 'クローズ',
+        'Phone ticket' => '電話チケット',
+        'Email ticket' => 'メールチケット',
         '%s open ticket(s) of %s' => '%sのオープンチケット%s',
         '%s closed ticket(s) of %s' => '%sのクローズチケット%s',
+        'New phone ticket from %s' => '%sからの新規電話チケット',
+        'New email ticket to %s' => '%s宛の新規メールチケット',
         'Edit customer ID' => '顧客IDを編集',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDStatus.tt
@@ -2402,10 +2405,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerUserList.tt
         'Customer user information' => '顧客ユーザー情報',
-        'Phone ticket' => '電話チケット',
-        'Email ticket' => 'メールチケット',
-        'New phone ticket from %s' => '%sからの新規電話チケット',
-        'New email ticket to %s' => '%s宛の新規メールチケット',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardMyLastChangedTickets.tt
         'No tickets found.' => '',
@@ -2513,7 +2512,6 @@ sub Data {
         'Split' => '分割',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentStatisticsAdd.tt
-        'Read more about statistics in Znuny' => 'Znunyのレポートについて詳細を読む',
         'Statistics Management' => 'レポート管理',
         'Add Statistics' => 'レポートを追加',
         'Dynamic Matrix' => '集計',
@@ -2613,13 +2611,16 @@ sub Data {
         'Link together' => '一緒にリンク',
         'Link to parent' => '親へリンク',
         'Unlock tickets' => 'チケットのロック解除',
+        'Watch tickets' => '',
+        'Mark tickets as seen' => '',
+        'Mark tickets as unseen' => '',
         'Execute Bulk Action' => '一括処理を実行',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '%s%s%sの返信を作成',
         'Date Invalid!' => '日時が無効です。',
-        ' Select one or more recipients from the customer user address book.' =>
-            '',
+        'Select one or more recipients from the customer user address book.' =>
+            '顧客ユーザーのアドレス帳から1人以上の受信者を選択します。',
         'Customer user address book' => '顧客ユーザーのアドレス帳',
         'This address is registered as system address and cannot be used: %s' =>
             '',
@@ -2628,12 +2629,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'このエントリーを削除し、正しい値で新しいエントリーを追加してください。',
         'This address already exists on the address list.' => 'この住所はすでにアドレスリストに存在します。',
-        ' Cc' => '',
         'Remove Cc' => 'Ccを削除',
         'Bcc' => 'Bcc',
-        ' Bcc' => '',
         'Remove Bcc' => 'Bccを削除',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '%s%s%sの顧客を変更',
@@ -2642,23 +2640,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => '新規メールチケットの作成',
-        ' Example Template' => '',
         'Example Template' => 'テンプレート例',
         'To customer user' => '宛先顧客ユーザー',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => '',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => '',
         'Remove Ticket Customer User' => 'チケットの顧客ユーザーを削除',
         'From queue' => 'キューから',
-        ' Get all' => '',
         'Get all' => '全てを取得',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '%s%s%sの送信メール',
-        'Select one or more recipients from the customer user address book.' =>
-            '顧客ユーザーのアドレス帳から1人以上の受信者を選択します。',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '%s%s%sのメールを再送信',
@@ -2711,40 +2702,36 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'チケットデータがありません',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => '送信者',
+        'Customer User Name' => '顧客ユーザー名',
         'Impact' => '影響度',
-        'CustomerID' => '顧客ID',
         'Update Time' => '更新期限',
         'Solution Time' => '解決期限',
         'First Response Time' => '初回応答期限',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => '別のキューへチケットを移転',
         'Change queue' => 'キュー変更',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
         'Remove active filters for this screen.' => 'この画面のアクティブなフィルターを削除します。',
         'Clear all filters' => '',
         'Remove mention' => '',
+        'Remove from list of watched tickets' => '監視チケットリストから削除',
         'Tickets per page' => 'ページ毎のチケット数',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => 'チャンネルがありません。',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => '一覧のリセット',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => '新規電話チケットに分割',
         'Create New Phone Ticket' => '新規電話チケットの作成',
         'Please include at least one customer for the ticket.' => 'チケットには少なくとも1名のお客様を含めるようにして下さい。',
-        'Select this customer as the main customer.' => '',
         'To queue' => 'キュー',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2757,7 +2744,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => '新しいプロセスチケットを作成',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => 'チケットをプロセスに登録する',
@@ -2801,7 +2787,6 @@ sub Data {
         'Save as default' => 'ドラフトとして保存',
         'Drafts' => '下書き',
         'by' => 'by',
-        'Move ticket to a different queue' => '別のキューへチケットを移転',
         'Change Queue' => 'キューを変更',
         'There are no dialogs available at this point in the process.' =>
             'このプロセスは完了しました。',
@@ -2842,7 +2827,6 @@ sub Data {
         'Close this message' => 'このメッセージを閉じる',
         'Image' => '画像',
         'PDF' => 'PDF',
-        'Unknown' => 'アンノウン',
         'View' => 'ビュー',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketZoom/LinkTable.tt
@@ -2857,7 +2841,6 @@ sub Data {
         'is invalid' => '',
         'Pending till' => '保留時間',
         'Locked' => 'ロック状態',
-        '%s Ticket(s)' => '%sチケット',
         'Accounted time' => '作業時間',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/ArticleContent/Invalid.tt
@@ -2882,7 +2865,6 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerAccept.tt
         'Dear Customer,' => 'お客様各位',
         'thank you for using our services.' => '私たちのサービスをご利用いただきありがとうございます。',
-        'Yes, I accept your license.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerCompany/TicketCustomerIDSelection.tt
         'The customer ID is not changeable, no other customer ID can be assigned to this ticket.' =>
@@ -2894,8 +2876,8 @@ sub Data {
         'From assigned Customer IDs' => '割り当てられた顧客IDから',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerError.tt
+        'Error' => 'エラー',
         'An Error Occurred' => 'エラーが発生しました。',
-        'Error Details' => 'エラーの詳細',
         'Traceback' => 'トレースバック',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerFooter.tt
@@ -2934,6 +2916,7 @@ sub Data {
         'Request New Password' => '新規パスワードを申請',
         'Your User Name' => 'ユーザー名',
         'A new password will be sent to your email address.' => '登録されたメールアドレスに新しいパスワードを送信します。',
+        'Back to login' => 'ログイン画面に戻る',
         'Create Account' => 'アカウント作成',
         'Please fill out this form to receive login credentials.' => '下記のフォームにログイン時に必要となる事項を入力してください。',
         'How we should address you' => '',
@@ -2945,11 +2928,10 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => '新規チケット',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'チケット',
         'Welcome!' => 'ようこそ！',
         'Please click the button below to create your first ticket.' => 'チケットを作成するために下のボタンをクリックしてください。',
         'Create your first ticket' => 'チケット作成',
@@ -2958,12 +2940,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'プロファイル',
+        'Template Name' => 'テンプレート名',
         'e. g. 10*5155 or 105658*' => '例: 10*5155 または 105658*',
+        'CustomerID' => '顧客ID',
         'Types' => 'タイプ',
         'Limitation' => '',
         'No time settings' => '時間設定なし',
-        'All' => '全て',
         'Specific date' => '特定の日付',
         'Only tickets created' => '作成されたチケットのみ',
         'Date range' => '日付の範囲',
@@ -2972,7 +2956,6 @@ sub Data {
         'Save Search as Template?' => 'テンプレートとして検索を保存しますか？',
         'Save as Template' => 'テンプレートとして保存',
         'Save as Template?' => 'テンプレートを保存しますか？',
-        'Template Name' => 'テンプレート名',
         'Pick a profile name' => 'テンプレート名',
         'Output to' => '出力: ',
 
@@ -2997,6 +2980,7 @@ sub Data {
         'Ticket fields' => 'チケット・フィールド',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Error.tt
+        'Error Details' => 'エラーの詳細',
         'Expand' => '展開',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/FormElements/AttachmentList.tt
@@ -3011,6 +2995,8 @@ sub Data {
         'You have loaded the draft "%s". You last changed it %s.' => '下書き"%s"を読み込んでいます。 あなたは最後に%sを変更しました。',
         'You have loaded the draft "%s". It was last changed %s by %s.' =>
             'ドラフト"%s"を読み込んでいます。 %sによって%sが最後に変更されました。',
+        'Please note that you have already one or more saved drafts for this action.' =>
+            '',
         'Please note that this draft is outdated because the ticket was modified since this draft was created.' =>
             'このドラフトは、このドラフトが作成されてから改訂されたため、古くなっています。',
 
@@ -3027,6 +3013,7 @@ sub Data {
         'Personal views' => '',
         'Last Views' => '',
         'Search tools' => '',
+        'SearchTemplate' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Installer.tt
         'JavaScript not available' => 'JavaScriptが利用できません。',
@@ -3071,7 +3058,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBResult.tt
         'Done' => '完了',
-        'Error' => 'エラー',
         'Database setup successful!' => 'データベース　設定成功',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/InstallerDBStart.tt
@@ -3141,7 +3127,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/Login.tt
         'Lost your password?' => 'パスワードを忘れた方',
-        'Back to login' => 'ログイン画面に戻る',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/MetaFloater.tt
         'Scale preview content' => '',
@@ -3200,7 +3185,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '予定の属性を取得すること',
-        ' e. g.' => '例',
+        'e. g.' => '例',
         'To get the first 20 character of the appointment title.' => 'アポイントの表題から最初の20文字を取得',
         'To get the calendar attribute' => 'カレンダーの属性を取得すること',
         'Attributes of the recipient user for the notification' => '通知する受信者ユーザーの属性',
@@ -3232,9 +3217,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => 'チケットのダイナミック・フィールドの内部用キー値',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             'チケットのダイナミック・フィールドの表示値。ドロップダウンまたは複数選択領域で利用可能',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => '例',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -3337,8 +3319,6 @@ sub Data {
         'Enable' => '有効',
         'Reset this setting to its default state' => 'この設定をデフォルトのステータスにリセットする',
         'Reset setting' => 'リセット設定',
-        'Show user specific changes for this setting' => 'この設定のユーザー固有の変更を表示する',
-        'Show user settings' => 'ユーザー設定を表示する',
         'Copy a direct link to this setting to your clipboard' => 'この設定への直接リンクをクリップボードにコピーする',
         'Copy direct link' => 'ダイレクトリンクをコピーする',
         'Remove this setting from your favorites setting' => 'この設定をお気に入り設定から削除',
@@ -3420,6 +3400,7 @@ sub Data {
         'Process state' => 'プロセス・ステータス',
         'Running' => '実行中',
         'Finished' => '終了しました',
+        'Unknown' => 'アンノウン',
         'No package information available.' => '利用可能なパッケージ情報はありません。',
 
         # JS Template: Kernel/Output/JavaScript/Templates/Standard/SysConfig/AddButton.html.tmpl
@@ -3855,7 +3836,6 @@ sub Data {
         'No such file %s in package!' => 'パッケージ内にファイル %s はありません！',
         'No such file %s in local file system!' => 'ローカルファイルシステム内にファイル %s はありません！',
         'Can\'t read %s!' => '%s を読み込めません！',
-        'File is OK' => 'ファイルは正常です',
         'Package has locally modified files.' => 'パッケージにはローカルに変更されたファイルがあります。',
         'Not Started' => '始まっていない',
         'Updated' => '更新しました',
@@ -4148,7 +4128,6 @@ sub Data {
         'Can\'t get element data of %s!' => '',
         'Can\'t get filter content data of %s!' => '',
         'Customer Name' => '顧客名',
-        'Customer User Name' => '顧客ユーザー名',
 
         # Perl Module: Kernel/Modules/AgentLinkObject.pm
         'Need SourceObject and SourceKey!' => 'ソース・オブジェクトとソース・キーが必要です！',
@@ -4476,11 +4455,17 @@ sub Data {
             'Perlモジュール DBD::%sがインストールされていないため、DBに接続できませんでした。',
         'Can\'t connect to database, read comment!' => 'データベースに接続できません、コメントを読んで下さい！',
         'Database already contains data - it should be empty!' => '既にデータベースにデータが含まれている場合、空にしなければなりません。',
+        'Error: You have the wrong database version installed (%s). You need at least version %s! ' =>
+            '',
         'Error: Please make sure your database accepts packages over %s MB in size (it currently only accepts packages up to %s MB). Please adapt the max_allowed_packet setting of your database in order to avoid errors.' =>
             '',
         'Error: Please set the value for innodb_log_file_size on your database to at least %s MB (current: %s MB, recommended: %s MB). For more information, please have a look at %s.' =>
             'innodb_log_file_sizeの設定を少なくとも%s MB以上にしてください(現在: %s MB, 推奨: %s MB)。詳細は%sを参照して下さい。',
-        'Wrong database collation (%s is %s, but it needs to be utf8).' =>
+        'Error: Please set the value for innodb_file_per_table on your database to ON.' =>
+            '',
+        'Error: Please set the value for innodb_default_row_format on your database to dynamic.' =>
+            '',
+        'Wrong default storage engine (%s is %s, but it needs to be InnoDB).' =>
             '',
 
         # Perl Module: Kernel/Modules/Mentions.pm
@@ -4531,6 +4516,10 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/AgentTicketPrint.pm
         'Print this article' => 'この記事を印刷',
+
+        # Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
+        'Mark article as unseen' => '',
+        'Mark as unseen' => '',
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/MarkAsImportant.pm
         'Mark' => 'マーク',
@@ -4789,7 +4778,6 @@ sub Data {
 
         # Perl Module: Kernel/Output/HTML/TicketMenu/TicketWatcher.pm
         'Unwatch' => '監視解除',
-        'Remove from list of watched tickets' => '監視チケットリストから削除',
         'Watch' => '監視',
         'Add to list of watched tickets' => '監視チケットリストに追加',
 
@@ -5025,13 +5013,13 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/Charset.pm
         'Client Connection Charset' => 'クライアントコネクションのキャラクターセット',
-        'Setting character_set_client needs to be utf8.' => 'character_set_client は utf8 に設定する必要があります',
+        'Setting character_set_client needs to be utf8mb4.' => '',
         'Server Database Charset' => 'データーベースサーバーのキャラクターセット',
-        'This character set is not yet supported, please see https://bugs.otrs.org/show_bug.cgi?id=12361. Please convert your database to the character set \'utf8\'.' =>
-            '',
-        'The setting character_set_database needs to be \'utf8\'.' => '',
+        'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'Table キャラクターセット',
-        'There were tables found which do not have \'utf8\' as charset.' =>
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
+        'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/mysql/InnoDBLogFileSize.pm
@@ -5086,7 +5074,7 @@ sub Data {
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/postgresql/Version.pm
         'PostgreSQL 9.2 or higher is required.' => '',
 
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionOTRS.pm
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OS/DiskPartitionZnuny.pm
         'Operating System' => 'オペレーションシステム',
         'Znuny Disk Partition' => 'Znuny ディスクパーティション',
 
@@ -5133,165 +5121,6 @@ sub Data {
         'There should be more than 60% free swap space.' => '未利用のSwap領域が少なくとも 60 % 必要です',
         'There should be no more than 200 MB swap space used.' => '200MB 以上のSwap 領域が存在してはいけない',
 
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticleSearchIndexStatus.pm
-        'Znuny' => '',
-        'Article Search Index Status' => '記事検索インデックスのステータス',
-        'Indexed Articles' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ArticlesPerCommunicationChannel.pm
-        'Articles Per Communication Channel' => 'コミュニケーション・チャンネルごとの記事',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLog.pm
-        'Incoming communications' => '着信コミュニケーション',
-        'Outgoing communications' => '発信コミュニケーション',
-        'Failed communications' => 'コミュニケーションの失敗',
-        'Average processing time of communications (s)' => 'コミュニケーションの平均処理時間(s)',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/CommunicationLogAccountStatus.pm
-        'Communication Log Account Status (last 24 hours)' => 'コミュニケーション・ログのアカウント・ステータス（24時間以内）',
-        'No connections found.' => '',
-        'ok' => '',
-        'permanent connection errors' => '',
-        'intermittent connection errors' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/ConfigSettings.pm
-        'Config Settings' => 'Config 設定',
-        'Could not determine value.' => 'value を特定できませんでした',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DaemonRunning.pm
-        'Daemon' => 'デーモン',
-        'Daemon is running.' => 'デーモンは稼働中です。',
-        'Daemon is not running.' => 'デーモンは稼働していません。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DatabaseRecords.pm
-        'Database Records' => 'データーベースレコード',
-        'Tickets' => 'チケット',
-        'Ticket History Entries' => 'チケット履歴エントリ',
-        'Articles' => '記事',
-        'Attachments (DB, Without HTML)' => '添付(DB, HTML以外)',
-        'Customers With At Least One Ticket' => '一つ以上のチケットがある顧客',
-        'Dynamic Field Values' => 'ダイナミック・フィールドの値',
-        'Invalid Dynamic Fields' => '不正なダイナミック・フィールドです',
-        'Invalid Dynamic Field Values' => 'ダイナミック・フィールドの値は不正です',
-        'GenericInterface Webservices' => 'ジェネリックインターフェース・Webサービス',
-        'Process Tickets' => 'プロセス・チケット',
-        'Months Between First And Last Ticket' => '最初と最後のチケットとの間には月間',
-        'Tickets Per Month (avg)' => '月毎のチケット数(平均)',
-        'Open Tickets' => '対応中チケット',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultSOAPUser.pm
-        'Default SOAP Username And Password' => 'デフォルトのSOAPユーザ名とパスワード',
-        'Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it.' =>
-            'セキュリティーリスク: SOAP::User 及び SOAP::Password のデフォルト設定を利用しています、変更を行ってください。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/DefaultUser.pm
-        'Default Admin Password' => '管理者のデフォルトパスワード',
-        'Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account.' =>
-            'セキュリティーリスク: エージェントアカウント root@localhost はいまだにデフォルトパスワードを利用しています、変更を行ってください。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/EmailQueue.pm
-        'Email Sending Queue' => 'Eメール送信キュー',
-        'Emails queued for sending' => '送信待ちのEメール',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FQDN.pm
-        'FQDN (domain name)' => 'FQDN (ドメインネーム)',
-        'Please configure your FQDN setting.' => 'FQDNの設定を確認して下さい。',
-        'Domain Name' => 'ドメインネーム',
-        'Your FQDN setting is invalid.' => 'FQDNの設定が不正です',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/FileSystemWritable.pm
-        'File System Writable' => '書き込み可能なファイルシステム',
-        'The file system on your Znuny partition is not writable.' => 'Znunyパーティション上のファイルシステムは書き込み可能ではありません。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/LegacyConfigBackups.pm
-        'Legacy Configuration Backups' => '従来構成のバックアップ',
-        'No legacy configuration backup files found.' => '従来構成のバックアップファイルは見つかりませんでした。',
-        'Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages.' =>
-            '',
-        'Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/MultipleJSFileLoad.pm
-        'Views with multiple loaded JavaScript files' => '',
-        'The following JavaScript files loaded multiple times:' => '',
-        'Files' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageDeployment.pm
-        'Package Installation Status' => 'パッケージの導入状態',
-        'Some packages have locally modified files.' => 'いくつかのパッケージがローカルで修正されています。',
-        'Some packages are not correctly installed.' => '正常にインストールされていないパッケージが存在します',
-        'Package Framework Version Status' => 'パッケージフレームワークバージョン',
-        'Some packages are not allowed for the current framework version.' =>
-            'いくつかのパッケージは現在のフレームワークのバージョンに対応していません。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/PackageList.pm
-        'Package List' => 'パッケージリスト',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SessionConfigSettings.pm
-        'Session Config Settings' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SpoolMails.pm
-        'Spooled Emails' => 'スプールされたメール',
-        'There are emails in var/spool that Znuny could not process.' => 'Znunyが処理できなかったメールがvar/spool以下に存在しています。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/SystemID.pm
-        'Your SystemID setting is invalid, it should only contain digits.' =>
-            'あなたのSystemID設定は不正です。数字以外は利用できません。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/DefaultType.pm
-        'Default Ticket Type' => '標準のチケットタイプ',
-        'The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type.' =>
-            '設定された標準のチケットタイプは不正か存在していません。Ticket::Type::Default設定を確認し、正しいチケットタイプを指定してください。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/IndexModule.pm
-        'Ticket Index Module' => 'チケットインデクスモジュール',
-        'You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information.' =>
-            'システムにチケットが60,000以上あるため、バックエンドにはStaticDBを利用するべきです。詳細は管理者マニュアル(パフォーマンスチューニング)を参照してください。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/InvalidUsersWithLockedTickets.pm
-        'Invalid Users with Locked Tickets' => '',
-        'There are invalid users with locked tickets.' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/OpenTickets.pm
-        'You should not have more than 8,000 open tickets in your system.' =>
-            'システム内にチケットが 8,000以上オープンにしないでください',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/SearchIndexModule.pm
-        'Ticket Search Index Module' => 'チケット検索インデックス・モジュール',
-        'The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches.' =>
-            '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Ticket/StaticDBOrphanedRecords.pm
-        'Orphaned Records In ticket_lock_index Table' => 'ticket_lock_indexテーブルに孤立したレコード',
-        'Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
-            'テーブル ticket_lock_indexに孤立したレコードが存在しています。 StaticDBのインデックスを正しくするためにbin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup"を実行してください。',
-        'Orphaned Records In ticket_index Table' => 'ticket_indexテーブルに孤立したレコード',
-        'Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
-            'テーブル ticket_indexに孤立したレコードが存在しています。 StaticDBのインデックスを正しくするためにbin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" を実行してください。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/TimeSettings.pm
-        'Time Settings' => '時刻設定',
-        'Server time zone' => 'サーバのタイムゾーン',
-        'Znuny time zone' => 'Znunyのタイムゾーン',
-        'Znuny time zone is not set.' => 'Znunyのタイムゾーンが設定されていません。',
-        'User default time zone' => 'ユーザーのデフォルトタイムゾーン',
-        'User default time zone is not set.' => 'ユーザーのデフォルトのタイムゾーンが設定されていません。',
-        'Calendar time zone is not set.' => 'カレンダーのタイムゾーンが設定されていません。',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentSkinUsage.pm
-        'UI - Agent Skin Usage' => 'UI - 担当者スキンの使用状況',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/AgentThemeUsage.pm
-        'UI - Agent Theme Usage' => 'UI - 担当者のテーマ使用状況',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/UI/SpecialStats.pm
-        'UI - Special Statistics' => 'UI - 特殊レポート',
-        'Agents using custom main menu ordering' => 'カスタムメインメニューのオーダーを使用する担当者',
-        'Agents using favourites for the admin overview' => '',
-
-        # Perl Module: Kernel/System/SupportDataCollector/Plugin/OTRS/Version.pm
-        'Znuny Version' => 'Znunyバージョン',
-
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Webserver/Apache/LoadedModules.pm
         'Webserver' => 'Webサーバー',
         'Loaded Apache Modules' => 'ロードされたApacheモジュール',
@@ -5329,13 +5158,167 @@ sub Data {
         'Webserver Version' => 'Webサイトバージョン',
         'Could not determine webserver version.' => 'WEBサーバのバージョンを決定できません。',
 
-        # Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/OTRS/ConcurrentUsers.pm
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticleSearchIndexStatus.pm
+        'Znuny' => '',
+        'Article Search Index Status' => '記事検索インデックスのステータス',
+        'Indexed Articles' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ArticlesPerCommunicationChannel.pm
+        'Articles Per Communication Channel' => 'コミュニケーション・チャンネルごとの記事',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLog.pm
+        'Incoming communications' => '着信コミュニケーション',
+        'Outgoing communications' => '発信コミュニケーション',
+        'Failed communications' => 'コミュニケーションの失敗',
+        'Average processing time of communications (s)' => 'コミュニケーションの平均処理時間(s)',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/CommunicationLogAccountStatus.pm
+        'Communication Log Account Status (last 24 hours)' => 'コミュニケーション・ログのアカウント・ステータス（24時間以内）',
+        'No connections found.' => '',
+        'ok' => '',
+        'permanent connection errors' => '',
+        'intermittent connection errors' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/ConfigSettings.pm
+        'Config Settings' => 'Config 設定',
+        'Could not determine value.' => 'value を特定できませんでした',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DaemonRunning.pm
+        'Daemon' => 'デーモン',
+        'Daemon is running.' => 'デーモンは稼働中です。',
+        'Daemon is not running.' => 'デーモンは稼働していません。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
+        'Database Records' => 'データーベースレコード',
+        'Ticket History Entries' => 'チケット履歴エントリ',
+        'Articles' => '記事',
+        'Attachments (DB, Without HTML)' => '添付(DB, HTML以外)',
+        'Customers With At Least One Ticket' => '一つ以上のチケットがある顧客',
+        'Dynamic Field Values' => 'ダイナミック・フィールドの値',
+        'Invalid Dynamic Fields' => '不正なダイナミック・フィールドです',
+        'Invalid Dynamic Field Values' => 'ダイナミック・フィールドの値は不正です',
+        'GenericInterface Webservices' => 'ジェネリックインターフェース・Webサービス',
+        'Process Tickets' => 'プロセス・チケット',
+        'Months Between First And Last Ticket' => '最初と最後のチケットとの間には月間',
+        'Tickets Per Month (avg)' => '月毎のチケット数(平均)',
+        'Open Tickets' => '対応中チケット',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultSOAPUser.pm
+        'Default SOAP Username And Password' => 'デフォルトのSOAPユーザ名とパスワード',
+        'Security risk: you use the default setting for SOAP::User and SOAP::Password. Please change it.' =>
+            'セキュリティーリスク: SOAP::User 及び SOAP::Password のデフォルト設定を利用しています、変更を行ってください。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DefaultUser.pm
+        'Default Admin Password' => '管理者のデフォルトパスワード',
+        'Security risk: the agent account root@localhost still has the default password. Please change it or invalidate the account.' =>
+            'セキュリティーリスク: エージェントアカウント root@localhost はいまだにデフォルトパスワードを利用しています、変更を行ってください。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/EmailQueue.pm
+        'Email Sending Queue' => 'Eメール送信キュー',
+        'Emails queued for sending' => '送信待ちのEメール',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FQDN.pm
+        'FQDN (domain name)' => 'FQDN (ドメインネーム)',
+        'Please configure your FQDN setting.' => 'FQDNの設定を確認して下さい。',
+        'Domain Name' => 'ドメインネーム',
+        'Your FQDN setting is invalid.' => 'FQDNの設定が不正です',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/FileSystemWritable.pm
+        'File System Writable' => '書き込み可能なファイルシステム',
+        'The file system on your Znuny partition is not writable.' => 'Znunyパーティション上のファイルシステムは書き込み可能ではありません。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/LegacyConfigBackups.pm
+        'Legacy Configuration Backups' => '従来構成のバックアップ',
+        'No legacy configuration backup files found.' => '従来構成のバックアップファイルは見つかりませんでした。',
+        'Legacy configuration backup files found in Kernel/Config/Backups folder, but they might still be required by some packages.' =>
+            '',
+        'Legacy configuration backup files are no longer needed for the installed packages, please remove them from Kernel/Config/Backups folder.' =>
+            '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/MultipleJSFileLoad.pm
+        'The following JavaScript files loaded multiple times:' => '',
+        'Files' => '',
+        'Views with multiple loaded JavaScript files' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageDeployment.pm
+        'Package Installation Status' => 'パッケージの導入状態',
+        'Some packages have locally modified files.' => 'いくつかのパッケージがローカルで修正されています。',
+        'Some packages are not correctly installed.' => '正常にインストールされていないパッケージが存在します',
+        'Package Framework Version Status' => 'パッケージフレームワークバージョン',
+        'Some packages are not allowed for the current framework version.' =>
+            'いくつかのパッケージは現在のフレームワークのバージョンに対応していません。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/PackageList.pm
+        'Package List' => 'パッケージリスト',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SessionConfigSettings.pm
+        'Session Config Settings' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SpoolMails.pm
+        'Spooled Emails' => 'スプールされたメール',
+        'There are emails in var/spool that Znuny could not process.' => 'Znunyが処理できなかったメールがvar/spool以下に存在しています。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/SystemID.pm
+        'Your SystemID setting is invalid, it should only contain digits.' =>
+            'あなたのSystemID設定は不正です。数字以外は利用できません。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/DefaultType.pm
+        'Default Ticket Type' => '標準のチケットタイプ',
+        'The configured default ticket type is invalid or missing. Please change the setting Ticket::Type::Default and select a valid ticket type.' =>
+            '設定された標準のチケットタイプは不正か存在していません。Ticket::Type::Default設定を確認し、正しいチケットタイプを指定してください。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/IndexModule.pm
+        'Ticket Index Module' => 'チケットインデクスモジュール',
+        'You have more than 60,000 tickets and should use the StaticDB backend. See admin manual (Performance Tuning) for more information.' =>
+            'システムにチケットが60,000以上あるため、バックエンドにはStaticDBを利用するべきです。詳細は管理者マニュアル(パフォーマンスチューニング)を参照してください。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/InvalidUsersWithLockedTickets.pm
+        'Invalid Users with Locked Tickets' => '',
+        'There are invalid users with locked tickets.' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/OpenTickets.pm
+        'You should not have more than 8,000 open tickets in your system.' =>
+            'システム内にチケットが 8,000以上オープンにしないでください',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/SearchIndexModule.pm
+        'Ticket Search Index Module' => 'チケット検索インデックス・モジュール',
+        'The indexing process forces the storage of the original article text in the article search index, without executing filters or applying stop word lists. This will increase the size of the search index and thus may slow down fulltext searches.' =>
+            '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Ticket/StaticDBOrphanedRecords.pm
+        'Orphaned Records In ticket_lock_index Table' => 'ticket_lock_indexテーブルに孤立したレコード',
+        'Table ticket_lock_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
+            'テーブル ticket_lock_indexに孤立したレコードが存在しています。 StaticDBのインデックスを正しくするためにbin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup"を実行してください。',
+        'Orphaned Records In ticket_index Table' => 'ticket_indexテーブルに孤立したレコード',
+        'Table ticket_index contains orphaned records. Please run bin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" to clean the StaticDB index.' =>
+            'テーブル ticket_indexに孤立したレコードが存在しています。 StaticDBのインデックスを正しくするためにbin/znuny.Console.pl "Maint::Ticket::QueueIndexCleanup" を実行してください。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/TimeSettings.pm
+        'Time Settings' => '時刻設定',
+        'Server time zone' => 'サーバのタイムゾーン',
+        'Znuny time zone' => 'Znunyのタイムゾーン',
+        'Znuny time zone is not set.' => 'Znunyのタイムゾーンが設定されていません。',
+        'User default time zone' => 'ユーザーのデフォルトタイムゾーン',
+        'User default time zone is not set.' => 'ユーザーのデフォルトのタイムゾーンが設定されていません。',
+        'Calendar time zone is not set.' => 'カレンダーのタイムゾーンが設定されていません。',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentSkinUsage.pm
+        'UI - Agent Skin Usage' => 'UI - 担当者スキンの使用状況',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/AgentThemeUsage.pm
+        'UI - Agent Theme Usage' => 'UI - 担当者のテーマ使用状況',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/UI/SpecialStats.pm
+        'UI - Special Statistics' => 'UI - 特殊レポート',
+        'Agents using custom main menu ordering' => 'カスタムメインメニューのオーダーを使用する担当者',
+        'Agents using favourites for the admin overview' => '',
+
+        # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/Version.pm
+        'Znuny Version' => 'Znunyバージョン',
+
+        # Perl Module: Kernel/System/SupportDataCollector/PluginAsynchronous/Znuny/ConcurrentUsers.pm
         'Concurrent Users Details' => '同時接続ユーザー詳細',
         'Concurrent Users' => '同時実行ユーザー',
-
-        # Perl Module: Kernel/System/SupportDataCollector/PluginBase.pm
-        'OK' => 'OK',
-        'Problem' => '問題',
 
         # Perl Module: Kernel/System/SysConfig.pm
         'Setting %s does not exists!' => '設定 %s は存在しません！',
@@ -5582,11 +5565,23 @@ sub Data {
         'The headline shown in the customer interface.' => '顧客インターフェイスの見出し',
         'The logo shown in the header of the customer interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             '顧客画面のヘッダ部分に表示するロゴを設定します。画像の',
+        'The shortcut icon for the customer interface.' => '',
+        'The shortcut icon for the customer interface for the skin "default".' =>
+            '',
+        'The Apple touch icon for the customer interface.' => '',
+        'The Apple touch icon for the customer interface for skin "default".' =>
+            '',
         'The logo shown in the header of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
             '',
         'The logo shown in the header of the agent interface for the skin "default". See "AgentLogo" for further description.' =>
             'スキン"デフォルト"時に担当者インターフェイスで表示されるロゴ。詳細は"AgentLogo"を参照してください。',
         'The logo shown on top of the login box of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.' =>
+            '',
+        'The shortcut icon for the agent interface.' => '',
+        'The shortcut icon for the agent interface fot the skin "default".' =>
+            '',
+        'The Apple touch icon for the agent interface.' => '',
+        'The Apple touch icon for the agent interface for the skin "default".' =>
             '',
         'Defines the URL base path of icons, CSS and Java Script.' => 'アイコン、CSS、Java ScriptのURLベースのパスを定義します。',
         'Defines the URL image path of icons for navigation.' => 'ナビゲーションのためのアイコンのURLイメージ・パスを定義します。',
@@ -5620,6 +5615,8 @@ sub Data {
             'X個の文字型の後の、テキスト・メッセージにおける自動化されたライン・ブレイク。',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'テキスト・メッセージに表示される行の数を設定します（つまり、キュー・ズーム内のチケット・ラインのためです）。',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'メイン画面でドラッグアンドドロップを有効にします。',
         'Defines the date input format used in forms (option or input fields).' =>
             'フォームで使用されるデータ・インプット・フォーマットを定義します（オプションまたはインプット・フィールド）。',
@@ -5633,6 +5630,7 @@ sub Data {
             'Eメールの送信または電話/Eメール・チケットの提出の前に、アプリケーションにEメール・アドレスのMXレコードをチェックさせるようにします。',
         'Defines the address of a dedicated DNS server, if necessary, for the "CheckMXRecord" look-ups.' =>
             '必要な場合には"CheckMXRecord"検索のための、専用DNSサーバのアドレスを定義します。',
+        'Sets the timeout (in seconds) for DNS resolver queries.' => '',
         'Makes the application check the syntax of email addresses.' => 'アプリケーションにEメール・アドレスのシンタクスをチェックさせます。',
         'Defines a regular expression that excludes some addresses from the syntax check (if "CheckEmailAddresses" is set to "Yes"). Please enter a regex in this field for email addresses, that aren\'t syntactically valid, but are necessary for the system (i.e. "root@localhost").' =>
             '一部のアドレスをシンタクスのチェックから除外する、通常の表現を定義します（"CheckEmailAddresses"が“Yes”に設定されている場合）。このフィールドに、構文的には有効でないがシステムには必要であるEメールアドレス（例："root@localhost"）に関するregrexを入力してください。',
@@ -5913,7 +5911,6 @@ sub Data {
             '',
         'Defines the users avatar. Please note: setting \'Active\' to 0 will only prevent agents from editing settings of this group in their personal preferences, but will still allow administrators to edit the settings of another user\'s behalf. Use \'PreferenceGroup\' to control in which area these settings should be shown in the user interface.' =>
             '',
-        'Defines the global users popup profile.' => '',
         'Defines the user identifier for the customer panel.' => '顧客パネルのためのユーザ識別子を定義します。',
         'Activates support for customer and customer user groups.' => '',
         'Defines the groups every customer user will be in (if CustomerGroupSupport is enabled and you don\'t want to manage every customer user for these groups).' =>
@@ -6007,7 +6004,7 @@ sub Data {
             '“LDAP”が選択されていた場合、LDAPクエリーそれぞれにフィルタを追加することができます。例えば、(mail=*), (objectclass=user), (!objectclass=computer)などです。',
         'If "LDAP" was selected for Customer::AuthModule and if you want to add a suffix to every customer login name, specifiy it here, e. g. you just want to write the username user but in your LDAP directory exists user@domain.' =>
             'Customer::AuthModuleに関して“LDAP”が選択されていて、全ての顧客ログイン名にsuffix（後ろに付く接尾辞）を追加したい場合、ここで特定してください。例えば、ユーザ名のみを書いても、ユーザがLDAPディレクトリの中ではuser@domainとして存在するなどです。',
-        'If "LDAP" was selected for Customer::AuthModule and special paramaters are needed for the Net::LDAP perl module, you can specify them here. See "perldoc Net::LDAP" for more information about the parameters.' =>
+        'If "LDAP" was selected for Customer::AuthModule and special parameters are needed for the Net::LDAP perl module, you can specify them here. See "perldoc Net::LDAP" for more information about the parameters.' =>
             'Customer::AuthModuleに関して“LDAP”が選択されていて、Net::LDAP perl モジュールに対して特別なパラメータが必要な場合、ここで設定できます。パラメータに関するより詳細な情報は、"perldoc Net::LDAPを参照ください。',
         'If "LDAP" was selected for Customer::AuthModule, you can specify if the applications will stop if e. g. a connection to a server can\'t be established due to network problems.' =>
             'Customer::AuthModuleに関して“LDAP”が選択されている場合に、例えばサーバー接続がネットワークの問題で確立できない際に、アプリケーションを停止させるかどうかを設定できます。',
@@ -6067,8 +6064,10 @@ sub Data {
         'Defines all the possible stats output formats.' => '全ての可能な統計アウトプットのフォーマットを定義します。',
         'Allows agents to exchange the axis of a stat if they generate one.' =>
             '担当者が統計情報を生成する場合、担当者が統計情報の軸を交換できるようにします。',
-        'Allows agents to generate individual-related stats.' => '統計出力において所有者・責任者を選択できるようにします。',
-        'Allows invalid agents to generate individual-related stats.' => '統計出力において無効にされた担当者も出力対象とします。',
+        'Adds the following elements for use in stats: "Agent/Owner", "Created by Agent/Owner", "Responsible", "Accounted time by Agent".' =>
+            '',
+        'Allows invalid agents to be used in stats. Stats::UseAgentElementInStats must be active.' =>
+            '',
         'Shows all the customer identifiers in a multi-select field (not useful if you have a lot of customer identifiers).' =>
             '全ての顧客識別子をマルチ・セレクトのフィールドに表示します（顧客識別子を多く抱えている場合は利便性が低いです）。',
         'Shows all the customer user identifiers in a multi-select field (not useful if you have a lot of customer user identifiers).' =>
@@ -6124,11 +6123,13 @@ sub Data {
         'Specifies the order in which the firstname and the lastname of agents will be displayed.' =>
             '担当者の姓と名を表示する順序を指定してください。',
         'Default skin for the agent interface.' => '担当者インターフェースのデフォルトスキン',
+        'Dark skin for the agent interface.' => '',
         'The agent skin\'s InternalName which should be used in the agent interface. Please check the available skins in Frontend::Agent::Skins.' =>
             '担当者インタフェースで使用されるべき、担当者スキンのインターナル・ネームです。Frontend::Agent::Skinsにおける利用可能なスキンをチェックしてください。',
         'It is possible to configure different skins, for example to distinguish between diferent agents, to be used on a per-domain basis within the application. Using a regular expression (regex), you can configure a Key/Content pair to match a domain. The value in "Key" should match the domain, and the value in "Content" should be a valid skin on your system. Please see the example entries for the proper form of the regex.' =>
             'アプリケーション内でドメインごとのベースで使用されている異なる担当者間を区別するためなど、異なるスキンを設定することが可能です。通常の表現（regrex）を使用することで、Key/Contentのペアをドメインにマッチするように設定することが可能です。“Key”の値はドメインにマッチするべきであり、“Content”の値はご利用のシステムの有効なスキンであるべきです。Regrexの適切な形式については、入力例を参照してください。',
         'Default skin for the customer interface.' => '',
+        'Dark skin for the customer interface.' => '',
         'The customer skin\'s InternalName which should be used in the customer interface. Please check the available skins in Frontend::Customer::Skins.' =>
             '顧客インタフェースにて使用される顧客スキンのInternalNameです。Frontend::Customer::Skinsにおいて利用可能なスキンをチェックしてください。',
         'It is possible to configure different skins, for example to distinguish between diferent customers, to be used on a per-domain basis within the application. Using a regular expression (regex), you can configure a Key/Content pair to match a domain. The value in "Key" should match the domain, and the value in "Content" should be a valid skin on your system. Please see the example entries for the proper form of the regex.' =>
@@ -6502,6 +6503,13 @@ sub Data {
         'Defines if a pre-sorting by priority should be done in the service view.' =>
             '',
         'Defines the default sort order for all services in the service view, after priority sort.' =>
+            '',
+        'Enable highlighting services based on ticket age.' => '',
+        'Sets the age in minutes (first level) for highlighting services that contain untouched tickets.' =>
+            '',
+        'Sets the age in minutes (second level) for highlighting services that contain untouched tickets.' =>
+            '',
+        'Activates a blinking mechanism of the service that contains the oldest ticket.' =>
             '',
         'Activates time accounting.' => 'タイム・アカウンティングを有効にします。',
         'Sets the prefered time units (e.g. work units, hours, minutes).' =>
@@ -7859,6 +7867,31 @@ Contentはダイナミック・フィールドの形式によって設定内容�
             '',
         'Shows the title field in the NoteToLinkedTicket screen of the agent interface.' =>
             '',
+        'User preferences backend to use.' => '',
+        'Loader module registration for the public interface.' => '',
+        'Deletes orphaned sessions.' => '',
+        'Defines the config parameters available in the preferences view. The default redirect URL from SysConfig \'MarkTicketUnseenRedirectDefaultURL\' is used if no selection is made by the agent.' =>
+            '',
+        'Defines the redirect URL for setting a ticket article to \'unseen\'.' =>
+            '',
+        'Defines the config parameters available in the preferences view. The default redirect URL from SysConfig \'MarkTicketSeenRedirectDefaultURL\' is used if no selection is made by the agent.' =>
+            '',
+        'Defines the redirect URL for setting a ticket article to \'seen\'.' =>
+            '',
+        'Registers a link in the ticket menu to mark a ticket as unseen.' =>
+            '',
+        'Registers a link in the ticket menu to mark a ticket as seen.' =>
+            '',
+        'Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as unseen.' =>
+            '',
+        'Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as seen.' =>
+            '',
+        'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "agent".' =>
+            '',
+        'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".' =>
+            '',
+        'Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.' =>
+            '',
 
         # XML Definition: scripts/database/initial_insert.xml
         'invalid-temporarily' => '無効-暫定',
@@ -8506,7 +8539,6 @@ Thanks for your help!
         'Change the priority for this ticket' => 'このチケットの優先度を変更',
         'Change the responsible for this ticket' => '',
         'Change your avatar image.' => 'あなたのアバターイメージを変更して下さい。',
-        'Change your default popup profile settings.' => '',
         'Change your password and more.' => 'パスワードなどを変更してください。',
         'Changed SLA to "%s" (%s).' => '',
         'Changed archive state to "%s".' => '',
@@ -8551,6 +8583,10 @@ Thanks for your help!
         'Configure and manage ACLs.' => 'ACLの設定と管理',
         'Configure which screen should be shown after a new ticket has been created.' =>
             '新規チケットが作成された後に表示する画面を選択してください。',
+        'Configure which screen should be shown after marking a ticket or article as seen.' =>
+            '',
+        'Configure which screen should be shown after marking a ticket or article as unseen.' =>
+            '',
         'Create New process ticket.' => 'プロセスチケットを作成',
         'Create Process Ticket' => '',
         'Create Ticket' => 'チケットを作成',
@@ -8614,6 +8650,7 @@ Thanks for your help!
         'CustomerUser' => 'CustomerUser（顧客ユーザ）',
         'Czech' => 'チェコ語',
         'Danish' => 'デンマーク語',
+        'Dark' => '',
         'Dashboard overview.' => 'ダッシュボード一覧',
         'Date / Time' => '日時',
         'Default agent name' => '',
@@ -8748,6 +8785,8 @@ Thanks for your help!
         'Last view - limit' => '',
         'Last view - position' => '',
         'Last view - types' => '',
+        'Last viewed overview' => '',
+        'Last viewed screen' => '',
         'Lastname Firstname' => '',
         'Lastname Firstname (UserLogin)' => '',
         'Lastname, Firstname' => '名, 姓',
@@ -8794,7 +8833,10 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => 'イベントトリガーまたは時間ベースで実行されるタスクの管理',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => '迷惑メールにする',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'このチケットをジャンクとしてマークします!',
+        'Mark ticket as seen' => '',
+        'Mark ticket as unseen' => '',
         'Mattermost Username' => '',
         'Max. number of articles per page in TicketZoom' => '',
         'Medium' => '中',
@@ -8868,7 +8910,6 @@ Thanks for your help!
         'Plugin search' => 'プラグイン検索',
         'Plugin search module for autocomplete.' => 'オートコンプリート用のプラグイン検索モジュール',
         'Polish' => 'ポーランド語',
-        'Popup Profile' => '',
         'Portuguese' => 'ポルトガル語',
         'Portuguese (Brasil)' => 'ポルトガル語（ブラジル）',
         'PostMaster Filters' => 'ポストマスター・フィルター',
@@ -8903,13 +8944,14 @@ Thanks for your help!
         'Russian' => 'ロシア語',
         'S/MIME Certificates' => 'S/MIME証明書',
         'Schedule a maintenance period.' => 'メンテナンス期間をスケジュール',
+        'Screen after marking as seen' => '',
+        'Screen after marking as unseen' => '',
         'Screen after new ticket' => '新規チケット作成後の画面',
         'Search Customer' => '顧客を検索します。',
         'Search Ticket.' => 'チケットを検索する。',
         'Search Tickets.' => 'チケットを検索する。',
         'Search User' => 'ユーザを検索します。',
         'Search tickets.' => '',
-        'SearchTemplate' => '',
         'Second Christmas Day' => 'セカンド・クリスマスデー',
         'Second Queue' => '第二キュー',
         'Seconds' => '',
@@ -9004,6 +9046,8 @@ Thanks for your help!
         'Theme' => 'テーマ',
         'This is a Description for Comment on Framework.' => '',
         'This is a Description for DynamicField on Framework.' => '',
+        'This is the dark skin for the agent interface.' => '',
+        'This is the dark skin for the customer interface.' => '',
         'This is the default orange - black skin for the customer interface.' =>
             'これは、デフォルトの黒地と橙色をモチーフにした、顧客インタフェース向けのスキンです。',
         'This is the default orange - black skin.' => 'これは、デフォルトの黒地と橙色をモチーフにしたスキンです。',
@@ -9031,7 +9075,6 @@ Thanks for your help!
         'Ticket Priority.' => 'チケットの優先度',
         'Ticket Queue Overview' => 'チケット・キュー一覧',
         'Ticket Responsible.' => 'チケット責任者',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'チケット監視者',
         'Ticket Zoom' => 'チケットのズーム',
         'Ticket Zoom.' => 'チケット・ズーム',
@@ -9240,6 +9283,7 @@ Thanks for your help!
         'Duplicate event.',
         'Duplicated entry',
         'Edit Field Details',
+        'Edit Transition "%s"',
         'Edit this setting',
         'Edit this transition',
         'End date',

@@ -18,6 +18,7 @@
                 <input type="hidden" name="Expand" id="Expand" value="" />
                 <input type="hidden" name="FormID" value="[% Data.FormID | html %]" />
                 <fieldset class="TableLike card-item-wrapper">
+                    [% IF Data.RenderTeamData %]
                     <div class="card-item col-wide-33 col-desktop-100 col-tablet-100">
                         <h2 class="card-title">[% Translate("Team Data") | html %]</h2>
                         <div class="active-inner-cols">
@@ -38,6 +39,7 @@
 [% RenderBlockEnd("Queue") %]
                         </div>
                     </div>
+                    [% END %]
                     [% IF Config('Ticket::Service') && TicketFrontendConfig.Service %]
                     <div class="card-item col-wide-33 col-desktop-100 col-tablet-100">
                         <h2 class="card-title">[% Translate("Services") | html %]</h2>
@@ -63,9 +65,9 @@
 [% RenderBlockStart("TicketSLA") %]
                             <div class="field-wrapper col-wide-100 col-desktop-50 col-tablet-50">
                                 [% IF Data.SLAMandatory %]
-                                <label for="SLAID" title="[% Translate(" Service level agreement") | html %]" class="Mandatory"><span class="Marker">*</span> [% Translate("SLA") | html %]:</label>
+                                <label for="SLAID" title="[% Translate("Service level agreement") | html %]" class="Mandatory"><span class="Marker">*</span> [% Translate("SLA") | html %]:</label>
                                 [% ELSE %]
-                                <label for="SLAID" title="[% Translate(" Service level agreement") | html %]">[% Translate("SLA") | html %]:</label>
+                                <label for="SLAID" title="[% Translate("Service level agreement") | html %]">[% Translate("SLA") | html %]:</label>
                                 [% END %]
                                 [% Data.SLAStrg %]
                                 [% IF Data.SLAMandatory %]
@@ -112,7 +114,7 @@
                     [% END %]
                     [% IF !TicketFrontendConfig.DynamicField.empty %]
                     <div class="card-item col-wide-100 col-desktop-100 col-tablet-100">
-                        <h2 class="card-title">[% Translate("Dymanic Info") | html %]</h2>
+                        <h2 class="card-title">[% Translate("Dynamic Info") | html %]</h2>
                         <div class="active-inner-cols">
 [% RenderBlockStart("DynamicField") %]
                             <div class="Row Row_DynamicField_[% Data.Name | html %] field-wrapper col-wide-33 col-desktop-50 col-tablet-50">
@@ -132,7 +134,7 @@
                                 <span class="Marker">*</span>
                                 [% Translate("Subject") | html %]:
                             </label>
-                            <input title="[% Translate(" Subject") | html %]" type="text" id="Subject" name="Subject" value="[% Data.Subject | html %]" class="Validate_Required [% Data.SubjectInvalid | html %]" />
+                            <input title="[% Translate("Subject") | html %]" type="text" id="Subject" name="Subject" value="[% Data.Subject | html %]" class="Validate_Required [% Data.SubjectInvalid | html %]" />
                             <div id="SubjectError" class="TooltipErrorMessage">
                                 <p>[% Translate("This field is required.") | html %]</p>
                             </div>
@@ -182,7 +184,7 @@
 #[% RenderBlockEnd("DynamicField_Field2") %]
         </fieldset>
         <div id="BottomActionRow" class="ActionRow">
-            <button id="submitRichText" accesskey="g" title="[% Translate(" Submit") | html %] (g)" type="submit" value="[% Translate(" Submit") | html %]" class="btn-primary btn-main btn-width-md">[% Translate("Submit") | html %]</button>
+            <button id="submitRichText" accesskey="g" title="[% Translate("Submit") | html %] (g)" type="submit" value="[% Translate("Submit") | html %]" class="btn-primary btn-main btn-width-md">[% Translate("Submit") | html %]</button>
         </div>
         </form>
     </div>

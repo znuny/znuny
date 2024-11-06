@@ -12,6 +12,7 @@ package scripts::Migration::Base::ACLDeploy;    ## no critic
 
 use strict;
 use warnings;
+use utf8;
 
 use parent qw(scripts::Migration::Base);
 

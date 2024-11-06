@@ -311,7 +311,7 @@ $Selenium->RunTest(
             $Self->Is(
                 $Ticket{ $Test->{ID} },
                 $Test->{Value},
-                "$Test->{ID} is changed succesfully",
+                "$Test->{ID} is changed successfully",
             );
         }
 

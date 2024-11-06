@@ -79,9 +79,8 @@ sub IsSupported {
         Payload => {
 
             # arbitrary data
-            Subject => '...',
+            Subject       => '...',
             SomeOtherData => {
-
                 # ...
             },
         },

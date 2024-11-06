@@ -12,7 +12,7 @@
 #   article iframe, and the standard CSS of OTRS is not available there.
 #
 
-<div class="attachment-blocker">
+<div class="attachment-blocker" style="-moz-border-radius: 5px; -webkit-border-radius: 5px; background-color: #50B5FF10; border-radius: 5px; border: 1px solid #999; font-family:Geneva,Helvetica,Arial,sans-serif; font-size: 11px; margin: 5px 0; padding: 10px 20px; text-align: center;">
     <span>[% Translate("To protect your privacy, remote content was blocked.") | html %]</span>
-    <a href="index.pl?;LoadExternalImages=1;SessionID=123">[% Translate("Load blocked content.") | html %]</a>
+    <a href="[% Env("Baselink") %][% Env("RequestedURL") %];LoadExternalImages=1">[% Translate("Load blocked content.") | html %]</a>
 </div>

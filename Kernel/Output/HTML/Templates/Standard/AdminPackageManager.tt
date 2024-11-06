@@ -295,14 +295,14 @@
                     [% END %]
                     <ul class="PackageRequired">
                         [% FOREACH Item IN Data.$Type %]
-                        <li class="CheckResult[% Item.IsInstalled %]">
+                        <li class="CheckResult[% IF Item.IsInstalled %]OK[% ELSE %]Problem[% END %]">
                             <h3 class="Heading">
-                                <span title="[% Item.IsInstalled %]" class="Flag Small [% Item.IsInstalled %]">
-                                    <span>[% Item.IsInstalled %]</span>
+                                <span title="[% IF Item.IsInstalled %]OK[% ELSE %]Problem[% END %]" class="Flag Small [% IF Item.IsInstalled %]OK[% ELSE %]Problem[% END %]">
+                                    <span>[% IF Item.IsInstalled %]OK[% ELSE %]Problem[% END %]</span>
                                 </span>
                                 [% Item.Name %][% IF Item.Version %] - [% Translate("Version") | html %] [% Item.Version %] [% END %]
                             </h3>
-                            [% IF Item.IsInstalled == 'OK' %]
+                            [% IF Item.IsInstalled == 1 %]
                                 [% IF Type == 'PackageRequired' %]
                                     <p class="Value">[% Translate("Required package %s is already installed.", Item.Name) | html %]</p>
                                 [% ELSE %]
@@ -354,7 +354,7 @@
                                         <span>[% Translate("Cancel") | html %]</span>
                                     </a>
 [% RenderBlockEnd("IntroCancel") %]
-                                    <button class="[% IF !Data.PackageRequired && !Data.ModuleRequired %]btn-primary [% END %]btn-main btn-width-md" type="submit" value="[% Translate("Continue") | html %]"[% IF Data.PackageRequired || Data.ModuleRequired %] disabled[% END %]>
+                                    <button class="[% IF !Data.PackageRequiredProblem && !Data.ModuleRequiredProblem %]btn-primary [% END %]btn-main btn-width-md" type="submit" value="[% Translate("Continue") | html %]"[% IF Data.PackageRequiredProblem || Data.ModuleRequiredProblem %] disabled[% END %]>
                                         <span>[% Translate("Continue") | html %]</span>
                                     </button>
                                 </div>
@@ -674,36 +674,48 @@
                     <table class="DataTable">
                         <thead>
                             <tr>
-                                <th class="W50pc">[% Translate("Filename") | html %]</th>
-                                <th>[% Translate("Permission") | html %]</th>
                                 <th>[% Translate("Status") | html %]</th>
-                                <th class="W20pc">[% Translate("Download") | html %]</th>
+                                <th>[% Translate("Filename") | html %]</th>
+                                <th class="Center">[% Translate("Permission") | html %]</th>
+                                <th>[% Translate("Size") | html %]</th>
+                                <th class="Center">[% Translate("Download") | html %]</th>
                             </tr>
                         </thead>
                         <tbody>
 [% RenderBlockStart("PackageItemFilelistFile") %]
                             <tr>
-                                <td title="[% Data.Location | html %]">
-                                    <code>[% Data.Location | truncate(65) | html %]</code>
-                                </td>
-                                <td>
-                                    <div title="[% Data.Permission | html %]">([% Data.Permission | html %])</div>
-                                </td>
-                                <td>
 [% RenderBlockStart("PackageItemFilelistFileNoteDiff") %]
-                                    <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=ViewDiff;Name=[% Data.Name | uri %];Version=[% Data.Version | uri %];File=[% Data.File | uri %];Location=[% Data.Location | uri %]" title="[% Translate(Data.Message) | html %]" class="AsBlock [% Data.Icon | html %]"></a>
+                                <td>
+                                    <span class="Flag Small Problem" title="[% Translate(Data.Message) | html %]">
+                                        <span>[% Translate("Problem") | html %]</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=ViewDiff;Name=[% Data.Name | uri %];Version=[% Data.Version | uri %];File=[% Data.File | uri %];Location=[% Data.Location | uri %]" title="[% Translate(Data.Message) | html %] - [% Data.Location | html %]" class="AsBlock">
+                                        [% Data.Location | truncate(65) | html %]
+                                    </a>
+                                </td>
 [% RenderBlockEnd("PackageItemFilelistFileNoteDiff") %]
 [% RenderBlockStart("PackageItemFilelistFileNote") %]
-                                    <span title="[% Translate(Data.Message) | html %]" class="AsBlock [% Data.Icon | html %]"></span>
-[% RenderBlockEnd("PackageItemFilelistFileNote") %]
+                                <td>
+                                    <span class="Flag Small OK">
+                                        <span>[% Translate("OK") | html %]</span>
+                                    </span>
                                 </td>
                                 <td>
-                                    <div class="flex-row">
+                                    <span title="[% Data.Location | html %]">[% Data.Location | truncate(65) | html %]</span>
+                                </td>
+[% RenderBlockEnd("PackageItemFilelistFileNote") %]
+                                <td class="Center">
+                                    <div title="[% Data.Permission | html %]">[% Data.Permission | html %]</div>
+                                </td>
+                                <td>
+                                    [% Data.Size | html %]
+                                </td>
+                                <td class="Center">
 [% RenderBlockStart("PackageItemFilelistFileLink") %]
-                                        <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=[% Env("Subaction") %];Name=[% Data.Name | uri %];Version=[% Data.Version | uri %];File=[% Data.File | uri %];Location=[% Data.Location | uri %]" class="IconInline table-icon-hover-md" title="[% Translate("Download file from package!") | html %]"><i class="fa fa-save"></i></a>
+                                    <a href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=[% Env("Subaction") %];Name=[% Data.Name | uri %];Version=[% Data.Version | uri %];File=[% Data.File | uri %];Location=[% Data.Location | uri %]" class="AsBlock table-icon-hover-md" title="[% Translate("Download file from package!") | html %]"><i class="fa fa-save"></i></a>
 [% RenderBlockEnd("PackageItemFilelistFileLink") %]
-                                        [% Data.Size | html %]
-                                    </div>
                                 </td>
                             </tr>
 [% RenderBlockEnd("PackageItemFilelistFile") %]
@@ -829,7 +841,9 @@
                     </h2>
                 </div>
                 <div class="Content">
-                    <div class="code-container"><code>[% Data.Diff | html %]</code></div>
+                    <div class="code-container">
+                        <pre><code>[% Data.Diff | html %]</code></pre>
+                    </div>
                 </div>
             </div>
         </div>

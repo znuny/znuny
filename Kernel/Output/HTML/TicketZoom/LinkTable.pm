@@ -13,14 +13,19 @@ use parent 'Kernel::Output::HTML::Base';
 
 use strict;
 use warnings;
+use utf8;
 
 our $ObjectManagerDisabled = 1;
 
 sub Run {
     my ( $Self, %Param ) = @_;
 
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    my $LinkObject   = $Kernel::OM->Get('Kernel::System::LinkObject');
+    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+
     # get linked objects
-    my $LinkListWithData = $Kernel::OM->Get('Kernel::System::LinkObject')->LinkListWithData(
+    my $LinkListWithData = $LinkObject->LinkListWithData(
         Object           => 'Ticket',
         Key              => $Param{Ticket}->{TicketID},
         State            => 'Valid',
@@ -33,10 +38,7 @@ sub Run {
     );
 
     # get link table view mode
-    my $LinkTableViewMode =
-        $Kernel::OM->Get('Kernel::Config')->Get('LinkObject::ViewMode');
-
-    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $LinkTableViewMode = $ConfigObject->Get('LinkObject::ViewMode');
 
     # create the link table
     my $LinkTableStrg = $LayoutObject->LinkObjectTableCreate(
@@ -71,14 +73,24 @@ sub Run {
         $Location = 'Main';
     }
 
+    # Hide empty "linked elements" widget when nothing is to show.
+    my $None = $LayoutObject->{LanguageObject}->Translate('none');
+    ( my $LinkTableCheck = $LinkTableStrg ) =~ s{\s}{}g;
+    return if $LinkTableCheck eq $None;
+
     my $Output = $LayoutObject->Output(
         TemplateFile => 'AgentTicketZoom/LinkTable',
         Data         => {},
     );
+
+    my $Config = $Param{Config};
+    my $Rank   = '0300';
+    $Rank = $Config->{Rank} if exists $Config->{Rank} && defined $Config->{Rank};
+
     return {
         Location => $Location,
         Output   => $Output,
-        Rank     => '0300',
+        Rank     => $Rank,
     };
 }
 

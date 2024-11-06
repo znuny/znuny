@@ -21,6 +21,14 @@
     [% END %]
     </p>
 </div>
+[% ELSE %]
+    [% IF Data.FormDraftForAction %]
+    <div class="MessageBox Warning">
+        <p>
+            [% Translate("Please note that you have already one or more saved drafts for this action.") | html %]
+        </p>
+    </div>
+    [% END %]
 [% END %]
 [% IF Data.FormDraftOutdated %]
 <div class="MessageBox Warning">

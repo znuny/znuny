@@ -512,39 +512,21 @@ sub Run {
     }
 
     # isolate Article parameter
-    my @Article;
+    my @Articles;
     if ( IsHashRefWithData( $Param{Data}->{Article} ) ) {
-        push @Article, $Param{Data}->{Article};
+        push @Articles, $Param{Data}->{Article};
     }
-    if ( IsArrayRefWithData( $Param{Data}->{Article} ) ) {
-        @Article = @{ $Param{Data}->{Article} };
+    else {
+        @Articles = @{ $Param{Data}->{Article} };
     }
 
-    for my $Article (@Article) {
+    for my $Article (@Articles) {
         $Article->{UserType} = $UserType;
 
         # remove leading and trailing spaces
-        for my $Attribute ( sort keys %{$Article} ) {
-            if ( ref $Attribute ne 'HASH' && ref $Attribute ne 'ARRAY' ) {
-
-                #remove leading spaces
-                $Article->{$Attribute} =~ s{\A\s+}{};
-
-                #remove trailing spaces
-                $Article->{$Attribute} =~ s{\s+\z}{};
-            }
-        }
+        s/ (?: \A\s+ | \s+\z ) //gx for values %$Article;
         if ( IsHashRefWithData( $Article->{OrigHeader} ) ) {
-            for my $Attribute ( sort keys %{ $Article->{OrigHeader} } ) {
-                if ( ref $Attribute ne 'HASH' && ref $Attribute ne 'ARRAY' ) {
-
-                    #remove leading spaces
-                    $Article->{OrigHeader}->{$Attribute} =~ s{\A\s+}{};
-
-                    #remove trailing spaces
-                    $Article->{OrigHeader}->{$Attribute} =~ s{\s+\z}{};
-                }
-            }
+            s/ (?: \A\s+ | \s+\z ) //gx for values %{ $Article->{OrigHeader} };
         }
 
         # Check attributes that can be set by sysconfig.
@@ -592,11 +574,11 @@ sub Run {
         $DynamicField = $Param{Data}->{DynamicField};
 
         # homogenate input to array
-        if ( ref $DynamicField eq 'HASH' ) {
-            push @DynamicFieldList, $DynamicField;
+        if ( ref $DynamicField eq 'ARRAY' ) {
+            @DynamicFieldList = @{$DynamicField};
         }
         else {
-            @DynamicFieldList = @{$DynamicField};
+            push @DynamicFieldList, $DynamicField;
         }
 
         # check DynamicField internal structure
@@ -610,16 +592,7 @@ sub Run {
             }
 
             # remove leading and trailing spaces
-            for my $Attribute ( sort keys %{$DynamicFieldItem} ) {
-                if ( ref $Attribute ne 'HASH' && ref $Attribute ne 'ARRAY' ) {
-
-                    #remove leading spaces
-                    $DynamicFieldItem->{$Attribute} =~ s{\A\s+}{};
-
-                    #remove trailing spaces
-                    $DynamicFieldItem->{$Attribute} =~ s{\s+\z}{};
-                }
-            }
+            s/ (?: \A\s+ | \s+\z ) //gx for values %{$DynamicFieldItem};
 
             # check DynamicField attribute values
             my $DynamicFieldCheck = $Self->_CheckDynamicField( DynamicField => $DynamicFieldItem );
@@ -657,16 +630,7 @@ sub Run {
             }
 
             # remove leading and trailing spaces
-            for my $Attribute ( sort keys %{$AttachmentItem} ) {
-                if ( ref $Attribute ne 'HASH' && ref $Attribute ne 'ARRAY' ) {
-
-                    #remove leading spaces
-                    $AttachmentItem->{$Attribute} =~ s{\A\s+}{};
-
-                    #remove trailing spaces
-                    $AttachmentItem->{$Attribute} =~ s{\s+\z}{};
-                }
-            }
+            s/ (?: \A\s+ | \s+\z ) //gx for values %{$AttachmentItem};
 
             # check Attachment attribute values
             my $AttachmentCheck = $Self->_CheckAttachment( Attachment => $AttachmentItem );
@@ -679,7 +643,7 @@ sub Run {
 
     return $Self->_TicketCreate(
         Ticket           => $Ticket,
-        Article          => \@Article,
+        Article          => \@Articles,
         DynamicFieldList => \@DynamicFieldList,
         AttachmentList   => \@AttachmentList,
         UserID           => $UserID,
@@ -1033,9 +997,9 @@ sub _CheckArticle {
 
         # check Charset part
         my $Charset = '';
-        if ( $Article->{ContentType} =~ /charset=/i ) {
+        if ( $Article->{ContentType} =~ /charset\s*=\s*/i ) {
             $Charset = $Article->{ContentType};
-            $Charset =~ s/.+?charset=("|'|)(\w+)/$2/gi;
+            $Charset =~ s/.+?charset\s*=\s*("|'|)(\w+)/$2/gi;
             $Charset =~ s/"|'//g;
             $Charset =~ s/(.+?);.*/$1/g;
         }
@@ -1275,9 +1239,9 @@ sub _CheckAttachment {
 
         # check Charset part
         my $Charset = '';
-        if ( $Attachment->{ContentType} =~ /charset=/i ) {
+        if ( $Attachment->{ContentType} =~ /charset\s*=\s*/i ) {
             $Charset = $Attachment->{ContentType};
-            $Charset =~ s/.+?charset=("|'|)(\w+)/$2/gi;
+            $Charset =~ s/.+?charset\s*=\s*("|'|)(\w+)/$2/gi;
             $Charset =~ s/"|'//g;
             $Charset =~ s/(.+?);.*/$1/g;
         }
@@ -1608,13 +1572,15 @@ sub _TicketCreate {
 
         my $PlainBody = $Article->{Body};
 
+        my $ArticleIsHTML = ( $Article->{ContentType} && $Article->{ContentType} =~ /text\/html/i )
+            || ( $Article->{MimeType} && $Article->{MimeType} =~ /text\/html/i );
+
+        my $ArticleIsPlainText = ( $Article->{ContentType} && $Article->{ContentType} =~ /text\/plain/i )
+            || ( $Article->{MimeType} && $Article->{MimeType} =~ /text\/plain/i );
+
         # Convert article body to plain text, if HTML content was supplied. This is necessary since auto response code
         #   expects plain text content. Please see bug#13397 for more information.
-        if (
-            ( $Article->{ContentType} && $Article->{ContentType} =~ /text\/html/i )
-            || ( $Article->{MimeType} && $Article->{MimeType} =~ /text\/html/i )
-            )
-        {
+        if ($ArticleIsHTML) {
             $PlainBody = $Kernel::OM->Get('Kernel::System::HTMLUtils')->ToAscii(
                 String => $Article->{Body},
             );
@@ -1645,20 +1611,31 @@ sub _TicketCreate {
                 };
             }
 
+            #
+            # Template generator implicitly takes Frontend::RichText into account.
+            # Temporarily enable/disable RichText setting according to content type of article,
+            # so that body and signature both are plain text or HTML.
+            #
+            my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+
+            my $OriginalRichTextSetting = $ConfigObject->Get('Frontend::RichText');
+
+            $ConfigObject->{'Frontend::RichText'} = 0 if $ArticleIsPlainText;
+            $ConfigObject->{'Frontend::RichText'} = 1 if $ArticleIsHTML;
+
             my $Signature = $Kernel::OM->Get('Kernel::System::TemplateGenerator')->Signature(
                 TicketID => $TicketID,
                 UserID   => $Param{UserID},
                 Data     => $Article,
             );
 
+            # Restore original RichText setting.
+            $ConfigObject->{'Frontend::RichText'} = $OriginalRichTextSetting;
+
             if ($Signature) {
                 $Article->{Body} = $Article->{Body} . $Signature;
 
-                if (
-                    ( $Article->{ContentType} && $Article->{ContentType} =~ /text\/html/i )
-                    || ( $Article->{MimeType} && $Article->{MimeType} =~ /text\/html/i )
-                    )
-                {
+                if ($ArticleIsHTML) {
                     $PlainBody = $Kernel::OM->Get('Kernel::System::HTMLUtils')->ToAscii(
                         String => $Article->{Body},
                     );

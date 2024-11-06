@@ -15,8 +15,6 @@ our @ObjectDependencies = (
     'Kernel::System::YAML',
 );
 
-use Kernel::System::VariableCheck qw(:all);
-
 =head1 NAME
 
 Kernel::System::DBCRUD::Format::YAML - DBCRUD YAML lib

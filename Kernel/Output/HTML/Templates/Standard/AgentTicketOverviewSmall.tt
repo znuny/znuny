@@ -38,7 +38,7 @@
 [% RenderBlockStart("GeneralOverviewHeader") %]
 [% RenderBlockStart("BulkNavBar") %]
                     <th class="Checkbox">
-                        <input type="checkbox" class="Checkbox" title="[% Translate(" Select all") | html %]" id="SelectAllTickets" autocomplete="off" />
+                        <input type="checkbox" class="Checkbox" title="[% Translate("Select all") | html %]" id="SelectAllTickets" autocomplete="off" />
                     </th>
 [% RenderBlockEnd("BulkNavBar") %]
 [% RenderBlockStart("OverviewNavBarPageFlag") %]
@@ -204,7 +204,7 @@
 [% RenderBlockStart("GeneralOverviewRow") %]
 [% RenderBlockStart("Bulk") %]
                     <td class="Checkbox NonTextContent">
-                        <input class="Checkbox" type="checkbox" name="TicketID" title="[% Translate(" Select this ticket") | html %]" value="[% Data.TicketID | html %]" autocomplete="off" />
+                        <input class="Checkbox" type="checkbox" name="TicketID" title="[% Translate("Select this ticket") | html %]" value="[% Data.TicketID | html %]" autocomplete="off" />
                     </td>
 [% RenderBlockEnd("Bulk") %]
 [% RenderBlockStart("ContentLargeTicketGenericRowMeta") %]
@@ -228,7 +228,7 @@
 [% RenderBlockEnd("RecordTicketNumber") %]
 [% RenderBlockStart("RecordEscalationTime") %]
                     <td>
-                        <div title="[% Translate(" Service Time") | html %]: [% Data.EscalationTimeWorkingTime | html %] - [% Data.EscalationDestinationDate | Localize("TimeShort") %]" class="[% Data.EscalationClass | html %]">[% Data.EscalationTimeHuman | html %]<br />[% Data.UpdateTimeDestinationDate | Localize("TimeShort") %]</div>
+                        <div title="[% Translate("Service Time") | html %]: [% Data.EscalationTimeWorkingTime | html %] - [% Data.EscalationDestinationDate | Localize("TimeShort") %]" class="[% Data.EscalationClass | html %]">[% Data.EscalationTimeHuman | html %]<br />[% Data.UpdateTimeDestinationDate | Localize("TimeShort") %]</div>
                     </td>
 [% RenderBlockEnd("RecordEscalationTime") %]
 [% RenderBlockStart("RecordOwner") %]
@@ -265,7 +265,7 @@
 [% RenderBlockEnd("RecordTicketColumnTranslatable") %]
 [% RenderBlockStart("RecordTicketColumnTime") %]
                     <td>
-                        <div title="[% Data.GenericValue | Localize(" TimeShort") | html %]">[% Data.GenericValue | Localize("TimeShort") | html %]</div>
+                        <div title="[% Data.GenericValue | Localize("TimeShort") | html %]">[% Data.GenericValue | Localize("TimeShort") | html %]</div>
                     </td>
 [% RenderBlockEnd("RecordTicketColumnTime") %]
 [% RenderBlockStart("RecordTicketColumnEscalation") %]
@@ -325,7 +325,7 @@
 [% RenderBlockEnd("DocumentContent") %]
 [% RenderBlockStart("DocumentMenuItemMoveForm") %]
     <li class="[% Data.Class | html %]">
-        <form title="[% Translate(" Move ticket to a different queue") | html %]" action="[% Env("CGIHandle") | html %]" method="post">
+        <form title="[% Translate("Move ticket to a different queue") | html %]" action="[% Env("CGIHandle") | html %]" method="post">
             <input type="hidden" name="Action" value="AgentTicketMove" />
             <input type="hidden" name="QueueID" value="[% Data.QueueID | html %]" />
             <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]" />
@@ -335,7 +335,7 @@
     </li>
 [% RenderBlockEnd("DocumentMenuItemMoveForm") %]
 [% RenderBlockStart("DocumentColumnFilterForm") %]
-    <form title="[% Translate(" Column Filters Form") | html %]" action="[% Env("CGIHandle") | html %]" method="post" name="ColumnFilterAttributes" id="ColumnFilterAttributes">
+    <form title="[% Translate("Column Filters Form") | html %]" action="[% Env("CGIHandle") | html %]" method="post" name="ColumnFilterAttributes" id="ColumnFilterAttributes">
 [% RenderBlockStart("DocumentColumnFilterFormElement") %]
         <input type="hidden" name="[% Data.ElementName | html %]" value="[% Data.ElementValue | html %]" />
 [% RenderBlockEnd("DocumentColumnFilterFormElement") %]

@@ -15,7 +15,6 @@ our @ObjectDependencies = (
     'Kernel::System::Log',
 );
 
-use Kernel::System::VariableCheck qw(:all);
 use parent qw( Kernel::System::UnitTest::TicketToUnitTest::Base );
 
 sub Run {
@@ -53,7 +52,7 @@ sub Run {
 
 \$Self->True(
     \$Success,
-    'TicketDynamicFieldUpdate "$Param{FieldName}" was successfull.',
+    'TicketDynamicFieldUpdate "$Param{FieldName}" was successful.',
 );
 
 OUTPUT

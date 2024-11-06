@@ -12,8 +12,6 @@ package Kernel::GenericInterface::Operation::Test::Test;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(IsHashRefWithData);
-
 our $ObjectManagerDisabled = 1;
 
 =head1 NAME

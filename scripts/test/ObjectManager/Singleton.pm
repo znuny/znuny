@@ -11,6 +11,7 @@ package scripts::test::ObjectManager::Singleton;    ## no critic
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::System::ObjectManager;
 

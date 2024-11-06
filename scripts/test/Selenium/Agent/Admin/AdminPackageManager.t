@@ -227,7 +227,7 @@ $Selenium->RunTest(
             Value => [
                 {
                     Name => "Example repository 1",
-                    URL  => "https://addons.znuny.com/api/addon_repos/",
+                    URL  => "https://addons.znuny.com/api/addon_repos/NOPACKAGES",
                 }
             ],
         );

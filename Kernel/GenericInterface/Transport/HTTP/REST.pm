@@ -229,6 +229,7 @@ sub ProviderProcessRequest {
         HTTP_X_OTRS_HEADER_SESSIONID         => 'SessionID',
         HTTP_X_OTRS_HEADER_PASSWORD          => 'Password',
         HTTP_X_OTRS_HEADER_IMPERSONATEASUSER => 'ImpersonateAsUser',
+        HTTP_X_OTRS_HEADER_TWOFACTORTOKEN    => 'TwoFactorToken',
     );
 
     HEADER:
@@ -323,7 +324,7 @@ sub ProviderProcessRequest {
 
     # Convert char-set if necessary.
     my $ContentCharset;
-    if ( $ENV{'CONTENT_TYPE'} =~ m{ \A .* charset= ["']? ( [^"']+ ) ["']? \z }xmsi ) {
+    if ( $ENV{'CONTENT_TYPE'} =~ m{ \A .* charset\s*=\s* ["']? ( [^"']+ ) ["']? \z }xmsi ) {
         $ContentCharset = $1;
     }
     if ( $ContentCharset && $ContentCharset !~ m{ \A utf [-]? 8 \z }xmsi ) {
@@ -1482,13 +1483,16 @@ sub _FlattenDataStructure {
     my @Containers;
     my $DataType;
 
-    if ( IsHashRefWithData( $Param{Data} ) ) {
+    if ( ref $Param{Data} eq 'HASH' ) {
         @Containers = sort keys %{ $Param{Data} };
         $DataType   = 'Hash';
     }
-    else {
+    elsif ( ref $Param{Data} eq 'ARRAY' ) {
         @Containers = @{ $Param{Data} };
         $DataType   = 'Array';
+    }
+    else {
+        return 1;
     }
 
     my $Prefix = $Param{Prefix} // '';

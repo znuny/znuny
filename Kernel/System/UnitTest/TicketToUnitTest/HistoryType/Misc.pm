@@ -15,7 +15,6 @@ our @ObjectDependencies = (
     'Kernel::System::Log',
 );
 
-use Kernel::System::VariableCheck qw(:all);
 use parent qw( Kernel::System::UnitTest::TicketToUnitTest::Base );
 
 sub Run {
@@ -45,7 +44,7 @@ sub Run {
 
 \$Self->True(
     \$Success,
-    'TicketUnlockTimeoutUpdate was successfull.',
+    'TicketUnlockTimeoutUpdate was successful.',
 );
 
 OUTPUT

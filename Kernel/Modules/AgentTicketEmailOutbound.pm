@@ -11,6 +11,7 @@ package Kernel::Modules::AgentTicketEmailOutbound;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::System::VariableCheck qw(:all);
 use Kernel::Language qw(Translatable);
@@ -98,259 +99,12 @@ sub Run {
     }
     elsif ( $Self->{Subaction} eq 'AJAXUpdateTemplate' ) {
 
-        my %GetParam;
-        for my $Key (
-            qw(
-            NewStateID NewPriorityID TimeUnits IsVisibleForCustomer Title Body Subject NewQueueID
-            Year Month Day Hour Minute NewOwnerID NewOwnerType OldOwnerID NewResponsibleID
-            TypeID ServiceID SLAID Expand ReplyToArticle StandardTemplateID CreateArticle
-            FormID ElementChanged
-            )
-            )
-        {
-            $GetParam{$Key} = $ParamObject->GetParam( Param => $Key );
-        }
+        my @JSONData = $Self->AjaxUpdateTemplate();
+        push @JSONData, $Self->AjaxUpdate();
 
-        my %Ticket       = $TicketObject->TicketGet( TicketID => $Self->{TicketID} );
-        my $CustomerUser = $Ticket{CustomerUserID};
-        my $QueueID      = $Ticket{QueueID};
+        my $JSON = $LayoutObject->BuildSelectionJSON( \@JSONData );
 
-        # get dynamic field values form http request
-        my %DynamicFieldValues;
-
-        # get config object
-        my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
-
-        # get list type
-        my $TreeView = 0;
-        if ( $ConfigObject->Get('Ticket::Frontend::ListType') eq 'tree' ) {
-            $TreeView = 1;
-        }
-
-        my $NextStates = $Self->_GetNextStates(
-            %GetParam,
-            CustomerUserID => $CustomerUser || '',
-            QueueID        => $QueueID,
-        );
-
-        # update Dynamic Fields Possible Values via AJAX
-        my @DynamicFieldAJAX;
-
-        # get config for frontend module
-        my $Config = $ConfigObject->Get("Ticket::Frontend::$Self->{Action}");
-
-        # get the dynamic fields for this screen
-        my $DynamicField = $Kernel::OM->Get('Kernel::System::DynamicField')->DynamicFieldListGet(
-            Valid       => 1,
-            ObjectType  => [ 'Ticket', 'Article' ],
-            FieldFilter => $Config->{DynamicField} || {},
-        );
-
-        # get dynamic field backend object
-        my $DynamicFieldBackendObject = $Kernel::OM->Get('Kernel::System::DynamicField::Backend');
-
-        # cycle trough the activated Dynamic Fields for this screen
-        DYNAMICFIELD:
-        for my $DynamicFieldConfig ( @{$DynamicField} ) {
-            next DYNAMICFIELD if !IsHashRefWithData($DynamicFieldConfig);
-
-            my $IsACLReducible = $DynamicFieldBackendObject->HasBehavior(
-                DynamicFieldConfig => $DynamicFieldConfig,
-                Behavior           => 'IsACLReducible',
-            );
-            next DYNAMICFIELD if !$IsACLReducible;
-
-            my $PossibleValues = $DynamicFieldBackendObject->PossibleValuesGet(
-                DynamicFieldConfig => $DynamicFieldConfig,
-            );
-
-            # convert possible values key => value to key => key for ACLs using a Hash slice
-            my %AclData = %{$PossibleValues};
-            @AclData{ keys %AclData } = keys %AclData;
-
-            # set possible values filter from ACLs
-            my $ACL = $TicketObject->TicketAcl(
-                %GetParam,
-                Action        => $Self->{Action},
-                TicketID      => $Self->{TicketID},
-                QueueID       => $QueueID,
-                ReturnType    => 'Ticket',
-                ReturnSubType => 'DynamicField_' . $DynamicFieldConfig->{Name},
-                Data          => \%AclData,
-                UserID        => $Self->{UserID},
-            );
-            if ($ACL) {
-                my %Filter = $TicketObject->TicketAclData();
-
-                # convert Filer key => key back to key => value using map
-                %{$PossibleValues} = map { $_ => $PossibleValues->{$_} } keys %Filter;
-            }
-
-            # extract the dynamic field value from the web request
-            $DynamicFieldValues{ $DynamicFieldConfig->{Name} } = $DynamicFieldBackendObject->EditFieldValueGet(
-                DynamicFieldConfig => $DynamicFieldConfig,
-                ParamObject        => $ParamObject,
-                LayoutObject       => $LayoutObject,
-            );
-
-            my $DataValues = $DynamicFieldBackendObject->BuildSelectionDataGet(
-                DynamicFieldConfig => $DynamicFieldConfig,
-                PossibleValues     => $PossibleValues,
-                Value              => $DynamicFieldValues{ $DynamicFieldConfig->{Name} },
-            ) || $PossibleValues;
-
-            # add dynamic field to the list of fields to update
-            push(
-                @DynamicFieldAJAX,
-                {
-                    Name        => 'DynamicField_' . $DynamicFieldConfig->{Name},
-                    Data        => $DataValues,
-                    SelectedID  => $DynamicFieldValues{ $DynamicFieldConfig->{Name} },
-                    Translation => $DynamicFieldConfig->{Config}->{TranslatableValues} || 0,
-                    Max         => 100,
-                }
-            );
-        }
-
-        my $StandardTemplates = $Self->_GetStandardTemplates(
-            TicketID => $Self->{TicketID},
-            %GetParam,
-            QueueID => $QueueID || '',
-        );
-
-        my @TemplateAJAX;
-
-        # get upload cache object
-        my $UploadCacheObject = $Kernel::OM->Get('Kernel::System::Web::UploadCache');
-
-        # update ticket body and attachments if needed.
-        if ( $GetParam{ElementChanged} eq 'StandardTemplateID' ) {
-            my @TicketAttachments;
-            my $TemplateText;
-
-            # remove all attachments from the Upload cache
-            my $RemoveSuccess = $UploadCacheObject->FormIDRemove(
-                FormID => $GetParam{FormID},
-            );
-            if ( !$RemoveSuccess ) {
-                $Kernel::OM->Get('Kernel::System::Log')->Log(
-                    Priority => 'error',
-                    Message  => "Form attachments could not be deleted!",
-                );
-            }
-
-            # get the template text and set new attachments if a template is selected
-            my $TemplateGenerator = $Kernel::OM->Get('Kernel::System::TemplateGenerator');
-
-            if ( IsPositiveInteger( $GetParam{StandardTemplateID} ) ) {
-
-                # set template text, replace smart tags (limited as ticket is not created)
-                $TemplateText = $TemplateGenerator->Template(
-                    TemplateID => $GetParam{StandardTemplateID},
-                    TicketID   => $Self->{TicketID},
-                    UserID     => $Self->{UserID},
-                );
-
-                # create StdAttachmentObject
-                my $StdAttachmentObject = $Kernel::OM->Get('Kernel::System::StdAttachment');
-
-                # add std. attachments to ticket
-                my %AllStdAttachments = $StdAttachmentObject->StdAttachmentStandardTemplateMemberList(
-                    StandardTemplateID => $GetParam{StandardTemplateID},
-                );
-                for my $ID ( sort keys %AllStdAttachments ) {
-                    my %AttachmentsData = $StdAttachmentObject->StdAttachmentGet( ID => $ID );
-                    $UploadCacheObject->FormIDAddFile(
-                        FormID      => $GetParam{FormID},
-                        Disposition => 'attachment',
-                        %AttachmentsData,
-                    );
-                }
-
-                # send a list of attachments in the upload cache back to the client side JavaScript
-                # which renders then the list of currently uploaded attachments
-                @TicketAttachments = $UploadCacheObject->FormIDGetAllFilesMeta(
-                    FormID => $GetParam{FormID},
-                );
-
-                for my $Attachment (@TicketAttachments) {
-                    $Attachment->{Filesize} = $LayoutObject->HumanReadableDataSize(
-                        Size => $Attachment->{Filesize},
-                    );
-                }
-            }
-
-            # Get the first article of the ticket.
-            my $ArticleObject = $Kernel::OM->Get('Kernel::System::Ticket::Article');
-            my @ArticleIDs    = $ArticleObject->ArticleIndex(
-                TicketID => $Self->{TicketID},
-            );
-
-            my %Article;
-            if (@ArticleIDs) {
-                %Article = $ArticleObject->ArticleGet(
-                    TicketID  => $Self->{TicketID},
-                    ArticleID => $ArticleIDs[0],
-                );
-            }
-
-            # get the matching signature for the current user
-            my $Signature = $TemplateGenerator->Signature(
-                TicketID  => $Self->{TicketID},
-                ArticleID => $Article{ArticleID},
-                Data      => \%Article,
-                UserID    => $Self->{UserID},
-            );
-
-            # append the signature to the body text
-            if ( $LayoutObject->{BrowserRichText} ) {
-                $TemplateText = $TemplateText . '<br><br>' . $Signature;
-            }
-            else {
-                $TemplateText = $TemplateText . "\n\n" . $Signature;
-            }
-
-            @TemplateAJAX = (
-                {
-                    Name => 'UseTemplateNote',
-                    Data => '0',
-                },
-                {
-                    Name => 'RichText',
-                    Data => $TemplateText || '',
-                },
-                {
-                    Name     => 'TicketAttachments',
-                    Data     => \@TicketAttachments,
-                    KeepData => 1,
-                },
-            );
-        }
-
-        my $JSON = $LayoutObject->BuildSelectionJSON(
-            [
-                {
-                    Name         => 'NewStateID',
-                    Data         => $NextStates,
-                    SelectedID   => $GetParam{NewStateID},
-                    Translation  => 1,
-                    PossibleNone => $Config->{StateDefault} ? 0 : 1,
-                    Max          => 100,
-                },
-                {
-                    Name         => 'StandardTemplateID',
-                    Data         => $StandardTemplates,
-                    SelectedID   => $GetParam{StandardTemplateID},
-                    PossibleNone => 1,
-                    Translation  => 1,
-                    Max          => 100,
-                },
-                @DynamicFieldAJAX,
-                @TemplateAJAX,
-            ],
-        );
-
-        return $LayoutObject->Attachment(
+        $Output = $LayoutObject->Attachment(
             ContentType => 'application/json; charset=' . $LayoutObject->{Charset},
             Content     => $JSON,
             Type        => 'inline',
@@ -358,7 +112,18 @@ sub Run {
         );
     }
     elsif ( $Self->{Subaction} eq 'AJAXUpdate' ) {
-        $Output = $Self->AjaxUpdate();
+
+        my @JSONData = $Self->AjaxUpdateTemplate();
+        push @JSONData, $Self->AjaxUpdate();
+
+        my $JSON = $LayoutObject->BuildSelectionJSON( \@JSONData );
+
+        $Output = $LayoutObject->Attachment(
+            ContentType => 'application/json; charset=' . $LayoutObject->{Charset},
+            Content     => $JSON,
+            Type        => 'inline',
+            NoCache     => 1,
+        );
     }
     elsif ( $Self->{LoadedFormDraftID} ) {
         $Output = $Self->SendEmail();
@@ -558,13 +323,13 @@ sub Form {
         UserID    => $Self->{UserID},
     );
 
-    if ( $GetParam{EmailTemplateID} ) {
+    if ( $GetParam{StandardTemplateID} ) {
 
         # get template
         $Data{StdTemplate} = $TemplateGenerator->Template(
             TicketID   => $Self->{TicketID},
             ArticleID  => $Data{ArticleID},
-            TemplateID => $GetParam{EmailTemplateID},
+            TemplateID => $GetParam{StandardTemplateID},
             Data       => \%Data,
             UserID     => $Self->{UserID},
         );
@@ -584,7 +349,7 @@ sub Form {
     if ( $LayoutObject->{BrowserRichText} ) {
 
         # add the temp
-        if ( $GetParam{EmailTemplateID} ) {
+        if ( $GetParam{StandardTemplateID} ) {
             $Data{Body} = $Data{StdTemplate} . '<br/>' . $Data{Body};
         }
 
@@ -593,7 +358,7 @@ sub Form {
     else {
 
         # add the temp
-        if ( $GetParam{EmailTemplateID} ) {
+        if ( $GetParam{StandardTemplateID} ) {
             $Data{Body} = $Data{StdTemplate} . "\n" . $Data{Body};
         }
 
@@ -608,9 +373,9 @@ sub Form {
     my $UploadCacheObject   = $Kernel::OM->Get('Kernel::System::Web::UploadCache');
 
     # add std. attachments to email
-    if ( $GetParam{EmailTemplateID} ) {
+    if ( $GetParam{StandardTemplateID} ) {
         my %AllStdAttachments = $StdAttachmentObject->StdAttachmentStandardTemplateMemberList(
-            StandardTemplateID => $GetParam{EmailTemplateID},
+            StandardTemplateID => $GetParam{StandardTemplateID},
         );
         for my $ID ( sort keys %AllStdAttachments ) {
             my %AttachmentsData = $StdAttachmentObject->StdAttachmentGet( ID => $ID );
@@ -1526,6 +1291,264 @@ sub SendEmail {
     );
 }
 
+sub AjaxUpdateTemplate {
+    my ( $Self, %Param ) = @_;
+
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $ParamObject  = $Kernel::OM->Get('Kernel::System::Web::Request');
+    my $TicketObject = $Kernel::OM->Get('Kernel::System::Ticket');
+
+    my %GetParam;
+    for my $Key (
+        qw(
+        NewStateID NewPriorityID TimeUnits IsVisibleForCustomer Title Body Subject NewQueueID
+        Year Month Day Hour Minute NewOwnerID NewOwnerType OldOwnerID NewResponsibleID
+        TypeID ServiceID SLAID Expand ReplyToArticle StandardTemplateID CreateArticle
+        FormID ElementChanged
+        )
+        )
+    {
+        $GetParam{$Key} = $ParamObject->GetParam( Param => $Key );
+    }
+
+    my %Ticket       = $TicketObject->TicketGet( TicketID => $Self->{TicketID} );
+    my $CustomerUser = $Ticket{CustomerUserID};
+    my $QueueID      = $Ticket{QueueID};
+
+    # get dynamic field values form http request
+    my %DynamicFieldValues;
+
+    # get list type
+    my $TreeView = 0;
+    if ( $ConfigObject->Get('Ticket::Frontend::ListType') eq 'tree' ) {
+        $TreeView = 1;
+    }
+
+    my $NextStates = $Self->_GetNextStates(
+        %GetParam,
+        CustomerUserID => $CustomerUser || '',
+        QueueID        => $QueueID,
+    );
+
+    # update Dynamic Fields Possible Values via AJAX
+    my @DynamicFieldAJAX;
+
+    # get config for frontend module
+    my $Config = $ConfigObject->Get("Ticket::Frontend::$Self->{Action}");
+
+    # get the dynamic fields for this screen
+    my $DynamicField = $Kernel::OM->Get('Kernel::System::DynamicField')->DynamicFieldListGet(
+        Valid       => 1,
+        ObjectType  => [ 'Ticket', 'Article' ],
+        FieldFilter => $Config->{DynamicField} || {},
+    );
+
+    # get dynamic field backend object
+    my $DynamicFieldBackendObject = $Kernel::OM->Get('Kernel::System::DynamicField::Backend');
+
+    # cycle trough the activated Dynamic Fields for this screen
+    DYNAMICFIELD:
+    for my $DynamicFieldConfig ( @{$DynamicField} ) {
+        next DYNAMICFIELD if !IsHashRefWithData($DynamicFieldConfig);
+
+        my $IsACLReducible = $DynamicFieldBackendObject->HasBehavior(
+            DynamicFieldConfig => $DynamicFieldConfig,
+            Behavior           => 'IsACLReducible',
+        );
+        next DYNAMICFIELD if !$IsACLReducible;
+
+        my $PossibleValues = $DynamicFieldBackendObject->PossibleValuesGet(
+            DynamicFieldConfig => $DynamicFieldConfig,
+        );
+
+        # convert possible values key => value to key => key for ACLs using a Hash slice
+        my %AclData = %{$PossibleValues};
+        @AclData{ keys %AclData } = keys %AclData;
+
+        # set possible values filter from ACLs
+        my $ACL = $TicketObject->TicketAcl(
+            %GetParam,
+            Action        => $Self->{Action},
+            TicketID      => $Self->{TicketID},
+            QueueID       => $QueueID,
+            ReturnType    => 'Ticket',
+            ReturnSubType => 'DynamicField_' . $DynamicFieldConfig->{Name},
+            Data          => \%AclData,
+            UserID        => $Self->{UserID},
+        );
+        if ($ACL) {
+            my %Filter = $TicketObject->TicketAclData();
+
+            # convert Filer key => key back to key => value using map
+            %{$PossibleValues} = map { $_ => $PossibleValues->{$_} } keys %Filter;
+        }
+
+        # extract the dynamic field value from the web request
+        $DynamicFieldValues{ $DynamicFieldConfig->{Name} } = $DynamicFieldBackendObject->EditFieldValueGet(
+            DynamicFieldConfig => $DynamicFieldConfig,
+            ParamObject        => $ParamObject,
+            LayoutObject       => $LayoutObject,
+        );
+
+        my $DataValues = $DynamicFieldBackendObject->BuildSelectionDataGet(
+            DynamicFieldConfig => $DynamicFieldConfig,
+            PossibleValues     => $PossibleValues,
+            Value              => $DynamicFieldValues{ $DynamicFieldConfig->{Name} },
+        ) || $PossibleValues;
+
+        # add dynamic field to the list of fields to update
+        push(
+            @DynamicFieldAJAX,
+            {
+                Name        => 'DynamicField_' . $DynamicFieldConfig->{Name},
+                Data        => $DataValues,
+                SelectedID  => $DynamicFieldValues{ $DynamicFieldConfig->{Name} },
+                Translation => $DynamicFieldConfig->{Config}->{TranslatableValues} || 0,
+                Max         => 100,
+            }
+        );
+    }
+
+    my $StandardTemplates = $Self->_GetStandardTemplates(
+        TicketID => $Self->{TicketID},
+        %GetParam,
+        QueueID => $QueueID || '',
+    );
+
+    my @TemplateAJAX;
+
+    # get upload cache object
+    my $UploadCacheObject = $Kernel::OM->Get('Kernel::System::Web::UploadCache');
+
+    # update ticket body and attachments if needed.
+    if ( $GetParam{ElementChanged} eq 'StandardTemplateID' ) {
+        my @TicketAttachments;
+        my $TemplateText;
+
+        # remove all attachments from the Upload cache
+        my $RemoveSuccess = $UploadCacheObject->FormIDRemove(
+            FormID => $GetParam{FormID},
+        );
+        if ( !$RemoveSuccess ) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => "Form attachments could not be deleted!",
+            );
+        }
+
+        # get the template text and set new attachments if a template is selected
+        my $TemplateGenerator = $Kernel::OM->Get('Kernel::System::TemplateGenerator');
+
+        if ( IsPositiveInteger( $GetParam{StandardTemplateID} ) ) {
+
+            # set template text, replace smart tags (limited as ticket is not created)
+            $TemplateText = $TemplateGenerator->Template(
+                TemplateID => $GetParam{StandardTemplateID},
+                TicketID   => $Self->{TicketID},
+                UserID     => $Self->{UserID},
+            );
+
+            # create StdAttachmentObject
+            my $StdAttachmentObject = $Kernel::OM->Get('Kernel::System::StdAttachment');
+
+            # add std. attachments to ticket
+            my %AllStdAttachments = $StdAttachmentObject->StdAttachmentStandardTemplateMemberList(
+                StandardTemplateID => $GetParam{StandardTemplateID},
+            );
+            for my $ID ( sort keys %AllStdAttachments ) {
+                my %AttachmentsData = $StdAttachmentObject->StdAttachmentGet( ID => $ID );
+                $UploadCacheObject->FormIDAddFile(
+                    FormID      => $GetParam{FormID},
+                    Disposition => 'attachment',
+                    %AttachmentsData,
+                );
+            }
+
+            # send a list of attachments in the upload cache back to the client side JavaScript
+            # which renders then the list of currently uploaded attachments
+            @TicketAttachments = $UploadCacheObject->FormIDGetAllFilesMeta(
+                FormID => $GetParam{FormID},
+            );
+
+            for my $Attachment (@TicketAttachments) {
+                $Attachment->{Filesize} = $LayoutObject->HumanReadableDataSize(
+                    Size => $Attachment->{Filesize},
+                );
+            }
+        }
+
+        # Get the first article of the ticket.
+        my $ArticleObject = $Kernel::OM->Get('Kernel::System::Ticket::Article');
+        my @ArticleIDs    = $ArticleObject->ArticleIndex(
+            TicketID => $Self->{TicketID},
+        );
+
+        my %Article;
+        if (@ArticleIDs) {
+            %Article = $ArticleObject->ArticleGet(
+                TicketID  => $Self->{TicketID},
+                ArticleID => $ArticleIDs[0],
+            );
+        }
+
+        # get the matching signature for the current user
+        my $Signature = $TemplateGenerator->Signature(
+            TicketID  => $Self->{TicketID},
+            ArticleID => $Article{ArticleID},
+            Data      => \%Article,
+            UserID    => $Self->{UserID},
+        );
+
+        # append the signature to the body text
+        if ( $LayoutObject->{BrowserRichText} ) {
+            $TemplateText = $TemplateText . '<br><br>' . $Signature;
+        }
+        else {
+            $TemplateText = $TemplateText . "\n\n" . $Signature;
+        }
+
+        @TemplateAJAX = (
+            {
+                Name => 'UseTemplateNote',
+                Data => '0',
+            },
+            {
+                Name => 'RichText',
+                Data => $TemplateText || '',
+            },
+            {
+                Name     => 'TicketAttachments',
+                Data     => \@TicketAttachments,
+                KeepData => 1,
+            },
+        );
+    }
+
+    my @Data = (
+        {
+            Name         => 'NewStateID',
+            Data         => $NextStates,
+            SelectedID   => $GetParam{NewStateID},
+            Translation  => 1,
+            PossibleNone => $Config->{StateDefault} ? 0 : 1,
+            Max          => 100,
+        },
+        {
+            Name         => 'StandardTemplateID',
+            Data         => $StandardTemplates,
+            SelectedID   => $GetParam{StandardTemplateID},
+            PossibleNone => 1,
+            Translation  => 1,
+            Max          => 100,
+        },
+        @DynamicFieldAJAX,
+        @TemplateAJAX,
+    );
+
+    return @Data;
+}
+
 sub AjaxUpdate {
     my ( $Self, %Param ) = @_;
 
@@ -1732,27 +1755,20 @@ sub AjaxUpdate {
         );
     }
 
-    my $JSON = $LayoutObject->BuildSelectionJSON(
-        [
-            {
-                Name         => 'ComposeStateID',
-                Data         => $NextStates,
-                SelectedID   => $GetParam{ComposeStateID},
-                Translation  => 1,
-                PossibleNone => 1,
-                Max          => 100,
-            },
-            @ExtendedData,
-            @DynamicFieldAJAX,
-        ],
+    my @Data = (
+        {
+            Name         => 'ComposeStateID',
+            Data         => $NextStates,
+            SelectedID   => $GetParam{ComposeStateID},
+            Translation  => 1,
+            PossibleNone => 1,
+            Max          => 100,
+        },
+        @ExtendedData,
+        @DynamicFieldAJAX,
     );
 
-    return $LayoutObject->Attachment(
-        ContentType => 'application/json; charset=' . $LayoutObject->{Charset},
-        Content     => $JSON,
-        Type        => 'inline',
-        NoCache     => 1,
-    );
+    return @Data;
 }
 
 sub _GetNextStates {
@@ -2080,9 +2096,11 @@ sub _Mask {
         Value => $DynamicFieldNames,
     );
 
+    my $FormDraftObject = $Kernel::OM->Get('Kernel::System::FormDraft');
+
     my $LoadedFormDraft;
     if ( $Self->{LoadedFormDraftID} ) {
-        $LoadedFormDraft = $Kernel::OM->Get('Kernel::System::FormDraft')->FormDraftGet(
+        $LoadedFormDraft = $FormDraftObject->FormDraftGet(
             FormDraftID => $Self->{LoadedFormDraftID},
             GetContent  => 0,
             UserID      => $Self->{UserID},
@@ -2128,15 +2146,24 @@ sub _Mask {
         );
     }
 
+    # Check if the user has already any form draft for this action
+    my $FormDraftList = $FormDraftObject->FormDraftListGet(
+        ObjectType => 'Ticket',
+        ObjectID   => $Self->{TicketID},
+        Action     => $Self->{Action},
+        UserID     => $Self->{UserID},
+    ) // [];
+
     # create & return output
     return $LayoutObject->Output(
         TemplateFile => 'AgentTicketEmailOutbound',
         Data         => {
             %Param,
-            FormDraft      => $Config->{FormDraft},
-            FormDraftID    => $Self->{LoadedFormDraftID},
-            FormDraftTitle => $LoadedFormDraft ? $LoadedFormDraft->{Title} : '',
-            FormDraftMeta  => $LoadedFormDraft,
+            FormDraft          => $Config->{FormDraft},
+            FormDraftID        => $Self->{LoadedFormDraftID},
+            FormDraftTitle     => $LoadedFormDraft ? $LoadedFormDraft->{Title} : '',
+            FormDraftMeta      => $LoadedFormDraft,
+            FormDraftForAction => scalar @{$FormDraftList},
         },
     );
 }
@@ -2188,7 +2215,7 @@ sub _GetExtendedParams {
     my %GetParam;
     for my $Key (
         qw(To Cc Bcc Subject Body ComposeStateID IsVisibleForCustomer IsVisibleForCustomerPresent
-        ArticleID TimeUnits Year Month Day Hour Minute FormID FormDraftID Title)
+        ArticleID TimeUnits Year Month Day Hour Minute FormID FormDraftID Title StandardTemplateID)
         )
     {
         my $Value = $ParamObject->GetParam( Param => $Key );
@@ -2196,8 +2223,6 @@ sub _GetExtendedParams {
             $GetParam{$Key} = $Value;
         }
     }
-
-    $GetParam{EmailTemplateID} = $ParamObject->GetParam( Param => 'EmailTemplateID' ) || '';
 
     # create form id
     if ( !$GetParam{FormID} ) {

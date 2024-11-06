@@ -147,6 +147,47 @@ for my $Test (@Tests) {
         $Set,
         'TicketFlagSet()',
     );
+
+    # Repeatedly set the same flag and then check it
+    $Set = $TicketObject->TicketFlagSet(
+        TicketID => $TicketID,
+        Key      => 'SomeKey',
+        Value    => 'Some value',
+        UserID   => 1,
+    );
+    $Self->True(
+        $Set,
+        'TicketFlagSet()',
+    );
+    %Flag = $TicketObject->TicketFlagGet(
+        TicketID => $TicketID,
+        UserID   => 1,
+    );
+    $Self->Is(
+        $Flag{SomeKey},
+        'Some value',
+        'TicketFlagGet()',
+    );
+
+    $Set = $TicketObject->TicketFlagSet(
+        TicketID => $TicketID,
+        Key      => 'SomeKey',
+        Value    => 'Some value 2',
+        UserID   => 1,
+    );
+    $Self->True(
+        $Set,
+        'TicketFlagSet()',
+    );
+    %Flag = $TicketObject->TicketFlagGet(
+        TicketID => $TicketID,
+        UserID   => 1,
+    );
+    $Self->Is(
+        $Flag{SomeKey},
+        'Some value 2',
+        'TicketFlagGet()',
+    );
 }
 
 my @SearchTests = (

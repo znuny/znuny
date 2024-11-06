@@ -11,6 +11,7 @@ package Kernel::Modules::AdminCustomerUserService;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::Language qw(Translatable);
 

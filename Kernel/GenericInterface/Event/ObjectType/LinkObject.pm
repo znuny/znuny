@@ -12,8 +12,6 @@ package Kernel::GenericInterface::Event::ObjectType::LinkObject;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
-
 our @ObjectDependencies = (
     'Kernel::System::Log',
 );

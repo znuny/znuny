@@ -602,7 +602,7 @@ sub _DataHistoryGet {
         );
     }
 
-    # set default because we dont write the initial value of data add to the history
+    # set default because we don't write the initial value of data add to the history
     # because of performance reasons
     DEFAULT:
     for my $Key ( sort keys %DataGet ) {

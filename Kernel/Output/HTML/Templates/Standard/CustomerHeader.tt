@@ -29,17 +29,21 @@
         </div>
 
 [% RenderBlockStart("Actions") %]
-        <div id="HeaderToolBar" class="Actions">
+        <ul id="HeaderToolBar" class="Actions">
             <div class="logo-navbar-mobile"></div>
-            <div class="UserAvatar">
-                <a href="#">
-                    <img src="//www.gravatar.com/avatar/98c188b4d137054757d5659a26994c81?s=100&amp;d=mp">
+            <li class="UserAvatar">
+                <a class="icon-hover-md" href="#">
+                    [% IF Data.Avatar %]
+                        <img src="[% Data.Avatar %]" />
+                    [% ELSE %]
+                        <span class="Initials">[% Data.UserInitials | html %]</span>
+                    [% END %]
                 </a>
-                <div class="UserAvatar_submenu">
+                <div class="UserAvatar_submenu btn-divider">
                     <ul>
                         [% RenderBlockStart("Preferences") %]
                         <li class="[% Data.Class | html %]">
-                            <label>Account</label>
+                            <label>[% Translate("Account") | html %]</label>
                             <a href="[% Env('Baselink') %]Action=CustomerPreferences" title="[% Translate('Edit personal preferences') | html %]">
                                 <i class="fa fa-gear"></i>
                                 <span>[% Translate("Personal preferences") | html %]</span>
@@ -56,7 +60,7 @@
 [% RenderBlockEnd("Logout") %]
                     </ul>
                 </div>
-            </div>
+            </li>
         </div>
 [% RenderBlockEnd("Actions") %]
     </div>

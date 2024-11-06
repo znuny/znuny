@@ -11,7 +11,7 @@ package Kernel::Modules::AgentTicketPending;
 
 use strict;
 use warnings;
-
+use utf8;
 use parent qw( Kernel::Modules::AgentTicketActionCommon );
 
 1;

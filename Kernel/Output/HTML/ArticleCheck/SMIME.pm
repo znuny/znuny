@@ -274,9 +274,9 @@ sub Check {
                 );
 
                 my $OrigFrom        = $ParserObjectOrig->GetParam( WHAT => 'From' );
-                my $OrigFromEmail   = $ParserObjectOrig->GetEmailAddress( Email => $OrigFrom );
+                my $OrigFromEmail   = $ParserObjectOrig->GetEmailAddress( Email => $OrigFrom ) // '';
                 my $OrigSender      = $ParserObjectOrig->GetParam( WHAT => 'Sender' );
-                my $OrigSenderEmail = $ParserObjectOrig->GetEmailAddress( Email => $OrigSender );
+                my $OrigSenderEmail = $ParserObjectOrig->GetEmailAddress( Email => $OrigSender ) // '';
 
                 # compare sender email to signer email
                 my $SignerSenderMatch = 0;
@@ -404,9 +404,9 @@ sub Check {
                 );
 
                 my $OrigFrom        = $ParserObjectOrig->GetParam( WHAT => 'From' );
-                my $OrigFromEmail   = $ParserObjectOrig->GetEmailAddress( Email => $OrigFrom );
+                my $OrigFromEmail   = $ParserObjectOrig->GetEmailAddress( Email => $OrigFrom ) // '';
                 my $OrigSender      = $ParserObjectOrig->GetParam( WHAT => 'Sender' );
-                my $OrigSenderEmail = $ParserObjectOrig->GetEmailAddress( Email => $OrigSender );
+                my $OrigSenderEmail = $ParserObjectOrig->GetEmailAddress( Email => $OrigSender ) // '';
 
                 # compare sender email to signer email
                 my $SignerSenderMatch = 0;

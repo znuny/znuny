@@ -756,7 +756,7 @@ sub _SettingRender {
 
                 if ( !$Objects{$ValueType} ) {
 
-                    # Make sure the ValueType backed is present and is syntactically correct.
+                    # Make sure the ValueType backend is present and is syntactically correct.
                     my $Loaded = $Kernel::OM->Get('Kernel::System::Main')->Require(
                         "Kernel::System::SysConfig::ValueType::$ValueType",
                     );
@@ -951,7 +951,7 @@ sub _SettingRender {
 
                 if ( !$Objects{$ValueType} ) {
 
-                    # Make sure the ValueType backed is present and is syntactically correct.
+                    # Make sure the ValueType backend is present and is syntactically correct.
                     my $Loaded = $Kernel::OM->Get('Kernel::System::Main')->Require(
                         "Kernel::System::SysConfig::ValueType::$ValueType",
                     );

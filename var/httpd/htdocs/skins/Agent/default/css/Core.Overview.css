@@ -213,7 +213,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         cursor: auto;
         top: -35px;
         right: 0px;
-        background-color: var(--inlactions-bg-color);
+        background-color: var(--bread-crumb);
         height: var(--inlactions-height);
         transition: var(--main-transition);
         border-bottom-left-radius: var(--border-radius-md);
@@ -234,10 +234,10 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     }
     
     ul.InlineActions li:hover > a {
-        text-decoration: underline;
-        color: blue;
+        color: var(--black) !important;
+        font-size: var(--inlactions-font-size) !important;
     }
-    
+
     .InlineActions .ResponsiveActionMenu {
         display: none !important;
     }

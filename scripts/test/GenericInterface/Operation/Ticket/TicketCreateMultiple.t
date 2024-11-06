@@ -4678,7 +4678,7 @@ for my $Test (@Tests) {
         },
     );
 
-    # TODO prevent failing test if enviroment on SaaS unit test system doesn't work.
+    # TODO prevent failing test if environment on SaaS unit test system doesn't work.
     if (
         $Test->{SuccessCreate}
         && $RequesterResult->{ErrorMessage} && $RequesterResult->{ErrorMessage} eq

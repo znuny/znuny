@@ -112,6 +112,9 @@ sub new {
     my @DynamicFieldMapEntries = grep { $_->[5] eq 'dynamic_field' } @{ $Self->{CustomerUserMap}->{Map} };
     $Self->{ConfiguredDynamicFieldNames} = { map { $_->[2] => 1 } @DynamicFieldMapEntries };
 
+    # Use given count as backend source.
+    $Self->{Source} = $Param{Count};
+
     return $Self;
 }
 
@@ -614,7 +617,10 @@ sub CustomerSearchDetail {
         }
     }
 
-    my $DBObject = $Self->{DBObject};
+    # Get new DBObject for framework queries.
+    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+
+    # $Self->{DBObject} is used for queries to the customer user database backend.
 
     # Assemble the conditions used in the WHERE clause.
     my @SQLWhere;
@@ -625,9 +631,9 @@ sub CustomerSearchDetail {
         if ( $Param{ $Field->{Name} } ) {
 
             # Get like escape string needed for some databases (e.g. oracle).
-            my $LikeEscapeString = $DBObject->GetDatabaseFunction('LikeEscapeString');
+            my $LikeEscapeString = $Self->{DBObject}->GetDatabaseFunction('LikeEscapeString');
 
-            $Param{ $Field->{Name} } = $DBObject->Quote( $Param{ $Field->{Name} }, 'Like' );
+            $Param{ $Field->{Name} } = $Self->{DBObject}->Quote( $Param{ $Field->{Name} }, 'Like' );
 
             $Param{ $Field->{Name} } =~ s{ \*+ }{%}xmsg;
 
@@ -816,7 +822,7 @@ sub CustomerSearchDetail {
 
         next FIELD if !@{ $Param{ $Field->{Name} } };
 
-        my $SQLQueryInCondition = $DBObject->QueryInCondition(
+        my $SQLQueryInCondition = $Self->{DBObject}->QueryInCondition(
             Key      => $Field->{DatabaseField},
             Values   => $Param{ $Field->{Name} },
             BindMode => 0,
@@ -828,7 +834,7 @@ sub CustomerSearchDetail {
     # Special parameter for CustomerIDs from a customer company search result.
     if ( IsArrayRefWithData( $Param{CustomerCompanySearchCustomerIDs} ) ) {
 
-        my $SQLQueryInCondition = $DBObject->QueryInCondition(
+        my $SQLQueryInCondition = $Self->{DBObject}->QueryInCondition(
             Key      => $Self->{CustomerID},
             Values   => $Param{CustomerCompanySearchCustomerIDs},
             BindMode => 0,
@@ -840,7 +846,7 @@ sub CustomerSearchDetail {
     # Special parameter to exclude some user logins from the search result.
     if ( IsArrayRefWithData( $Param{ExcludeUserLogins} ) ) {
 
-        my $SQLQueryInCondition = $DBObject->QueryInCondition(
+        my $SQLQueryInCondition = $Self->{DBObject}->QueryInCondition(
             Key      => $Self->{CustomerKey},
             Values   => $Param{ExcludeUserLogins},
             BindMode => 0,
@@ -973,13 +979,13 @@ sub CustomerSearchDetail {
         }
     }
 
-    return if !$DBObject->Prepare(
+    return if !$Self->{DBObject}->Prepare(
         SQL   => $SQL,
         Limit => $Param{Limit},
     );
 
     my @IDs;
-    while ( my @Row = $DBObject->FetchrowArray() ) {
+    while ( my @Row = $Self->{DBObject}->FetchrowArray() ) {
         push @IDs, $Row[0];
     }
 
@@ -1677,14 +1683,12 @@ sub SetPassword {
         );
         return;
     }
-    my $CryptedPw = '';
 
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
-
-    my $CryptType = $ConfigObject->Get('Customer::AuthModule::DB::CryptType') || 'sha2';
-
-    # get encode object
     my $EncodeObject = $Kernel::OM->Get('Kernel::System::Encode');
+
+    my $CryptedPw = '';
+    my $CryptType = $ConfigObject->Get( 'Customer::AuthModule::DB::CryptType' . $Self->{Source} ) || 'sha2';
 
     # crypt plain (no crypt at all)
     if ( $CryptType eq 'plain' ) {

@@ -11,6 +11,7 @@ package scripts::test::ObjectManager::Dummy2;    ## no critic
 
 use strict;
 use warnings;
+use utf8;
 
 our @ObjectDependencies = ();
 

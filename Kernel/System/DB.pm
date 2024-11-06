@@ -292,6 +292,78 @@ sub Version {
     return $Version;
 }
 
+=head2 CheckRequiredDatabaseVersion()
+
+Check if the required database version is installed or not.
+
+    my %VersionInfo = $DBObject->CheckRequiredDatabaseVersion();
+
+Returns:
+
+    my %VersionInfo = (
+        'DatabaseType'       => 'MariaDB',
+        'VersionString'      => 'MariaDB 10.6.12',
+        'InstalledVersion'   => '10.6.12',
+        'MinimumVersion'     => '5.0.0',
+        'RequirementsPassed' => 1,
+    );
+
+=cut
+
+sub CheckRequiredDatabaseVersion {
+    my ( $Self, %Param ) = @_;
+
+    my $LogObject = $Kernel::OM->Get('Kernel::System::Log');
+
+    # Use dotted-decimal version formats, since version->parse() might not work as you expect it to.
+    #
+    #   $Version   version->parse($Version)
+    #   ---------   -----------------------
+    #   1.23        v1.230.0
+    #   "1.23"      v1.230.0
+    #   v1.23       v1.23.0
+    #   "v1.23"     v1.23.0
+    #   "1.2.3"     v1.2.3
+    #   "v1.2.3"    v1.2.3
+    my %MinimumDatabaseVersion = (
+        MySQL      => '8.0.0',
+        MariaDB    => '10.3.0',
+        PostgreSQL => '12.0.0',
+        Oracle     => '19.0.0',
+    );
+
+    my $VersionString = $Self->Version();
+
+    my $DatabaseType;
+    my $DatabaseVersion;
+    if ( $VersionString =~ m{ \A (MySQL|MariaDB|Oracle|PostgreSQL) \s+ ([0-9.]+) \z }xms ) {
+        $DatabaseType    = $1;
+        $DatabaseVersion = $2;
+    }
+
+    if ( !$DatabaseType || !$DatabaseVersion ) {
+        $LogObject->Log(
+            Priority => 'error',
+            Message  => 'Not able to detect database version!',
+        );
+        return;
+    }
+
+    my %Result = (
+        VersionString      => $VersionString,
+        DatabaseType       => $DatabaseType,
+        InstalledVersion   => $DatabaseVersion,
+        MinimumVersion     => $MinimumDatabaseVersion{$DatabaseType},
+        RequirementsPassed => 1,
+    );
+
+    if ( version->parse($DatabaseVersion) < version->parse( $MinimumDatabaseVersion{$DatabaseType} ) ) {
+        $Result{RequirementsPassed} = 0;
+    }
+
+    return %Result;
+}
+
 =head2 Quote()
 
 to quote sql parameters
@@ -850,6 +922,76 @@ sub ListTables {
     }
 
     return @Tables;
+}
+
+=head2 GetSystemTables
+
+Retrieves tables of Znuny and optionally its installed packages and ignores any other tables that
+might have been added manually to the database.
+
+    my @SystemTables = $DBObject->GetSystemTables(
+        IncludePackageTables => 1, # Also include tables of installed packages
+    );
+
+Returns array with system table names.
+
+=cut
+
+sub GetSystemTables {
+    my ( $Self, %Param ) = @_;
+
+    my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
+    my $PackageObject = $Kernel::OM->Get('Kernel::System::Package');
+    my $XMLObject     = $Kernel::OM->Get('Kernel::System::XML');
+
+    #
+    # Assemble Znuny tables.
+    #
+    my $SQLDirectory   = $ConfigObject->Get('Home') . '/scripts/database';
+    my $SchemaFilePath = $SQLDirectory . '/' . 'schema.xml';
+
+    my $SchemaXML = $Kernel::OM->Get('Kernel::System::Main')->FileRead(
+        Location => $SchemaFilePath,
+    );
+    my @SchemaXML = $XMLObject->XMLParse(
+        String => $SchemaXML,
+    );
+
+    my @TableTags = grep {
+        defined $_->{Tag}
+            && $_->{Tag} eq 'Table'
+            && $_->{TagType} eq 'Start'
+    } @SchemaXML;
+    my @SystemTables = sort map { $_->{Name} } @TableTags;
+
+    return @SystemTables if !$Param{IncludePackageTables};
+
+    #
+    # Assemble tables of installed packages.
+    #
+    my @Packages = $Kernel::OM->Get('Kernel::System::Package')->RepositoryList();
+    PACKAGE:
+    for my $Package (@Packages) {
+        my $DatabaseInstall = $Package->{DatabaseInstall};
+        next PACKAGE if !IsHashRefWithData($DatabaseInstall);
+
+        for my $Type ( sort keys %{$DatabaseInstall} ) {
+            my @PackageTableTags = grep {
+                defined $_->{Tag}
+                    && $_->{Tag} eq 'TableCreate'
+                    && $_->{TagType} eq 'Start'
+            } @{ $DatabaseInstall->{$Type} };
+            my @PackageTables = sort map { $_->{Name} } @PackageTableTags;
+
+            push @SystemTables, @PackageTables;
+        }
+    }
+
+    # Ensure that every table is unique.
+    my %SystemTables = map { $_ => 1 } @SystemTables;
+    @SystemTables = sort keys %SystemTables;
+
+    return @SystemTables;
 }
 
 =head2 GetColumnNames()
@@ -1415,12 +1557,12 @@ sub QueryCondition {
                         $WordSQL = "'" . $WordSQL . "'";
                     }
 
-        # check if database supports LIKE in large text types
-        # the first condition is a little bit opaque
-        # CaseSensitive of the database defines, if the database handles case sensitivity or not
-        # and the parameter $CaseSensitive defines, if the customer database should do case sensitive statements or not.
-        # so if the database dont support case sensitivity or the configuration of the customer database want to do this
-        # then we prevent the LOWER() statements.
+    # check if database supports LIKE in large text types
+    # the first condition is a little bit opaque
+    # CaseSensitive of the database defines, if the database handles case sensitivity or not
+    # and the parameter $CaseSensitive defines, if the customer database should do case sensitive statements or not.
+    # so if the database doesn't support case sensitivity or the configuration of the customer database wants to do this
+    # then we prevent the LOWER() statements.
                     if ( !$Self->GetDatabaseFunction('CaseSensitive') || $CaseSensitive ) {
                         $SQLA .= "$Key $Type $WordSQL";
                     }
@@ -1464,12 +1606,12 @@ sub QueryCondition {
                         $WordSQL = "'" . $WordSQL . "'";
                     }
 
-        # check if database supports LIKE in large text types
-        # the first condition is a little bit opaque
-        # CaseSensitive of the database defines, if the database handles case sensitivity or not
-        # and the parameter $CaseSensitive defines, if the customer database should do case sensitive statements or not.
-        # so if the database dont support case sensitivity or the configuration of the customer database want to do this
-        # then we prevent the LOWER() statements.
+     # check if database supports LIKE in large text types
+     # the first condition is a little bit opaque
+     # CaseSensitive of the database defines, if the database handles case sensitivity or not
+     # and the parameter $CaseSensitive defines, if the customer database should do case sensitive statements or not.
+     # so if the database doesn't support case sensitivity or the configuration of the customer database want to do this
+     # then we prevent the LOWER() statements.
                     if ( !$Self->GetDatabaseFunction('CaseSensitive') || $CaseSensitive ) {
                         $SQLA .= "$Key $Type $WordSQL";
                     }

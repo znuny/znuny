@@ -11,16 +11,17 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
  * @section     RichTextEditor
  */
 
-.Mention{
-    color: white;
+.Mention {
+    background: var(--main-bg-color);
+    color: var(--main-font-color);
 }
 
-.cke_autocomplete_selected.Mention:hover{
+.cke_autocomplete_selected.Mention:hover {
     background: #2c9cf9;
     color: white;
 }
 
-.cke_autocomplete_selected.Mention{
+.cke_autocomplete_selected.Mention {
     background: #2c9cf9;
     color: white;
 }

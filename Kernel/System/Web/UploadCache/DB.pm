@@ -12,8 +12,9 @@ package Kernel::System::Web::UploadCache::DB;
 use strict;
 use warnings;
 
-use MIME::Base64;
 use Kernel::System::VariableCheck qw(:all);
+use MIME::Base64;
+use File::Basename;
 
 our @ObjectDependencies = (
     'Kernel::Config',
@@ -53,6 +54,8 @@ sub FormIDRemove {
         }
     }
 
+    return if !$Self->_FormIDValidate( $Param{FormID} );
+
     return if !$Kernel::OM->Get('Kernel::System::DB')->Do(
         SQL => '
             DELETE FROM web_upload_cache
@@ -75,6 +78,8 @@ sub FormIDAddFile {
             return;
         }
     }
+
+    return if !$Self->_FormIDValidate( $Param{FormID} );
 
     $Param{Content} = '' if !defined( $Param{Content} );
 
@@ -107,13 +112,15 @@ sub FormIDAddFile {
     # write attachment to db
     my $Time = time();
 
+    my $Filename = basename( $Param{Filename} );
+
     return if !$DBObject->Do(
         SQL => '
             INSERT INTO web_upload_cache (form_id, filename, content_type, content_size, content,
                 create_time_unix, content_id, disposition)
             VALUES  (?, ?, ?, ?, ?, ?, ?, ?)',
         Bind => [
-            \$Param{FormID}, \$Param{Filename}, \$Param{ContentType}, \$Param{Filesize},
+            \$Param{FormID}, \$Filename, \$Param{ContentType}, \$Param{Filesize},
             \$Param{Content}, \$Time, \$ContentID, \$Param{Disposition}
         ],
     );
@@ -133,6 +140,8 @@ sub FormIDRemoveFile {
             return;
         }
     }
+
+    return if !$Self->_FormIDValidate( $Param{FormID} );
 
     my @Index = @{ $Self->FormIDGetAllFilesMeta(%Param) };
 
@@ -167,6 +176,8 @@ sub FormIDGetAllFilesData {
             return;
         }
     }
+
+    return \@Data if !$Self->_FormIDValidate( $Param{FormID} );
 
     # get database object
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
@@ -222,6 +233,8 @@ sub FormIDGetAllFilesMeta {
         }
     }
 
+    return \@Data if !$Self->_FormIDValidate( $Param{FormID} );
+
     # get database object
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
@@ -260,7 +273,7 @@ sub FormIDCleanUp {
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
     my $FormDraftTTL = $ConfigObject->Get('FormDraftTTL');
 
-    my @DraftForms;
+    my @FormDrafts;
     my $FormDraftObject = $Kernel::OM->Get('Kernel::System::FormDraft');
     for my $ObjectType ( sort keys %{$FormDraftTTL} ) {
         my $FormDraftList = $FormDraftObject->FormDraftListGet(
@@ -268,52 +281,67 @@ sub FormIDCleanUp {
             UserID     => 1,
         );
 
-        DRAFT_FORM:
+        FORMDRAFT:
         for my $FormDraft ( @{$FormDraftList} ) {
             my $FormDraftConfig = $FormDraftObject->FormDraftGet(
                 FormDraftID => $FormDraft->{FormDraftID},
                 UserID      => 1,
             );
 
+            next FORMDRAFT if !IsHashRefWithData($FormDraftConfig);
             my $FormID = $FormDraftConfig->{FormData}->{FormID};
 
-            # if TTL configuration is missing, use the default
-            next DRAFT_FORM if !$FormDraftTTL->{$ObjectType};
+            next FORMDRAFT if !$Self->_FormIDValidate($FormID);
 
-            # check for draft form configuration
-            next DRAFT_FORM if !IsHashRefWithData($FormDraftConfig);
-            next DRAFT_FORM if !$FormID;
+            # if TTL configuration is missing, use the default
+            next FORMDRAFT if !$FormDraftTTL->{$ObjectType};
 
             # form draft TTL config for specific object type is given in minutes
-            my $CurrentTile = time() - ( $FormDraftTTL->{$ObjectType} * 60 );
+            my $CurrentTime = time() - ( $FormDraftTTL->{$ObjectType} * 60 );
 
             return if !$Kernel::OM->Get('Kernel::System::DB')->Do(
                 SQL => '
                     DELETE FROM web_upload_cache
                     WHERE create_time_unix < ?
                     AND form_id = ?',
-                Bind => [ \$CurrentTile, \$FormID ],
+                Bind => [ \$CurrentTime, \$FormID ],
             );
 
-            push @DraftForms, $FormID;
+            push @FormDrafts, $FormID;
         }
     }
 
-    my $CurrentTile = time() - ( 60 * 60 * 24 * 1 );
+    my $CurrentTime = time() - ( 60 * 60 * 24 * 1 );
 
     my $SQL = 'DELETE FROM web_upload_cache
             WHERE create_time_unix < ?';
 
     # do not include upload cache object type if has defined custom TTL value
-    if (@DraftForms) {
-        my @SeparatedDraftForms = map {"'$_'"} @DraftForms;
-        $SQL .= ' AND form_id NOT IN (' . join( ',', @SeparatedDraftForms ) . ')';
+    if (@FormDrafts) {
+        my @SeparatedFormDrafts = map {"'$_'"} @FormDrafts;
+        $SQL .= ' AND form_id NOT IN (' . join( ',', @SeparatedFormDrafts ) . ')';
     }
 
     return if !$Kernel::OM->Get('Kernel::System::DB')->Do(
         SQL  => $SQL,
-        Bind => [ \$CurrentTile ],
+        Bind => [ \$CurrentTime ],
     );
+
+    return 1;
+}
+
+sub _FormIDValidate {
+    my ( $Self, $FormID ) = @_;
+
+    return if !$FormID;
+
+    if ( $FormID !~ m{^ \d+ \. \d+ \. \d+ $}xms ) {
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => 'Invalid FormID!',
+        );
+        return;
+    }
 
     return 1;
 }

@@ -657,7 +657,7 @@ sub StatsDelete {
 fetches all statistics that the current user may see
 
     my $StatsRef = $StatsObject->StatsListGet(
-        AccessRw => 1, # Optional, indicates that user may see all statistics
+        AccessRw => 1,          # Optional, indicates that user may see all statistics
         UserID   => $UserID,
     );
 
@@ -779,9 +779,9 @@ sub StatsListGet {
 lists all stats id's
 
     my $ArrayRef = $StatsObject->GetStatsList(
-        AccessRw  => 1, # Optional, indicates that user may see all statistics
-        OrderBy   => 'ID' || 'Title' || 'Object', # optional
-        Direction => 'ASC' || 'DESC',             # optional
+        AccessRw  => 1,                             # optional, indicates that user may see all statistics
+        OrderBy   => 'ID' || 'Title' || 'Object',   # optional
+        Direction => 'ASC' || 'DESC',               # optional
         UserID    => $UserID,
     );
 
@@ -960,8 +960,8 @@ sub GetStatsObjectAttributes {
 Get all static files
 
     my $FileHash = $StatsObject->GetStaticFiles(
-        OnlyUnusedFiles => 1 | 0, # optional default 0
-        UserID => $UserID,
+        OnlyUnusedFiles => 1 || 0,  # optional default 0
+        UserID          => $UserID,
     );
 
 =cut
@@ -1264,8 +1264,8 @@ sub ObjectModuleCheck {
 get content from stats for export
 
     my $ExportFile = $StatsObject->Export(
-        StatID => '123',
-        ExportStatNumber => 1 || 0, # optional, only useful move statistics from the test system to the productive system
+        StatID           => '123',
+        ExportStatNumber => 1 || 0,     # optional, only useful move statistics from the test system to the productive system
     );
 
 =cut
@@ -1549,7 +1549,7 @@ run a statistic.
     my $StatArray = $StatsObject->StatsRun(
         StatID     => '123',
         GetParam   => \%GetParam,
-        Preview    => 1,        # optional, return fake data for preview (only for dynamic stats)
+        Preview    => 1,            # optional, return fake data for preview (only for dynamic stats)
         UserID     => $UserID,
     );
 
@@ -1650,8 +1650,8 @@ This can be used to precompute stats data e. g. for dashboard widgets in a cron 
 
     my $StatArray = $StatsObject->StatsResultCacheCompute(
         StatID       => '123',
-        UserID       => $UserID,        # target UserID
-        UserGetParam => \%UserGetParam, # user settings of non-fixed fields
+        UserID       => $UserID,            # target UserID
+        UserGetParam => \%UserGetParam,     # user settings of non-fixed fields
     );
 
 =cut
@@ -1741,7 +1741,7 @@ This can be used to fetch cached stats data e. g. for stats widgets in the dashb
 
     my $StatArray = $StatsObject->StatsResultCacheGet(
         StatID       => '123',
-        UserID       => $UserID,    # target UserID
+        UserID       => $UserID,        # target UserID
         UserGetParam => \%GetParam,
     );
 
@@ -1823,7 +1823,7 @@ builds a filename with a string and a timestamp.
 
     my $Filename = $StatsObject->StringAndTimestamp2Filename(
         String   => 'Title',
-        TimeZone => 'Europe/Berlin',  # optional
+        TimeZone => 'Europe/Berlin',    # optional
     );
 
 =cut
@@ -1905,7 +1905,7 @@ sub StatNumber2StatID {
 installs stats
 
     my $Result = $StatsObject->StatsInstall(
-        FilePrefix => 'FAQ',  # (optional)
+        FilePrefix => 'FAQ',    # (optional)
         UserID     => $UserID,
     );
 
@@ -1977,7 +1977,7 @@ sub StatsInstall {
 uninstalls stats
 
     my $Result = $StatsObject->StatsUninstall(
-        FilePrefix => 'FAQ',  # (optional)
+        FilePrefix => 'FAQ',    # (optional)
         UserID     => $UserID,
     );
 
@@ -2052,10 +2052,10 @@ sub StatsUninstall {
 removed stats with not existing backend file
 
     my $Result = $StatsObject->StatsCleanUp(
-        UserID => 1,
+        UserID          => 1,
 
-        ObjectNames => [ 'Ticket', 'TicketList' ],
-        or
+        ObjectNames     => [ 'Ticket', 'TicketList' ],
+        # or
         CheckAllObjects => 1,
     );
 
@@ -2231,9 +2231,9 @@ sub _GenerateStaticStats {
         UseAsRestriction => \UseAsRestrictionElements,
         Title            => 'TicketStat',
         StatID           => 123,
-        TimeZone         => 'Europe/Berlin',   # optional,
-        Cache            => 1,      # optional,
-        Preview          => 1,      # optional, generate fake data
+        TimeZone         => 'Europe/Berlin',    # optional,
+        Cache            => 1,                  # optional,
+        Preview          => 1,                  # optional, generate fake data
         UserID           => $UserID,
     );
 

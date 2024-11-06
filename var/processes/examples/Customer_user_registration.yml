@@ -1,0 +1,255 @@
+---
+Activities:
+  Activity-299aee057103d7ee222327d4fbba238b:
+    ActivityDialogs:
+    - ActivityDialog-2f8d30fac5a24999127177b0a9e65533
+    ChangeTime: 2023-05-19 12:45:20
+    Config:
+      ActivityDialog:
+        '1': ActivityDialog-2f8d30fac5a24999127177b0a9e65533
+      Scope: Process
+      ScopeEntityID: Process-6460a3e5aa27b917fc326f619162204c
+    CreateTime: 2023-05-19 12:31:20
+    EntityID: Activity-299aee057103d7ee222327d4fbba238b
+    ID: 5
+    Name: New user data
+  Activity-adaaa2c45b666b495138072b17224f81:
+    ActivityDialogs:
+    - ActivityDialog-d8b88855db16604ddca6e40eee9ab807
+    ChangeTime: 2023-05-19 13:10:29
+    Config:
+      ActivityDialog:
+        '1': ActivityDialog-d8b88855db16604ddca6e40eee9ab807
+      Scope: Process
+      ScopeEntityID: Process-6460a3e5aa27b917fc326f619162204c
+    CreateTime: 2023-05-19 12:31:35
+    EntityID: Activity-adaaa2c45b666b495138072b17224f81
+    ID: 6
+    Name: Pending registration
+  Activity-f409b98f89ac0621481dd8498fabf712:
+    ActivityDialogs: []
+    ChangeTime: 2023-05-19 12:33:28
+    Config:
+      Scope: Process
+      ScopeEntityID: Process-6460a3e5aa27b917fc326f619162204c
+    CreateTime: 2023-05-19 12:33:28
+    EntityID: Activity-f409b98f89ac0621481dd8498fabf712
+    ID: 7
+    Name: New contact informed
+ActivityDialogs:
+  ActivityDialog-2f8d30fac5a24999127177b0a9e65533:
+    ChangeTime: 2023-05-19 12:45:09
+    Config:
+      DescriptionLong: The following data will be recorded by an agent for use with
+        your organization. All users requested here have access to create tickets
+        for your organization, manage their requests and requests from others within
+        your organization.
+      DescriptionShort: Enter new contact data.
+      FieldDetails:
+        DynamicField_PreProcUserEmail: &1
+          DefaultValue: ''
+          DescriptionLong: 'Enter a valid e-mail address for contact with the user. '
+          DescriptionShort: Contact person's email address
+          Display: '2'
+        DynamicField_PreProcUserFirstname: &2
+          DefaultValue: ''
+          DescriptionLong: Enter the contact persons first name as shown on a valid
+            form of identity.
+          DescriptionShort: Contact person's first name.
+          Display: '2'
+        DynamicField_PreProcUserLanguage: &3
+          DefaultValue: ''
+          DescriptionLong: This language will be used in notifications and for the
+            customer inteface.
+          DescriptionShort: Users preferred language.
+          Display: '2'
+        DynamicField_PreProcUserLastname: &4
+          DefaultValue: ''
+          DescriptionLong: Enter the users family name as found on a valid form of
+            identification.
+          DescriptionShort: Contact person's last name
+          Display: '2'
+        DynamicField_PreProcUserPhone: &5
+          DefaultValue: ''
+          DescriptionLong: Enter a valid telephone number where the contact can be
+            reached during business hours.
+          DescriptionShort: Contact person's telephone number.
+          Display: '2'
+      FieldOrder:
+      - DynamicField_PreProcUserFirstname
+      - DynamicField_PreProcUserLastname
+      - DynamicField_PreProcUserLanguage
+      - DynamicField_PreProcUserEmail
+      - DynamicField_PreProcUserPhone
+      Fields:
+        DynamicField_PreProcUserEmail: *1
+        DynamicField_PreProcUserFirstname: *2
+        DynamicField_PreProcUserLanguage: *3
+        DynamicField_PreProcUserLastname: *4
+        DynamicField_PreProcUserPhone: *5
+      Interface:
+      - CustomerInterface
+      Permission: ''
+      ProcessEntityID: ''
+      RequiredLock: ''
+      Scope: Process
+      ScopeEntityID: Process-6460a3e5aa27b917fc326f619162204c
+      SubmitAdviceText: Submissions must first be confirmed and data entered.
+      SubmitButtonText: Request access
+    CreateTime: 2023-05-19 12:42:13
+    EntityID: ActivityDialog-2f8d30fac5a24999127177b0a9e65533
+    ID: 4
+    Name: Contact data form
+  ActivityDialog-d8b88855db16604ddca6e40eee9ab807:
+    ChangeTime: 2023-05-19 12:47:45
+    Config:
+      DescriptionLong: Change the customer of this ticket, to the newly registerd
+        customer, and send a mail to the customer to finalize customer registration.
+      DescriptionShort: Send a confirmation email to the customer.
+      FieldDetails:
+        CustomerID: &6
+          DefaultValue: ''
+          DescriptionLong: ''
+          DescriptionShort: ''
+          Display: '2'
+        State: &7
+          DefaultValue: closed successful
+          DescriptionLong: ''
+          DescriptionShort: ''
+          Display: '0'
+      FieldOrder:
+      - CustomerID
+      - State
+      Fields:
+        CustomerID: *6
+        State: *7
+      Interface:
+      - AgentInterface
+      Permission: ''
+      ProcessEntityID: ''
+      RequiredLock: ''
+      Scope: Process
+      ScopeEntityID: Process-6460a3e5aa27b917fc326f619162204c
+      SubmitAdviceText: ''
+      SubmitButtonText: ''
+    CreateTime: 2023-05-19 12:47:45
+    EntityID: ActivityDialog-d8b88855db16604ddca6e40eee9ab807
+    ID: 5
+    Name: Send confirmation mail
+Process:
+  Activities:
+  - Activity-299aee057103d7ee222327d4fbba238b
+  - Activity-adaaa2c45b666b495138072b17224f81
+  - Activity-f409b98f89ac0621481dd8498fabf712
+  ChangeTime: 2023-05-19 12:59:49
+  Config:
+    Description: Register a new user for your company. After submitting your request,
+      a service agent will register the new contact person for you, and inform them
+      via mail.
+    Path:
+      Activity-299aee057103d7ee222327d4fbba238b:
+        Transition-af5278d6216cc6f5632554f019feeb41:
+          ActivityEntityID: Activity-adaaa2c45b666b495138072b17224f81
+      Activity-adaaa2c45b666b495138072b17224f81:
+        Transition-dc1f251198e9911f55fa42ccb81dc8d4:
+          ActivityEntityID: Activity-f409b98f89ac0621481dd8498fabf712
+          TransitionAction:
+          - TransitionAction-cc6c018a7c56527c8327a6714e0f8026
+          - TransitionAction-a0a0ec797fbb2b441547cbac1ab5ccc2
+      Activity-f409b98f89ac0621481dd8498fabf712: {}
+    StartActivity: Activity-299aee057103d7ee222327d4fbba238b
+    StartActivityDialog: ActivityDialog-2f8d30fac5a24999127177b0a9e65533
+  CreateTime: 2023-05-19 12:31:00
+  EntityID: Process-6460a3e5aa27b917fc326f619162204c
+  ID: 2
+  Layout:
+    Activity-299aee057103d7ee222327d4fbba238b:
+      left: '156'
+      top: '79.4031372070312'
+    Activity-adaaa2c45b666b495138072b17224f81:
+      left: '475'
+      top: '83'
+    Activity-f409b98f89ac0621481dd8498fabf712:
+      left: '797'
+      top: '80'
+  Name: Customer user registration
+  State: Active
+  StateEntityID: S1
+  TransitionActions:
+  - TransitionAction-a0a0ec797fbb2b441547cbac1ab5ccc2
+  - TransitionAction-cc6c018a7c56527c8327a6714e0f8026
+  Transitions:
+  - Transition-af5278d6216cc6f5632554f019feeb41
+  - Transition-dc1f251198e9911f55fa42ccb81dc8d4
+TransitionActions:
+  TransitionAction-a0a0ec797fbb2b441547cbac1ab5ccc2:
+    ChangeTime: 2023-05-19 13:21:14
+    Config:
+      Config:
+        Body: Hi <OTRS_CUSTOMER_DATA_UserFirstname> <OTRS_CUSTOMER_DATA_UserLastname>,  A
+          new user has been registered for you by your organization. Go to <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>customer.pl
+          and use the lost password option to reset your password.  -- <OTRS_CONFIG_NotificationSenderName>
+        Charset: utf=8
+        From: <OTRS_CONFIG_NotificationSenderEmail>
+        HistoryComment: Registration Email
+        HistoryType: SendAutoReply
+        IsVisibleForCustomer: '1'
+        Loop: '1'
+        MimeType: text/html
+        NoAgentNotify: '1'
+        SenderType: system
+        Subject: Activation Mail
+        To: <OTRS_CUSTOMER_DATA_UserEmail>
+        UseTicketHook: '0'
+      Module: Kernel::System::ProcessManagement::TransitionAction::ArticleSend
+      Scope: Global
+    CreateTime: 2023-05-19 12:59:13
+    EntityID: TransitionAction-a0a0ec797fbb2b441547cbac1ab5ccc2
+    ID: 7
+    Name: Send message to new contact person.
+  TransitionAction-cc6c018a7c56527c8327a6714e0f8026:
+    ChangeTime: 2023-05-19 12:49:25
+    Config:
+      Config:
+        Lock: unlock
+      Module: Kernel::System::ProcessManagement::TransitionAction::TicketLockSet
+      Scope: Process
+      ScopeEntityID: Process-6460a3e5aa27b917fc326f619162204c
+    CreateTime: 2023-05-19 12:49:25
+    EntityID: TransitionAction-cc6c018a7c56527c8327a6714e0f8026
+    ID: 6
+    Name: Unlock ticket
+Transitions:
+  Transition-af5278d6216cc6f5632554f019feeb41:
+    ChangeTime: 2023-05-19 12:32:57
+    Config:
+      Condition:
+        '1':
+          Fields:
+            State:
+              Match: new
+              Type: String
+          Type: and
+      ConditionLinking: and
+      Scope: Process
+      ScopeEntityID: Process-6460a3e5aa27b917fc326f619162204c
+    CreateTime: 2023-05-19 12:32:57
+    EntityID: Transition-af5278d6216cc6f5632554f019feeb41
+    ID: 5
+    Name: Contact data recorded (state = new)
+  Transition-dc1f251198e9911f55fa42ccb81dc8d4:
+    ChangeTime: 2023-05-19 12:34:22
+    Config:
+      Condition:
+        '1':
+          Fields:
+            State:
+              Match: closed successful
+              Type: String
+          Type: and
+      ConditionLinking: and
+      Scope: Global
+    CreateTime: 2023-05-19 12:34:22
+    EntityID: Transition-dc1f251198e9911f55fa42ccb81dc8d4
+    ID: 6
+    Name: Contact entered (state = closed successful)

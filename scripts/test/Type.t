@@ -23,6 +23,7 @@ $Kernel::OM->ObjectParamAdd(
     },
 );
 my $HelperObject = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
+my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 
 # add type
 my $TypeName = 'Type' . $HelperObject->GetRandomID();
@@ -196,7 +197,7 @@ $Self->False(
 );
 
 # set Ticket::Type::Default config item
-$Kernel::OM->Get('Kernel::Config')->Set(
+$ConfigObject->Set(
     Key   => 'Ticket::Type::Default',
     Value => $TypeSecondName,
 );

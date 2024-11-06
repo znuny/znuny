@@ -41,7 +41,7 @@
                         <label class="Switchable">[% Translate(ArticleField.Label) | html %]:</label>
                         <div class="Field">
                             <span class="Switch [% ArticleField.ValueHidden | html %]">[% ArticleField.Value | html %]</span>
-                            <span class="Switch [% ArticleField.RealnameHidden | html %]">[% ArticleField.Realname | html %]</span>
+                            <span class="Switch [% ArticleField.RealnameHidden | html %]" title="[% ArticleField.Value | html %]">[% ArticleField.Realname | html %]</span>
                         </div>
                     </div>
                     [% ELSIF ArticleField.Type == "ArticleOption" %]
@@ -104,58 +104,58 @@
         [% END %]
 [% RenderBlockEnd("TransmissionStatusMessage") %]
 
-#[% RenderBlockStart("CalendarEvents") %]
-#            <div class="CalendarEvents WidgetMessage Top Warning">
-#                <div>
-#                    [% IF Data.MultipleEvents %]
-#                        [% Translate("This message contains events") | html %]:
-#                    [% ELSE %]
-#                        [% Translate("This message contains an event") | html %]:
-#                    [% END %]
-#                    <span class="ShowCalendarEventsInfoOverlay" title="[% Translate("Show more information") | html %]">
-#                        <i class="fa fa-info-circle" aria-hidden="true"></i>
-#                    </span>
-#                </div>
-#[% RenderBlockStart("CalendarEventsMessageRow") %]
-#                <p>
-#                    [% Translate("Start: %s, End: %s", Data.Start, Data.End) | html %]
-#                </p>
-#[% RenderBlockEnd("CalendarEventsMessageRow") %]
-#
-#            <div class="FieldContainer Hidden">
-#                <label title="[% IF Data.MultipleEvents %][% Translate("Calendar events details") | html %][% ELSE %][% Translate("Calendar event details") | html %][% END %]"></label>
-#                <div class="InnerContent">
-#[% RenderBlockStart("CalendarEvent") %]
-#                    <div class="EventContainer">
-#                        <fieldset class="TableLike FixedLabelSmall Narrow">
-#[% RenderBlockStart("CalendarEventPropertyRow") %]
-#                        <label>[% Data.Label | html %]:</label>
-#                        <p class="Value">[% Data.Value %]</p>
-#[% RenderBlockStart("CalendarEventPropertyRowImage") %]
-#                        [% IF Data.DataType == "base64" %]
-#                            <img src="data:[% Data.ContentType | html %];base64,[% Data.Content | html %]"/>
-#                        [% END %]
-#[% RenderBlockEnd("CalendarEventPropertyRowImage") %]
-#[% RenderBlockStart("CalendarEventPropertyRowFrequency") %]
-#                        <label>[% Translate("Frequency") | html %]:</label>
-#                        <p class="Value">[% Data.FrequencyStrg | html %]</p>
-#[% RenderBlockEnd("CalendarEventPropertyRowFrequency") %]
-#[% RenderBlockStart("CalendarEventPropertyRowDownload") %]
-#                        <span class="Download Value" title="[% Translate("Download") | html %]">
-#                            <a href = "[% Env("Baselink") %]Action=AgentTicketAttachment;TicketID=[% Data.TicketID | html %];ArticleID=[% Data.ArticleID | html %];FileID=[% Data.FileID | html %];">
-#                            <i class="fa fa-download"></i>
-#                            </a>
-#                        </span>
-#[% RenderBlockEnd("CalendarEventPropertyRowDownload") %]
-#[% RenderBlockEnd("CalendarEventPropertyRow") %]
-#                        </fieldset>
-#                    </div>
-#[% RenderBlockEnd("CalendarEvent") %]
-#                </div>
-#            </div>
-#
-#            </div>
-#[% RenderBlockEnd("CalendarEvents") %]
+[% RenderBlockStart("CalendarEvents") %]
+            <div class="CalendarEvents WidgetMessage Top Warning">
+                <div>
+                    [% IF Data.MultipleEvents %]
+                        [% Translate("This message contains events") | html %]:
+                    [% ELSE %]
+                        [% Translate("This message contains an event") | html %]:
+                    [% END %]
+                    <span class="ShowCalendarEventsInfoOverlay" title="[% Translate("Show more information") | html %]">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    </span>
+                </div>
+[% RenderBlockStart("CalendarEventsMessageRow") %]
+                <p>
+                    [% Translate("Start: %s, End: %s", Data.Start, Data.End) | html %]
+                </p>
+[% RenderBlockEnd("CalendarEventsMessageRow") %]
+
+            <div class="FieldContainer Hidden">
+                <label title="[% IF Data.MultipleEvents %][% Translate("Calendar events details") | html %][% ELSE %][% Translate("Calendar event details") | html %][% END %]"></label>
+                <div class="InnerContent">
+[% RenderBlockStart("CalendarEvent") %]
+                    <div class="EventContainer">
+                        <fieldset class="TableLike FixedLabelSmall Narrow">
+[% RenderBlockStart("CalendarEventPropertyRow") %]
+                        <label>[% Data.Label | html %]:</label>
+                        <p class="Value">[% Data.Value %]</p>
+[% RenderBlockStart("CalendarEventPropertyRowImage") %]
+                        [% IF Data.DataType == "base64" %]
+                            <img src="data:[% Data.ContentType | html %];base64,[% Data.Content | html %]"/>
+                        [% END %]
+[% RenderBlockEnd("CalendarEventPropertyRowImage") %]
+[% RenderBlockStart("CalendarEventPropertyRowFrequency") %]
+                        <label>[% Translate("Frequency") | html %]:</label>
+                        <p class="Value">[% Data.FrequencyStrg | html %]</p>
+[% RenderBlockEnd("CalendarEventPropertyRowFrequency") %]
+[% RenderBlockStart("CalendarEventPropertyRowDownload") %]
+                        <span class="Download Value" title="[% Translate("Download") | html %]">
+                            <a href = "[% Env("Baselink") %]Action=AgentTicketAttachment;TicketID=[% Data.TicketID | html %];ArticleID=[% Data.ArticleID | html %];FileID=[% Data.FileID | html %];">
+                            <i class="fa fa-download"></i>
+                            </a>
+                        </span>
+[% RenderBlockEnd("CalendarEventPropertyRowDownload") %]
+[% RenderBlockEnd("CalendarEventPropertyRow") %]
+                        </fieldset>
+                    </div>
+[% RenderBlockEnd("CalendarEvent") %]
+                </div>
+            </div>
+
+            </div>
+[% RenderBlockEnd("CalendarEvents") %]
 
 [% RenderBlockStart("BrowserLinkMessage") %]
 # Show info, that links within the iframe must be clicked with strg/cmd/shift (depending on the used browser and os)
@@ -210,6 +210,18 @@ function CheckIFrameHeight(IFrameID) {
                             // workaround for firefox, which seems to cache the src attribute of iframes sometimes which leads to
                             // the wrong iframe content being displayed (see https://bugzilla.mozilla.org/show_bug.cgi?id=356558)
                             document.getElementById('Iframe[% Data.ArticleID | html %]').contentWindow.location.href = document.getElementById('Iframe[% Data.ArticleID | html %]').src
+
+                            document.getElementById('Iframe[% Data.ArticleID | html %]').addEventListener("load", function() {
+                                const element = document.querySelector("body");
+                                const value = window.getComputedStyle(element).getPropertyValue('filter');
+                                if (value === 'invert(1)') {
+                                    var frame = document.getElementById('Iframe[% Data.ArticleID | html %]');
+                                    var node = document.createElement('style');
+                                    node.appendChild(document.createTextNode('img, video, svg {filter: invert(180%)hue-rotate(180deg);}'));
+                                    frame.contentWindow.document.head.appendChild(node);
+                                }
+                            });
+
                             </script>
                         </div>
                     [% ELSE %]
@@ -251,8 +263,6 @@ function CheckIFrameHeight(IFrameID) {
                                                     [% Translate("Image") | html %]
                                                 [% ELSIF Attachment.ContentType == "application/pdf" %]
                                                     [% Translate("PDF") | html %]
-                                                [% ELSE %]
-                                                    [% Translate("Unknown") | html %]
                                                 [% END %]
 
                                                 [% Attachment.FilesizeRaw | Localize("Filesize") %]

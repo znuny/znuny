@@ -42,7 +42,7 @@ Core.Agent.TicketEmailOutbound = (function (TargetNS) {
         // set a template
         $('#StandardTemplateID').on('change', function () {
             Core.Agent.TicketAction.ConfirmTemplateOverwrite('RichText', $(this), function () {
-                Core.AJAX.FormUpdate($('#Compose'), 'AJAXUpdateTemplate', 'StandardTemplateID', ['RichTextField']);
+                Core.AJAX.FormUpdate($('#Compose'), 'AJAXUpdate', 'StandardTemplateID', ['RichTextField']);
             });
             return false;
         });

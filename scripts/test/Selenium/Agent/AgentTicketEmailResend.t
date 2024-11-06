@@ -175,7 +175,7 @@ $Selenium->RunTest(
             $Selenium->find_element( "#$Field", 'css' )->send_keys($Value);
 
             # Lose the focus.
-            $Selenium->find_element( 'body', 'css' )->click();
+            $Selenium->find_element( '#Subject', 'css' )->click();
 
             next FIELD if $Field eq 'RichText';
 
@@ -306,8 +306,16 @@ $Selenium->RunTest(
                 $Selenium->WaitFor(
                     JavaScript => "return \$('#$Selector').length;"
                 );
+
+                my $Value = $Selenium->InputGet(
+                    Attribute => "${Selector}",
+                    Options   => {
+                        KeyOrValue => 'Value',
+                    }
+                );
+
                 $Self->Is(
-                    $Selenium->find_element( "#$Selector", 'css' )->get_value(),
+                    $Value,
                     $ComposeData{$Field},
                     "Value for '$Field'"
                 );
@@ -339,8 +347,15 @@ $Selenium->RunTest(
                     JavaScript => "return \$('#${Selector}TicketText_1').length;"
                 );
 
+                my $Value = $Selenium->InputGet(
+                    Attribute => "${Selector}TicketText_1",
+                    Options   => {
+                        KeyOrValue => 'Value',
+                    }
+                );
+
                 $Self->Is(
-                    $Selenium->find_element( "#${Selector}TicketText_1", 'css' )->get_value(),
+                    $Value,
                     $ComposeData{$Field},
                     "Value for '$Field'"
                 );

@@ -252,8 +252,8 @@ $Self->IsDeeply(
         'Ticket::Frontend::AgentTicketQueue###DefaultColumns'                => 'AgentTicketQueue',
         'Ticket::Frontend::AgentTicketResponsible###DynamicField'            => 'AgentTicketResponsible',
         'Ticket::Frontend::AgentTicketResponsibleView###DefaultColumns'      => 'AgentTicketResponsibleView',
-        'Ticket::Frontend::AgentTicketSearch###DefaultColumns'               => 'AgentTicketSearch',
-        'Ticket::Frontend::AgentTicketSearch###DynamicField'                 => 'AgentTicketSearch',
+        'Ticket::Frontend::AgentTicketSearch###DefaultColumns'               => 'AgentTicketSearch (Overview Screen)',
+        'Ticket::Frontend::AgentTicketSearch###DynamicField'                 => 'AgentTicketSearch (Screen)',
         'Ticket::Frontend::AgentTicketService###DefaultColumns'              => 'AgentTicketService',
         'Ticket::Frontend::AgentTicketStatusView###DefaultColumns'           => 'AgentTicketStatusView',
         'Ticket::Frontend::AgentTicketWatchView###DefaultColumns'            => 'AgentTicketWatchView',
@@ -267,6 +267,7 @@ $Self->IsDeeply(
         'Ticket::Frontend::OverviewMedium###DynamicField'                    => 'OverviewMedium',
         'Ticket::Frontend::OverviewPreview###DynamicField'                   => 'OverviewPreview',
         'Ticket::Frontend::OverviewSmall###DynamicField'                     => 'OverviewSmall',
+        'Ticket::Frontend::AgentTicketNoteToLinkedTicket###DynamicField'     => 'AgentTicketNoteToLinkedTicket',
     },
     "GetConfigKeysOfScreensByObjectType - Ticket",
 );

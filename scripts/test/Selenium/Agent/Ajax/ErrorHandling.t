@@ -79,12 +79,12 @@ $Selenium->RunTest(
         # the footer is in the way some times
         sleep 1;
 
-        # Close dialog.
+        # Reload the page.
         $Selenium->find_element( '#DialogButton1', 'css' )->click();
 
-        # Wait until modal dialog has closed.
         $Selenium->WaitFor(
-            JavaScript => 'return typeof($) === "function" && !$(".Dialog.Modal").length;'
+            JavaScript =>
+                'return typeof(Core) == "object" && typeof(Core.App) == "object" && Core.App.PageLoadComplete;'
         );
 
         # Wait until all AJAX calls finished.
@@ -161,11 +161,15 @@ JAVASCRIPT
             "ConnectionReEstablished dialog visible"
         );
 
-        # Close the dialog.
+        # Reload the page.
         $Selenium->find_element( '#DialogButton1', 'css' )->click();
         $Selenium->WaitFor(
-            JavaScript => 'return typeof($) === "function" && !$(".Dialog.Modal").length;'
+            JavaScript =>
+                'return typeof(Core) == "object" && typeof(Core.App) == "object" && Core.App.PageLoadComplete;'
         );
+
+        # Wait until all AJAX calls finished.
+        $Selenium->WaitFor( JavaScript => "return \$.active == 0" );
 
         # Trigger faked ajax request again.
         $Selenium->execute_script($AjaxOverloadJSError);
@@ -183,19 +187,6 @@ JAVASCRIPT
             $Selenium->execute_script("return \$('#AjaxErrorDialogInner .NoConnection:visible').length;"),
             1,
             "Error dialog visible - second try"
-        );
-
-        # Now we close the dialog manually.
-        $Selenium->find_element( '#DialogButton1', 'css' )->click();
-        $Selenium->WaitFor(
-            JavaScript => 'return typeof($) === "function" && !$(".Dialog.Modal").length;'
-        );
-
-        # The dialog should be gone.
-        $Self->Is(
-            $Selenium->execute_script("return \$('#AjaxErrorDialogInner .NoConnection:visible').length;"),
-            0,
-            "Error dialog closed"
         );
 
         # Now act as if the connection had been re-established.
@@ -259,8 +250,8 @@ JAVASCRIPT
                 'return typeof(Core) == "object" && typeof(Core.App) == "object" && Core.App.PageLoadComplete'
         );
 
-        # In some cases, we need a little bit more time to get the page up and running correctly
-        sleep(1);
+        # Wait until all AJAX calls finished.
+        $Selenium->WaitFor( JavaScript => "return \$.active == 0" );
 
         # Trigger faked ajax request again.
         $Selenium->execute_script($AjaxOverloadJSError);

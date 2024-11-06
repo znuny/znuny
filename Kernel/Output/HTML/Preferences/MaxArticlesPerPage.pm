@@ -14,12 +14,10 @@ use utf8;
 
 use Kernel::Language qw(Translatable);
 
-use Kernel::System::VariableCheck qw(:all);
-
 our @ObjectDependencies = (
+    'Kernel::Config',
     'Kernel::Language',
     'Kernel::System::AuthSession',
-    'Kernel::System::User',
 );
 
 sub new {
@@ -54,9 +52,9 @@ sub Param {
 sub Run {
     my ( $Self, %Param ) = @_;
 
-    my $UserObject     = $Kernel::OM->Get('Kernel::System::User');
-    my $SessionObject  = $Kernel::OM->Get('Kernel::System::AuthSession');
+    my $ConfigObject   = $Kernel::OM->Get('Kernel::Config');
     my $LanguageObject = $Kernel::OM->Get('Kernel::Language');
+    my $SessionObject  = $Kernel::OM->Get('Kernel::System::AuthSession');
 
     my $PrefKey                   = 'MaxArticlesPerPage';
     my $MaxArticlesPerPage        = $Param{GetParam}->{$PrefKey}->[0] // '';
@@ -73,22 +71,32 @@ sub Run {
         return;
     }
 
-    $UserObject->SetPreferences(
-        UserID => $Param{UserData}->{UserID},
-        Key    => $PrefKey,
-        Value  => $MaxArticlesPerPage,
-    );
+    if ( !$ConfigObject->Get('DemoSystem') ) {
+        $Self->{UserObject}->SetPreferences(
+            UserID => $Param{UserData}->{UserID},
+            Key    => $PrefKey,
+            Value  => $MaxArticlesPerPage,
+        );
+    }
 
-    if ( $Param{UserData}->{UserID} eq $Self->{UserID} ) {
+    # Update session data when the preference is updated by the user himself.
+    if ( $Param{UpdateSessionData} ) {
         $SessionObject->UpdateSessionID(
             SessionID => $Self->{SessionID},
             Key       => $PrefKey,
             Value     => $MaxArticlesPerPage,
         );
     }
+    else {
+
+        # Delete the session when the preference is updated by an admin user
+        # to force a login with fresh session data for the affected user.
+        $SessionObject->RemoveSessionByUser(
+            UserLogin => $Param{UserData}->{UserLogin},
+        );
+    }
 
     $Self->{Message} = Translatable('Preferences updated successfully!');
-
     return 1;
 }
 

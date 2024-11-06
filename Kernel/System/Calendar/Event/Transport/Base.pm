@@ -12,8 +12,6 @@ package Kernel::System::Calendar::Event::Transport::Base;
 use strict;
 use warnings;
 
-use Kernel::System::VariableCheck qw(:all);
-
 our @ObjectDependencies = (
 );
 

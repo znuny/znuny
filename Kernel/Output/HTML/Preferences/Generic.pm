@@ -11,13 +11,14 @@ package Kernel::Output::HTML::Preferences::Generic;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::Language qw(Translatable);
 
 our @ObjectDependencies = (
-    'Kernel::System::Web::Request',
     'Kernel::Config',
     'Kernel::System::AuthSession',
+    'Kernel::System::Web::Request',
 );
 
 sub new {
@@ -37,9 +38,10 @@ sub new {
 sub Param {
     my ( $Self, %Param ) = @_;
 
+    my $ParamObject = $Kernel::OM->Get('Kernel::System::Web::Request');
+
     my @Params;
-    my $GetParam
-        = $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => $Self->{ConfigItem}->{PrefKey} );
+    my $GetParam = $ParamObject->GetParam( Param => $Self->{ConfigItem}->{PrefKey} );
     if ( !defined $GetParam ) {
         $GetParam = defined( $Param{UserData}->{ $Self->{ConfigItem}->{PrefKey} } )
             ? $Param{UserData}->{ $Self->{ConfigItem}->{PrefKey} }
@@ -59,6 +61,9 @@ sub Param {
 sub Run {
     my ( $Self, %Param ) = @_;
 
+    my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
+    my $SessionObject = $Kernel::OM->Get('Kernel::System::AuthSession');
+
     for my $Key ( sort keys %{ $Param{GetParam} } ) {
         my @Array = @{ $Param{GetParam}->{$Key} };
         for my $Value (@Array) {
@@ -75,17 +80,17 @@ sub Run {
             }
 
             # pref update db
-            if ( !$Kernel::OM->Get('Kernel::Config')->Get('DemoSystem') ) {
+            if ( !$ConfigObject->Get('DemoSystem') ) {
                 $Self->{UserObject}->SetPreferences(
                     UserID => $Param{UserData}->{UserID},
                     Key    => $Key,
                     Value  => $Value,
                 );
             }
-            if ( $Param{UserData}->{UserID} eq $Self->{UserID} ) {
 
-                # update SessionID
-                $Kernel::OM->Get('Kernel::System::AuthSession')->UpdateSessionID(
+            # Update session data when the preference is updated by the user himself.
+            if ( $Param{UpdateSessionData} ) {
+                $SessionObject->UpdateSessionID(
                     SessionID => $Self->{SessionID},
                     Key       => $Key,
                     Value     => $Value,
@@ -93,6 +98,15 @@ sub Run {
             }
         }
     }
+
+    # Delete the session when the preference is updated by an admin user
+    # to force a login with fresh session data for the affected user.
+    if ( !$Param{UpdateSessionData} ) {
+        $SessionObject->RemoveSessionByUser(
+            UserLogin => $Param{UserData}->{UserLogin},
+        );
+    }
+
     $Self->{Message} = Translatable('Preferences updated successfully!');
     return 1;
 }

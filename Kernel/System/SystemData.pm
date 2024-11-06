@@ -129,7 +129,7 @@ sub SystemDataAdd {
 get system data for key
 
     my $SystemData = $SystemDataObject->SystemDataGet(
-        Key => 'OTRS Version',
+        Key => 'Znuny Version',
     );
 
 returns value as a simple scalar, or undef if the key does not exist.
@@ -272,7 +272,7 @@ Returns true if update was successful or false if otherwise - for instance
 if key did not exist.
 
     my $Result = $SystemDataObject->SystemDataUpdate(
-        Key    => 'OTRS Version',
+        Key    => 'Znuny Version',
         Value  => 'Some New Value',
         UserID => 123,
     );
@@ -339,7 +339,7 @@ Returns true if delete was successful or false if otherwise - for instance
 if key did not exist.
 
     $SystemDataObject->SystemDataDelete(
-        Key    => 'OTRS Version',
+        Key    => 'Znuny Version',
         UserID => 123,
     );
 
@@ -398,7 +398,7 @@ For a key such as 'Foo::Bar::Baz', it will delete the cache for 'Foo::Bar::Baz'
 as well as for the groups 'Foo::Bar' and 'Foo'.
 
     $Success = $SystemDataObject->_SystemDataCacheKeyDelete(
-        Key => 'SystemRegistration::Version::DB'
+        Key => 'SystemRegistration::Version::DB',
     );
 
 =cut

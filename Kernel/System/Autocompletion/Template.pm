@@ -10,12 +10,14 @@ package Kernel::System::Autocompletion::Template;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::System::VariableCheck qw(:all);
 
 use parent qw(Kernel::System::Autocompletion::Base);
 
 our @ObjectDependencies = (
+    'Kernel::Config',
     'Kernel::System::Log',
     'Kernel::System::Queue',
     'Kernel::System::StandardTemplate',
@@ -53,6 +55,7 @@ our @ObjectDependencies = (
 sub GetData {
     my ( $Self, %Param ) = @_;
 
+    my $ConfigObject            = $Kernel::OM->Get('Kernel::Config');
     my $LogObject               = $Kernel::OM->Get('Kernel::System::Log');
     my $QueueObject             = $Kernel::OM->Get('Kernel::System::Queue');
     my $TicketObject            = $Kernel::OM->Get('Kernel::System::Ticket');
@@ -77,6 +80,7 @@ sub GetData {
     return if !IsArrayRefWithData($SearchFields);
 
     my $AdditionalParams = $Param{AdditionalParams} // {};
+    my $RichText         = $ConfigObject->Get('Frontend::RichText');
 
     #
     # Get list of relevant standard templates to fetch autocompletion information for.
@@ -92,8 +96,10 @@ sub GetData {
     }
     elsif ( $AdditionalParams->{TicketID} ) {
         %Ticket = $TicketObject->TicketGet(
-            TicketID => $AdditionalParams->{TicketID},
-            UserID   => $Param{UserID} // 1,
+            TicketID      => $AdditionalParams->{TicketID},
+            UserID        => $Param{UserID},
+            DynamicFields => 1,
+            Silent        => 1,
         );
         return if !%Ticket;
 
@@ -114,7 +120,14 @@ sub GetData {
     # Build autocompletion information for templates.
     my @Data;
     STANDARDTEMPLATEID:
-    for my $StandardTemplateID ( sort keys %StandardTemplates ) {
+    for my $StandardTemplateID (
+        sort { lc $StandardTemplates{$a} cmp lc $StandardTemplates{$b} || $a cmp $b }
+        keys %StandardTemplates
+        )
+    {
+        # Skip template with ID 0.
+        next STANDARDTEMPLATEID if $StandardTemplateID == 0;
+
         my %StandardTemplate = $StandardTemplateObject->StandardTemplateGet(
             ID => $StandardTemplateID,
         );
@@ -122,7 +135,7 @@ sub GetData {
 
         # Replace template tags/placeholders.
         $StandardTemplate{Template} = $TemplateGeneratorObject->_Replace(
-            RichText   => $StandardTemplate{Template},
+            RichText   => $RichText,
             Text       => $StandardTemplate{Template},
             TicketData => \%Ticket,
             Data       => {},

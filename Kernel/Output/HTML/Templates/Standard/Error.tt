@@ -6,10 +6,8 @@
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
-
-<div class="MainBox ARIARoleMain SpacingTopLarge ErrorScreen">
-
-    <div class="W50pc CenterBox SpacingBottomLarge">
+<div class="MainBox ARIARoleMain">
+    <div class="W50pc CenterBox SpacingTopLarge SpacingBottomLarge ErrorScreen">
         <div class="WidgetSimple">
             <div class="Header">
                 <h2>[% Translate("An Error Occurred") | html %]</h2>
@@ -19,10 +17,8 @@
                 <p class="SpacingTop">
                     [% Translate(Data.Comment) | html %]
                 </p>
-
                 <div id="Traceback" class="SpacingTop Notice Hidden">
                     <h4>[% Translate("Error Details") | html %]:</h4>
-
                 </div>
             </div>
         </div>
@@ -35,7 +31,9 @@
                 <h2>[% Translate("Error Details") | html %]</h2>
             </div>
             <div class="Content">
-                <code><pre>Backend [% Data.BackendTraceback | html %]</pre></code>
+                <code>
+                    <pre>Backend [% Data.BackendTraceback | html %]</pre>
+                </code>
             </div>
         </div>
 [% RenderBlockEnd("ShowBackendTraceback") %]

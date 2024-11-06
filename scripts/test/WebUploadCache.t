@@ -73,11 +73,13 @@ for my $Module (qw(DB FS)) {
 
         my $Add = $UploadCacheObject->FormIDAddFile(
             FormID      => $FormID,
-            Filename    => 'UploadCache Test1äöüß.' . $FileExtension,
             Content     => $Content,
             ContentType => 'text/html',
             ContentID   => $ContentID,
             Disposition => $Disposition,
+
+            # path traversal fix, see internal GitLab issue 851
+            Filename => '../../../test/UploadCache Test1äöüß.' . $FileExtension,
         );
 
         # formatted filename by FilenameCleanUp()

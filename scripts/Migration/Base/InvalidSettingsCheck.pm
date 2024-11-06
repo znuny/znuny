@@ -12,6 +12,7 @@ package scripts::Migration::Base::InvalidSettingsCheck;    ## no critic
 
 use strict;
 use warnings;
+use utf8;
 
 use IO::Interactive qw(is_interactive);
 

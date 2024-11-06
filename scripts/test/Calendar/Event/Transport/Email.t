@@ -172,7 +172,7 @@ my @Tests = (
         ExpectedResults => [
             {
                 ToArray => [ $UserData{UserEmail} ],
-                Body    => "Calender: $Calendar{CalendarName}=\n",
+                Body    => "Calendar: $Calendar{CalendarName}=\n",
             },
         ],
     },
@@ -196,15 +196,15 @@ my @Tests = (
         ExpectedResults => [
             {
                 ToArray => ['zz1test@otrsexample.com'],
-                Body    => "Calender: -=\n",
+                Body    => "Calendar: -=\n",
             },
             {
                 ToArray => ['zz2test@otrsexample.com'],
-                Body    => "Calender: -=\n",
+                Body    => "Calendar: -=\n",
             },
             {
                 ToArray => ['zz3test@otrsexample.com'],
-                Body    => "Calender: -=\n",
+                Body    => "Calendar: -=\n",
             },
         ],
     },
@@ -218,15 +218,15 @@ my @Tests = (
         ExpectedResults => [
             {
                 ToArray => ['zz1test@otrsexample.com'],
-                Body    => "Calender: -=\n",
+                Body    => "Calendar: -=\n",
             },
             {
                 ToArray => ['zz2test@otrsexample.com'],
-                Body    => "Calender: -=\n",
+                Body    => "Calendar: -=\n",
             },
             {
                 ToArray => ['zz3test@otrsexample.com'],
-                Body    => "Calender: -=\n",
+                Body    => "Calendar: -=\n",
             },
         ],
     },
@@ -240,11 +240,11 @@ my @Tests = (
         ExpectedResults => [
             {
                 ToArray => ['aaatest@otrsexample.com'],
-                Body    => "Calender: -=\n",
+                Body    => "Calendar: -=\n",
             },
             {
                 ToArray => ['zzztest@otrsexample.com'],
-                Body    => "Calender: -=\n",
+                Body    => "Calendar: -=\n",
             },
         ],
     },
@@ -277,7 +277,7 @@ for my $Test (@Tests) {
         Message => {
             en => {
                 Subject     => 'JobName',
-                Body        => 'Calender: <OTRS_CALENDAR_CALENDARNAME>',
+                Body        => 'Calendar: <OTRS_CALENDAR_CALENDARNAME>',
                 ContentType => 'text/plain',
             },
         },

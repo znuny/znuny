@@ -60,10 +60,10 @@ sub new {
 collect system data
 
     my %Result = $SupportDataCollectorObject->Collect(
-        UseCache   => 1,    # (optional) to get data from cache if any
-        WebTimeout => 60,   # (optional)
-        Debug      => 1,    # (optional)
-        Hostname   => 'my.test.host:8080' # (optional, for testing purposes)
+        UseCache   => 1,                    # (optional) to get data from cache if any
+        WebTimeout => 60,                   # (optional)
+        Debug      => 1,                    # (optional)
+        Hostname   => 'my.test.host:8080'   # (optional, for testing purposes)
     );
 
     returns in case of error
@@ -461,6 +461,21 @@ sub CleanupAsynchronous {
     }
 
     return 1;
+}
+
+=head2 DeleteCache()
+
+Delete the cache of collected data to enable collecting anew.
+
+    $SupportDataCollectorObject->DeleteCache();
+
+=cut
+
+sub DeleteCache {
+    return $Kernel::OM->Get('Kernel::System::Cache')->Delete(
+        Type => 'SupportDataCollector',
+        Key  => 'DataCollect',
+    );
 }
 
 =head1 TERMS AND CONDITIONS

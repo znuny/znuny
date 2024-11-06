@@ -317,36 +317,28 @@ EOF
 <input type="checkbox" class="$FieldClass" id="$FieldName" name="$FieldName" title="$FieldLabelEscaped" $FieldChecked value="1" />
 EOF
 
-    if ( $Param{Mandatory} ) {
-        my $DivID = $FieldName . 'Error';
-
-        my $FieldRequiredMessage = $Param{LayoutObject}->{LanguageObject}->Translate("This field is required.");
-
-        # for client side validation
-        $HTMLString .= <<"EOF";
-<div id="$DivID" class="TooltipErrorMessage">
+    # Tooltip for client side validation
+    my $ClientErrorTooltipDivID = $FieldName . 'Error';
+    my $FieldRequiredMessage    = $Param{LayoutObject}->{LanguageObject}->Translate("This field is required.");
+    $HTMLString .= <<"EOF";
+<div id="$ClientErrorTooltipDivID" class="TooltipErrorMessage">
     <p>
         $FieldRequiredMessage
     </p>
 </div>
 EOF
-    }
 
-    if ( $Param{ServerError} ) {
-
-        my $ErrorMessage = $Param{ErrorMessage} || 'This field is required.';
-        $ErrorMessage = $Param{LayoutObject}->{LanguageObject}->Translate($ErrorMessage);
-        my $DivID = $FieldName . 'ServerError';
-
-        # for server side validation
-        $HTMLString .= <<"EOF";
-<div id="$DivID" class="TooltipErrorMessage">
+    # Tooltip for server side validation
+    my $ErrorMessage = $Param{ErrorMessage} || 'This field is required.';
+    $ErrorMessage = $Param{LayoutObject}->{LanguageObject}->Translate($ErrorMessage);
+    my $ServerErrorTooltipDivID = $FieldName . 'ServerError';
+    $HTMLString .= <<"EOF";
+<div id="$ServerErrorTooltipDivID" class="TooltipErrorMessage">
     <p>
         $ErrorMessage
     </p>
 </div>
 EOF
-    }
 
     if ( $Param{AJAXUpdate} ) {
 

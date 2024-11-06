@@ -11,6 +11,7 @@ package Kernel::Modules::AgentTicketNoteToLinkedTicket;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::System::EmailParser;
 use Kernel::System::VariableCheck qw(:all);
@@ -185,9 +186,11 @@ sub Run {
         DynamicFields => 1,
     );
 
+    my $FormDraftObject = $Kernel::OM->Get('Kernel::System::FormDraft');
+
     my $LoadedFormDraft;
     if ( $Self->{LoadedFormDraftID} ) {
-        $LoadedFormDraft = $Kernel::OM->Get('Kernel::System::FormDraft')->FormDraftGet(
+        $LoadedFormDraft = $FormDraftObject->FormDraftGet(
             FormDraftID => $Self->{LoadedFormDraftID},
             GetContent  => 0,
             UserID      => $Self->{UserID},
@@ -233,15 +236,24 @@ sub Run {
         );
     }
 
+    # Check if the user has already any form draft for this action
+    my $FormDraftList = $FormDraftObject->FormDraftListGet(
+        ObjectType => 'Ticket',
+        ObjectID   => $Self->{TicketID},
+        Action     => $Self->{Action},
+        UserID     => $Self->{UserID},
+    ) // [];
+
     $LayoutObject->Block(
         Name => 'Properties',
         Data => {
-            FormDraft      => $Config->{FormDraft},
-            FormDraftID    => $Self->{LoadedFormDraftID},
-            FormDraftTitle => $LoadedFormDraft ? $LoadedFormDraft->{Title} : '',
-            FormDraftMeta  => $LoadedFormDraft,
-            FormID         => $Self->{FormID},
-            ReplyToArticle => $Self->{ReplyToArticle},
+            FormDraft          => $Config->{FormDraft},
+            FormDraftID        => $Self->{LoadedFormDraftID},
+            FormDraftTitle     => $LoadedFormDraft ? $LoadedFormDraft->{Title} : '',
+            FormDraftMeta      => $LoadedFormDraft,
+            FormDraftForAction => scalar @{$FormDraftList},
+            FormID             => $Self->{FormID},
+            ReplyToArticle     => $Self->{ReplyToArticle},
             %Ticket,
             %Param,
         },
@@ -1148,20 +1160,6 @@ sub Run {
             # get list of users that will be informed without selection in informed/involved list
             my @UserListWithoutSelection
                 = split( ',', $ParamObject->GetParam( Param => 'UserListWithoutSelection' ) || "" );
-
-            # get inform user list
-            my @InformUserID = $ParamObject->GetArray( Param => 'InformUserID' );
-
-            # get involved user list
-            my @InvolvedUserID = $ParamObject->GetArray( Param => 'InvolvedUserID' );
-
-            if ( $Config->{InformAgent} ) {
-                push @NotifyUserIDs, @InformUserID;
-            }
-
-            if ( $Config->{InvolvedAgent} ) {
-                push @NotifyUserIDs, @InvolvedUserID;
-            }
 
             if ( $Self->{ReplyToArticle} ) {
                 push @NotifyUserIDs, @UserListWithoutSelection;
@@ -2370,6 +2368,12 @@ sub _Mask {
         );
     }
 
+    if ( IsArrayRefWithData( $Param{TicketTypeDynamicFields} ) ) {
+        $LayoutObject->Block(
+            Name => 'TicketTypeDynamicFields',
+        );
+    }
+
     # Get Ticket type dynamic fields.
     for my $TicketTypeDynamicField ( @{ $Param{TicketTypeDynamicFields} } ) {
         $LayoutObject->Block(
@@ -2511,12 +2515,6 @@ sub _Mask {
             delete $ReplyToUserIDs{ $Self->{UserID} };
         }
 
-        if ( $Config->{InformAgent} || $Config->{InvolvedAgent} ) {
-            $LayoutObject->Block(
-                Name => 'InformAdditionalAgents',
-            );
-        }
-
         # get param object
         my $ParamObject = $Kernel::OM->Get('Kernel::System::Web::Request');
 
@@ -2571,56 +2569,6 @@ sub _Mask {
             );
 
             # block is called below "inform agents"
-        }
-
-        # agent list
-        if ( $Config->{InformAgent} ) {
-
-            # get inform user list
-            my %InformAgents;
-            my @InformUserID    = $ParamObject->GetArray( Param => 'InformUserID' );
-            my %InformAgentList = $GroupObject->PermissionGroupGet(
-                GroupID => $GID,
-                Type    => 'ro',
-            );
-            for my $UserID ( sort keys %InformAgentList ) {
-                $InformAgents{$UserID} = $AllGroupsMembers{$UserID};
-            }
-
-            if ( $Self->{ReplyToArticle} ) {
-
-                # get email address of all users and compare to replyto-addresses
-                for my $UserID ( sort keys %InformAgents ) {
-                    if ( $ReplyToUserIDs{$UserID} ) {
-                        push @InformUserID, $UserID;
-                        delete $ReplyToUserIDs{$UserID};
-                    }
-                }
-            }
-
-            my $InformAgentSize = $ConfigObject->Get('Ticket::Frontend::InformAgentMaxSize')
-                || 3;
-            $Param{OptionStrg} = $LayoutObject->BuildSelection(
-                Data       => \%InformAgents,
-                SelectedID => \@InformUserID,
-                Name       => 'InformUserID',
-                Class      => 'Modernize',
-                Multiple   => 1,
-                Size       => $InformAgentSize,
-            );
-            $LayoutObject->Block(
-                Name => 'InformAgent',
-                Data => \%Param,
-            );
-        }
-
-        # get involved
-        if ( $Config->{InvolvedAgent} ) {
-
-            $LayoutObject->Block(
-                Name => 'InvolvedAgent',
-                Data => \%Param,
-            );
         }
 
         # show list of agents, that receive this note (ReplyToNote)

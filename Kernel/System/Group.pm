@@ -1913,12 +1913,12 @@ sub PermissionUserRoleGet {
         return;
     }
 
-    # get valid user list
-    my %UserList = $Kernel::OM->Get('Kernel::System::User')->UserList(
-        Type => 'Short',
+    my $UserLogin = $Kernel::OM->Get('Kernel::System::User')->UserLookup(
+        UserID => $Param{UserID},
+        Silent => 1,
     );
 
-    return if !$UserList{ $Param{UserID} };
+    return if !$UserLogin;
 
     # get permission data
     my %Permissions = $Self->_DBRoleUserGet(

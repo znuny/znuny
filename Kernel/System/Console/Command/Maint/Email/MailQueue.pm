@@ -32,6 +32,14 @@ sub Configure {
         HasValue    => 0,
     );
     $Self->AddOption(
+        Name => 'send-timeout',
+        Description =>
+            "Timeout in seconds to kill the process that sends emails (default: 600).",
+        Required   => 0,
+        HasValue   => 1,
+        ValueRegex => qr{^\d+$}smx,
+    );
+    $Self->AddOption(
         Name        => 'list',
         Description => "List available messages in the mail queue (can be used with --filter).",
         Required    => 0,
@@ -191,14 +199,29 @@ sub Send {
     my $SendCounter  = 0;
     my $ForceSending = $Self->GetOption('force');
     my $Verbose      = $Self->GetOption('verbose');
+    my $SendTimeout  = $Self->GetOption('send-timeout') // 600;
 
     MAILQUEUE:
     for my $Item (@$List) {
+        my $Result;
 
-        my $Result = $MailQueueObject->Send(
-            %{$Item},
-            Force => $ForceSending,
-        );
+        eval {
+
+            # Set up alarm signal handler to kill the running process if given timeout will be reached.
+            local $SIG{ALRM} = sub { die; };
+            alarm $SendTimeout;
+
+            $Result = $MailQueueObject->Send(
+                %{$Item},
+                Force => $ForceSending,
+            );
+        };
+
+        if ($@) {
+            my $ErrorMessage = "Timeout of $SendTimeout seconds reached, killing process.\n";
+            $Self->PrintError($ErrorMessage);
+            die $ErrorMessage;
+        }
 
         if ( $Result->{Status} eq 'Pending' ) {
             $Self->Print("\n<yellow>Pending message with ID '$Item->{ID}' was not sent.</yellow>\n");

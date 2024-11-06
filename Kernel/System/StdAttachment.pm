@@ -360,10 +360,8 @@ sub StdAttachmentLookup {
     }
 
     my $Cached = $Kernel::OM->Get('Kernel::System::Cache')->Get(
-        Type           => $Self->{CacheType},
-        Key            => $CacheKey,
-        CacheInMemory  => 1,
-        CacheInBackend => 0,
+        Type => $Self->{CacheType},
+        Key  => $CacheKey,
     );
 
     return $Cached if $Cached;
@@ -404,12 +402,10 @@ sub StdAttachmentLookup {
 
     # cache result
     $Kernel::OM->Get('Kernel::System::Cache')->Set(
-        Type           => $Self->{CacheType},
-        TTL            => $Self->{CacheTTL},
-        Key            => $CacheKey,
-        Value          => $DBValue,
-        CacheInMemory  => 1,
-        CacheInBackend => 0,
+        Type  => $Self->{CacheType},
+        TTL   => $Self->{CacheTTL},
+        Key   => $CacheKey,
+        Value => $DBValue,
     );
 
     return $DBValue;
@@ -420,15 +416,15 @@ sub StdAttachmentLookup {
 get list of standard attachments - return a hash (ID => Name (Filename))
 
     my %List = $StdAttachmentObject->StdAttachmentList(
-        Valid => 0,  # optional, defaults to 1
+        Valid => 0,     # optional, defaults to 1
     );
 
 returns:
 
-        %List = (
-          '1' => 'Some Name' ( Filname ),
-          '2' => 'Some Name' ( Filname ),
-          '3' => 'Some Name' ( Filname ),
+    %List = (
+        '1' => 'Some Name',
+        '2' => 'Some Name',
+        '3' => 'Some Name',
     );
 
 =cut

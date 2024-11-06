@@ -139,6 +139,8 @@ my $SeleniumTest = sub {
 
     for my $Type ( sort keys %DynamicFieldDropdownTestData ) {
 
+        sleep 2;
+
         my $SetDynamicFieldDropdown = $SeleniumObject->InputSet(
             Attribute => 'DynamicField_UnitTestDropdown',
             Content   => $DynamicFieldDropdownTestData{$Type},
@@ -151,7 +153,8 @@ my $SeleniumTest = sub {
             $SetDynamicFieldDropdown,
             "Setting DynamicFieldDropdown '$DynamicFieldDropdownTestData{ $Type }'",
         );
-        sleep 1;
+
+        sleep 2;
 
         my $GetDynamicFieldDropdown = $SeleniumObject->InputGet(
             Attribute => 'DynamicField_UnitTestDropdown',

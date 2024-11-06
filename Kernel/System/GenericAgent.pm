@@ -19,6 +19,7 @@ use Kernel::System::VariableCheck qw(:all);
 our @ObjectDependencies = (
     'Kernel::Config',
     'Kernel::System::Cache',
+    'Kernel::System::Daemon::SchedulerDB',
     'Kernel::System::DateTime',
     'Kernel::System::DB',
     'Kernel::System::DynamicField',
@@ -168,8 +169,8 @@ run a generic agent job
 
     $GenericAgentObject->JobRun(
         Job          => 'JobName',
-        OnlyTicketID => 123,     # (optional) for event based Job execution
-        SleepTime    => 100_000, # (optional) sleeptime per ticket in microseconds
+        OnlyTicketID => 123,        # (optional) for event based Job execution
+        SleepTime    => 100_000,    # (optional) sleeptime per ticket in microseconds
         UserID       => 1,
     );
 
@@ -855,6 +856,10 @@ sub JobDelete {
         Type => 'GenericAgent',
     );
 
+    # Remove job record from scheduler DB to avoid job immediate execution if redefined
+    # with different schedule.
+    $Kernel::OM->Get('Kernel::System::Daemon::SchedulerDB')->GenericAgentTaskCleanup();
+
     return 1;
 }
 
@@ -908,12 +913,12 @@ sub JobEventList {
 run a generic agent job on a ticket
 
     $GenericAgentObject->_JobRunTicket(
-        TicketID => 123,
+        TicketID     => 123,
         TicketNumber => '2004081400001',
-        Config => {
+        Config       => {
             %Job,
         },
-        UserID => 1,
+        UserID       => 1,
     );
 
 =cut

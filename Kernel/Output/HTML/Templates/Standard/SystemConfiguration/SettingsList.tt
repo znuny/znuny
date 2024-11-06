@@ -71,12 +71,6 @@
                     [% Translate("Reset setting") | html %]
                 </a>
 
-                [% IF Setting.UserModificationActive %]
-                <a href="[% Env("Baselink") %]Action=AdminSystemConfigurationUser;Subaction=ShowUsersSettingValue;SettingName=[% Setting.Name | uri %]" class="UserSettings Button" title="[% Translate("Show user specific changes for this setting") | html %]">
-                    [% Translate("Show user settings") | html %]
-                </a>
-                [% END %]
-
                 <span href="#" class="Button CopyToClipboard" data-clipboard-text="[% Config("HttpType") | html %]://[% Config("FQDN") | html %][% Env("Baselink") | html %]Action=AdminSystemConfiguration;Subaction=View;Setting=[% Setting.Name | uri %]" title="[% Translate("Copy a direct link to this setting to your clipboard") | html %]">[% Translate("Copy direct link") | html %]</span>
 
             [% IF Setting.IsFavourite %]

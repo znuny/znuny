@@ -62,9 +62,9 @@ L</ValueGet()>.
                                               #   must be linked to, e. g. TicketID
         Value    => [
             {
-                ValueText          => 'some text',            # optional, one of these fields must be provided
-                ValueDateTime      => '1977-12-12 12:00:00',  # optional
-                ValueInt           => 123,                    # optional
+                ValueText     => 'some text',            # optional, one of these fields must be provided
+                ValueDateTime => '1977-12-12 12:00:00',  # optional
+                ValueInt      => 123,                    # optional
             },
             # ...
         ],
@@ -181,17 +181,17 @@ get a dynamic field value. For each table row there will be one entry in the
 result list.
 
     my $Value = $DynamicFieldValueObject->ValueGet(
-        FieldID            => $FieldID,                 # ID of the dynamic field
-        ObjectID           => $ObjectID,                # ID of the current object that the field
-                                                        #   is linked to, e. g. TicketID
+        FieldID  => $FieldID,       # ID of the dynamic field
+        ObjectID => $ObjectID,      # ID of the current object that the field
+                                    #   is linked to, e. g. TicketID
     );
 
     Returns [
         {
-            ID                 => 437,
-            ValueText          => 'some text',
-            ValueDateTime      => '1977-12-12 12:00:00',
-            ValueInt           => 123,
+            ID            => 437,
+            ValueText     => 'some text',
+            ValueDateTime => '1977-12-12 12:00:00',
+            ValueInt      => 123,
         },
     ];
 
@@ -294,10 +294,10 @@ sub ValueGet {
 delete a Dynamic field value entry. All associated rows will be deleted.
 
     my $Success = $DynamicFieldValueObject->ValueDelete(
-        FieldID            => $FieldID,                 # ID of the dynamic field
-        ObjectID           => $ObjectID,                # ID of the current object that the field
-                                                        #   is linked to, e. g. TicketID
-        UserID  => 123,
+        FieldID  => $FieldID,   # ID of the dynamic field
+        ObjectID => $ObjectID,  # ID of the current object that the field
+                                #   is linked to, e. g. TicketID
+        UserID   => 123,
     );
 
     Returns 1.
@@ -335,7 +335,7 @@ sub ValueDelete {
 delete all entries of a dynamic field .
 
     my $Success = $DynamicFieldValueObject->AllValuesDelete(
-        FieldID            => $FieldID,                 # ID of the dynamic field
+        FieldID => $FieldID,    # ID of the dynamic field
         UserID  => 123,
     );
 
@@ -428,12 +428,12 @@ sub ObjectValuesDelete {
 checks if the given value is valid for the value type.
 
     my $Success = $DynamicFieldValueObject->ValueValidate(
-        Value    =>  {
-                ValueText          => 'some text',            # optional, one of these fields must be provided
-                ValueDateTime      => '1977-12-12 12:00:00',  # optional
-                ValueInt           => 123,                    # optional
-            },
-        UserID   => $UserID,
+        Value  => {
+            ValueText     => 'some text',            # optional, one of these fields must be provided
+            ValueDateTime => '1977-12-12 12:00:00',  # optional
+            ValueInt      => 123,                    # optional
+        },
+        UserID => $UserID,
     );
 
 =cut
@@ -497,7 +497,7 @@ get all distinct values from a field stored on the database
     $HistoricalValues{
         ValueA => 'ValueA',
         ValueB => 'ValueB',
-        ValueC => 'ValueC'
+        ValueC => 'ValueC',
     };
 
 =cut
@@ -588,9 +588,9 @@ sub HistoricalValueGet {
 Searches/fetches dynamic field value.
 
     my $Value = $DynamicFieldValueObject->ValueSearch(
-        FieldID            => 142,             # ID of dynamic field to search
-        Search             => 'test',
-        SearchSQL          => "dynamic_field_value.value_text = 'test'",
+        FieldID   => 142,             # ID of dynamic field to search
+        Search    => 'test',
+        SearchSQL => "dynamic_field_value.value_text = 'test'",
     );
 
     Returns [

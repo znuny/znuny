@@ -11,6 +11,7 @@ package Kernel::System::SupportDataCollector::Plugin::OS::DiskSpace;
 
 use strict;
 use warnings;
+use utf8;
 
 use parent qw(Kernel::System::SupportDataCollector::PluginBase);
 
@@ -37,11 +38,12 @@ sub Run {
     #     return $Self->GetResults();
     # }
     #
-    # # find OTRS partition
-    # my $Home = $Kernel::OM->Get('Kernel::Config')->Get('Home');
+    # # find Znuny partition
+    # my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    # my $Home = $ConfigObject->Get('Home');
     #
-    # my $OTRSPartition = `df -P $Home | tail -1 | cut -d' ' -f 1`;
-    # chomp $OTRSPartition;
+    # my $ZnunyPartition = `df -P $Home | tail -1 | cut -d' ' -f 1`;
+    # chomp $ZnunyPartition;
     #
     # my $Commandline = "df -lx tmpfs -x iso9660 -x udf -x squashfs";
     #
@@ -57,7 +59,7 @@ sub Run {
     #
     #     # TODO change from percent to megabytes used.
     #     while (<$In>) {
-    #         if ( $_ =~ /^$OTRSPartition\s.*/ && $_ =~ /^(.+?)\s.*\s(\d+)%.+?$/ ) {
+    #         if ( $_ =~ /^$ZnunyPartition\s.*/ && $_ =~ /^(.+?)\s.*\s(\d+)%.+?$/ ) {
     #             my ( $Partition, $UsedPercent ) = $_ =~ /^(.+?)\s.*?\s(\d+)%.+?$/;
     #             if ( $UsedPercent > 90 ) {
     #                 push @ProblemPartitions, "$Partition \[$UsedPercent%\]";

@@ -379,7 +379,7 @@ my $SenderImage = $Kernel::OM->Get('Kernel::Output::HTML::TicketZoom::Agent::Bas
 
 $Self->Is(
     $SenderImage,
-    '//www.gravatar.com/avatar/' . md5_hex( lc $Email ) . '?s=80&d=' . $DefaultImage,
+    'https://www.gravatar.com/avatar/' . md5_hex( lc $Email ) . '?s=80&d=' . $DefaultImage,
     'Avatar link is generated successfully'
 );
 
@@ -391,7 +391,7 @@ $SenderImage = $Kernel::OM->Get('Kernel::Output::HTML::TicketZoom::Agent::Base')
 $Kernel::OM->Get('Kernel::System::Encode')->EncodeOutput( \$Email );
 $Self->Is(
     $SenderImage,
-    '//www.gravatar.com/avatar/' . md5_hex( lc $Email ) . '?s=80&d=' . $DefaultImage,
+    'https://www.gravatar.com/avatar/' . md5_hex( lc $Email ) . '?s=80&d=' . $DefaultImage,
     'Avatar link is generated successfully with utf-8 chars.'
 );
 

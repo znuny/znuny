@@ -10,7 +10,7 @@
 [% RenderBlockStart("Search") %]
 <div id="MainBox" class="Search ARIARoleMain">
     <div class="ContentWrapper flex-column">
-        <h1 class="PageTitle">Ticket Search</h1>
+        <h1 class="PageTitle">[% Translate("Ticket Search") | html %]</h1>
         <div class="Content flex-center SidebarLast">
             <div class="SidebarColumn">
                 <div class="WidgetSimple search-profile-widget">
@@ -44,7 +44,7 @@
                     <input type="hidden" name="Action" value="[% Env("Action") %]"/>
                     <input type="hidden" name="Subaction" value="Search"/>
                     <div>
-                        <h2>Template name</h2>
+                        <h2>[% Translate("Template Name") | html %]</h2>
                     </div>
                     <div class="sections-wrapper">
                         <fieldset class="section-block first">

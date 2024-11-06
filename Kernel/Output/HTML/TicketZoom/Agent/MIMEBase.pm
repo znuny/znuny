@@ -13,6 +13,7 @@ use parent 'Kernel::Output::HTML::TicketZoom::Agent::Base';
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::System::VariableCheck qw(:all);
 
@@ -20,14 +21,14 @@ our @ObjectDependencies = (
     'Kernel::Config',
     'Kernel::Output::HTML::Article::MIMEBase',
     'Kernel::Output::HTML::Layout',
+    'Kernel::System::CalendarEvents',
     'Kernel::System::CommunicationChannel',
-    'Kernel::System::Main',
+    'Kernel::System::DateTime',
+    'Kernel::System::HTMLUtils',
     'Kernel::System::Log',
+    'Kernel::System::Main',
     'Kernel::System::Ticket::Article',
     'Kernel::System::User',
-    'Kernel::System::CalendarEvents',
-    'Kernel::System::HTMLUtils',
-    'Kernel::System::DateTime',
 );
 
 =head2 ArticleRender()
@@ -237,6 +238,15 @@ sub ArticleRender {
         );
     }
 
+    my $SenderImage = $Self->_ArticleSenderImage(
+        Sender => $Article{From},
+        UserID => $Param{UserID},
+    );
+
+    my $SenderInitials = $LayoutObject->UserInitialsGet(
+        Fullname => $Article{FromRealname},
+    );
+
     my $Content = $LayoutObject->Output(
         TemplateFile => 'AgentTicketZoom/ArticleRender/MIMEBase',
         Data         => {
@@ -250,13 +260,8 @@ sub ArticleRender {
             HTML                 => $ShowHTML,
             CommunicationChannel => $CommunicationChannel{DisplayName},
             ChannelIcon          => $CommunicationChannel{DisplayIcon},
-            SenderImage          => $Self->_ArticleSenderImage(
-                Sender => $Article{From},
-                UserID => $Param{UserID},
-            ),
-            SenderInitials => $LayoutObject->UserInitialsGet(
-                Fullname => $Article{FromRealname},
-            ),
+            SenderImage          => $SenderImage,
+            SenderInitials       => $SenderInitials,
         },
     );
 

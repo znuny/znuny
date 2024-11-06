@@ -137,7 +137,7 @@ $Selenium->RunTest(
             );
         }
 
-        $Selenium->find_element("//input[\@value='$ServiceID']")->click();
+        $Selenium->find_element("//table[\@id='Service']//input[\@value='$ServiceID']")->click();
         $Selenium->find_element("//button[\@value='Save'][\@type='submit']")->VerifiedClick();
 
         # Check test customer user allocation to test service.

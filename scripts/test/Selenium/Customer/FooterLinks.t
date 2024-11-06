@@ -42,12 +42,12 @@ $Selenium->RunTest(
             "No links in footer area displayed",
         );
 
-        # Display link for OTRS Homepage.
+        # Display link for Znuny Homepage.
         $HelperObject->ConfigSettingChange(
             Valid => 1,
             Key   => 'PublicFrontend::FooterLinks',
             Value => {
-                'https://www.otrs.com' => 'OTRS Homepage',
+                'https://www.znuny.org' => 'Znuny Open-Source Help Desk Platform',
             },
         );
 
@@ -60,8 +60,8 @@ $Selenium->RunTest(
         );
 
         $Self->True(
-            index( $Selenium->get_page_source(), 'OTRS Homepage' ) > -1,
-            'OTRS Homepage link is shown',
+            index( $Selenium->get_page_source(), 'Znuny Open-Source Help Desk Platform' ) > -1,
+            'Znuny Homepage link is shown',
         );
 
         # Check public interface as well.
@@ -80,8 +80,8 @@ $Selenium->RunTest(
         );
 
         $Self->True(
-            index( $Selenium->get_page_source(), 'OTRS Homepage' ) > -1,
-            'OTRS Homepage link is shown',
+            index( $Selenium->get_page_source(), 'Znuny Open-Source Help Desk Platform' ) > -1,
+            'Znuny Homepage link is shown',
         );
     }
 );

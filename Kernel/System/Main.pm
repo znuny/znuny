@@ -165,12 +165,12 @@ to clean up filenames which can be used in any case (also quoting is done)
 
     my $Filename = $MainObject->FilenameCleanUp(
         Filename => 'me_to/alal.xml',
-        Type     => 'Local', # Local|Attachment|MD5
+        Type     => 'Local',            # Local|Attachment|MD5
     );
 
     my $Filename = $MainObject->FilenameCleanUp(
         Filename => 'some:file.xml',
-        Type     => 'MD5', # Local|Attachment|MD5
+        Type     => 'MD5',              # Local|Attachment|MD5
     );
 
 =cut
@@ -561,8 +561,8 @@ to delete a file from file system
         # or Location
         Location        => 'c:\some\location\me_to\alal.xml',
 
-        Type            => 'Local',   # optional - Local|Attachment|MD5
-        DisableWarnings => 1, # optional
+        Type            => 'Local',     # optional - Local|Attachment|MD5
+        DisableWarnings => 1,           # optional
     );
 
 =cut
@@ -627,7 +627,7 @@ get timestamp of file change time
         Directory => 'c:\some\location',
         Filename  => 'me_to/alal.xml',
         # or Location
-        Location  => 'c:\some\location\me_to\alal.xml'
+        Location  => 'c:\some\location\me_to\alal.xml',
     );
 
 =cut
@@ -788,7 +788,7 @@ dump variable to an string
 
     my $Dump = $MainObject->Dump(
         $SomeVariable,
-        'ascii', # ascii|binary - default is binary
+        'ascii',        # ascii|binary - default is binary
     );
 
 =cut

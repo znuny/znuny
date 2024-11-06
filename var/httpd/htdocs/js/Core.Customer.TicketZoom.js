@@ -190,10 +190,8 @@ Core.Customer.TicketZoom = (function (TargetNS) {
      *      Furthermore it execute field updates, add and remove of attachments.
      */
     TargetNS.Init = function(){
-        var $VisibleIframe = $('.VisibleFrame'),
-            $FollowUp = $('#FollowUp'),
+        var $FollowUp = $('#FollowUp'),
             $RTE = $('#RichText'),
-            ZoomExpand = $('#ZoomExpand').val(),
             $Form,
             FieldID,
             DynamicFieldNames = Core.Config.Get('DynamicFieldNames');
@@ -215,15 +213,6 @@ Core.Customer.TicketZoom = (function (TargetNS) {
             $FollowUp.removeClass('Visible');
             $('html').css({scrollTop: $('#Body').height()});
         });
-
-        /* Set statuses saved in the hidden fields for all visible messages if ZoomExpand is present */
-        if (!ZoomExpand || isNaN(ZoomExpand)) {
-            ResizeIframe($VisibleIframe);
-        }
-        else {
-            /* Set statuses saved in the hidden fields for all messages */
-            ResizeIframe($VisibleIframe.get(0));
-        }
 
         // init browser link message close button
         if ($('.MessageBrowser').length) {

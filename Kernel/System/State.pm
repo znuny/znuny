@@ -298,7 +298,7 @@ Get all states with state type open and new:
 
     my @List = $StateObject->StateGetStatesByType(
         StateType => ['open', 'new'],
-        Result    => 'ID', # HASH|ID|Name
+        Result    => 'ID',              # HASH|ID|Name
     );
 
 Get all state types used by config option named like
@@ -306,7 +306,7 @@ Ticket::ViewableStateType for "Viewable" state types.
 
     my %List = $StateObject->StateGetStatesByType(
         Type   => 'Viewable',
-        Result => 'HASH', # HASH|ID|Name
+        Result => 'HASH',               # HASH|ID|Name
     );
 
 =cut

@@ -11,6 +11,7 @@ package Kernel::Output::HTML::Preferences::Theme;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::Language qw(Translatable);
 
@@ -37,8 +38,8 @@ sub new {
 sub Param {
     my ( $Self, %Param ) = @_;
 
-    # get config object
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    my $ParamObject  = $Kernel::OM->Get('Kernel::System::Web::Request');
 
     my $PossibleThemesRef = $ConfigObject->Get('Frontend::Themes')
         || {};
@@ -50,9 +51,12 @@ sub Param {
     # prepare the list of active themes
     for my $PossibleTheme ( sort keys %PossibleThemes ) {
         if ( $PossibleThemes{$PossibleTheme} == 1 )
-        {    # only add a theme if it is set to 1 in sysconfig
+        {
+            # only add a theme if it is set to 1 in sysconfig
             my $ThemeDir = $Home . "/Kernel/Output/HTML/Templates/" . $PossibleTheme;
-            if ( -d $ThemeDir ) {    # .. and if the theme dir exists
+            if ( -d $ThemeDir ) {
+
+                # .. and if the theme dir exists
                 $ActiveThemes{$PossibleTheme} = $PossibleTheme;
             }
         }
@@ -69,7 +73,7 @@ sub Param {
             Name       => $Self->{ConfigItem}->{PrefKey},
             Data       => \%ActiveThemes,
             HTMLQuote  => 0,
-            SelectedID => $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'UserTheme' )
+            SelectedID => $ParamObject->GetParam( Param => 'UserTheme' )
                 || $Param{UserData}->{UserTheme}
                 || $ConfigObject->Get('DefaultTheme'),
             Block => 'Option',
@@ -82,12 +86,14 @@ sub Param {
 sub Run {
     my ( $Self, %Param ) = @_;
 
+    my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
+    my $SessionObject = $Kernel::OM->Get('Kernel::System::AuthSession');
+
     for my $Key ( sort keys %{ $Param{GetParam} } ) {
         my @Array = @{ $Param{GetParam}->{$Key} };
         for my $Value (@Array) {
 
-            # pref update db
-            if ( !$Kernel::OM->Get('Kernel::Config')->Get('DemoSystem') ) {
+            if ( !$ConfigObject->Get('DemoSystem') ) {
                 $Self->{UserObject}->SetPreferences(
                     UserID => $Param{UserData}->{UserID},
                     Key    => $Key,
@@ -95,9 +101,9 @@ sub Run {
                 );
             }
 
-            # update SessionID
-            if ( $Param{UserData}->{UserID} eq $Self->{UserID} ) {
-                $Kernel::OM->Get('Kernel::System::AuthSession')->UpdateSessionID(
+            # Update session data when the preference is updated by the user himself.
+            if ( $Param{UpdateSessionData} ) {
+                $SessionObject->UpdateSessionID(
                     SessionID => $Self->{SessionID},
                     Key       => $Key,
                     Value     => $Value,
@@ -105,6 +111,15 @@ sub Run {
             }
         }
     }
+
+    # Delete the session when the preference is updated by an admin user
+    # to force a login with fresh session data for the affected user.
+    if ( !$Param{UpdateSessionData} ) {
+        $SessionObject->RemoveSessionByUser(
+            UserLogin => $Param{UserData}->{UserLogin},
+        );
+    }
+
     $Self->{Message} = Translatable('Preferences updated successfully!');
     return 1;
 }

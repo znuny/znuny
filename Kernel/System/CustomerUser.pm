@@ -909,7 +909,7 @@ to add new customer users
         UserLastname   => 'Manfred',
         UserCustomerID => 'A124',
         UserLogin      => 'mhuber',
-        UserPassword   => 'some-pass', # not required
+        UserPassword   => 'some-pass',          # not required
         UserEmail      => 'email@example.com',
         ValidID        => 1,
         UserID         => 123,
@@ -961,12 +961,12 @@ sub CustomerUserAdd {
 to update customer users
 
     $CustomerUserObject->CustomerUserUpdate(
-        Source        => 'CustomerUser', # CustomerUser source config
-        ID            => 'mh',           # current user login
-        UserLogin     => 'mhuber',       # new user login
+        Source        => 'CustomerUser',        # CustomerUser source config
+        ID            => 'mh',                  # current user login
+        UserLogin     => 'mhuber',              # new user login
         UserFirstname => 'Huber',
         UserLastname  => 'Manfred',
-        UserPassword  => 'some-pass',    # not required
+        UserPassword  => 'some-pass',           # not required
         UserEmail     => 'email@example.com',
         ValidID       => 1,
         UserID        => 123,
@@ -1032,7 +1032,7 @@ to set customer users passwords
 
     $CustomerUserObject->SetPassword(
         UserLogin => 'some-login',
-        PW        => 'some-new-password'
+        PW        => 'some-new-password',
     );
 
 =cut

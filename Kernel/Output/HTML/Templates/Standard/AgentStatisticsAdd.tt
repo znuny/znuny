@@ -23,13 +23,6 @@
                             </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="https://doc.znuny.org/znuny/admin/statistics" target="_blank" class="CallForAction Fullsize Center">
-                            <span>
-                                [% Translate("Read more about statistics in Znuny") | html %]
-                            </span>
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>

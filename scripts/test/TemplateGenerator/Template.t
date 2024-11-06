@@ -58,7 +58,8 @@ $HelperObject->ConfigSettingChange(
     Value => 'UTC',
 );
 
-my $TicketObject = $Kernel::OM->Get('Kernel::System::Ticket');
+my $TicketObject  = $Kernel::OM->Get('Kernel::System::Ticket');
+my $ArticleObject = $Kernel::OM->Get('Kernel::System::Ticket::Article');
 
 # Create test ticket.
 my $TicketNumber = $TicketObject->TicketCreateNumber();
@@ -79,7 +80,7 @@ $Self->True(
     "TicketID $TicketID is created",
 );
 
-my $ArticleBackendObject = $Kernel::OM->Get('Kernel::System::Ticket::Article')->BackendForChannel(
+my $ArticleBackendObject = $ArticleObject->BackendForChannel(
     ChannelName => 'Phone',
 );
 
@@ -152,16 +153,17 @@ for my $Config (@Configs) {
 }
 
 # Get ticket and article data for tests.
-my %TicketData = $Kernel::OM->Get('Kernel::System::Ticket')->TicketGet(
+my %TicketData = $TicketObject->TicketGet(
     TicketID      => $TicketID,
     DynamicFields => 1,
 );
 
 # Define for which template types certain tags are supported.
 my %Supported = (
-    Answer  => 1,
-    Forward => 1,
-    Note    => 1,
+    Answer           => 1,
+    Forward          => 1,
+    Note             => 1,
+    'Answer,Forward' => 1,
 );
 
 my @Tests = (
@@ -341,9 +343,13 @@ my @Tests = (
 my $StandardTemplateObject  = $Kernel::OM->Get('Kernel::System::StandardTemplate');
 my $TemplateGeneratorObject = $Kernel::OM->Get('Kernel::System::TemplateGenerator');
 
+my @Types = qw( Answer Forward Create Note Email PhoneCall );
+
+push @Types, ( 'Email,PhoneCall', 'Answer,Forward', );
+
 TEST:
 for my $Test (@Tests) {
-    for my $TemplateType (qw(Answer Forward Create Note Email PhoneCall)) {
+    for my $TemplateType (@Types) {
 
         # Create standard template.
         my $TemplateID = $StandardTemplateObject->StandardTemplateAdd(

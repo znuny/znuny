@@ -1169,9 +1169,9 @@ my @Tests = (
         ExpectedReturnLocalData => {
             Data => {
                 Error => {
-                    ErrorCode => 'TicketGet.AccessDenied',
+                    ErrorCode => 'TicketGet.WrongStructure',
                     ErrorMessage =>
-                        'TicketGet: User does not have access to the ticket!'
+                        'TicketGet: Invalid ticket ID parameter(s) found!'
                 }
             },
             Success => 1
@@ -1179,9 +1179,9 @@ my @Tests = (
         ExpectedReturnRemoteData => {
             Data => {
                 Error => {
-                    ErrorCode => 'TicketGet.AccessDenied',
+                    ErrorCode => 'TicketGet.WrongStructure',
                     ErrorMessage =>
-                        'TicketGet: User does not have access to the ticket!'
+                        'TicketGet: Invalid ticket ID parameter(s) found!'
                 }
             },
             Success => 1

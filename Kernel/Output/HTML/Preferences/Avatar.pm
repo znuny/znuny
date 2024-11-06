@@ -43,7 +43,7 @@ sub Param {
 
     if ( $AvatarEngine eq 'Gravatar' && $Self->{UserEmail} ) {
         $Kernel::OM->Get('Kernel::System::Encode')->EncodeOutput( \$Self->{UserEmail} );
-        $Return->{Avatar} = '//www.gravatar.com/avatar/' . md5_hex( lc $Self->{UserEmail} ) . '?s=45&d=mp';
+        $Return->{Avatar} = 'https://www.gravatar.com/avatar/' . md5_hex( lc $Self->{UserEmail} ) . '?s=45&d=mp';
     }
 
     $Return->{UserEmailAddress} = $Param{UserData}->{UserEmail};

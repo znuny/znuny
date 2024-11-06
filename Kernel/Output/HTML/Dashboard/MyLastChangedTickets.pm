@@ -89,11 +89,11 @@ sub Run {
     my $UserLimit = $Preferences{ $Self->{PrefKeyShown} };
     my $Limit     = $UserLimit || $Self->{Config}->{Limit} || 10;
 
-    my $SQL = 'SELECT ticket_id, MAX(change_time) max_t '
-        . 'FROM ticket_history '
-        . 'WHERE change_by = ? '
-        . 'GROUP BY ticket_id '
-        . 'ORDER BY max_t desc';
+    my $SQL = 'SELECT   id
+               FROM     ticket
+               WHERE    change_by = ?
+               ORDER BY change_time DESC
+    ';
 
     return if !$DBObject->Prepare(
         SQL   => $SQL,

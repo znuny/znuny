@@ -13,6 +13,7 @@
           Parameters:
             response_mode: query
             response_type: code
+            prompt: select_account
           URL: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
         Response:
           ParametersMapping:

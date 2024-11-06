@@ -66,7 +66,7 @@ $Selenium->RunTest(
             );
         }
 
-        # Create enviroment for testing Escalation ORDER BY modification from the bug#13458.
+        # Create environment for testing Escalation ORDER BY modification from the bug#13458.
         # Create Queues with different Escalation times.
         my @QueueConfig = (
             {

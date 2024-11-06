@@ -131,7 +131,7 @@ sub Run {
     ITEMS:
     for my $Module ( sort keys %NavBarModule ) {
 
-        # dont show the admin overview as a tile
+        # don't show the admin overview as a tile
         next ITEMS if ( $NavBarModule{$Module}->{'Link'} && $NavBarModule{$Module}->{'Link'} eq 'Action=Admin' );
 
         if ( grep { $_ eq $Module } @{$PrefFavourites} ) {

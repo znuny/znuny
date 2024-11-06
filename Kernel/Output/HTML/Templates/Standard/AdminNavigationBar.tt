@@ -6,6 +6,7 @@
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
+## nofilter(TidyAll::Plugin::Znuny::TT::Breadcrumb)
 
 [% RenderBlockStart("AdminNavBar") %]
 <div class="MainBox ARIARoleMain LayoutFixedSidebar SidebarFirst ActionsSideBar">
@@ -76,7 +77,7 @@
                     <div class="Header">
                         <h2>[% Translate(Group.Title) | html %] <span>([% Group.Count | html %])</span></h2>
                         <div class="WidgetAction Toggle">
-                            <a href="#" title=" Show or hide the content">
+                            <a href="#" title="Show or hide the content">
                                 <i class="fa fa-caret-down"></i>
                             </a>
                         </div>

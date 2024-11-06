@@ -307,11 +307,14 @@ Core.UI.RichTextEditor = (function (TargetNS) {
 
         // set default editor config, but allow custom config for other types for editors
         /*eslint-disable camelcase */
-        RemovedCKEditorPlugins = CheckFormID($EditorArea).length ? 'image' : 'image,uploadimage';
-        RemovedCKEditorPlugins += ',elementspath';
+        RemovedCKEditorPlugins = 'devtools,image,flash,mathjax,embed,embedsemantic,exportpdf,sourcedialog,bbcode,divarea,elementspath,stylesheetparser,autogrow';
+        if (!CheckFormID($EditorArea).length) {
+            RemovedCKEditorPlugins += ',uploadimage';
+        }
 
         EditorConfig = {
-            customConfig:              '', // avoid loading external config files
+            // customConfig:           '', // avoid loading external config files
+            versionCheck:              false,
             disableNativeSpellChecker: false,
             defaultLanguage:           UserLanguage,
             language:                  UserLanguage,
@@ -330,9 +333,10 @@ Core.UI.RichTextEditor = (function (TargetNS) {
             toolbar:                   CheckFormID($EditorArea).length ? Core.Config.Get('RichText.Toolbar') : Core.Config.Get('RichText.ToolbarWithoutImage'),
             filebrowserBrowseUrl:      '',
             filebrowserUploadUrl:      UploadURL,
-            extraPlugins:              Core.Config.Get('RichText.ExtraPlugins','splitquote,contextmenu_linkopen,textwatcher,autocomplete,textmatch,autolink,image2,mentions'),
+            extraPlugins:              Core.Config.Get('RichText.ExtraPlugins', 'splitquote,contextmenu_linkopen'),
             entities:                  false,
-            skin:                      'moono-lisa'
+            skin:                      'moono-lisa',
+            contentsCss:               [ Core.Config.Get('RichText.ContentsCss', '') ]
         };
         /*eslint-enable camelcase */
 

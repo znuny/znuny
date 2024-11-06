@@ -321,6 +321,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .WidgetSimple fieldset.TableLike .Value,
     .WidgetSimple fieldset.TableLike .Value span {
         line-height: 140%;
+        gap: 0;
     }
 
     /* Legend & Shortcuts */
@@ -636,11 +637,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     * @subsection AJAX Loader
     */
 
-    .Loading > .Header h2 {
+    .Loading > .Header {
         position: relative;
     }
 
-    .Loading > .Header h2:after {
+    .Loading > .Header:after {
         left: auto;
         top: auto;
         right: 3px;
@@ -649,7 +650,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         line-height: 14px;
     }
 
-    .RTL .Loading > .Header h2:after {
+    .RTL .Loading > .Header:after {
         left: 3px;
         right: auto;
     }

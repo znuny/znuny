@@ -10,7 +10,7 @@
 use strict;
 use warnings;
 use vars (qw($Self));
-
+use utf8;
 #
 # This test makes sure that object dependencies are only created when
 # the object actively asks for them, not earlier.
