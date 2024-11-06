@@ -499,25 +499,25 @@
                             </div>
                         </div>
 
-                    <div class="field-wrapper">
-                        <label class="card-title title">[% Translate("Dynamic fields") | html %]</label>
-                    </div>
+                        <div class="field-wrapper">
+                            <label class="card-title title">[% Translate("Dynamic fields") | html %]</label>
+                        </div>
 [% RenderBlockStart("AddDynamicFields") %]
-                            <div class="field-wrapper">
-                                <label>[% Translate("Add dynamic field") | html %]</label>
-                                <div class="Field" data-widget="Select">
-                                    [% Data.DynamicFieldsStrg %]
-                                </div>
+                        <div class="field-wrapper">
+                            <label>[% Translate("Add dynamic field") | html %]</label>
+                            <div class="Field" data-widget="Select">
+                                [% Data.DynamicFieldsStrg %]
                             </div>
+                        </div>
 [% RenderBlockEnd("AddDynamicFields") %]
 
                         <fieldset id="SelectedDynamicFields" class="TableLike">
 [% RenderBlockStart("SelectedDynamicFields") %]
-                            <div class="field-wrapper">
+                            <div class="label-wrapper">
                                 [% Data.Label %]
-                                <div class="Field" data-id="[% Data.ID %]">
-                                    [% Data.Field %]
-                                </div>
+                            </div>
+                            <div class="Field flex-row" data-id="[% Data.ID %]">
+                                [% Data.Field %]
                             </div>
 [% RenderBlockEnd("SelectedDynamicFields") %]
                         </fieldset>
@@ -963,28 +963,28 @@
 
                         <div class="field-wrapper">
                             <label class="card-title title">[% Translate("Dynamic fields") | html %]</label>
+                        </div>
 [% RenderBlockStart("AddNewDynamicFields") %]
-                            <fieldset class="TableLike top-container-wrapper">
-                                <div class="field-wrapper">
-                                    <label>[% Translate("Add dynamic field") | html %]</label>
-                                    <div class="Field" data-widget="Update">
-                                        [% Data.NewDynamicFieldsStrg %]
-                                    </div>
-                                </div>
-                            </fieldset>
+                        <div class="field-wrapper">
+                            <label>[% Translate("Add dynamic field") | html %]</label>
+                            <div class="Field" data-widget="Update">
+                                [% Data.NewDynamicFieldsStrg %]
+                            </div>
+                        </div>
 [% RenderBlockEnd("AddNewDynamicFields") %]
 
-                            <fieldset id="SelectedNewDynamicFields" class="TableLike new-field-wrapper">
+
+                        <fieldset id="SelectedNewDynamicFields" class="TableLike">
 [% RenderBlockStart("SelectedNewDynamicFields") %]
-                                <div class="field-wrapper">
-                                    [% Data.Label %]
-                                    <div class="Field flex-row" data-id="[% Data.ID %]">
-                                        [% Data.Field %]
-                                    </div>
-                                </div>
+                            [% Data.Label %]
+                            <div class="Field" data-id="[% Data.ID %]" style="flex-flow: row">
+                                [% Data.Field %]
+                            </div>
 [% RenderBlockEnd("SelectedNewDynamicFields") %]
-                            </fieldset>
-                        </div>
+                        </fieldset>
+
+
+
 [% RenderBlockStart("NewArchiveFlag") %]
                         <div class="field-wrapper">
                             <label for="NewArchiveFlag">[% Translate("Archive selected tickets") | html %]</label>

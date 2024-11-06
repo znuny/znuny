@@ -13,6 +13,7 @@ package scripts::Migration;    ## no critic
 
 use strict;
 use warnings;
+use utf8;
 
 use Time::HiRes ();
 
@@ -205,14 +206,6 @@ sub _TasksGet {
             Module  => 'scripts::Migration::Base::PerlVersionCheck',
         },
         {
-            Message => 'Check required database version',
-            Module  => 'scripts::Migration::Base::DatabaseVersionCheck',
-        },
-        {
-            Message => 'Check database charset',
-            Module  => 'scripts::Migration::Base::DatabaseCharsetCheck',
-        },
-        {
             Message => 'Check required Perl modules',
             Module  => 'scripts::Migration::Base::PerlModulesCheck',
         },
@@ -221,36 +214,44 @@ sub _TasksGet {
             Module  => 'scripts::Migration::Base::DatabaseBackupCheck',
         },
         {
+            Message => 'Check required database version',
+            Module  => 'scripts::Migration::Base::DatabaseVersionCheck',
+        },
+        {
+            Message => 'Check database default storage engine',
+            Module  => 'scripts::Migration::Base::DatabaseDefaultStorageEngineCheck',
+        },
+        {
             Message => 'Upgrade database structure',
             Module  => 'scripts::Migration::Znuny::UpgradeDatabaseStructure',
+        },
+        {
+            Message => 'Migrate database to utf8mb4',
+            Module  => 'scripts::Migration::Znuny::MigrateUTF8MB4',
+        },
+        {
+            Message => 'Check database charset',
+            Module  => 'scripts::Migration::Base::DatabaseCharsetCheck',
         },
         {
             Message => 'Rebuild configuration',
             Module  => 'scripts::Migration::Base::RebuildConfig',
         },
         {
-            Message => 'Migrate SysConfig settings',
-            Module  => 'scripts::Migration::Znuny::MigrateSysConfigSettings',
-        },
-        {
             Message => 'Migrate DBCRUD UUID columns',
             Module  => 'scripts::Migration::Znuny::MigrateDBCRUDUUIDColumns',
         },
         {
-            Message => 'Migrate dynamic fields',
-            Module  => 'scripts::Migration::Znuny::MigrateDynamicFields',
-        },
-        {
-            Message => 'Migrate notification events',
-            Module  => 'scripts::Migration::Znuny::MigrateNotificationEvents',
-        },
-        {
-            Message => 'Integrate Znuny-NoteToLinkedTicket',
-            Module  => 'scripts::Migration::Znuny::IntegrateZnunyNoteToLinkedTicket',
+            Message => 'Integrate Znuny-MarkTicketSeenUnseen',
+            Module  => 'scripts::Migration::Znuny::IntegrateZnunyMarkTicketSeenUnseen',
         },
         {
             Message => 'Migrate groups',
             Module  => 'scripts::Migration::Znuny::MigrateGroups',
+        },
+        {
+            Message => 'Migrate SysConfig settings',
+            Module  => 'scripts::Migration::Znuny::MigrateSysConfigSettings',
         },
         {
             Message => 'Cleanup orphaned mentions',

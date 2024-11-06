@@ -463,6 +463,21 @@ sub CleanupAsynchronous {
     return 1;
 }
 
+=head2 DeleteCache()
+
+Delete the cache of collected data to enable collecting anew.
+
+    $SupportDataCollectorObject->DeleteCache();
+
+=cut
+
+sub DeleteCache {
+    return $Kernel::OM->Get('Kernel::System::Cache')->Delete(
+        Type => 'SupportDataCollector',
+        Key  => 'DataCollect',
+    );
+}
+
 =head1 TERMS AND CONDITIONS
 
 This software is part of the OTRS project (L<https://otrs.org/>).

@@ -841,6 +841,11 @@ for my $Test (@Tests) {
 
         # check dynamic fields
         my %CompareDynamicFieldReq;
+
+        if ( IsHashRefWithData( $RequesterResult->{Data}->{Ticket}->{DynamicField} ) ) {
+            $RequesterResult->{Data}->{Ticket}->{DynamicField} = [ $RequesterResult->{Data}->{Ticket}->{DynamicField} ];
+        }
+
         LOCALRESULTTICKET:
         for my $Field ( @{ $RequesterResult->{Data}->{Ticket}->{DynamicField} } ) {
             next LOCALRESULTTICKET if $Field->{Name} ne $DynamicFieldData->{Name};

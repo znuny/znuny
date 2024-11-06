@@ -249,7 +249,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::ArchiveRestore</Item>
-                <Item Key="Event">TicketStateUpdate</Item>
+                <Item Key="Event">\ATicketStateUpdate\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -259,7 +259,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::TicketAcceleratorUpdate</Item>
-                <Item Key="Event">TicketStateUpdate|TicketQueueUpdate|TicketLockUpdate</Item>
+                <Item Key="Event">\A(TicketStateUpdate|TicketQueueUpdate|TicketLockUpdate)\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -269,7 +269,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::ForceOwnerReset</Item>
-                <Item Key="Event">TicketQueueUpdate</Item>
+                <Item Key="Event">\ATicketQueueUpdate\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -279,7 +279,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::ForceState</Item>
-                <Item Key="Event">TicketLockUpdate</Item>
+                <Item Key="Event">\ATicketLockUpdate\z</Item>
                 <Item Key="new">open</Item>
             </Hash>
         </Value>
@@ -290,7 +290,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::ResponsibleAutoSet</Item>
-                <Item Key="Event">TicketOwnerUpdate</Item>
+                <Item Key="Event">\ATicketOwnerUpdate\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -300,7 +300,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::LockAfterCreate</Item>
-                <Item Key="Event">TicketCreate</Item>
+                <Item Key="Event">\ATicketCreate\z</Item>
                 <Item Key="Action">AgentTicketPhone|AgentTicketEmail</Item>
                 <Item Key="Transaction">1</Item>
             </Hash>
@@ -312,7 +312,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::TicketPendingTimeReset</Item>
-                <Item Key="Event">TicketStateUpdate</Item>
+                <Item Key="Event">\ATicketStateUpdate\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -334,7 +334,7 @@
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::TicketEscalationIndex</Item>
                 <Item Key="Transaction">1</Item>
-                <Item Key="Event">TicketSLAUpdate|TicketQueueUpdate|TicketStateUpdate|TicketCreate|ArticleCreate|TicketDynamicFieldUpdate|TicketTypeUpdate|TicketServiceUpdate|TicketCustomerUpdate|TicketPriorityUpdate|TicketMerge</Item>
+                <Item Key="Event">\A(TicketSLAUpdate|TicketQueueUpdate|TicketStateUpdate|TicketCreate|ArticleCreate|TicketDynamicFieldUpdate_.+|TicketTypeUpdate|TicketServiceUpdate|TicketCustomerUpdate|TicketPriorityUpdate|TicketMerge)\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -345,7 +345,7 @@
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::TriggerEscalationStopEvents</Item>
                 <Item Key="Transaction">0</Item>
-                <Item Key="Event">TicketSLAUpdate|TicketQueueUpdate|TicketStateUpdate|ArticleCreate</Item>
+                <Item Key="Event">\A(TicketSLAUpdate|TicketQueueUpdate|TicketStateUpdate|ArticleCreate)\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -355,7 +355,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::ForceUnlock</Item>
-                <Item Key="Event">TicketQueueUpdate</Item>
+                <Item Key="Event">\ATicketQueueUpdate\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -365,7 +365,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::TicketNewMessageUpdate</Item>
-                <Item Key="Event">ArticleCreate|ArticleFlagSet</Item>
+                <Item Key="Event">\AArticleCreate|ArticleFlagSet\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -375,7 +375,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::CustomerCompany::Event::TicketUpdate</Item>
-                <Item Key="Event">CustomerCompanyUpdate</Item>
+                <Item Key="Event">\ACustomerCompanyUpdate\z</Item>
                 <Item Key="Transaction">0</Item>
             </Hash>
         </Value>
@@ -386,7 +386,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::CustomerUser::Event::TicketUpdate</Item>
-                <Item Key="Event">CustomerUserUpdate</Item>
+                <Item Key="Event">\ACustomerUserUpdate\z</Item>
                 <Item Key="Transaction">0</Item>
             </Hash>
         </Value>
@@ -406,7 +406,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::DynamicFieldFromCustomerUser</Item>
-                <Item Key="Event">(TicketCreate|TicketCustomerUpdate)</Item>
+                <Item Key="Event">\A(TicketCreate|TicketCustomerUpdate)\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -1998,6 +1998,34 @@
                 <Item ValueType="Option" Value="Down" Translatable="1">Down</Item>
                 <Item ValueType="Option" Value="Up" Translatable="1">Up</Item>
             </Item>
+        </Value>
+    </Setting>
+    <Setting Name="Ticket::Frontend::AgentTicketService###VisualAlarms" Required="0" Valid="1">
+        <Description Translatable="1">Enable highlighting services based on ticket age.</Description>
+        <Navigation>Frontend::Agent::View::TicketService</Navigation>
+        <Value>
+            <Item ValueType="Checkbox">0</Item>
+        </Value>
+    </Setting>
+    <Setting Name="Ticket::Frontend::AgentTicketService###HighlightAge1" UserPreferencesGroup="Advanced" UserModificationPossible="1" Required="1" Valid="1">
+        <Description Translatable="1">Sets the age in minutes (first level) for highlighting services that contain untouched tickets.</Description>
+        <Navigation>Frontend::Agent::View::TicketService</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="^[0-9]{1,7}$">1440</Item>
+        </Value>
+    </Setting>
+    <Setting Name="Ticket::Frontend::AgentTicketService###HighlightAge2" UserPreferencesGroup="Advanced" UserModificationPossible="1" Required="1" Valid="1">
+        <Description Translatable="1">Sets the age in minutes (second level) for highlighting services that contain untouched tickets.</Description>
+        <Navigation>Frontend::Agent::View::TicketService</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="^[0-9]{1,7}$">2880</Item>
+        </Value>
+    </Setting>
+    <Setting Name="Ticket::Frontend::AgentTicketService###Blink" UserPreferencesGroup="Advanced" UserModificationActive="1" UserModificationPossible="1" Required="0" Valid="1">
+        <Description Translatable="1">Activates a blinking mechanism of the service that contains the oldest ticket.</Description>
+        <Navigation>Frontend::Agent::View::TicketService</Navigation>
+        <Value>
+            <Item ValueType="Checkbox">0</Item>
         </Value>
     </Setting>
     <Setting Name="Ticket::Frontend::AccountTime" Required="1" Valid="1">
@@ -8176,6 +8204,7 @@
                         <Item>Core.Agent.TableFilters.js</Item>
                         <Item>Core.Agent.Overview.js</Item>
                         <Item>Core.Agent.TicketSplit.js</Item>
+                        <Item>Znuny.Agent.TicketWatch.js</Item>
                     </Array>
                 </Item>
             </Hash>
@@ -10619,8 +10648,6 @@
                 <Item>ArticleAutoResponse</Item>
                 <Item>ArticleFlagSet</Item>
                 <Item>ArticleFlagDelete</Item>
-                <Item>ArticleAgentNotification</Item>
-                <Item>ArticleCustomerNotification</Item>
                 <Item>ArticleEmailSendingQueued</Item>
                 <Item>ArticleEmailSendingSent</Item>
                 <Item>ArticleEmailSendingError</Item>
@@ -10646,7 +10673,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Queue::Event::TicketAcceleratorUpdate</Item>
-                <Item Key="Event">QueueUpdate</Item>
+                <Item Key="Event">\AQueueUpdate\z</Item>
                 <Item Key="Transaction">0</Item>
             </Hash>
         </Value>
@@ -11417,14 +11444,20 @@
                 <Item>X-OTRS-ResponsibleID</Item>
                 <Item>X-OTRS-Loop</Item>
                 <Item>X-OTRS-Priority</Item>
+                <Item>X-OTRS-PriorityID</Item>
                 <Item>X-OTRS-Queue</Item>
+                <Item>X-OTRS-QueueID</Item>
                 <Item>X-OTRS-Lock</Item>
                 <Item>X-OTRS-Ignore</Item>
                 <Item>X-OTRS-State</Item>
+                <Item>X-OTRS-StateID</Item>
                 <Item>X-OTRS-State-PendingTime</Item>
                 <Item>X-OTRS-Type</Item>
+                <Item>X-OTRS-TypeID</Item>
                 <Item>X-OTRS-Service</Item>
+                <Item>X-OTRS-ServiceID</Item>
                 <Item>X-OTRS-SLA</Item>
+                <Item>X-OTRS-SLAID</Item>
                 <Item>X-OTRS-Title</Item>
                 <Item>X-OTRS-CustomerNo</Item>
                 <Item>X-OTRS-CustomerUser</Item>
@@ -11435,13 +11468,19 @@
                 <Item>X-OTRS-FollowUp-Responsible</Item>
                 <Item>X-OTRS-FollowUp-ResponsibleID</Item>
                 <Item>X-OTRS-FollowUp-Priority</Item>
+                <Item>X-OTRS-FollowUp-PriorityID</Item>
                 <Item>X-OTRS-FollowUp-Queue</Item>
+                <Item>X-OTRS-FollowUp-QueueID</Item>
                 <Item>X-OTRS-FollowUp-Lock</Item>
                 <Item>X-OTRS-FollowUp-State</Item>
+                <Item>X-OTRS-FollowUp-StateID</Item>
                 <Item>X-OTRS-FollowUp-State-PendingTime</Item>
                 <Item>X-OTRS-FollowUp-Type</Item>
+                <Item>X-OTRS-FollowUp-TypeID</Item>
                 <Item>X-OTRS-FollowUp-Service</Item>
+                <Item>X-OTRS-FollowUp-ServiceID</Item>
                 <Item>X-OTRS-FollowUp-SLA</Item>
+                <Item>X-OTRS-FollowUp-SLAID</Item>
                 <Item>X-OTRS-FollowUp-SenderType</Item>
                 <Item>X-OTRS-FollowUp-IsVisibleForCustomer</Item>
                 <Item>X-OTRS-FollowUp-Title</Item>
@@ -12693,7 +12732,7 @@ Thanks for your help!
             <Hash>
                 <Item Key="Name">Field1</Item>
                 <Item Key="Value">Default</Item>
-                <Item Key="Event">TicketCreate</Item>
+                <Item Key="Event">\ATicketCreate\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -13711,6 +13750,13 @@ Thanks for your help!
                         <Item Key="Valid">1</Item>
                     </Hash>
                 </Item>
+                <Item Key="MarkArticleSeenUnseen">
+                    <Hash>
+                        <Item Key="Module">Kernel::Output::HTML::ArticleAction::MarkArticleSeenUnseen</Item>
+                        <Item Key="Prio">50</Item>
+                        <Item Key="Valid">1</Item>
+                    </Hash>
+                </Item>
             </Hash>
         </Value>
     </Setting>
@@ -13785,6 +13831,13 @@ Thanks for your help!
                 <Item Key="AgentTicketNoteToLinkedTicket">
                     <Hash>
                         <Item Key="Module">Kernel::Output::HTML::ArticleAction::AgentTicketNoteToLinkedTicket</Item>
+                        <Item Key="Prio">50</Item>
+                        <Item Key="Valid">1</Item>
+                    </Hash>
+                </Item>
+                <Item Key="MarkArticleSeenUnseen">
+                    <Hash>
+                        <Item Key="Module">Kernel::Output::HTML::ArticleAction::MarkArticleSeenUnseen</Item>
                         <Item Key="Prio">50</Item>
                         <Item Key="Valid">1</Item>
                     </Hash>
@@ -13877,6 +13930,13 @@ Thanks for your help!
                 <Item Key="AgentTicketNoteToLinkedTicket">
                     <Hash>
                         <Item Key="Module">Kernel::Output::HTML::ArticleAction::AgentTicketNoteToLinkedTicket</Item>
+                        <Item Key="Prio">50</Item>
+                        <Item Key="Valid">1</Item>
+                    </Hash>
+                </Item>
+                <Item Key="MarkArticleSeenUnseen">
+                    <Hash>
+                        <Item Key="Module">Kernel::Output::HTML::ArticleAction::MarkArticleSeenUnseen</Item>
                         <Item Key="Prio">50</Item>
                         <Item Key="Valid">1</Item>
                     </Hash>

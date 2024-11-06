@@ -133,6 +133,7 @@ sub Run {
             my $Recipient = $Self->{ParserObject}->GetEmailAddress(
                 Email => $Email,
             );
+            next EMAIL if !defined $Recipient;
             if ( lc $Recipient eq lc $SenderAddress ) {
                 $IsInternalForward = 1;
                 last ARTICLE;

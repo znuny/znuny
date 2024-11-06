@@ -360,10 +360,8 @@ sub StdAttachmentLookup {
     }
 
     my $Cached = $Kernel::OM->Get('Kernel::System::Cache')->Get(
-        Type           => $Self->{CacheType},
-        Key            => $CacheKey,
-        CacheInMemory  => 1,
-        CacheInBackend => 0,
+        Type => $Self->{CacheType},
+        Key  => $CacheKey,
     );
 
     return $Cached if $Cached;
@@ -404,12 +402,10 @@ sub StdAttachmentLookup {
 
     # cache result
     $Kernel::OM->Get('Kernel::System::Cache')->Set(
-        Type           => $Self->{CacheType},
-        TTL            => $Self->{CacheTTL},
-        Key            => $CacheKey,
-        Value          => $DBValue,
-        CacheInMemory  => 1,
-        CacheInBackend => 0,
+        Type  => $Self->{CacheType},
+        TTL   => $Self->{CacheTTL},
+        Key   => $CacheKey,
+        Value => $DBValue,
     );
 
     return $DBValue;

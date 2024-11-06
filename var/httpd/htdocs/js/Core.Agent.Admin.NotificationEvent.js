@@ -22,6 +22,11 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  */
 Core.Agent.Admin.NotificationEvent = (function (TargetNS) {
 
+    var RemoveButtonHTML = '<a href="#" title="'
+        + Core.Language.Translate('Remove this dynamic field')
+        + '" class="RemoveButton icon-hover"><i class="fa fa-minus-square-o"></i><span class="InvisibleText">'
+        + Core.Language.Translate('Remove') + '</span></a>';
+
     /**
      * @name Init
      * @memberof Core.Agent.Admin.NotificationEvent
@@ -128,6 +133,120 @@ Core.Agent.Admin.NotificationEvent = (function (TargetNS) {
             }
         });
 
+        $('#AddDynamicFields').on('change', function () {
+                TargetNS.InsertDynamicField($(this).val());
+        });
+
+        // On page load, add remove button and init its click event.
+        $('#SelectedDynamicFields').find('div.Field').each(function() {
+            $(this).append(RemoveButtonHTML);
+            TargetNS.InitRemoveButtonEvent($(this).find('.RemoveButton'), 'AddDynamicFields');
+        });
+
+    };
+
+    /**
+     * @name InsertDynamicField
+     * @memberof Core.Agent.Admin.NotificationEvent
+     * @function
+     * @param {String} Value - Value selected from dropdown.
+     * @description
+     *      Add a selected dynamic field to the view.
+     */
+    TargetNS.InsertDynamicField = function (Value) {
+        var Data,
+            AddFieldsID      = 'AddDynamicFields',
+            SelectedFieldsID = 'SelectedDynamicFields',
+            DynamicFieldsJS  = Core.Config.Get('DynamicFieldsJS');
+
+        if (!Value) {
+            return;
+        }
+
+        Data = {
+            Action: 'AdminNotificationEvent',
+            Subaction: 'AddDynamicField',
+            DynamicFieldID: DynamicFieldsJS[Value].ID,
+            SelectedValue: Value,
+        };
+
+
+        // Get field HTML by AJAX.
+        Core.AJAX.FunctionCall(
+            Core.Config.Get('CGIHandle'),
+            Data,
+            function (Response) {
+                var $Field = $(Response.Label + '<div class="Field flex-row" data-id="' + Response.ID + '">' + Response.Field),
+                    InputFieldUUID = $Field.find(':input').attr('data-input-field-uuid');
+
+                // Append field HTML from response to selected fields area.
+                $('#' + SelectedFieldsID).append($Field);
+                $('div.Field[data-id="' + Response.ID + '"]').append(RemoveButtonHTML);
+
+                TargetNS.InitRemoveButtonEvent($('div.Field[data-id="' + Response.ID + '"]').find('.RemoveButton'), AddFieldsID);
+
+                // Remove the field from add fields dropdown and redraw this dropdown.
+                $('#' + AddFieldsID + ' option[value=' + Value + ']').remove();
+                $('#' + AddFieldsID).val('').trigger('redraw.InputField').trigger('change');
+
+                // Modernize field if there is select element.
+                if ($('#' + Value).closest('div.Field').find('select.Modernize').length) {
+                    Core.UI.InputFields.Activate($('#' + Value).closest('div.Field'));
+                }
+
+                // Register event for tree selection dialog
+                $('.ShowTreeSelection').off('click').on('click', function () {
+                    Core.UI.TreeSelection.ShowTreeSelection($(this));
+                    return false;
+                });
+
+                // Trigger dynamic field event initialization (needed for specific fields from packages).
+                if (InputFieldUUID) {
+                    Core.App.Publish('Event.DynamicField.InitByInputFieldUUID', [InputFieldUUID]);
+                }
+
+                return false;
+
+            }, 'json'
+        );
+    };
+
+    /**
+     * @name InitRemoveButtonEvent
+     * @memberof Core.Agent.Admin.NotificationEvent
+     * @function
+     * @param {String} $Element - jQuery element with 'RemoveButton' class.
+     * @param {String} AddFieldsID - ID of dropdown where dynamic field has to be added back.
+     * @description
+     *      Initializes remove button click event.
+     */
+    TargetNS.InitRemoveButtonEvent = function ($Element, AddFieldsID) {
+        $Element.off('click').on('click', function(Event) {
+            var Value = $(this).closest('div.Field').data('id'),
+                Text  = Core.Config.Get('DynamicFieldsJS')[Value].Text,
+                Options,
+                OptionObjects = [];
+
+            // Add dynamic field to add fields dropdown.
+            $('#' + AddFieldsID).append('<option value=' + Value + '>' + Text + '</option>');
+
+            // Sort options.
+            Options = $('#' + AddFieldsID + ' option');
+            OptionObjects = Options.map(function(_, Element) { return { Text: $(Element).text(), Value: Element.value }; }).get();
+            OptionObjects.sort(function(Object1, Object2) { return Object1.Text > Object2.Text ? 1 : Object1.Text < Object2.Text ? -1 : 0; });
+            Options.each(function(Index, Element) {
+                Element.value = OptionObjects[Index].Value;
+                $(Element).text(OptionObjects[Index].Text);
+            });
+
+            // Remove label and div.Field elements from selected fields area.
+            $(this).closest('div.Field').prev('div.label-wrapper').remove();
+            $(this).closest('div.Field').remove();
+
+            Event.stopPropagation();
+            Event.preventDefault();
+            return false;
+        });
     };
 
    /**

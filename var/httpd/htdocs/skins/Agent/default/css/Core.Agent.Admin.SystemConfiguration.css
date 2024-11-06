@@ -643,6 +643,7 @@ h2.SearchResults {
 
 .WidgetSimple.Setting.IsLockedByMe .SettingContainer .Setting {
     overflow: unset;
+    overflow-x: auto;
 }
 
 .WidgetSimple.Setting:not(.IsLockedByMe):not(.MenuExpanded) .SettingContainer > fieldset {
@@ -1031,6 +1032,10 @@ li > div:not(.IsLockedByMe) .HashItem .HashItem > .SettingContent > div.InputFie
     border-radius: var(--border-radius-sm);
     /*min-width: calc(100% + 20px);*/
     border: var(--border-width) var(--border-solid) var(--border-color);
+}
+
+.SettingContainer > fieldset > .Setting > .Hash {
+    min-width: 700px;
 }
 
 .Hash.FrontendNavigationHash {
@@ -1433,7 +1438,7 @@ li > div:not(.IsLockedByMe) .HashItem .HashItem > .SettingContent > div.InputFie
 }
 
 .IsLockedByMe .HashItem .SettingContent {
-    min-width: calc(100% - 190px); /* full width minus key + arrow width */
+    min-width: calc(100% - 196px); /* full width minus key + arrow width */
 }
 
 .ArrayItem .HashItem .SettingContent,

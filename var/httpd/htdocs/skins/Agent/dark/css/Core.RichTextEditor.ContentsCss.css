@@ -1,0 +1,23 @@
+/*
+Copyright (C) 2021 Znuny GmbH, https://znuny.org/
+
+This software comes with ABSOLUTELY NO WARRANTY. For details, see
+the enclosed file COPYING for license information (AGPL). If you
+did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
+*/
+
+/**
+ * @package     Skin "dark"
+ * @section     RichtTextEditor.ContentCss
+ */
+
+/**
+ * FILEPATH: var/httpd/htdocs/skins/SKIN/dark/css/Core.RichTextEditor.ContentsCss.css
+ *
+ * Applies a CSS filter to invert the colors and rotate the hue of images, videos, and SVG elements.
+ * This creates a dark mode effect by inverting the colors and rotating the hue by 180 degrees.
+ */
+
+img, video, svg {
+    filter: invert(100%) hue-rotate(180deg);
+}

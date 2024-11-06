@@ -828,7 +828,9 @@ sub _IsZnunyFile {
 
     my $AbsoluteFilePath = abs_path( $Param{File} );
 
-    my $Home = $ConfigObject->Get('Home');
+    # Use absolute path of configured home directory to be able
+    # to compare with potential symbolic links.
+    my $Home = abs_path( $ConfigObject->Get('Home') );
 
     return if $AbsoluteFilePath !~ m{\A\Q$Home\E};
 

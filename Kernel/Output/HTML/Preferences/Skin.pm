@@ -11,14 +11,15 @@ package Kernel::Output::HTML::Preferences::Skin;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::Language qw(Translatable);
 
 our @ObjectDependencies = (
-    'Kernel::System::Web::Request',
     'Kernel::Config',
-    'Kernel::System::AuthSession',
     'Kernel::Output::HTML::Layout',
+    'Kernel::System::AuthSession',
+    'Kernel::System::Web::Request',
 );
 
 sub new {
@@ -38,8 +39,9 @@ sub new {
 sub Param {
     my ( $Self, %Param ) = @_;
 
-    # get config object
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $ParamObject  = $Kernel::OM->Get('Kernel::System::Web::Request');
 
     my $PossibleSkins = $ConfigObject->Get('Loader::Agent::Skin') || {};
     my $Home          = $ConfigObject->Get('Home');
@@ -48,7 +50,7 @@ sub Param {
     # prepare the list of active skins
     for my $PossibleSkin ( values %{$PossibleSkins} ) {
         if (
-            $Kernel::OM->Get('Kernel::Output::HTML::Layout')->SkinValidate(
+            $LayoutObject->SkinValidate(
                 Skin     => $PossibleSkin->{InternalName},
                 SkinType => 'Agent'
             )
@@ -66,7 +68,7 @@ sub Param {
             Name       => $Self->{ConfigItem}->{PrefKey},
             Data       => \%ActiveSkins,
             HTMLQuote  => 0,
-            SelectedID => $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'UserSkin' )
+            SelectedID => $ParamObject->GetParam( Param => 'UserSkin' )
                 || $Param{UserData}->{UserSkin}
                 || $ConfigObject->Get('Loader::Agent::DefaultSelectedSkin'),
             Block => 'Option',
@@ -79,12 +81,14 @@ sub Param {
 sub Run {
     my ( $Self, %Param ) = @_;
 
+    my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
+    my $SessionObject = $Kernel::OM->Get('Kernel::System::AuthSession');
+
     for my $Key ( sort keys %{ $Param{GetParam} } ) {
         my @Array = @{ $Param{GetParam}->{$Key} };
         for my $Value (@Array) {
 
-            # pref update db
-            if ( !$Kernel::OM->Get('Kernel::Config')->Get('DemoSystem') ) {
+            if ( !$ConfigObject->Get('DemoSystem') ) {
                 $Self->{UserObject}->SetPreferences(
                     UserID => $Param{UserData}->{UserID},
                     Key    => $Key,
@@ -92,9 +96,9 @@ sub Run {
                 );
             }
 
-            # update SessionID
-            if ( $Param{UserData}->{UserID} eq $Self->{UserID} ) {
-                $Kernel::OM->Get('Kernel::System::AuthSession')->UpdateSessionID(
+            # Update session data when the preference is updated by the user himself.
+            if ( $Param{UpdateSessionData} ) {
+                $SessionObject->UpdateSessionID(
                     SessionID => $Self->{SessionID},
                     Key       => $Key,
                     Value     => $Value,
@@ -102,6 +106,15 @@ sub Run {
             }
         }
     }
+
+    # Delete the session when the preference is updated by an admin user
+    # to force a login with fresh session data for the affected user.
+    if ( !$Param{UpdateSessionData} ) {
+        $SessionObject->RemoveSessionByUser(
+            UserLogin => $Param{UserData}->{UserLogin},
+        );
+    }
+
     $Self->{Message} = Translatable('Preferences updated successfully!');
     return 1;
 }

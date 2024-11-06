@@ -48,7 +48,8 @@ sub CreateSessionID {
     my $UserType;
 
     # get params
-    my $PostPw = $Param{Data}->{Password} || '';
+    my $PostPw             = $Param{Data}->{Password}       || '';
+    my $PostTwoFactorToken = $Param{Data}->{TwoFactorToken} || '';
 
     if ( defined $Param{Data}->{UserLogin} && $Param{Data}->{UserLogin} ) {
 
@@ -57,8 +58,9 @@ sub CreateSessionID {
 
         # check submitted data
         $User = $Kernel::OM->Get('Kernel::System::Auth')->Auth(
-            User => $PostUser,
-            Pw   => $PostPw,
+            User           => $PostUser,
+            Pw             => $PostPw,
+            TwoFactorToken => $PostTwoFactorToken,
         );
         %UserData = $Kernel::OM->Get('Kernel::System::User')->GetUserData(
             User  => $User,
@@ -73,8 +75,9 @@ sub CreateSessionID {
 
         # check submitted data
         $User = $Kernel::OM->Get('Kernel::System::CustomerAuth')->Auth(
-            User => $PostUser,
-            Pw   => $PostPw,
+            User           => $PostUser,
+            Pw             => $PostPw,
+            TwoFactorToken => $PostTwoFactorToken,
         );
         %UserData = $Kernel::OM->Get('Kernel::System::CustomerUser')->CustomerUserDataGet(
             User  => $PostUser,

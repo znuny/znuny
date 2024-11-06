@@ -313,12 +313,27 @@ sub _ShowOverview {
         );
     }
     else {
+
+        # Get all dynamic fields and translate the name.
+        my @DynamicFields;
         for my $DynamicField ( sort keys %DynamicFields ) {
+            my $Name = $LayoutObject->{LanguageObject}->Translate( $DynamicFields{$DynamicField} );
+            push @DynamicFields, {
+                Name         => $Name,
+                DynamicField => $DynamicField,
+            };
+        }
+
+        # Sort by translated name.
+        my @SortedDynamicFields = sort { $a->{Name} cmp $b->{Name} } @DynamicFields;
+
+        # Show dynamic fields orderd by translated name on overview.
+        for my $DynamicField (@SortedDynamicFields) {
             $LayoutObject->Block(
                 Name => 'DynamicFieldOverviewRow',
                 Data => {
-                    DynamicField => $DynamicField,
-                    Name         => $DynamicFields{$DynamicField},
+                    DynamicField => $DynamicField->{DynamicField},
+                    Name         => $DynamicField->{Name},
                 },
             );
         }
@@ -424,7 +439,6 @@ sub _ShowEdit {
         Name => 'Edit',
         Data => {
             %Param,
-            %Data,
         },
     );
 

@@ -421,6 +421,12 @@ EOF
                     $PseudoType = 'bigserial';
                 }
                 push @SQL, $SQLStart . " ADD $Tag->{Name} $PseudoType NOT NULL";
+
+                # add primary key
+                if ( $Tag->{PrimaryKey} && $Tag->{PrimaryKey} =~ m{\Atrue\z}i ) {
+                    push @SQL, $SQLStart . " ADD PRIMARY KEY($Tag->{Name})";
+                }
+
                 next TAG;
             }
 

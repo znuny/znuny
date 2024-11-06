@@ -1839,8 +1839,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border: var(--border-width) var(--border-solid) var(--primary-color); */
     }
 
-    /* 
-     *hack to style input file on firefox 
+    /*
+     *hack to style input file on firefox
      */
     @supports (-moz-appearance: none) {
         input[type="file"]::file-selector-button {

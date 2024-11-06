@@ -519,6 +519,15 @@ sub Run {
         Result     => 'ARRAY',
     );
 
+    # Get the 3 oldest tickets.
+    my @OldestTickets;
+    my @SortedTicketIDs = sort @AllServicesTicketIDs;
+    push @OldestTickets, $SortedTicketIDs[0];
+    push @OldestTickets, $SortedTicketIDs[1];
+    push @OldestTickets, $SortedTicketIDs[2];
+
+    $Data{OldestTicketIDs} = \@OldestTickets;
+
     my $TicketCountByServiceID = $TicketObject->TicketCountByAttribute(
         Attribute => 'ServiceID',
         TicketIDs => \@AllServicesTicketIDs,
@@ -611,6 +620,7 @@ sub _MaskServiceView {
     # get needed objects
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
     my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $TicketObject = $Kernel::OM->Get('Kernel::System::Ticket');
 
     my $CustomService
         = $LayoutObject->{LanguageObject}->Translate( $ConfigObject->Get('Ticket::CustomService') || 'My Services' );
@@ -633,6 +643,42 @@ sub _MaskServiceView {
     $Param{BreadcrumbService} = sprintf '<div>%s</div>' x @MetaService, @MetaService;
     $Param{BreadcrumbService} =~ s{(</div>)(<div>)}{$1 <div>></div> $2}g;
     $Level = $#MetaService + 2;
+
+    # Store some ticket values for HighlightAge1, HighlightAge2 and Blink.
+    my $ServiceIDForOldestTicket;
+    my $TicketAgeForOldestTicket;
+    my $TicketAgeForHighlightAge1 = 0;
+    my $ServiceIDForHighlightAge1 = 0;
+    my $TicketAgeForHighlightAge2 = 0;
+    my $ServiceIDForHighlightAge2 = 0;
+    my %Ticket;
+
+    if ( $Param{OldestTicketIDs}->[0] ) {
+        %Ticket = $TicketObject->TicketGet(
+            TicketID => $Param{OldestTicketIDs}->[0],
+            UserID   => 1,
+        );
+        $TicketAgeForOldestTicket = $Ticket{Age} / 60;
+        $ServiceIDForOldestTicket = $Ticket{ServiceID};
+    }
+
+    if ( $Param{OldestTicketIDs}->[1] ) {
+        %Ticket = $TicketObject->TicketGet(
+            TicketID => $Param{OldestTicketIDs}->[1],
+            UserID   => 1,
+        );
+        $TicketAgeForHighlightAge1 = $Ticket{Age} / 60;
+        $ServiceIDForHighlightAge1 = $Ticket{ServiceID};
+    }
+
+    if ( $Param{OldestTicketIDs}->[2] ) {
+        %Ticket = $TicketObject->TicketGet(
+            TicketID => $Param{OldestTicketIDs}->[2],
+            UserID   => 1,
+        );
+        $TicketAgeForHighlightAge2 = $Ticket{Age} / 60;
+        $ServiceIDForHighlightAge2 = $Ticket{ServiceID};
+    }
 
     # prepare shown Services (short names)
     # - get Service total count -
@@ -696,6 +742,36 @@ sub _MaskServiceView {
         $ServiceStrg .= ';View=' . $LayoutObject->Ascii2Html( Text => $View ) . '"';
 
         $ServiceStrg .= ' class="';
+
+        if ( $Service{ServiceID} != 0 && $Service{ServiceID} == $ServiceIDForOldestTicket ) {
+            if ( $Self->{Blink} ) {
+                $ServiceStrg .= 'Oldest ';
+            }
+            if ( $Config->{VisualAlarms} ) {
+                if ( $TicketAgeForOldestTicket >= $Self->{HighlightAge2} ) {
+                    $ServiceStrg .= ' OlderLevel2';
+                }
+                if ( $TicketAgeForOldestTicket >= $Self->{HighlightAge1} ) {
+                    $ServiceStrg .= ' OlderLevel1';
+                }
+            }
+        }
+        if ( $Config->{VisualAlarms} ) {
+            if (
+                $Service{ServiceID} == $ServiceIDForHighlightAge2
+                && $TicketAgeForHighlightAge2 >= $Self->{HighlightAge2}
+                )
+            {
+                $ServiceStrg .= ' OlderLevel2';
+            }
+            elsif (
+                $Service{ServiceID} == $ServiceIDForHighlightAge1
+                && $TicketAgeForHighlightAge1 >= $Self->{HighlightAge1}
+                )
+            {
+                $ServiceStrg .= ' OlderLevel1';
+            }
+        }
 
         # should i highlight this Service
         if ( $Param{SelectedService} =~ /^\Q$ServiceName[0]\E/ && $Level - 1 >= $#ServiceName ) {

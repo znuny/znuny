@@ -287,6 +287,36 @@
             </Hash>
         </Value>
     </Setting>
+    <Setting Name="CustomerShortcutIcon" Required="0" Valid="1">
+        <Description Translatable="1">The shortcut icon for the customer interface.</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/product.ico</Item>
+        </Value>
+    </Setting>
+    <Setting Name="CustomerShortcutIconCustom###default" Required="0" Valid="1">
+        <Description Translatable="1">The shortcut icon for the customer interface for the skin "default".</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/product.ico</Item>
+        </Value>
+    </Setting>
+    <Setting Name="CustomerAppleTouchIcon" Required="0" Valid="1">
+        <Description Translatable="1">The Apple touch icon for the customer interface.</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/apple-touch-icon.png</Item>
+        </Value>
+    </Setting>
+    <Setting Name="CustomerAppleTouchIconCustom###default" Required="0" Valid="1">
+        <Description Translatable="1">The Apple touch icon for the customer interface for skin "default".</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/apple-touch-icon.png</Item>
+        </Value>
+    </Setting>
+
+
     <Setting Name="AgentLogo" Required="0" Valid="1">
         <Description Translatable="1">The logo shown in the header of the agent interface. The URL to the image can be a relative URL to the skin image directory, or a full URL to a remote web server.</Description>
         <Navigation>Frontend::Agent</Navigation>
@@ -321,6 +351,34 @@
                 <Item Key="URL">skins/Agent/default/img/logo.png</Item>
                 <Item Key="StyleHeight">60px</Item>
             </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="AgentShortcutIcon" Required="0" Valid="1">
+        <Description Translatable="1">The shortcut icon for the agent interface.</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/product.ico</Item>
+        </Value>
+    </Setting>
+    <Setting Name="AgentShortcutIconCustom###default" Required="0" Valid="1">
+        <Description Translatable="1">The shortcut icon for the agent interface fot the skin "default".</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/product.ico</Item>
+        </Value>
+    </Setting>
+    <Setting Name="AgentAppleTouchIcon" Required="0" Valid="1">
+        <Description Translatable="1">The Apple touch icon for the agent interface.</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/apple-touch-icon.png</Item>
+        </Value>
+    </Setting>
+    <Setting Name="AgentAppleTouchIconCustom###default" Required="0" Valid="1">
+        <Description Translatable="1">The Apple touch icon for the agent interface for the skin "default".</Description>
+        <Navigation>Frontend::Customer</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">skins/Agent/default/img/icons/apple-touch-icon.png</Item>
         </Value>
     </Setting>
     <Setting Name="Frontend::WebPath" Required="1" Valid="1" ConfigLevel="200">
@@ -362,7 +420,7 @@
         <Description Translatable="1">Defines the URL rich text editor path.</Description>
         <Navigation>Frontend::Base</Navigation>
         <Value>
-            <Item ValueType="String" ValueRegex="">&lt;OTRS_CONFIG_Frontend::WebPath&gt;js/thirdparty/ckeditor-4.22.1-min/</Item>
+            <Item ValueType="String" ValueRegex="">&lt;OTRS_CONFIG_Frontend::WebPath&gt;js/thirdparty/ckeditor-4.25.1-znuny-min/</Item>
         </Value>
     </Setting>
     <Setting Name="Frontend::RichText::DefaultCSS" Required="1" Valid="1">
@@ -492,6 +550,13 @@
             <Item ValueType="String" ValueRegex="^[0-9]{1,5}$">6000</Item>
         </Value>
     </Setting>
+    <Setting Name="InputFields::ModernizedSelection::MaxNumberOfOptions" Required="1" Valid="1">
+        <Description Translatable="1">Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.</Description>
+        <Navigation>Frontend::Base</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="^\d+$">1000</Item>
+        </Value>
+    </Setting>
     <Setting Name="Frontend::MenuDragDropEnabled" Required="1" Valid="1">
         <Description Translatable="1">Turns on drag and drop for the main navigation.</Description>
         <Navigation>Frontend::Base</Navigation>
@@ -552,6 +617,13 @@
         <Navigation>Core::Email</Navigation>
         <Value>
             <Item ValueType="String" ValueRegex="">ns.example.com</Item>
+        </Value>
+    </Setting>
+    <Setting Name="CheckMXRecord::Timeout" Required="0" Valid="0">
+        <Description Translatable="1">Sets the timeout (in seconds) for DNS resolver queries.</Description>
+        <Navigation>Core::Email</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="^\d+$">3</Item>
         </Value>
     </Setting>
     <Setting Name="CheckEmailAddresses" Required="1" Valid="1">
@@ -2693,7 +2765,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Package::Event::SupportDataSend</Item>
-                <Item Key="Event">(PackageInstall|PackageReinstall|PackageUpgrade|PackageUninstall)</Item>
+                <Item Key="Event">\A(PackageInstall|PackageReinstall|PackageUpgrade|PackageUninstall)\z</Item>
                 <Item Key="Transaction">1</Item>
             </Hash>
         </Value>
@@ -3325,6 +3397,7 @@ You can log in via the following URL:
                 <Item Key="Label" Translatable="1">Time Zone</Item>
                 <Item Key="Key" Translatable="1"></Item>
                 <Item Key="PrefKey">UserTimeZone</Item>
+                <Item Key="NeedsReload">1</Item>
                 <Item Key="Prio">3500</Item>
                 <Item Key="Active">1</Item>
             </Hash>
@@ -4015,6 +4088,7 @@ via the Preferences button after logging in.
                 <Item Key="Desc" Translatable="1">Select your personal time zone. All times will be displayed relative to this time zone.</Item>
                 <Item Key="Key" Translatable="1">Time Zone</Item>
                 <Item Key="PrefKey">UserTimeZone</Item>
+                <Item Key="NeedsReload">1</Item>
                 <Item Key="Prio">2500</Item>
                 <Item Key="Active">1</Item>
             </Hash>
@@ -4174,7 +4248,7 @@ via the Preferences button after logging in.
                 </Item>
                 <Item Key="JavaScript">
                     <Array>
-                        <Item>thirdparty/momentjs-2.29.4/moment.min.js</Item>
+                        <Item>thirdparty/momentjs-2.30.1/moment.min.js</Item>
                         <Item>thirdparty/fullcalendar-3.10.2/fullcalendar.min.js</Item>
                         <Item>thirdparty/d3-3.5.7/d3.min.js</Item>
                         <Item>thirdparty/nvd3-1.7.1/nvd3.min.js</Item>
@@ -6927,7 +7001,7 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Public</Navigation>
         <Value>
             <Hash>
-                <Item Key="https://www.otrs.com">OTRS Homepage</Item>
+                <Item Key="https://www.znuny.org">Znuny Open-Source Help Desk Platform</Item>
             </Hash>
         </Value>
     </Setting>
@@ -7706,12 +7780,12 @@ via the Preferences button after logging in.
             <Array>
                 <Item>thirdparty/jquery-3.7.0/jquery.js</Item>
                 <Item>thirdparty/jquery-browser-detection/jquery-browser-detection.js</Item>
-                <Item>thirdparty/jquery-ui-1.13.2/jquery-ui.js</Item>
+                <Item>thirdparty/jquery-ui-1.13.3/jquery-ui.js</Item>
                 <Item>thirdparty/jquery-ui-touch-punch-0.2.3/jquery.ui.touch-punch.js</Item>
                 <Item>thirdparty/jquery-validate-1.16.0/jquery.validate.js</Item>
                 <Item>thirdparty/jquery-pubsub/pubsub.js</Item>
-                <Item>thirdparty/jquery-jstree-3.3.7/jquery.jstree.js</Item>
-                <Item>thirdparty/nunjucks-3.2.2/nunjucks.min.js</Item>
+                <Item>thirdparty/jquery-jstree-3.3.8/jquery.jstree.js</Item>
+                <Item>thirdparty/nunjucks-3.2.3/nunjucks.min.js</Item>
                 <Item>thirdparty/jscolor-2.4.6/jscolor.js</Item>
                 <Item>Core.Init.js</Item>
                 <Item>Core.JavaScriptEnhancements.js</Item>
@@ -7769,7 +7843,7 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Base::Loader</Navigation>
         <Value>
             <Array>
-                <Item>thirdparty/ckeditor-4.22.1-min/ckeditor.js</Item>
+                <Item>thirdparty/ckeditor-4.25.1-znuny-min/ckeditor.js</Item>
             </Array>
         </Value>
     </Setting>
@@ -7826,10 +7900,10 @@ via the Preferences button after logging in.
                 <Item>thirdparty/jquery-3.7.0/jquery.js</Item>
                 <Item>thirdparty/jquery-browser-detection/jquery-browser-detection.js</Item>
                 <Item>thirdparty/jquery-validate-1.16.0/jquery.validate.js</Item>
-                <Item>thirdparty/jquery-ui-1.13.2/jquery-ui.js</Item>
+                <Item>thirdparty/jquery-ui-1.13.3/jquery-ui.js</Item>
                 <Item>thirdparty/jquery-pubsub/pubsub.js</Item>
-                <Item>thirdparty/jquery-jstree-3.3.7/jquery.jstree.js</Item>
-                <Item>thirdparty/nunjucks-3.2.2/nunjucks.min.js</Item>
+                <Item>thirdparty/jquery-jstree-3.3.8/jquery.jstree.js</Item>
+                <Item>thirdparty/nunjucks-3.2.3/nunjucks.min.js</Item>
                 <Item>Core.Init.js</Item>
                 <Item>Core.Debug.js</Item>
                 <Item>Core.Exception.js</Item>
@@ -7874,7 +7948,7 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Base::Loader</Navigation>
         <Value>
             <Array>
-                <Item>thirdparty/ckeditor-4.22.1-min/ckeditor.js</Item>
+                <Item>thirdparty/ckeditor-4.25.1-znuny-min/ckeditor.js</Item>
             </Array>
         </Value>
     </Setting>
@@ -7913,7 +7987,19 @@ via the Preferences button after logging in.
                 <Item Key="InternalName">default</Item>
                 <Item Key="VisibleName" Translatable="1">Default</Item>
                 <Item Key="Description" Translatable="1">This is the default orange - black skin.</Item>
-                <Item Key="HomePage">www.otrs.org</Item>
+                <Item Key="HomePage">www.znuny.org</Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="Loader::Agent::Skin###000-dark" Required="0" Valid="1">
+        <Description Translatable="1">Dark skin for the agent interface.</Description>
+        <Navigation>Frontend::Base::Loader</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="InternalName">dark</Item>
+                <Item Key="VisibleName" Translatable="1">Dark</Item>
+                <Item Key="Description" Translatable="1">This is the dark skin for the agent interface.</Item>
+                <Item Key="HomePage">www.znuny.org</Item>
             </Hash>
         </Value>
     </Setting>
@@ -7942,7 +8028,19 @@ via the Preferences button after logging in.
                 <Item Key="InternalName">default</Item>
                 <Item Key="VisibleName" Translatable="1">Default</Item>
                 <Item Key="Description" Translatable="1">This is the default orange - black skin for the customer interface.</Item>
-                <Item Key="HomePage">www.otrs.org</Item>
+                <Item Key="HomePage">www.znuny.org</Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="Loader::Customer::Skin###000-dark" Required="0" Valid="1">
+        <Description Translatable="1">Dark skin for the customer interface.</Description>
+        <Navigation>Frontend::Base::Loader</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="InternalName">dark</Item>
+                <Item Key="VisibleName" Translatable="1">Dark</Item>
+                <Item Key="Description" Translatable="1">This is the dark skin for the customer interface.</Item>
+                <Item Key="HomePage">www.znuny.org</Item>
             </Hash>
         </Value>
     </Setting>
@@ -8024,7 +8122,7 @@ via the Preferences button after logging in.
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::CustomerCompany::Event::CustomerUserUpdate</Item>
-                <Item Key="Event">CustomerCompanyUpdate</Item>
+                <Item Key="Event">\ACustomerCompanyUpdate\z</Item>
                 <Item Key="Transaction">0</Item>
             </Hash>
         </Value>
@@ -8035,7 +8133,7 @@ via the Preferences button after logging in.
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::CustomerCompany::Event::DynamicFieldObjectNameUpdate</Item>
-                <Item Key="Event">CustomerCompanyUpdate</Item>
+                <Item Key="Event">\ACustomerCompanyUpdate\z</Item>
                 <Item Key="Transaction">0</Item>
             </Hash>
         </Value>
@@ -8046,7 +8144,7 @@ via the Preferences button after logging in.
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::CustomerUser::Event::SearchProfileUpdate</Item>
-                <Item Key="Event">CustomerUserUpdate</Item>
+                <Item Key="Event">\ACustomerUserUpdate\z</Item>
                 <Item Key="Transaction">0</Item>
             </Hash>
         </Value>
@@ -8057,7 +8155,7 @@ via the Preferences button after logging in.
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::CustomerUser::Event::ServiceMemberUpdate</Item>
-                <Item Key="Event">CustomerUserUpdate</Item>
+                <Item Key="Event">\ACustomerUserUpdate\z</Item>
                 <Item Key="Transaction">0</Item>
             </Hash>
         </Value>
@@ -8068,7 +8166,7 @@ via the Preferences button after logging in.
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::CustomerUser::Event::DynamicFieldObjectNameUpdate</Item>
-                <Item Key="Event">CustomerUserUpdate</Item>
+                <Item Key="Event">\ACustomerUserUpdate\z</Item>
                 <Item Key="Transaction">0</Item>
             </Hash>
         </Value>

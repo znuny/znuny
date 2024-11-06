@@ -64,6 +64,7 @@ sub new {
         'AgentTicketHistory',
         'AgentTicketLockedView',
         'AgentTicketLock',
+        'AgentTicketMarkSeenUnseen',
         'AgentTicketMerge',
         'AgentTicketMove',
         'AgentTicketOwner',

@@ -267,6 +267,7 @@ $Self->IsDeeply(
         'Ticket::Frontend::OverviewMedium###DynamicField'                    => 'OverviewMedium',
         'Ticket::Frontend::OverviewPreview###DynamicField'                   => 'OverviewPreview',
         'Ticket::Frontend::OverviewSmall###DynamicField'                     => 'OverviewSmall',
+        'Ticket::Frontend::AgentTicketNoteToLinkedTicket###DynamicField'     => 'AgentTicketNoteToLinkedTicket',
     },
     "GetConfigKeysOfScreensByObjectType - Ticket",
 );

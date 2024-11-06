@@ -366,7 +366,10 @@ sub CustomerCompanySearchDetail {
         }
     }
 
+    # Get new DBObject for framework queries.
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+
+    # $Self->{DBObject} is used for queries to the customer company database backend.
 
     # Assemble the conditions used in the WHERE clause.
     my @SQLWhere;
@@ -377,9 +380,9 @@ sub CustomerCompanySearchDetail {
         if ( $Param{ $Field->{Name} } ) {
 
             # Get like escape string needed for some databases (e.g. oracle).
-            my $LikeEscapeString = $DBObject->GetDatabaseFunction('LikeEscapeString');
+            my $LikeEscapeString = $Self->{DBObject}->GetDatabaseFunction('LikeEscapeString');
 
-            $Param{ $Field->{Name} } = $DBObject->Quote( $Param{ $Field->{Name} }, 'Like' );
+            $Param{ $Field->{Name} } = $Self->{DBObject}->Quote( $Param{ $Field->{Name} }, 'Like' );
 
             $Param{ $Field->{Name} } =~ s{ \*+ }{%}xmsg;
 
@@ -708,13 +711,13 @@ sub CustomerCompanySearchDetail {
         }
     }
 
-    return if !$DBObject->Prepare(
+    return if !$Self->{DBObject}->Prepare(
         SQL   => $SQL,
         Limit => $Param{Limit},
     );
 
     my @IDs;
-    while ( my @Row = $DBObject->FetchrowArray() ) {
+    while ( my @Row = $Self->{DBObject}->FetchrowArray() ) {
         push @IDs, $Row[0];
     }
 

@@ -31,7 +31,11 @@ sub new {
 sub Run {
     my ( $Self, %Param ) = @_;
 
-    my $ParamObject = $Kernel::OM->Get('Kernel::System::Web::Request');
+    my $ParamObject   = $Kernel::OM->Get('Kernel::System::Web::Request');
+    my $LayoutObject  = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $ProcessObject = $Kernel::OM->Get('Kernel::System::ProcessManagement::DB::Process');
+    my $StateObject   = $Kernel::OM->Get('Kernel::System::ProcessManagement::DB::Process::State');
+    my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
 
     $Self->{Subaction} = $ParamObject->GetParam( Param => 'Subaction' ) || '';
 
@@ -59,15 +63,10 @@ sub Run {
         $Param{NotifyData} = [
             {
                 Info => $SynchronizeMessage,
+                Link => $LayoutObject->{Baselink} . 'Action=AdminProcessManagement;Subaction=ProcessSync',
             },
         ];
     }
-
-    # get needed objects
-    my $LayoutObject  = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
-    my $ProcessObject = $Kernel::OM->Get('Kernel::System::ProcessManagement::DB::Process');
-    my $StateObject   = $Kernel::OM->Get('Kernel::System::ProcessManagement::DB::Process::State');
-    my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
 
     # ------------------------------------------------------------ #
     # ProcessImport

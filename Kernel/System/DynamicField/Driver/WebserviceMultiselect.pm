@@ -10,6 +10,8 @@ package Kernel::System::DynamicField::Driver::WebserviceMultiselect;
 use strict;
 use warnings;
 
+use Data::UUID;
+
 use Kernel::System::VariableCheck qw(:all);
 use Kernel::System::DB;
 
@@ -108,7 +110,7 @@ sub EditFieldRender {
     }
 
     # check and set class if necessary
-    my $FieldClass = 'DynamicFieldText Modernize';
+    my $FieldClass = 'DynamicFieldMultiselect Modernize';
     if ( defined $Param{Class} && $Param{Class} ne '' ) {
         $FieldClass .= ' ' . $Param{Class};
     }
@@ -180,35 +182,28 @@ sub EditFieldRender {
             . $TreeSelectionMessage . '</span><i class="fa fa-sitemap"></i></a>';
     }
 
-    if ( $Param{Mandatory} ) {
-        my $DivID = $FieldName . 'Error';
-
-        my $FieldRequiredMessage = $Param{LayoutObject}->{LanguageObject}->Translate("This field is required.");
-
-        # for client side validation
-        $HTMLString .= <<"EOF";
-<div id="$DivID" class="TooltipErrorMessage">
+    # Tooltip for client side validation
+    my $ClientErrorTooltipDivID = $FieldName . 'Error';
+    my $FieldRequiredMessage    = $Param{LayoutObject}->{LanguageObject}->Translate("This field is required.");
+    $HTMLString .= <<"EOF";
+<div id="$ClientErrorTooltipDivID" class="TooltipErrorMessage">
     <p>
         $FieldRequiredMessage
     </p>
 </div>
 EOF
-    }
 
-    if ( $Param{ServerError} ) {
-        my $ErrorMessage = $Param{ErrorMessage} || 'This field is required.';
-        $ErrorMessage = $Param{LayoutObject}->{LanguageObject}->Translate($ErrorMessage);
-        my $DivID = $FieldName . 'ServerError';
-
-        # for server side validation
-        $HTMLString .= <<"EOF";
-<div id="$DivID" class="TooltipErrorMessage">
+    # Tooltip for server side validation
+    my $ErrorMessage = $Param{ErrorMessage} || 'This field is required.';
+    $ErrorMessage = $Param{LayoutObject}->{LanguageObject}->Translate($ErrorMessage);
+    my $ServerErrorTooltipDivID = $FieldName . 'ServerError';
+    $HTMLString .= <<"EOF";
+<div id="$ServerErrorTooltipDivID" class="TooltipErrorMessage">
     <p>
         $ErrorMessage
     </p>
 </div>
 EOF
-    }
 
     my $AutocompleteMinLength = int( $FieldConfig->{AutocompleteMinLength} || 3 );
     my $QueryDelay            = int( $FieldConfig->{QueryDelay}            || 500 );
@@ -231,13 +226,16 @@ EOF
     my $DynamicFieldFieldType = $Param{DynamicFieldConfig}->{FieldType};
     my $DynamicFieldSearch    = $FieldName . '_Search';
 
+    my $UUIDObject     = Data::UUID->new();
+    my $InputFieldUUID = lc $UUIDObject->create_str();
+
     $HTMLString
-        =~ s{(<select )}{$1data-dynamic-field-name="$DynamicFieldName" data-dynamic-field-type="$DynamicFieldFieldType" data-selected-value-field-name="$FieldName" data-autocomplete-field-name="$DynamicFieldSearch" data-autocomplete-min-length="$AutocompleteMinLength" data-query-delay="$QueryDelay" data-default-search-term="$DefaultSearchTerm" data-ticket-id="$TicketID" };
+        =~ s{(<select )}{$1 data-dynamic-field-name="$DynamicFieldName" data-dynamic-field-type="$DynamicFieldFieldType" data-selected-value-field-name="$FieldName" data-autocomplete-field-name="$DynamicFieldSearch" data-autocomplete-min-length="$AutocompleteMinLength" data-query-delay="$QueryDelay" data-default-search-term="$DefaultSearchTerm" data-ticket-id="$TicketID" data-input-field-uuid="$InputFieldUUID" };
 
     # Add InitSelect for search.
     my $DynamicFieldJS = <<"EOF";
     // Initialize JS for dynamic field.
-    Znuny.DynamicField.Webservice.InitSelect('$Param{DynamicFieldConfig}->{Name}', '$FieldName', '${FieldName}_Search', $AutocompleteMinLength, $QueryDelay, '$DefaultSearchTerm', '$TicketID', $AdditionalDFs);
+    Znuny.DynamicField.Webservice.InitSelect('$InputFieldUUID', '$Param{DynamicFieldConfig}->{Name}', '$FieldName', '${FieldName}_Search', $AutocompleteMinLength, $QueryDelay, '$DefaultSearchTerm', '$TicketID', $AdditionalDFs);
 EOF
     $Param{LayoutObject}->AddJSOnDocumentComplete( Code => $DynamicFieldJS );
 
@@ -475,121 +473,6 @@ sub ReadableValueRender {
 sub SearchFieldRender {
     my ( $Self, %Param ) = @_;
 
-    my $FieldConfig = $Param{DynamicFieldConfig}->{Config};
-
-    my $RenderAutocompleteSearchField = $Param{RenderAutocompleteSearchField}
-        // $FieldConfig->{AutocompletionForSearchFields}
-        // 0;
-
-    # Use autocomplete search field for all actions except AgentTicketSearch and CustomerTicketSearch.
-    # Those do not allow initializing autocompletion fields without customizations. Database dynamic
-    # fields with many historical values should not be activated for search dialogs in general.
-    my $Action = $Param{LayoutObject}->{Action} // '';
-
-    $RenderAutocompleteSearchField = 0 if $Action =~ m{\A(Agent|Customer)TicketSearch\z};
-
-    if ($RenderAutocompleteSearchField) {
-        return $Self->_AutocompleteSearchFieldRender(%Param);
-    }
-
-    my $DynamicFieldWebserviceObject = $Kernel::OM->Get('Kernel::System::DynamicField::Webservice');
-
-    my $FieldName  = 'Search_DynamicField_' . $Param{DynamicFieldConfig}->{Name};
-    my $FieldLabel = $Param{DynamicFieldConfig}->{Label};
-
-    my $Value;
-
-    my @DefaultValue;
-
-    if ( defined $Param{DefaultValue} ) {
-        @DefaultValue = split /;/, $Param{DefaultValue};
-    }
-
-    # set the field value
-    if (@DefaultValue) {
-        $Value = \@DefaultValue;
-    }
-
-    # get the field value, this function is always called after the profile is loaded
-    my $FieldValues = $Self->SearchFieldValueGet(
-        %Param,
-    );
-
-    if ( defined $FieldValues ) {
-        $Value = $FieldValues;
-    }
-
-    # check and set class if necessary
-    my $FieldClass = 'DynamicFieldMultiSelect Modernize';
-
-    my $SelectionData = $Param{PossibleValuesFilter} // {};
-
-    # get historical values from webservice
-    my $HistoricalValues = $Self->HistoricalValuesGet(%Param);
-
-    # add historic values to current values (if they don't exist anymore)
-    if ( IsHashRefWithData($HistoricalValues) ) {
-        KEY:
-        for my $Key ( sort keys %{$HistoricalValues} ) {
-            next KEY if $SelectionData->{$Key};
-            $SelectionData->{$Key} = $HistoricalValues->{$Key};
-        }
-    }
-
-    # Assemble display values
-    # If there are no available values, leave it empty.
-    if ( IsHashRefWithData($SelectionData) ) {
-        my $TicketID = $Param{LayoutObject}->{TicketID};
-        $SelectionData = $DynamicFieldWebserviceObject->DisplayValueGet(
-            DynamicFieldConfig => $Param{DynamicFieldConfig},
-            Value              => [ keys %{$SelectionData} ],
-            Limit              => '',
-            TicketID           => $TicketID,
-        );
-    }
-
-    my $HTMLString = $Param{LayoutObject}->BuildSelection(
-        Data         => $SelectionData,
-        Name         => $FieldName,
-        SelectedID   => $Value,
-        Translation  => $FieldConfig->{TranslatableValues} || 0,
-        PossibleNone => 1,
-        TreeView     => $FieldConfig->{TreeView} || 0,
-        Class        => $FieldClass,
-        Multiple     => 1,
-        HTMLQuote    => 1,
-    );
-
-    my $LabelString = $Self->EditLabelRender(
-        %Param,
-        FieldName => $FieldName,
-    );
-
-    my $Data = {
-        Field => $HTMLString,
-        Label => $LabelString,
-    };
-
-    return $Data;
-}
-
-#
-# Renders search field as autocomplete instead of multiselect.
-#
-# This means that the field queries the web service instead of showing all used values
-# as multiselect. This can be used for displaying fields which would have thousands of selectable
-# values. These would not be displayed as modernized multiselect.
-#
-# Note that this method *CANNOT* be used within the Znuny standard search dialog because there the
-# JavaScript to initialize the autocomplete won't be executed. It can only be used in dialogs
-# where the search field will be loaded/displayed on page load.
-#
-# This method will be automatically executed by SearchFieldRender() if parameter RenderAutocompleteSearchField
-# will be passed to it.
-#
-sub _AutocompleteSearchFieldRender {
-    my ( $Self, %Param ) = @_;
-
     my $DynamicFieldWebserviceObject = $Kernel::OM->Get('Kernel::System::DynamicField::Webservice');
     my $JSONObject                   = $Kernel::OM->Get('Kernel::System::JSON');
 
@@ -608,15 +491,19 @@ sub _AutocompleteSearchFieldRender {
 
     my $TicketID = $Param{LayoutObject}->{TicketID};
 
-    my $SelectionData;
+    my $SelectionData = {};
     if ( IsArrayRefWithData($FieldValues) ) {
         $SelectionData = $DynamicFieldWebserviceObject->DisplayValueGet(
             DynamicFieldConfig => $Param{DynamicFieldConfig},
             Value              => $FieldValues,
             Limit              => '',
             TicketID           => $TicketID,
-        );
+        ) // {};
     }
+
+    # Make sure to have at least a selectable "empty" value so the dropdown is not displayed
+    # as read-only.
+    $SelectionData->{'-'} //= ' ';
 
     my $HTMLString = $Param{LayoutObject}->BuildSelection(
         Data         => $SelectionData,
@@ -657,13 +544,16 @@ sub _AutocompleteSearchFieldRender {
     my $DynamicFieldFieldType = $Param{DynamicFieldConfig}->{FieldType};
     my $DynamicFieldSearch    = $FieldName . '_Search';
 
+    my $UUIDObject     = Data::UUID->new();
+    my $InputFieldUUID = lc $UUIDObject->create_str();
+
     $HTMLString
-        =~ s{(<select )}{$1 data-dynamic-field-name="$DynamicFieldName" data-dynamic-field-type="$DynamicFieldFieldType" data-selected-value-field-name="$FieldName" data-autocomplete-field-name="$DynamicFieldSearch" data-autocomplete-min-length="$AutocompleteMinLength" data-query-delay="$QueryDelay" data-default-search-term="$DefaultSearchTerm" data-ticket-id="$TicketID" };
+        =~ s{(<select )}{$1 data-dynamic-field-name="$DynamicFieldName" data-dynamic-field-type="$DynamicFieldFieldType" data-selected-value-field-name="$FieldName" data-autocomplete-field-name="$DynamicFieldSearch" data-autocomplete-min-length="$AutocompleteMinLength" data-query-delay="$QueryDelay" data-default-search-term="$DefaultSearchTerm" data-ticket-id="$TicketID" data-input-field-uuid="$InputFieldUUID" };
 
     # Add InitSelect for search.
     my $DynamicFieldJS = <<"EOF";
     // Initialize JS for dynamic field.
-    Znuny.DynamicField.Webservice.InitSelect('$Param{DynamicFieldConfig}->{Name}', '$FieldName', '${FieldName}_Search', $AutocompleteMinLength, $QueryDelay, '$DefaultSearchTerm', '$TicketID', $AdditionalDFs);
+    Znuny.DynamicField.Webservice.InitSelect('$InputFieldUUID', '$Param{DynamicFieldConfig}->{Name}', '$FieldName', '${FieldName}_Search', $AutocompleteMinLength, $QueryDelay, '$DefaultSearchTerm', '$TicketID', $AdditionalDFs);
 EOF
     $Param{LayoutObject}->AddJSOnDocumentComplete( Code => $DynamicFieldJS );
 
@@ -959,6 +849,12 @@ sub FieldValueValidate {
     my ( $Self, %Param ) = @_;
 
     return 1;
+}
+
+sub HistoricalValuesGet {
+    my ( $Self, %Param ) = @_;
+
+    return;
 }
 
 1;

@@ -12,7 +12,7 @@
 [% RenderBlockStart("DocumentActionRowBulk") %]
     <li class="AlwaysPresent">
         <span>
-            <input type="checkbox" title="[% Translate(" Select all") | html %]" id="SelectAllTickets" autocomplete="off" />
+            <input type="checkbox" title="[% Translate("Select all") | html %]" id="SelectAllTickets" autocomplete="off" />
             <label class="InvisibleText" for="SelectAllTickets">[% Translate("Select all") | html %]</label>
         </span>
     </li>
@@ -41,7 +41,7 @@
         <div class="Content">
 [% RenderBlockStart("InlineActionRow") %]
             <ul class="Actions InlineActions">
-                <li class="ResponsiveActionMenu"><a href="#" id="ResponsiveActionMenu[% Data.TicketID | html %]" title="[% Translate(" Open / Close ticket action menu") | html %]"><i class="fa fa-bars"></i></a></li>
+                <li class="ResponsiveActionMenu"><a href="#" id="ResponsiveActionMenu[% Data.TicketID | html %]" title="[% Translate("Open / Close ticket action menu") | html %]"><i class="fa fa-bars"></i></a></li>
 [% RenderBlockStart("InlineActionRowItem") %]
                 <li><a id="[% Data.ID | html %][% Data.TicketID | html %]" class="[% Data.Class | html %]" href="[% Data.Link | Interpolate | html %]" title="[% Translate(Data.Description) | html %]">[% Translate(Data.Name) | html %]</a></li>
 [% RenderBlockEnd("InlineActionRowItem") %]
@@ -53,7 +53,7 @@
             <span>
 [% RenderBlockStart("Bulk") %]
                 <div class="Checkbox">
-                    <input class="Checkbox" type="checkbox" name="TicketID" title="[% Translate(" Select this ticket") | html %]" value="[% Data.TicketID | html %]" autocomplete="off" />
+                    <input class="Checkbox" type="checkbox" name="TicketID" title="[% Translate("Select this ticket") | html %]" value="[% Data.TicketID | html %]" autocomplete="off" />
                 </div>
 [% RenderBlockEnd("Bulk") %]
                 <h2>
@@ -147,15 +147,30 @@
                                 <div title="[% Data.Queue | html %]">[% Data.Queue | html %]</div>
                             </td>
 [% IF !Data.IsITSMIncidentProblemManagementInstalled %]
-                        <td>
+                            <td>
 [% RenderBlockStart("CustomerIDRW") %]
-                            <label>[% Translate("Customer ID") | html %]</label>[% IF Data.CustomerID %]<a href="[% Config("CustomerDBLink") | Interpolate %]" class="AsPopup PopupType_TicketAction" [% Config("CustomerDBLinkTarget") %]>[% Data.CustomerID | html %]</a>[% END %]
+                                <label>[% Translate("Customer ID") | html %]</label>
+                                <div title="[% Data.CustomerID | html %]">
+                                    <a href="[% Config("CustomerDBLink") | Interpolate %]" class="AsPopup PopupType_TicketAction" [% Config("CustomerDBLinkTarget") %]>[% Data.CustomerID | html %]</a>
+                                </div>
 [% RenderBlockEnd("CustomerIDRW") %]
 [% RenderBlockStart("CustomerIDRO") %]
-                            <label>[% Translate("Customer ID") | html %]</label>[% Data.CustomerID | html %]
+                                <label>[% Translate("Customer ID") | html %]</label>
+                                <div title="[% Data.CustomerID | html %]">[% Data.CustomerID | html %]</div>
 [% RenderBlockEnd("CustomerIDRO") %]
-                            <br /><div title="[% Data.CustomerName | html %]">[% Data.CustomerName | html %]</div>
-                        </td>
+[% RenderBlockStart("CustomerNameRW") %]
+                                <br>
+                                <label>[% Translate("Customer User Name") | html %]</label>
+                                <div title="[% Data.CustomerName | html %]">
+                                    <a href="[% Env("Baselink") %]Action=AgentCustomerUserInformationCenter;CustomerUserID=[% Data.CustomerUserID | uri %]" class="AsPopup PopupType_TicketAction">[% Data.CustomerName | html %]</a>
+                                </div>
+[% RenderBlockEnd("CustomerNameRW") %]
+[% RenderBlockStart("CustomerNameRO") %]
+                                <br>
+                                <label>[% Translate("Customer User Name") | html %]</label>
+                                <div title="[% Data.CustomerName | html %]">[% Data.CustomerName | html %]</div>
+[% RenderBlockEnd("CustomerNameRO") %]
+                            </td>
 [% END %]
                             <td>
 [% RenderBlockStart("Type") %]
@@ -185,12 +200,27 @@
 [% IF Data.IsITSMIncidentProblemManagementInstalled %]
                             <td>
 [% RenderBlockStart("CustomerIDRW") %]
-                                <label>[% Translate("CustomerID") | html %]</label><a href="[% Config("CustomerDBLink") | Interpolate %]" class="AsPopup PopupType_TicketAction" [% Config("CustomerDBLinkTarget") %]>[% Data.CustomerID | html %]</a>
+                                <label>[% Translate("Customer ID") | html %]</label>
+                                <div title="[% Data.CustomerID | html %]">
+                                    <a href="[% Config("CustomerDBLink") | Interpolate %]" class="AsPopup PopupType_TicketAction" [% Config("CustomerDBLinkTarget") %]>[% Data.CustomerID | html %]</a>
+                                </div>
 [% RenderBlockEnd("CustomerIDRW") %]
 [% RenderBlockStart("CustomerIDRO") %]
-                                <label>[% Translate("CustomerID") | html %]</label>[% Data.CustomerID | html %]
+                                <label>[% Translate("Customer ID") | html %]</label>
+                                <div title="[% Data.CustomerID | html %]">[% Data.CustomerID | html %]</div>
 [% RenderBlockEnd("CustomerIDRO") %]
-                                <br /><div title="[% Data.CustomerName | html %]">[% Data.CustomerName | html %]</div>
+[% RenderBlockStart("CustomerNameRW") %]
+                                <br>
+                                <label>[% Translate("Customer User Name") | html %]</label>
+                                <div title="[% Data.CustomerName | html %]">
+                                    <a href="[% Env("Baselink") %]Action=AgentCustomerUserInformationCenter;CustomerUserID=[% Data.CustomerUserID | uri %]" class="AsPopup PopupType_TicketAction">[% Data.CustomerName | html %]</a>
+                                </div>
+[% RenderBlockEnd("CustomerNameRW") %]
+[% RenderBlockStart("CustomerNameRO") %]
+                                <br>
+                                <label>[% Translate("Customer User Name") | html %]</label>
+                                <div title="[% Data.CustomerName | html %]">[% Data.CustomerName | html %]</div>
+[% RenderBlockEnd("CustomerNameRO") %]
                             </td>
 [% END %]
 [% IF !Data.IsITSMIncidentProblemManagementInstalled %]
@@ -239,7 +269,7 @@
                             <td>
                                 <label>[% Translate("First Response Time") | html %]</label>
 [% RenderBlockStart("FirstResponseTime") %]
-                                <div title="[% Translate(" Service Time") | html %]: [% Data.FirstResponseTimeWorkingTime | html %]" class="[% Data.FirstResponseTimeClass | html %]">[% Data.FirstResponseTimeHuman | html %] / [% Data.FirstResponseTimeDestinationDate | Localize("TimeShort") %]</div>
+                                <div title="[% Translate("Service Time") | html %]: [% Data.FirstResponseTimeWorkingTime | html %]" class="[% Data.FirstResponseTimeClass | html %]">[% Data.FirstResponseTimeHuman | html %] / [% Data.FirstResponseTimeDestinationDate | Localize("TimeShort") %]</div>
 [% RenderBlockEnd("FirstResponseTime") %]
                             </td>
 [% IF Data.IsITSMIncidentProblemManagementInstalled %]
@@ -303,7 +333,7 @@
 [% RenderBlockEnd("DocumentFooter") %]
 [% RenderBlockStart("DocumentMenuItemMoveForm") %]
 <li class="[% Data.Class | html %]">
-    <form title="[% Translate(" Move ticket to a different queue") | html %]" action="[% Env("CGIHandle") | html %]" method="post">
+    <form title="[% Translate("Move ticket to a different queue") | html %]" action="[% Env("CGIHandle") | html %]" method="post">
         <input type="hidden" name="Action" value="AgentTicketMove" />
         <input type="hidden" name="QueueID" value="[% Data.QueueID | html %]" />
         <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]" />

@@ -491,22 +491,6 @@ form #cke_RichText span.cke_wrapper {
     width: 40px !important;
 }
 
-/* #cke_RichText,
-.cke_toolbar > .cke_toolgroup,
-.cke_toolbar .cke_combo_button,
-.cke_inner .cke_contents,
-.cke_dialog_body,
-input.cke_dialog_ui_input_password,
-input.cke_dialog_ui_input_text,
-textarea.cke_dialog_ui_input_textarea {
-    border-radius: 0px !important;
-} */
-
-form #cke_RichText .cke_bottom {
-    border: transparent !important;
-    background: transparent !important;
-}
-
 .cke_toolgroup .cke_button_on {
     background-color: #ccc;
 }
@@ -611,6 +595,7 @@ textarea.cke_dialog_ui_input_textarea:focus {
 }
 
 #Footer ul.FooterLinks li::after {
+    color: #bbb;
     content: '|';
 }
 

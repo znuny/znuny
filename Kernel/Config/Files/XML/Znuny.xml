@@ -417,7 +417,7 @@
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::DynamicFieldWebservice</Item>
                 <Item Key="Transaction">1</Item>
-                <Item Key="Event">TicketDynamicFieldUpdate</Item>
+                <Item Key="Event">\ATicketDynamicFieldUpdate_.+\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -1118,6 +1118,7 @@
                         <Item Key="Ticket::Frontend::AgentTicketNote###DynamicField">AgentTicketNote</Item>
                         <Item Key="Ticket::Frontend::AgentTicketOwner###DynamicField">AgentTicketOwner</Item>
                         <Item Key="Ticket::Frontend::AgentTicketResponsible###DynamicField">AgentTicketResponsible</Item>
+                        <Item Key="Ticket::Frontend::AgentTicketNoteToLinkedTicket###DynamicField">AgentTicketNoteToLinkedTicket</Item>
 
                         <Item Key="Ticket::Frontend::AgentTicketStatusView###DefaultColumns">AgentTicketStatusView</Item>
                         <Item Key="Ticket::Frontend::AgentTicketQueue###DefaultColumns">AgentTicketQueue</Item>
@@ -1166,7 +1167,8 @@
                         <Item Key="Ticket::Frontend::AgentTicketNote###DynamicField">AgentTicketNote</Item>
                         <Item Key="Ticket::Frontend::AgentTicketOwner###DynamicField">AgentTicketOwner</Item>
                         <Item Key="Ticket::Frontend::AgentTicketResponsible###DynamicField">AgentTicketResponsible</Item>
-                        <Item Key="Ticket::Frontend::AgentTicketSearch###DefaultColumns">AgentTicketSearch (Overview Screenn)</Item>
+                        <Item Key="Ticket::Frontend::AgentTicketSearch###DefaultColumns">AgentTicketSearch (Overview Screen)</Item>
+                        <Item Key="Ticket::Frontend::AgentTicketNoteToLinkedTicket###DynamicField">AgentTicketNoteToLinkedTicket</Item>
                     </Hash>
                 </Item>
                 <Item Key="CustomerCompany">
@@ -1464,7 +1466,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::TicketAllChildrenClosed</Item>
-                <Item Key="Event">TicketStateUpdate|TicketCreate</Item>
+                <Item Key="Event">\A(TicketStateUpdate|TicketCreate)\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -1478,7 +1480,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::NotifyOnEmptyProcessTickets</Item>
-                <Item Key="Event">TicketCreate</Item>
+                <Item Key="Event">\ATicketCreate\z</Item>
                 <Item Key="Transaction">1</Item>
             </Hash>
         </Value>
@@ -1571,7 +1573,7 @@
             <Hash>
                 <Item Key="Module">Kernel::System::DBCRUD::Event::DBCRUD</Item>
                 <Item Key="Transaction">1</Item>
-                <Item Key="Event">DBCRUD(.+)</Item>
+                <Item Key="Event">\ADBCRUD(.+)</Item>
             </Hash>
         </Value>
     </Setting>
@@ -2409,7 +2411,7 @@
                 <Item Key="Users">
                     <Hash>
                         <Item Key="ItemTemplate">&lt;li class="Mention" data-id="{id}"&gt;{fullname}&lt;/li&gt;</Item>
-                        <Item Key="OutputTemplate">&lt;a class="Mention" href="#"&gt;@{username}&lt;/a&gt; </Item>
+                        <Item Key="OutputTemplate">&lt;a class="Mention" id="{username}" href="#"&gt;@{fullname}&lt;/a&gt; </Item>
                     </Hash>
                 </Item>
                 <Item Key="Groups">
@@ -2449,7 +2451,7 @@
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::Mentions</Item>
                 <Item Key="Transaction">1</Item>
-                <Item Key="Event">ArticleCreate</Item>
+                <Item Key="Event">\AArticleCreate\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -2560,8 +2562,8 @@
             <Hash>
                 <Item Key="Module">Kernel::Output::HTML::ToolBar::TicketMention</Item>
                 <Item Key="Block">ToolBarPersonalViews</Item>
-                <Item Key="CssClass">Mention</Item>
-                <Item Key="CssClassNew">Mention New</Item>
+                <Item Key="CssClass">MentionView</Item>
+                <Item Key="CssClassNew">MentionView New</Item>
                 <Item Key="Icon">fa fa-comment</Item>
                 <Item Key="IconNew">fa fa-comment</Item>
                 <Item Key="IconReached">fa fa-comment</Item>
@@ -2676,11 +2678,9 @@
                 <Item Key="AppointmentNotification">Appointment</Item>
                 <Item Key="AppointmentUpdate">Appointment</Item>
                 <Item Key="ArticleAgentNotification">Article</Item>
-                <Item Key="ArticleAgentNotification">Article</Item>
                 <Item Key="ArticleAutoResponse">Article</Item>
                 <Item Key="ArticleBounce">Article</Item>
                 <Item Key="ArticleCreate">Article</Item>
-                <Item Key="ArticleCustomerNotification">Article</Item>
                 <Item Key="ArticleCustomerNotification">Article</Item>
                 <Item Key="ArticleEmailSendingError">Article</Item>
                 <Item Key="ArticleEmailSendingQueued">Article</Item>
@@ -3087,6 +3087,7 @@
                 <Item Key="Key" Translatable="1"></Item>
                 <Item Key="Desc" Translatable="1">Select the maximum articles per page shown in TicketZoom. System default value will apply when entered empty value.</Item>
                 <Item Key="PrefKey">MaxArticlesPerPage</Item>
+                <Item Key="NeedsReload">1</Item>
                 <Item Key="Prio">50</Item>
                 <Item Key="Active">1</Item>
             </Hash>
@@ -3111,7 +3112,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::System::Ticket::Event::DynamicFieldFromCustomerCompany</Item>
-                <Item Key="Event">(TicketCreate|TicketCustomerUpdate)</Item>
+                <Item Key="Event">\A(TicketCreate|TicketCustomerUpdate)\z</Item>
             </Hash>
         </Value>
     </Setting>
@@ -3404,6 +3405,18 @@
             </Hash>
         </Value>
     </Setting>
+
+    <!--
+        User preferences
+    -->
+    <Setting Name="User::PreferencesModule" Required="1" Valid="1" ConfigLevel="200">
+        <Description Translatable="1">User preferences backend to use.</Description>
+        <Navigation>Core</Navigation>
+        <Value>
+            <Item ValueType="PerlModule" ValueFilter="Kernel/System/User/Preferences/*.pm">Kernel::System::User::Preferences::DB</Item>
+        </Value>
+    </Setting>
+
     <!-- PublicModule Template -->
     <Setting Name="Loader::Module::PublicModule###000-PublicModuleTemplate" Required="0" Valid="0">
         <Description Translatable="1">Loader module registration for the public interface.</Description>
@@ -3413,4 +3426,230 @@
             </Hash>
         </Value>
     </Setting>
+
+    <!-- Orphaned sessions -->
+    <Setting Name="Daemon::SchedulerCronTaskManager::Task###DeleteOrphanedSessions" Required="0" Valid="1">
+        <Description Translatable="1">Deletes orphaned sessions.</Description>
+        <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="TaskName">DeleteOrphanedSessions</Item>
+                <Item Key="Schedule">58 * * * *</Item> <!-- default every hour in minute 58 -->
+                <Item Key="Module">Kernel::System::Console::Command::Maint::Session::DeleteOrphaned</Item>
+                <Item Key="Function">Execute</Item>
+                <Item Key="MaximumParallelInstances">1</Item>
+                <Item Key="Params">
+                    <Array>
+                    </Array>
+                </Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <!-- MarkTicketSeenUnseen -->
+    <Setting Name="Frontend::Module###AgentTicketMarkSeenUnseen" Required="0" Valid="1">
+        <Description Translatable="1">Frontend module registration for the agent interface.</Description>
+        <Navigation>Frontend::Agent::ModuleRegistration</Navigation>
+        <Value>
+            <Item ValueType="FrontendRegistration">
+                <Hash>
+                    <Item Key="Group">
+                        <Array>
+                        </Array>
+                    </Item>
+                    <Item Key="GroupRo">
+                        <Array>
+                        </Array>
+                    </Item>
+                    <Item Key="Description">Mark ticket article(s) as (un)seen</Item>
+                    <Item Key="Title">Mark ticket as (un)seen</Item>
+                    <Item Key="NavBarName">Ticket</Item>
+                </Hash>
+            </Item>
+        </Value>
+    </Setting>
+    <Setting Name="PreferencesGroups###MarkTicketUnseenRedirectURL" Required="0" Valid="1">
+        <Description Translatable="1">Defines the config parameters available in the preferences view. The default redirect URL from SysConfig 'MarkTicketUnseenRedirectDefaultURL' is used if no selection is made by the agent.</Description>
+        <Navigation>Frontend::Agent::View::Preferences</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::Preferences::Generic</Item>
+                <Item Key="PreferenceGroup">Miscellaneous</Item>
+                <Item Key="Label" Translatable="1">Screen after marking as unseen</Item>
+                <Item Key="Desc" Translatable="1">Configure which screen should be shown after marking a ticket or article as unseen.</Item>
+                <Item Key="Data">
+                    <Hash>
+                        <Item Key="">-</Item>
+                        <Item Key="Action=AgentDashboard" Translatable="1">Dashboard</Item>
+                        <Item Key="Action=AgentTicketPhone" Translatable="1">New phone ticket</Item>
+                        <Item Key="Action=AgentTicketEmail" Translatable="1">New email ticket</Item>
+                        <Item Key="Action=AgentTicketQueue" Translatable="1">Queue view</Item>
+                        <Item Key="Action=AgentTicketEscalationView" Translatable="1">Escalation view</Item>
+                        <Item Key="Action=AgentTicketStatusView" Translatable="1">Status view</Item>
+                        <Item Key="LastScreenOverview" Translatable="1">Last viewed overview</Item>
+                    </Hash>
+                </Item>
+                <Item Key="DataSelected"></Item>
+                <Item Key="PrefKey">UserMarkTicketUnseenRedirectURL</Item>
+                <Item Key="Prio">4000</Item>
+                <Item Key="Active">1</Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="MarkTicketUnseenRedirectDefaultURL" Required="1" Valid="1">
+        <Description Translatable="1">Defines the redirect URL for setting a ticket article to 'unseen'.</Description>
+        <Navigation>Core::Znuny::MarkTicketSeenUnseen</Navigation>
+        <Value>
+            <Item ValueType="Select" SelectedID="Action=AgentDashboard">
+                <Item ValueType="Option" Value="Action=AgentDashboard" Translatable="1">Dashboard</Item>
+                <Item ValueType="Option" Value="Action=AgentTicketPhone" Translatable="1">New phone ticket</Item>
+                <Item ValueType="Option" Value="Action=AgentTicketEmail" Translatable="1">New email ticket</Item>
+                <Item ValueType="Option" Value="Action=AgentTicketQueue" Translatable="1">Queue view</Item>
+                <Item ValueType="Option" Value="Action=AgentTicketEscalationView" Translatable="1">Escalation view</Item>
+                <Item ValueType="Option" Value="Action=AgentTicketStatusView" Translatable="1">Status view</Item>
+                <Item ValueType="Option" Value="LastScreenOverview" Translatable="1">Last viewed overview</Item>
+            </Item>
+        </Value>
+    </Setting>
+    <Setting Name="PreferencesGroups###MarkTicketSeenRedirectURL" Required="0" Valid="1">
+        <Description Translatable="1">Defines the config parameters available in the preferences view. The default redirect URL from SysConfig 'MarkTicketSeenRedirectDefaultURL' is used if no selection is made by the agent.</Description>
+        <Navigation>Frontend::Agent::View::Preferences</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::Preferences::Generic</Item>
+                <Item Key="PreferenceGroup">Miscellaneous</Item>
+                <Item Key="Label" Translatable="1">Screen after marking as seen</Item>
+                <Item Key="Desc" Translatable="1">Configure which screen should be shown after marking a ticket or article as seen.</Item>
+                <Item Key="Data">
+                    <Hash>
+                        <Item Key="">-</Item>
+                        <Item Key="Action=AgentDashboard" Translatable="1">Dashboard</Item>
+                        <Item Key="Action=AgentTicketPhone" Translatable="1">New phone ticket</Item>
+                        <Item Key="Action=AgentTicketEmail" Translatable="1">New email ticket</Item>
+                        <Item Key="Action=AgentTicketQueue" Translatable="1">Queue view</Item>
+                        <Item Key="Action=AgentTicketEscalationView" Translatable="1">Escalation view</Item>
+                        <Item Key="Action=AgentTicketStatusView" Translatable="1">Status view</Item>
+                        <Item Key="LastScreenView" Translatable="1">Last viewed screen</Item>
+                        <Item Key="LastScreenOverview" Translatable="1">Last viewed overview</Item>
+                    </Hash>
+                </Item>
+                <Item Key="DataSelected"></Item>
+                <Item Key="PrefKey">UserMarkTicketSeenRedirectURL</Item>
+                <Item Key="Prio">4000</Item>
+                <Item Key="Active">1</Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="MarkTicketSeenRedirectDefaultURL" Required="1" Valid="1">
+        <Description Translatable="1">Defines the redirect URL for setting a ticket article to 'seen'.</Description>
+        <Navigation>Core::Znuny::MarkTicketSeenUnseen</Navigation>
+        <Value>
+            <Item ValueType="Select" SelectedID="Action=AgentDashboard">
+                <Item ValueType="Option" Value="Action=AgentDashboard" Translatable="1">Dashboard</Item>
+                <Item ValueType="Option" Value="Action=AgentTicketPhone" Translatable="1">New phone ticket</Item>
+                <Item ValueType="Option" Value="Action=AgentTicketEmail" Translatable="1">New email ticket</Item>
+                <Item ValueType="Option" Value="Action=AgentTicketQueue" Translatable="1">Queue view</Item>
+                <Item ValueType="Option" Value="Action=AgentTicketEscalationView" Translatable="1">Escalation view</Item>
+                <Item ValueType="Option" Value="Action=AgentTicketStatusView" Translatable="1">Status view</Item>
+                <Item ValueType="Option" Value="LastScreenView" Translatable="1">Last viewed screen</Item>
+                <Item ValueType="Option" Value="LastScreenOverview" Translatable="1">Last viewed overview</Item>
+            </Item>
+        </Value>
+    </Setting>
+    <Setting Name="Ticket::Frontend::MenuModule###001-MarkTicketUnseen" Required="0" Valid="1">
+        <Description Translatable="1">Registers a link in the ticket menu to mark a ticket as unseen.</Description>
+        <Navigation>Frontend::Agent::View::TicketZoom::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::TicketMenu::Generic</Item>
+                <Item Key="Name" Translatable="1">Mark as unseen</Item>
+                <Item Key="Description" Translatable="1">Mark ticket as unseen</Item>
+                <Item Key="Action"></Item>
+                <Item Key="Link">Action=AgentTicketMarkSeenUnseen;Subaction=Unseen;TicketID=[% Data.TicketID | html %]</Item>
+                <Item Key="Target"></Item>
+                <Item Key="PopupType"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="Ticket::Frontend::MenuModule###001-MarkTicketSeen" Required="0" Valid="1">
+        <Description Translatable="1">Registers a link in the ticket menu to mark a ticket as seen.</Description>
+        <Navigation>Frontend::Agent::View::TicketZoom::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::TicketMenu::Generic</Item>
+                <Item Key="Name" Translatable="1">Mark as seen</Item>
+                <Item Key="Description" Translatable="1">Mark ticket as seen</Item>
+                <Item Key="Action"></Item>
+                <Item Key="Link">Action=AgentTicketMarkSeenUnseen;Subaction=Seen;TicketID=[% Data.TicketID | html %]</Item>
+                <Item Key="Target"></Item>
+                <Item Key="PopupType"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="Ticket::Frontend::PreMenuModule###442-MarkTicketUnseen" Required="0" Valid="1">
+        <Description Translatable="1">Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as unseen.</Description>
+        <Navigation>Frontend::Agent::TicketOverview::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::TicketMenu::Generic</Item>
+                <Item Key="Name" Translatable="1">Mark as unseen</Item>
+                <Item Key="Description" Translatable="1">Mark ticket as unseen</Item>
+                <Item Key="Action"></Item>
+                <Item Key="Link">Action=AgentTicketMarkSeenUnseen;Subaction=Unseen;TicketID=[% Data.TicketID | html %];RedirectToSearch=1;</Item>
+                <Item Key="Target"></Item>
+                <Item Key="PopupType"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="Ticket::Frontend::PreMenuModule###442-MarkTicketSeen" Required="0" Valid="1">
+        <Description Translatable="1">Registers a link in the ticket menu of ticket overviews to mark all articles of the ticket as seen.</Description>
+        <Navigation>Frontend::Agent::TicketOverview::MenuModule</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::Output::HTML::TicketMenu::Generic</Item>
+                <Item Key="Name" Translatable="1">Mark as seen</Item>
+                <Item Key="Description" Translatable="1">Mark ticket as seen</Item>
+                <Item Key="Action"></Item>
+                <Item Key="Link">Action=AgentTicketMarkSeenUnseen;Subaction=Seen;TicketID=[% Data.TicketID | html %];RedirectToSearch=1;</Item>
+                <Item Key="Target"></Item>
+                <Item Key="PopupType"></Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="PriorityEmailMapping###agent" Required="0" Valid="0">
+        <Description Translatable="1">Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "agent".</Description>
+        <Navigation>Core</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="1 very low">5</Item>
+                <Item Key="2 low">4</Item>
+                <Item Key="3 normal">3</Item>
+                <Item Key="4 high">2</Item>
+                <Item Key="5 very high">1</Item>
+            </Hash>
+        </Value>
+    </Setting>
+    <Setting Name="PriorityEmailMapping###system" Required="0" Valid="0">
+        <Description Translatable="1">Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".</Description>
+        <Navigation>Core</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="1 very low">5</Item>
+                <Item Key="2 low">4</Item>
+                <Item Key="3 normal">3</Item>
+                <Item Key="4 high">2</Item>
+                <Item Key="5 very high">1</Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="AutoAttributFieldIDMapping" Required="0" Valid="1">
+        <Description Translatable="1">Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.</Description>
+        <Navigation>Frontend::Base</Navigation>
+        <Value>
+            <Item ValueType="Checkbox">1</Item>
+        </Value>
+    </Setting>
+
 </otrs_config>

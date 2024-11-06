@@ -48,6 +48,15 @@ my @Tests = (
             Comment      => 'some comment',
             UserID       => 1,
         },
+        AddTwoTypes => {
+            Name         => 'two_types_tmpl' . $RandomID,
+            ValidID      => 1,
+            Template     => 'Template text',
+            ContentType  => 'text/plain; charset=iso-8859-1',
+            TemplateType => 'PhoneCall,Email',
+            Comment      => 'some comment',
+            UserID       => 1,
+        },
         AddGet => {
             Name         => 'text' . $RandomID,
             ValidID      => 1,
@@ -227,9 +236,19 @@ for my $Test (@Tests) {
     );
 
     # test StandardTemplateList()
-    my %StandardTemplates        = $StandardTemplateObject->StandardTemplateList();
-    my %AnswerStandardTemplates  = $StandardTemplateObject->StandardTemplateList( Type => 'Answer' );
-    my %ForwardStandardTemplates = $StandardTemplateObject->StandardTemplateList( Type => 'Forward' );
+    my %StandardTemplates              = $StandardTemplateObject->StandardTemplateList();
+    my %AnswerStandardTemplates        = $StandardTemplateObject->StandardTemplateList( Type => 'Answer' );
+    my %ForwardStandardTemplates       = $StandardTemplateObject->StandardTemplateList( Type => 'Forward' );
+    my %CombinedAnswerForwardSingeList = ( %AnswerStandardTemplates, %ForwardStandardTemplates );
+
+    my %AnswerForwardList         = $StandardTemplateObject->StandardTemplateList( Type => 'Answer,Forward' );
+    my %CombinedAnswerForwardList = ( %{ $AnswerForwardList{Answer} }, %{ $AnswerForwardList{Forward} } );
+
+    $Self->IsDeeply(
+        \%CombinedAnswerForwardList,
+        \%CombinedAnswerForwardSingeList,
+        'StandardTemplateList() - Single requested type lists vs combined type lists should be the same',
+    );
 
     $Self->IsNotDeeply(
         \%StandardTemplates,
@@ -262,6 +281,27 @@ for my $Test (@Tests) {
         \%AllAnswerStandardTemplatess,
         {},
         'StandardTemplateList() - All Answer is not an empty hash',
+    );
+
+    # some tests with multiple template types
+    my $IDTwoTypes = $StandardTemplateObject->StandardTemplateAdd(
+        %{ $Test->{AddTwoTypes} },
+    );
+    push( @IDs, $IDTwoTypes );
+
+    $Self->True(
+        $IDTwoTypes,
+        "StandardTemplateAdd() - $IDTwoTypes",
+    );
+
+    %Data = $StandardTemplateObject->StandardTemplateGet(
+        ID => $IDTwoTypes,
+    );
+
+    $Self->Is(
+        $Data{TemplateType},
+        'Email,PhoneCall',
+        "StandardTemplateGet() - Both TemplateTypes correctly returned",
     );
 
     # delete created standard template

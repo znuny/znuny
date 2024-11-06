@@ -135,14 +135,6 @@
 </div>
 
 <div class="field-wrapper">
-    <label for="AutocompletionForSearchFields">[% Translate("Autocompletion for search fields") | html %]</label>
-    <div class="Field">
-        [% Data.AutocompletionForSearchFieldsSelection %]
-        <p class="FieldExplanation">[% Translate("Use autocompletion for search fields instead of a static selection of values that are currently selected in Znuny (in tickets, articles, etc.). This increases performance if many thousands of values of the dynamic field have been selected. This setting does not affect the search field displayed in AgentTicketSearch and CustomerTicketSearch.") | html %]</p>
-    </div>
-</div>
-
-<div class="field-wrapper">
     <label for="InputFieldWidth">[% Translate("Input field width") | html %]</label>
     <div class="Field">
         [% Data.InputFieldWidthSelection %]

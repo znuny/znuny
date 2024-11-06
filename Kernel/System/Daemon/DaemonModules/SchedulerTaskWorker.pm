@@ -166,6 +166,8 @@ sub Run {
 
             my $SchedulerDBObject = $Kernel::OM->Get('Kernel::System::Daemon::SchedulerDB');
 
+            my $LogObject = $Kernel::OM->Get('Kernel::System::Log');
+
             # Try to lock the task.
             my $LockSucess = $SchedulerDBObject->TaskLock(
                 TaskID => $TaskID,
@@ -179,6 +181,9 @@ sub Run {
                 TaskID => $TaskID,
             );
 
+            my $TaskName = $Task{Name} // '';
+            my $TaskType = $Task{Type} // '';
+
             # Do error handling.
             if ( !%Task || !$Task{Type} || !$Task{Data} || ref $Task{Data} ne 'HASH' ) {
 
@@ -186,12 +191,9 @@ sub Run {
                     TaskID => $TaskID,
                 );
 
-                my $TaskName = $Task{Name} || '';
-                my $TaskType = $Task{Type} || '';
-
-                $Kernel::OM->Get('Kernel::System::Log')->Log(
+                $LogObject->Log(
                     Priority => 'error',
-                    Message  => "Task $TaskType $TaskName ($TaskID) was deleted due missing task data!",
+                    Message  => "Task $TaskType $TaskName (ID $TaskID) was deleted due to missing task data!",
                 );
 
                 exit 1;
@@ -218,21 +220,28 @@ sub Run {
                     TaskID => $TaskID,
                 );
 
-                my $TaskName = $Task{Name} || '';
-                my $TaskType = $Task{Type} || '';
-
-                $Kernel::OM->Get('Kernel::System::Log')->Log(
+                $LogObject->Log(
                     Priority => 'error',
-                    Message  => "Task $TaskType $TaskName ($TaskID) was deleted due missing handler object!",
+                    Message  => "Task $TaskType $TaskName (ID $TaskID) was deleted due to missing handler object!",
                 );
 
                 exit 1;
             }
 
+            $LogObject->Log(
+                Priority => 'info',
+                Message  => "Task $TaskType $TaskName (ID $TaskID) started.",
+            );
+
             $TaskHandlerObject->Run(
                 TaskID   => $TaskID,
                 TaskName => $Task{Name} || '',
                 Data     => $Task{Data},
+            );
+
+            $LogObject->Log(
+                Priority => 'info',
+                Message  => "Task $TaskType $TaskName (ID $TaskID) finished.",
             );
 
             # Force transactional events to run by discarding all objects before deleting the task.

@@ -1,10 +1,10 @@
 <a href="https://www.znuny.org"><img align="center" src="var/httpd/htdocs/skins/Agent/default/img/logo.png"></a>
 
 <p align="center">
-    <a href="https://download.znuny.org/releases/znuny-latest-7.0.tar.gz"><img src="https://img.shields.io/github/v/tag/znuny/Znuny?filter=rel-7_0_*&label=latest%20release&color=ff9b00"></a>
+    <a href="https://download.znuny.org/releases/znuny-latest-7.1.tar.gz"><img src="https://img.shields.io/github/v/tag/znuny/Znuny?filter=rel-7_1_*&label=latest%20release&color=ff9b00"></a>
     <br>
     <a href="https://github.com/znuny/Znuny/actions"><img src="https://img.shields.io/github/actions/workflow/status/znuny/Znuny/ci.yaml?label=CI"></a>
-    <a href="https://github.com/znuny/Znuny/actions"><img src="https://badge.proxy.znuny.com/Znuny/rel-7_0"></a>
+    <a href="https://github.com/znuny/Znuny/actions"><img src="https://badge.proxy.znuny.com/Znuny/rel-7_1"></a>
     <a href="https://translations.znuny.org/engage/znuny/"><img src="https://translations.znuny.org/widgets/znuny/-/znuny/svg-badge.svg" alt="Translation status"></a>
     <br>
     <a href="https://github.com/znuny/Znuny/issues"><img src="https://img.shields.io/github/issues-raw/znuny/Znuny?"></a>
@@ -53,10 +53,10 @@ Web server
 - Web server with CGI support (CGI is not recommended)
 
 Databases
-- MySQL 5.0 or higher
-- MariaDB
-- PostgreSQL 9.2 or higher
-- Oracle 10g or higher
+- MySQL 8.0 or higher
+- MariaDB 10.3 or higher
+- PostgreSQL 12.0 or higher
+- Oracle 19c or higher
 
 Browsers
 - These browsers are NOT supported:

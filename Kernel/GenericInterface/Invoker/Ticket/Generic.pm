@@ -85,10 +85,22 @@ sub PrepareRequest {
     if ( $Param{Data}->{TicketID} ) {
         %Ticket = $TicketObject->TicketDeepGet(
             TicketID                 => $Param{Data}->{TicketID},
-            ArticleID                => $Param{Data}->{ArticleID},
+            ArticleID                => $Param{Data}->{ArticleID},    # optional, hence not checked
             GetAllArticleAttachments => $GetAllArticleAttachments,
             UserID                   => 1,
         );
+
+        # Provide UntilTime as date/time parts
+        if ( $Ticket{UntilTime} ) {
+            my $UntilTimeDateTimeObject = $Kernel::OM->Create(
+                'Kernel::System::DateTime',
+            );
+            $UntilTimeDateTimeObject->Add(
+                Seconds => int( $Ticket{UntilTime} ),
+            );
+
+            $Ticket{UntilTimeDateTimeParts} = $UntilTimeDateTimeObject->Get();
+        }
     }
 
     # Remove configured fields.
@@ -107,6 +119,12 @@ sub PrepareRequest {
             Data     => \%Ticket,
             HashKeys => \@HashKeys,
         );
+
+        # Also remove elements from given payload.
+        $UtilObject->DataStructureRemoveElements(
+            Data     => $Param{Data},
+            HashKeys => \@HashKeys,
+        );
     }
 
     # Base-64 encode configured field values.
@@ -123,6 +141,12 @@ sub PrepareRequest {
 
         $UtilObject->Base64DeepEncode(
             Data     => \%Ticket,
+            HashKeys => \@HashKeys,
+        );
+
+        # Also encode elements of given payload.
+        $UtilObject->Base64DeepEncode(
+            Data     => $Param{Data},
             HashKeys => \@HashKeys,
         );
     }

@@ -127,31 +127,20 @@ sub Header {
     # Show add new customer button if:
     #   - The agent has permission to use the module
     #   - There are writable customer backends
-    my $AddAccess;
-
-    TYPE:
-    for my $Permission (qw(ro rw)) {
-        $AddAccess = $LayoutObject->Permission(
-            Action => 'AdminCustomerUser',
-            Type   => $Permission,
-        );
-        last TYPE if $AddAccess;
-    }
+    my $HasAdminCustomerUserPermission = $Self->_HasAdminCustomerUserPermission();
 
     # Get writable data sources.
-    my %CustomerSource = $CustomerUserObject->CustomerSourceList(
+    my %CustomerSources = $CustomerUserObject->CustomerSourceList(
         ReadOnly => 0,
     );
 
-    if ( $AddAccess && scalar keys %CustomerSource ) {
+    if ( $HasAdminCustomerUserPermission && %CustomerSources ) {
         $LayoutObject->Block(
             Name => 'ContentLargeCustomerUserAdd',
             Data => {
                 CustomerID => $Self->{CustomerID},
             },
         );
-
-        $Self->{EditCustomerPermission} = 1;
     }
 
     my $Header = $LayoutObject->Output(
@@ -194,10 +183,13 @@ sub Run {
     # get layout object
     my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
 
+    my $HasAdminCustomerUserPermission = $Self->_HasAdminCustomerUserPermission();
+
     $LayoutObject->Block(
         Name => 'ContentCustomerUserList',
         Data => {
             %Param,
+            HasAdminCustomerUserPermission => $HasAdminCustomerUserPermission,
         },
     );
 
@@ -291,9 +283,9 @@ sub Run {
             Name => 'ContentLargeCustomerUserListRow',
             Data => {
                 %Param,
-                EditCustomerPermission => $Self->{EditCustomerPermission},
-                CustomerKey            => $CustomerKey,
-                CustomerListEntry      => $CustomerIDs->{$CustomerKey},
+                HasAdminCustomerUserPermission => $HasAdminCustomerUserPermission,
+                CustomerKey                    => $CustomerKey,
+                CustomerListEntry              => $CustomerIDs->{$CustomerKey},
             },
         );
 
@@ -364,6 +356,16 @@ sub Run {
             );
         }
 
+        if ($HasAdminCustomerUserPermission)
+        {
+            $LayoutObject->Block(
+                Name => 'OverviewResultEditCustomer',
+                Data => {
+                    %Param,
+                },
+            );
+        }
+
         if ( $ConfigObject->Get('SwitchToCustomer') && $Self->{SwitchToCustomerPermission} )
         {
             $LayoutObject->Block(
@@ -409,13 +411,29 @@ sub Run {
         TemplateFile => 'AgentDashboardCustomerUserList',
         Data         => {
             %{ $Self->{Config} },
-            EditCustomerPermission => $Self->{EditCustomerPermission},
-            Name                   => $Self->{Name},
+            HasAdminCustomerUserPermission => $HasAdminCustomerUserPermission,
+            Name                           => $Self->{Name},
         },
         AJAX => $Param{AJAX},
     );
 
     return $Content;
+}
+
+sub _HasAdminCustomerUserPermission {
+    my ( $Self, %Param ) = @_;
+
+    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+
+    for my $PermissionType (qw(ro rw)) {
+        my $HasPermission = $LayoutObject->Permission(
+            Action => 'AdminCustomerUser',
+            Type   => 'rw',
+        );
+        return 1 if $HasPermission;
+    }
+
+    return;
 }
 
 1;

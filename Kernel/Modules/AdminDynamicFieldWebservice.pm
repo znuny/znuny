@@ -1054,21 +1054,6 @@ sub _AdditionalParamsShow {
         },
     );
 
-    my %AutocompletionForSearchFieldsSelection = (
-        0 => 'No',
-        1 => 'Yes',
-    );
-
-    $ShowParams{AutocompletionForSearchFieldsSelection} = $LayoutObject->BuildSelection(
-        Data         => \%AutocompletionForSearchFieldsSelection,
-        Name         => 'AutocompletionForSearchFields',
-        SelectedID   => $Param{AutocompletionForSearchFields} // 0,
-        PossibleNone => 0,
-        Translation  => 1,
-        Class        => 'Modernize W25pc',
-        Sort         => 'NumericKey',
-    );
-
     return %ShowParams if $Param{FieldType} ne 'WebserviceMultiselect';
 
     my $InitialSearchTerm = defined $Param{InitialSearchTerm} ? $Param{InitialSearchTerm} : '';
@@ -1115,7 +1100,7 @@ sub _AdditionalParamsGet {
         qw(
         Webservice InvokerSearch InvokerGet Backend SearchKeys CacheTTL StoredValue DisplayedValues
         TemplateType DisplayedValuesSeparator Limit AutocompleteMinLength QueryDelay
-        InputFieldWidth DefaultSearchTerm InitialSearchTerm AutocompletionForSearchFields
+        InputFieldWidth DefaultSearchTerm InitialSearchTerm
         )
         )
     {

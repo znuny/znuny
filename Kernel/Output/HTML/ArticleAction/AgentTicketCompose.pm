@@ -105,8 +105,10 @@ sub GetConfig {
 
     my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
 
+    # Do not add a menu item when no answer templates available.
+    return if !$Param{StandardTemplates}->{Answer};
+
     # get StandardResponsesStrg
-    # my %StandardResponseHash = %{ $Param{StandardResponses} || {} };
     my %StandardResponseHash = %{ $Param{StandardTemplates}->{Answer} || {} };
 
     # get revers StandardResponseHash because we need to sort by Values

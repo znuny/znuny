@@ -229,6 +229,7 @@ sub ProviderProcessRequest {
         HTTP_X_OTRS_HEADER_SESSIONID         => 'SessionID',
         HTTP_X_OTRS_HEADER_PASSWORD          => 'Password',
         HTTP_X_OTRS_HEADER_IMPERSONATEASUSER => 'ImpersonateAsUser',
+        HTTP_X_OTRS_HEADER_TWOFACTORTOKEN    => 'TwoFactorToken',
     );
 
     HEADER:

@@ -335,7 +335,8 @@ Core.UI.RichTextEditor = (function (TargetNS) {
             filebrowserUploadUrl:      UploadURL,
             extraPlugins:              Core.Config.Get('RichText.ExtraPlugins', 'splitquote,contextmenu_linkopen'),
             entities:                  false,
-            skin:                      'moono-lisa'
+            skin:                      'moono-lisa',
+            contentsCss:               [ Core.Config.Get('RichText.ContentsCss', '') ]
         };
         /*eslint-enable camelcase */
 

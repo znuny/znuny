@@ -44,7 +44,7 @@ $ConfigObject->Set(
 $ConfigObject->Set(
     Key   => 'GenericInterface::Invoker::Ticket::Generic::PrepareRequest::OmittedFields',
     Value => {
-        Generic => 'Articles->IsVisibleForCustomer;CustomerCompany->CustomerCompanyStreet;Queue',
+        Generic => 'Articles->IsVisibleForCustomer;CustomerCompany->CustomerCompanyStreet;Queue;ArticleID',
     },
 );
 
@@ -406,7 +406,7 @@ $Self->Is(
 # Check absence of omitted fields.
 #
 
-#        Generic => 'Articles->IsVisibleForCustomer;CustomerCompany->CustomerCompanyStreet;Queue',
+#        Generic => 'Articles->IsVisibleForCustomer;CustomerCompany->CustomerCompanyStreet;Queue;ArticleID',
 $ArticleIndex = 0;
 for my $Article ( @{ $Result->{Data}->{Ticket}->{Articles} } ) {
     $Self->False(
@@ -416,6 +416,11 @@ for my $Article ( @{ $Result->{Data}->{Ticket}->{Articles} } ) {
 
     $ArticleIndex++;
 }
+
+$Self->False(
+    exists $Result->{Data}->{Event}->{ArticleID},
+    "Event hash must not contain key ArticleID.",
+);
 
 $Self->False(
     exists $Result->{Data}->{Ticket}->{CustomerCompany}->{CustomerCompanyStreet},

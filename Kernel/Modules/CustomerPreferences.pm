@@ -90,8 +90,9 @@ sub Run {
         my $Priority = '';
         if (
             $Object->Run(
-                GetParam => \%GetParam,
-                UserData => \%UserData
+                GetParam          => \%GetParam,
+                UserData          => \%UserData,
+                UpdateSessionData => 1,
             )
             )
         {

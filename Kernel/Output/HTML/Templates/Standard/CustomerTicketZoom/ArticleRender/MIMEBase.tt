@@ -6,6 +6,7 @@
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
+## nofilter(TidyAll::Plugin::Znuny::TT::ScriptUsage)
 
 <li class="[% Data.SenderType | html %]-[% Data.IsVisibleForCustomer | html %] [% Data.Class | html %]">
     <div class="MessageHeader">
@@ -100,6 +101,21 @@
         </div>
 
         <div class="MessageContent">
+# execute IFrame JS asynchronously. Otherwise it could happen before our API was loaded
+# the following JS code must be within the template, otherwise it could happen, that also this code itself is not loaded yet
+<script>
+function CheckIFrameHeight(IFrameID) {
+    if (typeof Core === 'object' && typeof Core.Customer === 'object' && typeof Core.Customer.TicketZoom === 'object') {
+        Core.Customer.TicketZoom.CalculateHeight($('#' + IFrameID));
+    }
+    else {
+        window.setTimeout(function () {
+            CheckIFrameHeight(IFrameID);
+        }, 500);
+    }
+}
+</script>
+
 [% IF Data.HTML %]
     [% IF Data.BodyHTMLLoad %]
         [% IF Data.BrowserLinkMessage %]

@@ -570,10 +570,6 @@ a.cke_button:hover {
     border-radius: 10px !important;
 }
 
-.cke_bottom {
-    display: none !important;
-}
-
 .jstree-InputField .jstree-ocl {
     cursor: pointer;
 }

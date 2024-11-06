@@ -266,7 +266,7 @@ sub Form {
 
         # show customer field as "FirstName Lastname" <MailAddress>
         if (%CustomerUserData) {
-            $TicketData{CustomerUserID} = "\"$CustomerUserData{UserFullname} " . " <$CustomerUserData{UserEmail}>";
+            $TicketData{CustomerUserID} = "\"$CustomerUserData{UserFullname}\"" . " <$CustomerUserData{UserEmail}>";
         }
         $LayoutObject->Block(
             Name => 'Customer',

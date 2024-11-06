@@ -20,6 +20,7 @@ our @ObjectDependencies = (
     'Kernel::Output::HTML::Article::MIMEBase',
     'Kernel::Output::HTML::Layout',
     'Kernel::System::CommunicationChannel',
+    'Kernel::System::HTMLUtils',
     'Kernel::System::Log',
     'Kernel::System::Main',
     'Kernel::System::Ticket::Article',
@@ -61,6 +62,7 @@ sub ArticleRender {
     my $LayoutObject         = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
     my $MainObject           = $Kernel::OM->Get('Kernel::System::Main');
     my $ArticleBackendObject = $Kernel::OM->Get('Kernel::System::Ticket::Article')->BackendForArticle(%Param);
+    my $HTMLUtilsObject      = $Kernel::OM->Get('Kernel::System::HTMLUtils');
 
     my %Article = $ArticleBackendObject->ArticleGet(
         %Param,
@@ -153,6 +155,20 @@ sub ArticleRender {
         );
     }
 
+    my %SafeArticleContent = $HTMLUtilsObject->Safety(
+        String       => $ArticleContent,
+        NoApplet     => 1,
+        NoObject     => 1,
+        NoEmbed      => 1,
+        NoSVG        => 1,
+        NoImg        => 0,
+        NoIntSrcLoad => 0,
+        NoExtSrcLoad => 1,
+        NoJavaScript => 1,
+    );
+
+    my $SafeArticleContent = $SafeArticleContent{String} // '';
+
     my %CommunicationChannel = $Kernel::OM->Get('Kernel::System::CommunicationChannel')->ChannelGet(
         ChannelID => $Article{CommunicationChannelID},
     );
@@ -189,7 +205,7 @@ sub ArticleRender {
             Class                => $Param{Class},
             Attachments          => \@ArticleAttachments,
             MenuItems            => $Param{ArticleActions},
-            Body                 => $ArticleContent,
+            Body                 => $SafeArticleContent,
             HTML                 => $ShowHTML,
             CommunicationChannel => $CommunicationChannel{DisplayName},
             ChannelIcon          => $CommunicationChannel{DisplayIcon},

@@ -32,9 +32,11 @@ sub Run {
     my ( $Self, %Param ) = @_;
 
     # get needed objects
-    my $ParamObject  = $Kernel::OM->Get('Kernel::System::Web::Request');
-    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
-    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $ParamObject        = $Kernel::OM->Get('Kernel::System::Web::Request');
+    my $ConfigObject       = $Kernel::OM->Get('Kernel::Config');
+    my $LayoutObject       = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $SessionObject      = $Kernel::OM->Get('Kernel::System::AuthSession');
+    my $DynamicFieldObject = $Kernel::OM->Get('Kernel::System::DynamicField');
 
     # get config parameter
     my $Config = $ConfigObject->Get("Ticket::Frontend::$Self->{Action}");
@@ -45,9 +47,6 @@ sub Run {
     my $OrderBy = $ParamObject->GetParam( Param => 'OrderBy' )
         || $Config->{'Order::Default'}
         || 'Up';
-
-    # get session object
-    my $SessionObject = $Kernel::OM->Get('Kernel::System::AuthSession');
 
     # store last screen
     $SessionObject->UpdateSessionID(
@@ -126,7 +125,7 @@ sub Run {
     }
 
     # get all dynamic fields
-    $Self->{DynamicField} = $Kernel::OM->Get('Kernel::System::DynamicField')->DynamicFieldListGet(
+    $Self->{DynamicField} = $DynamicFieldObject->DynamicFieldListGet(
         Valid      => 1,
         ObjectType => ['Ticket'],
     );
@@ -382,6 +381,40 @@ sub Run {
         return $LayoutObject->Attachment(
             ContentType => 'application/json; charset=' . $LayoutObject->{Charset},
             Content     => $FilterContent,
+            Type        => 'inline',
+            NoCache     => 1,
+        );
+    }
+    elsif ( $Self->{Subaction} eq 'AJAXUnsubscribeTickets' ) {
+
+        my $TicketIDs = $ParamObject->GetParam(
+            Param => 'TicketIDs',
+        ) // '';
+        my @TicketIDs = split /,/, $TicketIDs;
+        my $Success   = 1;
+
+        TICKETID:
+        for my $TicketID ( sort @TicketIDs ) {
+            my $Unsubscribed = $TicketObject->TicketWatchUnsubscribe(
+                TicketID    => $TicketID,
+                WatchUserID => $Self->{UserID},
+                UserID      => $Self->{UserID},
+            );
+            next TICKETID if $Unsubscribed;
+
+            $Success = 0;
+        }
+
+        my %Content = (
+            Success => $Success,
+        );
+        my $JSONEncodedContent = $JSONObject->Encode(
+            Data => \%Content,
+        );
+
+        return $LayoutObject->Attachment(
+            ContentType => 'application/json; charset=' . $LayoutObject->{Charset},
+            Content     => $JSONEncodedContent,
             Type        => 'inline',
             NoCache     => 1,
         );

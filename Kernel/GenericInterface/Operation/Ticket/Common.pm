@@ -1178,7 +1178,7 @@ sub SetDynamicFieldValue {
     if ( !$ObjectID ) {
         return {
             Success      => 0,
-            ErrorMessage => "SetDynamicFieldValue() Could not set $ObjectID!",
+            ErrorMessage => "SetDynamicFieldValue() Could not set ObjectID!",
         };
     }
 

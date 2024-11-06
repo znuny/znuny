@@ -586,6 +586,71 @@ EOF
 
                 push @SQL, $SQLAlter;
             }
+
+            # add primary key
+            if ( $Tag->{PrimaryKey} && $Tag->{PrimaryKey} =~ m{\Atrue\z}i ) {
+                my $Constraint = $Self->_ConstraintName(
+                    TableName => $Table,
+                );
+
+                push @SQL, "ALTER TABLE $Table ADD CONSTRAINT $Constraint PRIMARY KEY ($Tag->{Name})";
+            }
+
+            # auto increment
+            if ( $Tag->{AutoIncrement} && $Tag->{AutoIncrement} =~ m{\Atrue\z}i ) {
+                my $Sequence = $Self->_SequenceName(
+                    TableName => $Table,
+                );
+
+                my $Trigger = $Sequence . '_t';
+
+                my $Shell = '';
+                if ( $ConfigObject->Get('Database::ShellOutput') ) {
+                    $Shell = "/\n--";
+                }
+
+                push @SQL, <<"EOF";
+BEGIN
+    EXECUTE IMMEDIATE 'DROP SEQUENCE $Sequence';
+EXCEPTION
+    WHEN OTHERS THEN NULL;
+END;
+$Shell
+EOF
+
+                push @SQL, <<"EOF";
+CREATE SEQUENCE $Sequence
+INCREMENT BY 1
+START WITH 1
+NOMAXVALUE
+NOCYCLE
+CACHE 20
+ORDER
+EOF
+
+                push @SQL, <<"EOF";
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TRIGGER $Trigger';
+EXCEPTION
+    WHEN OTHERS THEN NULL;
+END;
+$Shell
+EOF
+
+                push @SQL, <<"EOF";
+CREATE OR REPLACE TRIGGER $Trigger
+BEFORE INSERT ON $Table
+FOR EACH ROW
+BEGIN
+    IF :new.$Tag->{Name} IS NULL THEN
+        SELECT $Sequence.nextval
+        INTO :new.$Tag->{Name}
+        FROM DUAL;
+    END IF;
+END;
+$Shell
+EOF
+            }
         }
         elsif ( $Tag->{Tag} eq 'ColumnChange' && $Tag->{TagType} eq 'Start' ) {
 

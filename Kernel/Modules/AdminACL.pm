@@ -757,16 +757,28 @@ sub _ShowEdit {
         AutoComplete   => 'off',
     );
 
-    # get list of all possible dynamic fields
-    my $DynamicFieldList = $Kernel::OM->Get('Kernel::System::DynamicField')->DynamicFieldList(
-        ObjectType => 'Ticket',
-        ResultType => 'HASH',
-    );
-    my %DynamicFieldNames = reverse %{$DynamicFieldList};
     my %DynamicFields;
-    for my $DynamicFieldName ( sort keys %DynamicFieldNames ) {
-        $DynamicFields{ 'DynamicField_' . $DynamicFieldName } = $DynamicFieldName;
+    my $DynamicFieldList = $Kernel::OM->Get('Kernel::System::DynamicField')->DynamicFieldListGet(
+        Valid      => 1,
+        ObjectType => ['Ticket'],
+    );
+
+    DYNAMICFIELDCONFIG:
+    for my $DynamicFieldConfig ( @{$DynamicFieldList} ) {
+        next DYNAMICFIELDCONFIG if !IsHashRefWithData($DynamicFieldConfig);
+
+        my $TranslatedLabel = $LayoutObject->{LanguageObject}->Translate( $DynamicFieldConfig->{Label} );
+        my $CombinedLabel   = (
+            $TranslatedLabel eq $DynamicFieldConfig->{Name}
+            ? $TranslatedLabel
+            : $TranslatedLabel . ' (' . $DynamicFieldConfig->{Name} . ')'
+        );
+
+        $DynamicFields{ 'DynamicField_' . $DynamicFieldConfig->{Name} } = $CombinedLabel;
     }
+
+    %DynamicFields = map { $_ => $DynamicFields{$_} } sort keys %DynamicFields;
+
     $Param{ACLKeysLevel3DynamicFields} = $LayoutObject->BuildSelection(
         Data         => \%DynamicFields,
         Name         => 'NewDataKeyDropdown',

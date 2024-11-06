@@ -30,6 +30,7 @@
 
 <!-- acl_sync - sync states for acls -->
 <Table Name="acl_sync">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="acl_id" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="sync_state" Required="true" Size="30" Type="VARCHAR"/>
     <Column Name="create_time" Required="true" Type="DATE"/>
@@ -39,6 +40,7 @@
 <!-- activity -->
 <Table Name="activity">
     <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="INTEGER"/>
+    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/>
     <Column Name="user_id" Required="true" Type="INTEGER"/>
     <Column Name="activity_type" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="activity_title" Required="true" Size="255" Type="VARCHAR"/>
@@ -47,6 +49,9 @@
     <Column Name="activity_link" Required="false" Size="255" Type="VARCHAR"/>
     <Column Name="create_time" Required="true" Type="DATE"/>
     <Column Name="create_by" Required="true" Type="INTEGER"/>
+    <Unique Name="activity_uuid">
+        <UniqueColumn Name="dbcrud_uuid"/>
+    </Unique>
     <ForeignKey ForeignTable="users">
         <Reference Local="user_id" Foreign="id"/>
         <Reference Local="create_by" Foreign="id"/>
@@ -118,6 +123,7 @@
 
 <!-- user preferences -->
 <Table Name="user_preferences">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="user_id" Required="true" Type="INTEGER"/>
     <Column Name="preferences_key" Required="true" Size="150" Type="VARCHAR"/>
     <Column Name="preferences_value" Required="false" Type="LONGBLOB"/>
@@ -153,6 +159,7 @@
 
 <!-- group_user - relation group<->user -->
 <Table Name="group_user">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="user_id" Required="true" Type="INTEGER"/>
     <Column Name="group_id" Required="true" Type="INTEGER"/>
     <Column Name="permission_key" Required="true" Size="20" Type="VARCHAR"/>
@@ -178,6 +185,7 @@
 
 <!-- group_role - relation group<->role -->
 <Table Name="group_role">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="role_id" Required="true" Type="INTEGER"/>
     <Column Name="group_id" Required="true" Type="INTEGER"/>
     <Column Name="permission_key" Required="true" Size="20" Type="VARCHAR"/>
@@ -208,6 +216,7 @@
 
 <!-- group_customer_user - relation group<->customer user -->
 <Table Name="group_customer_user">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="user_id" Required="true" Size="100" Type="VARCHAR"/>
     <Column Name="group_id" Required="true" Type="INTEGER"/>
     <Column Name="permission_key" Required="true" Size="20" Type="VARCHAR"/>
@@ -235,6 +244,7 @@
 
 <!-- group_customer - relation group<->customer -->
 <Table Name="group_customer">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="customer_id" Required="true" Size="150" Type="VARCHAR"/>
     <Column Name="group_id" Required="true" Type="INTEGER"/>
     <Column Name="permission_key" Required="true" Size="20" Type="VARCHAR"/>
@@ -285,6 +295,7 @@
 
 <!-- role_user - relation role<->user -->
 <Table Name="role_user">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="user_id" Required="true" Type="INTEGER"/>
     <Column Name="role_id" Required="true" Type="INTEGER"/>
     <Column Name="create_time" Required="true" Type="DATE"/>
@@ -306,6 +317,7 @@
 
 <!-- personal_queues - stores all "my queues" -->
 <Table Name="personal_queues">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="user_id" Required="true" Type="INTEGER"/>
     <Column Name="queue_id" Required="true" Type="INTEGER"/>
     <Index Name="personal_queues_user_id">
@@ -324,6 +336,7 @@
 
 <!-- personal_services - stores all "my services" -->
 <Table Name="personal_services">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="user_id" Required="true" Type="INTEGER"/>
     <Column Name="service_id" Required="true" Type="INTEGER"/>
     <Index Name="personal_services_user_id">
@@ -514,6 +527,7 @@
 
 <!-- queue preferences -->
 <Table Name="queue_preferences">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="queue_id" Required="true" Type="INTEGER"/>
     <Column Name="preferences_key" Required="true" Size="150" Type="VARCHAR"/>
     <Column Name="preferences_value" Required="false" Size="250" Type="VARCHAR"/>
@@ -750,6 +764,7 @@
 
 <!-- ticket_flag -->
 <Table Name="ticket_flag">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="ticket_id" Required="true" Type="BIGINT"/>
     <Column Name="ticket_key" Required="true" Size="50" Type="VARCHAR"/>
     <Column Name="ticket_value" Required="false" Size="50" Type="VARCHAR"/>
@@ -878,6 +893,7 @@
 
 <!-- ticket_watcher -->
 <Table Name="ticket_watcher">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="ticket_id" Required="true" Type="BIGINT"/>
     <Column Name="user_id" Required="true" Type="INTEGER"/>
     <Column Name="create_time" Required="true" Type="DATE"/>
@@ -902,6 +918,7 @@
 
 <!-- ticket_index -->
 <Table Name="ticket_index">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="ticket_id" Required="true" Type="BIGINT"/>
     <Column Name="queue_id" Required="true" Type="INTEGER"/>
     <Column Name="queue" Required="true" Size="200" Type="VARCHAR"/>
@@ -931,6 +948,7 @@
 
 <!-- ticket_lock_index -->
 <Table Name="ticket_lock_index">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="ticket_id" Required="true" Type="BIGINT"/>
     <Index Name="ticket_lock_index_ticket_id">
         <IndexColumn Name="ticket_id"/>
@@ -942,6 +960,7 @@
 
 <!-- ticket_loop_protection -->
 <Table Name="ticket_loop_protection">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="sent_to" Required="true" Size="250" Type="VARCHAR"/>
     <Column Name="sent_date" Required="true" Size="150" Type="VARCHAR"/>
     <Index Name="ticket_loop_protection_sent_to">
@@ -976,6 +995,7 @@
 
 <!-- article_flag -->
 <Table Name="article_flag">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="article_id" Required="true" Type="BIGINT"/>
     <Column Name="article_key" Required="true" Size="50" Type="VARCHAR"/>
     <Column Name="article_value" Required="false" Size="50" Type="VARCHAR"/>
@@ -1247,7 +1267,7 @@
     <Column Name="name" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="text" Required="false" Size="16777216" Type="VARCHAR"/>
     <Column Name="content_type" Required="false" Size="250" Type="VARCHAR"/>
-    <Column Name="template_type" Required="true" Size="100" Type="VARCHAR" Default="Answer"/>
+    <Column Name="template_type" Required="true" Size="250" Type="VARCHAR" Default="Answer"/>
     <Column Name="comments" Required="false" Size="250" Type="VARCHAR"/>
     <Column Name="valid_id" Required="true" Type="SMALLINT"/>
     <Column Name="create_time" Required="true" Type="DATE"/>
@@ -1268,6 +1288,7 @@
 
 <!-- queue_standard_template - -->
 <Table Name="queue_standard_template">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="queue_id" Required="true" Type="INTEGER"/>
     <Column Name="standard_template_id" Required="true" Type="INTEGER"/>
     <Column Name="create_time" Required="true" Type="DATE"/>
@@ -1429,6 +1450,7 @@
 
 <!-- service preferences -->
 <Table Name="service_preferences">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="service_id" Required="true" Type="INTEGER"/>
     <Column Name="preferences_key" Required="true" Size="150" Type="VARCHAR"/>
     <Column Name="preferences_value" Required="false" Size="250" Type="VARCHAR"/>
@@ -1442,6 +1464,7 @@
 
 <!-- service_customer_user - relation customeruser<->service -->
 <Table Name="service_customer_user">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="customer_user_login" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="service_id" Required="true" Type="INTEGER"/>
     <Column Name="create_time" Required="true" Type="DATE"/>
@@ -1488,6 +1511,7 @@
 
 <!-- sla preferences -->
 <Table Name="sla_preferences">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="sla_id" Required="true" Type="INTEGER"/>
     <Column Name="preferences_key" Required="true" Size="150" Type="VARCHAR"/>
     <Column Name="preferences_value" Required="false" Size="250" Type="VARCHAR"/>
@@ -1501,6 +1525,7 @@
 
 <!-- service_sla - relation service<->sla -->
 <Table Name="service_sla">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="service_id" Required="true" Type="INTEGER"/>
     <Column Name="sla_id" Required="true" Type="INTEGER"/>
     <Unique Name="service_sla_service_sla">
@@ -1568,6 +1593,7 @@
 
 <!-- customer preferences -->
 <Table Name="customer_preferences">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="user_id" Required="true" Size="250" Type="VARCHAR"/>
     <Column Name="preferences_key" Required="true" Size="150" Type="VARCHAR"/>
     <Column Name="preferences_value" Required="false" Size="250" Type="VARCHAR"/>
@@ -1598,6 +1624,7 @@
 
 <!-- customer_user_customer - relation customer user<->customer -->
 <Table Name="customer_user_customer">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="user_id" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="customer_id" Required="true" Size="150" Type="VARCHAR"/>
     <Column Name="create_time" Required="true" Type="DATE"/>
@@ -1648,6 +1675,7 @@
 
 <!-- postmaster_filter -->
 <Table Name="postmaster_filter">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="f_name" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="f_stop" Required="false" Type="SMALLINT"/>
     <Column Name="f_type" Required="true" Size="20" Type="VARCHAR"/>
@@ -1661,6 +1689,7 @@
 
 <!-- generic_agent_jobs -->
 <Table Name="generic_agent_jobs">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="job_name" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="job_key" Required="true" Size="255" Type="VARCHAR"/>
     <Column Name="job_value" Required="false" Size="3800" Type="VARCHAR"/>
@@ -1671,6 +1700,7 @@
 
 <!-- search_profile -->
 <Table Name="search_profile">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="login" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="profile_name" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="profile_type" Required="true" Size="30" Type="VARCHAR"/>
@@ -1686,6 +1716,7 @@
 
 <!-- process_id -->
 <Table Name="process_id">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="process_name" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="process_id" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="process_host" Required="true" Size="200" Type="VARCHAR"/>
@@ -1695,6 +1726,7 @@
 
 <!-- web_upload_cache -->
 <Table Name="web_upload_cache">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="form_id" Required="false" Size="250" Type="VARCHAR"/>
     <Column Name="filename" Required="false" Size="250" Type="VARCHAR"/>
     <Column Name="content_id" Required="false" Size="250" Type="VARCHAR"/>
@@ -1752,6 +1784,7 @@
 
 <!-- notification_event_item -->
 <Table Name="notification_event_item">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="notification_id" Required="true" Type="INTEGER"/>
     <Column Name="event_key" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="event_value" Required="true" Size="200" Type="VARCHAR"/>
@@ -1822,6 +1855,7 @@
 
 <!-- link_relation - all links between objects -->
 <Table Name="link_relation">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="source_object_id" Required="true" Type="SMALLINT"/>
     <Column Name="source_key" Required="true" Size="50" Type="VARCHAR"/>
     <Column Name="target_object_id" Required="true" Type="SMALLINT"/>
@@ -1878,6 +1912,7 @@
 
 <!-- xml - xml_storage-->
 <Table Name="xml_storage">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="xml_type" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="xml_key" Required="true" Size="250" Type="VARCHAR"/>
     <Column Name="xml_content_key" Required="true" Size="250" Type="VARCHAR"/>
@@ -1906,6 +1941,7 @@
     </Index>
 </Table>
 <Table Name="virtual_fs_preferences">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="virtual_fs_id" Required="true" Type="BIGINT"/>
     <Column Name="preferences_key" Required="true" Size="150" Type="VARCHAR"/>
     <Column Name="preferences_value" Required="false" Size="350" Type="VARCHAR"/>
@@ -2230,6 +2266,7 @@
 </Table>
 
 <Table Name="pm_entity_sync">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="entity_type" Required="true" Size="30" Type="VARCHAR"/>
     <Column Name="entity_id" Required="true" Size="50" Type="VARCHAR"/>
     <Column Name="sync_state" Required="true" Size="30" Type="VARCHAR"/>
@@ -2573,7 +2610,7 @@
 <!-- calendar appointment plugin -->
 <Table Name="calendar_appointment_plugin">
     <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="INTEGER"/>
-    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/> <!-- not required because up until 6.5 this column was added "on the fly" -->
+    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/>
     <Column Name="appointment_id" Required="true" Type="BIGINT"/>
     <Column Name="plugin_key" Required="true" Size="1000" Type="VARCHAR"/>
     <Column Name="config" Required="false" Size="1000000" Type="VARCHAR"/>
@@ -2591,6 +2628,7 @@
 </Table>
 
 <Table Name="calendar_appointment_ticket">
+    <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
     <Column Name="calendar_id" Required="true" Type="BIGINT" />
     <Column Name="ticket_id" Required="true" Type="BIGINT" />
     <Column Name="rule_id" Required="true" Size="32" Type="VARCHAR" />
@@ -2792,7 +2830,7 @@
 <!-- OAuth 2 tokens and configs -->
 <Table Name="oauth2_token_config">
     <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="INTEGER"/>
-    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/> <!-- not required because up until 6.5 this column was added "on the fly" -->
+    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/>
     <Column Name="name" Required="true" Size="250" Type="VARCHAR"/>
     <Column Name="config" Required="true" Size="100000" Type="VARCHAR"/>
     <Column Name="valid_id" Required="true" Type="SMALLINT"/>
@@ -2817,7 +2855,7 @@
 
 <Table Name="oauth2_token">
     <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="INTEGER"/>
-    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/> <!-- not required because up until 6.5 this column was added "on the fly" -->
+    <Column Name="dbcrud_uuid" Required="false" Size="36" Type="VARCHAR"/>
     <Column Name="token_config_id" Required="true" Type="INTEGER"/>
     <Column Name="authorization_code" Required="false" Size="100000" Type="VARCHAR"/>
     <Column Name="token" Required="false" Size="100000" Type="VARCHAR"/>

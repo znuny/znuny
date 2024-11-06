@@ -34,7 +34,8 @@ sub _IncreaseColumnsSize {
 
     my @XMLStrings = (
         '<TableAlter Name="standard_template">
-            <ColumnChange NameNew="text" NameOld="text" Required="true" Size="16777216" Type="VARCHAR"/>
+            <ColumnChange NameNew="text" NameOld="text" Required="false" Size="16777216" Type="VARCHAR"/>
+            <ColumnChange NameNew="template_type" NameOld="template_type" Required="true" Size="250" Type="VARCHAR"/>
         </TableAlter>',
     );
 

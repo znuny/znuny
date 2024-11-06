@@ -206,6 +206,9 @@
         <p>[% Translate("Do you really want to delete this Transition?") | html %]</p>
         <p class="SpacingTop"><strong><span class="EntityName"></span></strong></p>
     </div>
+    <div id="TransitionMissingActivityDialog">
+        <p>[% Translate("You can not edit a transition before it's connected to two activities.") | html %]</p>
+    </div>
     <div id="DeleteTransitionActionConfirmationDialog">
         <p>[% Translate("Do you really want to delete this Transition Action?") | html %]</p>
         <p class="SpacingTop"><strong><span class="EntityName"></span></strong></p>

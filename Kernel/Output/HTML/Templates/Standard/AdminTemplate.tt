@@ -132,20 +132,20 @@
                     </thead>
                     <tbody>
                         <tr class="FilterMessage Hidden">
-                            <td colspan="7">[% Translate("No matches found.") | html %]</td>
+                            <td colspan="8">[% Translate("No matches found.") | html %]</td>
                         </tr>
 [% RenderBlockStart("NoDataFoundMsg") %]
                         <tr>
-                            <td colspan="7">
+                            <td colspan="8">
                                 [% Translate("No data found.") | html %]
                             </td>
                         </tr>
 [% RenderBlockEnd("NoDataFoundMsg") %]
 [% RenderBlockStart("OverviewResultRow") %]
                         <tr [% IF Data.ValidID != 1 %]class="Invalid"[% END %]>
-                            <td>[% Translate(Data.TemplateType) | html %]</td>
+                            <td title="[% Data.TemplateType | html %]">[% Data.TemplateType | truncate(35) | html %]</td>
                             <td>
-                                <a class="AsBlock" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Change;ID=[% Data.ID | uri %];Type=[% Data.TemplateType | uri %]">[% Data.Name | html %]</a>
+                                <a class="AsBlock" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Change;ID=[% Data.ID | uri %]">[% Data.Name | html %]</a>
                             </td>
                             <td>[% Data.Attachments | html %]</td>
                             <td title="[% Data.Comment | html %]">[% Data.Comment | truncate(26) | html %]</td>
@@ -172,22 +172,22 @@
 [% RenderBlockEnd("OverviewResult") %]
 [% RenderBlockStart("OverviewUpdate") %]
 
-        <div class="WidgetSimple">
-            <div class="Header">
-            [% IF Data.Action == 'Add' %]
-                <h2>[% Translate("Add Template") | html %]</h2>
-            [% ELSE %]
-                <h2>[% Translate("Edit Template") | html %]</h2>
+        <form action="[% Env("CGIHandle") %]" method="post" class="Validate PreventMultipleSubmits">
+            <input type="hidden" name="Action" value="[% Env("Action") %]"/>
+            <input type="hidden" name="Subaction" value="[% Data.Action | uri %]Action"/>
+            <input type="hidden" name="ID" value="[% Data.ID | html %]"/>
+            [% IF Data.Action == 'Change' %]
+                <input type="hidden" name="ContinueAfterSave" id="ContinueAfterSave" value=""/>
             [% END %]
-            </div>
-            <div class="Content">
-                <form action="[% Env("CGIHandle") %]" method="post" class="Validate PreventMultipleSubmits">
-                    <input type="hidden" name="Action" value="[% Env("Action") %]"/>
-                    <input type="hidden" name="Subaction" value="[% Data.Action | uri %]Action"/>
-                    <input type="hidden" name="ID" value="[% Data.ID | html %]"/>
-                    [% IF Data.Action == 'Change' %]
-                        <input type="hidden" name="ContinueAfterSave" id="ContinueAfterSave" value=""/>
-                    [% END %]
+            <div class="WidgetSimple">
+                <div class="Header">
+                [% IF Data.Action == 'Add' %]
+                    <h2>[% Translate("Add Template") | html %]</h2>
+                [% ELSE %]
+                    <h2>[% Translate("Edit Template") | html %]</h2>
+                [% END %]
+                </div>
+                <div class="Content">
                     <fieldset class="TableLike">
                         <div class="field-wrapper">
                             <label class="Mandatory" for="TemplateType"><span class="Marker">*</span> [% Translate("Type") | html %]</label>
@@ -215,7 +215,7 @@
 [% RenderBlockEnd("NameServerError") %]
 [% RenderBlockStart("ExistNameServerError") %]
                                     <p>[% Translate("A standard template with this name already exists!") | html %]</p>
-[% RenderBlockEnd("NameServerError") %]
+[% RenderBlockEnd("ExistNameServerError") %]
                                 </div>
                             </div>
                         </div>
@@ -253,7 +253,16 @@
                                 <input type="text" name="Comment" id="Comment" value="[% Data.Comment | html %]" class="W50pc" maxlength="250"/>
                             </div>
                         </div>
+                    </fieldset>
+                </div>
+            </div>
 
+            <div id="SaveButtonWidget" class="WidgetSimple SpacingTop">
+                <div class="Header">
+                    <h2>[% Translate("Save Changes") | html %]</h2>
+                </div>
+                <div class="Content">
+                    <fieldset class="TableLike full-width">
                         <div class="field-wrapper form-button-actions">
                             <div class="Field buttons-field">
                                 <a href="[% Env("Baselink") %]Action=[% Env("Action") %]" class="btn-cancel-ghost btn-main btn-width-md">[% Translate("Cancel") | html %]</a>
@@ -264,13 +273,12 @@
                                 [% ELSE %]
                                     <button class="CallForAction Primary btn-primary btn-main btn-width-md" id="Submit" type="submit" value="[% Translate("Save") | html %]"><span>[% Translate("Save") | html %]</span></button>
                                 [% END %]
-
                             </div>
                         </div>
                     </fieldset>
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
         [% INCLUDE "SmartTags/Default.tt" %]
 [% RenderBlockEnd("OverviewUpdate") %]
     </div>

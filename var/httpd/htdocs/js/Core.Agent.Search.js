@@ -60,9 +60,11 @@ Core.Agent.Search = (function (TargetNS) {
      */
     TargetNS.SearchAttributeAdd = function (Attribute) {
         var $Label = $('#SearchAttributesHidden label#Label' + Attribute),
+            InputFieldUUID,
             $Clone;
 
         if ($Label.length) {
+            InputFieldUUID = $Label.closest('div.field-wrapper').find(':input').attr('data-input-field-uuid');
 
             if ($Label.parents('.field-wrapper').length){
                 $Clone = $Label.parents('.field-wrapper').clone();
@@ -99,6 +101,13 @@ Core.Agent.Search = (function (TargetNS) {
 
             // Initially display dynamic fields with TreeMode = 1 correctly
             Core.UI.TreeSelection.InitDynamicFieldTreeViewRestore();
+
+            if (InputFieldUUID) {
+
+                // Note: Subscriber takes care of determining if this is
+                // really a dynamic field.
+                Core.App.Publish('Event.DynamicField.InitByInputFieldUUID', [InputFieldUUID]);
+            }
         }
 
         return false;
@@ -627,7 +636,6 @@ Core.Agent.Search = (function (TargetNS) {
                     TargetNS.AddSearchAttributes();
                     TargetNS.AdditionalAttributeSelectionRebuild();
                 }, 0);
-
             }, 'html'
         );
     };

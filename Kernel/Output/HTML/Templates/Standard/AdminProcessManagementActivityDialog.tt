@@ -207,8 +207,8 @@
                                 </ul>
                                 <div class="FilterInputContainer">
                                     <input type="text" id="FilterAssignedFields" class="FilterAssignedFields" name="FilterAssignedFields"
-                                        value="" title="[% Translate(" Filter assigned fields") | html %]"
-                                        placeholder="[% Translate(" Filter assigned fields") | html %]..." />
+                                        value="" title="[% Translate("Filter assigned fields") | html %]"
+                                        placeholder="[% Translate("Filter assigned fields") | html %]..." />
                                 </div>
                                 <ul class="AllocationList Tablelike AssignedFields OrderNumbers" id="AssignedFields">
 [% RenderBlockStart("AssignedFieldRow") %]

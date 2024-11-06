@@ -142,13 +142,13 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     --alert-close-icon-color: var(--gray-dark);
 
         /* Info */
-        --alert-info-bg-color: #50b6ff10;
+        --alert-info-bg-color: #50b6ff1e;
         --alert-info-icon-color: #50B5FF;
         --alert-info-border-color: #50b6ff1a;
 
         /* Error */
         --alert-error-bg-solid-color: #FC5A5A;
-        --alert-error-bg-color: #FC5A5A10;
+        --alert-error-bg-color: #fc5a5a36;
         --alert-error-icon-color: #FC5A5A;
         --alert-error-border-color:#FC5A5A1a;
 
@@ -164,8 +164,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         --alert-warning-border-color: #F2BD0E1a;
 
         /* Notice */
-        --alert-notice-bg-color: #cccccc10;
-        --alert-notice-icon-color: #cccccc;
+        --alert-notice-bg-color: #cccccc37;
+        --alert-notice-icon-color: #a6a6a6;
         --alert-notice-border-color: #cccccc1a;
 
     --color-icon-favorite: #F2BD0E;

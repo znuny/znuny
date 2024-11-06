@@ -79,7 +79,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     }
 
     .OverviewMedium li ul.InlineActions li a {
-        color: #fff;
+        color: var(--black) !important;
     }
 
     .OverviewMedium li ul.InlineActions li:nth-child(even) {

@@ -47,15 +47,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         background-color: #fff;
         padding: 4px 7px 2px 7px;
         font-size: 11px;
-    }
+    }*/
 
     .WidgetSimple > .Content.ProcessInfo fieldset .FieldContainer p.CutValue {
-        text-overflow: ellipsis;
         height: 17px;
-        overflow: hidden;
-        display: block;
-        white-space: nowrap;
-    }*/
+        max-width: 600px;
+    }
 
     .WidgetSimple > .Content.ProcessInfo fieldset .FieldContainer p.ValueLong {
         display: none;

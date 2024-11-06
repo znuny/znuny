@@ -481,11 +481,11 @@ sub Run {
                 {
                     if ( $OrderByCurrent && ( $OrderByCurrent eq 'Up' ) ) {
                         $OrderBy = 'Down';
-                        $CSS .= ' SortDescending';
+                        $CSS .= ' SortAscending';
                     }
                     else {
                         $OrderBy = 'Up';
-                        $CSS .= ' SortAscending';
+                        $CSS .= ' SortDescending';
                     }
                 }
 

@@ -25,16 +25,19 @@ CREATE TABLE acl (
 --  create table acl_sync
 -- ----------------------------------------------------------
 CREATE TABLE acl_sync (
+    id bigserial NOT NULL,
     acl_id VARCHAR (200) NOT NULL,
     sync_state VARCHAR (30) NOT NULL,
     create_time timestamp(0) NOT NULL,
-    change_time timestamp(0) NOT NULL
+    change_time timestamp(0) NOT NULL,
+    PRIMARY KEY(id)
 );
 -- ----------------------------------------------------------
 --  create table activity
 -- ----------------------------------------------------------
 CREATE TABLE activity (
     id serial NOT NULL,
+    dbcrud_uuid VARCHAR (36) NULL,
     user_id INTEGER NOT NULL,
     activity_type VARCHAR (200) NOT NULL,
     activity_title VARCHAR (255) NOT NULL,
@@ -43,7 +46,8 @@ CREATE TABLE activity (
     activity_link VARCHAR (255) NULL,
     create_time timestamp(0) NOT NULL,
     create_by INTEGER NOT NULL,
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    CONSTRAINT activity_uuid UNIQUE (dbcrud_uuid)
 );
 -- ----------------------------------------------------------
 --  create table acl_ticket_attribute_relations
@@ -97,9 +101,11 @@ CREATE TABLE users (
 --  create table user_preferences
 -- ----------------------------------------------------------
 CREATE TABLE user_preferences (
+    id bigserial NOT NULL,
     user_id INTEGER NOT NULL,
     preferences_key VARCHAR (150) NOT NULL,
-    preferences_value TEXT NULL
+    preferences_value TEXT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -131,13 +137,15 @@ CREATE TABLE permission_groups (
 --  create table group_user
 -- ----------------------------------------------------------
 CREATE TABLE group_user (
+    id bigserial NOT NULL,
     user_id INTEGER NOT NULL,
     group_id INTEGER NOT NULL,
     permission_key VARCHAR (20) NOT NULL,
     create_time timestamp(0) NOT NULL,
     create_by INTEGER NOT NULL,
     change_time timestamp(0) NOT NULL,
-    change_by INTEGER NOT NULL
+    change_by INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -165,6 +173,7 @@ END$$;
 --  create table group_role
 -- ----------------------------------------------------------
 CREATE TABLE group_role (
+    id bigserial NOT NULL,
     role_id INTEGER NOT NULL,
     group_id INTEGER NOT NULL,
     permission_key VARCHAR (20) NOT NULL,
@@ -172,7 +181,8 @@ CREATE TABLE group_role (
     create_time timestamp(0) NOT NULL,
     create_by INTEGER NOT NULL,
     change_time timestamp(0) NOT NULL,
-    change_by INTEGER NOT NULL
+    change_by INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -200,6 +210,7 @@ END$$;
 --  create table group_customer_user
 -- ----------------------------------------------------------
 CREATE TABLE group_customer_user (
+    id bigserial NOT NULL,
     user_id VARCHAR (100) NOT NULL,
     group_id INTEGER NOT NULL,
     permission_key VARCHAR (20) NOT NULL,
@@ -207,7 +218,8 @@ CREATE TABLE group_customer_user (
     create_time timestamp(0) NOT NULL,
     create_by INTEGER NOT NULL,
     change_time timestamp(0) NOT NULL,
-    change_by INTEGER NOT NULL
+    change_by INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -235,6 +247,7 @@ END$$;
 --  create table group_customer
 -- ----------------------------------------------------------
 CREATE TABLE group_customer (
+    id bigserial NOT NULL,
     customer_id VARCHAR (150) NOT NULL,
     group_id INTEGER NOT NULL,
     permission_key VARCHAR (20) NOT NULL,
@@ -243,7 +256,8 @@ CREATE TABLE group_customer (
     create_time timestamp(0) NOT NULL,
     create_by INTEGER NOT NULL,
     change_time timestamp(0) NOT NULL,
-    change_by INTEGER NOT NULL
+    change_by INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -286,12 +300,14 @@ CREATE TABLE roles (
 --  create table role_user
 -- ----------------------------------------------------------
 CREATE TABLE role_user (
+    id bigserial NOT NULL,
     user_id INTEGER NOT NULL,
     role_id INTEGER NOT NULL,
     create_time timestamp(0) NOT NULL,
     create_by INTEGER NOT NULL,
     change_time timestamp(0) NOT NULL,
-    change_by INTEGER NOT NULL
+    change_by INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -319,8 +335,10 @@ END$$;
 --  create table personal_queues
 -- ----------------------------------------------------------
 CREATE TABLE personal_queues (
+    id bigserial NOT NULL,
     user_id INTEGER NOT NULL,
-    queue_id INTEGER NOT NULL
+    queue_id INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -348,8 +366,10 @@ END$$;
 --  create table personal_services
 -- ----------------------------------------------------------
 CREATE TABLE personal_services (
+    id bigserial NOT NULL,
     user_id INTEGER NOT NULL,
-    service_id INTEGER NOT NULL
+    service_id INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -503,9 +523,11 @@ END$$;
 --  create table queue_preferences
 -- ----------------------------------------------------------
 CREATE TABLE queue_preferences (
+    id bigserial NOT NULL,
     queue_id INTEGER NOT NULL,
     preferences_key VARCHAR (150) NOT NULL,
-    preferences_value VARCHAR (250) NULL
+    preferences_value VARCHAR (250) NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -837,11 +859,13 @@ END$$;
 --  create table ticket_flag
 -- ----------------------------------------------------------
 CREATE TABLE ticket_flag (
+    id bigserial NOT NULL,
     ticket_id BIGINT NOT NULL,
     ticket_key VARCHAR (50) NOT NULL,
     ticket_value VARCHAR (50) NULL,
     create_time timestamp(0) NOT NULL,
     create_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
     CONSTRAINT ticket_flag_per_user UNIQUE (ticket_id, ticket_key, create_by)
 );
 DO $$
@@ -1015,12 +1039,14 @@ CREATE TABLE ticket_history_type (
 --  create table ticket_watcher
 -- ----------------------------------------------------------
 CREATE TABLE ticket_watcher (
+    id bigserial NOT NULL,
     ticket_id BIGINT NOT NULL,
     user_id INTEGER NOT NULL,
     create_time timestamp(0) NOT NULL,
     create_by INTEGER NOT NULL,
     change_time timestamp(0) NOT NULL,
-    change_by INTEGER NOT NULL
+    change_by INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -1048,13 +1074,15 @@ END$$;
 --  create table ticket_index
 -- ----------------------------------------------------------
 CREATE TABLE ticket_index (
+    id bigserial NOT NULL,
     ticket_id BIGINT NOT NULL,
     queue_id INTEGER NOT NULL,
     queue VARCHAR (200) NOT NULL,
     group_id INTEGER NOT NULL,
     s_lock VARCHAR (200) NOT NULL,
     s_state VARCHAR (200) NOT NULL,
-    create_time timestamp(0) NOT NULL
+    create_time timestamp(0) NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -1093,7 +1121,9 @@ END$$;
 --  create table ticket_lock_index
 -- ----------------------------------------------------------
 CREATE TABLE ticket_lock_index (
-    ticket_id BIGINT NOT NULL
+    id bigserial NOT NULL,
+    ticket_id BIGINT NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -1110,8 +1140,10 @@ END$$;
 --  create table ticket_loop_protection
 -- ----------------------------------------------------------
 CREATE TABLE ticket_loop_protection (
+    id bigserial NOT NULL,
     sent_to VARCHAR (250) NOT NULL,
-    sent_date VARCHAR (150) NOT NULL
+    sent_date VARCHAR (150) NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -1154,11 +1186,13 @@ CREATE TABLE article_sender_type (
 --  create table article_flag
 -- ----------------------------------------------------------
 CREATE TABLE article_flag (
+    id bigserial NOT NULL,
     article_id BIGINT NOT NULL,
     article_key VARCHAR (50) NOT NULL,
     article_value VARCHAR (50) NULL,
     create_time timestamp(0) NOT NULL,
-    create_by INTEGER NOT NULL
+    create_by INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -1497,7 +1531,7 @@ CREATE TABLE standard_template (
     name VARCHAR (200) NOT NULL,
     text VARCHAR NULL,
     content_type VARCHAR (250) NULL,
-    template_type VARCHAR (100) DEFAULT 'Answer' NOT NULL,
+    template_type VARCHAR (250) DEFAULT 'Answer' NOT NULL,
     comments VARCHAR (250) NULL,
     valid_id SMALLINT NOT NULL,
     create_time timestamp(0) NOT NULL,
@@ -1511,12 +1545,14 @@ CREATE TABLE standard_template (
 --  create table queue_standard_template
 -- ----------------------------------------------------------
 CREATE TABLE queue_standard_template (
+    id bigserial NOT NULL,
     queue_id INTEGER NOT NULL,
     standard_template_id INTEGER NOT NULL,
     create_time timestamp(0) NOT NULL,
     create_by INTEGER NOT NULL,
     change_time timestamp(0) NOT NULL,
-    change_by INTEGER NOT NULL
+    change_by INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 -- ----------------------------------------------------------
 --  create table standard_attachment
@@ -1616,9 +1652,11 @@ CREATE TABLE service (
 --  create table service_preferences
 -- ----------------------------------------------------------
 CREATE TABLE service_preferences (
+    id bigserial NOT NULL,
     service_id INTEGER NOT NULL,
     preferences_key VARCHAR (150) NOT NULL,
-    preferences_value VARCHAR (250) NULL
+    preferences_value VARCHAR (250) NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -1635,10 +1673,12 @@ END$$;
 --  create table service_customer_user
 -- ----------------------------------------------------------
 CREATE TABLE service_customer_user (
+    id bigserial NOT NULL,
     customer_user_login VARCHAR (200) NOT NULL,
     service_id INTEGER NOT NULL,
     create_time timestamp(0) NOT NULL,
-    create_by INTEGER NOT NULL
+    create_by INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -1688,9 +1728,11 @@ CREATE TABLE sla (
 --  create table sla_preferences
 -- ----------------------------------------------------------
 CREATE TABLE sla_preferences (
+    id bigserial NOT NULL,
     sla_id INTEGER NOT NULL,
     preferences_key VARCHAR (150) NOT NULL,
-    preferences_value VARCHAR (250) NULL
+    preferences_value VARCHAR (250) NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -1707,8 +1749,10 @@ END$$;
 --  create table service_sla
 -- ----------------------------------------------------------
 CREATE TABLE service_sla (
+    id bigserial NOT NULL,
     service_id INTEGER NOT NULL,
     sla_id INTEGER NOT NULL,
+    PRIMARY KEY(id),
     CONSTRAINT service_sla_service_sla UNIQUE (service_id, sla_id)
 );
 -- ----------------------------------------------------------
@@ -1776,9 +1820,11 @@ CREATE TABLE customer_user (
 --  create table customer_preferences
 -- ----------------------------------------------------------
 CREATE TABLE customer_preferences (
+    id bigserial NOT NULL,
     user_id VARCHAR (250) NOT NULL,
     preferences_key VARCHAR (150) NOT NULL,
-    preferences_value VARCHAR (250) NULL
+    preferences_value VARCHAR (250) NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -1815,12 +1861,14 @@ CREATE TABLE customer_company (
 --  create table customer_user_customer
 -- ----------------------------------------------------------
 CREATE TABLE customer_user_customer (
+    id bigserial NOT NULL,
     user_id VARCHAR (200) NOT NULL,
     customer_id VARCHAR (150) NOT NULL,
     create_time timestamp(0) NOT NULL,
     create_by INTEGER NOT NULL,
     change_time timestamp(0) NOT NULL,
-    change_by INTEGER NOT NULL
+    change_by INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -1870,12 +1918,14 @@ CREATE TABLE mail_account (
 --  create table postmaster_filter
 -- ----------------------------------------------------------
 CREATE TABLE postmaster_filter (
+    id bigserial NOT NULL,
     f_name VARCHAR (200) NOT NULL,
     f_stop SMALLINT NULL,
     f_type VARCHAR (20) NOT NULL,
     f_key VARCHAR (200) NOT NULL,
     f_value VARCHAR (200) NOT NULL,
-    f_not SMALLINT NULL
+    f_not SMALLINT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -1892,9 +1942,11 @@ END$$;
 --  create table generic_agent_jobs
 -- ----------------------------------------------------------
 CREATE TABLE generic_agent_jobs (
+    id bigserial NOT NULL,
     job_name VARCHAR (200) NOT NULL,
     job_key VARCHAR (255) NOT NULL,
-    job_value VARCHAR (3800) NULL
+    job_value VARCHAR (3800) NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -1911,11 +1963,13 @@ END$$;
 --  create table search_profile
 -- ----------------------------------------------------------
 CREATE TABLE search_profile (
+    id bigserial NOT NULL,
     login VARCHAR (200) NOT NULL,
     profile_name VARCHAR (200) NOT NULL,
     profile_type VARCHAR (30) NOT NULL,
     profile_key VARCHAR (200) NOT NULL,
-    profile_value VARCHAR (200) NULL
+    profile_value VARCHAR (200) NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -1943,16 +1997,19 @@ END$$;
 --  create table process_id
 -- ----------------------------------------------------------
 CREATE TABLE process_id (
+    id bigserial NOT NULL,
     process_name VARCHAR (200) NOT NULL,
     process_id VARCHAR (200) NOT NULL,
     process_host VARCHAR (200) NOT NULL,
     process_create INTEGER NOT NULL,
-    process_change INTEGER NOT NULL
+    process_change INTEGER NOT NULL,
+    PRIMARY KEY(id)
 );
 -- ----------------------------------------------------------
 --  create table web_upload_cache
 -- ----------------------------------------------------------
 CREATE TABLE web_upload_cache (
+    id bigserial NOT NULL,
     form_id VARCHAR (250) NULL,
     filename VARCHAR (250) NULL,
     content_id VARCHAR (250) NULL,
@@ -1960,7 +2017,8 @@ CREATE TABLE web_upload_cache (
     content_type VARCHAR (250) NULL,
     disposition VARCHAR (15) NULL,
     content TEXT NOT NULL,
-    create_time_unix BIGINT NOT NULL
+    create_time_unix BIGINT NOT NULL,
+    PRIMARY KEY(id)
 );
 -- ----------------------------------------------------------
 --  create table notification_event
@@ -2016,9 +2074,11 @@ END$$;
 --  create table notification_event_item
 -- ----------------------------------------------------------
 CREATE TABLE notification_event_item (
+    id bigserial NOT NULL,
     notification_id INTEGER NOT NULL,
     event_key VARCHAR (200) NOT NULL,
-    event_value VARCHAR (200) NOT NULL
+    event_value VARCHAR (200) NOT NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -2094,6 +2154,7 @@ CREATE TABLE link_object (
 --  create table link_relation
 -- ----------------------------------------------------------
 CREATE TABLE link_relation (
+    id bigserial NOT NULL,
     source_object_id SMALLINT NOT NULL,
     source_key VARCHAR (50) NOT NULL,
     target_object_id SMALLINT NOT NULL,
@@ -2102,6 +2163,7 @@ CREATE TABLE link_relation (
     state_id SMALLINT NOT NULL,
     create_time timestamp(0) NOT NULL,
     create_by INTEGER NOT NULL,
+    PRIMARY KEY(id),
     CONSTRAINT link_relation_view UNIQUE (source_object_id, source_key, target_object_id, target_key, type_id)
 );
 DO $$
@@ -2142,10 +2204,12 @@ CREATE TABLE system_data (
 --  create table xml_storage
 -- ----------------------------------------------------------
 CREATE TABLE xml_storage (
+    id bigserial NOT NULL,
     xml_type VARCHAR (200) NOT NULL,
     xml_key VARCHAR (250) NOT NULL,
     xml_content_key VARCHAR (250) NOT NULL,
-    xml_content_value VARCHAR NULL
+    xml_content_value VARCHAR NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -2206,9 +2270,11 @@ END$$;
 --  create table virtual_fs_preferences
 -- ----------------------------------------------------------
 CREATE TABLE virtual_fs_preferences (
+    id bigserial NOT NULL,
     virtual_fs_id BIGINT NOT NULL,
     preferences_key VARCHAR (150) NOT NULL,
-    preferences_value VARCHAR (350) NULL
+    preferences_value VARCHAR (350) NULL,
+    PRIMARY KEY(id)
 );
 DO $$
 BEGIN
@@ -2541,11 +2607,13 @@ CREATE TABLE pm_transition_action (
 --  create table pm_entity_sync
 -- ----------------------------------------------------------
 CREATE TABLE pm_entity_sync (
+    id bigserial NOT NULL,
     entity_type VARCHAR (30) NOT NULL,
     entity_id VARCHAR (50) NOT NULL,
     sync_state VARCHAR (30) NOT NULL,
     create_time timestamp(0) NOT NULL,
     change_time timestamp(0) NOT NULL,
+    PRIMARY KEY(id),
     CONSTRAINT pm_entity_sync_list UNIQUE (entity_type, entity_id)
 );
 -- ----------------------------------------------------------
@@ -2871,10 +2939,12 @@ CREATE TABLE calendar_appointment_plugin (
 --  create table calendar_appointment_ticket
 -- ----------------------------------------------------------
 CREATE TABLE calendar_appointment_ticket (
+    id bigserial NOT NULL,
     calendar_id BIGINT NOT NULL,
     ticket_id BIGINT NOT NULL,
     rule_id VARCHAR (32) NOT NULL,
     appointment_id BIGINT NOT NULL,
+    PRIMARY KEY(id),
     CONSTRAINT calendar_appointment_ticket_calendar_id_ticket_id_rule_id UNIQUE (calendar_id, ticket_id, rule_id)
 );
 DO $$

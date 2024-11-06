@@ -11,14 +11,15 @@ package Kernel::Output::HTML::Preferences::Language;
 
 use strict;
 use warnings;
+use utf8;
 
 use Kernel::Language qw(Translatable);
 
 our @ObjectDependencies = (
-    'Kernel::System::Web::Request',
     'Kernel::Config',
     'Kernel::Output::HTML::Layout',
     'Kernel::System::AuthSession',
+    'Kernel::System::Web::Request',
 );
 
 sub new {
@@ -40,6 +41,8 @@ sub Param {
 
     # get config object
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+    my $ParamObject  = $Kernel::OM->Get('Kernel::System::Web::Request');
 
     # get names of languages in English
     my %DefaultUsedLanguages = %{ $ConfigObject->Get('DefaultUsedLanguages') || {} };
@@ -62,7 +65,7 @@ sub Param {
 
         # translate to current user's language
         my $TextTranslated =
-            $Kernel::OM->Get('Kernel::Output::HTML::Layout')->{LanguageObject}->Translate($TextEnglish);
+            $LayoutObject->{LanguageObject}->Translate($TextEnglish);
 
         if ( $TextTranslated && $TextTranslated ne $Text ) {
             $Text .= ' - ' . $TextTranslated;
@@ -81,7 +84,7 @@ sub Param {
         # mark all languages with < 25% coverage as "in process" (not for en_ variants).
         if ( defined $Completeness && $Completeness < 0.25 && $LanguageID !~ m{^en_}smx ) {
             $Text
-                .= ' ' . $Kernel::OM->Get('Kernel::Output::HTML::Layout')->{LanguageObject}->Translate('(in process)');
+                .= ' ' . $LayoutObject->{LanguageObject}->Translate('(in process)');
         }
         $Languages{$LanguageID} = $Text;
     }
@@ -94,9 +97,9 @@ sub Param {
             Name       => $Self->{ConfigItem}->{PrefKey},
             Data       => \%Languages,
             HTMLQuote  => 0,
-            SelectedID => $Kernel::OM->Get('Kernel::System::Web::Request')->GetParam( Param => 'UserLanguage' )
+            SelectedID => $ParamObject->GetParam( Param => 'UserLanguage' )
                 || $Param{UserData}->{UserLanguage}
-                || $Kernel::OM->Get('Kernel::Output::HTML::Layout')->{UserLanguage}
+                || $LayoutObject->{UserLanguage}
                 || $ConfigObject->Get('DefaultLanguage'),
             Block => 'Option',
             Class => 'W70pc',
@@ -109,12 +112,15 @@ sub Param {
 sub Run {
     my ( $Self, %Param ) = @_;
 
+    my $ConfigObject  = $Kernel::OM->Get('Kernel::Config');
+    my $SessionObject = $Kernel::OM->Get('Kernel::System::AuthSession');
+
     for my $Key ( sort keys %{ $Param{GetParam} } ) {
         my @Array = @{ $Param{GetParam}->{$Key} };
         for my $Value (@Array) {
 
             # pref update db
-            if ( !$Kernel::OM->Get('Kernel::Config')->Get('DemoSystem') ) {
+            if ( !$ConfigObject->Get('DemoSystem') ) {
                 $Self->{UserObject}->SetPreferences(
                     UserID => $Param{UserData}->{UserID},
                     Key    => $Key,
@@ -122,9 +128,9 @@ sub Run {
                 );
             }
 
-            # update SessionID
-            if ( $Param{UserData}->{UserID} eq $Self->{UserID} ) {
-                $Kernel::OM->Get('Kernel::System::AuthSession')->UpdateSessionID(
+            # Update session data when the preference is updated by the user himself.
+            if ( $Param{UpdateSessionData} ) {
+                $SessionObject->UpdateSessionID(
                     SessionID => $Self->{SessionID},
                     Key       => $Key,
                     Value     => $Value,
@@ -132,6 +138,15 @@ sub Run {
             }
         }
     }
+
+    # Delete the session when the preference is updated by an admin user
+    # to force a login with fresh session data for the affected user.
+    if ( !$Param{UpdateSessionData} ) {
+        $SessionObject->RemoveSessionByUser(
+            UserLogin => $Param{UserData}->{UserLogin},
+        );
+    }
+
     $Self->{Message} = Translatable('Preferences updated successfully!');
     return 1;
 }

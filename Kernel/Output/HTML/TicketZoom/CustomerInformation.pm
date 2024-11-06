@@ -13,20 +13,23 @@ use parent 'Kernel::Output::HTML::Base';
 
 use strict;
 use warnings;
+use utf8;
 
 our $ObjectManagerDisabled = 1;
 
 sub Run {
     my ( $Self, %Param ) = @_;
 
+    my $ConfigObject       = $Kernel::OM->Get('Kernel::Config');
+    my $CustomerUserObject = $Kernel::OM->Get('Kernel::System::CustomerUser');
+    my $LayoutObject       = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
+
     my %CustomerData;
     if ( $Param{Ticket}->{CustomerUserID} ) {
-        %CustomerData = $Kernel::OM->Get('Kernel::System::CustomerUser')->CustomerUserDataGet(
+        %CustomerData = $CustomerUserObject->CustomerUserDataGet(
             User => $Param{Ticket}->{CustomerUserID},
         );
     }
-
-    my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
 
     if ( $CustomerData{UserTitle} ) {
         $CustomerData{UserTitle} = $LayoutObject->{LanguageObject}->Translate( $CustomerData{UserTitle} );
@@ -35,8 +38,14 @@ sub Run {
     my $CustomerTable = $LayoutObject->AgentCustomerViewTable(
         Data   => \%CustomerData,
         Ticket => $Param{Ticket},
-        Max    => $Kernel::OM->Get('Kernel::Config')->Get('Ticket::Frontend::CustomerInfoZoomMaxSize'),
+        Max    => $ConfigObject->Get('Ticket::Frontend::CustomerInfoZoomMaxSize'),
     );
+
+    # Hide empty customer information widget when nothing is to show.
+    my $None = $LayoutObject->{LanguageObject}->Translate('none');
+
+    return if $CustomerTable eq $None;
+
     my $Output = $LayoutObject->Output(
         TemplateFile => 'AgentTicketZoom/CustomerInformation',
         Data         => {

@@ -147,8 +147,11 @@ sub CheckEmail {
         if ($Resolver) {
 
             # it's no fun to have this hanging in the web interface
-            $Resolver->tcp_timeout(3);
-            $Resolver->udp_timeout(3);
+            my $ResolverTimeout = $ConfigObject->Get('CheckMXRecord::Timeout') // 3;
+            $Resolver->tcp_timeout($ResolverTimeout);
+            $Resolver->udp_timeout($ResolverTimeout);
+            $Resolver->retry(1);
+            $Resolver->retrans(1);
 
             # check if we need to use a specific name server
             my $Nameserver = $ConfigObject->Get('CheckMXRecord::Nameserver');

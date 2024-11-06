@@ -80,7 +80,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 }
 
 .OverviewLarge > li ul.InlineActions li a {
-    color: var(--white);
+    color: var(--white) !important;
 }
 
 /*.OverviewLarge > li ul.InlineActions li:last-child a {

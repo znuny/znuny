@@ -173,6 +173,7 @@ Core.Agent.Dashboard = (function (TargetNS) {
         );
 
         TargetNS.InitDashboardWidgetSettings();
+
         TargetNS.InitDashboardWidgetExpand();
 
         TargetNS.InitDashboardWidgetBinding();

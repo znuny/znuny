@@ -179,15 +179,14 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 }
 
 .QueueOverview .OlderLevel1 {
-    color: orange;
+    color: var(--primary-color);
 }
 
 .QueueOverview .OlderLevel2 {
-    color: #ff4766;
+    color: var(--error-color);
 }
 
 .QueueOverview .Oldest {
-    color: red;
     animation: Blinking 1s steps(10, start) infinite;
     -webkit-animation: Blinking 1s steps(10, start) infinite;
 }

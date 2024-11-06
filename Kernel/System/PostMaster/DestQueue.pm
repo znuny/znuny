@@ -139,14 +139,28 @@ sub GetTrustedQueueID {
     # get email headers
     my %GetParam = %{ $Param{Params} };
 
-    return if !$GetParam{'X-OTRS-Queue'};
+    if ( $GetParam{'X-OTRS-QueueID'} ) {
+        $Self->{CommunicationLogObject}->ObjectLog(
+            ObjectLogType => 'Message',
+            Priority      => 'Debug',
+            Key           => 'Kernel::System::PostMaster::DestQueue',
+            Value => "Existing X-OTRS-QueueID header: $GetParam{'X-OTRS-QueueID'} (MessageID:$GetParam{'Message-ID'})!",
+        );
 
-    $Self->{CommunicationLogObject}->ObjectLog(
-        ObjectLogType => 'Message',
-        Priority      => 'Debug',
-        Key           => 'Kernel::System::PostMaster::DestQueue',
-        Value         => "Existing X-OTRS-Queue header: $GetParam{'X-OTRS-Queue'} (MessageID:$GetParam{'Message-ID'})!",
-    );
+        $GetParam{'X-OTRS-Queue'} = $Kernel::OM->Get('Kernel::System::Queue')->QueueLookup(
+            QueueID => $GetParam{'X-OTRS-QueueID'},
+        );
+    }
+    elsif ( $GetParam{'X-OTRS-Queue'} ) {
+        $Self->{CommunicationLogObject}->ObjectLog(
+            ObjectLogType => 'Message',
+            Priority      => 'Debug',
+            Key           => 'Kernel::System::PostMaster::DestQueue',
+            Value => "Existing X-OTRS-Queue header: $GetParam{'X-OTRS-Queue'} (MessageID:$GetParam{'Message-ID'})!",
+        );
+    }
+
+    return if !$GetParam{'X-OTRS-Queue'};
 
     # get dest queue
     return $Kernel::OM->Get('Kernel::System::Queue')->QueueLookup(

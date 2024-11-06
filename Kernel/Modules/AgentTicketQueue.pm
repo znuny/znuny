@@ -679,13 +679,12 @@ sub _MaskQueueView {
         }
         $QueueStrg .= '" class="';
 
-        # Primary control is Visual Alarms and, if disabled, will turn off all highlights.
-        # Secondary control highlights individual queues depending on age.
+        if ( $Queue{QueueID} == $QueueIDOfMaxAge && $Self->{Blink} ) {
+            $QueueStrg .= 'Oldest ';
+        }
+
         if ( $Config->{VisualAlarms} ) {
-            if ( $Queue{QueueID} == $QueueIDOfMaxAge && $Self->{Blink} ) {
-                $QueueStrg .= 'Oldest';
-            }
-            elsif ( $Queue{MaxAge} >= $Self->{HighlightAge2} ) {
+            if ( $Queue{MaxAge} >= $Self->{HighlightAge2} ) {
                 $QueueStrg .= 'OlderLevel2';
             }
             elsif ( $Queue{MaxAge} >= $Self->{HighlightAge1} ) {

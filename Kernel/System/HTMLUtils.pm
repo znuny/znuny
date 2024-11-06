@@ -751,22 +751,6 @@ sub DocumentCleanup {
     # remove <base> tags - see bug#8880
     $Param{String} =~ s{<base .*?>}{}xmsi;
 
-    # replace MS Word 12 <p|div> with class "MsoNormal" by using <br/> because
-    # it's not used as <p><div> (margin:0cm; margin-bottom:.0001pt;)
-    $Param{String} =~ s{
-        <p\s{1,3}class=(|"|')MsoNormal(|"|')(.*?)>(.+?)</p>
-    }
-    {
-        $4 . '<br/>';
-    }segxmi;
-
-    $Param{String} =~ s{
-        <div\s{1,3}class=(|"|')MsoNormal(|"|')(.*?)>(.+?)</div>
-    }
-    {
-        $4 . '<br/>';
-    }segxmi;
-
     # replace <blockquote> by using
     # "<div style="border:none;border-left:solid blue 1.5pt;padding:0cm 0cm 0cm 4.0pt" type="cite">"
     # because of cross mail client and browser compatibility
@@ -912,7 +896,7 @@ sub LinkQuote {
     }
     ${$String} =~ s{
         (                                          # $1 greater-than and less-than sign
-            > | < | \s+ | §{10} |
+            > | < | \s | §{10} |
             (?: &[a-zA-Z0-9]+; )                   # get html entities
         )
         (                                          # $2

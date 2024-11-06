@@ -1641,12 +1641,6 @@ INSERT INTO notification_event_item (notification_id, event_key, event_value)
 -- ----------------------------------------------------------
 INSERT INTO notification_event_item (notification_id, event_key, event_value)
     VALUES
-    (15, 'TransportEmailTemplate', 'Default');
--- ----------------------------------------------------------
---  insert into table notification_event_item
--- ----------------------------------------------------------
-INSERT INTO notification_event_item (notification_id, event_key, event_value)
-    VALUES
     (15, 'Transports', 'Email');
 -- ----------------------------------------------------------
 --  insert into table notification_event_item
@@ -1684,12 +1678,6 @@ INSERT INTO notification_event_item (notification_id, event_key, event_value)
 INSERT INTO notification_event_item (notification_id, event_key, event_value)
     VALUES
     (16, 'LanguageID', 'en');
--- ----------------------------------------------------------
---  insert into table notification_event_item
--- ----------------------------------------------------------
-INSERT INTO notification_event_item (notification_id, event_key, event_value)
-    VALUES
-    (16, 'TransportEmailTemplate', 'Default');
 -- ----------------------------------------------------------
 --  insert into table notification_event_item
 -- ----------------------------------------------------------
