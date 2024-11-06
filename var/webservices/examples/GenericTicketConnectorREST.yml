@@ -1,0 +1,98 @@
+---
+Debugger:
+  DebugThreshold: error
+  TestMode: '0'
+Description: Ticket Connector REST
+FrameworkVersion: 7.1
+Provider:
+  Operation:
+    SessionCreate:
+      Description: Create a Session
+      MappingInbound: {}
+      MappingOutbound: {}
+      Type: Session::SessionCreate
+    SessionDelete:
+      Description: Delete a Session
+      IncludeTicketData: '0'
+      Type: Session::SessionRemove
+    SessionGet:
+      Description: Retreive Session data
+      MappingInbound: {}
+      MappingOutbound: {}
+      Type: Session::SessionGet
+    TicketCreate:
+      Description: Create a Ticket
+      MappingInbound: {}
+      MappingOutbound: {}
+      Type: Ticket::TicketCreate
+    TicketGet:
+      Description: Retrieve Ticket data
+      MappingInbound: {}
+      MappingOutbound: {}
+      Type: Ticket::TicketGet
+    TicketHistoryGet:
+      Description: Retrieve Ticket history data
+      MappingInbound: {}
+      MappingOutbound: {}
+      Type: Ticket::TicketHistoryGet
+    TicketSearch:
+      Description: Search for Tickets
+      MappingInbound: {}
+      MappingOutbound: {}
+      Type: Ticket::TicketSearch
+    TicketUpdate:
+      Description: Update a Ticket
+      MappingInbound: {}
+      MappingOutbound: {}
+      Type: Ticket::TicketUpdate
+  Transport:
+    Config:
+      AdditionalHeaders: ~
+      KeepAlive: '1'
+      MaxLength: '100000000'
+      RouteOperationMapping:
+        SessionCreate:
+          ParserBackend: JSON
+          RequestMethod:
+          - POST
+          Route: /Session
+        SessionDelete:
+          ParserBackend: JSON
+          RequestMethod:
+          - DELETE
+          Route: /Session/:SessionID
+        SessionGet:
+          ParserBackend: JSON
+          RequestMethod:
+          - GET
+          Route: /Session/:SessionID
+        TicketCreate:
+          ParserBackend: JSON
+          RequestMethod:
+          - POST
+          Route: /Ticket
+        TicketGet:
+          ParserBackend: JSON
+          RequestMethod:
+          - GET
+          Route: /Ticket/:TicketID
+        TicketHistoryGet:
+          ParserBackend: JSON
+          RequestMethod:
+          - GET
+          Route: /Ticket/History/:TicketID
+        TicketSearch:
+          ParserBackend: JSON
+          RequestMethod:
+          - POST
+          Route: /Ticket/Search
+        TicketUpdate:
+          ParserBackend: JSON
+          RequestMethod:
+          - PATCH
+          Route: /Ticket/:TicketID
+    Type: HTTP::REST
+RemoteSystem: ''
+Requester:
+  Transport:
+    Type: ''

@@ -37,6 +37,9 @@ sub new {
 sub Configure {
     my ( $Self, %Param ) = @_;
 
+    my $UtilObject = $Kernel::OM->Get('Kernel::System::Util');
+    $Self->{IsITSMInstalled} = $UtilObject->IsITSMInstalled();
+
     $Self->Description('Add new service.');
     $Self->AddOption(
         Name        => 'name',

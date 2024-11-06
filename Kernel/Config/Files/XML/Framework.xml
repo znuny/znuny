@@ -420,7 +420,7 @@
         <Description Translatable="1">Defines the URL rich text editor path.</Description>
         <Navigation>Frontend::Base</Navigation>
         <Value>
-            <Item ValueType="String" ValueRegex="">&lt;OTRS_CONFIG_Frontend::WebPath&gt;js/thirdparty/ckeditor-4.22.1-min/</Item>
+            <Item ValueType="String" ValueRegex="">&lt;OTRS_CONFIG_Frontend::WebPath&gt;js/thirdparty/ckeditor-4.25.1-znuny-min/</Item>
         </Value>
     </Setting>
     <Setting Name="Frontend::RichText::DefaultCSS" Required="1" Valid="1">
@@ -548,6 +548,13 @@
         <Navigation>Frontend::Base</Navigation>
         <Value>
             <Item ValueType="String" ValueRegex="^[0-9]{1,5}$">6000</Item>
+        </Value>
+    </Setting>
+    <Setting Name="InputFields::ModernizedSelection::MaxNumberOfOptions" Required="1" Valid="1">
+        <Description Translatable="1">Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.</Description>
+        <Navigation>Frontend::Base</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="^\d+$">1000</Item>
         </Value>
     </Setting>
     <Setting Name="Frontend::MenuDragDropEnabled" Required="1" Valid="1">
@@ -7777,8 +7784,8 @@ via the Preferences button after logging in.
                 <Item>thirdparty/jquery-ui-touch-punch-0.2.3/jquery.ui.touch-punch.js</Item>
                 <Item>thirdparty/jquery-validate-1.16.0/jquery.validate.js</Item>
                 <Item>thirdparty/jquery-pubsub/pubsub.js</Item>
-                <Item>thirdparty/jquery-jstree-3.3.7/jquery.jstree.js</Item>
-                <Item>thirdparty/nunjucks-3.2.2/nunjucks.min.js</Item>
+                <Item>thirdparty/jquery-jstree-3.3.8/jquery.jstree.js</Item>
+                <Item>thirdparty/nunjucks-3.2.3/nunjucks.min.js</Item>
                 <Item>thirdparty/jscolor-2.4.6/jscolor.js</Item>
                 <Item>Core.Init.js</Item>
                 <Item>Core.JavaScriptEnhancements.js</Item>
@@ -7836,7 +7843,7 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Base::Loader</Navigation>
         <Value>
             <Array>
-                <Item>thirdparty/ckeditor-4.22.1-min/ckeditor.js</Item>
+                <Item>thirdparty/ckeditor-4.25.1-znuny-min/ckeditor.js</Item>
             </Array>
         </Value>
     </Setting>
@@ -7895,8 +7902,8 @@ via the Preferences button after logging in.
                 <Item>thirdparty/jquery-validate-1.16.0/jquery.validate.js</Item>
                 <Item>thirdparty/jquery-ui-1.13.3/jquery-ui.js</Item>
                 <Item>thirdparty/jquery-pubsub/pubsub.js</Item>
-                <Item>thirdparty/jquery-jstree-3.3.7/jquery.jstree.js</Item>
-                <Item>thirdparty/nunjucks-3.2.2/nunjucks.min.js</Item>
+                <Item>thirdparty/jquery-jstree-3.3.8/jquery.jstree.js</Item>
+                <Item>thirdparty/nunjucks-3.2.3/nunjucks.min.js</Item>
                 <Item>Core.Init.js</Item>
                 <Item>Core.Debug.js</Item>
                 <Item>Core.Exception.js</Item>
@@ -7941,7 +7948,7 @@ via the Preferences button after logging in.
         <Navigation>Frontend::Base::Loader</Navigation>
         <Value>
             <Array>
-                <Item>thirdparty/ckeditor-4.22.1-min/ckeditor.js</Item>
+                <Item>thirdparty/ckeditor-4.25.1-znuny-min/ckeditor.js</Item>
             </Array>
         </Value>
     </Setting>

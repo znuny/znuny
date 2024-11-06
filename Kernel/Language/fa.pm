@@ -29,7 +29,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.615397242284964;
+    $Self->{Completeness}        = 0.617564672927995;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -1691,7 +1691,7 @@ sub Data {
         'Available Fields' => 'زمینه های موجود',
         'Filter available fields' => 'فیلتر زمینه های موجود',
         'Assigned Fields' => 'زمینه اختصاص داده',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '',
         'Is visible for customer' => '',
         'Text Template' => 'قالب متن',
@@ -2370,23 +2370,16 @@ sub Data {
         'in' => 'در',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
+        'All' => 'همه',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'بیشتر',
         'No Data Available.' => '',
         'Available Columns' => 'ستون در دسترس',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'ستون قابل مشاهده است (سفارش با کشیدن و رها کردن)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '',
@@ -2626,7 +2619,7 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => 'نوشتن پاسخ برای %s %s %s',
         'Date Invalid!' => 'تاریخ نامعتبر!',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => '',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2636,12 +2629,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'لطفا این مطلب را حذف و یک مطلب جدید با مقدار صحیح را وارد کنید.',
         'This address already exists on the address list.' => 'این آدرس در لیست آدرس ها موجود است.',
-        ' Cc' => '',
         'Remove Cc' => 'حذف رونوشت',
         'Bcc' => 'رونوشت پنهان',
-        ' Bcc' => '',
         'Remove Bcc' => 'حذف کپی به',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => 'تغییر مشتری از %s %s %s',
@@ -2650,23 +2640,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'ساخت درخواست ایمیلی جدید',
-        ' Example Template' => '',
         'Example Template' => 'به عنوان مثال قالب',
         'To customer user' => 'به کاربران مشتری',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'لطفا حداقل یک کاربر مشتری برای درخواست قرار دهید',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'این مشتری را به عنوان مشتری اصلی انتخاب کنید.',
         'Remove Ticket Customer User' => 'حذف درخواست  کاربرمشتری',
         'From queue' => 'از صف درخواست',
-        ' Get all' => '',
         'Get all' => 'گرفتن همه',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => 'عازم ناحیه دور دست ایمیل برای %s %s %s',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2719,18 +2702,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'اطلاعات درخواست یافت نشد.',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'فرستنده',
         'Customer User Name' => '',
         'Impact' => 'اثر',
         'Update Time' => 'زمان بروز رسانی',
         'Solution Time' => 'زمان ارائه راهکار',
         'First Response Time' => 'زمان اولین پاسخ',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'انتقال درخواست یه صف درخواست دیگر',
         'Change queue' => 'تغییر لیست درخواست',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2739,21 +2720,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => 'حذف از فهرست درخواست‌های مشاهده شده',
         'Tickets per page' => 'درخواست در هر صفحه',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'مرور تنظیم مجدد',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => 'تقسیم درخواست تلفن جدید',
         'Create New Phone Ticket' => 'ساخت درخواست تلفنی جدید',
         'Please include at least one customer for the ticket.' => 'لطفا حداقل یک مشتری برای درخواست قراردهید',
-        'Select this customer as the main customer.' => 'این مشتری را به عنوان مشتری اصلی انتخاب کنید.',
         'To queue' => 'به صف درخواست',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2766,7 +2744,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => 'ایجاد درخواست جدید فرآیند',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => 'ثبت نام درخواست به یک فرایند',
@@ -2810,7 +2787,6 @@ sub Data {
         'Save as default' => 'ذخیره به عنوان پیش فرض',
         'Drafts' => '',
         'by' => 'توسط',
-        'Move ticket to a different queue' => 'انتقال درخواست یه صف درخواست دیگر',
         'Change Queue' => 'تغییر صف درخواست',
         'There are no dialogs available at this point in the process.' =>
             'هیچ پنجره موجود در این نقطه از این فرآیند وجود ندارد.',
@@ -2952,11 +2928,10 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'درخواست جدید',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'درخواست‌ها',
         'Welcome!' => 'خوش آمدید',
         'Please click the button below to create your first ticket.' => 'لطفا دکمه زیر را برای ساخت اولین درخواست خود بفشارید.',
         'Create your first ticket' => 'ساخت اولین درخواست شما',
@@ -2965,13 +2940,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'مشخصات کاربری',
+        'Template Name' => 'نام قالب',
         'e. g. 10*5155 or 105658*' => 'به عنوان مثال 10*5155 یا 105658*',
         'CustomerID' => 'کد اشتراک',
         'Types' => 'انواع',
         'Limitation' => '',
         'No time settings' => 'بدون تنظیمات زمان',
-        'All' => 'همه',
         'Specific date' => 'تاریخ خاص',
         'Only tickets created' => 'فقط درخواست‌های ساخته شده',
         'Date range' => 'محدوده زمانی',
@@ -2980,7 +2956,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'ذخیره به عنوان الگو',
         'Save as Template?' => 'ذخیره به عنوان قالب؟',
-        'Template Name' => 'نام قالب',
         'Pick a profile name' => 'انتخاب یک نام مشخصات',
         'Output to' => 'خروجی به',
 
@@ -3210,7 +3185,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '',
-        ' e. g.' => 'به عنوان مثال',
+        'e. g.' => 'به عنوان مثال',
         'To get the first 20 character of the appointment title.' => '',
         'To get the calendar attribute' => '',
         'Attributes of the recipient user for the notification' => 'صفات کاربران دریافت کننده برای اطلاع رسانی',
@@ -3242,9 +3217,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => 'درخواست زمینه های پویا ارزش های کلیدی داخلی',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             'بلیط زمینه های پویا نمایش مقادیر، مفید برای زمینه های کرکره و چندین انتخاب',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'به عنوان مثال',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5044,6 +5016,8 @@ sub Data {
         'Server Database Charset' => 'سرور مجموعه کاراکتر پایگاه',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'جدول مجموعه کاراکتر',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 
@@ -5215,7 +5189,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'سوابق پایگاه داده',
-        'Tickets' => 'درخواست‌ها',
         'Ticket History Entries' => 'درخواست تاریخچه مطالب',
         'Articles' => 'مقالات',
         'Attachments (DB, Without HTML)' => 'فایل های پیوست (DB، بدون HTML)',
@@ -5641,6 +5614,8 @@ sub Data {
             'خط خودکار در پیام های متنی از تعداد X از کاراکتر.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'مجموعه تعدادی از خطوط که در پیام های متنی (به عنوان مثال خطوط بلیط در QueueZoom) نمایش داده شود.',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'روشن کشیدن و رها کردن برای ناوبری اصلی.',
         'Defines the date input format used in forms (option or input fields).' =>
             'تعریف فرمت تاریخ ورودی مورد استفاده در اشکال (گزینه و یا ورودی زمینه).',
@@ -7905,6 +7880,8 @@ sub Data {
             '',
         'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".' =>
             '',
+        'Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.' =>
+            '',
 
         # XML Definition: scripts/database/initial_insert.xml
         'invalid-temporarily' => 'موقتا غیر معتبر',
@@ -8848,6 +8825,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => 'مدیریت وظایف موجب شده توسط رویداد یا زمان اجرای .',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'به‌عنوان هرزنامه علامت بزن',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'علامت گذاری به عنوان این درخواست به عنوان آشغال!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9088,7 +9066,6 @@ Thanks for your help!
         'Ticket Priority.' => 'اولویت درخواست',
         'Ticket Queue Overview' => 'بررسی اجمالی صف درخواست',
         'Ticket Responsible.' => 'درخواست به عهده دارد.',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'نگهبان درخواست',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => 'درخواست زوم.',

@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.890676296782666;
+    $Self->{Completeness}        = 0.893886966551326;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1686,7 +1686,7 @@ sub Data {
         'Available Fields' => 'Расположива поља',
         'Filter available fields' => 'Филтрирај расположива поља',
         'Assigned Fields' => 'Додељена поља',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => 'Комуникациони канал',
         'Is visible for customer' => 'Видљиво клијенту',
         'Text Template' => 'Шаблон текста',
@@ -2365,23 +2365,16 @@ sub Data {
         'in' => 'у',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
+        'All' => 'Све',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'још',
         'No Data Available.' => 'Нема информација.',
         'Available Columns' => 'Расположиве колоне',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'Видљиве колоне (редослед према превуци и пусти)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => 'Промени релације клијената',
@@ -2621,8 +2614,8 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => 'Напиши одговор за %s%s%s',
         'Date Invalid!' => 'Неисправан датум!',
-        ' Select one or more recipients from the customer user address book.' =>
-            '',
+        'Select one or more recipients from the customer user address book.' =>
+            'Одаберите једног или више примаоца из адресара клијент корисника.',
         'Customer user address book' => 'Адресар клијент корисника',
         'This address is registered as system address and cannot be used: %s' =>
             'Ова адреса је регистрована као системска и не може бити коришћена: %s',
@@ -2631,12 +2624,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'Молимо да уклоните овај унос и унесете нов са исправном вредношћу.',
         'This address already exists on the address list.' => 'Ова адреса већ постоји у листи.',
-        ' Cc' => '',
         'Remove Cc' => 'Уклони Cc',
         'Bcc' => 'Bcc',
-        ' Bcc' => '',
         'Remove Bcc' => 'Уклони Bcc',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => 'Промени клијента за %s%s%s',
@@ -2645,23 +2635,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'Отвори нови имејл тикет',
-        ' Example Template' => '',
         'Example Template' => 'Пример шаблона',
         'To customer user' => 'За клијента корисника',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'Молимо вас укључите барем једног клијента корисника за тикет.',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'Означи овог клијента као главног клијента.',
         'Remove Ticket Customer User' => 'Уклони тикет клијента корисника **',
         'From queue' => 'из реда',
-        ' Get all' => '',
         'Get all' => 'Узми све',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => 'Одлазни имејл за %s%s%s',
-        'Select one or more recipients from the customer user address book.' =>
-            'Одаберите једног или више примаоца из адресара клијент корисника.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => 'Пошаљи поново имејл за %s %s %s',
@@ -2714,18 +2697,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'Нису нађени подаци о тикету',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'Пошиљаоц',
         'Customer User Name' => 'Назив клијент корисника',
         'Impact' => 'Утицај',
         'Update Time' => 'Време ажурирања',
         'Solution Time' => 'Време решавања',
         'First Response Time' => 'Време првог одговора',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'Премести тикет у други ред',
         'Change queue' => 'Промени ред',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2734,21 +2715,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => 'Уклони са листе праћених тикета',
         'Tickets per page' => 'Тикета по страни',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => 'Недостаје канал',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'Поништи преглед',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => 'Подели у нови тикет позива',
         'Create New Phone Ticket' => 'Отвори нови тикет позива',
         'Please include at least one customer for the ticket.' => 'Молимо да укључите бар једног клијента за тикет.',
-        'Select this customer as the main customer.' => 'Означи овог клијента као главног клијента.',
         'To queue' => 'У ред',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2761,7 +2739,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => 'Направи нови процес тикет',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => 'Прикључи тикет процесу',
@@ -2805,7 +2782,6 @@ sub Data {
         'Save as default' => 'Сачувај као подразумевано',
         'Drafts' => 'Нацрти',
         'by' => 'од',
-        'Move ticket to a different queue' => 'Премести тикет у други ред',
         'Change Queue' => 'Промени Ред',
         'There are no dialogs available at this point in the process.' =>
             'У овом тренутку нема слободних дијалога у процесу.',
@@ -2947,11 +2923,10 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'Нови тикет',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Тикети',
         'Welcome!' => 'Добродошли!',
         'Please click the button below to create your first ticket.' => 'Молимо да притиснете дугме испод за креирање вашег првог тикета.',
         'Create your first ticket' => 'Креирајте ваш први тикет',
@@ -2960,13 +2935,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Профил',
+        'Template Name' => 'Назив шаблона',
         'e. g. 10*5155 or 105658*' => 'нпр. 10*5155 или 105658*',
         'CustomerID' => 'ID клијента',
         'Types' => 'Типови',
         'Limitation' => '',
         'No time settings' => 'Нема подешавања времена',
-        'All' => 'Све',
         'Specific date' => 'Одређени датум',
         'Only tickets created' => 'Само креирани тикети',
         'Date range' => 'Распон датума',
@@ -2975,7 +2951,6 @@ sub Data {
         'Save Search as Template?' => 'Сачувај претрагу као шаблон?',
         'Save as Template' => 'Сачувај као шаблон',
         'Save as Template?' => 'Сачувати као шаблон?',
-        'Template Name' => 'Назив шаблона',
         'Pick a profile name' => 'Изабери назив профила',
         'Output to' => 'Излаз на',
 
@@ -3205,7 +3180,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => 'Да видите атрибуте термина',
-        ' e. g.' => ' нпр.',
+        'e. g.' => 'нпр.',
         'To get the first 20 character of the appointment title.' => 'Да видите првих 20 карактера наслова термина.',
         'To get the calendar attribute' => 'Да видите атрибуте календара',
         'Attributes of the recipient user for the notification' => 'Атрибути корисника примаоца за обавештење',
@@ -3237,9 +3212,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => 'Вредности интерних кључева динамичких поља тикета',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             'Приказане вредности динамичких поља, корисно за падајућа и поља са вишеструким избором',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'нпр.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5039,6 +5011,8 @@ sub Data {
         'Server Database Charset' => 'Karakterset serverske baze podataka',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'Табела карактерсета',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 
@@ -5210,7 +5184,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => 'Записи у бази података',
-        'Tickets' => 'Тикети',
         'Ticket History Entries' => 'Историја уноса тикета',
         'Articles' => 'Чланци',
         'Attachments (DB, Without HTML)' => 'Прилози (база података, без HTML)',
@@ -5636,6 +5609,8 @@ sub Data {
             'Аутоматски крај реда у текстуалним порукама после х карактера.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Подешава број линија приказаних у текстуалним порукама (нпр број линија у детаљном прегледу реда).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Активира превуци и отпусти у главној навигацији.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Дефинише форноса датума у формуларе (опционо или поља за унос).',
@@ -7900,6 +7875,8 @@ sub Data {
             '',
         'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".' =>
             '',
+        'Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.' =>
+            '',
 
         # XML Definition: scripts/database/initial_insert.xml
         'invalid-temporarily' => 'неважећи-привремено',
@@ -8843,6 +8820,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => 'Управља задацима покренутим од догађаја или на основу временског извршавања.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Означи као Спам!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Означи овај тикет као бесмислен junk!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9083,7 +9061,6 @@ Thanks for your help!
         'Ticket Priority.' => 'Приоритет тикета.',
         'Ticket Queue Overview' => 'Преглед реда тикета',
         'Ticket Responsible.' => 'Одговоран за тикет.',
-        'Ticket Search' => '',
         'Ticket Watcher' => 'Праћење тикета.',
         'Ticket Zoom' => 'Детаљи тикета',
         'Ticket Zoom.' => 'Детаљи тикета.',

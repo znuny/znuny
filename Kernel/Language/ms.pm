@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.536112934996717;
+    $Self->{Completeness}        = 0.53797989784149;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1685,7 +1685,7 @@ sub Data {
         'Available Fields' => 'Medan tersedia',
         'Filter available fields' => 'Tapis medan tersedia',
         'Assigned Fields' => 'Medan yang ditetapkan',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '',
         'Is visible for customer' => '',
         'Text Template' => 'Templat teks',
@@ -2364,23 +2364,16 @@ sub Data {
         'in' => 'dalam',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
+        'All' => 'Semua',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'lagi',
         'No Data Available.' => '',
         'Available Columns' => 'Ruangan tersedia',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'Ruangan dapat dilihat (susunan secara tarik dan lepas)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '',
@@ -2620,7 +2613,7 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => 'Mengarang Jawapan untuk %s%s%s',
         'Date Invalid!' => 'Tarikh tidak sah!',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => '',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2630,12 +2623,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'Sila keluarkan entri ini dan masukkan satu yang baru dengan nilai yang betul.',
         'This address already exists on the address list.' => 'Alamat ini sudah pun wujud pada senarai alamat',
-        ' Cc' => '',
         'Remove Cc' => 'Buang Cc',
         'Bcc' => 'Bcc',
-        ' Bcc' => '',
         'Remove Bcc' => 'Buang Bcc',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => 'Tukar Pelanggan bagi %s%s%s',
@@ -2644,23 +2634,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'Buat Tiket Email Baru.',
-        ' Example Template' => '',
         'Example Template' => 'Contoh Templat',
         'To customer user' => 'Ke pengguna pelanggan',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'Sila masukkan sekurang-kurangnya satu pengguna pelanggan bagi tiket.',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'Pilih pelanggan ini sebagai pelanggan utama.',
         'Remove Ticket Customer User' => 'Buang Tiket Pengguna Pelanggan',
         'From queue' => 'Dari barisan.',
-        ' Get all' => '',
         'Get all' => 'Dapatkan semua.',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => 'Emel Menuju Ke Luar bagi %s%s%s',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2713,18 +2696,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'Tiada data tiket ditemui.',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'Penghantar',
         'Customer User Name' => '',
         'Impact' => 'Kesan',
         'Update Time' => 'Masa Kemas Kini',
         'Solution Time' => 'Masa Penyelasaian',
         'First Response Time' => 'Masa respon pertama',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'Pindah tiket ke barisan baru',
         'Change queue' => 'Ubah barisan',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2733,21 +2714,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => 'Dibuang daripada senarai tiket dilihat',
         'Tickets per page' => 'Tiket setiap halaman',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'Set semula tinjauan',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => 'Pisah Kepada Tiket Telefon Baru',
         'Create New Phone Ticket' => 'Buat Tiket Telefon Baru.',
         'Please include at least one customer for the ticket.' => 'Sila masukkan sekurang-kurangnya satu pelanggan bagi tiket.',
-        'Select this customer as the main customer.' => 'Pilih pelanggan ini sebagai pelanggan utama.',
         'To queue' => 'Kepada barisan',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2760,7 +2738,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => 'Cipta Tiket Proses Baharu',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => 'Daftar Tiket ke dalam Proses',
@@ -2804,7 +2781,6 @@ sub Data {
         'Save as default' => 'Simpan sebagai lalai',
         'Drafts' => '',
         'by' => 'oleh',
-        'Move ticket to a different queue' => 'Pindah tiket ke barisan baru',
         'Change Queue' => 'Ubah Barisan',
         'There are no dialogs available at this point in the process.' =>
             'Tidak terdapat dialog ketika ini di dalam proses.',
@@ -2946,11 +2922,10 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'Tiket Baru',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tiket',
         'Welcome!' => 'Selamat datang!',
         'Please click the button below to create your first ticket.' => 'Sila tekan butang di bawah untuk membuat tiket pertama anda.',
         'Create your first ticket' => 'Buat tiket pertama anda',
@@ -2959,13 +2934,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Nama templat',
         'e. g. 10*5155 or 105658*' => 'contoj: 10*5155 atau 105658*',
         'CustomerID' => 'IDPelanggan',
         'Types' => 'Jenis',
         'Limitation' => '',
         'No time settings' => 'Tiada tetapan masa',
-        'All' => 'Semua',
         'Specific date' => 'Tarikh spesifik',
         'Only tickets created' => 'Hanya tiket yang dibuat',
         'Date range' => 'Jarak tarikh',
@@ -2974,7 +2950,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Simpan sebagai templat',
         'Save as Template?' => 'Simpan sebagai templat?',
-        'Template Name' => 'Nama templat',
         'Pick a profile name' => 'Pilih nama profil',
         'Output to' => 'Output kepada',
 
@@ -3204,7 +3179,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '',
-        ' e. g.' => 'cth.',
+        'e. g.' => 'cth.',
         'To get the first 20 character of the appointment title.' => '',
         'To get the calendar attribute' => '',
         'Attributes of the recipient user for the notification' => 'Sifat-sifat pengguna penerima bagi pemberitahuan',
@@ -3236,9 +3211,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => 'Tiket medan dinamik nilai utama dalaman',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             'Tiket bidang dinamik memaparkan nilai, berguna untuk medan Turun ke bawah dan Pelbagai pilihan.',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => 'cth.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5038,6 +5010,8 @@ sub Data {
         'Server Database Charset' => 'Setchar Pangkalan data Pelayan',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => 'Setchar Jadual',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 
@@ -5209,7 +5183,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Tiket',
         'Ticket History Entries' => 'Penyertaan Sejarah Tiket ',
         'Articles' => 'Artikel',
         'Attachments (DB, Without HTML)' => 'Lampiran (DB, Tanpa HTML)',
@@ -5635,6 +5608,8 @@ sub Data {
             'Memecahkan garis Automatik dalam mesej teks selepas beberapa x aksara.',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             'Tetapkan jumlah barisan yang dipamerkan dalam mesej teks (cth: barisan tiket dalam dalam QueueZoom).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => 'Aktifkan tarik dan lepas untuk navigasi utama.',
         'Defines the date input format used in forms (option or input fields).' =>
             'Mentakrifkan format input tarikh yang digunakan dalam bentuk (pilihan atau medan input).',
@@ -7901,6 +7876,8 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             '',
         'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".' =>
             '',
+        'Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.' =>
+            '',
 
         # XML Definition: scripts/database/initial_insert.xml
         'invalid-temporarily' => 'tidak sah-sementara',
@@ -8845,6 +8822,7 @@ Kumpulan MejaBantuan Anda
         'Manage tasks triggered by event or time based execution.' => 'Uruskan tugas yang dicetuskan oleh acara atau pelaksanaan berdasarkan masa.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Tanda sebagai Spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => 'Tanda tiket ini sebagai junk!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9085,7 +9063,6 @@ Kumpulan MejaBantuan Anda
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => 'Tinjauan Barisan Tiket',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

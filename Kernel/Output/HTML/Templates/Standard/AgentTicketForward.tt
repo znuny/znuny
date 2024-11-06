@@ -88,7 +88,7 @@
                             <span class="Marker">*</span>
                             [% Translate("To") | html %]:
                             [% IF Data.OptionCustomerUserAddressBook %]
-                            <a href="#" data-recipient-field-label="[% Translate(" To") | html %]" data-recipient-field="ToCustomer" data-recipient-type="Email" id="OptionCustomerUserAddressBookToCustomer" class="OptionCustomerUserAddressBook AdditionlFieldIcon icon-hover" title="[% Translate(" Select one or more recipients from the customer user address book.") | html %]">
+                            <a href="#" data-recipient-field-label="[% Translate("To") | html %]" data-recipient-field="ToCustomer" data-recipient-type="Email" id="OptionCustomerUserAddressBookToCustomer" class="OptionCustomerUserAddressBook AdditionlFieldIcon icon-hover" title="[% Translate("Select one or more recipients from the customer user address book.") | html %]">
                                 <span>[% Translate("Customer user address book") | html %]</span>
                                 <i class="fa fa-address-book-o"></i>
                             </a>
@@ -110,7 +110,7 @@
                                 <input name="CustomerInitialValue" id="CustomerInitialValue" type="hidden" value="[% Data.To | html %]" />
                                 <input name="CustomerKey" id="CustomerKey" class="CustomerKey" type="hidden" value="" />
                                 <input name="CustomerQueue" id="CustomerQueue" class="CustomerQueue" type="hidden" value="" />
-                                <input class="CustomerTicketText" title="[% Translate(" To") | html %]" name="CustomerTicketText" id="CustomerTicketText" type="text" value="" readonly="readonly" />
+                                <input class="CustomerTicketText" title="[% Translate("To") | html %]" name="CustomerTicketText" id="CustomerTicketText" type="text" value="" readonly="readonly" />
                                 <a href="#" id="RemoveCustomerTicket" class="RemoveButton CustomerTicketRemove icon-hover-sm">
                                     <i class="fa fa-times"></i>
                                     <span class="InvisibleText">[% Translate("Remove Ticket Customer") | html %]</span>
@@ -161,7 +161,7 @@
                         <label for="CcCustomer">
                             [% Translate("Cc") | html %]:
                             [% IF Data.OptionCustomerUserAddressBook %]
-                            <a href="#" data-recipient-field-label="[% Translate(" Cc") | html %]" data-recipient-field="CcCustomer" data-recipient-type="Email" id="OptionCustomerUserAddressBookCcCustomer" class="OptionCustomerUserAddressBook AdditionlFieldIcon icon-hover" title="[% Translate(" Select one or more recipients from the customer user address book.") | html %]">
+                            <a href="#" data-recipient-field-label="[% Translate("Cc") | html %]" data-recipient-field="CcCustomer" data-recipient-type="Email" id="OptionCustomerUserAddressBookCcCustomer" class="OptionCustomerUserAddressBook AdditionlFieldIcon icon-hover" title="[% Translate("Select one or more recipients from the customer user address book.") | html %]">
                                 <span>[% Translate("Customer user address book") | html %]</span>
                                 <i class="fa fa-address-book-o"></i>
                             </a>
@@ -180,7 +180,7 @@
                                 <input name="CcCustomerInitialValue" id="CcCustomerInitialValue" type="hidden" value="[% Data.Cc | html %]" />
                                 <input name="CcCustomerKey" id="CcCustomerKey" class="CustomerKey" type="hidden" value="" />
                                 <input name="CcCustomerQueue" id="CcCustomerQueue" class="CustomerQueue" type="hidden" value="" />
-                                <input class="CustomerTicketText" title="[% Translate(" Cc") | html %]" name="CcCustomerTicketText" id="CcCustomerTicketText" type="text" value="" readonly="readonly" />
+                                <input class="CustomerTicketText" title="[% Translate("Cc") | html %]" name="CcCustomerTicketText" id="CcCustomerTicketText" type="text" value="" readonly="readonly" />
                                 <a href="#" id="CcRemoveCustomerTicket" class="RemoveButton CustomerTicketRemove icon-hover-sm">
                                     <i class="fa fa-times"></i>
                                     <span class="InvisibleText">[% Translate("Remove Cc") | html %]</span>
@@ -231,7 +231,7 @@
                         <label for="BccCustomer">
                             [% Translate("Bcc") | html %]:
                             [% IF Data.OptionCustomerUserAddressBook %]
-                            <a href="#" data-recipient-field-label="[% Translate(" Bcc") | html %]" data-recipient-field="BccCustomer" data-recipient-type="Email" id="OptionCustomerUserAddressBookBccCustomer" class="OptionCustomerUserAddressBook AdditionlFieldIcon icon-hover" title="[% Translate(" Select one or more recipients from the customer user address book.") | html %]">
+                            <a href="#" data-recipient-field-label="[% Translate("Bcc") | html %]" data-recipient-field="BccCustomer" data-recipient-type="Email" id="OptionCustomerUserAddressBookBccCustomer" class="OptionCustomerUserAddressBook AdditionlFieldIcon icon-hover" title="[% Translate("Select one or more recipients from the customer user address book.") | html %]">
                                 <span>[% Translate("Customer user address book") | html %]</span>
                                 <i class="fa fa-address-book-o"></i>
                             </a>
@@ -250,7 +250,7 @@
                                 <input name="BccCustomerInitialValue" id="BccCustomerInitialValue" type="hidden" value="[% Data.Bcc | html %]" />
                                 <input name="BccCustomerKey" id="BccCustomerKey" class="CustomerKey" type="hidden" value="" />
                                 <input name="BccCustomerQueue" id="BccCustomerQueue" class="CustomerQueue" type="hidden" value="" />
-                                <input class="CustomerTicketText" title="[% Translate(" Bcc") | html %]" name="BccCustomerTicketText" id="BccCustomerTicketText" type="text" value="" readonly="readonly" />
+                                <input class="CustomerTicketText" title="[% Translate("Bcc") | html %]" name="BccCustomerTicketText" id="BccCustomerTicketText" type="text" value="" readonly="readonly" />
                                 <a href="#" id="BccRemoveCustomerTicket" class="RemoveButton CustomerTicketRemove icon-hover-sm">
                                     <i class="fa fa-times"></i>
                                     <span class="InvisibleText">[% Translate("Remove Bcc") | html %]</span>
@@ -389,7 +389,7 @@
         </div>
         <div class="Footer">
             [% INCLUDE "FormElements/DraftButtons.tt" %]
-            <button class="CallForAction Primary btn-main btn-primary btn-width-md" id="submitRichText" accesskey="g" title="[% Translate(" Send mail") | html %] (g)" type="submit" value="[% Translate(" Send mail") | html %]">
+            <button class="CallForAction Primary btn-main btn-primary btn-width-md" id="submitRichText" accesskey="g" title="[% Translate("Send mail") | html %] (g)" type="submit" value="[% Translate("Send mail") | html %]">
                 <span>[% Translate("Send mail") | html %]</span>
             </button>
         </div>

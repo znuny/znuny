@@ -382,7 +382,7 @@ Core.Form.Validate = (function (TargetNS) {
         $UsedObj;
 
         // Skip validation if field is not used (bug#12210)
-        $UsedObj = $(Element).siblings('input.DynamicFieldText[id*="Used"][type="checkbox"]');
+        $UsedObj = $(Element).closest('div.Row').find('input.DynamicFieldText[id*="Used"][type="checkbox"]');
         if ($UsedObj.length > 0 && $UsedObj.is(':checked') === false) {
             return true;
         }

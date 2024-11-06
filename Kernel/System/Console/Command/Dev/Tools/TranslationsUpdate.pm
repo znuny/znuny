@@ -91,7 +91,7 @@ sub PreRun {
 
     my $Home = $Kernel::OM->Get('Kernel::Config')->Get('Home');
 
-    $Self->Print("<yellow>Check for symbolic links...</yellow>\n\n");
+    $Self->Print("<yellow>Check for symbolic links...</yellow>");
 
     my @FilesInDirectory = $Kernel::OM->Get('Kernel::System::Main')->DirectoryRead(
         Directory => $Home,
@@ -106,7 +106,7 @@ sub PreRun {
             $Self->Print("<red>Linked file detected:</red> $File\n");
         }
     }
-
+    $Self->Print("<green> Done.</green>\n");
     return $Self->ExitCodeOk() if !$LinkedFile;
 
     $Self->Print("\n<red>Make sure that all symbolic links are removed before.</red>\n");

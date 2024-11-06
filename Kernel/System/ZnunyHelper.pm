@@ -2344,7 +2344,7 @@ sub _PostMasterFilterConfigImport {
     }
     return if !IsArrayRefWithData($Filter);
 
-    return $Self->_PostMasterFilterCreateIfNotExists( @{$Filter} );
+    return $Self->_PostMasterFilterCreate( @{$Filter} );
 }
 
 =head2 _GroupCreateIfNotExists()

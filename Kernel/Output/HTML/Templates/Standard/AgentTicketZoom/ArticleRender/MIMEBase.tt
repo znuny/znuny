@@ -41,7 +41,7 @@
                         <label class="Switchable">[% Translate(ArticleField.Label) | html %]:</label>
                         <div class="Field">
                             <span class="Switch [% ArticleField.ValueHidden | html %]">[% ArticleField.Value | html %]</span>
-                            <span class="Switch [% ArticleField.RealnameHidden | html %]">[% ArticleField.Realname | html %]</span>
+                            <span class="Switch [% ArticleField.RealnameHidden | html %]" title="[% ArticleField.Value | html %]">[% ArticleField.Realname | html %]</span>
                         </div>
                     </div>
                     [% ELSIF ArticleField.Type == "ArticleOption" %]

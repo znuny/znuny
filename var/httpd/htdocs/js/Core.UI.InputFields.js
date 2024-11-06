@@ -40,7 +40,6 @@ Core.UI.InputFields = (function (TargetNS) {
         ResizeEvent: 'onorientationchange' in window ? 'orientationchange' : 'resize',
         ResizeTimeout: 0,
         SafeMargin: 30,
-        MaxNumberOfOptions: 1000,
         MinQueryLength: 4,
         Diacritics: {
             "\u24B6":"A", "\uFF21":"A", "\u00C0":"A", "\u00C1":"A", "\u00C2":"A", "\u1EA6":"A",
@@ -1185,11 +1184,13 @@ Core.UI.InputFields = (function (TargetNS) {
                 $ShowTreeObj,
                 $FiltersListObj,
                 WholeRowClicked,
-                ScrollEventListener;
+                ScrollEventListener,
+                MaxNumberOfOptions;
 
             // For performance reasons:
             // Do not initialize modern inputfields on selects with many entries
-            if ($(SelectObj).children('option').length > Config.MaxNumberOfOptions) {
+            MaxNumberOfOptions = Core.Config.Get('InputFields::ModernizedSelection::MaxNumberOfOptions');
+            if ($(SelectObj).children('option').length > MaxNumberOfOptions) {
                 return;
             }
 

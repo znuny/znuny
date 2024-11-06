@@ -457,8 +457,8 @@ Core.UI.Dialog = (function (TargetNS) {
         if (InnerWidth >= 800){
             DialogModalClass = 'modal-lg';
         }
-        if (Params.DialogModalClass){
-            DialogModalClass = Params.DialogModalClass;
+        if (Params.ModalClass){
+            DialogModalClass = Params.ModalClass;
         }
 
         // add DialogModalClass to Dialog

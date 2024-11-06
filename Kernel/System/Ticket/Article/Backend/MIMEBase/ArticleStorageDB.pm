@@ -201,7 +201,8 @@ sub ArticleWriteAttachment {
     my $NewFileName = $Param{Filename};
     my %UsedFile;
     my %Index = $Self->ArticleAttachmentIndex(
-        ArticleID => $Param{ArticleID},
+        ArticleID     => $Param{ArticleID},
+        OnlyMyBackend => 1,
     );
 
     for my $IndexFile ( sort keys %Index ) {

@@ -2678,11 +2678,9 @@
                 <Item Key="AppointmentNotification">Appointment</Item>
                 <Item Key="AppointmentUpdate">Appointment</Item>
                 <Item Key="ArticleAgentNotification">Article</Item>
-                <Item Key="ArticleAgentNotification">Article</Item>
                 <Item Key="ArticleAutoResponse">Article</Item>
                 <Item Key="ArticleBounce">Article</Item>
                 <Item Key="ArticleCreate">Article</Item>
-                <Item Key="ArticleCustomerNotification">Article</Item>
                 <Item Key="ArticleCustomerNotification">Article</Item>
                 <Item Key="ArticleEmailSendingError">Article</Item>
                 <Item Key="ArticleEmailSendingQueued">Article</Item>
@@ -3564,7 +3562,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::Output::HTML::TicketMenu::Generic</Item>
-                <Item Key="Name">Mark as unseen</Item>
+                <Item Key="Name" Translatable="1">Mark as unseen</Item>
                 <Item Key="Description" Translatable="1">Mark ticket as unseen</Item>
                 <Item Key="Action"></Item>
                 <Item Key="Link">Action=AgentTicketMarkSeenUnseen;Subaction=Unseen;TicketID=[% Data.TicketID | html %]</Item>
@@ -3579,7 +3577,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::Output::HTML::TicketMenu::Generic</Item>
-                <Item Key="Name">Mark as seen</Item>
+                <Item Key="Name" Translatable="1">Mark as seen</Item>
                 <Item Key="Description" Translatable="1">Mark ticket as seen</Item>
                 <Item Key="Action"></Item>
                 <Item Key="Link">Action=AgentTicketMarkSeenUnseen;Subaction=Seen;TicketID=[% Data.TicketID | html %]</Item>
@@ -3594,7 +3592,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::Output::HTML::TicketMenu::Generic</Item>
-                <Item Key="Name">Mark as unseen</Item>
+                <Item Key="Name" Translatable="1">Mark as unseen</Item>
                 <Item Key="Description" Translatable="1">Mark ticket as unseen</Item>
                 <Item Key="Action"></Item>
                 <Item Key="Link">Action=AgentTicketMarkSeenUnseen;Subaction=Unseen;TicketID=[% Data.TicketID | html %];RedirectToSearch=1;</Item>
@@ -3609,7 +3607,7 @@
         <Value>
             <Hash>
                 <Item Key="Module">Kernel::Output::HTML::TicketMenu::Generic</Item>
-                <Item Key="Name">Mark as seen</Item>
+                <Item Key="Name" Translatable="1">Mark as seen</Item>
                 <Item Key="Description" Translatable="1">Mark ticket as seen</Item>
                 <Item Key="Action"></Item>
                 <Item Key="Link">Action=AgentTicketMarkSeenUnseen;Subaction=Seen;TicketID=[% Data.TicketID | html %];RedirectToSearch=1;</Item>
@@ -3645,4 +3643,13 @@
             </Hash>
         </Value>
     </Setting>
+
+    <Setting Name="AutoAttributFieldIDMapping" Required="0" Valid="1">
+        <Description Translatable="1">Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.</Description>
+        <Navigation>Frontend::Base</Navigation>
+        <Value>
+            <Item ValueType="Checkbox">1</Item>
+        </Value>
+    </Setting>
+
 </otrs_config>

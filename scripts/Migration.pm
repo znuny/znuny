@@ -250,6 +250,10 @@ sub _TasksGet {
             Module  => 'scripts::Migration::Znuny::MigrateGroups',
         },
         {
+            Message => 'Migrate SysConfig settings',
+            Module  => 'scripts::Migration::Znuny::MigrateSysConfigSettings',
+        },
+        {
             Message => 'Cleanup orphaned mentions',
             Module  => 'scripts::Migration::Znuny::CleanupOrphanedMentions',
         },

@@ -326,6 +326,11 @@ sub _DynamicFieldsListShow {
         );
 
         $LayoutObject->Block(
+            Name => 'OverviewNavBarPageNavBarBottom',
+            Data => \%PageNav,
+        );
+
+        $LayoutObject->Block(
             Name => 'ContextSettings',
             Data => { %PageNav, %Param, },
         );

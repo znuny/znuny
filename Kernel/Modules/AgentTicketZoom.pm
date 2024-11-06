@@ -161,6 +161,7 @@ sub Run {
     # get needed objects
     my $TicketObject  = $Kernel::OM->Get('Kernel::System::Ticket');
     my $ArticleObject = $Kernel::OM->Get('Kernel::System::Ticket::Article');
+    my $MentionObject = $Kernel::OM->Get('Kernel::System::Mention');
 
     # check permissions
     my $Access = $TicketObject->TicketPermission(
@@ -183,13 +184,23 @@ sub Run {
         DynamicFields => 1,
     );
 
-    # Set ticket mentions as seen.
-    $TicketObject->TicketFlagSet(
+    # Get mentions for the current ticket.
+    my $Mentions = $MentionObject->GetTicketMentions(
         TicketID => $Self->{TicketID},
-        Key      => 'MentionSeen',
-        Value    => 1,
-        UserID   => $Self->{UserID},
     );
+
+    # Get mentions only for the current user.
+    my @UserTicketMentions = grep { $_->{UserID} eq $Self->{UserID} } @{$Mentions};
+
+    # Set ticket mentions as seen.
+    if (@UserTicketMentions) {
+        $TicketObject->TicketFlagSet(
+            TicketID => $Self->{TicketID},
+            Key      => 'MentionSeen',
+            Value    => 1,
+            UserID   => $Self->{UserID},
+        );
+    }
 
     # get ACL restrictions
     my %PossibleActions;

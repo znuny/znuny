@@ -508,6 +508,15 @@ sub Block {
         Data => $Param{Data},
         };
 
+    # For performance reasons:
+    # Do not initialize modernized input fields on selections with many entries
+    my $MaxNumberOfOptions
+        = $Kernel::OM->Get('Kernel::Config')->Get("InputFields::ModernizedSelection::MaxNumberOfOptions");
+    $Self->AddJSData(
+        Key   => 'InputFields::ModernizedSelection::MaxNumberOfOptions',
+        Value => $MaxNumberOfOptions,
+    );
+
     return 1;
 }
 
@@ -1799,6 +1808,7 @@ sub Footer {
         Autocomplete               => $AutocompleteConfig,
         'Mentions::RichTextEditor' => $ConfigObject->Get('Mentions::RichTextEditor') // {},
         Skin                       => $Self->{SkinSelected},
+        AutoAttributFieldIDMapping => $ConfigObject->Get('AutoAttributFieldIDMapping') || 1,
     );
 
     for my $Config ( sort keys %JSConfig ) {
@@ -5578,14 +5588,21 @@ sub _BuildSelectionDataRefCreate {
                         $DisabledElements{$ElementLongName} = 1;
 
                         # add the element to the original data to be disabled later
-                        $DataLocal->{ $ElementLongName . '_Disabled' } = $ElementLongName;
+                        $DataLocal->{$ElementLongName} = $ElementLongName;
                     }
                     $Parents .= $Element . '::';
                 }
             }
         }
 
-        # sort hash (before the translation)
+        # translate value
+        if ( $OptionRef->{Translation} ) {
+            for my $Row ( sort keys %{$DataLocal} ) {
+                $DataLocal->{$Row} = $Self->{LanguageObject}->Translate( $DataLocal->{$Row} );
+            }
+        }
+
+        # sort hash
         my @SortKeys;
         if ( $OptionRef->{Sort} eq 'IndividualValue' && $OptionRef->{SortIndividual} ) {
             my %List = reverse %{$DataLocal};
@@ -5685,7 +5702,7 @@ sub _BuildSelectionDataRefCreate {
 
                         # push the missing element to the data local array
                         push @NewDataLocal, {
-                            Key      => $ElementLongName . '_Disabled',
+                            Key      => $ElementLongName,
                             Value    => $ElementLongName,
                             Disabled => 1,
                         };

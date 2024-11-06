@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '';
     $Self->{DateInputFormat}     = '';
     $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.865725541694025;
+    $Self->{Completeness}        = 0.868841654308782;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -1685,7 +1685,7 @@ sub Data {
         'Available Fields' => '사용 가능한 필드',
         'Filter available fields' => '사용 가능한 필드 필터링',
         'Assigned Fields' => '할당된 필드',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '통신 채널',
         'Is visible for customer' => '고객에게 표시됩니다.',
         'Text Template' => '텍스트 템플릿',
@@ -2364,23 +2364,16 @@ sub Data {
         'in' => '...에서',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
+        'All' => '모든',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => '더',
         'No Data Available.' => '자료 없음.',
         'Available Columns' => '가능한 컬럼',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => '보여지는 컬럼(드래그드롭으로 순서정렬 가능)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '고객 관계 변경',
@@ -2620,8 +2613,8 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '%s%s%s에 대한 답변 작성',
         'Date Invalid!' => '잘못된 날짜!',
-        ' Select one or more recipients from the customer user address book.' =>
-            '',
+        'Select one or more recipients from the customer user address book.' =>
+            '고객 사용자 주소록에서 하나 이상의 수신자를 선택하십시오.',
         'Customer user address book' => '고객 사용자 주소록',
         'This address is registered as system address and cannot be used: %s' =>
             '이 주소는 시스템 주소로 등록되어 있으므로 사용할 수 없습니다 : %s',
@@ -2630,12 +2623,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             '이 항목을 제거하고 올바른 값으로 새 항목을 입력하십시오.',
         'This address already exists on the address list.' => '이 주소는 이미 주소록에 있습니다.',
-        ' Cc' => '',
         'Remove Cc' => '참조 삭제',
         'Bcc' => '숨은 참조',
-        ' Bcc' => '',
         'Remove Bcc' => '숨은 참조 제거',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '고객을 %s%s%s로 변경하십시오.',
@@ -2644,23 +2634,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => '새 전자 메일 티켓 만들기',
-        ' Example Template' => '',
         'Example Template' => '템플릿 예제',
         'To customer user' => '고객 사용자에게',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => '적어도 한 명의 고객 사용자를 티켓에 포함하십시오.',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => '이 고객을 주요 고객으로 선택하십시오.',
         'Remove Ticket Customer User' => '티켓 고객 사용자 제거',
         'From queue' => '대기열에서',
-        ' Get all' => '',
         'Get all' => '모든 것을 가져라',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '%s%s%s의 발신 이메일',
-        'Select one or more recipients from the customer user address book.' =>
-            '고객 사용자 주소록에서 하나 이상의 수신자를 선택하십시오.',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '%s%s%s에게 이메일 다시 보내기',
@@ -2713,18 +2696,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => '티켓이 없습니다.',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => '보낸사람',
         'Customer User Name' => '고객 사용자 이름',
         'Impact' => '',
         'Update Time' => '업데이트 시간',
         'Solution Time' => '솔루션 시간',
         'First Response Time' => '첫 번째 응답 시간',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => '티켓을 다른 대기열로 이동',
         'Change queue' => '대기열 변경',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2733,21 +2714,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => '감상한 티켓 목록에서 제거',
         'Tickets per page' => '페이지 당 티켓',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '누란된 채널',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => '개요 재설정',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => '새로운 폰 티켓으로 분리',
         'Create New Phone Ticket' => '새로운 폰 티켓 생성',
         'Please include at least one customer for the ticket.' => '최소한 한 명의 고객을 티켓에 포함하십시오.',
-        'Select this customer as the main customer.' => '이 고객을 주요 고객으로 선택하십시오.',
         'To queue' => '대기열에 넣기',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2760,7 +2738,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => '새 프로세스 티켓 만들기',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => '티켓을 프로세스에 등록',
@@ -2804,7 +2781,6 @@ sub Data {
         'Save as default' => '기본값으로 저장',
         'Drafts' => '체커',
         'by' => '으로',
-        'Move ticket to a different queue' => '티켓을 다른 대기열로 이동',
         'Change Queue' => '대기열 변경',
         'There are no dialogs available at this point in the process.' =>
             '현재 이 과정에서 사용할 수 있는 대화 상자가 없습니다.',
@@ -2946,11 +2922,10 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => '새 티켓',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => '티켓',
         'Welcome!' => '환영!',
         'Please click the button below to create your first ticket.' => '첫 번째 티켓을 만드려면 아래 버튼을 클릭하십시오.',
         'Create your first ticket' => '첫 번째 티켓 만들기',
@@ -2959,13 +2934,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => '프로필',
+        'Template Name' => '템플릿 이름',
         'e. g. 10*5155 or 105658*' => '이자형. 지. 10 * 5155 또는 105658 *',
         'CustomerID' => '고객 ID',
         'Types' => '유형',
         'Limitation' => '',
         'No time settings' => '시간 설정 없음',
-        'All' => '모든',
         'Specific date' => '특정 날짜',
         'Only tickets created' => '생성된 티켓만',
         'Date range' => '날짜 범위',
@@ -2974,7 +2950,6 @@ sub Data {
         'Save Search as Template?' => '검색을 템플릿으로 저장하시겠습니까?',
         'Save as Template' => '템플릿으로 저장?',
         'Save as Template?' => '템플릿으로 저장?',
-        'Template Name' => '템플릿 이름',
         'Pick a profile name' => '프로필 이름 선택',
         'Output to' => '출력',
 
@@ -3204,7 +3179,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '약속 특성을 얻으려면',
-        ' e. g.' => 'e. g.',
+        'e. g.' => '예를들면',
         'To get the first 20 character of the appointment title.' => '약속 제목의 처음 20자를 얻습니다.',
         'To get the calendar attribute' => '달력 속성을 가져 오려면',
         'Attributes of the recipient user for the notification' => '알림에 대한 수신자 사용자의 속성',
@@ -3236,9 +3211,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => '동적 필드 내부 키 값 티켓 ',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             '티켓 동적 필드는 드롭 다운 및 Multiselect 필드에 유용한 값을 표시합니다. ',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => '예를들면',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5038,6 +5010,8 @@ sub Data {
         'Server Database Charset' => '서버 데이터베이스 문자 세트',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => '표 문자 집합',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 
@@ -5209,7 +5183,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '데이터베이스 레코드',
-        'Tickets' => '티켓',
         'Ticket History Entries' => '티켓 기록 항목',
         'Articles' => '게시물',
         'Attachments (DB, Without HTML)' => '첨부 파일 (DB, HTML 제외)',
@@ -5635,6 +5608,8 @@ sub Data {
             'X 문자 수 후에 문자 메시지의 자동 줄바꿈',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
             '문자 메시지에 표시되는 줄 수를 설정합니다 (예 : QueueZoom의 티켓 줄).',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
+            '',
         'Turns on drag and drop for the main navigation.' => '기본 탐색에 대한 드래그 앤 드롭을 켭니다.',
         'Defines the date input format used in forms (option or input fields).' =>
             '양식 (옵션 또는 입력 필드)에 사용되는 날짜 입력 형식을 정의합니다.',
@@ -7899,6 +7874,8 @@ sub Data {
             '',
         'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".' =>
             '',
+        'Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.' =>
+            '',
 
         # XML Definition: scripts/database/initial_insert.xml
         'invalid-temporarily' => '유효하지 않은 일시적',
@@ -8842,6 +8819,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '이벤트 또는 시간 기반 실행에 의해 트리거된 작업을 관리합니다.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => '스팸으로 표시하십시오!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '이 티켓을 정크로 표시하십시오!',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9082,7 +9060,6 @@ Thanks for your help!
         'Ticket Priority.' => '티켓 심각도',
         'Ticket Queue Overview' => '티켓 대기열 개요',
         'Ticket Responsible.' => '책임 티켓.',
-        'Ticket Search' => '',
         'Ticket Watcher' => '티켓 워처',
         'Ticket Zoom' => '티켓 확대/축소',
         'Ticket Zoom.' => '티켓 확대/축소.',

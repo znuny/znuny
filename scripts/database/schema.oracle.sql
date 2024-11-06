@@ -112,6 +112,7 @@ END;
 -- ----------------------------------------------------------
 CREATE TABLE activity (
     id NUMBER (12, 0) NOT NULL,
+    dbcrud_uuid VARCHAR2 (36) NULL,
     user_id NUMBER (12, 0) NOT NULL,
     activity_type VARCHAR2 (200) NOT NULL,
     activity_title VARCHAR2 (255) NOT NULL,
@@ -119,7 +120,8 @@ CREATE TABLE activity (
     activity_state VARCHAR2 (255) NULL,
     activity_link VARCHAR2 (255) NULL,
     create_time DATE NOT NULL,
-    create_by NUMBER (12, 0) NOT NULL
+    create_by NUMBER (12, 0) NOT NULL,
+    CONSTRAINT activity_uuid UNIQUE (dbcrud_uuid)
 );
 ALTER TABLE activity ADD CONSTRAINT PK_activity PRIMARY KEY (id);
 BEGIN

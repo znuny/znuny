@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.182698621142482;
+    $Self->{Completeness}        = 0.183391003460208;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -1685,7 +1685,7 @@ sub Data {
         'Available Fields' => '',
         'Filter available fields' => '',
         'Assigned Fields' => '',
-        ' Filter assigned fields' => '',
+        'Filter assigned fields' => '',
         'Communication Channel' => '',
         'Is visible for customer' => '',
         'Text Template' => 'Textová šablóna',
@@ -2364,23 +2364,16 @@ sub Data {
         'in' => 'v',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
-        ' Show or hide the content' => '',
+        'All' => 'Všetko',
         'Search inactive widgets' => '',
         'Active Widgets' => '',
-        ' Save changes' => '',
-        ' Save' => '',
         'Save changes' => '',
-        ' Settings' => '',
-        ' Refresh' => '',
-        ' Close this widget' => '',
+        'Close this widget' => '',
         'Hide' => '',
-        ' Cancel' => '',
         'more' => 'viac',
         'No Data Available.' => '',
         'Available Columns' => 'Dostupné stĺpce',
-        ' Filter available fields' => '',
         'Visible Columns (order by drag & drop)' => 'Viditelné stĺpce(zoraditelné cez drag & drop)',
-        ' Submit' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCustomerIDList.tt
         'Change Customer Relations' => '',
@@ -2620,7 +2613,7 @@ sub Data {
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
         'Compose Answer for %s%s%s' => '',
         'Date Invalid!' => 'Chybný dátum',
-        ' Select one or more recipients from the customer user address book.' =>
+        'Select one or more recipients from the customer user address book.' =>
             '',
         'Customer user address book' => '',
         'This address is registered as system address and cannot be used: %s' =>
@@ -2630,12 +2623,9 @@ sub Data {
         'Please remove this entry and enter a new one with the correct value.' =>
             'Vymažte tento vstup a vložte nový so správnou hodnotou',
         'This address already exists on the address list.' => 'Táto adresa je už v zoznamen adries',
-        ' Cc' => '',
         'Remove Cc' => 'Vymazať Kópiu',
         'Bcc' => 'Skrytá kópia',
-        ' Bcc' => '',
         'Remove Bcc' => 'Vymazať Skrytú kópiu',
-        ' Send mail' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCustomer.tt
         'Change Customer of %s%s%s' => '',
@@ -2644,23 +2634,16 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmail.tt
         'Create New Email Ticket' => 'Vytvoriť nový e-mail tiket',
-        ' Example Template' => '',
         'Example Template' => 'Príklad šablóny',
         'To customer user' => 'Používateľovi',
-        ' To' => '',
         'Please include at least one customer user for the ticket.' => 'Pridajte aspon jedného používateľa pre tiket',
-        ' Select this customer as the main customer.' => '',
-        ' To customer user' => '',
+        'Select this customer as the main customer.' => 'Vybrat tohoto použivateľa ako hlavného',
         'Remove Ticket Customer User' => 'Vymaž použivateľa z tiketu',
         'From queue' => 'Z radu',
-        ' Get all' => '',
         'Get all' => 'Vybrať všetko',
-        ' Message body' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailOutbound.tt
         'Outbound Email for %s%s%s' => '',
-        'Select one or more recipients from the customer user address book.' =>
-            '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketEmailResend.tt
         'Resend Email for %s%s%s' => '',
@@ -2713,18 +2696,16 @@ sub Data {
         'NoteToTicket invalid.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewMedium.tt
-        ' Select all' => '',
         'No ticket data found.' => 'Neboli nájdené žiadne dáta ticketu',
-        ' Open / Close ticket action menu' => '',
-        ' Select this ticket' => '',
+        'Open / Close ticket action menu' => '',
+        'Select this ticket' => '',
         'Sender' => 'Odosielateľ',
         'Customer User Name' => '',
         'Impact' => '',
         'Update Time' => 'Čas aktualizácie',
         'Solution Time' => 'Čas vyriešenia',
         'First Response Time' => 'Čas prvej odozvy',
-        ' Service Time' => '',
-        ' Move ticket to a different queue' => '',
+        'Move ticket to a different queue' => 'Presunúť tiket do iného radu',
         'Change queue' => 'Zmeniť rad',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewNavBar.tt
@@ -2733,21 +2714,18 @@ sub Data {
         'Remove mention' => '',
         'Remove from list of watched tickets' => 'Vymaž zo zoznamu sledovaných tiketov',
         'Tickets per page' => 'Počet zobrazených tiketov na stránku',
-        'Filter assigned fields' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewPreview.tt
-        ' Missing channel' => '',
         'Missing channel' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketOverviewSmall.tt
         'Reset overview' => 'Resetnúť prehľad',
-        ' Column Filters Form' => '',
+        'Column Filters Form' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhone.tt
         'Split Into New Phone Ticket' => 'Oddeľ do nového Telefón tiketu',
         'Create New Phone Ticket' => 'Vytvor nový Telefón tiket',
         'Please include at least one customer for the ticket.' => 'Prosím doplňte aspoň jedného zákazníka pre tiket',
-        'Select this customer as the main customer.' => 'Vybrat tohoto použivateľa ako hlavného',
         'To queue' => 'Do radu',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketPhoneCommon.tt
@@ -2760,7 +2738,6 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcess.tt
         'Create New Process Ticket' => 'Vytvoriť nový Proces tiket',
-        ' Loading' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketProcessSmall.tt
         'Enroll Ticket into a Process' => 'Zapíš tiket do procesu',
@@ -2804,7 +2781,6 @@ sub Data {
         'Save as default' => 'Uložiť do prednastavených',
         'Drafts' => '',
         'by' => 'podľa',
-        'Move ticket to a different queue' => 'Presunúť tiket do iného radu',
         'Change Queue' => 'Zmeň rad',
         'There are no dialogs available at this point in the process.' =>
             'V tejto časti procesu nie je žiadna možnosť dialógu',
@@ -2946,11 +2922,10 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketMessage.tt
         'New Ticket' => 'Nový tiket',
-        ' Service level agreement' => '',
-        'Dymanic Info' => '',
-        ' Subject' => '',
+        'Service level agreement' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+        'Tickets' => 'Tikety',
         'Welcome!' => 'Vitajte!',
         'Please click the button below to create your first ticket.' => 'Na vytvorenie Vášho prvého tiketu stlačte tlačítko dole',
         'Create your first ticket' => 'Vytvoriť tiket',
@@ -2959,13 +2934,14 @@ sub Data {
         'New Process Ticket' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+        'Ticket Search' => '',
         'Profile' => 'Profil',
+        'Template Name' => 'Meno šablóny',
         'e. g. 10*5155 or 105658*' => 'napríklad 10*5155 alebo 105658*',
         'CustomerID' => 'Zákaznícke č.',
         'Types' => 'Typy',
         'Limitation' => '',
         'No time settings' => 'Bez nastavenia času',
-        'All' => 'Všetko',
         'Specific date' => '',
         'Only tickets created' => 'Len tikety vytvorené',
         'Date range' => '',
@@ -2974,7 +2950,6 @@ sub Data {
         'Save Search as Template?' => '',
         'Save as Template' => 'Uložiť ako šablónu',
         'Save as Template?' => 'Uložiť ako šablónu?',
-        'Template Name' => 'Meno šablóny',
         'Pick a profile name' => 'Vyberte meno profilu',
         'Output to' => 'Výstup na',
 
@@ -3204,7 +3179,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminAppointmentNotificationEvent.tt
         'To get the appointment attribute' => '',
-        ' e. g.' => '',
+        'e. g.' => '',
         'To get the first 20 character of the appointment title.' => '',
         'To get the calendar attribute' => '',
         'Attributes of the recipient user for the notification' => '',
@@ -3236,9 +3211,6 @@ sub Data {
         'Ticket dynamic fields internal key values' => '',
         'Ticket dynamic fields display values, useful for Dropdown and Multiselect fields' =>
             '',
-
-        # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminSalutation.tt
-        'e. g.' => '',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/SmartTags/AdminTemplate.tt
         'To get the first 20 characters of the subject of the current/latest agent article (current for Answer and Forward, latest for Note template type). This tag is not supported for other template types.' =>
@@ -5038,6 +5010,8 @@ sub Data {
         'Server Database Charset' => '',
         'The setting character_set_database needs to be \'utf8mb4\'.' => '',
         'Table Charset' => '',
+        'There were non-system tables found which do not have \'utf8mb4\' as charset.' =>
+            '',
         'There were tables found which do not have \'utf8mb4\' as charset.' =>
             '',
 
@@ -5209,7 +5183,6 @@ sub Data {
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
         'Database Records' => '',
-        'Tickets' => 'Tikety',
         'Ticket History Entries' => 'História tiketu',
         'Articles' => 'Články',
         'Attachments (DB, Without HTML)' => 'Prílohy',
@@ -5634,6 +5607,8 @@ sub Data {
         'Automated line break in text messages after x number of chars.' =>
             '',
         'Sets the number of lines that are displayed in text messages (e.g. ticket lines in the QueueZoom).' =>
+            '',
+        'Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized.' =>
             '',
         'Turns on drag and drop for the main navigation.' => '',
         'Defines the date input format used in forms (option or input fields).' =>
@@ -7899,6 +7874,8 @@ sub Data {
             '',
         'Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel "system".' =>
             '',
+        'Adds the field mapping for AgentTicketActionCommon for an unknown action. Used by Znuny.Form.Input.' =>
+            '',
 
         # XML Definition: scripts/database/initial_insert.xml
         'invalid-temporarily' => 'dočasne neplatný',
@@ -8831,6 +8808,7 @@ Thanks for your help!
         'Manage tasks triggered by event or time based execution.' => '',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Označ ako Spam!',
+        'Mark as seen' => '',
         'Mark this ticket as junk!' => '',
         'Mark ticket as seen' => '',
         'Mark ticket as unseen' => '',
@@ -9071,7 +9049,6 @@ Thanks for your help!
         'Ticket Priority.' => '',
         'Ticket Queue Overview' => '',
         'Ticket Responsible.' => '',
-        'Ticket Search' => '',
         'Ticket Watcher' => '',
         'Ticket Zoom' => '',
         'Ticket Zoom.' => '',

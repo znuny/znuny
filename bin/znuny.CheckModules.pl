@@ -385,7 +385,7 @@ my @NeededModules = (
     {
         Module          => 'Hash::Merge',
         VersionRequired => '0.300',
-        Required        => 0,
+        Required        => 1,
         Comment         => 'Required for the creation of Excel statistical reports.',
         InstTypes       => {
             aptget => 'libhash-merge-perl',

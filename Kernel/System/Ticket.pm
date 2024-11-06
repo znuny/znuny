@@ -1227,14 +1227,12 @@ sub TicketGet {
         Key  => $CacheKey,
     );
 
+    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+
     if ( ref $Cached eq 'HASH' ) {
         %Ticket = %{$Cached};
     }
     else {
-
-        # get database object
-        my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
-
         return if !$DBObject->Prepare(
             SQL => '
                 SELECT st.id, st.queue_id, st.ticket_state_id, st.ticket_lock_id, st.ticket_priority_id,
@@ -1316,19 +1314,35 @@ sub TicketGet {
         my $DynamicFieldBackendObject = $Kernel::OM->Get('Kernel::System::DynamicField::Backend');
 
         # get all dynamic fields for the object type Ticket
-        my $DynamicFieldList = $DynamicFieldObject->DynamicFieldListGet(
-            ObjectType => 'Ticket'
+        my $TicketDynamicFieldList = $DynamicFieldObject->DynamicFieldListGet(
+            ObjectType => 'Ticket',
         );
 
-        DYNAMICFIELD:
-        for my $DynamicFieldConfig ( @{$DynamicFieldList} ) {
+        my %TicketDynamicFieldConfigByID = map { $_->{ID} => $_ } @{$TicketDynamicFieldList};
 
-            # validate each dynamic field
-            next DYNAMICFIELD if !$DynamicFieldConfig;
-            next DYNAMICFIELD if !IsHashRefWithData($DynamicFieldConfig);
-            next DYNAMICFIELD if !$DynamicFieldConfig->{Name};
+        # Limit fetching dynamic field values to those that are really set for the ticket.
+        return if !$DBObject->Prepare(
+            SQL => '
+                SELECT DISTINCT (field_id)
+                FROM   dynamic_field_value
+                WHERE  object_id = ?
+            ',
+            Bind => [
+                \$Param{TicketID},
+            ],
+        );
 
-            # get the current value for each dynamic field
+        my @DynamicFieldIDs;
+        while ( my @Row = $DBObject->FetchrowArray() ) {
+            my $DynamicFieldID = $Row[0];
+            push @DynamicFieldIDs, $DynamicFieldID;
+        }
+
+        DYNAMICFIELDID:
+        for my $DynamicFieldID (@DynamicFieldIDs) {
+            my $DynamicFieldConfig = $TicketDynamicFieldConfigByID{$DynamicFieldID};
+            next DYNAMICFIELDID if !IsHashRefWithData($DynamicFieldConfig);
+
             my $Value = $DynamicFieldBackendObject->ValueGet(
                 DynamicFieldConfig => $DynamicFieldConfig,
                 ObjectID           => $Ticket{TicketID},
@@ -7036,21 +7050,42 @@ sub TicketFlagSet {
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
     # set flag
-    return if !$DBObject->Do(
+    my $FlagExists;
+    return if !$DBObject->Prepare(
         SQL => '
-            DELETE FROM ticket_flag
-            WHERE ticket_id = ?
-                AND ticket_key = ?
-                AND create_by = ?',
+            SELECT ticket_id
+            FROM   ticket_flag
+            WHERE  ticket_id = ?
+                   AND ticket_key = ?
+                   AND create_by = ?
+        ',
         Bind => [ \$Param{TicketID}, \$Param{Key}, \$Param{UserID} ],
     );
-    return if !$DBObject->Do(
-        SQL => '
-            INSERT INTO ticket_flag
-            (ticket_id, ticket_key, ticket_value, create_time, create_by)
-            VALUES (?, ?, ?, current_timestamp, ?)',
-        Bind => [ \$Param{TicketID}, \$Param{Key}, \$Param{Value}, \$Param{UserID} ],
-    );
+    while ( my @Row = $DBObject->FetchrowArray() ) {
+        $FlagExists = 1;
+    }
+
+    if ($FlagExists) {
+        return if !$DBObject->Do(
+            SQL => '
+                UPDATE ticket_flag
+                SET    ticket_value = ?
+                WHERE  ticket_id = ?
+                       AND ticket_key = ?
+                       AND create_by = ?
+            ',
+            Bind => [ \$Param{Value}, \$Param{TicketID}, \$Param{Key}, \$Param{UserID} ],
+        );
+    }
+    else {
+        return if !$DBObject->Do(
+            SQL => '
+                INSERT INTO ticket_flag
+                (ticket_id, ticket_key, ticket_value, create_time, create_by)
+                VALUES (?, ?, ?, current_timestamp, ?)',
+            Bind => [ \$Param{TicketID}, \$Param{Key}, \$Param{Value}, \$Param{UserID} ],
+        );
+    }
 
     # delete cache
     $Kernel::OM->Get('Kernel::System::Cache')->Delete(

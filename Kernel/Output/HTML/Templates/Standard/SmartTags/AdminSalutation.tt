@@ -17,33 +17,33 @@
 <dt><code class="bold">&lt;OTRS_TICKET_*&gt;</code></dt>
 <dd class="flex-row">
     [% Translate("Attributes of the ticket data") | html %]
-    [% Translate(" e. g.") | html %] <code>&lt;OTRS_TICKET_TicketNumber&gt;, &lt;OTRS_TICKET_TicketID&gt;,
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_TICKET_TicketNumber&gt;, &lt;OTRS_TICKET_TicketID&gt;,
     &lt;OTRS_TICKET_Queue&gt;, &lt;OTRS_TICKET_State&gt;</code>
 </dd>
 
 <dt><code class="bold">&lt;OTRS_TICKET_DynamicField_*&gt;</code></dt>
 <dd class="flex-row">
     [% Translate("Ticket dynamic fields internal key values") | html %]
-    [% Translate(" e. g.") | html %] <code>&lt;OTRS_TICKET_DynamicField_TestField&gt;,
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_TICKET_DynamicField_TestField&gt;,
     &lt;OTRS_TICKET_DynamicField_TicketFreeText1&gt;</code>
 </dd>
 
 <dt><code class="bold">&lt;OTRS_TICKET_DynamicField_*_Value&gt;</code></dt>
 <dd class="flex-row">
     [% Translate("Ticket dynamic fields display values, useful for Dropdown and Multiselect fields") | html %]
-    [% Translate(" e. g.") | html %] <code>&lt;OTRS_TICKET_DynamicField_TestField_Value&gt;,
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_TICKET_DynamicField_TestField_Value&gt;,
     &lt;OTRS_TICKET_DynamicField_TicketFreeText1_Value&gt;</code>
 </dd>
 
 <dt><code class="bold">&lt;OTRS_CUSTOMER_*&gt;</code></dt>
 <dd class="flex-row">
     [% Translate("To get the article attribute") | html %]
-    [% Translate(" e. g.") | html %] <code>&lt;OTRS_CUSTOMER_From&gt;, &lt;OTRS_CUSTOMER_To&gt;,
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_CUSTOMER_From&gt;, &lt;OTRS_CUSTOMER_To&gt;,
     &lt;OTRS_CUSTOMER_Cc&gt;, &lt;OTRS_CUSTOMER_Subject&gt;, &lt;OTRS_CUSTOMER_BODY&gt;</code>
 </dd>
 
 <dt><code class="bold">&lt;OTRS_CUSTOMER_DATA_*&gt;</code></dt>
 <dd class="flex-row">
     [% Translate("Options of the current customer user data") | html %]
-    [% Translate(" e. g.") | html %] <code>&lt;OTRS_CUSTOMER_DATA_UserFirstname&gt;</code>
+    [% Translate("e. g.") | html %] <code>&lt;OTRS_CUSTOMER_DATA_UserFirstname&gt;</code>
 </dd>
