@@ -24342,3 +24342,7 @@ msgstr ""
 msgid "Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized."
 msgstr ""
 
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Default preferences to set during user creation."
+msgstr ""
+

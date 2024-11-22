@@ -522,6 +522,18 @@ sub UserAdd {
         return;
     }
 
+    # Set configured default preferences
+    my $DefaultPreferences = $Kernel::OM->Get('Kernel::Config')->Get('User::DefaultPreferences') // {};
+    for my $Preference ( sort keys %{$DefaultPreferences} ) {
+        my $Value = $DefaultPreferences->{$Preference};
+
+        $Self->SetPreferences(
+            UserID => $UserID,
+            Key    => $Preference,
+            Value  => $Value,
+        );
+    }
+
     # log notice
     $Kernel::OM->Get('Kernel::System::Log')->Log(
         Priority => 'notice',
@@ -544,7 +556,7 @@ sub UserAdd {
         next USERPREFERENCE if $UserPreference eq 'UserEmail' && !$Param{UserEmail};
 
         # Set user preferences.
-        # Native user data will not be overwriten (handeled by SetPreferences()).
+        # Native user data will not be overwritten (handled by SetPreferences()).
         $Self->SetPreferences(
             UserID => $UserID,
             Key    => $UserPreference,
