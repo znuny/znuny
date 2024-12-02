@@ -20,12 +20,16 @@ Znuny.Agent.Admin.DynamicFieldConfigurationImportExport = (function (TargetNS) {
 
     TargetNS.Init = function () {
 
+        // Initialize dynamic field filter
+        Core.UI.Table.InitTableFilter($('#FilterDynamicFields'), $('#DynamicFieldsTable'));
+
         // Select all configurations.
         $('#SelectAllDynamicFieldConfigurations, #SelectAllDynamicFieldScreenConfigurations').on('click', function () {
             var Checked = $(this).prop('checked'),
                 Type = $(this).attr('data-type');
 
-            $('input:checkbox[name="' + Type + '"]').prop('checked', Checked);
+            // Check only visible checkboxes.
+            $('input:checkbox[name="' + Type + '"]:visible').prop('checked', Checked);
         });
 
         // Set/unset checkbox "select all" depending on selected configurations.
