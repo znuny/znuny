@@ -2,15 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2023-03-23 09:27+0000\n"
-"PO-Revision-Date: 2024-10-19 00:17+0000\n"
+"PO-Revision-Date: 2024-12-08 00:20+0000\n"
 "Last-Translator: BuilderNSV <nikitin.sergey.v@gmail.com>\n"
-"Language-Team: Russian <https://translations.znuny.org/projects/znuny/znuny/ru/>\n"
+"Language-Team: Russian <https://translations.znuny.org/projects/znuny/znuny/"
+"ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.6.2\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.8.4\n"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
 msgid "Actions"
@@ -618,7 +620,7 @@ msgstr "Тема сообщения"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
 msgid "Text"
-msgstr "Текст сообщения"
+msgstr "Текст"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminAppointmentNotificationEvent.tt
 msgid "Message body"
@@ -11058,7 +11060,7 @@ msgstr "Все получатели последней заметки"
 
 #. Perl Module: Kernel/Modules/AdminNotificationEvent.pm
 msgid "All agents who are mentioned in the ticket"
-msgstr ""
+msgstr "Все агенты, которые были упомянуты в заявке"
 
 #. Perl Module: Kernel/Modules/AdminNotificationEvent.pm
 msgid "Invisible to customer"
@@ -18959,6 +18961,8 @@ msgstr "Задает приоритет по умолчанию для ново�
 #. XML Definition: Kernel/Config/Files/XML/Ticket.xml
 msgid "Allows customers to set the ticket queue in the customer interface. If this is not enabled, QueueDefault should be configured."
 msgstr ""
+"Дает возможность клиентам указывать очередь для заявки в интерфейсе клиента. "
+"Если не включено, то QueueDefault должно быть определено."
 
 #. XML Definition: Kernel/Config/Files/XML/Ticket.xml
 msgid "Defines the default queue for new customer tickets in the customer interface."
@@ -18967,6 +18971,8 @@ msgstr "Задает очередь по умолчанию для новых з
 #. XML Definition: Kernel/Config/Files/XML/Ticket.xml
 msgid "Allows customers to set the ticket type in the customer interface. If this is not enabled, TicketTypeDefault should be configured."
 msgstr ""
+"Дает возможность клиентам указывать тип заявки в интерфейсе клиента. Если не "
+"включено, то TicketTypeDefault должно быть определено."
 
 #. XML Definition: Kernel/Config/Files/XML/Ticket.xml
 msgid "Defines the default ticket type for new customer tickets in the customer interface."
@@ -19802,7 +19808,7 @@ msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Agent recipient information which will be passed to the web service."
-msgstr ""
+msgstr "Информация об агенте-получателе, которая будет передана веб сервису."
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Customer recipient information which will be passed to the web service."
@@ -19939,6 +19945,10 @@ msgstr ""
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Agent interface notification module to see the number of tickets an agent is owner for. Additional access control to show or not show this link can be done by using Key \"Group\" and Content like \"rw:group1;move_into:group2\"."
 msgstr ""
+"Модуль уведомления в интерфейсе агента, показывающий число заявок, "
+"владельцем которых является агент. Дополнительный контроль доступа, "
+"ограничивающий отображение этой ссылки, может быть выполнен используя ключ "
+"\"Group\" и значение вида \"rw:group1;move_into:group2\"."
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Defines the next possible ticket states for calendar based tickets."
@@ -20131,6 +20141,7 @@ msgstr ""
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Allows adding notes in the NoteToLinkedTicket screen of the agent interface."
 msgstr ""
+"Разрешает добавлять заметки на экране NoteToLinkedTicket в интерфейсе агента."
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Sets if a note in NoteToLinkedTicket screen must be filled in by the agent."
@@ -21688,7 +21699,7 @@ msgstr ""
 
 #. SysConfig
 msgid "Admin modules overview."
-msgstr ""
+msgstr "Обзор модулей администратора."
 
 #. SysConfig
 msgid "Admin."
@@ -24345,4 +24356,3 @@ msgstr ""
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Default preferences to set during user creation."
 msgstr ""
-
