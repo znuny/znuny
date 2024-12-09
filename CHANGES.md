@@ -1,4 +1,5 @@
 # 7.1.4 2024-??-??
+  -2024-12-06 Fixed data evaluation in ICS calendar event.
  - 2024-12-02 Added Filter for Admin->Export DynamicFields.
  - 2024-11-28 Fixed Server Error, when Frontend::Template::GenerateBlockHooks###NAME has no valid data structure.
  - 2024-11-22 Added new system configuration option 'User::DefaultPreferences'. These preferences will automatically be set during user (agent) creation.
