@@ -83,7 +83,6 @@
     </div>
 [% RenderBlockEnd("ToolBarLastViews") %]
 
-    <!-- Search Tools Start -->
     <div class="component-wrapper component-search align-right-auto">
         <div class="search-bar-container">
             <label>[% Translate('Search tools') | html %]</label>
@@ -124,5 +123,4 @@
             </form>
         </div>
     </div>
-    <!-- Search Tools End -->
 </div>
