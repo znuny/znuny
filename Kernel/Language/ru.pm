@@ -38,7 +38,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.868533772652389;
+    $Self->{Completeness}        = 0.869686985172982;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -232,7 +232,7 @@ sub Data {
             'Этот язык отсутствует или не включен для использования в системе. Этот текст уведомления будет удален, если он больше не нужен.',
         'Remove Notification Language' => 'Удалить язык уведомлений',
         'Subject' => 'Тема сообщения',
-        'Text' => 'Текст сообщения',
+        'Text' => 'Текст',
         'Message body' => 'Содержание уведомления',
         'Add new notification language' => 'Добавить дополнительный язык для уведомлений',
         'Save Changes' => 'Сохранить изменения',
@@ -3820,7 +3820,7 @@ sub Data {
         'Customer user of the ticket' => 'Клиент заявки',
         'All recipients of the first article' => 'Все получатели первой заметки',
         'All recipients of the last article' => 'Все получатели последней заметки',
-        'All agents who are mentioned in the ticket' => '',
+        'All agents who are mentioned in the ticket' => 'Все агенты, которые были упомянуты в заявке',
         'Invisible to customer' => 'Невидимо для клиента',
         'Visible to customer' => '',
 
@@ -7324,11 +7324,11 @@ sub Data {
         'Defines the default priority of new customer tickets in the customer interface.' =>
             'Задает приоритет по умолчанию для новой заявки клиента через клиентский интерфейс.',
         'Allows customers to set the ticket queue in the customer interface. If this is not enabled, QueueDefault should be configured.' =>
-            '',
+            'Дает возможность клиентам указывать очередь для заявки в интерфейсе клиента. Если не включено, то QueueDefault должно быть определено.',
         'Defines the default queue for new customer tickets in the customer interface.' =>
             'Задает очередь по умолчанию для новых заявок, создаваемых клиентом в WEB интерфейсе.',
         'Allows customers to set the ticket type in the customer interface. If this is not enabled, TicketTypeDefault should be configured.' =>
-            '',
+            'Дает возможность клиентам указывать тип заявки в интерфейсе клиента. Если не включено, то TicketTypeDefault должно быть определено.',
         'Defines the default ticket type for new customer tickets in the customer interface.' =>
             'Задает приоритет заявки по умолчанию для новой заявки в интерфейсе клиента.',
         'Allows customers to set the ticket service in the customer interface.' =>
@@ -7699,7 +7699,7 @@ sub Data {
         'User agent string to use for the WebUserAgent module. Leave empty to use the default user agent string.' =>
             '',
         'Agent recipient information which will be passed to the web service.' =>
-            '',
+            'Информация об агенте-получателе, которая будет передана веб сервису.',
         'Customer recipient information which will be passed to the web service.' =>
             '',
         'Parameter name for additional recipients.' => '',
@@ -7756,7 +7756,7 @@ sub Data {
         'Columns that can be filtered in the owner view of the agent interface. Note: Only Ticket attributes and Dynamic Fields (DynamicField_NameX) are allowed.' =>
             '',
         'Agent interface notification module to see the number of tickets an agent is owner for. Additional access control to show or not show this link can be done by using Key "Group" and Content like "rw:group1;move_into:group2".' =>
-            '',
+            'Модуль уведомления в интерфейсе агента, показывающий число заявок, владельцем которых является агент. Дополнительный контроль доступа, ограничивающий отображение этой ссылки, может быть выполнен используя ключ "Group" и значение вида "rw:group1;move_into:group2".',
         'Defines the next possible ticket states for calendar based tickets.' =>
             '',
         'Defines the default next state.' => '',
@@ -7835,7 +7835,7 @@ sub Data {
         'Sets the default body text for notes added in the NoteToLinkedTicket screen of the agent interface.' =>
             '',
         'Allows adding notes in the NoteToLinkedTicket screen of the agent interface.' =>
-            '',
+            'Разрешает добавлять заметки на экране NoteToLinkedTicket в интерфейсе агента.',
         'Sets if a note in NoteToLinkedTicket screen must be filled in by the agent.' =>
             '',
         'Defines the history type for the NoteToLinkedTicket screen, which will be used for ticket history in the agent interface.' =>
@@ -8481,7 +8481,7 @@ Thanks for your help!
         'Admin Notification' => 'Уведомление администратором',
         'Admin configuration dialog for dynamic field types WebserviceDropdown and WebserviceMultiselect' =>
             '',
-        'Admin modules overview.' => '',
+        'Admin modules overview.' => 'Обзор модулей администратора.',
         'Admin.' => 'Администратор.',
         'Administration' => 'Администрирование',
         'Agent Customer Search' => 'Поиск клиента агентом',
