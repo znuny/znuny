@@ -212,7 +212,7 @@ Core.Agent.TicketZoom = (function (TargetNS) {
 
             // add switchable toggle for new article
             $('label.Switchable').off('click.Switch').on('click.Switch', function() {
-                $(this).next('p.Value').find('.Switch').toggleClass('Hidden');
+                $(this).next('div').find('.Switch').toggleClass('Hidden');
             });
 
             //Remove Loading class
