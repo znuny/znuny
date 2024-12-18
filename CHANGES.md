@@ -1,6 +1,7 @@
 # 7.1.4 2024-??-??
  - 2024-12-10 Fixed "From" and "To" not being expandable for an article in ticket zoom. Thanks to Oliver Freyermuth (@olifre) for reporting. [#605](https://github.com/znuny/Znuny/issues/605)
-  -2024-12-06 Fixed data evaluation in ICS calendar event.
+ - 2024-12-09 Fixed multiple notifications being sent for empty process tickets (event NotificationNewTicket).
+ - 2024-12-06 Fixed data evaluation in ICS calendar event.
  - 2024-12-02 Added Filter for Admin->Export DynamicFields.
  - 2024-11-28 Fixed Server Error, when Frontend::Template::GenerateBlockHooks###NAME has no valid data structure.
  - 2024-11-22 Added new system configuration option 'User::DefaultPreferences'. These preferences will automatically be set during user (agent) creation.

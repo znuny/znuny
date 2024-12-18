@@ -94,13 +94,12 @@ sub Run {
         push @ExtraRecipients, @{ $Param{ForceNotificationToUserID} };
     }
 
+    # Event 'NotificationNewTicket' will be triggered if the process ticket
+    # has no articles at all (new ticket).
     my @ArticleIDs = $ArticleObject->ArticleIndex(
         TicketID => $Param{Data}->{TicketID},
     );
-
-    # Event 'NotificationNewTicket' will be triggered if the process ticket
-    # has no articles at all or only one article (also counts as new ticket).
-    return 1 if @ArticleIDs > 1;
+    return 1 if @ArticleIDs;
 
     $Self->EventHandlerInit(
         Config => 'Ticket::EventModulePost',
