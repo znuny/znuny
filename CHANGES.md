@@ -15,6 +15,7 @@
  - 2024-10-22 Perl Module Hash::Merge is now be listed in znuny.CheckModules.pl/otrs.CheckModules.pl as mandatory.
  - 2024-10-21 Sector Nord AG: Fixed #571 AgentTicketProcess Mobile-View is not showing all elements of ActivityDialog. Thanks to @LuBroering (Lukas Bröring Sector Nord AG). [PR#553](https://github.com/znuny/Znuny/pull/553)
  - 2024-10-16 AdminSystemConfiguration: Addon name is no longer translated.
+ - 2024-10-15 Ticket search for customer ID in customer interface now searches for the raw ID. Thanks to @BuilderNSV for reporting the issue. [#602](https://github.com/znuny/Znuny/issues/602)
  - 2024-10-15 Added additional PageNavBar to bottom in AdminDynamicField.
  - 2024-10-10 Updated MIME::Decoder::QuotedPrint from 5.509 to 5.515.
  - 2024-10-07 Updated jstree from version 3.3.7 to 3.3.8.
