@@ -616,6 +616,7 @@ fetch emails by using backend
         Trusted       => 0,
         DispatchingBy => 'Queue', # Queue|From
         QueueID       => 12,
+        CMD           => 1, # optional: Print additional output of MailAccount module to STDOUT
         UserID        => 123,
     );
 
