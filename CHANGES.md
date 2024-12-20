@@ -1,4 +1,5 @@
 # 6.5.12 2024-??-??
+ - 2024-12-17 Fixed time zone handling for cron events.
  - 2024-12-10 System configuration option SendmailEncodingForce is now a selection instead of a text field.
  - 2024-12-09 Fixed multiple notifications being sent for empty process tickets (event NotificationNewTicket).
  - 2024-12-06 Fixed data evaluation in ICS calendar event.

@@ -76,23 +76,12 @@ sub NextEventGet {
         return;
     }
 
-    my $StartDateTime = $Param{StartDateTime} || $Kernel::OM->Create('Kernel::System::DateTime');
+    my $StartDateTime
+        = $Param{StartDateTime} ? $Param{StartDateTime}->Clone() : $Kernel::OM->Create('Kernel::System::DateTime');
     return if !$StartDateTime;
 
-    # Calculations are only made in UTC time zone to prevent errors with times that
-    # would not exist in the given time zone (e. g. on/around daylight saving time switch).
-    # CPAN DateTime fails if trying to create a object of a non-existing
-    # time in the given time zone. Converting it to UTC and back has the desired effect.
-    my $OTRSTimeZone = $StartDateTime->OTRSTimeZoneGet();
-    my $TimeZoneChanged;
-    if ( $OTRSTimeZone ne 'UTC' ) {
-        $StartDateTime->ToTimeZone(
-            TimeZone => 'UTC'
-        );
-        $TimeZoneChanged = 1;
-    }
+    $StartDateTime->ToOTRSTimeZone();
 
-    # init cron object
     my $CronObject = $Self->_Init(
         Schedule      => $Param{Schedule},
         StartDateTime => $StartDateTime,
@@ -104,21 +93,22 @@ sub NextEventGet {
     my $EventDateTime = $Kernel::OM->Create(
         'Kernel::System::DateTime',
         ObjectParams => {
-            Year     => $Year + 1900,
-            Month    => $Month + 1,
-            Day      => $Day,
-            Hour     => $Hour,
-            Minute   => $Min,
-            Second   => $Sec,
-            TimeZone => 'UTC'
+            Year   => $Year + 1900,
+            Month  => $Month + 1,
+            Day    => $Day,
+            Hour   => $Hour,
+            Minute => $Min,
+            Second => $Sec,
+
+            # Use floating time zone to prevent errors regarding times
+            # that might not exist (e. g. on/around daylight saving time switch)
+            # in OTRS time zone.
+            TimeZone => 'floating',
         },
     );
 
-    if ($TimeZoneChanged) {
-        $EventDateTime->ToTimeZone(
-            TimeZone => $OTRSTimeZone
-        );
-    }
+    # This will correct times that don't exist in OTRS time zone.
+    $EventDateTime->ToOTRSTimeZone();
 
     return $EventDateTime->ToString();
 }
@@ -154,10 +144,16 @@ sub NextEventList {
         }
     }
 
-    my $StartDateTime = $Param{StartDateTime} || $Kernel::OM->Create('Kernel::System::DateTime');
+    my $StartDateTime
+        = $Param{StartDateTime} ? $Param{StartDateTime}->Clone() : $Kernel::OM->Create('Kernel::System::DateTime');
     return if !$StartDateTime;
 
-    if ( $StartDateTime > $Param{StopDateTime} ) {
+    $StartDateTime->ToOTRSTimeZone();
+
+    my $StopDateTime = $Param{StopDateTime}->Clone();
+    $StopDateTime->ToOTRSTimeZone();
+
+    if ( $StartDateTime > $StopDateTime ) {
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'error',
             Message  => "StartDateTime must be lower than or equals to StopDateTime",
@@ -166,58 +162,41 @@ sub NextEventList {
         return;
     }
 
-    # Calculations are only made in UTC time zone to prevent errors with times that
-    # would not exist in the given time zone (e. g. on/around daylight saving time switch).
-    # CPAN DateTime fails if trying to create a object of a non-existing
-    # time in the given time zone. Converting it to UTC and back has the desired effect.
-    my $OTRSTimeZone = $StartDateTime->OTRSTimeZoneGet();
-    my $TimeZoneChanged;
-    if ( $OTRSTimeZone ne 'UTC' ) {
-        $StartDateTime->ToTimeZone(
-            TimeZone => 'UTC'
-        );
-        $TimeZoneChanged = 1;
-    }
-
-    # init cron object
-    my $CronObject = $Self->_Init(
-        Schedule      => $Param{Schedule},
-        StartDateTime => $StartDateTime,
-    );
-
-    return if !$CronObject;
+    my $NextStartDateTime = $StartDateTime->Clone();
 
     my @Result;
-
     EVENTDATETIME:
     while (1) {
 
-        my ( $Sec, $Min, $Hour, $Day, $Month, $Year ) = $CronObject->nextEvent();
+        my $EventDateTimeString = $Self->NextEventGet(
+            Schedule      => $Param{Schedule},
+            StartDateTime => $NextStartDateTime,
+        );
+
+        #         my ( $Sec, $Min, $Hour, $Day, $Month, $Year ) = $CronObject->nextEvent();
 
         # it is needed to add 1 to the month for correct calculation
         my $EventDateTime = $Kernel::OM->Create(
             'Kernel::System::DateTime',
             ObjectParams => {
-                Year     => $Year + 1900,
-                Month    => $Month + 1,
-                Day      => $Day,
-                Hour     => $Hour,
-                Minute   => $Min,
-                Second   => $Sec,
-                TimeZone => 'UTC',
+                String => $EventDateTimeString,
+
+                # Use floating time zone to prevent errors regarding times
+                # that might not exist (e. g. on/around daylight saving time switch)
+                # in OTRS time zone.
+                TimeZone => 'floating',
             },
         );
 
-        last EVENTDATETIME if !$EventDateTime;
-        last EVENTDATETIME if $EventDateTime > $Param{StopDateTime};
+        # This will correct times that don't exist in OTRS time zone.
+        $EventDateTime->ToOTRSTimeZone();
 
-        if ($TimeZoneChanged) {
-            $EventDateTime->ToTimeZone(
-                TimeZone => $OTRSTimeZone
-            );
-        }
+        last EVENTDATETIME if !$EventDateTime;
+        last EVENTDATETIME if $EventDateTime > $StopDateTime;
 
         push @Result, $EventDateTime->ToString();
+
+        $NextStartDateTime = $EventDateTime->Clone();
     }
 
     return @Result;
@@ -251,21 +230,11 @@ sub PreviousEventGet {
         return;
     }
 
-    my $StartDateTime = $Param{StartDateTime} || $Kernel::OM->Create('Kernel::System::DateTime');
+    my $StartDateTime
+        = $Param{StartDateTime} ? $Param{StartDateTime}->Clone() : $Kernel::OM->Create('Kernel::System::DateTime');
     return if !$StartDateTime;
 
-    # Calculations are only made in UTC time zone to prevent errors with times that
-    # would not exist in the given time zone (e. g. on/around daylight saving time switch).
-    # CPAN DateTime fails if trying to create a object of a non-existing
-    # time in the given time zone. Converting it to UTC and back has the desired effect.
-    my $OTRSTimeZone = $StartDateTime->OTRSTimeZoneGet();
-    my $TimeZoneChanged;
-    if ( $OTRSTimeZone ne 'UTC' ) {
-        $StartDateTime->ToTimeZone(
-            TimeZone => 'UTC'
-        );
-        $TimeZoneChanged = 1;
-    }
+    $StartDateTime->ToOTRSTimeZone();
 
     # init cron object
     my $CronObject = $Self->_Init(
@@ -280,21 +249,22 @@ sub PreviousEventGet {
     my $EventDateTime = $Kernel::OM->Create(
         'Kernel::System::DateTime',
         ObjectParams => {
-            Year     => $Year + 1900,
-            Month    => $Month + 1,
-            Day      => $Day,
-            Hour     => $Hour,
-            Minute   => $Min,
-            Second   => $Sec,
-            TimeZone => 'UTC',
+            Year   => $Year + 1900,
+            Month  => $Month + 1,
+            Day    => $Day,
+            Hour   => $Hour,
+            Minute => $Min,
+            Second => $Sec,
+
+            # Use floating time zone to prevent errors regarding times
+            # that might not exist (e. g. on/around daylight saving time switch)
+            # in OTRS time zone.
+            TimeZone => 'floating',
         },
     );
 
-    if ($TimeZoneChanged) {
-        $EventDateTime->ToTimeZone(
-            TimeZone => $OTRSTimeZone
-        );
-    }
+    # This will correct times that don't exist in OTRS time zone.
+    $EventDateTime->ToOTRSTimeZone();
 
     return $EventDateTime->ToString();
 }
@@ -427,26 +397,9 @@ sub _Init {
         }
     }
 
-    # if a day and month are specified validate that the month has that specific day
-    # this could be removed after Schedule::Cron::Events 1.94 is released and tested
-    # see https://rt.cpan.org/Public/Bug/Display.html?id=109246
-    my ( $Min, $Hour, $DayMonth, $Month, $DayWeek ) = split ' ', $Param{Schedule};
-    if ( IsPositiveInteger($DayMonth) && IsPositiveInteger($Month) ) {
-
-        my @MonthLastDay   = ( 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
-        my $LastDayOfMonth = $MonthLastDay[ $Month - 1 ];
-
-        if ( $DayMonth > $LastDayOfMonth ) {
-            $Kernel::OM->Get('Kernel::System::Log')->Log(
-                Priority => 'error',
-                Message  => "Schedule: $Param{Schedule} is invalid",
-            );
-
-            return;
-        }
-    }
-
-    my %Start = %{ $Param{StartDateTime}->Get() };
+    my $StartDateTime = $Param{StartDateTime}->Clone();
+    $StartDateTime->ToOTRSTimeZone();
+    my %Start = %{ $StartDateTime->Get() };
 
     # create new internal cron object
     my $CronObject;

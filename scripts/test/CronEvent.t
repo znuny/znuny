@@ -31,10 +31,12 @@ if ( grep { $^V eq $_ } @BlacklistPerlVersions ) {
     return 1;
 }
 
+my $DefaultOTRSTimeZone = 'Europe/Berlin';
+
 my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 $ConfigObject->Set(
     Key   => 'OTRSTimeZone',
-    Value => 'UTC',
+    Value => $DefaultOTRSTimeZone,
 );
 
 my $SystemTime = $Kernel::OM->Create('Kernel::System::DateTime')->ToEpoch();
@@ -320,7 +322,7 @@ for my $Test (@Tests) {
     if ( $Test->{Config}->{TimeZone} ) {
         $ConfigObject->Set(
             Key   => 'OTRSTimeZone',
-            Value => 'UTC',
+            Value => $DefaultOTRSTimeZone,
         );
     }
 }
@@ -506,7 +508,7 @@ for my $Test (@Tests) {
     if ( $Test->{Config}->{TimeZone} ) {
         $ConfigObject->Set(
             Key   => 'OTRSTimeZone',
-            Value => 'UTC',
+            Value => $DefaultOTRSTimeZone,
         );
     }
 }
@@ -657,7 +659,21 @@ for my $Test (@Tests) {
             StartTimeStamp => '2021-03-28 03:15:00',
             TimeZone       => 'Europe/Belgrade',
         },
-        ExpectedValue => '2021-03-28 01:30:00',
+
+        # 3:30 instead of 1:30 because DateTime will add up to three hours to
+        # a time that doesn't exist in the desired time zone (2:30 in this case) to be able to
+        # create a valid object.
+        ExpectedValue => '2021-03-28 03:30:00',
+        Success       => 1,
+    },
+    {
+        Name   => 'Correct daylight saving time date on 30 minutes',
+        Config => {
+            Schedule       => '30 * * * *',
+            StartTimeStamp => '2021-10-31 02:15:00',
+            TimeZone       => 'Europe/Belgrade',
+        },
+        ExpectedValue => '2021-10-31 01:30:00',
         Success       => 1,
     },
 );
@@ -702,7 +718,7 @@ for my $Test (@Tests) {
     if ( $Test->{Config}->{TimeZone} ) {
         $ConfigObject->Set(
             Key   => 'OTRSTimeZone',
-            Value => 'UTC',
+            Value => $DefaultOTRSTimeZone,
         );
     }
 }
@@ -976,4 +992,5 @@ for my $Test (@Tests) {
     );
 
 }
+
 1;
