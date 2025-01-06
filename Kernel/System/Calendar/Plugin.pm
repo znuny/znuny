@@ -158,7 +158,7 @@ sub PluginFunction {
     if ( !$MainObject->Require( $PluginModule, Silent => 1 ) ) {
         $LogObject->Log(
             Priority => 'error',
-            Message  => "Sorry, can't load $PluginObject!",
+            Message  => "Sorry, can't load $PluginModule!",
         );
         return;
     }
