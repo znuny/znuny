@@ -24,15 +24,12 @@ msgstr ""
 "POT-Creation-Date: 2020-07-01 07:05+0000\n"
 "PO-Revision-Date: 2024-12-21 23:20+0000\n"
 "Last-Translator: Daniel Lisiecki <lisiecki.daniel@gmail.com>\n"
-"Language-Team: Polish <https://translations.znuny.org/projects/znuny/znuny/"
-"pl/>\n"
+"Language-Team: Polish <https://translations.znuny.org/projects/znuny/znuny/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && ("
-"n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
-"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Generator: Weblate 5.8.4\n"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
@@ -6406,9 +6403,7 @@ msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemMaintenance.tt
 msgid "Schedule a system maintenance period for announcing the Agents and Customers the system is down for a time period."
-msgstr ""
-"Zaplanuj okres konserwacji systemu aby poinformować agentów i klientów o "
-"niedostępności systemu przez określony czas."
+msgstr "Zaplanuj okres konserwacji systemu aby poinformować agentów i klientów o niedostępności systemu przez określony czas."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminSystemMaintenance.tt
 msgid "Some time before this system maintenance starts the users will receive a notification on each screen announcing about this fact."
@@ -13292,9 +13287,7 @@ msgstr ""
 
 #. Perl Module: Kernel/Output/HTML/Preferences/AppointmentNotificationEvent.pm
 msgid "Please make sure you've chosen at least one transport method for mandatory notifications."
-msgstr ""
-"Upewnij się że wybrałeś przynajmniej jedną metodę doręczania dla powiadomień "
-"obowiązkowych."
+msgstr "Upewnij się że wybrałeś przynajmniej jedną metodę doręczania dla powiadomień obowiązkowych."
 
 #. Perl Module: Kernel/Output/HTML/Preferences/AppointmentNotificationEvent.pm
 msgid "Preferences updated successfully!"
@@ -13562,9 +13555,7 @@ msgstr "Informacje dodatkowe"
 
 #. Perl Module: Kernel/System/ACL/DB/ACL.pm
 msgid "Couldn't read ACL configuration file. Please make sure the file is valid."
-msgstr ""
-"Nie można odczytać pliku konfiguracji ACL. Upewnij się proszę, że plik jest "
-"poprawny."
+msgstr "Nie można odczytać pliku konfiguracji ACL. Upewnij się proszę, że plik jest poprawny."
 
 #. Perl Module: Kernel/System/Auth.pm
 msgid "It is currently not possible to login due to a scheduled system maintenance."
@@ -13720,9 +13711,7 @@ msgstr "Ostatnia wzmianka"
 
 #. Perl Module: Kernel/System/NotificationEvent.pm
 msgid "Couldn't read Notification configuration file. Please make sure the file is valid."
-msgstr ""
-"Nie można odczytać plik konfiguracyjnego Powiadomień. Upewnij się proszę, że "
-"plik jest poprawny."
+msgstr "Nie można odczytać plik konfiguracyjnego Powiadomień. Upewnij się proszę, że plik jest poprawny."
 
 #. Perl Module: Kernel/System/NotificationEvent.pm
 msgid "Imported notification has body text with more than 4000 characters."
@@ -19714,8 +19703,7 @@ msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Screens for which it is possible to enable or disable default columns."
-msgstr ""
-"Ekrany dla których jest możliwe włączenie lub wyłączenie kolumn domyślnych."
+msgstr "Ekrany dla których jest możliwe włączenie lub wyłączenie kolumn domyślnych."
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Mapping of Ticket::Generic invoker name (key) to list of fields (content) whose values will be base-64 encoded. Fields have to be given in the following form: Field1->Field2;Field3->Field4->Field5;Field6. So a nested data structure can be given by connecting the fields with '->'. Content of different fields can be given by separating those fields by ';'."
@@ -22928,8 +22916,7 @@ msgstr "Szczegóły zgłoszenia!"
 
 #. SysConfig
 msgid "Loop protection: no auto-response sent to \"%s\"."
-msgstr ""
-"Ochrona przed zapętleniem: nie wysłano odpowiedzi automatycznej do \"%s\"."
+msgstr "Ochrona przed zapętleniem: nie wysłano odpowiedzi automatycznej do \"%s\"."
 
 #. SysConfig
 msgid "Macedonian"
@@ -24378,3 +24365,4 @@ msgstr ""
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Default preferences to set during user creation."
 msgstr ""
+
