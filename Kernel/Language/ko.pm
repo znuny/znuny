@@ -18,20 +18,20 @@ sub Data {
 
     # $$START$$
     # possible charsets
-    $Self->{Charset} = [];
+    $Self->{Charset} = ['utf-8', ];
     # date formats (%A=WeekDay;%B=LongMonth;%T=Time;%D=Day;%M=Month;%Y=Year;)
-    $Self->{DateFormat}          = '';
-    $Self->{DateFormatLong}      = '';
-    $Self->{DateFormatShort}     = '';
-    $Self->{DateInputFormat}     = '';
-    $Self->{DateInputFormatLong} = '';
+    $Self->{DateFormat}          = '%Y-%M-%D %T';
+    $Self->{DateFormatLong}      = '%A, %Y년 %M월 %D일 %T';
+    $Self->{DateFormatShort}     = '%Y-%M-%D';
+    $Self->{DateInputFormat}     = '%Y-%M-%D';
+    $Self->{DateInputFormatLong} = '%Y-%M-%D %T';
     $Self->{Completeness}        = 0.890051513200258;
 
     # csv separator
-    $Self->{Separator}         = '';
+    $Self->{Separator}         = ',';
 
-    $Self->{DecimalSeparator}  = '';
-    $Self->{ThousandSeparator} = '';
+    $Self->{DecimalSeparator}  = '.';
+    $Self->{ThousandSeparator} = ',';
     $Self->{Translation} = {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AdminACL.tt
