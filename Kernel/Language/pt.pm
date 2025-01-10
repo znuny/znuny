@@ -30,6 +30,7 @@ sub Data {
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
     $Self->{Completeness}        = 0.309390444810544;
+    $Self->{Completeness}        = 0.309719934102142;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -2251,7 +2252,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentAppointmentEdit.tt
         'Basic information' => '',
-        'Date/Time' => '',
+        'Date/Time' => 'Data / Tempo',
         'Invalid date!' => 'Data inválida!',
         'Please set this to value before End date.' => '',
         'Please set this to value after Start date.' => 'Por favor colocar data posterior à data de inicio.',
@@ -5059,7 +5060,7 @@ sub Data {
         'Setting server_encoding needs to be UNICODE or UTF8.' => '',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/postgresql/DateStyle.pm
-        'Date Format' => '',
+        'Date Format' => 'Formato de data',
         'Setting DateStyle needs to be ISO.' => '',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/postgresql/PrimaryKeySequences.pm
