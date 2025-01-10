@@ -1,3 +1,6 @@
+# 6.5.12 ????-??-??
+ - 2025-01-10 Disable connecting external RSS during unit testing.
+
 # 6.5.11 2024-10-02
  - 2024-10-02 Added HTML filter to ProcessManagement/SLA template. Converts the characters <, >, & and " to &lt;, &gt;, &amp;, and &quot; respectively, protecting them from being interpreted as representing HTML tags or entities.
  - 2024-09-26 Removed regex from Kernel::System::HTMLUtils::DocumentCleanup that could lead to a security issue. It replaced HTML of Microsoft Word. Thanks for reporting to Emin Yazi (@eyazi), Efflux.
