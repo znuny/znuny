@@ -29,7 +29,6 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.309390444810544;
     $Self->{Completeness}        = 0.309719934102142;
 
     # csv separator
