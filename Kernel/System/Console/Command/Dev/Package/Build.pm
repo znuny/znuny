@@ -11,6 +11,7 @@ package Kernel::System::Console::Command::Dev::Package::Build;
 
 use strict;
 use warnings;
+use utf8;
 
 use parent qw(Kernel::System::Console::BaseCommand);
 
@@ -125,25 +126,18 @@ sub Run {
     my $File = $Kernel::OM->Get('Kernel::System::Main')->FileWrite(
         Location   => $Self->GetArgument('target-directory') . '/' . $Filename,
         Content    => \$Content,
-        Mode       => 'utf8',                                                     # binmode|utf8
-        Type       => 'Local',                                                    # optional - Local|Attachment|MD5
-        Permission => '644',                                                      # unix file permissions
+        Mode       => 'utf8',
+        Type       => 'Local',
+        Permission => '644',
     );
+
     if ( !$File ) {
-        $Self->PrintError("File $File could not be written.\n");
+        $Self->PrintError("File $Filename could not be written.\n");
         return $Self->ExitCodeError();
     }
 
     $Self->Print("<green>Done.</green>\n");
     return $Self->ExitCodeOk();
 }
-
-# sub PostRun {
-#     my ( $Self, %Param ) = @_;
-#
-#     # This will be called after Run() (even in case of exceptions). Perform any cleanups here.
-#
-#     return;
-# }
 
 1;

@@ -284,10 +284,13 @@ sub _PrepareData {
 
                     my $Data = $Events{$EventID};
 
-                    my $DTStart      = $Data->{DTSTART};
-                    my $DTEnd        = $Data->{DTEND};
-                    my $DTStartLocal = $Data->{DTSTART}->{local_c};
-                    my $DTEndLocal   = $Data->{DTEND}->{local_c};
+                    my $DTStart = $Data->{DTSTART};
+                    my $DTEnd   = $Data->{DTEND};
+
+                    next EVENTID if ( ref $DTStart ne 'DateTime' ) || ( ref $DTEnd ne 'DateTime' );
+
+                    my $DTStartLocal = $DTStart->{local_c};
+                    my $DTEndLocal   = $DTEnd->{local_c};
 
                     my %Date = (
                         Start => {
@@ -374,10 +377,13 @@ sub _PrepareData {
                         }
                     }
 
-                    my $Organizer = $Data->{ORGANIZER}->{CN};
-                    if ($Organizer) {
+                    if (
+                        IsHashRefWithData( $Data->{ORGANIZER} )
+                        && IsStringWithData( $Data->{ORGANIZER}->{CN} )
+                        )
+                    {
                         my %Safety = $HTMLUtilsObject->Safety(
-                            String       => $Organizer,
+                            String       => $Data->{ORGANIZER}->{CN},
                             NoApplet     => 1,
                             NoObject     => 1,
                             NoEmbed      => 1,
@@ -420,13 +426,13 @@ sub _PrepareData {
                     }
 
                     for my $Property (qw(DESCRIPTION SUMMARY LOCATION)) {
-                        if ( $Data->{$Property} ) {
+                        if ( IsStringWithData( $Data->{$Property} ) ) {
                             $Data->{$Property} =~ s{\\n}{\n}g;
                             $Data->{$Property} =~ s{\\r}{\r}g;
                             $Data->{$Property} =~ s{&nbsp}{ }g;
                         }
                         my $PropertyString;
-                        if ( $Data->{$Property} ) {
+                        if ( IsStringWithData( $Data->{$Property} ) ) {
                             my %Safety = $HTMLUtilsObject->Safety(
                                 String       => $Data->{$Property},
                                 NoApplet     => 1,

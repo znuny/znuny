@@ -142,7 +142,7 @@ sub Run {
 
         # get array params
         for my $Key (
-            qw(CustomerID StateIDs StateTypeIDs PriorityIDs OwnerIDs ResponsibleIDs ServiceIDs
+            qw(CustomerIDRaw StateIDs StateTypeIDs PriorityIDs OwnerIDs ResponsibleIDs ServiceIDs
             TypeIDs
             )
             )
@@ -882,7 +882,7 @@ sub Run {
                 push @PDFRow,  $Created;
                 push @PDFRow,  $Data{From};
                 push @PDFRow,  $Data{Subject};
-                push @PDFRow,  $Data{State};
+                push @PDFRow,  $LayoutObject->{LanguageObject}->Translate( $Data{State} );
                 push @PDFRow,  $Data{Queue};
                 push @PDFRow,  $Customer;
                 push @PDFData, \@PDFRow;
@@ -1345,7 +1345,7 @@ sub Run {
 
         KEY:
         for my $Key (
-            qw(TicketNumber From To Cc Subject Body CustomerID TimeSearchType StateType
+            qw(TicketNumber From To Cc Subject Body CustomerIDRaw TimeSearchType StateType
             StateIDs StateTypeIDs PriorityIDs OwnerIDs ResponsibleIDs
             )
             )
@@ -1700,10 +1700,10 @@ sub MaskForm {
 
     $Param{CustomerIDStrg} = $LayoutObject->BuildSelection(
         Data       => \%Customers,
-        Name       => 'CustomerID',
+        Name       => 'CustomerIDRaw',
         Multiple   => 1,
         Size       => 5,
-        SelectedID => $Param{CustomerID},
+        SelectedID => $Param{CustomerIDRaw},
         Class      => 'Modernize',
     );
 

@@ -190,6 +190,18 @@ my @TestConfigs = (
             TimeZone => 'Z',
         },
     },
+    {
+        String         => '2017-05-09T07:00:09foobar',
+        ExpectedResult => {
+            Year     => 2017,
+            Month    => 5,
+            Day      => 9,
+            Hour     => 7,
+            Minute   => 0,
+            Second   => 9,
+            TimeZone => 'UTC',
+        },
+    },
 );
 
 TESTCONFIG:
