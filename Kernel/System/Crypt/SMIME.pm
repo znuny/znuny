@@ -632,7 +632,10 @@ sub KeysList {
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
     return if !$DBObject->Prepare(
-        SQL => "SELECT * FROM smime_keys",
+        SQL => '
+            SELECT id, key_hash, key_type, file_name, email_address, expiration_date, fingerprint, subject, create_time
+            FROM   smime_keys
+        ',
     );
 
     my @KeysList;
