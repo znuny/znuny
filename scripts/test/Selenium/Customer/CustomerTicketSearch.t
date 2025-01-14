@@ -116,7 +116,7 @@ $Selenium->RunTest(
 
         # Check overview screen.
         for my $ID (
-            qw(Profile TicketNumber CustomerID MIMEBase_From MIMEBase_To MIMEBase_Cc MIMEBase_Subject MIMEBase_Body
+            qw(Profile TicketNumber CustomerIDRaw MIMEBase_From MIMEBase_To MIMEBase_Cc MIMEBase_Subject MIMEBase_Body
             ServiceIDs TypeIDs PriorityIDs StateIDs
             NoTimeSet Date DateRange TicketCreateTimePointStart TicketCreateTimePoint TicketCreateTimePointFormat
             TicketCreateTimeStartMonth TicketCreateTimeStartDay TicketCreateTimeStartYear TicketCreateTimeStartDayDatepickerIcon

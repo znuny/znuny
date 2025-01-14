@@ -1433,11 +1433,8 @@ sub Header {
 
         if ( $Param{ShowToolbarItems} && ref $ToolBarModule eq 'HASH' ) {
 
-            $Self->Block(
-                Name => 'ToolBar',
-                Data => \%Param,
-            );
             $Self->ToolbarModules(
+                %Param,
                 ToolBarModule => $ToolBarModule,
             );
         }
@@ -1553,17 +1550,6 @@ sub ToolbarModules {
     my $MainObject   = $Kernel::OM->Get('Kernel::System::Main');
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 
-    my %ToolBarModuleBlocks = map { $Param{ToolBarModule}->{$_}->{Block} || 'ToolBarPersonalViews' => 1 }
-        grep { defined $Param{ToolBarModule}->{$_} } keys %{ $Param{ToolBarModule} };
-
-    # renders ToolBarContainer if a ToolBarModule is active
-    for my $Block ( sort keys %ToolBarModuleBlocks ) {
-        $Self->Block(
-            Name => $Block . 'Container',
-            Data => \%Param,
-        );
-    }
-
     my %Modules;
     my %Jobs = %{ $Param{ToolBarModule} };
 
@@ -1630,6 +1616,32 @@ sub ToolbarModules {
         }
 
         %Modules = ( $Object->Run( %Param, Config => $Jobs{$Job} ), %Modules );
+    }
+
+    my %ToolBarModuleBlocks;
+
+    # count the number of blocks for which modules are to be rendered.
+    for my $ModuleID ( sort keys %Modules ) {
+        my $Block = $Modules{$ModuleID}->{Block} || 'ToolBarPersonalViews';
+        $Block = 'ToolBarPersonalViews' if $Block eq 'ToolBarItem';
+
+        $ToolBarModuleBlocks{$Block}++;
+    }
+
+    # renders ToolBar block if ToolBarModules exist
+    if (%ToolBarModuleBlocks) {
+        $Self->Block(
+            Name => 'ToolBar',
+            Data => \%Param,
+        );
+    }
+
+    # renders ToolBarContainer if a ToolBarModule is active
+    for my $Block ( sort keys %ToolBarModuleBlocks ) {
+        $Self->Block(
+            Name => $Block . 'Container',
+            Data => \%Param,
+        );
     }
 
     # show tool bar items

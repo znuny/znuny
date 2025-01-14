@@ -488,7 +488,6 @@ sub Template {
         $TemplateText =~ s/&gt;/>/g;
         $TemplateText =~ s/&quot;/"/g;
         $TemplateText =~ s/&apos;/'/g;
-        $TemplateText =~ s/&nbsp;/ /g;
     }
 
     return $TemplateText;

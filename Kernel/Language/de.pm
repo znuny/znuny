@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.995221618058988;
+    $Self->{Completeness}        = 0.995222405271829;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -7631,6 +7631,7 @@ sub Data {
             'Definiert die Standard-Queue für neue Tickets im Agentenbereich fest.',
 
         # XML Definition: Kernel/Config/Files/XML/Znuny.xml
+        'Default preferences to set during user creation.' => 'Default-Einstellungen, die für einen neuen Benutzer bei dessen Erstellung gesetzt werden.',
         'Enables/disables the Znuny package verification. If disabled, all packages are shown as verified. It\'s still recommended to use only verified packages.' =>
             'Aktiviert/deaktiviert die Znuny-Paketverifizierung. Wenn deaktiviert werden alle Pakete als verifiziert angezeigt. Es wird trotzdem empfohlen, nur verifizierte Pakete zu verwenden.',
         'Screens for which it is possible to enable or disable dynamic fields.' =>

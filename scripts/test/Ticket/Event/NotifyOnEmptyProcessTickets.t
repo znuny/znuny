@@ -94,7 +94,7 @@ for my $ArticleCount ( 0 .. 2 ) {
 
     my $ExpectedEventTriggered = $EventModule->{NotificationNewTicketEventTriggered};
 
-    if ( $ArticleCount > 1 ) {
+    if ($ArticleCount) {
         $Self->False(
             scalar $ExpectedEventTriggered,
             "Event 'NotificationNewTicket' must not be triggered for process ticket with $ArticleCount article(s).",
