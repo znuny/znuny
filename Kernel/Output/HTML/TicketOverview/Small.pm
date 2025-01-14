@@ -541,23 +541,27 @@ sub Run {
                     sort keys %Actions;
             }
 
-            my $ACL = $TicketObject->TicketAcl(
-                Data          => \%PossibleActions,
-                Action        => $Self->{Action},
-                TicketID      => $Article{TicketID},
-                ReturnType    => 'Action',
-                ReturnSubType => '-',
-                UserID        => $Self->{UserID},
-            );
             my %AclAction = %PossibleActions;
-            if ($ACL) {
-                %AclAction = $TicketObject->TicketAclActionData();
-            }
 
             # run ticket pre menu modules
             my @ActionItems;
             if ( ref $ConfigObject->Get('Ticket::Frontend::PreMenuModule') eq 'HASH' ) {
                 my %Menus = %{ $ConfigObject->Get('Ticket::Frontend::PreMenuModule') };
+
+                if (%Menus) {
+                    my $ACL = $TicketObject->TicketAcl(
+                        Data          => \%PossibleActions,
+                        Action        => $Self->{Action},
+                        TicketID      => $Article{TicketID},
+                        ReturnType    => 'Action',
+                        ReturnSubType => '-',
+                        UserID        => $Self->{UserID},
+                    );
+                    if ($ACL) {
+                        %AclAction = $TicketObject->TicketAclActionData();
+                    }
+                }
+
                 my @Items;
                 MENU:
                 for my $Menu ( sort keys %Menus ) {

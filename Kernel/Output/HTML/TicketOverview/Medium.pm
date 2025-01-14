@@ -478,19 +478,7 @@ sub _Show {
             sort keys %Actions;
     }
 
-    my $ACL = $TicketObject->TicketAcl(
-        Data          => \%PossibleActions,
-        Action        => $Self->{Action},
-        TicketID      => $Article{TicketID},
-        ReturnType    => 'Action',
-        ReturnSubType => '-',
-        UserID        => $Self->{UserID},
-    );
-
     my %AclAction = %PossibleActions;
-    if ($ACL) {
-        %AclAction = $TicketObject->TicketAclActionData();
-    }
 
     # get main object
     my $MainObject = $Kernel::OM->Get('Kernel::System::Main');
@@ -499,6 +487,21 @@ sub _Show {
     my @ActionItems;
     if ( ref $ConfigObject->Get('Ticket::Frontend::PreMenuModule') eq 'HASH' ) {
         my %Menus = %{ $ConfigObject->Get('Ticket::Frontend::PreMenuModule') };
+
+        if (%Menus) {
+            my $ACL = $TicketObject->TicketAcl(
+                Data          => \%PossibleActions,
+                Action        => $Self->{Action},
+                TicketID      => $Article{TicketID},
+                ReturnType    => 'Action',
+                ReturnSubType => '-',
+                UserID        => $Self->{UserID},
+            );
+            if ($ACL) {
+                %AclAction = $TicketObject->TicketAclActionData();
+            }
+        }
+
         MENU:
         for my $Menu ( sort keys %Menus ) {
 
@@ -707,77 +710,6 @@ sub _Show {
                     Config => $Jobs{$Job},
                 );
             }
-        }
-    }
-
-    # create output
-    $LayoutObject->Block(
-        Name => 'AgentAnswer',
-        Data => {
-            %Param,
-            %Article,
-            %AclAction,
-        },
-    );
-    if (
-        $ConfigObject->Get('Frontend::Module')->{AgentTicketCompose}
-        && ( !defined $AclAction{AgentTicketCompose} || $AclAction{AgentTicketCompose} )
-        )
-    {
-        my $Access = 1;
-        my $Config = $ConfigObject->Get("Ticket::Frontend::AgentTicketCompose");
-        if ( $Config->{Permission} ) {
-            my $Ok = $TicketObject->TicketPermission(
-                Type     => $Config->{Permission},
-                TicketID => $Param{TicketID},
-                UserID   => $Self->{UserID},
-                LogNo    => 1,
-            );
-            if ( !$Ok ) {
-                $Access = 0;
-            }
-            if ($Access) {
-                $LayoutObject->Block(
-                    Name => 'AgentAnswerCompose',
-                    Data => {
-                        %Param,
-                        %Article,
-                        %AclAction,
-                    },
-                );
-            }
-        }
-    }
-    if (
-        $ConfigObject->Get('Frontend::Module')->{AgentTicketPhoneOutbound}
-        && (
-            !defined $AclAction{AgentTicketPhoneOutbound}
-            || $AclAction{AgentTicketPhoneOutbound}
-        )
-        )
-    {
-        my $Access = 1;
-        my $Config = $ConfigObject->Get("Ticket::Frontend::AgentTicketPhoneOutbound");
-        if ( $Config->{Permission} ) {
-            my $OK = $TicketObject->TicketPermission(
-                Type     => $Config->{Permission},
-                TicketID => $Param{TicketID},
-                UserID   => $Self->{UserID},
-                LogNo    => 1,
-            );
-            if ( !$OK ) {
-                $Access = 0;
-            }
-        }
-        if ($Access) {
-            $LayoutObject->Block(
-                Name => 'AgentAnswerPhoneOutbound',
-                Data => {
-                    %Param,
-                    %Article,
-                    %AclAction,
-                },
-            );
         }
     }
 
@@ -1113,7 +1045,6 @@ sub _Show {
         Data         => {
             %Param,
             %Article,
-            %AclAction,
         },
     );
 
