@@ -23,7 +23,10 @@ my $JSONObject   = $Kernel::OM->Get('Kernel::System::JSON');
 # get helper object
 $Kernel::OM->ObjectParamAdd(
     'Kernel::System::UnitTest::Helper' => {
-        SkipSSLVerify => 1
+        SkipSSLVerify     => 1,
+        DisableSysConfigs => [
+            'DashboardBackend###0442-RSS',
+        ],
     },
 );
 my $HelperObject = $Kernel::OM->Get('Kernel::System::UnitTest::Helper');
