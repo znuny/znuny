@@ -4195,8 +4195,8 @@ CREATE TABLE search_profile (
     login VARCHAR2 (200) NOT NULL,
     profile_name VARCHAR2 (200) NOT NULL,
     profile_type VARCHAR2 (30) NOT NULL,
-    profile_key VARCHAR2 (200) NOT NULL,
-    profile_value VARCHAR2 (200) NULL
+    profile_key VARCHAR2 (2000) NOT NULL,
+    profile_value VARCHAR2 (2000) NULL
 );
 ALTER TABLE search_profile ADD CONSTRAINT PK_search_profile PRIMARY KEY (id);
 BEGIN
