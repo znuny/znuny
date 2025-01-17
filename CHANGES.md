@@ -1,4 +1,5 @@
 # 6.5.12 2024-??-??
+ - 2025-01-16 Increased size of columns profile_key and profile_value of database table search_profile.
  - 2024-12-23 Improved ACL checks in ticket overview modules.
  - 2024-12-17 Fixed time zone handling for cron events.
  - 2024-12-10 System configuration option SendmailEncodingForce is now a selection instead of a text field.

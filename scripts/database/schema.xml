@@ -1655,8 +1655,8 @@
     <Column Name="login" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="profile_name" Required="true" Size="200" Type="VARCHAR"/>
     <Column Name="profile_type" Required="true" Size="30" Type="VARCHAR"/>
-    <Column Name="profile_key" Required="true" Size="200" Type="VARCHAR"/>
-    <Column Name="profile_value" Required="false" Size="200" Type="VARCHAR"/>
+    <Column Name="profile_key" Required="true" Size="2000" Type="VARCHAR"/>
+    <Column Name="profile_value" Required="false" Size="2000" Type="VARCHAR"/>
     <Index Name="search_profile_login">
         <IndexColumn Name="login"/>
     </Index>

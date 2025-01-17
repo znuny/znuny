@@ -1897,8 +1897,8 @@ CREATE TABLE search_profile (
     login VARCHAR (200) NOT NULL,
     profile_name VARCHAR (200) NOT NULL,
     profile_type VARCHAR (30) NOT NULL,
-    profile_key VARCHAR (200) NOT NULL,
-    profile_value VARCHAR (200) NULL
+    profile_key VARCHAR (2000) NOT NULL,
+    profile_value VARCHAR (2000) NULL
 );
 DO $$
 BEGIN

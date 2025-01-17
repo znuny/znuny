@@ -59,7 +59,10 @@ sub Run {
             Message => 'Increase size of column of database table customer_user_customer',
             Module  => 'CustomerUserCustomerID',
         },
-
+        {
+            Message => 'Increase size of columns of database table search_profile',
+            Module  => 'SearchProfile',
+        },
     );
 
     return 1   if !@Tasks;
