@@ -3572,7 +3572,7 @@ sub _RenderOwner {
 
     # set server errors
     my $ServerError = '';
-    if ( IsHashRefWithData( $Param{Error} ) && $Param{Error}->{'Owner'} ) {
+    if ( IsHashRefWithData( $Param{Error} ) && $Param{Error}->{'OwnerID'} ) {
         $ServerError = 'ServerError';
     }
 
