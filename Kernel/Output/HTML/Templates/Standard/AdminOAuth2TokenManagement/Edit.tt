@@ -97,7 +97,7 @@
                                 <span class="Marker">*</span> [% Translate("Client secret") | html %]
                             </label>
                             <div class="Field">
-                                <input type="text" id="ClientSecret" name="ClientSecret" value="[% Data.ClientSecret | html %]" class="W33pc Validate_Required [% Data.ClientSecretInvalid | html %]" />
+                                <input type="password" id="ClientSecret" name="ClientSecret" value="[% Data.ClientSecret | html %]" class="W33pc Validate_Required [% Data.ClientSecretInvalid | html %]" />
                                 <div id="ClientSecretError" class="TooltipErrorMessage">
                                     <p>[% Translate("This field is required.") | html %]</p>
                                 </div>
