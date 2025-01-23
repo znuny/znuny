@@ -221,6 +221,13 @@
             </Hash>
         </Value>
     </Setting>
+    <Setting Name="DynamicFields::Driver::BaseSelect::EnableHistoricalValues" Required="1" Valid="1">
+        <Description Translatable="1">Enables historical values for selection in dynamic field types that are based on BaseSelect (Dropdown and Multiselect). Disable this if there are performance problems because of too many different stored values.</Description>
+        <Navigation>Core::Ticket</Navigation>
+        <Value>
+            <Item ValueType="Checkbox">1</Item>
+        </Value>
+    </Setting>
 
     <!--
         Generic interface
