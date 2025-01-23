@@ -231,9 +231,25 @@ sub CreateSessionID {
         return;
     }
 
-    $CacheObject->CleanUp(
-        Type => 'User',
-    );
+    # Clear cached data of this user (agent).
+    if (
+        $Param{UserType} eq 'User'
+        && $Param{UserLogin}
+        )
+    {
+        my $UserObject = $Kernel::OM->Get('Kernel::System::User');
+
+        my $UserID = $UserObject->UserLookup(
+            UserLogin => $Param{UserLogin},
+            Silent    => 1,
+        );
+
+        if ($UserID) {
+
+            # Note: This function should be public, not private.
+            $UserObject->_UserCacheClear( UserID => $UserID );
+        }
+    }
 
     my %OTRSBusinessSystemData = $Kernel::OM->Get('Kernel::System::SystemData')->SystemDataGroupGet(
         Group => 'OTRSBusiness',
@@ -323,9 +339,20 @@ sub RemoveSessionID {
 
     my $CacheObject = $Kernel::OM->Get('Kernel::System::Cache');
 
-    $CacheObject->CleanUp(
-        Type => 'User',
+    # Clear cached data of the session's user (agent).
+    my %SessionData = $Self->GetSessionIDData(
+        SessionID => $Param{SessionID},
     );
+    if (
+        ( $SessionData{UserType} // '' ) eq 'User'
+        && $SessionData{UserID}
+        )
+    {
+        my $UserObject = $Kernel::OM->Get('Kernel::System::User');
+
+        # Note: This function should be public, not private.
+        $UserObject->_UserCacheClear( UserID => $SessionData{UserID} );
+    }
 
     $CacheObject->Delete(
         Type => 'AuthSession',
