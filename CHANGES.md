@@ -10,6 +10,7 @@
  - 2024-12-06 Fixed data evaluation in ICS calendar event.
  - 2024-12-02 Added Filter for Admin->Export DynamicFields.
  - 2024-11-28 Fixed Server Error, when Frontend::Template::GenerateBlockHooks###NAME has no valid data structure.
+ - 2024-11-27 Fixed user cache being cleared for all users whenever a user logs in/out.
  - 2024-11-22 Added new system configuration option 'User::DefaultPreferences'. These preferences will automatically be set during user (agent) creation.
  - 2024-11-01 Fixed Bug - Added missing template toolkit translations. Translate the ticket state in PDF search result (AgentTicketSearch|CustomerTicketSearch). Thanks to @BuilderNSV for reporting the issue. [#615](https://github.com/znuny/Znuny/issues/615)
  - 2024-11-01 Sector Nord AG: Fixed uninitialized value in AdminSelectBox. Thanks to Sector Nord AG (@jsinagowitz). [PR#611](https://github.com/znuny/Znuny/pull/611)
