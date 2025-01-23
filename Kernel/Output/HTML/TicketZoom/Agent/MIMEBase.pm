@@ -361,7 +361,15 @@ sub _CalendarEventsOutput {
             PROPERTY:
             for my $Property (qw(Summary Organizer Attendee Description Location)) {
                 if ( IsArrayRefWithData( $Event->{$Property} ) ) {
-                    my $Value = join "\n", @{ $Event->{$Property} };
+
+                    my $Value = '';
+
+                    # special handling for 'undef' values in the arrayref $Event->{$Property}.
+                    EVENTPROPERTYITEM:
+                    for my $EventProperty ( @{ $Event->{$Property} } ) {
+                        next EVENTPROPERTYITEM if !$EventProperty;
+                        $Value .= $Value . "\n" . $EventProperty;
+                    }
 
                     push @PropertiesToDisplay, {
                         Name  => $Property,
