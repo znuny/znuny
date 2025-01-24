@@ -24345,3 +24345,7 @@ msgstr "Limitiert die Anzahl an Optionen für modernized Auswahlfelder. Wenn das
 msgid "Default preferences to set during user creation."
 msgstr "Default-Einstellungen, die für einen neuen Benutzer bei dessen Erstellung gesetzt werden."
 
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Enables historical values for selection in dynamic field types that are based on BaseSelect (Dropdown and Multiselect). Disable this if there are performance problems because of too many different stored values."
+msgstr ""
+
