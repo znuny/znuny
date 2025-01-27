@@ -171,7 +171,7 @@ sub Run {
                 $Status = $MailAccountObject->MailAccountFetch(
                     %Data,
                     Debug  => $Self->GetOption('debug'),
-                    CMD    => 1,
+                    CMD    => $Self->{Quiet} ? 0 : 1,
                     UserID => 1,
                 );
             };

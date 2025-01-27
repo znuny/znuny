@@ -1126,8 +1126,8 @@ CREATE TABLE search_profile (
     login VARCHAR (200) NOT NULL,
     profile_name VARCHAR (200) NOT NULL,
     profile_type VARCHAR (30) NOT NULL,
-    profile_key VARCHAR (200) NOT NULL,
-    profile_value VARCHAR (200) NULL,
+    profile_key TEXT NOT NULL,
+    profile_value TEXT NULL,
     PRIMARY KEY(id),
     INDEX search_profile_login (login),
     INDEX search_profile_profile_name (profile_name)

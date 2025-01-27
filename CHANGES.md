@@ -1,14 +1,27 @@
 # 7.1.4 2024-??-??
+ - 2025-01-21 Fixed Bug - Problem when handling errors in the owner field in the activity dialog. Thanks to Daylton Rodrigues (@dayltonr) for reporting. [#627](https://github.com/znuny/Znuny/issues/627).
+ - 2025-01-16 Increased size of columns profile_key and profile_value of database table search_profile.
+ - 2025-01-15 Sector Nord AG: Fixed module check for calendar plugin. Thanks to Sector Nord AG (@jsinagowitz). [PR#623](https://github.com/znuny/Znuny/pull/623)
+ - 2024-12-23 Improved ACL checks in ticket overview modules.
+ - 2024-12-10 System configuration option SendmailEncodingForce is now a selection instead of a text field.
+ - 2024-12-10 Fixed "From" and "To" not being expandable for an article in ticket zoom. Thanks to Oliver Freyermuth (@olifre) for reporting. [#605](https://github.com/znuny/Znuny/issues/605)
+ - 2024-12-09 Fixed multiple notifications being sent for empty process tickets (event NotificationNewTicket).
+ - 2024-12-06 Fixed data evaluation in ICS calendar event.
+ - 2024-12-02 Added Filter for Admin->Export DynamicFields.
+ - 2024-11-28 Fixed Server Error, when Frontend::Template::GenerateBlockHooks###NAME has no valid data structure.
+ - 2024-11-22 Added new system configuration option 'User::DefaultPreferences'. These preferences will automatically be set during user (agent) creation.
  - 2024-11-01 Fixed Bug - Added missing template toolkit translations. Translate the ticket state in PDF search result (AgentTicketSearch|CustomerTicketSearch). Thanks to @BuilderNSV for reporting the issue. [#615](https://github.com/znuny/Znuny/issues/615)
  - 2024-11-01 Sector Nord AG: Fixed uninitialized value in AdminSelectBox. Thanks to Sector Nord AG (@jsinagowitz). [PR#611](https://github.com/znuny/Znuny/pull/611)
  - 2024-11-01 Fixed link in INSTALL.md / UPDATING.md. Thanks to @Sidpatchy. [PR#589](https://github.com/znuny/Znuny/pull/589)
  - 2024-11-01 Added configurable InputFields::ModernizedSelection::MaxNumberOfOptions. Thanks to @itweserems. [PR#576](https://github.com/znuny/Znuny/pull/576)
  - 2024-10-31 Fixed Bug - Missing translation 'mark as seen'. Thanks to @LuBroering (Lukas Bröring SectorNord AG) for reporting the issue. [#613](https://github.com/znuny/Znuny/issues/613)
  - 2024-10-31 Fixed Bug - Missing translation 'mark as seen'. Thanks to @LuBroering (Lukas Bröring Sector Nord AG) for reporting the issue. [#613](https://github.com/znuny/Znuny/issues/613)
+ - 2024-10-31 Template generator will now keep `&nbsp;` in a template when in rich text mode and won't replace them with spaces anymore. This lead to multiple `&nbsp;` reduced to one space being shown in the editor.
  - 2024-10-24 Fixed Bug - 'Use of uninitialized value' warning on build custom package and there are no permissions to write to the target directory. Thanks to @BuilderNSV for reporting the issue. [#610](https://github.com/znuny/Znuny/issues/610)
  - 2024-10-22 Perl Module Hash::Merge is now be listed in znuny.CheckModules.pl/otrs.CheckModules.pl as mandatory.
  - 2024-10-21 Sector Nord AG: Fixed #571 AgentTicketProcess Mobile-View is not showing all elements of ActivityDialog. Thanks to @LuBroering (Lukas Bröring Sector Nord AG). [PR#553](https://github.com/znuny/Znuny/pull/553)
  - 2024-10-16 AdminSystemConfiguration: Addon name is no longer translated.
+ - 2024-10-15 Ticket search for customer ID in customer interface now searches for the raw ID. Thanks to @BuilderNSV for reporting the issue. [#602](https://github.com/znuny/Znuny/issues/602)
  - 2024-10-15 Added additional PageNavBar to bottom in AdminDynamicField.
  - 2024-10-10 Updated MIME::Decoder::QuotedPrint from 5.509 to 5.515.
  - 2024-10-07 Updated jstree from version 3.3.7 to 3.3.8.

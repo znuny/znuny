@@ -13,6 +13,8 @@ package Kernel::Output::Template::Document;
 use strict;
 use warnings;
 
+use Kernel::System::VariableCheck qw(:all);
+
 use parent qw (Template::Document);
 
 our $ObjectManagerDisabled = 1;
@@ -350,9 +352,19 @@ sub _PrecalculateBlockHookSubscriptions {
 
     my %BlockHooks;
 
-    for my $Key ( sort keys %{ $Config // {} } ) {
-        for my $Template ( sort keys %{ $Config->{$Key} // {} } ) {
-            for my $Block ( @{ $Config->{$Key}->{$Template} // [] } ) {
+    for my $Action ( sort keys %{ $Config // {} } ) {
+        TEMPLATE:
+        for my $Template ( sort keys %{ $Config->{$Action} // {} } ) {
+            if ( !IsArrayRefWithData( $Config->{$Action}->{$Template} ) ) {
+                $Kernel::OM->Get('Kernel::System::Log')->Log(
+                    Priority => 'error',
+                    Message  => 'Invalid configuration for Frontend::Template::GenerateBlockHooks###' . $Action
+                        . '. Array reference is required. Action => [Templates].',
+                );
+                next TEMPLATE;
+            }
+
+            for my $Block ( @{ $Config->{$Action}->{$Template} // [] } ) {
                 $BlockHooks{$Template}->{$Block} = 1;
             }
         }

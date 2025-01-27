@@ -812,7 +812,12 @@
         <Description Translatable="1">Forces encoding of outgoing emails (7bit|8bit|quoted-printable|base64).</Description>
         <Navigation>Core::Email</Navigation>
         <Value>
-            <Item ValueType="String" ValueRegex="">base64</Item>
+            <Item ValueType="Select" SelectedID="base64">
+                <Item ValueType="Option" Value="base64" Translatable="0">base64</Item>
+                <Item ValueType="Option" Value="7bit" Translatable="0">7bit</Item>
+                <Item ValueType="Option" Value="8bit" Translatable="0">8bit</Item>
+                <Item ValueType="Option" Value="quoted-printable" Translatable="0">quoted-printable</Item>
+            </Item>
         </Value>
     </Setting>
     <Setting Name="Sendmail::DefaultHeaders" Required="0" Valid="0">
