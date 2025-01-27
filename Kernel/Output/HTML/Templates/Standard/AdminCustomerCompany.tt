@@ -197,7 +197,7 @@
                                     [% Translate(Data.Item) | html %]:
                                 </label>
                                 <div class="Field">
-                                    <input type="text" name="[% Data.Name | html %]" id="[% Data.Name | html %]" value="[% Data.Value | html %]" class="W50pc [% Data.RequiredClass %] [% Data.InvalidField %] [% Data.Action | html %]" maxlength="200" [% Data.ReadOnlyType %]/>
+                                    <input type="text" name="[% Data.Name | html %]" id="[% Data.Name | html %]" value="[% Data.Value | html %]" class="W50pc [% Data.RequiredClass %] [% Data.InvalidField %] [% Data.Action | html %]" maxlength="150" [% Data.ReadOnlyType %]/>
 [% RenderBlockStart("PreferencesGenericInputRequired") %]
                                     <div id="[% Data.Name | html %]Error" class="TooltipErrorMessage">
                                         <p>[% Translate("This field is required.") | html %]</p>

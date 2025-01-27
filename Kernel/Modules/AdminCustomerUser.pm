@@ -6,6 +6,7 @@
 # the enclosed file COPYING for license information (GPL). If you
 # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 # --
+## nofilter(TidyAll::Plugin::Znuny::Perl::DBObject)
 
 package Kernel::Modules::AdminCustomerUser;
 
@@ -1080,19 +1081,31 @@ sub _Edit {
     # Get config object
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 
+    my $Backend = $ConfigObject->Get( $Param{Source} );
+
     # update user
-    if ( $ConfigObject->Get( $Param{Source} )->{ReadOnly} || $ConfigObject->Get( $Param{Source} )->{Module} =~ /LDAP/i )
-    {
+    if ( $Backend->{ReadOnly} || $Backend->{Module} =~ /LDAP/i ) {
         $UpdateOnlyPreferences = 1;
     }
 
     # Get dynamic field backend object.
     my $DynamicFieldBackendObject = $Kernel::OM->Get('Kernel::System::DynamicField::Backend');
     my $ParamObject               = $Kernel::OM->Get('Kernel::System::Web::Request');
+    my $DBObject                  = $Kernel::OM->Get('Kernel::System::DB');
+
+    my %ColumnMaxLength;
+    if ( $Backend->{Params}->{Table} && $Backend->{Module} =~ /DB/i ) {
+
+        %ColumnMaxLength = $DBObject->GetColumnMaxLengths(
+            Table => $Backend->{Params}->{Table},
+        );
+    }
 
     ENTRY:
-    for my $Entry ( @{ $ConfigObject->Get( $Param{Source} )->{Map} } ) {
+    for my $Entry ( @{ $Backend->{Map} } ) {
         next ENTRY if !$Entry->[0];
+
+        $Param{MaxLength} = $ColumnMaxLength{ lc( $Entry->[2] ) } || undef;
 
         # Handle dynamic fields
         if ( $Entry->[5] eq 'dynamic_field' ) {

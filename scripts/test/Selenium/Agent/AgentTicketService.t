@@ -224,8 +224,6 @@ $Selenium->RunTest(
                         "Locked Ticket found on page with 'All tickets' filter on - $TicketData{TicketNumber} ",
                     );
 
-                    print STDERR "Debug Dump - ModuleName - HERE - 2\n";
-
                     # click on 'Available ticket' filter
                     $Selenium->find_element(
                         "//a[contains(\@href, \'ServiceID=$ServiceIDs[1];SortBy=Age;OrderBy=Up;View=$View;Filter=Unlocked\' )]"

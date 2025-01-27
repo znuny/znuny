@@ -20,11 +20,13 @@ use Kernel::System::VariableCheck qw(:all);
 
 our @ObjectDependencies = (
     'Kernel::Config',
+    'Kernel::System::Cache',
+    'Kernel::System::DateTime',
     'Kernel::System::Encode',
     'Kernel::System::Log',
     'Kernel::System::Main',
-    'Kernel::System::DateTime',
     'Kernel::System::Storable',
+    'Kernel::System::XML',
 );
 
 our $UseSlaveDB = 0;
@@ -1018,6 +1020,72 @@ sub GetColumnNames {
     }
 
     return @Result;
+}
+
+=head2 GetColumnMaxLengths()
+
+This method is used to retrieve the maximum length of a column in the database.
+
+    my %ColumnMaxLength = $DBObject->GetColumnMaxLengths(
+        Table => "customer_user",
+    );
+
+=cut
+
+sub GetColumnMaxLengths {
+    my ( $Self, %Param ) = @_;
+
+    my $LogObject   = $Kernel::OM->Get('Kernel::System::Log');
+    my $CacheObject = $Kernel::OM->Get('Kernel::System::Cache');
+
+    NEEDED:
+    for my $Needed (qw(Table)) {
+
+        next NEEDED if defined $Param{$Needed};
+
+        $LogObject->Log(
+            Priority => 'error',
+            Message  => "Parameter '$Needed' is needed!",
+        );
+        return;
+    }
+
+    my $Cache = $CacheObject->Get(
+        Type => 'DB',                                  # only [a-zA-Z0-9_] chars usable
+        Key  => 'ColumnMaxLength::' . $Param{Table},
+    );
+    return %{$Cache} if $Cache;
+
+    my $SQL = "SELECT column_name, character_maximum_length FROM information_schema.columns WHERE table_name = ?";
+
+    # This is a workaround for Oracle, because the information_schema.columns table is not available.
+    if ( $Self->{'DB::Type'} eq 'oracle' ) {
+        $Param{Table} = uc $Param{Table};
+        $SQL = "SELECT column_name, data_length FROM user_tab_columns WHERE table_name = ?";
+    }
+
+    $Self->Prepare(
+        SQL  => $SQL,
+        Bind => [ \$Param{Table} ],
+    );
+
+    my %ColumnMaxLength;
+    while ( my @Row = $Self->FetchrowArray() ) {
+        if ( $Self->{'DB::Type'} eq 'oracle' ) {
+            $Row[0] = lc $Row[0];
+            $Row[1] = lc $Row[1];
+        }
+        $ColumnMaxLength{ $Row[0] } = $Row[1];
+    }
+
+    $CacheObject->Set(
+        Type  => 'DB',
+        Key   => 'ColumnMaxLength::' . $Param{Table},
+        Value => \%ColumnMaxLength,
+        TTL   => 60 * 60 * 24 * 1,
+    );
+
+    return %ColumnMaxLength;
 }
 
 =head2 SelectAll()
