@@ -24,12 +24,12 @@ sub Data {
     # possible charsets
     $Self->{Charset} = [];
     # date formats (%A=WeekDay;%B=LongMonth;%T=Time;%D=Day;%M=Month;%Y=Year;)
-    $Self->{DateFormat}          = '';
-    $Self->{DateFormatLong}      = '';
-    $Self->{DateFormatShort}     = '';
-    $Self->{DateInputFormat}     = '';
-    $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.309441423628275;
+    $Self->{DateFormat}          = '%D/%M/%Y %T';
+    $Self->{DateFormatLong}      = '%A %D %B %T %Y';
+    $Self->{DateFormatShort}     = '%D/%M/%Y';
+    $Self->{DateInputFormat}     = '%D/%M/%Y';
+    $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
+    $Self->{Completeness}        = 0.309719934102142;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -2251,7 +2251,7 @@ sub Data {
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentAppointmentEdit.tt
         'Basic information' => '',
-        'Date/Time' => '',
+        'Date/Time' => 'Data / Tempo',
         'Invalid date!' => 'Data inválida!',
         'Please set this to value before End date.' => '',
         'Please set this to value after Start date.' => 'Por favor colocar data posterior à data de inicio.',
@@ -5059,7 +5059,7 @@ sub Data {
         'Setting server_encoding needs to be UNICODE or UTF8.' => '',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/postgresql/DateStyle.pm
-        'Date Format' => '',
+        'Date Format' => 'Formato de data',
         'Setting DateStyle needs to be ISO.' => '',
 
         # Perl Module: Kernel/System/SupportDataCollector/Plugin/Database/postgresql/PrimaryKeySequences.pm
@@ -7633,6 +7633,7 @@ sub Data {
             '',
 
         # XML Definition: Kernel/Config/Files/XML/Znuny.xml
+        'Default preferences to set during user creation.' => '',
         'Enables/disables the Znuny package verification. If disabled, all packages are shown as verified. It\'s still recommended to use only verified packages.' =>
             '',
         'Screens for which it is possible to enable or disable dynamic fields.' =>

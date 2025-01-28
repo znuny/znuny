@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '';
     $Self->{DateInputFormat}     = '';
     $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.868841654308782;
+    $Self->{Completeness}        = 0.868698517298188;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -7630,6 +7630,7 @@ sub Data {
             '에이전트 인터페이스에서 새 티켓의 기본 대기열을 정의합니다.',
 
         # XML Definition: Kernel/Config/Files/XML/Znuny.xml
+        'Default preferences to set during user creation.' => '',
         'Enables/disables the Znuny package verification. If disabled, all packages are shown as verified. It\'s still recommended to use only verified packages.' =>
             '',
         'Screens for which it is possible to enable or disable dynamic fields.' =>
