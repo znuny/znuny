@@ -44,6 +44,10 @@ sub Run {
             Message => 'Create missing primary keys for database tables.',
             Module  => 'CreatePrimaryKeys',
         },
+        {
+            Message => 'Increase size of columns of database table search_profile',
+            Module  => 'SearchProfile',
+        },
     );
 
     return 1   if !@Tasks;
