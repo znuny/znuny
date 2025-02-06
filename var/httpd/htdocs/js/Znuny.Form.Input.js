@@ -535,14 +535,20 @@ Znuny.Form.Input = (function (TargetNS) {
         var Success = Znuny.Form.Input.Set('Queue',
             'Postmaster',
             {
-                KeyOrValue:    'Value',
-                TriggerChange: 'false',
+                KeyOrValue:     'Value',     # Key, Value
+                TriggerChange:  'false',
+                Modernize:       true,       # true, false
+
+                SelectOption:    true,       # true, false  - set options of select field
+                AddEmptyOption:  true,       # true, false  - add empty option as first option for single-selects/dropdowns
+                SortBy:         'Key',       # Key, Value   - Key is default
+                SortOrder:      'ASC',       # ASC, DESC    - ASC is default
             }
         );
 
     Returns:
 
-        var Success = true; # true, false
+        var Success = true;     # true, false
 
     */
     TargetNS.Set = function (Attribute, Content, Options) {
@@ -858,6 +864,7 @@ Znuny.Form.Input = (function (TargetNS) {
                 $('#'+ FieldID +' option').remove();
 
                 function AppendOptions() {
+                    var ContentArray;
 
                     // Add empty option as first option for single-selects/dropdowns
                     // because otherwise somehow the first element will be selected
@@ -873,11 +880,58 @@ Znuny.Form.Input = (function (TargetNS) {
                     ) {
                         $('#'+ FieldID).append($('<option>', { value: '', selected: true }).text('-'));
                     }
-                    $.each(Content, function(Key, Value) {
-                        if (Value !== '') {
-                            $('#'+ FieldID).append($('<option>', { value: Key }).text(Value));
+
+                    // create array from object
+                    if (Options.SortBy || Options.SortOrder) {
+
+                        ContentArray = Object.entries(Content).map(([key, value]) => ({ key: parseInt(key), value }));
+
+                        if (
+                            typeof Options.SortBy === 'undefined'
+                            || (Options.SortBy !== 'Key' && Options.SortBy !== 'Value')
+                        ) {
+                            Options.SortBy = 'Key';
                         }
-                    });
+
+                        if (
+                            typeof Options.SortOrder === 'undefined'
+                            || (Options.SortOrder !== 'DESC' && Options.SortOrder !== 'ASC')
+                        ) {
+                            Options.SortOrder = 'DESC';
+                        }
+                        // sort by id
+                        if (Options.SortBy == 'Key') {
+                            ContentArray.sort((a, b) => a.key - b.key);
+                        }
+
+                        // sort by name
+                        else if (Options.SortBy == 'Value') {
+                            ContentArray.sort((a, b) => a.value.localeCompare(b.value));
+                        }
+
+                        // sort order
+                        if (Options.SortOrder == 'DESC') {
+                            ContentArray.reverse();
+                        }
+                        // add options
+                        ContentArray.forEach(function(item) {
+                            var Key = item.key;
+                            var Value = item.value;
+
+                            if (Value !== '') {
+                                $('#'+ FieldID).append($('<option>', { value: Key }).text(Value));
+                            }
+                        });
+                    }
+
+                    // add options without sorting
+                    else {
+                        $.each(Content, function(Key, Value) {
+                            if (Value !== '') {
+                                $('#'+ FieldID).append($('<option>', { value: Key }).text(Value));
+                            }
+                        });
+                    }
                 }
 
                 function RedrawInputField() {

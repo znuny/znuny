@@ -1,4 +1,5 @@
 # 6.5.12 2024-??-??
+ - 2025-02-06 Added SortBy and SortOrder options to Znuny.Form.Input.Set to sort select field options by key or value.
  - 2025-01-22 Fixed uninitialized value bug. TicketZoom/Agent/MIMEBase.pm - Added special handling for 'undef' values in the arrayref $Event->{$Property}.
  - 2025-01-21 Fixed Bug - Problem when handling errors in the owner field in the activity dialog. Thanks to Daylton Rodrigues (@dayltonr) for reporting. [#627](https://github.com/znuny/Znuny/issues/627).
  - 2025-01-16 Increased size of columns profile_key and profile_value of database table search_profile.
