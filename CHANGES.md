@@ -1,4 +1,5 @@
 # 7.1.4 2024-??-??
+ - 2025-02-06 Added SortBy and SortOrder options to Znuny.Form.Input.Set to sort select field options by key or value.
  - 2025-01-27 Added GetColumnMaxLengths function to DB Object and improved maxlength for customer id on AdminCustomerCompany and for user login on AdminCustomerUser.
  - 2025-01-22 Fixed uninitialized value bug. TicketZoom/Agent/MIMEBase.pm - Added special handling for 'undef' values in the arrayref $Event->{$Property}.
  - 2025-01-21 Fixed Bug - Problem when handling errors in the owner field in the activity dialog. Thanks to Daylton Rodrigues (@dayltonr) for reporting. [#627](https://github.com/znuny/Znuny/issues/627).
