@@ -85,7 +85,7 @@ sub Auth {
     if ( $Self->{Debug} > 0 ) {
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'notice',
-            Message  => "User: '$User' tried to authenticate with Pw: '$Pw' ($RemoteAddr)",
+            Message  => "User: $User tried to authenticate (REMOTE_ADDR: $RemoteAddr)",
         );
     }
 

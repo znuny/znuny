@@ -151,7 +151,7 @@ sub Auth {
         if ( $Self->{Debug} > 0 ) {
             $Kernel::OM->Get('Kernel::System::Log')->Log(
                 Priority => 'notice',
-                Message  => "User: ($Param{User}) added $Self->{UserSuffix} to username!",
+                Message  => "User: $Param{User} added $Self->{UserSuffix} to username!",
             );
         }
     }
@@ -160,8 +160,7 @@ sub Auth {
     if ( $Self->{Debug} > 0 ) {
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'notice',
-            Message  => "User: '$Param{User}' tried to authenticate with Pw: '$Param{Pw}' "
-                . "(REMOTE_ADDR: $RemoteAddr)",
+            Message  => "User: $Param{User} tried to authenticate (REMOTE_ADDR: $RemoteAddr)",
         );
     }
 

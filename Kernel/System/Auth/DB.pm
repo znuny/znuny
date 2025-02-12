@@ -89,7 +89,7 @@ sub Auth {
     my $RemoteAddr = $ENV{REMOTE_ADDR} || 'Got no REMOTE_ADDR env!';
     my $UserID     = '';
     my $GetPw      = '';
-    my $Method;
+    my $Method     = '';
 
     # get database object
     my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
@@ -177,8 +177,8 @@ sub Auth {
             {
                 $Kernel::OM->Get('Kernel::System::Log')->Log(
                     Priority => 'error',
-                    Message =>
-                        "User: '$User' tried to authenticate with bcrypt but 'Crypt::Eksblowfish::Bcrypt' is not installed!",
+                    Message  =>
+                        "User: $User tried to authenticate with bcrypt but 'Crypt::Eksblowfish::Bcrypt' is not installed!",
                 );
                 return;
             }
@@ -245,10 +245,19 @@ sub Auth {
 
     # just in case for debug!
     if ( $Self->{Debug} > 0 ) {
+        my $EnteredPw  = $CryptedPw;
+        my $ExpectedPw = $GetPw;
+
+        # Don't log plaintext passwords.
+        if ( $Method eq 'plain' ) {
+            $EnteredPw  = 'xxx';
+            $ExpectedPw = 'xxx';
+        }
+
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'notice',
-            Message =>
-                "User: '$User' tried to authenticate with Pw: '$Pw' ($UserID/$Method/$CryptedPw/$GetPw/$Salt/$RemoteAddr)",
+            Message  =>
+                "User: $User tried to authenticate (User ID: $UserID, method: $Method, entered password: $EnteredPw, expected password: $ExpectedPw, salt: $Salt, remote address: $RemoteAddr)",
         );
     }
 
@@ -275,7 +284,7 @@ sub Auth {
     elsif ( ($UserID) && ($GetPw) ) {
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Priority => 'notice',
-            Message =>
+            Message  =>
                 "User: $User authentication with wrong Pw!!! (Method: $Method, REMOTE_ADDR: $RemoteAddr)"
         );
         return;
