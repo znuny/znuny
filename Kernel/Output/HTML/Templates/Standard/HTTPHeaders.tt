@@ -17,6 +17,11 @@ X-UA-Compatible: IE=edge,chrome=1
 [% IF !Config("DisableIFrameOriginRestricted") && !Data.DisableIFrameOriginRestricted -%]
 X-Frame-Options: SAMEORIGIN
 [% END -%]
+[% IF !Config("DisableContentSecurityPolicy") -%]
+Content-Security-Policy: default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob;
+[% END -%]
+X-Content-Type-Options: nosniff;
+Referrer-Policy: no-referrer;
 [% IF Data.XLoginHeader -%]
 # With this X-Header, Core.AJAX can recognize that the AJAX request returned the login page (session timeout) and perform a redirect.
 X-OTRS-Login: [% Env("Baselink") %]
