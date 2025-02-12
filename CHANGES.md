@@ -8,6 +8,7 @@
  - 2025-01-21 Fixed Bug - Problem when handling errors in the owner field in the activity dialog. Thanks to Daylton Rodrigues (@dayltonr) for reporting. [#627](https://github.com/znuny/Znuny/issues/627).
  - 2025-01-16 Increased size of columns profile_key and profile_value of database table search_profile.
  - 2025-01-15 Sector Nord AG: Fixed module check for calendar plugin. Thanks to Sector Nord AG (@jsinagowitz). [PR#623](https://github.com/znuny/Znuny/pull/623)
+ - 2025-01-14 Fixed setting of HTTP type attribute in cookie on agent and customer user login.
  - 2025-01-08 Added config option DynamicFields::Driver::BaseSelect::EnableHistoricalValues to enable/disable evaluation of historical values for dynamic field types based on BaseSelect.
  - 2024-12-23 Improved ACL checks in ticket overview modules.
  - 2024-12-17 Fixed time zone handling for cron events.
