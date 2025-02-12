@@ -25,6 +25,7 @@
             client_secret: ClientSecret
             code: AuthorizationCode
             redirect_uri: RedirectURL
+            scope: Scope
           Parameters:
             grant_type: authorization_code
           URL: https://login.microsoftonline.com/consumers/oauth2/v2.0/token
@@ -42,6 +43,7 @@
             client_id: ClientID
             client_secret: ClientSecret
             refresh_token: RefreshToken
+            scope: Scope
           Parameters:
             grant_type: refresh_token
           URL: https://login.microsoftonline.com/consumers/oauth2/v2.0/token
