@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '';
     $Self->{DateInputFormat}     = '';
     $Self->{DateInputFormatLong} = '';
-    $Self->{Completeness}        = 0.868555427441937;
+    $Self->{Completeness}        = 0.868412384716733;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -7777,6 +7777,8 @@ sub Data {
         'Maximum number of quoted lines to be added to forwarded messages.' =>
             '',
         'Re-indexes S/MIME certificate folders. Note: S/MIME needs to be enabled in SysConfig.' =>
+            '',
+        'Do not verify the signer\'s certificate of a signed message.' =>
             '',
         'Maximum length of displayed attachment filenames in the article preview of ticket zoom view.' =>
             '',

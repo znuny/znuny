@@ -661,6 +661,11 @@ Message
     my %CommunicationLogSkipAttributes = (
         Body       => 1,
         Attachment => 1,
+
+        # Avoid possible errors on trying to store binary data in db.
+        # This can happen if there were (partial) errors in decryption, leading
+        # to the decrypted body still containing a binary key/cert.
+        'X-OTRS-BodyDecrypted' => 1,
     );
 
     ATTRIBUTE:
