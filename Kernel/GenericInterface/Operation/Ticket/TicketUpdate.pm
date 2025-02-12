@@ -440,9 +440,10 @@ sub Run {
 
     # check basic needed permissions
     my $Access = $Self->CheckAccessPermissions(
-        TicketID => $TicketID,
-        UserID   => $PermissionUserID,
-        UserType => $UserType,
+        TicketID       => $TicketID,
+        UserID         => $PermissionUserID,
+        UserType       => $UserType,
+        PermissionType => 'rw',
     );
 
     if ( !$Access ) {
