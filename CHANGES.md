@@ -1,9 +1,9 @@
 # 6.5.12 2025-02-12
  - 2025-02-06 Added SortBy and SortOrder options to Znuny.Form.Input.Set to sort select field options by key or value.
- - 2025-01-27 Added user check to scripts/backup.pl and scripts/restore.pl to prevent these scripts from being executed with root permissions. Thanks to Diego Tellaroli for reporting this issue.
  - 2025-02-05 Fixed event check in ticket event module Kernel::System::Ticket::Event::TicketDynamicFieldDefault.
  - 2025-01-29 Added HTTP headers for more safety.
  - 2025-01-28 Fixed permission check in generic interface operation TicketUpdate.
+ - 2025-01-27 Added user check to scripts/backup.pl and scripts/restore.pl to prevent these scripts from being executed with root permissions. Thanks to Diego Tellaroli for reporting this issue.
  - 2025-01-22 Fixed uninitialized value bug. TicketZoom/Agent/MIMEBase.pm - Added special handling for 'undef' values in the arrayref $Event->{$Property}.
  - 2025-01-21 Fixed Bug - Problem when handling errors in the owner field in the activity dialog. Thanks to Daylton Rodrigues (@dayltonr) for reporting. [#627](https://github.com/znuny/Znuny/issues/627).
  - 2025-01-16 Increased size of columns profile_key and profile_value of database table search_profile.
