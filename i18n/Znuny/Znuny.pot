@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-01-27 09:29+0000\n"
+"POT-Creation-Date: 2025-02-11 10:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20708,6 +20708,10 @@ msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Re-indexes S/MIME certificate folders. Note: S/MIME needs to be enabled in SysConfig."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Do not verify the signer's certificate of a signed message."
 msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml

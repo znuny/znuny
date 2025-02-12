@@ -34,7 +34,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D/%M/%Y';
     $Self->{DateInputFormat}     = '%D/%M/%Y';
     $Self->{DateInputFormatLong} = '%D/%M/%Y - %T';
-    $Self->{Completeness}        = 0.620473201352004;
+    $Self->{Completeness}        = 0.620373350498874;
 
     # csv separator
     $Self->{Separator}         = '';
@@ -8003,6 +8003,8 @@ NOTA: i sistemi di terze parti richiedono una configurazione a se.',
         'Maximum number of quoted lines to be added to forwarded messages.' =>
             '',
         'Re-indexes S/MIME certificate folders. Note: S/MIME needs to be enabled in SysConfig.' =>
+            '',
+        'Do not verify the signer\'s certificate of a signed message.' =>
             '',
         'Maximum length of displayed attachment filenames in the article preview of ticket zoom view.' =>
             '',

@@ -25,7 +25,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.996941896024465;
+    $Self->{Completeness}        = 0.996942388155777;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -7991,6 +7991,8 @@ sub Data {
             'Maximale Anzahl zitierter Zeilen in weitergeleiteten Nachrichten.',
         'Re-indexes S/MIME certificate folders. Note: S/MIME needs to be enabled in SysConfig.' =>
             'Re-indiziert S/MIME-Zertifikat-Verzeichnisse. Hinweis: S/MIME muss in der SysConfig aktiviert sein.',
+        'Do not verify the signer\'s certificate of a signed message.' =>
+            'Prüfung des Zertifikats des Unterzeichners einer signierten Nachricht deaktivieren.',
         'Maximum length of displayed attachment filenames in the article preview of ticket zoom view.' =>
             'Maximale Länge der angezeigten Dateinamen von Anhängen in der Artikelvorschau der Ticket-Detailansicht.',
         'General settings for autocompletion in rich text editor.' => 'Allgemeine Einstellungen für Autovervollständigung im Rich-Text-Editor.',
