@@ -75,7 +75,7 @@ EOF
         die "
 Cannot run this script as root.
 Please run it as the 'znuny' user or with the help of su:
-    su -c \"$0\" -s /bin/bash otrs
+    su -c \"$0\" -s /bin/bash znuny
 ";
     }
 

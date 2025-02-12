@@ -32,6 +32,17 @@ use Getopt::Std;
 
 use Kernel::System::ObjectManager;
 
+# UID check
+if ( $> == 0 ) {    # $EFFECTIVE_USER_ID
+    print "
+Cannot run this script as root.
+Please run it as the 'znuny' user or with the help of su:
+    su -c \"$0\" -s /bin/bash znuny
+";
+
+    exit 1;
+}
+
 # get options
 my %Opts;
 my $DB            = '';

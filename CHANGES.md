@@ -1,8 +1,9 @@
-# 7.1.4 2024-??-??
+# 7.1.4 2025-02-12
  - 2025-02-06 Added SortBy and SortOrder options to Znuny.Form.Input.Set to sort select field options by key or value.
  - 2025-02-05 Fixed event check in ticket event module Kernel::System::Ticket::Event::TicketDynamicFieldDefault.
  - 2025-01-29 Added HTTP headers for more safety.
  - 2025-01-28 Fixed permission check in generic interface operation TicketUpdate.
+ - 2025-01-27 Added user check to scripts/backup.pl and scripts/restore.pl to prevent these scripts from being executed with root permissions. Thanks to Diego Tellaroli for reporting this issue.
  - 2025-01-27 Added GetColumnMaxLengths function to DB Object and improved maxlength for customer id on AdminCustomerCompany and for user login on AdminCustomerUser.
  - 2025-01-22 Fixed uninitialized value bug. TicketZoom/Agent/MIMEBase.pm - Added special handling for 'undef' values in the arrayref $Event->{$Property}.
  - 2025-01-21 Fixed Bug - Problem when handling errors in the owner field in the activity dialog. Thanks to Daylton Rodrigues (@dayltonr) for reporting. [#627](https://github.com/znuny/Znuny/issues/627).
@@ -347,6 +348,35 @@
  - 2022-08-22 Core.UI.InputFields.js - Changed the behaviour of the Core.UI.InputFields.js. Now no fields are automatically enlarged or reduced.
  - 2022-08-08 Admin - Added counter of AdminSettingPages per widget and additional focus by filter.
  - 2022-07-15 Frontend::ToolBarModule - Refactored the Toolbar registration, position and view.
+
+# 6.5.12 2025-02-12
+ - 2025-02-06 Added SortBy and SortOrder options to Znuny.Form.Input.Set to sort select field options by key or value.
+ - 2025-02-05 Fixed event check in ticket event module Kernel::System::Ticket::Event::TicketDynamicFieldDefault.
+ - 2025-01-29 Added HTTP headers for more safety.
+ - 2025-01-28 Fixed permission check in generic interface operation TicketUpdate.
+ - 2025-01-27 Added user check to scripts/backup.pl and scripts/restore.pl to prevent these scripts from being executed with root permissions. Thanks to Diego Tellaroli for reporting this issue.
+ - 2025-01-22 Fixed uninitialized value bug. TicketZoom/Agent/MIMEBase.pm - Added special handling for 'undef' values in the arrayref $Event->{$Property}.
+ - 2025-01-21 Fixed Bug - Problem when handling errors in the owner field in the activity dialog. Thanks to Daylton Rodrigues (@dayltonr) for reporting. [#627](https://github.com/znuny/Znuny/issues/627).
+ - 2025-01-16 Increased size of columns profile_key and profile_value of database table search_profile.
+ - 2025-01-14 Fixed setting of HTTP type attribute in cookie on agent and customer user login.
+ - 2025-01-08 Added config option DynamicFields::Driver::BaseSelect::EnableHistoricalValues to enable/disable evaluation of historical values for dynamic field types based on BaseSelect.
+ - 2024-12-23 Improved ACL checks in ticket overview modules.
+ - 2024-12-17 Fixed time zone handling for cron events.
+ - 2024-12-10 System configuration option SendmailEncodingForce is now a selection instead of a text field.
+ - 2024-12-09 Fixed multiple notifications being sent for empty process tickets (event NotificationNewTicket).
+ - 2024-12-06 Fixed data evaluation in ICS calendar event.
+ - 2024-11-28 Fixed Server Error, when Frontend::Template::GenerateBlockHooks###NAME has no valid data structure.
+ - 2024-11-27 Fixed user cache being cleared for all users whenever a user logs in/out.
+ - 2024-11-01 Fixed Bug - Translate the ticket state in PDF search result (AgentTicketSearch and CustomerTicketSearch). Thanks to @BuilderNSV for reporting the issue. [#615](https://github.com/znuny/Znuny/issues/615)
+ - 2024-11-01 Sector Nord AG: Fixed uninitialized value in AdminSelectBox. Thanks to Sector Nord AG (@jsinagowitz). [PR#611](https://github.com/znuny/Znuny/pull/611)
+ - 2024-10-31 Template generator will now keep &nbsp; in a template when in rich text mode and won't replace them with spaces anymore. This lead to multiple &nbsp; reduced to one space being shown in the editor.
+ - 2024-10-28 S/MIME verification: Added fallback option to disable verification of the signer's certificate after initial verification failed. Activated by new config option SMIME::NoVerify.
+ - 2024-10-24 Fixed Bug - 'Use of uninitialized value' warning on build custom package and there are no permissions to write to the target directory. Thanks to @BuilderNSV for reporting the issue. [#610](https://github.com/znuny/Znuny/issues/610)
+ - 2024-10-22 Perl Module Hash::Merge is now be listed in otrs.CheckModules.pl as mandatory.
+ - 2024-10-15 Ticket search for customer ID in customer interface now searches for the raw ID. Thanks to @BuilderNSV for reporting the issue. [#602](https://github.com/znuny/Znuny/issues/602)
+ - 2024-10-10 Updated MIME::Decoder::QuotedPrint from 5.509 to 5.515.
+ - 2024-10-07 Updated jstree from version 3.3.7 to 3.3.8.
+ - 2024-10-07 Updated nunjucks from version 3.2.2 to 3.2.3.
 
 # 6.5.11 2024-10-02
  - 2024-10-02 Added HTML filter to ProcessManagement/SLA template. Converts the characters <, >, & and " to <, >, &, and " respectively, protecting them from being interpreted as representing HTML tags or entities.
