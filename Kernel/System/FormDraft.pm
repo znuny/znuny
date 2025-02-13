@@ -98,7 +98,6 @@ Returns (without GetContent or GetContent = 1):
                 'ContentID'   => undef,                                 # optional
                 'Filename'    => 'thankyou.txt',
                 'Filesize'    => 25,
-                'FileID'      => 1,
                 'Disposition' => 'attachment',
             },
             # ...
@@ -261,7 +260,6 @@ add a new draft
                 'ContentID'   => undef,                         # optional
                 'Filename'    => 'thankyou.txt',
                 'Filesize'    => 25,
-                'FileID'      => 1,
                 'Disposition' => 'attachment',
             },
             # ...
@@ -348,7 +346,6 @@ update an existing draft
                 'ContentID'   => undef,                         # optional
                 'Filename'    => 'thankyou.txt',
                 'Filesize'    => 25,
-                'FileID'      => 1,
                 'Disposition' => 'attachment',
             },
             # ...

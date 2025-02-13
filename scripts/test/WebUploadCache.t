@@ -161,8 +161,8 @@ for my $Module (qw(DB FS)) {
 
         if ( $Module eq 'FS' ) {
             my $Delete = $UploadCacheObject->FormIDRemoveFile(
-                FormID => $InvalidFormID,
-                FileID => 1,
+                FormID   => $InvalidFormID,
+                Filename => $ExpectedFilename,
             );
 
             $Self->False(
@@ -172,8 +172,8 @@ for my $Module (qw(DB FS)) {
         }
 
         my $Delete = $UploadCacheObject->FormIDRemoveFile(
-            FormID => $FormID,
-            FileID => 1,
+            FormID   => $FormID,
+            Filename => $ExpectedFilename,
         );
         $Self->True(
             $Delete || '',
@@ -278,8 +278,8 @@ for my $Module (qw(DB FS)) {
             );
         }
         my $Delete = $UploadCacheObject->FormIDRemoveFile(
-            FormID => $FormID,
-            FileID => 1,
+            FormID   => $FormID,
+            Filename => $ExpectedFilename,
         );
         $Self->True(
             $Delete || '',

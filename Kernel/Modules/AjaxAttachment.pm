@@ -94,18 +94,18 @@ sub Run {
     elsif ( $Self->{Subaction} eq 'Delete' ) {
 
         my $Return;
-        my $AttachmentFileID = $ParamObject->GetParam( Param => 'FileID' ) || '';
+        my $AttachmentFilename = $ParamObject->GetParam( Param => 'Filename' ) || '';
 
-        if ( !$AttachmentFileID ) {
+        if ( !$AttachmentFilename ) {
             $Return->{Message} = $LayoutObject->{LanguageObject}->Translate(
-                'Error: the file could not be deleted properly. Please contact your administrator (missing FileID).'
+                'Error: the file could not be deleted properly. Please contact your administrator (missing Filename).'
             );
         }
         else {
 
             my $DeleteAttachment = $UploadCacheObject->FormIDRemoveFile(
-                FormID => $Self->{FormID},
-                FileID => $AttachmentFileID,
+                FormID   => $Self->{FormID},
+                Filename => $AttachmentFilename,
             );
 
             if ($DeleteAttachment) {
@@ -126,9 +126,10 @@ sub Run {
                 }
 
                 $Return = {
-                    Message => 'Success',
-                    Data    => \@AttachmentData,
+                    Message                 => 'Success',
+                    NumberOfAttachmentsLeft => scalar @AttachmentData,
                 };
+
             }
         }
 

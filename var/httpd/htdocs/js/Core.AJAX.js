@@ -220,7 +220,6 @@ Core.AJAX = (function (TargetNS) {
                 'Filename' : this.Filename,
                 'Filetype' : this.ContentType,
                 'Filesize' : this.Filesize,
-                'FileID'   : this.FileID,
             });
 
             $(AttachmentItem).prependTo($('.AttachmentList tbody')).fadeIn();

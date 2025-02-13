@@ -117,7 +117,7 @@ removes a file from a form id
 
     $UploadCacheObject->FormIDRemoveFile(
         FormID => 12345,
-        FileID => 1,
+        FileName => 'document.txt',
     );
 
 =cut
@@ -136,7 +136,7 @@ returns an array with a hash ref of all files for a Form ID
         FormID => 12345,
     );
 
-    Return data of on hash is Content, ContentType, ContentID, Filename, Filesize, FileID;
+    Return data of on hash is Content, ContentType, ContentID, Filename, Filesize;
 
 =cut
 
@@ -156,7 +156,7 @@ Note: returns no content, only meta data.
         FormID => 12345,
     );
 
-    Return data of hash is ContentType, ContentID, Filename, Filesize, FileID;
+    Return data of hash is ContentType, ContentID, Filename, Filesize;
 
 =cut
 
