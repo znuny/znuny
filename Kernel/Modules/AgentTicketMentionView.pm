@@ -188,8 +188,8 @@ sub Run {
             Name   => Translatable('New mention'),
             Prio   => 1001,
             Search => {
-                NotTicketFlag => {
-                    Seen => 1,
+                TicketFlag => {
+                    MentionSeen => 0,
                 },
                 TicketFlagUserID => $Self->{UserID},
                 OrderBy          => $OrderBy,
