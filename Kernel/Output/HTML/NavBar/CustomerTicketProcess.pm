@@ -131,15 +131,11 @@ sub Run {
     my $Priority   = sprintf( '%07d', $FrontendNavigationConfig->{'002-ProcessManagement'}->[0]->{Prio} );
 
     return if !$Param{NavBarModule};
-    my %Return = %{ $Param{NavBarModule} };
 
-    # remove CustomerTicketProcess from the TicketMenu
-    delete $Return{$NavBarName}->{$Priority};
-
-    # remove CustomerTicketProcess from the Menu if set outside of the TicketMenu, see bug #11393
+    # remove CustomerTicketProcess from the main menu
     delete $Param{NavBarModule}->{$Priority};
 
-    return ( Sub => \%Return );
+    return 1;
 }
 
 1;

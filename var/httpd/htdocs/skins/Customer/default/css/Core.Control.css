@@ -68,9 +68,9 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
 }*/
 
-/*#Navigation > ul > li:hover ul:not(:empty),
-#Navigation > ul > li a:focus + ul:not(:empty),*/
-#Navigation > ul > li ul.Expanded:not(:empty:blank) {
+#Navigation > ul > li:hover ul,
+#Navigation > ul > li a:focus + ul,
+#Navigation > ul > li ul.Expanded {
     display: block;
     z-index: 1000;
 }
@@ -157,9 +157,6 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     cursor: pointer;
 }
 
-#Navigation > ul > li > ul li:last-child {
-}
-
 #Navigation > ul > li > ul a:hover,
 #Navigation > ul > li > ul a:focus,
 #Navigation > ul > li > ul a.SubSelected {
@@ -180,21 +177,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     white-space: normal;
 }
 
-#Navigation li:active {
-}
-
 #Navigation .Selected + li {
     margin-left: -1px;
 }
 
 #Navigation .Selected + li a {
     padding-left: 10px;
-}
-
-#Navigation .Selected,
-#Navigation .Selected:active,
-#Navigation > ul > li:hover {
-
 }
 
 #Navigation > ul > li > a::after {
@@ -287,9 +275,10 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border-radius: 0;
     }
 
-    #Navigation > ul.menuItems > .Selected a, 
-    #Navigation > ul.menuItems > li:focus a, 
-    #Navigation > ul.menuItems > li:hover a {
+    #Navigation > ul.menuItems > .Selected a,
+    #Navigation > ul.menuItems > li:focus a,
+    #Navigation > ul.menuItems > li:hover > a,
+    #Navigation > ul.menuItems > li:hover > a ul a {
         background: var(--primary-color);
         color: var(--white);
     }
@@ -309,6 +298,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     #Navigation > ul.menuItems > li > ul {
         display: flex;
+        flex-direction: column;
         position: relative;
         top: unset;
         left: unset;
@@ -319,11 +309,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding: var(--padding-sm);
         border-radius: var(--border-radius-xs);
     }
-    
+
     .RTL #Navigation > ul.menuItems > li > ul {
         right: 1px;
     }
-    
+
     #Navigation > ul.menuItems > li > ul > li {
         font-size: 11px;
         line-height: 11px;
@@ -422,8 +412,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     background-position: left;
 }
 
-.Filter li .Selected, 
-.Filter li .Selected:hover, 
+.Filter li .Selected,
+.Filter li .Selected:hover,
 .Filter li .Selected:active {
     background: none;
     position: relative;
