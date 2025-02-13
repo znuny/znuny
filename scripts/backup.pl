@@ -127,6 +127,7 @@ local $Kernel::OM = Kernel::System::ObjectManager->new(
 
 my $DatabaseHost = $Kernel::OM->Get('Kernel::Config')->Get('DatabaseHost');
 my $Database     = $Kernel::OM->Get('Kernel::Config')->Get('Database');
+my $DatabasePort = $Kernel::OM->Get('Kernel::Config')->Get('DatabasePort');
 my $DatabaseUser = $Kernel::OM->Get('Kernel::Config')->Get('DatabaseUser');
 my $DatabasePw   = $Kernel::OM->Get('Kernel::Config')->Get('DatabasePw');
 my $DatabaseDSN  = $Kernel::OM->Get('Kernel::Config')->Get('DatabaseDSN');
@@ -254,9 +255,14 @@ if ( $DB =~ m/mysql/i ) {
     if ($DatabasePw) {
         $DatabasePw = "-p'$DatabasePw'";
     }
+
+    if ($DatabasePort) {
+        $DatabasePort = "-P $DatabasePort";
+    }
+
     if (
         !system(
-            "( $DBDump -u $DatabaseUser $DatabasePw -h $DatabaseHost $Database --single-transaction --no-tablespaces || touch $ErrorIndicationFileName ) | $CompressCMD > $Directory/DatabaseBackup.sql.$CompressEXT"
+            "( $DBDump -u $DatabaseUser $DatabasePw -h $DatabaseHost $DatabasePort $Database --single-transaction --no-tablespaces || touch $ErrorIndicationFileName ) | $CompressCMD > $Directory/DatabaseBackup.sql.$CompressEXT"
         )
         && !-f $ErrorIndicationFileName
         )
@@ -284,9 +290,13 @@ else {
         $DatabaseHost = "-h $DatabaseHost";
     }
 
+    if ($DatabasePort) {
+        $DatabasePort = "-p $DatabasePort";
+    }
+
     if (
         !system(
-            "( $DBDump $DatabaseHost -U $DatabaseUser $Database || touch $ErrorIndicationFileName ) | $CompressCMD > $Directory/DatabaseBackup.sql.$CompressEXT"
+            "( $DBDump $DatabaseHost $DatabasePort -U $DatabaseUser $Database || touch $ErrorIndicationFileName ) | $CompressCMD > $Directory/DatabaseBackup.sql.$CompressEXT"
         )
         && !-f $ErrorIndicationFileName
         )
