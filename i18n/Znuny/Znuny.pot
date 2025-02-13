@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-11-01 12:29+0000\n"
+"POT-Creation-Date: 2025-02-11 10:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7051,6 +7051,10 @@ msgid "in"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
+msgid "All"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AgentDashboardCommon.tt
 msgid "Search inactive widgets"
 msgstr ""
 
@@ -8643,6 +8647,10 @@ msgid "Service level agreement"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
+msgid "Tickets"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketOverview.tt
 msgid "Welcome!"
 msgstr ""
 
@@ -8659,7 +8667,15 @@ msgid "New Process Ticket"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+msgid "Ticket Search"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Profile"
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
+msgid "Template Name"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
@@ -8680,10 +8696,6 @@ msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "No time settings"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
-msgid "All"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
@@ -8716,10 +8728,6 @@ msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
 msgid "Save as Template?"
-msgstr ""
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
-msgid "Template Name"
 msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/CustomerTicketSearch.tt
@@ -14403,10 +14411,6 @@ msgid "Database Records"
 msgstr ""
 
 #. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
-msgid "Tickets"
-msgstr ""
-
-#. Perl Module: Kernel/System/SupportDataCollector/Plugin/Znuny/DatabaseRecords.pm
 msgid "Ticket History Entries"
 msgstr ""
 
@@ -19759,6 +19763,10 @@ msgid "Screens for which it is possible to enable or disable default columns."
 msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Enables historical values for selection in dynamic field types that are based on BaseSelect (Dropdown and Multiselect). Disable this if there are performance problems because of too many different stored values."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Mapping of Ticket::Generic invoker name (key) to list of fields (content) whose values will be base-64 encoded. Fields have to be given in the following form: Field1->Field2;Field3->Field4->Field5;Field6. So a nested data structure can be given by connecting the fields with '->'. Content of different fields can be given by separating those fields by ';'."
 msgstr ""
 
@@ -20092,6 +20100,10 @@ msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Re-indexes S/MIME certificate folders. Note: S/MIME needs to be enabled in SysConfig."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Do not verify the signer's certificate of a signed message."
 msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
@@ -23999,10 +24011,6 @@ msgstr ""
 
 #. SysConfig
 msgid "Ticket Responsible."
-msgstr ""
-
-#. SysConfig
-msgid "Ticket Search"
 msgstr ""
 
 #. SysConfig

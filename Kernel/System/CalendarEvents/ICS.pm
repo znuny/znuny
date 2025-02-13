@@ -404,7 +404,13 @@ sub _PrepareData {
                     if ( IsArrayRefWithData($Attendees) ) {
                         my @AttendeeSafety;
 
+                        ATTENDEE:
                         for my $Attendee ( @{$Attendees} ) {
+                            if ( !$Attendee->{CN} ) {
+                                push @AttendeeSafety, '';
+                                next ATTENDEE;
+                            }
+
                             my %Safety = $HTMLUtilsObject->Safety(
                                 String       => $Attendee->{CN},
                                 NoApplet     => 1,

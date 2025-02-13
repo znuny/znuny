@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-07-01 07:05+0000\n"
-"PO-Revision-Date: 2024-12-21 23:20+0000\n"
+"PO-Revision-Date: 2025-01-21 01:25+0000\n"
 "Last-Translator: Daniel Lisiecki <lisiecki.daniel@gmail.com>\n"
 "Language-Team: Polish <https://translations.znuny.org/projects/znuny/znuny/pl/>\n"
 "Language: pl\n"
@@ -24200,19 +24200,19 @@ msgstr ""
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBulk.tt
 msgid "Mark tickets as seen"
-msgstr "Oznacz zgłoszenia jako obejrzane"
+msgstr "Oznacz zgłoszenia jako przeczytane"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketBulk.tt
 msgid "Mark tickets as unseen"
-msgstr "Oznacz zgłoszenia jako nieobejrzane"
+msgstr "Oznacz zgłoszenia jako nieprzeczytane"
 
 #. Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
 msgid "Mark article as unseen"
-msgstr "Oznacz artykuł jako nieobejrzany"
+msgstr "Oznacz artykuł jako nieprzeczytany"
 
 #. Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
 msgid "Mark as unseen"
-msgstr "Oznacz jako nieobejrzane"
+msgstr "Nieprzeczytany"
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Defines the config parameters available in the preferences view. The default redirect URL from SysConfig 'MarkTicketUnseenRedirectDefaultURL' is used if no selection is made by the agent."
@@ -24264,19 +24264,19 @@ msgstr ""
 
 #. SysConfig
 msgid "Mark ticket as seen"
-msgstr "Oznacz zgłoszenie jako obejrzane"
+msgstr "Oznacz zgłoszenie jako przeczytane"
 
 #. SysConfig
 msgid "Mark ticket as unseen"
-msgstr "Oznacz zgłoszenie jako nieobejrzane"
+msgstr "Oznacz zgłoszenie jako nieprzeczytane"
 
 #. SysConfig
 msgid "Screen after marking as seen"
-msgstr "Ekran po zaznaczeniu jako obejrzany"
+msgstr "Ekran po zaznaczeniu jako przeczytany"
 
 #. SysConfig
 msgid "Screen after marking as unseen"
-msgstr "Ekran po zaznaczeniu jako nieobejrzany"
+msgstr "Ekran po zaznaczeniu jako nieprzeczytany"
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Mapping of ticket priority to X-Priority email header for outgoing emails of communication channel \"agent\"."
@@ -24356,7 +24356,7 @@ msgstr ""
 
 #. SysConfig
 msgid "Mark as seen"
-msgstr ""
+msgstr "Przeczytany"
 
 #. XML Definition: Kernel/Config/Files/XML/Framework.xml
 msgid "Limits the number of options for modernized selection fields. If this limit will be exceeded, the selection field will for performance reasons be shown as non-modernized."
@@ -24364,5 +24364,13 @@ msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Default preferences to set during user creation."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Enables historical values for selection in dynamic field types that are based on BaseSelect (Dropdown and Multiselect). Disable this if there are performance problems because of too many different stored values."
+msgstr ""
+
+#. XML Definition: Kernel/Config/Files/XML/Znuny.xml
+msgid "Do not verify the signer's certificate of a signed message."
 msgstr ""
 

@@ -768,15 +768,34 @@ $Certificates{ZnunyRootCA} = {
         Fingerprint => $SMIMEUser1Certificate{Fingerprint},
     );
 
-    # verify it
+    # verify it with NoVerify option, must succeed
+    $ConfigObject->Set(
+        Key   => 'SMIME::NoVerify',
+        Value => 1,
+    );
+
     my %Data = $SMIMEObject->Verify(
         Message => $Sign,
     );
 
-    # it must fail
+    $Self->True(
+        $Data{Successful},
+        'Sign(), succeeded certificate chain verification with option SMIME::NoVerify enabled, needed CA certificates not embedded',
+    );
+
+    # verify it without NoVerify option, must fail
+    $ConfigObject->Set(
+        Key   => 'SMIME::NoVerify',
+        Value => 0,
+    );
+
+    %Data = $SMIMEObject->Verify(
+        Message => $Sign,
+    );
+
     $Self->False(
         $Data{Successful},
-        'Sign(), failed certificate chain verification, needed CA certificates not embedded',
+        'Sign(), failed certificate chain verification with option SMIME::NoVerify disabled, needed CA certificates not embedded',
     );
 
     # add CA certificates to the local cert storage (ZnunySub2CA)
@@ -793,15 +812,34 @@ $Certificates{ZnunyRootCA} = {
         Fingerprint => $SMIMEUser1Certificate{Fingerprint},
     );
 
-    # verify must fail not root cert added to the trusted cert path
+    # verify with NoVerify option must succeed not root cert added to the trusted cert path
+    $ConfigObject->Set(
+        Key   => 'SMIME::NoVerify',
+        Value => 1,
+    );
+
     %Data = $SMIMEObject->Verify(
         Message => $Sign,
     );
 
-    # it must fail
+    $Self->True(
+        $Data{Successful},
+        'Sign(), succeeded certificate chain verification with option SMIME::NoVerify enabled, not installed CA root certificate',
+    );
+
+    # verify without NoVerify option must fail not root cert added to the trusted cert path
+    $ConfigObject->Set(
+        Key   => 'SMIME::NoVerify',
+        Value => 0,
+    );
+
+    %Data = $SMIMEObject->Verify(
+        Message => $Sign,
+    );
+
     $Self->False(
         $Data{Successful},
-        'Sign(), failed certificate chain verification, not installed CA root certificate',
+        'Sign(), failed certificate chain verification with option SMIME::NoVerify disabled, not installed CA root certificate',
     );
 
     # add the root CA cert to the trusted certificates path

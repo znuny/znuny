@@ -478,6 +478,9 @@ verify a message with signature and returns a hash (Successful, Message, Signers
         Message => $Message,
         CACert  => $PathtoCACert,                   # the certificates autority that endorse a self
                                                     # signed certificate
+        RetryWithNoVerify => 0,                     # optional; if config option SMIME::NoVerify is set,
+                                                    # verification will be tried with '-noverify' option
+                                                    # after initial failure
     );
 
 returns:
@@ -498,6 +501,8 @@ returns:
 
 sub Verify {
     my ( $Self, %Param ) = @_;
+
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 
     my %Return;
     my $Message     = '';
@@ -531,11 +536,15 @@ sub Verify {
         $CertificateOption = "-CAfile $Param{CACert}";
     }
 
-    my $Options = "smime -verify -in $SignedFile -out $VerifiedFile -signer $SignerFile "
+    my $NoVerifyOption = '';
+    if ( $Param{RetryWithNoVerify} ) {
+        $NoVerifyOption = '-noverify';
+    }
+
+    my $Options = "smime -verify $NoVerifyOption -in $SignedFile -out $VerifiedFile -signer $SignerFile "
         . "-CApath $Self->{CertPath} $CertificateOption $SignedFile";
 
     my @LogLines = qx{$Self->{Cmd} $Options 2>&1};
-
     for my $LogLine (@LogLines) {
         $MessageLong .= $LogLine;
         if ( $LogLine =~ /^\d.*:(.+?):.+?:.+?:$/ || $LogLine =~ /^\d.*:(.+?)$/ ) {
@@ -594,7 +603,7 @@ sub Verify {
         );
     }
 
-    # digest failure means that the content of the email does not match witht he signature
+    # digest failure means that the content of the email does not match with the signature
     elsif ( $Message =~ m{digest failure}i ) {
         %Return = (
             SignatureFound => 1,
@@ -608,12 +617,22 @@ sub Verify {
         );
     }
     else {
-        %Return = (
-            SignatureFound => 0,
-            Successful     => 0,
-            Message        => 'OpenSSL: ' . $Message,
-            MessageLong    => 'OpenSSL: ' . $MessageLong,
-        );
+        # Retry if config option SMIME::NoVerify is set and this is not already the retry.
+        my $NoVerify = $ConfigObject->Get('SMIME::NoVerify');
+        if ( $NoVerify && !$Param{RetryWithNoVerify} ) {
+            %Return = $Self->Verify(
+                %Param,
+                RetryWithNoVerify => 1,
+            );
+        }
+        else {
+            %Return = (
+                SignatureFound => 0,
+                Successful     => 0,
+                Message        => 'OpenSSL: ' . $Message,
+                MessageLong    => 'OpenSSL: ' . $MessageLong,
+            );
+        }
     }
     return %Return;
 }

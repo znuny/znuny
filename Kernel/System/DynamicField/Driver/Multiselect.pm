@@ -857,19 +857,6 @@ sub ObjectMatch {
     return $Match;
 }
 
-sub HistoricalValuesGet {
-    my ( $Self, %Param ) = @_;
-
-    # get historical values from database
-    my $HistoricalValues = $Kernel::OM->Get('Kernel::System::DynamicFieldValue')->HistoricalValueGet(
-        FieldID   => $Param{DynamicFieldConfig}->{ID},
-        ValueType => 'Text',
-    );
-
-    # return the historical values from database
-    return $HistoricalValues;
-}
-
 sub ValueLookup {
     my ( $Self, %Param ) = @_;
 

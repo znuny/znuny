@@ -12,6 +12,8 @@ package Kernel::System::Ticket::Event::TicketDynamicFieldDefault;
 use strict;
 use warnings;
 
+use Kernel::System::VariableCheck qw(:all);
+
 our @ObjectDependencies = (
     'Kernel::Config',
     'Kernel::System::DynamicField',
@@ -105,8 +107,9 @@ sub Run {
     for my $ElementName ( sort keys %{$ConfigSettings} ) {
 
         my $Element = $ConfigSettings->{$ElementName};
+        next ELEMENT if !IsStringWithData( $Element->{Event} );
 
-        if ( $Param{Event} eq $Element->{Event} ) {
+        if ( $Param{Event} =~ m{$Element->{Event}} ) {
 
             # do not set default dynamic field if already set
             next ELEMENT if $Ticket{ 'DynamicField_' . $Element->{Name} };

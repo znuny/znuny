@@ -27,7 +27,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.995222405271829;
+    $Self->{Completeness}        = 0.995059288537549;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -7638,6 +7638,8 @@ sub Data {
             'Dialoge, für die es möglich ist, dynamische Felder zu aktivieren oder zu deaktivieren.',
         'Screens for which it is possible to enable or disable default columns.' =>
             'Dialoge, für die es möglich ist, Standardspalten zu aktivieren oder zu deaktivieren.',
+        'Enables historical values for selection in dynamic field types that are based on BaseSelect (Dropdown and Multiselect). Disable this if there are performance problems because of too many different stored values.' =>
+            '',
         'Mapping of Ticket::Generic invoker name (key) to list of fields (content) whose values will be base-64 encoded. Fields have to be given in the following form: Field1->Field2;Field3->Field4->Field5;Field6. So a nested data structure can be given by connecting the fields with \'->\'. Content of different fields can be given by separating those fields by \';\'.' =>
             'Mapping von Ticket::Generic-Invoker-Name (Schlüssel) zu einer Liste von Feldern (Inhalt), die base-64-kodiert werden sollen. Felder müssen in der folgenden Form angegeben werden: Feld1->Feld2;Feld3->Feld4->Feld5;Feld6. Eine verschachtelte Datenstruktur kann also durch Verbindung der Felder mit \'->\' angegeben werden. Inhalte aus verschiedenen Feldern je Invoker können kodiert werden, indem die Felder mit \';\' voneinander getrennt werden. Bitte beachten Sie die Dokumentation des Pakets für weitere Informationen.',
         'Mapping of Ticket::Generic invoker name (key) to list of fields (content) which will be removed from the request. Fields have to be given in the following form: Field1->Field2;Field3->Field4->Field5;Field6. So a nested data structure can be given by connecting the fields with \'->\'. Different fields can be omitted by separating them by \';\'.' =>
@@ -7777,6 +7779,8 @@ sub Data {
             'Maximale Anzahl zitierter Zeilen in weitergeleiteten Nachrichten.',
         'Re-indexes S/MIME certificate folders. Note: S/MIME needs to be enabled in SysConfig.' =>
             'Re-indiziert S/MIME-Zertifikat-Verzeichnisse. Hinweis: S/MIME muss in der SysConfig aktiviert sein.',
+        'Do not verify the signer\'s certificate of a signed message.' =>
+            'Prüfung des Zertifikats des Unterzeichners einer signierten Nachricht deaktivieren.',
         'Maximum length of displayed attachment filenames in the article preview of ticket zoom view.' =>
             'Maximale Länge der angezeigten Dateinamen von Anhängen in der Artikelvorschau der Ticket-Detailansicht.',
         'General settings for autocompletion in rich text editor.' => 'Allgemeine Einstellungen für Autovervollständigung im Rich-Text-Editor.',

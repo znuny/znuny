@@ -26,7 +26,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%D.%M.%Y';
     $Self->{DateInputFormat}     = '%D.%M.%Y';
     $Self->{DateInputFormatLong} = '%D.%M.%Y - %T';
-    $Self->{Completeness}        = 0.537891268533773;
+    $Self->{Completeness}        = 0.537714097496706;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -7639,6 +7639,8 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
             '',
         'Screens for which it is possible to enable or disable default columns.' =>
             '',
+        'Enables historical values for selection in dynamic field types that are based on BaseSelect (Dropdown and Multiselect). Disable this if there are performance problems because of too many different stored values.' =>
+            '',
         'Mapping of Ticket::Generic invoker name (key) to list of fields (content) whose values will be base-64 encoded. Fields have to be given in the following form: Field1->Field2;Field3->Field4->Field5;Field6. So a nested data structure can be given by connecting the fields with \'->\'. Content of different fields can be given by separating those fields by \';\'.' =>
             '',
         'Mapping of Ticket::Generic invoker name (key) to list of fields (content) which will be removed from the request. Fields have to be given in the following form: Field1->Field2;Field3->Field4->Field5;Field6. So a nested data structure can be given by connecting the fields with \'->\'. Different fields can be omitted by separating them by \';\'.' =>
@@ -7777,6 +7779,8 @@ Search_DynamicField_XTimeSlotStartMonth=01; Search_DynamicField_XTimeSlotStartDa
         'Maximum number of quoted lines to be added to forwarded messages.' =>
             '',
         'Re-indexes S/MIME certificate folders. Note: S/MIME needs to be enabled in SysConfig.' =>
+            '',
+        'Do not verify the signer\'s certificate of a signed message.' =>
             '',
         'Maximum length of displayed attachment filenames in the article preview of ticket zoom view.' =>
             '',

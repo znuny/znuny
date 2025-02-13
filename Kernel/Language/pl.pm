@@ -30,7 +30,7 @@ sub Data {
     $Self->{DateFormatShort}     = '%Y-%M-%D';
     $Self->{DateInputFormat}     = '%Y-%M-%D';
     $Self->{DateInputFormatLong} = '%Y-%M-%D - %T';
-    $Self->{Completeness}        = 0.652388797364086;
+    $Self->{Completeness}        = 0.65233860342556;
 
     # csv separator
     $Self->{Separator}         = ';';
@@ -2611,8 +2611,8 @@ sub Data {
         'Link to parent' => 'Połącz z rodzicem',
         'Unlock tickets' => 'Odblokuj zgłoszenia',
         'Watch tickets' => 'Obserwuj zgłoszenia',
-        'Mark tickets as seen' => 'Oznacz zgłoszenia jako obejrzane',
-        'Mark tickets as unseen' => 'Oznacz zgłoszenia jako nieobejrzane',
+        'Mark tickets as seen' => 'Oznacz zgłoszenia jako przeczytane',
+        'Mark tickets as unseen' => 'Oznacz zgłoszenia jako nieprzeczytane',
         'Execute Bulk Action' => 'Wykonaj działanie zbiorcze',
 
         # TT Template: Kernel/Output/HTML/Templates/Standard/AgentTicketCompose.tt
@@ -4516,8 +4516,8 @@ sub Data {
         'Print this article' => 'Wydrukuj tą wiadomość',
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/MarkArticleSeenUnseen.pm
-        'Mark article as unseen' => 'Oznacz artykuł jako nieobejrzany',
-        'Mark as unseen' => 'Oznacz jako nieobejrzane',
+        'Mark article as unseen' => 'Oznacz artykuł jako nieprzeczytany',
+        'Mark as unseen' => 'Nieprzeczytany',
 
         # Perl Module: Kernel/Output/HTML/ArticleAction/MarkAsImportant.pm
         'Mark' => 'Zaznacz',
@@ -7642,6 +7642,8 @@ sub Data {
             '',
         'Screens for which it is possible to enable or disable default columns.' =>
             'Ekrany dla których jest możliwe włączenie lub wyłączenie kolumn domyślnych.',
+        'Enables historical values for selection in dynamic field types that are based on BaseSelect (Dropdown and Multiselect). Disable this if there are performance problems because of too many different stored values.' =>
+            '',
         'Mapping of Ticket::Generic invoker name (key) to list of fields (content) whose values will be base-64 encoded. Fields have to be given in the following form: Field1->Field2;Field3->Field4->Field5;Field6. So a nested data structure can be given by connecting the fields with \'->\'. Content of different fields can be given by separating those fields by \';\'.' =>
             '',
         'Mapping of Ticket::Generic invoker name (key) to list of fields (content) which will be removed from the request. Fields have to be given in the following form: Field1->Field2;Field3->Field4->Field5;Field6. So a nested data structure can be given by connecting the fields with \'->\'. Different fields can be omitted by separating them by \';\'.' =>
@@ -7780,6 +7782,8 @@ sub Data {
         'Maximum number of quoted lines to be added to forwarded messages.' =>
             '',
         'Re-indexes S/MIME certificate folders. Note: S/MIME needs to be enabled in SysConfig.' =>
+            '',
+        'Do not verify the signer\'s certificate of a signed message.' =>
             '',
         'Maximum length of displayed attachment filenames in the article preview of ticket zoom view.' =>
             '',
@@ -8824,10 +8828,10 @@ Twój Zespół Helpdesk.
         'Manage tasks triggered by event or time based execution.' => 'Zarządza zadaniami wywołanymi zdarzeniami lub zaplanowymi czasowo.',
         'Management of ticket attribute relations.' => '',
         'Mark as Spam!' => 'Oznacz jako spam!',
-        'Mark as seen' => '',
+        'Mark as seen' => 'Przeczytany',
         'Mark this ticket as junk!' => 'Oznacz to zgłoszenie jako SPAM!',
-        'Mark ticket as seen' => 'Oznacz zgłoszenie jako obejrzane',
-        'Mark ticket as unseen' => 'Oznacz zgłoszenie jako nieobejrzane',
+        'Mark ticket as seen' => 'Oznacz zgłoszenie jako przeczytane',
+        'Mark ticket as unseen' => 'Oznacz zgłoszenie jako nieprzeczytane',
         'Mattermost Username' => 'Użytkownik Mattermost',
         'Max. number of articles per page in TicketZoom' => '',
         'Medium' => 'Średnie',
@@ -8934,8 +8938,8 @@ Twój Zespół Helpdesk.
         'Russian' => 'Rosyjski',
         'S/MIME Certificates' => 'Certyfikaty S/MIME',
         'Schedule a maintenance period.' => 'Zaplanuj konserwację',
-        'Screen after marking as seen' => 'Ekran po zaznaczeniu jako obejrzany',
-        'Screen after marking as unseen' => 'Ekran po zaznaczeniu jako nieobejrzany',
+        'Screen after marking as seen' => 'Ekran po zaznaczeniu jako przeczytany',
+        'Screen after marking as unseen' => 'Ekran po zaznaczeniu jako nieprzeczytany',
         'Screen after new ticket' => 'Ekran po utworzeniu zgłoszenia',
         'Search Customer' => 'Szukaj klienta',
         'Search Ticket.' => 'Szukaj zgłoszenia.',
