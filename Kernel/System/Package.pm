@@ -2571,7 +2571,11 @@ sub PackageInstallDefaultFiles {
     # get main object
     my $MainObject = $Kernel::OM->Get('Kernel::System::Main');
 
-    my $Directory    = $Self->{ConfigObject}->Get('Home') . '/var/packages';
+    my $Directory = $Self->{ConfigObject}->Get('Home') . '/var/packages';
+
+    # Return if the directory does not exist.
+    return if !-e $Directory;
+
     my @PackageFiles = $MainObject->DirectoryRead(
         Directory => $Directory,
         Filter    => '*.opm',

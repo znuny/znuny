@@ -1154,8 +1154,9 @@ sub ConnectToDB {
         );
     }
 
+    # Connect to the database without logging errors, as they are already shown to the user.
     my $DBH = DBI->connect(
-        $Param{DSN}, $Param{DBUser}, $Param{DBPassword},
+        $Param{DSN}, $Param{DBUser}, $Param{DBPassword}, { PrintError => 0 }
     );
 
     if ( !$DBH ) {

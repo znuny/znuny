@@ -1319,7 +1319,9 @@ sub Header {
 
     # Generate the minified CSS and JavaScript files and the tags referencing them (see LayoutLoader)
     $Self->LoaderCreateAgentCSSCalls();
-    $Self->LoaderCreateDynamicCSS();
+    if ( !$Self->{InstallerOnly} ) {
+        $Self->LoaderCreateDynamicCSS();
+    }
 
     my %AgentLogo;
 
@@ -1779,10 +1781,14 @@ sub Footer {
     }
 
     # Set an array with pending states.
-    my @PendingStateIDs = $Kernel::OM->Get('Kernel::System::State')->StateGetStatesByType(
-        StateType => [ 'pending reminder', 'pending auto' ],
-        Result    => 'ID',
-    );
+    my @PendingStateIDs;
+
+    if ( !$Self->{InstallerOnly} ) {
+        @PendingStateIDs = $Kernel::OM->Get('Kernel::System::State')->StateGetStatesByType(
+            StateType => [ 'pending reminder', 'pending auto' ],
+            Result    => 'ID',
+        );
+    }
 
     # add JS data
     my %JSConfig = (
