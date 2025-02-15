@@ -68,6 +68,7 @@ sub _HandleError {
             Charset  => 'utf-8',
             MimeType => 'text/plain',
             Body     => $Param{ErrorMessage},
+            Loop     => 1,
         );
 
         return 1 if $Sent->{Success};
