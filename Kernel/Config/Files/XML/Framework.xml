@@ -7720,6 +7720,13 @@ via the Preferences button after logging in.
             <Item ValueType="Checkbox">0</Item>
         </Value>
     </Setting>
+    <Setting Name="NotificationEmailDefaultTemplate" Required="0" Valid="1">
+        <Description Translatable="1">Default template for notification e-mails (see Kernel/Output/HTML/Templates/Standard/NotificationEvent/Email directory for available templates).</Description>
+        <Navigation>Core</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex="">Default</Item>
+        </Value>
+    </Setting>
     <Setting Name="Loader::Enabled::CSS" Required="1" Valid="1">
         <Description Translatable="1">If enabled, Znuny will deliver all CSS files in minified form.</Description>
         <Navigation>Frontend::Base::Loader</Navigation>

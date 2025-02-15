@@ -125,10 +125,11 @@ sub SendNotification {
 
     if ( $Param{Notification}->{ContentType} && $Param{Notification}->{ContentType} eq 'text/html' ) {
 
-        # Get configured template with fallback to Default.
-        my $EmailTemplate = $Param{Notification}->{Data}->{TransportEmailTemplate}->[0] || 'Default';
+        # Get configured template with fallback to default.
+        my $EmailTemplate = $Param{Notification}->{Data}->{TransportEmailTemplate}->[0]
+            || $ConfigObject->Get('NotificationEmailDefaultTemplate') || 'Default';
 
-        my $Home              = $Kernel::OM->Get('Kernel::Config')->Get('Home');
+        my $Home              = $ConfigObject->Get('Home');
         my $TemplateDir       = "$Home/Kernel/Output/HTML/Templates/Standard/NotificationEvent/Email";
         my $CustomTemplateDir = "$Home/Custom/Kernel/Output/HTML/Templates/Standard/NotificationEvent/Email";
 
@@ -401,7 +402,8 @@ sub TransportSettingsDisplayGet {
         $Param{$Key} = $Param{Data}->{$Key}->[0];
     }
 
-    my $Home              = $Kernel::OM->Get('Kernel::Config')->Get('Home');
+    my $ConfigObject      = $Kernel::OM->Get('Kernel::Config');
+    my $Home              = $ConfigObject->Get('Home');
     my $TemplateDir       = "$Home/Kernel/Output/HTML/Templates/Standard/NotificationEvent/Email";
     my $CustomTemplateDir = "$Home/Custom/Kernel/Output/HTML/Templates/Standard/NotificationEvent/Email";
 
@@ -431,14 +433,13 @@ sub TransportSettingsDisplayGet {
         Data        => \%Templates,
         Name        => 'TransportEmailTemplate',
         Translation => 0,
-        SelectedID  => $Param{Data}->{TransportEmailTemplate} || 'Default',
-        Class       => 'Modernize W50pc',
+        SelectedID  => $Param{Data}->{TransportEmailTemplate}
+            || $ConfigObject->Get('NotificationEmailDefaultTemplate')
+            || 'Default',
+        Class => 'Modernize W50pc',
     );
 
     # security fields
-
-    # get config object
-    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 
     my %SecuritySignEncryptOptions;
 
