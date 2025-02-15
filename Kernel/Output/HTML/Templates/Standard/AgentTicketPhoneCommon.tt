@@ -79,7 +79,7 @@
                         </div>
                         [% END %]
 
-                        [% IF !TicketFrontendConfig.DynamicField.empty %]
+                        [% IF Data.DynamicFieldHTML && Data.DynamicFieldHTML.list.size > 0 %]
                         <div class="dynamic-field-col card-item col-wide-100 col-desktop-100 col-tablet-100">
                             <h2 class="card-title">[% Translate("Dynamic Info") | html %]</h2>
 [% RenderBlockStart("DynamicField") %]

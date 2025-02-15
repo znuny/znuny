@@ -274,7 +274,6 @@
                         [% END %]
 
 [% RenderBlockStart("TicketTypeDynamicFields") %]
-                        [% IF !TicketFrontendConfig.DynamicField.empty %]
                         <div class="dynamic-field-col card-item col-wide-100 col-desktop-100 col-tablet-100">
                             <h2 class="card-title">[% Translate("Dynamic Info") | html %]</h2>
 [% RenderBlockStart("TicketTypeDynamicField") %]
@@ -286,7 +285,6 @@
                                 </div>
 [% RenderBlockEnd("TicketTypeDynamicField") %]
                         </div>
-                        [% END %]
 [% RenderBlockEnd("TicketTypeDynamicFields") %]
 
 
