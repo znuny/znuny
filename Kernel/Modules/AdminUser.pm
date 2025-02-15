@@ -194,6 +194,11 @@ sub Run {
             $Errors{'UserLoginInvalid'} = 'ServerError';
         }
 
+        # Don't allow local agent data changes if local user data management is disabled.
+        if ( $Kernel::OM->Get('Kernel::Config')->Get('DisableLocalUserDataManagement') ) {
+            $Note = $Kernel::OM->Get('Kernel::Language')->Translate('Local agent data management is disabled.');
+        }
+
         # if no errors occurred
         if ( !%Errors )
         {
@@ -330,6 +335,11 @@ sub Run {
             $Errors{'UserLoginInvalid'} = 'ServerError';
         }
 
+        # Don't allow local agent data changes if local user data management is disabled.
+        if ( $Kernel::OM->Get('Kernel::Config')->Get('DisableLocalUserDataManagement') ) {
+            $Note = $Kernel::OM->Get('Kernel::Language')->Translate('Local agent data management is disabled.');
+        }
+
         # if no errors occurred
         if ( !%Errors )
         {
@@ -454,11 +464,15 @@ sub _Edit {
     my %ValidList        = $Kernel::OM->Get('Kernel::System::Valid')->ValidList();
     my %ValidListReverse = reverse %ValidList;
 
+    # Put all user data in read-only mode if local user data management is disabled.
+    $Param{DisableLocalUserDataManagement} = $Kernel::OM->Get('Kernel::Config')->Get('DisableLocalUserDataManagement');
+
     $Param{ValidOption} = $LayoutObject->BuildSelection(
         Data       => \%ValidList,
         Name       => 'ValidID',
         SelectedID => $Param{ValidID} || $ValidListReverse{valid},
         Class      => 'Modernize',
+        Disabled   => $Param{DisableLocalUserDataManagement} ? 1 : 0,
     );
 
     $LayoutObject->Block(
@@ -528,7 +542,11 @@ sub _Overview {
         Name => 'ActionSearch',
         Data => \%Param,
     );
-    $LayoutObject->Block( Name => 'ActionAdd' );
+
+    # Put all user data in read-only mode if local user data management is disabled.
+    if ( !$Kernel::OM->Get('Kernel::Config')->Get('DisableLocalUserDataManagement') ) {
+        $LayoutObject->Block( Name => 'ActionAdd' );
+    }
 
     # get user object
     my $UserObject = $Kernel::OM->Get('Kernel::System::User');

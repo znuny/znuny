@@ -30,9 +30,11 @@
             </div>
             <div class="Content">
                 <ul class="ActionList">
+[% IF !Data.DisableLocalUserDataManagement %]
                     <li>
                         <a href="[% Env("Baselink") %]Action=AdminUser;Subaction=Add" class="CallForAction Fullsize Center"><span><i class="fa fa-plus-square"></i>[% Translate("Add Agent") | html %]</span></a>
                     </li>
+[% END %]
                     <li>
                         <a href="[% Env("Baselink") %]Action=AdminRole;Subaction=Add" class="CallForAction Fullsize Center"><span><i class="fa fa-plus-square"></i>[% Translate("Add Role") | html %]</span></a>
                     </li>

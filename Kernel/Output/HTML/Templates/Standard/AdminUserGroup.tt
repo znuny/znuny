@@ -37,9 +37,11 @@
                     </li>
 [% RenderBlockEnd("ActionOverview") %]
 [% RenderBlockStart("NewActions") %]
+[% IF !Data.DisableLocalUserDataManagement %]
                     <li>
                         <a href="[% Env("Baselink") %]Action=AdminUser;Subaction=Add" class="CallForAction Fullsize Center"><span><i class="fa fa-plus-square"></i>[% Translate("Add Agent") | html %]</span></a>
                     </li>
+[% END %]
                     <li>
                         <a href="[% Env("Baselink") %]Action=AdminGroup;Subaction=Add" class="CallForAction Fullsize Center"><span><i class="fa fa-plus-square"></i>[% Translate("Add Group") | html %]</span></a>
                     </li>

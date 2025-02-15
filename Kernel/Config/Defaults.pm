@@ -588,6 +588,10 @@ sub LoadDefaults {
     # Utilize extended nested group search? (may impact performance)
 #    $Self->{'AuthSyncModule::LDAP::NestedGroupSearch'} = 1;
 
+    # DisableLocalUserDataManagement
+    # Set to 1 do disable local user data management (if synchronized from LDAP only for example).
+#    $Self->{'DisableLocalUserDataManagement'} = 1;
+
     # AuthSyncModule::LDAP::UserSyncGroupsDefinition
     # (If "LDAP" was selected for AuthModule and you want to sync LDAP
     # groups to otrs groups, define the following.)

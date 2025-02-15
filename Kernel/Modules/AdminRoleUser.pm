@@ -298,7 +298,11 @@ sub _Overview {
 
     $LayoutObject->Block(
         Name => 'Overview',
-        Data => {},
+        Data => {
+
+            # Hide agent add option if local user data management is disabled.
+            DisableLocalUserDataManagement => $Kernel::OM->Get('Kernel::Config')->Get('DisableLocalUserDataManagement'),
+        },
     );
 
     # get user list

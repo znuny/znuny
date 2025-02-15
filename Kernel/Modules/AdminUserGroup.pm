@@ -379,6 +379,11 @@ sub _Overview {
     );
     $LayoutObject->Block(
         Name => 'NewActions',
+        Data => {
+
+            # Hide agent add option if local user data management is disabled.
+            DisableLocalUserDataManagement => $Kernel::OM->Get('Kernel::Config')->Get('DisableLocalUserDataManagement'),
+        },
     );
 
     $LayoutObject->Block(

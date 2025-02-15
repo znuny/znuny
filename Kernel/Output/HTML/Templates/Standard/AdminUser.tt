@@ -19,12 +19,16 @@
         ]
     %]
 
+    [% IF Data.DisableLocalUserDataManagement %]
+        [% BreadcrumbPath.push({ Name => Translate("Agent Data"),}) %]
+    [% ELSE %]
     [% SWITCH Data.Action %]
         [% CASE 'Add' %]
             [% BreadcrumbPath.push({ Name => Translate("Add Agent"),}) %]
         [% CASE 'Change' %]
             [% USE EditTitle = String(Translate("Edit Agent")) %]
             [% BreadcrumbPath.push({ Name => EditTitle.append( ': ', Data.UserLogin ) }) %]
+    [% END %]
     [% END %]
 
     [% INCLUDE "Breadcrumb.tt" Path = BreadcrumbPath %]
@@ -63,11 +67,14 @@
                     </li>
 [% RenderBlockEnd("ActionSearch") %]
 [% RenderBlockStart("ActionAdd") %]
+[% IF !Data.DisableLocalUserDataManagement %]
+
                     <li>
                         <a class="CallForAction Fullsize Center" href="[% Env("Baselink") %]Action=[% Env("Action") %];Subaction=Add">
                             <span><i class="fa fa-plus-square"></i> [% Translate("Add Agent") | html %]</span>
                         </a>
                     </li>
+[% END %]
 [% RenderBlockEnd("ActionAdd") %]
                 </ul>
             </div>
@@ -183,10 +190,14 @@
 
 [% RenderBlockStart("OverviewUpdate") %]
             <div class="Header">
+                [% IF Data.DisableLocalUserDataManagement %]
+                    <h2>[% Translate("Agent Data") | html %]</h2>
+                [% ELSE %]
                 [% IF Data.Action == "Add" %]
                     <h2>[% Translate("Add Agent") | html %]</h2>
                 [% ELSE %]
                     <h2>[% Translate("Edit Agent") | html %]</h2>
+                [% END %]
                 [% END %]
             </div>
 
@@ -203,13 +214,13 @@
 
                         <label for="UserTitle">[% Translate("Title or salutation") | html %]:</label>
                         <div class="Field">
-                            <input type="text" name="UserTitle" id="UserTitle" value="[% Data.UserTitle | html %]" class="W50pc" maxlength="50"/>
+                            <input type="text" name="UserTitle" id="UserTitle" value="[% Data.UserTitle | html %]" class="W50pc" maxlength="50"[% IF Data.DisableLocalUserDataManagement %] readonly="readonly"[% END %]/>
                         </div>
                         <div class="Clear"></div>
 
                         <label class="Mandatory" for="UserFirstname"><span class="Marker">*</span> [% Translate("Firstname") | html %]:</label>
                         <div class="Field">
-                            <input type="text" name="UserFirstname" id="UserFirstname" value="[% Data.UserFirstname | html %]" class="W50pc Validate_Required [% Data.UserFirstnameInvalid | html %]" maxlength="100"/>
+                            <input type="text" name="UserFirstname" id="UserFirstname" value="[% Data.UserFirstname | html %]" class="W50pc Validate_Required [% Data.UserFirstnameInvalid | html %]" maxlength="100"[% IF Data.DisableLocalUserDataManagement %] readonly="readonly"[% END %]/>
                             <div id="UserFirstnameError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
                             <div id="UserFirstnameServerError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
                         </div>
@@ -217,7 +228,7 @@
 
                         <label class="Mandatory" for="UserLastname"><span class="Marker">*</span> [% Translate("Lastname") | html %]:</label>
                         <div class="Field">
-                            <input type="text" name="UserLastname" id="UserLastname" value="[% Data.UserLastname | html %]" class="W50pc Validate_Required [% Data.UserLastnameInvalid | html %]" maxlength="100"/>
+                            <input type="text" name="UserLastname" id="UserLastname" value="[% Data.UserLastname | html %]" class="W50pc Validate_Required [% Data.UserLastnameInvalid | html %]" maxlength="100"[% IF Data.DisableLocalUserDataManagement %] readonly="readonly"[% END %]/>
                             <div id="UserLastnameError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
                             <div id="UserLastnameServerError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
                         </div>
@@ -225,7 +236,7 @@
 
                         <label class="Mandatory" for="UserLogin"><span class="Marker">*</span> [% Translate("Username") | html %]:</label>
                         <div class="Field">
-                            <input type="text" name="UserLogin" id="UserLogin" value="[% Data.UserLogin | html %]" class="W50pc Validate_Required [% Data.UserLoginInvalid | html %]" maxlength="200" autocomplete="off" />
+                            <input type="text" name="UserLogin" id="UserLogin" value="[% Data.UserLogin | html %]" class="W50pc Validate_Required [% Data.UserLoginInvalid | html %]" maxlength="200" autocomplete="off"[% IF Data.DisableLocalUserDataManagement %] readonly="readonly"[% END %]/>
                             <div id="UserLoginError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
                             <div id="UserLoginServerError" class="TooltipErrorMessage">
 [% RenderBlockStart("UserLoginServerError") %]
@@ -242,7 +253,7 @@
                             [% Translate("Password") | html %]:
                         </label>
                         <div class="Field">
-                            <input type="password" name="UserPw" id="UserPw" value="" class="W50pc [% Data.UserPwInvalid | html %] " maxlength="100" autocomplete="new-password" />
+                            <input type="password" name="UserPw" id="UserPw" value="" class="W50pc [% Data.UserPwInvalid | html %] " maxlength="100" autocomplete="new-password" [% IF Data.DisableLocalUserDataManagement %] readonly="readonly"[% END %]/>
 [% RenderBlockStart("ShowPasswordHint") %]
                             <p class="FieldExplanation">
                                 [% Translate("Will be auto-generated if left empty.") | html %]
@@ -253,7 +264,7 @@
 
                         <label class="Mandatory" for="UserEmail"><span class="Marker">*</span> [% Translate("Email") | html %]:</label>
                         <div class="Field">
-                            <input type="[% Env("EmailFieldType") | html %]" name="UserEmail" id="UserEmail" value="[% Data.UserEmail | html %]" class="W50pc Validate_Email Validate_Required [% Data.UserEmailInvalid | html %]" maxlength="250"/>
+                            <input type="[% Env("EmailFieldType") | html %]" name="UserEmail" id="UserEmail" value="[% Data.UserEmail | html %]" class="W50pc Validate_Email Validate_Required [% Data.UserEmailInvalid | html %]" maxlength="250"[% IF Data.DisableLocalUserDataManagement %] readonly="readonly"[% END %]/>
                             <div id="UserEmailError" class="TooltipErrorMessage"><p>[% Translate("This field is required and needs to be a valid email address.") | html %]</p></div>
 [% RenderBlockStart("UserEmailServerErrorMsg") %]
                             <div id="UserEmailServerError" class="TooltipErrorMessage"><p>[% Translate("This field is required.") | html %]</p></div>
@@ -275,7 +286,7 @@
 
                         <label for="UserMobile">[% Translate("Mobile") | html %]:</label>
                         <div class="Field">
-                            <input type="text" name="UserMobile" id="UserMobile" value="[% Data.UserMobile | html %]" class="W50pc" maxlength="50"/>
+                            <input type="text" name="UserMobile" id="UserMobile" value="[% Data.UserMobile | html %]" class="W50pc" maxlength="50"[% IF Data.DisableLocalUserDataManagement %] readonly="readonly"[% END %]/>
                         </div>
                         <div class="Clear"></div>
 
@@ -286,6 +297,7 @@
                         <div class="Clear"></div>
 
                         <div class="Field SpacingTop">
+                            [% IF !Data.DisableLocalUserDataManagement %]
                             [% IF Data.Action == 'Change' %]
                                 <button class="CallForAction Primary" id="SubmitAndContinue" type="button" value="[% Translate("Save") | html %]"><span>[% Translate("Save") | html %]</span></button>
                                 [% Translate("or") | html %]
@@ -295,6 +307,9 @@
                             [% END %]
                             [% Translate("or") | html %]
                             <a href="[% Env("Baselink") %]Action=[% Env("Action") %]">[% Translate("Cancel") | html %]</a>
+                            [% ELSE %]
+                            <a href="[% Env("Baselink") %]Action=[% Env("Action") %]">[% Translate("Close") | html %]</a>
+                            [% END %]
                         </div>
                         <div class="Clear"></div>
                     </fieldset>
