@@ -440,11 +440,18 @@ sub CustomerSearch {
     my @CustomerUserListFieldsDynamicFields
         = grep { exists $Self->{ConfiguredDynamicFieldNames}->{$_} } @{$CustomerUserListFields};
 
+    # Use limit specified in function call if specified but do not
+    # go beyond source limit.
+    my $Limit = $Param{Limit} // $Self->{UserSearchListLimit};
+    if ( defined $Self->{UserSearchListLimit} && ( $Limit > $Self->{UserSearchListLimit} ) ) {
+        $Limit = $Self->{UserSearchListLimit};
+    }
+
     # get data from customer user table
     return if !$Self->{DBObject}->Prepare(
         SQL   => $SQL,
         Bind  => \@Bind,
-        Limit => $Param{Limit} || $Self->{UserSearchListLimit},
+        Limit => $Limit,
     );
 
     my @CustomerUserData;

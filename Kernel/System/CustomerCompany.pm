@@ -335,7 +335,7 @@ get list of customer companies.
 
     my %List = $CustomerCompanyObject->CustomerCompanyList(
         Valid => 0,
-        Limit => 0,     # optional, override configured search result limit (0 means unlimited)
+        Limit => 0,     # optional, if smaller - override configured search result limit (0 means unlimited)
     );
 
     my %List = $CustomerCompanyObject->CustomerCompanyList(

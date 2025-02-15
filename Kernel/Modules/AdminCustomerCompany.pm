@@ -775,50 +775,36 @@ sub _Overview {
         # get config object
         my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
 
-        # same Limit as $Self->{CustomerCompanyMap}->{'CustomerCompanySearchListLimit'}
-        # smallest Limit from all sources
+        # Shown customer limitation in AdminCustomerCompany.
         my $Limit = 400;
-        SOURCE:
-        for my $Count ( '', 1 .. 10 ) {
-            next SOURCE if !$ConfigObject->Get("CustomerCompany$Count");
-            my $CustomerUserMap = $ConfigObject->Get("CustomerCompany$Count");
-            next SOURCE if !$CustomerUserMap->{CustomerCompanySearchListLimit};
-            if ( $CustomerUserMap->{CustomerCompanySearchListLimit} < $Limit ) {
-                $Limit = $CustomerUserMap->{CustomerCompanySearchListLimit};
-            }
-        }
 
-        my %ListAllItems = $CustomerCompanyObject->CustomerCompanyList(
+        # Search customers with limit (+1 to decide if "more available" must be displayed)
+        # this may actually return ( ($Limit + 1) * # of backends ) number of results; will be
+        # trimmed to $Limit in LISTKEY loop below.
+        my %List = $CustomerCompanyObject->CustomerCompanyList(
             Search => $Param{Search},
             Limit  => $Limit + 1,
             Valid  => 0,
         );
 
-        if ( keys %ListAllItems <= $Limit ) {
-            my $ListAllItems = keys %ListAllItems;
+        my $ListSize = keys %List;
+
+        if ( $ListSize <= $Limit ) {
             $LayoutObject->Block(
                 Name => 'OverviewHeader',
                 Data => {
-                    ListAll => $ListAllItems,
+                    ListAll => $ListSize,
                     Limit   => $Limit,
                 },
             );
         }
 
-        my %List = $CustomerCompanyObject->CustomerCompanyList(
-            Search => $Param{Search},
-            Valid  => 0,
-        );
-
-        if ( keys %ListAllItems > $Limit ) {
-            my $ListAllItems   = keys %ListAllItems;
-            my $SearchListSize = keys %List;
-
+        else {
             $LayoutObject->Block(
                 Name => 'OverviewHeader',
                 Data => {
-                    SearchListSize => $SearchListSize,
-                    ListAll        => $ListAllItems,
+                    SearchListSize => $Limit,
+                    ListAll        => $ListSize,
                     Limit          => $Limit,
                 },
             );
@@ -838,7 +824,13 @@ sub _Overview {
 
         # if there are results to show
         if (%List) {
+            my $ListKeyNo = 1;
+
+            LISTKEY:
             for my $ListKey ( sort { $List{$a} cmp $List{$b} } keys %List ) {
+
+                # Don't display last customer if beyond limit.
+                last LISTKEY if ( $ListKeyNo++ > $Limit );
 
                 my %Data = $CustomerCompanyObject->CustomerCompanyGet( CustomerID => $ListKey );
                 $LayoutObject->Block(

@@ -888,50 +888,35 @@ sub _Overview {
         # when there is no data to show, a message is displayed on the table with this colspan
         my $ColSpan = 6;
 
-        # same Limit as $Self->{CustomerUserMap}->{CustomerUserSearchListLimit}
-        # smallest Limit from all sources
+        # Shown customer user limitation in AdminCustomerUser.
         my $Limit = 400;
-        SOURCE:
-        for my $Count ( '', 1 .. 10 ) {
-            next SOURCE if !$ConfigObject->Get("CustomerUser$Count");
-            my $CustomerUserMap = $ConfigObject->Get("CustomerUser$Count");
-            next SOURCE if !$CustomerUserMap->{CustomerUserSearchListLimit};
-            if ( $CustomerUserMap->{CustomerUserSearchListLimit} < $Limit ) {
-                $Limit = $CustomerUserMap->{CustomerUserSearchListLimit};
-            }
-        }
 
-        my %ListAllItems = $CustomerUserObject->CustomerSearch(
+        # Search customer users with limit (+1 to decide if "more available" must be displayed);
+        # this may actually return ( ($Limit + 1) * # of backends ) number of results; will be
+        # trimmed to $Limit in LISTKEY loop below.
+        my %List = $CustomerUserObject->CustomerSearch(
             Search => $Param{Search},
             Limit  => $Limit + 1,
             Valid  => 0,
         );
 
-        if ( keys %ListAllItems <= $Limit ) {
-            my $ListAllItems = keys %ListAllItems;
+        my $ListSize = keys %List;
+
+        if ( $ListSize <= $Limit ) {
             $LayoutObject->Block(
                 Name => 'OverviewHeader',
                 Data => {
-                    ListAll => $ListAllItems,
+                    ListAll => $ListSize,
                     Limit   => $Limit,
                 },
             );
         }
-
-        my %List = $CustomerUserObject->CustomerSearch(
-            Search => $Param{Search},
-            Valid  => 0,
-        );
-
-        if ( keys %ListAllItems > $Limit ) {
-            my $ListAllItems   = keys %ListAllItems;
-            my $SearchListSize = keys %List;
-
+        else {
             $LayoutObject->Block(
                 Name => 'OverviewHeader',
                 Data => {
-                    SearchListSize => $SearchListSize,
-                    ListAll        => $ListAllItems,
+                    SearchListSize => $Limit,
+                    ListAll        => $ListSize,
                     Limit          => $Limit,
                 },
             );
@@ -955,7 +940,14 @@ sub _Overview {
 
             # get valid list
             my %ValidList = $Kernel::OM->Get('Kernel::System::Valid')->ValidList();
+
+            my $ListKeyNo = 1;
+
+            LISTKEY:
             for my $ListKey ( sort { lc($a) cmp lc($b) } keys %List ) {
+
+                # Don't display last customer user if beyond limit.
+                last LISTKEY if ( $ListKeyNo++ > $Limit );
 
                 my %UserData = $CustomerUserObject->CustomerUserDataGet( User => $ListKey );
                 $UserData{UserFullname} = $CustomerUserObject->CustomerName(

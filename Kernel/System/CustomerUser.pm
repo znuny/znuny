@@ -142,7 +142,7 @@ to search users
     my %List = $CustomerUserObject->CustomerSearch(
         Search => '*some*', # also 'hans+huber' possible
         Valid  => 1,        # (optional) default 1
-        Limit  => 100,      # (optional) overrides limit of the config
+        Limit  => 100,      # (optional) if smaller - overrides limit of the config
     );
 
     # username search

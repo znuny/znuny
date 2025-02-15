@@ -490,12 +490,19 @@ sub CustomerSearch {
     # combine needed attrs
     my @Attributes = ( @CustomerUserListFieldsWithoutDynamicFields, $Self->{CustomerKey} );
 
+    # Use limit specified in function call if specified but do not
+    # go beyond source limit.
+    my $Limit = $Param{Limit} // $Self->{UserSearchListLimit};
+    if ( defined $Self->{UserSearchListLimit} && ( $Limit > $Self->{UserSearchListLimit} ) ) {
+        $Limit = $Self->{UserSearchListLimit};
+    }
+
     # perform user search
     my $Result = $Self->{LDAP}->search(
         base      => $Self->{BaseDN},
         scope     => $Self->{SScope},
         filter    => $Filter,
-        sizelimit => $Param{Limit} || $Self->{UserSearchListLimit},
+        sizelimit => $Limit,
         attrs     => \@Attributes,
     );
 
@@ -626,7 +633,7 @@ sub CustomerSearch {
                 base      => $Self->{GroupDN},
                 scope     => $Self->{SScope},
                 filter    => 'memberUid=' . escape_filter_value($Filter2),
-                sizelimit => $Param{Limit} || $Self->{UserSearchListLimit},
+                sizelimit => $Limit,
                 attrs     => ['1.1'],
             );
 
