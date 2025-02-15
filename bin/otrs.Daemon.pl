@@ -356,7 +356,7 @@ sub Start {
     # Remove current log files without content.
     _LogFilesCleanup();
 
-    return 0;
+    return 1;
 }
 
 sub Stop {
