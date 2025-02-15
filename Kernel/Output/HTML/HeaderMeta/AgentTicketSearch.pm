@@ -34,11 +34,8 @@ sub Run {
     # get layout object
     my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
 
-    my $Session = '';
-    if ( !$LayoutObject->{SessionIDCookie} ) {
-        $Session = ';' . $LayoutObject->{SessionName} . '='
-            . $LayoutObject->{SessionID};
-    }
+    my $Session = ';' . $LayoutObject->{SessionName} . '='
+        . $LayoutObject->{SessionID};
 
     # get config object
     my $ConfigObject = $Kernel::OM->Get('Kernel::Config');

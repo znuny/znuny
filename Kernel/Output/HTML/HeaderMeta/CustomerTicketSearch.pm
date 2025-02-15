@@ -31,11 +31,9 @@ sub Run {
 
     my $LayoutObject = $Kernel::OM->Get('Kernel::Output::HTML::Layout');
 
-    my $Session = '';
-    if ( !$LayoutObject->{SessionIDCookie} ) {
-        $Session = ';' . $LayoutObject->{SessionName} . '='
-            . $LayoutObject->{SessionID};
-    }
+    my $Session = ';' . $LayoutObject->{SessionName} . '='
+        . $LayoutObject->{SessionID};
+
     my $Title = $Kernel::OM->Get('Kernel::Config')->Get('ProductName');
     $Title .= ' - ' . $LayoutObject->{LanguageObject}->Translate('Customer');
     $Title .= ' (' . $Kernel::OM->Get('Kernel::Config')->Get('Ticket::Hook') . ')';
