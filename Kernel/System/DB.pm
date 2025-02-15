@@ -567,12 +567,50 @@ sub Do {
 
     return if !$Self->Connect();
 
-    # send sql to database
-    if ( !$Self->{dbh}->do( $Param{SQL}, undef, @Array ) ) {
+    # Send SQL query to database.
+    my $RetryLimit  = 3;    # Retry up to 3 times after deadlock.
+    my $QueryStatus = 1;
+    TRY:
+    for my $Try ( 1 .. $RetryLimit ) {
+
+        # Send query to DB.
+        $QueryStatus = $Self->{dbh}->do( $Param{SQL}, undef, @Array );
+
+        # Don't retry nor sleep on execution success or after last try.
+        last TRY if ( $QueryStatus || ( $Try == $RetryLimit ) );
+
+        # If error was caused by deadlock, reset $QueryStatus, wait 1s and retry.
+
+        # According to
+        # https://mariadb.com/kb/en/mariadb-error-codes/
+        # https://dev.mysql.com/doc/mysql-errors/8.0/en/server-error-reference.html#error_er_lock_deadlock
+        # error code 1213 in MySQL/MariaDB means deadlock
+        # (ER_LOCK_DEADLOCK, "Deadlock found when trying to get lock; try restarting transaction").
+        if ( ( $DBI::err == 1213 ) && ( $Self->{'DB::Type'} eq 'mysql' ) ) {
+            $QueryStatus = 1;
+        }
+
+        # Don't retry if error was not caused by deadlock.
+        last TRY if !$QueryStatus;
+
+        # Log deadlock if debugging.
+        if ( $Self->{Debug} > 0 ) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Caller   => 1,
+                Priority => 'debug',
+                Message =>
+                    "Deadlock detected by DB server - retrying query in 1s; Try: $Try/$RetryLimit; DB server error: '$DBI::errstr'; DB server error code: $DBI::err; SQL query: '$Param{SQL}'",
+            );
+        }
+
+        # Sleep 1s before resending SQL query to DB.
+        sleep(1);
+    }
+    if ( !$QueryStatus ) {
         $Kernel::OM->Get('Kernel::System::Log')->Log(
             Caller   => 1,
             Priority => 'error',
-            Message  => "$DBI::errstr, SQL: '$Param{SQL}'",
+            Message  => "$DBI::errstr; DB server error code: $DBI::err; SQL query: '$Param{SQL}'",
         );
         return;
     }
