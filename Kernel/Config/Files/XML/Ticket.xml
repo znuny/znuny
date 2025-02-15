@@ -4653,6 +4653,13 @@
             <Item ValueType="Checkbox">1</Item>
         </Value>
     </Setting>
+    <Setting Name="Ticket::Frontend::HideMessageFromCustomerByDefaultIfSourceMessageHidden" Required="0" Valid="1">
+        <Description Translatable="1">If enabled, messages composed from messages invisible for customer will be invisible for customer by default.</Description>
+        <Navigation>Frontend::Agent</Navigation>
+        <Value>
+            <Item ValueType="Checkbox">1</Item>
+        </Value>
+    </Setting>
     <Setting Name="Ticket::Frontend::AgentTicketCompose###FormDraft" Required="0" Valid="1">
         <Description Translatable="1">Allows to save current work as draft in the ticket compose screen of the agent interface.</Description>
         <Navigation>Frontend::Agent::View::TicketCompose</Navigation>
