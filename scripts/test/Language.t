@@ -238,4 +238,19 @@ for my $Test (@Tests) {
     );
 }
 
+{
+    $LanguageObject->{Translation}->{"This is a test for a new feature in Translate(). - %s %s"} = [ 'A simple Test - %s %s', \&ReplaceParams ];
+    my $Translated = $LanguageObject->Translate("This is a test for a new feature in Translate(). - %s %s", "Znuny", "rocks!");
+
+    $Self->Is(
+        $Translated,
+	'A simple Test - Perl is great!',
+	'Replaced params for translated string',
+    );
+
+    sub ReplaceParams {
+        return "Perl", "is great!";
+    }
+}
+
 1;

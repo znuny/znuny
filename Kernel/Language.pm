@@ -285,7 +285,15 @@ sub Translate {
 
     $Text = $Self->{Translation}->{$Text} || $Text;
 
+    my $SubRef;
+
+    if ( ref $Text && 'ARRAY' eq ref $Text ) {
+        ($Text, $SubRef) = @{ $Text || [] };
+    }
+
     return $Text if !@Parameters;
+
+    @Parameters = $SubRef->( @Parameters ) if $SubRef && ref $SubRef && 'CODE' eq ref $SubRef;
 
     for my $Count ( 0 .. $#Parameters ) {
         return $Text if !defined $Parameters[$Count];
