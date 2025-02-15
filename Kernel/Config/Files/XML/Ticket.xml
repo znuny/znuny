@@ -162,6 +162,13 @@
             <Item ValueType="Checkbox">1</Item>
         </Value>
     </Setting>
+    <Setting Name="Ticket::ArchiveSearchUserGroup" Required="0" Valid="0">
+        <Description Translatable="1">Name of group that user must belog to (rw), to be able to search ticket archive (does not affect generic agent nor statistics modules). If not defined - all users are able to search ticket archive.</Description>
+        <Navigation>Core::Ticket</Navigation>
+        <Value>
+            <Item ValueType="String" ValueRegex=""></Item>
+        </Value>
+    </Setting>
     <Setting Name="Ticket::CustomerArchiveSystem" Required="1" Valid="1">
         <Description Translatable="1">Activates the ticket archive system search in the customer interface.</Description>
         <Navigation>Core::Ticket</Navigation>

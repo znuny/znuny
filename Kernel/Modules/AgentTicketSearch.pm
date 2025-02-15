@@ -1671,12 +1671,43 @@ sub Run {
         );
 
         if ( $ConfigObject->Get('Ticket::ArchiveSystem') ) {
-            push @Attributes, (
-                {
-                    Key   => 'SearchInArchive',
-                    Value => Translatable('Archive Search'),
-                },
-            );
+
+            # Allow archive searching if Ticket::ArchiveSearchUserGroup is not defined.
+            my $ArchiveSearchAllowed = 1;
+
+            if ( $ConfigObject->Get('Ticket::ArchiveSearchUserGroup') ) {
+
+                # If Ticket::ArchiveSearchUserGroup is defined, allow archive searching
+                # only if user does has rw access to Ticket::ArchiveSearchUserGroup group.
+
+                $ArchiveSearchAllowed = 0;
+
+                my $GroupObject = $Kernel::OM->Get('Kernel::System::Group');
+
+                # Get current user groups.
+                my %UserGroups = $GroupObject->GroupMemberList(
+                    UserID => $Self->{UserID},
+                    Type   => 'rw',
+                    Result => 'HASH',
+                );
+
+                # Get group id of Ticket::ArchiveSearchUserGroup.
+                my $ArchiveSearchUserGroupID =
+                    $GroupObject->GroupLookup( Group => $ConfigObject->Get('Ticket::ArchiveSearchUserGroup') );
+
+                if ( defined $ArchiveSearchUserGroupID && $UserGroups{$ArchiveSearchUserGroupID} ) {
+                    $ArchiveSearchAllowed = 1;
+                }
+            }
+
+            if ($ArchiveSearchAllowed) {
+                push @Attributes, (
+                    {
+                        Key   => 'SearchInArchive',
+                        Value => Translatable('Archive Search'),
+                    },
+                );
+            }
         }
 
         # Dynamic fields
@@ -1990,16 +2021,47 @@ sub Run {
 
         if ( $ConfigObject->Get('Ticket::ArchiveSystem') ) {
 
-            $Param{SearchInArchiveStrg} = $LayoutObject->BuildSelection(
-                Data => {
-                    ArchivedTickets    => Translatable('Archived tickets'),
-                    NotArchivedTickets => Translatable('Unarchived tickets'),
-                    AllTickets         => Translatable('All tickets'),
-                },
-                Name       => 'SearchInArchive',
-                SelectedID => $GetParam{SearchInArchive} || 'NotArchivedTickets',
-                Class      => 'Modernize',
-            );
+            # Allow archive searching if Ticket::ArchiveSearchUserGroup is not defined.
+            my $ArchiveSearchAllowed = 1;
+
+            if ( $ConfigObject->Get('Ticket::ArchiveSearchUserGroup') ) {
+
+                # If Ticket::ArchiveSearchUserGroup is defined, allow archive searching
+                # only if user does has rw access to Ticket::ArchiveSearchUserGroup group.
+
+                $ArchiveSearchAllowed = 0;
+
+                my $GroupObject = $Kernel::OM->Get('Kernel::System::Group');
+
+                # Get current user groups.
+                my %UserGroups = $GroupObject->GroupMemberList(
+                    UserID => $Self->{UserID},
+                    Type   => 'rw',
+                    Result => 'HASH',
+                );
+
+                # Get group id of Ticket::ArchiveSearchUserGroup.
+                my $ArchiveSearchUserGroupID =
+                    $GroupObject->GroupLookup( Group => $ConfigObject->Get('Ticket::ArchiveSearchUserGroup') );
+
+                if ( defined $ArchiveSearchUserGroupID && $UserGroups{$ArchiveSearchUserGroupID} ) {
+                    $ArchiveSearchAllowed = 1;
+                }
+            }
+
+            if ($ArchiveSearchAllowed) {
+
+                $Param{SearchInArchiveStrg} = $LayoutObject->BuildSelection(
+                    Data => {
+                        ArchivedTickets    => Translatable('Archived tickets'),
+                        NotArchivedTickets => Translatable('Unarchived tickets'),
+                        AllTickets         => Translatable('All tickets'),
+                    },
+                    Name       => 'SearchInArchive',
+                    SelectedID => $GetParam{SearchInArchive} || 'NotArchivedTickets',
+                    Class      => 'Modernize',
+                );
+            }
         }
 
         my %Profiles = $SearchProfileObject->SearchProfileList(
