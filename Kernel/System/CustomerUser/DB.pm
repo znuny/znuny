@@ -70,6 +70,11 @@ sub new {
         $Self->{SearchSuffix} = '*';
     }
 
+    $Self->{SearchExtended} = $Self->{CustomerUserMap}->{CustomerUserSearchExtended};
+    if ( !defined $Self->{SearchExtended} ) {
+        $Self->{SearchExtended} = 0;
+    }
+
     # check if CustomerKey is var or int
     ENTRY:
     for my $Entry ( @{ $Self->{CustomerUserMap}->{Map} } ) {
@@ -330,6 +335,7 @@ sub CustomerSearch {
             Value         => $Search,
             SearchPrefix  => $Self->{SearchPrefix},
             SearchSuffix  => $Self->{SearchSuffix},
+            Extended      => $Self->{SearchExtended},
             CaseSensitive => $Self->{CaseSensitive},
             BindMode      => 1,
         );
