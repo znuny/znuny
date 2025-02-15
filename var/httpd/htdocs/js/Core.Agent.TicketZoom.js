@@ -625,7 +625,13 @@ Core.Agent.TicketZoom = (function (TargetNS) {
                     return false;
                 });
 
-                $('#' + ElementID).find('.WidgetSimple').hide().fadeIn();
+                // Check if the widget has no content and hide it to remove unnecessary gaps between widgets
+                if ($('#' + ElementID).text().trim() === '') {
+                    $('#' + ElementID).hide();
+                }else {
+                    $('#' + ElementID).find('.WidgetSimple').hide().fadeIn();
+                }
+
                 Core.UI.InitWidgetActionToggle();
             });
         });
