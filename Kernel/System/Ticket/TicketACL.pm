@@ -197,14 +197,14 @@ sub TicketAcl {
             next MODULENAME;
         }
         if ( $Module->{ReturnSubType} ) {
-            if ( ref( $Module->{ReturnSubType} ) eq 'HASH' ) {
+            if ( ref( $Module->{ReturnSubType} ) eq 'ARRAY' ) {
                 next MODULENAME if !grep { $Param{ReturnSubType} eq $_ }
                     @{ $Module->{ReturnSubType} };
             }
             else {
 
                 # a scalar, we hope
-                next MODULENAME if !$Module->{ReturnSubType} eq $Param{ReturnSubType};
+                next MODULENAME if $Module->{ReturnSubType} ne $Param{ReturnSubType};
             }
         }
 
