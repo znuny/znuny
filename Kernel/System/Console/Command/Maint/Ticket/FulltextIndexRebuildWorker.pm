@@ -178,6 +178,13 @@ sub ArticleIndexRebuild {
                         ArticleID => $ArticleID,
                         UserID    => 1,
                     );
+
+                    if ($Success) {
+                        $ArticleObject->ArticleSearchIndexRebuildFlagSet(
+                            ArticleIDs => [$ArticleID],
+                            Value      => 0,
+                        );
+                    }
                 }
                 else {
                     $Success = $ArticleObject->ArticleSearchIndexBuild(
@@ -185,18 +192,15 @@ sub ArticleIndexRebuild {
                         ArticleID => $ArticleID,
                         UserID    => 1,
                     );
+
+                    # ArticleSearchIndexBuild() removes rebuild flag on rebuilding
+                    # success, so no need to do it here.
                 }
 
                 if ( !$Success ) {
                     $Kernel::OM->Get('Kernel::System::Log')->Log(
                         Priority => 'error',
                         Message  => "Could not rebuild index for ArticleID '$ArticleID'!"
-                    );
-                }
-                else {
-                    $ArticleObject->ArticleSearchIndexRebuildFlagSet(
-                        ArticleIDs => [$ArticleID],
-                        Value      => 0,
                     );
                 }
             }
