@@ -2229,6 +2229,20 @@ sub _OpNotEquals {
     return $Result;
 }
 
+=head2 CompareDST()
+
+    this function checks compares two DateTime objects and returns the TimeDifference in seconds
+    my $DSTDiff = $DateTimeObject->CompareDST( $OtherDateTimeObject );
+    return: '3600' 
+
+=cut
+
+sub CompareDST {
+    my ($Self, $OtherDateTimeObject) = @_;
+
+    return $Self->{CPANDateTimeObject}->offset - $OtherDateTimeObject->{CPANDateTimeObject}->offset;
+}
+
 1;
 
 =end Internal:

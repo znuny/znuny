@@ -2286,6 +2286,9 @@ sub AppointmentNotification {
 
 sub _AppointmentRecurringCreate {
     my ( $Self, %Param ) = @_;
+    my %User = $Kernel::OM->Get('Kernel::System::User')->GetUserData(
+        UserID => $Param{Appointment}->{UserID}
+    );
 
     # check needed stuff
     for my $Needed (qw(ParentID Appointment)) {
@@ -2302,12 +2305,14 @@ sub _AppointmentRecurringCreate {
         'Kernel::System::DateTime',
         ObjectParams => {
             String => $Param{Appointment}->{StartTime},
+            TimeZone => $User{UserTimeZone} || '',
         },
     );
     my $EndTimeObject = $Kernel::OM->Create(
         'Kernel::System::DateTime',
         ObjectParams => {
             String => $Param{Appointment}->{EndTime},
+            TimeZone => $User{UserTimeZone} || '',
         },
     );
 
@@ -2365,6 +2370,30 @@ sub _AppointmentRecurringCreate {
                 OriginalTime => $Param{Appointment}->{EndTime},
                 Time         => $EndTime,
             );
+
+            # Account for Dates in different timezones
+            my $StartDSTDiff = $StartTimeObject->CompareDST($OriginalStartTimeObject);
+            my $EndDSTDiff = $EndTimeObject->CompareDST($OriginalEndTimeObject);
+            my $CurrentStartTimeObject = $StartTimeObject->Clone();
+            my $CurrentEndTimeObject   = $EndTimeObject->Clone();
+            if ( IsInteger( $StartDSTDiff ) ) {
+                if ( $StartDSTDiff > 0 ) {
+                    $CurrentStartTimeObject->Subtract( Seconds => $StartDSTDiff );
+                }
+                elsif ( $StartDSTDiff < 0 ) {
+                    $CurrentStartTimeObject->Add( Seconds => ($StartDSTDiff * -1));
+                }
+                $StartTime = $CurrentStartTimeObject->ToString();
+            }
+            if ( IsInteger( $EndDSTDiff ) ) {
+                if ( $EndDSTDiff > 0 ) {
+                    $CurrentEndTimeObject->Subtract( Seconds => $EndDSTDiff );
+                }
+                elsif ( $EndDSTDiff < 0 ) {
+                    $CurrentEndTimeObject->Add( Seconds => ($EndDSTDiff * -1));
+                }
+                $EndTime = $CurrentEndTimeObject->ToString();
+            }
 
             # skip excluded appointments
             next UNTIL_TIME if grep { $StartTime eq $_ } @RecurrenceExclude;
