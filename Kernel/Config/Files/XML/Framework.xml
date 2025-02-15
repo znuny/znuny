@@ -854,6 +854,18 @@
             <Item ValueType="String" ValueRegex="^\d+$">744</Item>
         </Value>
     </Setting>
+    <Setting Name="CommunicationLog::SyslogMinimumLogLevel" Required="0" Valid="0">
+        <Description Translatable="1">Minimum log level of communication log messages that are sent to syslog also.</Description>
+        <Navigation>Core::CommunicationLog</Navigation>
+        <Value>
+            <Item ValueType="Select" SelectedID="error">
+                <Item ValueType="Option" Value="debug" Translatable="1">Debug</Item>
+                <Item ValueType="Option" Value="info" Translatable="1">Info</Item>
+                <Item ValueType="Option" Value="notice" Translatable="1">Notice</Item>
+                <Item ValueType="Option" Value="error" Translatable="1">Error</Item>
+            </Item>
+        </Value>
+    </Setting>
     <Setting Name="MailQueue" Required="1" Valid="1">
         <Description Translatable="1">MailQueue configuration settings.</Description>
         <Navigation>Core::MailQueue</Navigation>
