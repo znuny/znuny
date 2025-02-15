@@ -261,6 +261,7 @@
                         </div>
                         <div class="Clear"></div>
 [% RenderBlockEnd("PreferencesGenericInput") %]
+[% IF !Data.PwHidden %]
 [% RenderBlockStart("PreferencesGenericPassword") %]
                         <label class="[% Data.RequiredLabelClass | html %]" for="[% Data.Name | html %]"><span class="Marker">[% Data.RequiredLabelCharacter | html %]</span> [% Translate(Data.Item) | html %]:</label>
                         <div class="Field">
@@ -270,6 +271,7 @@
                         </div>
                         <div class="Clear"></div>
 [% RenderBlockEnd("PreferencesGenericPassword") %]
+[% END %]
 [% RenderBlockStart("PreferencesGenericOption") %]
                         <label class="[% Data.RequiredLabelClass | html %]" for="[% Data.Name | html %]"><span class="Marker">[% Data.RequiredLabelCharacter | html %]</span> [% Translate(Data.Item) | html %]:</label>
                         <div class="Field">

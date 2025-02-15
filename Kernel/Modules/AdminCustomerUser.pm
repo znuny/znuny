@@ -1086,6 +1086,11 @@ sub _Edit {
         $UpdateOnlyPreferences = 1;
     }
 
+    # Hide password field if backend that does not require password from db it is enabled.
+    if ( $ConfigObject->Get('Customer::AuthModule') =~ /(LDAP|HTTPBasicAuth|Radius)/i ) {
+        $Param{PwHidden} = 1;
+    }
+
     # Get dynamic field backend object.
     my $DynamicFieldBackendObject = $Kernel::OM->Get('Kernel::System::DynamicField::Backend');
     my $ParamObject               = $Kernel::OM->Get('Kernel::System::Web::Request');

@@ -450,6 +450,11 @@ sub _Edit {
         }
     }
 
+    # Hide password field if backend that does not require password from db it is enabled.
+    if ( $Kernel::OM->Get('Kernel::Config')->Get('AuthModule') =~ /(LDAP|HTTPBasicAuth|Radius)/i ) {
+        $Param{PwHidden} = 1;
+    }
+
     # get valid list
     my %ValidList        = $Kernel::OM->Get('Kernel::System::Valid')->ValidList();
     my %ValidListReverse = reverse %ValidList;

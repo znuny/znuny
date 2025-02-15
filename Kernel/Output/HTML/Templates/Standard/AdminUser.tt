@@ -237,6 +237,7 @@
                             </div>
                         </div>
                         <div class="Clear"></div>
+[% IF !Data.PwHidden %]
 
                         <label for="UserPw">
                             [% Translate("Password") | html %]:
@@ -250,6 +251,7 @@
 [% RenderBlockEnd("ShowPasswordHint") %]
                         </div>
                         <div class="Clear"></div>
+[% END %]
 
                         <label class="Mandatory" for="UserEmail"><span class="Marker">*</span> [% Translate("Email") | html %]:</label>
                         <div class="Field">
