@@ -60,9 +60,10 @@ sub ChannelNameGet {
 Return article data by supplied message ID.
 
     my %Article = $ArticleBackendObject->ArticleGetByMessageID(
-        MessageID     => '<13231231.1231231.32131231@example.com>',     # (required)
-        DynamicFields => 1,                                             # (optional) To include the dynamic field values for this article on the return structure.
-        RealNames     => 1,                                             # (optional) To include the From/To/Cc/Bcc fields with real names.
+        MessageID              => '<13231231.1231231.32131231@example.com>',     # (required)
+        DynamicFields          => 1,                                             # (optional) To include the dynamic field values for this article on the return structure.
+        RealNames              => 1,                                             # (optional) To include the From/To/Cc/Bcc fields with real names.
+        CommunicationLogObject => $Self->{CommunicationLogObject}                # If set use it to log messages.
     );
 
 =cut
@@ -104,19 +105,214 @@ sub ArticleGetByMessageID {
     return if $Count == 0;
     return if !$Param{TicketID} || !$Param{ArticleID};
 
-    # More than one reference found! That should not happen, since 'a message_id' should be unique!
+    # Return empty search result if more than one article with given Message-ID found.
     if ( $Count > 1 ) {
-        $Kernel::OM->Get('Kernel::System::Log')->Log(
-            Priority => 'notice',
-            Message =>
-                "The MessageID '$Param{MessageID}' is in your database more than one time! That should not happen, since 'a message_id' should be unique!",
-        );
+        my $Message = "More than one article with Message-ID '$Param{MessageID}' exists.";
+        if ( $Param{CommunicationLogObject} ) {
+            $Param{CommunicationLogObject}->ObjectLog(
+                ObjectLogType => 'Message',
+                Priority      => 'Debug',
+                Key           => 'Kernel::System::Ticket::Article::Backend::Email',
+                Value         => $Message,
+            );
+        }
+        else {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'notice',
+                Message  => $Message,
+            );
+        }
         return;
     }
 
     return $Self->ArticleGet(
         %Param,
     );
+}
+
+=head2 ArticleGetTicketIDByMessageID()
+
+Get ticket id of given message ID.
+
+    my $TicketID = $ArticleBackendObject->ArticleGetTicketIDByMessageID(
+        MessageID              => '<13231231.1231231.32131231@example.com>',  # (required)
+        MaxAge                 => 0,                                          # Search only articles not older than MaxAge
+                                                                              # seconds; 0 disables this filter.
+        MaxArticles            => 0,                                          # Search failure if more than MaxArticles have
+                                                                              # same Message-ID; 0 disables this filter.
+        Quiet                  => 0,                                          # 1 = don't generate logs for prerun
+
+        CommunicationLogObject => $Self->{CommunicationLogObject}             # If set use it to log messages.
+    );
+
+=cut
+
+sub ArticleGetTicketIDByMessageID {
+    my ( $Self, %Param ) = @_;
+
+    if ( !$Param{MessageID} ) {
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => 'Need MessageID!',
+        );
+        return;
+    }
+
+    my $Quiet = $Param{Quiet} // 0;
+
+    my $MD5 = $Kernel::OM->Get('Kernel::System::Main')->MD5sum( String => $Param{MessageID} );
+
+    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
+
+    # Get tickets with e-mail articles with given Message-ID.
+    return if !$DBObject->Prepare(
+        SQL => '
+            SELECT DISTINCT(sa.ticket_id) FROM article sa
+            INNER JOIN article_data_mime sadm ON sa.id = sadm.article_id
+            WHERE sadm.a_message_id_md5 = ?
+        ',
+        Bind  => [ \$MD5 ],
+        Limit => 2,
+    );
+
+    my $TicketID;
+    my $Count = 0;
+    while ( my @Row = $DBObject->FetchrowArray() ) {
+        $Count++;
+        $TicketID = $Row[0];
+    }
+
+    # No ticket found.
+    return if $Count == 0;
+
+    # Search failure if more than one ticket with article having given Message-ID exist.
+    if ( $Count > 1 ) {
+        if ( !$Quiet ) {
+            my $Message = "Articles with Message-ID '$Param{MessageID}' exist in more than one ticket.";
+            if ( $Param{CommunicationLogObject} ) {
+                $Param{CommunicationLogObject}->ObjectLog(
+                    ObjectLogType => 'Message',
+                    Priority      => 'Debug',
+                    Key           => 'Kernel::System::Ticket::Article::Backend::Email',
+                    Value         => $Message,
+                );
+            }
+            else {
+                $Kernel::OM->Get('Kernel::System::Log')->Log(
+                    Priority => 'notice',
+                    Message  => $Message,
+                );
+            }
+        }
+        return;
+    }
+
+    # Search failure if number of articles with given Message-ID is greater than MaxArticles
+    # (disable check if MaxArticles is not integer or is not > 0).
+    if ( $Param{MaxArticles} && ( $Param{MaxArticles} =~ /^\d+$/ ) && ( $Param{MaxArticles} > 0 ) ) {
+
+        # Get number of articles with given Message-ID.
+        return if !$DBObject->Prepare(
+            SQL => '
+                SELECT COUNT(sa.id) FROM article sa
+                INNER JOIN article_data_mime sadm ON sa.id = sadm.article_id
+                WHERE sadm.a_message_id_md5 = ?
+            ',
+            Bind => [ \$MD5 ],
+        );
+
+        $Count = 0;
+        while ( my @Row = $DBObject->FetchrowArray() ) {
+            $Count = $Row[0];
+        }
+
+        if ( $Count >= $Param{MaxArticles} ) {
+            if ( !$Quiet ) {
+                my $Message = "Number of articles with Message-ID '$Param{MessageID}' ($Count) "
+                    . "reached MaxArticles limit (" . $Param{MaxArticles} . ")";
+                if ( $Param{CommunicationLogObject} ) {
+                    $Param{CommunicationLogObject}->ObjectLog(
+                        ObjectLogType => 'Message',
+                        Priority      => 'Debug',
+                        Key           => 'Kernel::System::Ticket::Article::Backend::Email',
+                        Value         => $Message,
+                    );
+                }
+                else {
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'notice',
+                        Message  => $Message,
+                    );
+                }
+            }
+            return;
+        }
+    }
+
+    # Search failure if oldest article with given Message-ID is older than MaxAge seconds
+    # (disable check if MaxAge is not integer or is not > 0).
+    if ( $Param{MaxAge} && ( $Param{MaxAge} =~ /^\d+$/ ) && ( $Param{MaxAge} > 0 ) ) {
+
+        # Get create time of oldest article with given Message-ID.
+
+        return if !$DBObject->Prepare(
+            SQL => '
+                SELECT sa.create_time FROM article sa
+                INNER JOIN article_data_mime sadm ON sa.id = sadm.article_id
+                WHERE sadm.a_message_id_md5 = ? ORDER BY create_time ASC
+            ',
+            Bind  => [ \$MD5 ],
+            Limit => 1,
+        );
+
+        my $OldestArticleCreate = 0;
+        while ( my @Row = $DBObject->FetchrowArray() ) {
+            $OldestArticleCreate = $Row[0];
+
+            # Cleanup time stamps (some databases are using e. g. 2008-02-25 22:03:00.000000
+            # and 0000-00-00 00:00:00 time stamps).
+            $OldestArticleCreate =~ s/^(\d\d\d\d-\d\d-\d\d\s\d\d:\d\d:\d\d)\..+?$/$1/;
+        }
+
+        my $OldestArticleCreateTime = $Kernel::OM->Create(
+            'Kernel::System::DateTime',
+            ObjectParams => {
+                String => $OldestArticleCreate,
+            }
+        )->ToEpoch();
+
+        # Oldest article is older than MaxAge seconds?
+        if (
+            $Kernel::OM->Create('Kernel::System::DateTime')->ToEpoch()
+            - $Param{MaxAge}
+            > $OldestArticleCreateTime
+            )
+        {
+            if ( !$Quiet ) {
+                my $Message = "Oldest article with Message-ID '$Param{MessageID}' is "
+                    . "older (" . $OldestArticleCreate . ") than MaxAge limit ("
+                    . $Param{MaxAge} . " sec.).";
+                if ( $Param{CommunicationLogObject} ) {
+                    $Param{CommunicationLogObject}->ObjectLog(
+                        ObjectLogType => 'Message',
+                        Priority      => 'Debug',
+                        Key           => 'Kernel::System::Ticket::Article::Backend::Email',
+                        Value         => $Message,
+                    );
+                }
+                else {
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'notice',
+                        Message  => $Message
+                    );
+                }
+            }
+            return;
+        }
+    }
+
+    return $TicketID;
+
 }
 
 =head2 ArticleSend()

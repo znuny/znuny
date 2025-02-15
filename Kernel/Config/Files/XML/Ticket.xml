@@ -11771,6 +11771,17 @@ Thanks for your help!
             </Hash>
         </Value>
     </Setting>
+    <Setting Name="PostMaster::CheckFollowUpModule###0600-MessageID" Required="0" Valid="0">
+        <Description Translatable="1">Executes follow up Message-ID checks in mails that don't have a ticket number in the subject. Incoming message will be treated as ticket X follow up if: (0) Message-ID is not empty (should not be) and (1) there is 1 or more (but not more than MaxArticles if MaxArticles is greater than 0) articles in ticket X with the same Message-ID and (2) no article with the same Message-ID exists in ticket other than X and (3) age difference between oldest Article from (1) and incoming message is not greater than MaxAge seconds if MaxAge greater than 0.</Description>
+        <Navigation>Core::Email::PostMaster</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::System::PostMaster::FollowUpCheck::MessageID</Item>
+                <Item Key="MaxAge">604800</Item>
+                <Item Key="MaxArticles">10</Item>
+            </Hash>
+        </Value>
+    </Setting>
     <Setting Name="PostMaster::NewTicket::AutoAssignCustomerIDForUnknownCustomers" Required="1" Valid="1">
         <Description Translatable="1">Controls if CustomerID is automatically copied from the sender address for unknown customers.</Description>
         <Navigation>Core::Email::PostMaster</Navigation>
