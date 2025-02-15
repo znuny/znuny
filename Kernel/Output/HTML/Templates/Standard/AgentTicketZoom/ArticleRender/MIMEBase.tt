@@ -39,7 +39,7 @@
                     [% IF ArticleField.Label == "From" || ArticleField.Label == "To" || ArticleField.Label == "Cc"  || ArticleField.Label == "Bcc" %]
                     <div class="field-wrapper flex-row">
                         <label class="Switchable">[% Translate(ArticleField.Label) | html %]:</label>
-                        <div class="Field">
+                        <div class="Field" title="[% ArticleField.Value | html %]">
                             <span class="Switch [% ArticleField.ValueHidden | html %]">[% ArticleField.Value | html %]</span>
                             <span class="Switch [% ArticleField.RealnameHidden | html %]" title="[% ArticleField.Value | html %]">[% ArticleField.Realname | html %]</span>
                         </div>
