@@ -1080,6 +1080,7 @@ sub Run {
                 if (
                     $GetParam{'Subject'}
                     && $GetParam{'Body'}
+                    && !$MainTicketID
                     )
                 {
                     my $MimeType = 'text/plain';
@@ -1151,7 +1152,7 @@ sub Run {
                 }
 
                 # time units for note
-                if ( $GetParam{TimeUnits} && $ArticleID ) {
+                if ( $GetParam{TimeUnits} && $ArticleID && !$MainTicketID ) {
                     if ( $ConfigObject->Get('Ticket::Frontend::BulkAccountedTime') ) {
                         $TicketObject->TicketAccountTime(
                             TicketID  => $TicketID,
@@ -1369,6 +1370,67 @@ sub Run {
                 $ActionFlag = 1;
             }
             $Counter++;
+        }
+
+        # only create one Article and time for merging
+        # add note
+        if ($MainTicketID) {
+            my $ArticleID;
+            if (
+                $GetParam{'Subject'}
+                && $GetParam{'Body'}
+                )
+            {
+                my $MimeType = 'text/plain';
+                if ( $LayoutObject->{BrowserRichText} ) {
+                    $MimeType = 'text/html';
+
+                    # verify html document
+                    $GetParam{'Body'} = $LayoutObject->RichTextDocumentComplete(
+                        String => $GetParam{'Body'},
+                    );
+                }
+                my $InternalArticleBackendObject = $ArticleObject->BackendForChannel( ChannelName => 'Internal' );
+
+                $ArticleID = $InternalArticleBackendObject->ArticleCreate(
+                    TicketID             => $MainTicketID,
+                    SenderType           => 'agent',
+                    IsVisibleForCustomer => $GetParam{IsVisibleForCustomer},
+                    From                 => "\"$Self->{UserFullname}\" <$Self->{UserEmail}>",
+                    Subject              => $GetParam{'Subject'},
+                    Body                 => $GetParam{'Body'},
+                    MimeType             => $MimeType,
+                    Charset              => $LayoutObject->{UserCharset},
+                    UserID               => $Self->{UserID},
+                    HistoryType          => 'AddNote',
+                    HistoryComment       => '%%Bulk',
+                );
+            }
+
+            # time units for note
+            if ( $GetParam{TimeUnits} && $ArticleID ) {
+                if ( $ConfigObject->Get('Ticket::Frontend::BulkAccountedTime') ) {
+                    $TicketObject->TicketAccountTime(
+                        TicketID  => $MainTicketID,
+                        ArticleID => $ArticleID,
+                        TimeUnit  => $GetParam{'TimeUnits'},
+                        UserID    => $Self->{UserID},
+                    );
+                }
+                elsif (
+                    !$ConfigObject->Get('Ticket::Frontend::BulkAccountedTime')
+                    && $Counter == 1
+                    )
+                {
+                    $TicketObject->TicketAccountTime(
+                        TicketID  => $MainTicketID,
+                        ArticleID => $ArticleID,
+                        TimeUnit  => $GetParam{'TimeUnits'},
+                        UserID    => $Self->{UserID},
+                    );
+                }
+            }
+
         }
 
         # notify user about actions (errors)
