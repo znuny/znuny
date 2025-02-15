@@ -305,6 +305,7 @@
                                         value="[% Data.Columns | html %]" />
                                     <input type="hidden" class="ColumnsEnabledJSON" value="[% Data.ColumnsEnabled | html %]" />
                                     <input type="hidden" class="ColumnsAvailableJSON" value="[% Data.ColumnsAvailable | html %]" />
+                                    <input type="hidden" class="ColumnsMandatoryJSON" value="[% Data.ColumnsMandatory | html %]" />
 
                                     <label class="DontPrint">[% Translate(Data.Desc) | html %]:</label>
                                     <div class="Field DontPrint LayoutGrid AllocationListContainer modal-col-container">

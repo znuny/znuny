@@ -365,6 +365,7 @@ sub Preferences {
     # configure columns
     my @ColumnsEnabled;
     my @ColumnsAvailable;
+    my @ColumnsMandatory;
     my @ColumnsAvailableNotEnabled;
 
     # check for default settings
@@ -383,6 +384,16 @@ sub Preferences {
     my %Preferences = $Kernel::OM->Get('Kernel::System::User')->GetPreferences(
         UserID => $Self->{UserID},
     );
+
+    # set mandatory columns
+    @ColumnsMandatory = (
+        'TicketNumber',
+    );
+
+    if ($Self->{Config}->{IsProcessWidget}) {
+        push @ColumnsMandatory, 'DynamicField_' . $Self->{ProcessManagementProcessID};
+        push @ColumnsMandatory, 'DynamicField_' . $Self->{ProcessManagementActivityID};
+    }
 
     # get JSON object
     my $JSONObject = $Kernel::OM->Get('Kernel::System::JSON');
@@ -454,6 +465,7 @@ sub Preferences {
             Columns          => $JSONObject->Encode( Data => \%Columns ),
             ColumnsEnabled   => $JSONObject->Encode( Data => \@ColumnsEnabled ),
             ColumnsAvailable => $JSONObject->Encode( Data => \@ColumnsAvailableNotEnabled ),
+            ColumnsMandatory => $JSONObject->Encode( Data => \@ColumnsMandatory ),
             Translation      => 1,
         },
     );
