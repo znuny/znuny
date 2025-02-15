@@ -430,6 +430,33 @@
             </Hash>
         </Value>
     </Setting>
+    <Setting Name="Daemon::SchedulerCronTaskManager::Task###SpamAssassinLearn" Required="0" Valid="0" ConfigLevel="100">
+        <Description Translatable="1">Sends all customer e-mail articles from marked tickets for learning as spam or ham in SpamAssassin. Schedule must be defined in UTC.</Description>
+        <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="TaskName">SpamAssassinLearn</Item>
+                <Item Key="Schedule">*/10 * * * *</Item> <!-- default: every 10 minutes -->
+                <Item Key="Module">Kernel::System::Console::Command::Maint::Ticket::SpamAssassinLearn</Item>
+                <Item Key="Function">Execute</Item>
+                <Item Key="MaximumParallelInstances">1</Item>
+                <Item Key="Params">
+                    <Array>
+                        <Item>--host</Item>
+                        <Item>localhost</Item>
+                        <Item>--port</Item>
+                        <Item>783</Item>
+                        <Item>--username</Item>
+                        <Item>mylogin</Item>
+                        <Item>--limit</Item>
+                        <Item>4000</Item>
+                        <Item>--micro-sleep</Item>
+                        <Item>1000</Item>
+                    </Array>
+                </Item>
+            </Hash>
+        </Value>
+    </Setting>
     <Setting Name="Daemon::SchedulerCronTaskManager::Task###MailQueueSend" Required="0" Valid="1" ConfigLevel="100">
         <Description Translatable="1">Checks for queued outgoing emails to be sent.</Description>
         <Navigation>Daemon::SchedulerCronTaskManager::Task</Navigation>

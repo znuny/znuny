@@ -338,6 +338,19 @@
             </Hash>
         </Value>
     </Setting>
+    <Setting Name="Ticket::EventModulePost###9996-LearnSpam" Required="0" Valid="0">
+        <Description Translatable="1">Marks ticket for learning as spam/ham on moving to/from SpamQueues. Optional ticket state change to NewStateAfterMarkingSpam on marking ticket as spam. Use ::: as queue name separator in SpamQueues and TrashQueues parameters (i.e. Spam1::SubSpam1:::Spam2 for queues Spam1::SubSpam1 and Spam2).</Description>
+        <Navigation>Core::Event::Ticket</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::System::Ticket::Event::TicketLearnSpam</Item>
+                <Item Key="Event">TicketQueueUpdate</Item>
+                <Item Key="SpamQueues">Spam</Item>
+                <Item Key="TrashQueues">Trash:::Trash::Shredder</Item>
+                <Item Key="NewStateAfterMarkingSpam">removed</Item>
+            </Hash>
+        </Value>
+    </Setting>
     <Setting Name="Ticket::EventModulePost###4300-EscalationStopEvents" Required="0" Valid="1">
         <Description Translatable="1">Ticket event module that triggers the escalation stop events.</Description>
         <Navigation>Core::Event::Ticket</Navigation>
