@@ -28,6 +28,7 @@ our @ObjectDependencies = (
     'Kernel::System::Log',
     'Kernel::System::Main',
     'Kernel::System::PostMaster::LoopProtection',
+    'Kernel::System::Queue',
     'Kernel::System::State',
     'Kernel::System::SystemAddress',
     'Kernel::System::TemplateGenerator',
@@ -701,6 +702,18 @@ sub SendAutoResponse {
     # Format sender realname and address because it maybe contains comma or other special symbols (see bug#13130).
     my $From = Mail::Address->new( $AutoResponse{SenderRealname} // '', $AutoResponse{SenderAddress} );
 
+    # Sign auto response if queue has signing enabled by default and queue sender address is the same
+    # as auto response sender address.
+    my %ExParams;
+    my $ConfigObject = $Kernel::OM->Get('Kernel::Config');
+    if ( $ConfigObject->Get('AutoResponseSign') && ( $ConfigObject->Get('PGP') || $ConfigObject->Get('SMIME') ) ) {
+        my %Queue = $Kernel::OM->Get('Kernel::System::Queue')->QueueGet( ID => $Ticket{QueueID} );
+        if ( $Queue{DefaultSignKey} && ( $Queue{Email} eq $AutoResponse{SenderAddress} ) ) {
+            ( $ExParams{Sign}{Type}, $ExParams{Sign}{SubType}, $ExParams{Sign}{Key} ) = split /::/,
+                $Queue{DefaultSignKey};
+        }
+    }
+
     # send email
     my $ArticleID = $Self->ArticleSend(
         IsVisibleForCustomer => 1,
@@ -718,6 +731,7 @@ sub SendAutoResponse {
         InReplyTo            => $OrigHeader{'Message-ID'},
         Loop                 => 1,
         UserID               => $Param{UserID},
+        %ExParams,
     );
 
     # log

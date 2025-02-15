@@ -11792,6 +11792,13 @@ Thanks for your help!
             <Item ValueType="Checkbox">1</Item>
         </Value>
     </Setting>
+    <Setting Name="AutoResponseSign" Required="0" Valid="0">
+        <Description Translatable="1">If this option is set to 'Yes' and S/MIME and/or PGP message signing is enabled, auto responses for tickets created in queues with default signing enabled will be signed if auto response sender address matches queue sender address.</Description>
+        <Navigation>Core::PostMaster</Navigation>
+        <Value>
+            <Item ValueType="Checkbox">0</Item>
+        </Value>
+    </Setting>
     <Setting Name="LinkObject::PossibleLink###0200" Required="0" Valid="1">
         <Description Translatable="1">Links 2 tickets with a "Normal" type link.</Description>
         <Navigation>Core::LinkObject</Navigation>
