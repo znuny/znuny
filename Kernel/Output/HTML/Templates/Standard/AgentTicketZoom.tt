@@ -176,22 +176,23 @@
                                 </form>
                             </li>
 [% RenderBlockEnd("TicketMenuPhoneAsDropdown") %]
+[% RenderBlockStart("MoveForm") %]
+                            <li>
+                                <a href="[% Env("Baselink") %]Action=AgentTicketMove;TicketID=[% Data.TicketID | uri %];" class="AsPopup PopupType_TicketAction" title="[% Translate("Change Queue") | html %]">[% Translate("Move") | html %]</a>
+                            </li>
+[% RenderBlockEnd("MoveForm") %]
 [% RenderBlockStart("MoveLink") %]
                             <li class="[% Data.Class | html %]">
                                 <form title="[% Translate("Move ticket to a different queue") | html %]" action="[% Env("CGIHandle") | html %]" method="post">
                                     <input type="hidden" name="Action" value="AgentTicketMove"/>
                                     <input type="hidden" name="QueueID" value="[% Data.QueueID | html %]"/>
                                     <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]"/>
+                                    <input type="hidden" name="MoveType" value="form"/>
                                     <label for="DestQueueID" class="InvisibleText">[% Translate("Queue") | html %]:</label>
                                     [% Data.MoveQueuesStrg %]
                                 </form>
                             </li>
 [% RenderBlockEnd("MoveLink") %]
-[% RenderBlockStart("MoveForm") %]
-                            <li>
-                                <a href="[% Env("Baselink") %]Action=AgentTicketMove;TicketID=[% Data.TicketID | uri %];" class="AsPopup PopupType_TicketAction" title="[% Translate("Change Queue") | html %]">[% Translate("Queue") | html %]</a>
-                            </li>
-[% RenderBlockEnd("MoveForm") %]
 [% RenderBlockStart("TicketMenuExternalLink") %]
                             <li>
                                 <a href="[% Data.Link | Interpolate %]" class="[% Data.Class | html %]" [% Data.LinkParam %] title="[% Translate(Data.Description) | html %]" target="[% Data.Target %]">[% Translate(Data.Name) | html %]</a>

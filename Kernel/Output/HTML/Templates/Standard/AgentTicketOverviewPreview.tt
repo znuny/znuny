@@ -303,6 +303,7 @@
         <input type="hidden" name="Action" value="AgentTicketMove"/>
         <input type="hidden" name="QueueID" value="[% Data.QueueID | html %]"/>
         <input type="hidden" name="TicketID" value="[% Data.TicketID | html %]"/>
+        <input type="hidden" name="MoveType" value="form"/>
         <label for="DestQueueID" class="InvisibleText">[% Translate("Change queue") | html %]:</label>
         [% Data.MoveQueuesStrg %]
     </form>

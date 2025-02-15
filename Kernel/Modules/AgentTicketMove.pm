@@ -158,7 +158,7 @@ sub Run {
     for my $Parameter (
         qw(Subject Body
         NewUserID NewStateID NewPriorityID
-        OwnerAll NoSubmit DestQueueID DestQueue
+        OwnerAll NoSubmit DestQueueID DestQueue MoveType
         StandardTemplateID CreateArticle FormDraftID Title
         )
         )
@@ -1225,7 +1225,7 @@ sub Run {
     # only set the dynamic fields if the new window was displayed (link), otherwise if ticket was
     # moved from the dropdown menu (form) in AgentTicketZoom, the value if the dynamic fields will
     # be undefined and it will set to empty in the DB, see bug#8481
-    if ( $ConfigObject->Get('Ticket::Frontend::MoveType') eq 'link' ) {
+    if ( $GetParam{MoveType} ne 'form' ) {
 
         # cycle trough the activated Dynamic Fields for this screen
         DYNAMICFIELD:
@@ -1290,12 +1290,12 @@ sub Run {
     if ( !$AccessNew || $NextScreen eq 'LastScreenOverview' ) {
 
         # Module directly called
-        if ( $ConfigObject->Get('Ticket::Frontend::MoveType') eq 'form' ) {
+        if ( $GetParam{MoveType} eq 'form' ) {
             return $LayoutObject->Redirect( OP => $Self->{LastScreenOverview} );
         }
 
         # Module opened in popup
-        elsif ( $ConfigObject->Get('Ticket::Frontend::MoveType') eq 'link' ) {
+        else {
             return $LayoutObject->PopupClose(
                 URL => ( $Self->{LastScreenOverview} || 'Action=AgentDashboard' ),
             );
@@ -1303,7 +1303,7 @@ sub Run {
     }
 
     # Module directly called
-    if ( $ConfigObject->Get('Ticket::Frontend::MoveType') eq 'form' ) {
+    if ( $GetParam{MoveType} eq 'form' ) {
         return $LayoutObject->Redirect(
             OP => "Action=AgentTicketZoom;TicketID=$Self->{TicketID}"
                 . ( $ArticleID ? ";ArticleID=$ArticleID" : '' ),
@@ -1311,7 +1311,7 @@ sub Run {
     }
 
     # Module opened in popup
-    elsif ( $ConfigObject->Get('Ticket::Frontend::MoveType') eq 'link' ) {
+    else {
         return $LayoutObject->PopupClose(
             URL => "Action=AgentTicketZoom;TicketID=$Self->{TicketID}"
                 . ( $ArticleID ? ";ArticleID=$ArticleID" : '' ),
