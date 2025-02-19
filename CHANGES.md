@@ -1,4 +1,4 @@
-# 7.1.6 2025-??-??
+# 7.1.6 2025-02-19
  - 2025-02-14 Fixed content security policy HTTP header to allow externally linked images.
  - 2025-02-13 Fixed ticket filter for new mentions.
 
