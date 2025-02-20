@@ -262,7 +262,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         text-align: center;
         font-size: var(--font-size-sm);
     }
-    
+
 
     .btn-main.Hidden {
         display: none;
@@ -508,7 +508,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         color: var(--alert-error-icon-color);
     }
 
-    .MessageBox.Confirmation, 
+    .MessageBox.Confirmation,
     .Success {
         background: var(--alert-success-bg-color);
         border: 1px solid var(--alert-success-border-color);

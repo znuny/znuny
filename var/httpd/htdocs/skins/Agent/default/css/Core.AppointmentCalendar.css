@@ -188,7 +188,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 
     .fc-view > table {
         width: 100%;
-    } 
+    }
 
     .fc-view table thead.fc-head {
         background: #EEEEEE;
@@ -445,11 +445,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     .CalendarWidget > .Content {
         z-index: unset;
     }
-    
+
     .CalendarWidget .Header {
         border-bottom: var(--border-width) var(--border-solid) var(--border-color);
     }
-    
+
     .CalendarWidget .fc-toolbar.fc-header-toolbar {
         margin: 0;
         padding: var(--padding-xs) var(--padding-md);
@@ -566,7 +566,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border-radius: var(--border-radius-sm);
     }
 
-    
+
     .CalendarWidget .fc-view-container {
         padding: var(--padding-md);
     }

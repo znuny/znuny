@@ -426,7 +426,7 @@ form select {
     background-color: var(--white);
     -webkit-box-shadow: none;
     box-shadow: none;
-    /*margin: var(--margin-xs);*/ 
+    /*margin: var(--margin-xs);*/
     padding: var(--padding-xs) var(--padding-sm);
     font-size: var(--font-size-sm);
     color: var(--black);
@@ -691,7 +691,7 @@ a.cke_button:hover {
     cursor: pointer;
 }
 
-.jstree-InputField .jstree-clicked, 
+.jstree-InputField .jstree-clicked,
 .jstree-InputField .jstree-anchor.jstree-clicked {
     color: var(--white);
 }
@@ -971,7 +971,7 @@ input[type=checkbox] {
     line-height: 16px;
     text-align: center;
     cursor: pointer;
-    border: var(--border-width) solid #ccc; 
+    border: var(--border-width) solid #ccc;
     background: transparent;
     border-radius: 3px;
     z-index: 100;
@@ -985,15 +985,15 @@ input[type=checkbox] + input[type=checkbox]{
 input[type=checkbox]:hover {
     border-color: var(--success-color);
 }
-  
+
 input[type=checkbox]:checked {
     background:var(--success-color);
-    border: 2px solid var(--success-color); 
+    border: 2px solid var(--success-color);
 }
 
 input[type=checkbox]:checked:disabled {
     background: var(--disabled);
-    border: 2px solid var(--disabled); 
+    border: 2px solid var(--disabled);
 }
 
 input[type=checkbox]:checked + label {
@@ -1046,7 +1046,7 @@ div.card-item .checkbox-container .Field {
 /******************************/
 /*        Radio Buttons       */
 input[type=radio]{
-    appearance: none; 
+    appearance: none;
     -webkit-appearance: none;
 }
 
@@ -1066,7 +1066,7 @@ input[type=radio].RadioRound:checked::after {
     border-right: 2px solid var(--success-color);
 }
 
-input[type="radio"], 
+input[type="radio"],
 input[type="radio"].RadioRound {
     -webkit-appearance: none;
     appearance: none;
@@ -1091,18 +1091,18 @@ input[type="radio"].RadioRound:checked {
     border: var(--border-width-md) var(--border-solid) var(--success-color);
 }
 
-input[type="radio"] + label, 
+input[type="radio"] + label,
 input[type="radio"].RadioRound + label {
     cursor: pointer;
 }
 
-input[type="radio"][disabled] + label, 
+input[type="radio"][disabled] + label,
 input[type="radio"][disabled].RadioRound + label {
     color: var(--disabled-text);
     cursor: default;
 }
 
-input[type="radio"][disabled], 
+input[type="radio"][disabled],
 input[type="radio"][disabled].RadioRound,
 input[type="radio"][disabled]:checked,
 input[type="radio"][disabled].RadioRound:checked {

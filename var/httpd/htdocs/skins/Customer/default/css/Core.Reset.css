@@ -41,7 +41,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         background-image: none;
         direction: inherit;
     }
-    
+
     body {
         line-height: 1;
         color: black;
@@ -50,43 +50,43 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         margin: 0;
         padding: 0;
     }
-    
+
     ol, ul {
         list-style: none;
     }
-    
+
     table {
         border-collapse: collapse;
         border-spacing: 0;
     }
-    
+
     caption, th, td {
         text-align: left;
         font-weight: normal;
     }
-    
+
     .RTL caption,
     .RTL th,
     .RTL td {
         text-align: right;
     }
-    
+
     blockquote:before, blockquote:after, q:before, q:after {
         content: "";
     }
-    
+
     blockquote, q {
         quotes: "" "";
     }
-    
+
     a {
         text-decoration: none;
     }
-    
+
     strong {
         font-weight: bold;
     }
-    
+
     /**
      * @note    Move selects a bit to the top. This is ignored by some browsers,
      *          and seems to be needed for some linux environments (Firefox, Arora / Qt).
@@ -107,12 +107,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     small, strike, strong, sub, sup, tt, var,
     dl, dt, dd, ol, ul, li,
     fieldset, form, label, legend,
-    table, caption, tbody, tfoot, thead, tr, th, td, hr, 
+    table, caption, tbody, tfoot, thead, tr, th, td, hr,
     input, textarea {
         box-sizing: border-box;
     }
 
-    
-    
+
+
 } /* end @media */
-    

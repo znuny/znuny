@@ -15,25 +15,25 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 @media screen,projection,tv,handheld {
 
     /* **************************************** Main Classes **************************************** */
-    form.flex-column, 
-    div.flex-column, 
+    form.flex-column,
+    div.flex-column,
     span.flex-column {
         display: flex;
         flex-flow: column !important;
     }
 
-    div.flex-row, 
+    div.flex-row,
     span.flex-row {
         display: flex;
         flex-flow: row;
     }
 
-    div.flex-center, 
+    div.flex-center,
     span.flex-center {
         justify-content: center;
     }
 
-    div.flex-space-between, 
+    div.flex-space-between,
     span.flex-space-between {
         justify-content: space-between;
     }
@@ -44,7 +44,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 
     div.flex-row.flex-wrap,
     span.flex-row.flex-wrap,
-    div.flex-column.flex-wrap, 
+    div.flex-column.flex-wrap,
     span.flex-column.flex-wrap,
     div.flex-wrap,
     span.flex-wrap,

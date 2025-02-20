@@ -7,98 +7,105 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 */
 
 /**
- * @package     Skin "dark"
- * @section     Default Settings
+ * @package         Skin "dark"
+ * @section         Default Settings
  */
 
 @media screen,projection,tv,handheld {
-  body{
-      filter: invert(90%) hue-rotate(180deg);
-  }
-  html {
-      background-color: #111;
-  }
-  img, video, svg {
-      filter: invert(0%);
-  }
-  div.MessageBox.Error {
-      filter: invert(0%);
-  }
-  .icon {
-      filter: invert(15%) hue-rotate(180deg);
-  }
-  pre {
-    filter: invert(6%);
-  }
-  li::marker {
-    color: #666;
-  }
 
-  /*Dim headlines*/
-  h1,h2,h3,
-  div.Headline h1 {
-    color: var(--bread-crumb);
-  }
-  h1 > a,
-  h2 > a,
-  h3 > a{
-    filter: invert(0%);
-  }
-  .WidgetSimple > .Header h2,
-  .WidgetSimple > .Header h3 {
-    filter: invert(0%);
-  }
+    body{
+        filter: invert(90%) hue-rotate(180deg);
+    }
 
-  .MainBox h1 > a {
-    color: var(--primary-color-darker);
-    filter: invert(100%) hue-rotate(180deg);
-  }
-  /*Admin Menu Header*/
-  .ActionsSideBar.LayoutFixedSidebar .ContentGrid .WidgetSimple.GridGroups .Header h2{
-    background: none;
-  }
-  /*Checkboxes in general*/
-  input[type=checkbox] {
-    border: var(--border-width) solid #484848;
-  }
+    html {
+        background-color: #111;
+    }
 
-  /*AgentTicketPhone/Email CustomerUser*/
-  input[readonly] {
-    background: var(--disabled-input);
-    color: #5b5b5b;
-  }
+    img, video, svg {
+        filter: invert(0%);
+    }
 
-  .OverviewLarge .Preview h3 {
-    filter: invert(0%);
-  }
+    div.MessageBox.Error {
+        filter: invert(0%);
+    }
 
-  .Notice i {
-    color: #313030;
-  }
+    .icon {
+        filter: invert(15%) hue-rotate(180deg);
+    }
 
-  .SmallBox,
-  .MessageBrowser,
-  .MessageBox,
-  .ACLNote {
-      background: wheat;
-  }
+    pre {
+        filter: invert(6%);
+    }
 
-  /*Different elements that get "colors" */
-  .jscolor,
-  .jscolor-picker-wrap * {
-    filter: invert(100%)hue-rotate(180deg);
-  }
+    li::marker {
+        color: #666;
+    }
 
-  [class*="PriorityID"] {
-    filter: invert(100%) hue-rotate(180deg)!important;
-  }
-  .pill {
-    filter: invert(100%) hue-rotate(180deg)!important;
-  }
+    /*Dim headlines*/
+    h1,h2,h3,
+    div.Headline h1 {
+        color: var(--bread-crumb);
+    }
+    h1 > a,
+    h2 > a,
+    h3 > a{
+        filter: invert(0%);
+    }
+    .WidgetSimple > .Header h2,
+    .WidgetSimple > .Header h3 {
+        filter: invert(0%);
+    }
 
-  /*Unread star*/
-  span.UnreadArticles i,
-  div.UnreadArticles i {
-      color: var(--color-grey9);
-  }
+    .MainBox h1 > a {
+        color: var(--primary-color-darker);
+        filter: invert(100%) hue-rotate(180deg);
+    }
+    /*Admin Menu Header*/
+    .ActionsSideBar.LayoutFixedSidebar .ContentGrid .WidgetSimple.GridGroups .Header h2{
+        background: none;
+    }
+    /*Checkboxes in general*/
+    input[type=checkbox] {
+        border: var(--border-width) solid #484848;
+    }
+
+    /*AgentTicketPhone/Email CustomerUser*/
+    input[readonly] {
+        background: var(--disabled-input);
+        color: #5b5b5b;
+    }
+
+    .OverviewLarge .Preview h3 {
+        filter: invert(0%);
+    }
+
+    .Notice i {
+        color: #313030;
+    }
+
+    .SmallBox,
+    .MessageBrowser,
+    .MessageBox,
+    .ACLNote {
+        background: wheat;
+    }
+
+    /*Different elements that get "colors" */
+    .jscolor,
+    .jscolor-picker-wrap * {
+        filter: invert(100%)hue-rotate(180deg);
+    }
+
+    [class*="PriorityID"] {
+        filter: invert(100%) hue-rotate(180deg)!important;
+    }
+    .pill {
+        filter: invert(100%) hue-rotate(180deg)!important;
+    }
+
+    /*Unread star*/
+    span.UnreadArticles i,
+    div.UnreadArticles i {
+        color: var(--color-grey9);
+    }
 }

@@ -33,12 +33,12 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
 .OverviewLarge li.Active, .OverviewLarge .HiddenBlock {
     display: flex;
     flex-flow: column;
-} 
+}
 
 .RTL .OverviewLarge {
     margin-right: 8px;
     margin-left: 16px;
-}…                                                                                                                            
+}…
 
 .OverviewLarge .ActionRow {
     cursor: default;
@@ -329,7 +329,7 @@ body.TouchDevice .OverviewLarge > li ul.InlineActions li.ResponsiveActionMenu {
     text-decoration: underline;
 }*/
 
-.OverviewLarge .ItemActions .Actions, 
+.OverviewLarge .ItemActions .Actions,
 .OverviewLarge .Actions form {
     display: flex;
     flex-flow: row;
@@ -489,7 +489,7 @@ body.TouchDevice .OverviewLarge > li ul.InlineActions li.ResponsiveActionMenu {
 }
 
 /*.OverviewLarge .Preview .Content {
-    
+
 }*/
 
 .OverviewLarge .Preview .ArticleCount5 li div.HiddenBlock div.Content {

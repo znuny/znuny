@@ -287,8 +287,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         border-radius: 0;
     }
 
-    #Navigation > ul.menuItems > .Selected a, 
-    #Navigation > ul.menuItems > li:focus a, 
+    #Navigation > ul.menuItems > .Selected a,
+    #Navigation > ul.menuItems > li:focus a,
     #Navigation > ul.menuItems > li:hover a {
         background: var(--primary-color);
         color: var(--white);
@@ -319,11 +319,11 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
         padding: var(--padding-sm);
         border-radius: var(--border-radius-xs);
     }
-    
+
     .RTL #Navigation > ul.menuItems > li > ul {
         right: 1px;
     }
-    
+
     #Navigation > ul.menuItems > li > ul > li {
         font-size: 11px;
         line-height: 11px;
@@ -422,8 +422,8 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     background-position: left;
 }
 
-.Filter li .Selected, 
-.Filter li .Selected:hover, 
+.Filter li .Selected,
+.Filter li .Selected:hover,
 .Filter li .Selected:active {
     background: none;
     position: relative;

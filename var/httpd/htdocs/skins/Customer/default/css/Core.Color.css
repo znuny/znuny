@@ -15,7 +15,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
  * @section     Colors
  */
 
-:root { 
+:root {
 
     /* Main Colors */
     --primary-color: #FF8A25;
@@ -67,7 +67,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     --table-td-even-bg: #F9F9F9;
     --tr-disabled-bg: #efefef;
     --tr-disabled-text: #B6B6B6;
-    
+
     /* Flag Element */
     --color-flag-default: #cdcdcd;
 

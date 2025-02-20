@@ -135,7 +135,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     left: -100px;
     top: 0;
     background: var(--border-color);
-  }
+}
 
 .TicketProcess .inner-page-display #MainBox {
     background-color: transparent;

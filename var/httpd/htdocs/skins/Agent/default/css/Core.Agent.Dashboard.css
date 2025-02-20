@@ -186,8 +186,8 @@ div.EventDetails {
     padding: 0;
 }
 
-/*  
-    *Id exceptions are being avoided as much as possible, 
+/*
+    *Id exceptions are being avoided as much as possible,
     *style now more in comformity with similar widgets
 
 .DashboardAppointmentCalendar.WidgetSimple .DashboardActions ul li a {
@@ -197,8 +197,8 @@ div.EventDetails {
 /* WidgetSimple - Dashboard Users Online*/
 
 
-/*  
-    *Id exceptions are being avoided as much as possible, 
+/*
+    *Id exceptions are being avoided as much as possible,
     *style now more in comformity with similar widgets
 
 #Dashboard0400-UserOnline-box.WidgetSimple #Dashboard0400-UserOnline .DashboardActions {

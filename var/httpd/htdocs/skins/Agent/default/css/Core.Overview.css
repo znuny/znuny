@@ -16,7 +16,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
     /****************************/
     /*   OVERVIEW ( General )   */
     /****************************/
-    
+
     .OverviewBox.Preview .ActionRow {
         overflow: visible;
     }
@@ -70,7 +70,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         align-items: center;
     }
 
-    .Overview .Content span>.Checkbox, 
+    .Overview .Content span>.Checkbox,
     .flag-container {
         width: var(--gap-xl);
         display: flex;
@@ -86,7 +86,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         border-color: var(--success-color);
     }
 
-    .Overview table, 
+    .Overview table,
     .Overview h2 {
         width: 100%;
         margin: 0;
@@ -149,7 +149,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         width: 100%;
     }
 
-    ul.QueueOverviewList, 
+    ul.QueueOverviewList,
     ul.ServiceOverviewList {
         display: flex;
         flex-wrap: wrap;
@@ -161,18 +161,18 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         border-radius: var(--border-radius-sm);
     }
 
-    ul.QueueOverviewList li, 
+    ul.QueueOverviewList li,
     ul.ServiceOverviewList li {
         display: flex;
         white-space: nowrap;
     }
 
-    ul.QueueOverviewList li:first-child, 
+    ul.QueueOverviewList li:first-child,
     ul.ServiceOverviewList li:first-child {
         margin-left: 0;
     }
 
-    ul.QueueOverviewList li a, 
+    ul.QueueOverviewList li a,
     ul.ServiceOverviewList li a {
         font-size: var(--font-size-sm);
         font-weight: var(--medium);
@@ -186,7 +186,7 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         border: var(--border-width) var(--border-solid) var(--border-color);
     }
 
-    ul.QueueOverviewList li a:hover, 
+    ul.QueueOverviewList li a:hover,
     ul.ServiceOverviewList li a:hover {
         border: var(--border-width) var(--border-solid) var(--primary-color-darker);
         color: var(--white);
@@ -219,20 +219,20 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         border-bottom-left-radius: var(--border-radius-md);
         padding: 0 var(--padding-lg) !important;
     }
-    
+
     ul.InlineActions li,
     ul.InlineActions li a {
         color: var(--inlactions-text-color) !important;
         font-size: var(--inlactions-font-size) !important;
     }
-    
+
     ul.InlineActions,
     ul.InlineActions li {
         display: flex !important;
         flex-flow: row;
         align-items: center;
     }
-    
+
     ul.InlineActions li:hover > a {
         color: var(--black) !important;
         font-size: var(--inlactions-font-size) !important;

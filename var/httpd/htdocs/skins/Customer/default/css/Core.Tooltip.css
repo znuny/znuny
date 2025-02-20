@@ -67,12 +67,12 @@ div.Tooltip > div.Content:before {
     pointer-events: none;
 }
 
-div.Tooltip.TongueTop > div.Content:after, 
+div.Tooltip.TongueTop > div.Content:after,
 div.Tooltip.TongueTop > div.Content:before {
     top: 100%;
 }
 
-div.Tooltip.TongueBottom > div.Content:after, 
+div.Tooltip.TongueBottom > div.Content:after,
 div.Tooltip.TongueBottom > div.Content:before {
     bottom: 100%;
 }

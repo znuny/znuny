@@ -272,7 +272,7 @@ did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
     padding: 0;
     min-width: unset;
     /*overflow-x: hidden;*/
-    
+
 }
 
 .Dialog .Content fieldset .Field {
@@ -624,8 +624,8 @@ ul#Service .Header*/
     padding: 0;
 }
 
-.cke_dialog_container .cke_dialog .cke_dialog_contents_body .cke_dialog_ui_text, 
-.cke_dialog_container .cke_dialog .cke_dialog_contents_body .cke_dialog_ui_select, 
+.cke_dialog_container .cke_dialog .cke_dialog_contents_body .cke_dialog_ui_text,
+.cke_dialog_container .cke_dialog .cke_dialog_contents_body .cke_dialog_ui_select,
 .cke_dialog_container .cke_dialog .cke_dialog_contents_body .cke_dialog_ui_hbox_last > a.cke_dialog_ui_button {
     margin-top: 0;
 }
@@ -713,7 +713,7 @@ ul#Service .Header*/
     padding: var(--padding-xs) 0;
 }
 
-.cke_dialog_container .cke_dialog .cke_dialog_contents input.cke_dialog_ui_input_text, 
+.cke_dialog_container .cke_dialog .cke_dialog_contents input.cke_dialog_ui_input_text,
 .cke_dialog_container .cke_dialog .cke_dialog_contents textarea.cke_dialog_ui_input_textarea {
     background-color: var(--white);
     outline: none;
@@ -747,7 +747,7 @@ ul#Service .Header*/
     margin-top: 24px !important;
 }
 
-.cke_dialog_container .cke_dialog .cke_dialog_contents a.cke_btn_locked, 
+.cke_dialog_container .cke_dialog .cke_dialog_contents a.cke_btn_locked,
 .cke_dialog_container .cke_dialog .cke_dialog_contents a.cke_btn_unlocked,
 .cke_dialog_container .cke_dialog .cke_dialog_contents a.cke_btn_reset {
     display: flex;
@@ -761,10 +761,10 @@ ul#Service .Header*/
     transition: var(--main-transition);
     border: none;
     margin: 0;
-    background-position: center; 
+    background-position: center;
 }
 
-.cke_dialog_container .cke_dialog .cke_dialog_contents a.cke_btn_locked:hover, 
+.cke_dialog_container .cke_dialog .cke_dialog_contents a.cke_btn_locked:hover,
 .cke_dialog_container .cke_dialog .cke_dialog_contents a.cke_btn_unlocked:hover,
 .cke_dialog_container .cke_dialog .cke_dialog_contents a.cke_btn_reset:hover {
     cursor: pointer;

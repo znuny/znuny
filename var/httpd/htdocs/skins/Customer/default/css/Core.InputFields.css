@@ -489,7 +489,7 @@ div.InputField_ToolbarContainer ul li a:hover {
     background-color: var(--primary-color);
 }
 
-.jstree-InputField .jstree-clicked, 
+.jstree-InputField .jstree-clicked,
 .jstree-InputField .jstree-anchor.jstree-clicked {
     color: var(--white);
 }
@@ -744,12 +744,12 @@ div.InputField_ToolbarContainer ul li a:hover {
     appearance: none; -webkit-appearance: none;
     position: relative;
     display: block;
-    width: 16px; 
+    width: 16px;
     height: 16px;
     line-height: 16px;
     text-align: center;
     cursor: pointer;
-    border: var(--border-width) solid #ccc; 
+    border: var(--border-width) solid #ccc;
     background: transparent;
     border-radius: 3px;
     z-index: 100;
@@ -759,10 +759,10 @@ div.InputField_ToolbarContainer ul li a:hover {
 input[type=checkbox]:hover {
     border-color: var(--success-color);
 }
-  
+
 input[type=checkbox]:checked {
     background:var(--success-color);
-    border: 2px solid var(--success-color); 
+    border: 2px solid var(--success-color);
 }
 
 input[type=checkbox]:checked + label {
@@ -803,12 +803,12 @@ input[type=radio]{
     appearance: none; -webkit-appearance: none;
     position: relative;
     display: block;
-    width: 16px; 
+    width: 16px;
     height: 16px;
     line-height: 16px;
     text-align: center;
     cursor: pointer;
-    border: var(--border-width) solid #ccc; 
+    border: var(--border-width) solid #ccc;
     background: transparent;
     border-radius: var(--border-radius-xl);
     z-index: 100;

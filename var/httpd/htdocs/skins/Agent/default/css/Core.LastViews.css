@@ -176,14 +176,14 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
             padding: 0 var(--padding-lg) var(--padding-sm) var(--padding-lg);
         }
     }
-    
+
     .LastViewMenuBarWrapper {
         width: 100%;
         height: auto;
         display: flex;
         flex-wrap: wrap;
         background: var(--white);
-        border: var(--border-width) var(--border-solid) var(--border-color);  
+        border: var(--border-width) var(--border-solid) var(--border-color);
         border-radius: var(--border-radius-sm);
         font-size: var(--font-size-sm);
     }
@@ -194,10 +194,10 @@ did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
         transition: var(--main-transition);
         color: var(--gray-darker);
         padding: var(--padding-sm) var(--padding-md);
-        border-right: var(--border-width) var(--border-solid) var(--border-color); 
+        border-right: var(--border-width) var(--border-solid) var(--border-color);
     }
 
-    li.LastViewMenuBarRow:last-child a { 
+    li.LastViewMenuBarRow:last-child a {
         margin: 0;
     }
 
