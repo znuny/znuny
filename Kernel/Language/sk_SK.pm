@@ -79,7 +79,8 @@ sub Data {
         'Change settings' => 'Zmena nastavenia',
         'Set up what you want to change if the criteria match. Keep in mind that \'Possible\' is a white list, \'PossibleNot\' a black list.' =>
             'Nastav, čo chceš zmeniť, ak kritériá pasujú. Mysli na to, že "možné" je "white list" a "nemožné" je "black list".',
-        'Check the official %sdocumentation%s.' => '',
+        'A list of all possible match and set criteria is found in the ACL Reference Guide %sdocumentation%s.' =>
+            '',
         'Edit ACL %s' => 'Upraviť ACL %',
         'Edit ACL' => 'Upraviť ACL',
         'Show or hide the content' => 'Zobraziť alebo skryť obsah',

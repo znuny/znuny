@@ -151,10 +151,6 @@ msgid "Set up what you want to change if the criteria match. Keep in mind that '
 msgstr "Подесите оно што желите да мењате ако се критеријуми слажу. Имајте на уму да је 'Possible' бела листа, 'PossibleNot' црна листа."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACLEdit.tt
-msgid "Check the official %sdocumentation%s."
-msgstr "Прочитајте званичну %sдокументацију%s."
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACLEdit.tt
 msgid "Edit ACL %s"
 msgstr "Уреди ACL %s"
 
@@ -24350,5 +24346,9 @@ msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Do not verify the signer's certificate of a signed message."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACLEdit.tt
+msgid "A list of all possible match and set criteria is found in the ACL Reference Guide %sdocumentation%s."
 msgstr ""
 

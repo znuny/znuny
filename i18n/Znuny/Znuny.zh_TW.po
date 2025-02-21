@@ -151,10 +151,6 @@ msgid "Set up what you want to change if the criteria match. Keep in mind that '
 msgstr "當匹配條件滿足時執行規定的操作動作。記住：'Possible'表示允許(白名單)，'PossibleNot'表示禁止(黑名單)。"
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACLEdit.tt
-msgid "Check the official %sdocumentation%s."
-msgstr "檢查官方%s文件%s。"
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACLEdit.tt
 msgid "Edit ACL %s"
 msgstr "編輯ACL %s"
 
@@ -24341,5 +24337,9 @@ msgstr ""
 
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Do not verify the signer's certificate of a signed message."
+msgstr ""
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACLEdit.tt
+msgid "A list of all possible match and set criteria is found in the ACL Reference Guide %sdocumentation%s."
 msgstr ""
 

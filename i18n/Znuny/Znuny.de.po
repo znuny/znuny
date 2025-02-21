@@ -153,10 +153,6 @@ msgid "Set up what you want to change if the criteria match. Keep in mind that '
 msgstr "Stellt die Wertänderungen ein für den Fall, dass die Filterbedingungen zutreffen. Hierbei ist 'Possible' eine Positivliste und 'PossibleNot' eine Negativliste."
 
 #. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACLEdit.tt
-msgid "Check the official %sdocumentation%s."
-msgstr "Überprüfen Sie die offizielle %sdocumentation%s."
-
-#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACLEdit.tt
 msgid "Edit ACL %s"
 msgstr "ACL %s bearbeiten"
 
@@ -24352,4 +24348,8 @@ msgstr ""
 #. XML Definition: Kernel/Config/Files/XML/Znuny.xml
 msgid "Do not verify the signer's certificate of a signed message."
 msgstr "Prüfung des Zertifikats des Unterzeichners einer signierten Nachricht deaktivieren."
+
+#. TT Template: Kernel/Output/HTML/Templates/Standard/AdminACLEdit.tt
+msgid "A list of all possible match and set criteria is found in the ACL Reference Guide %sdocumentation%s."
+msgstr "Eine Liste aller möglichen Match- und Set-Kriterien finden Sie im ACL-Referenzhandbuch %sDokumentation%s."
 

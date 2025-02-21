@@ -80,7 +80,8 @@ sub Data {
         'Change settings' => 'Ayarları Değiştir',
         'Set up what you want to change if the criteria match. Keep in mind that \'Possible\' is a white list, \'PossibleNot\' a black list.' =>
             '',
-        'Check the official %sdocumentation%s.' => '',
+        'A list of all possible match and set criteria is found in the ACL Reference Guide %sdocumentation%s.' =>
+            '',
         'Edit ACL %s' => 'ACL Düzenle',
         'Edit ACL' => 'ACL Düzenle',
         'Show or hide the content' => 'İçeriği göster yada gizle',

@@ -80,7 +80,8 @@ sub Data {
         'Change settings' => 'Mainīt iestatījumus',
         'Set up what you want to change if the criteria match. Keep in mind that \'Possible\' is a white list, \'PossibleNot\' a black list.' =>
             '',
-        'Check the official %sdocumentation%s.' => '',
+        'A list of all possible match and set criteria is found in the ACL Reference Guide %sdocumentation%s.' =>
+            '',
         'Edit ACL %s' => 'Rediģēt ACL %s',
         'Edit ACL' => 'Rediģēt ACL',
         'Show or hide the content' => 'Rādīt vai slēpt saturu',

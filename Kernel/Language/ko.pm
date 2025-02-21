@@ -79,7 +79,8 @@ sub Data {
         'Change settings' => '설정 변경',
         'Set up what you want to change if the criteria match. Keep in mind that \'Possible\' is a white list, \'PossibleNot\' a black list.' =>
             '기준이 일치하면 변경하려는 항목을 설정하십시오. Possible \'은 흰색 목록이고\'PossibleNot \'은 검은 색 목록입니다.',
-        'Check the official %sdocumentation%s.' => '',
+        'A list of all possible match and set criteria is found in the ACL Reference Guide %sdocumentation%s.' =>
+            '',
         'Edit ACL %s' => 'ACL 수정 %s',
         'Edit ACL' => 'ACL 수정',
         'Show or hide the content' => '내용 보여주기/가리기',

@@ -39,7 +39,7 @@
                     <strong>[% Translate("Change settings") | html %]</strong>: [% Translate("Set up what you want to change if the criteria match. Keep in mind that 'Possible' is a white list, 'PossibleNot' a black list.") | html %]
                 </p>
                 <p class="FieldExplanation">
-                    [% Translate("Check the official %sdocumentation%s.") | html | ReplacePlaceholders('<a href="https://docs.znuny.org/doc/manual/admin/6.0/en/html/customization.html#acl" target="_blank">', '</a>')  %]
+                    [% Translate("A list of all possible match and set criteria is found in the ACL Reference Guide %sdocumentation%s.") | html | ReplacePlaceholders('<a href="https://doc.znuny.org/znuny/annexes/acl_reference/acl_properties.html" target="_blank">', '</a>')  %]
                 </p>
             </div>
         </div>

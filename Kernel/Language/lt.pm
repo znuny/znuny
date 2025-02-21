@@ -80,7 +80,8 @@ sub Data {
         'Change settings' => 'Keisti nustatymus',
         'Set up what you want to change if the criteria match. Keep in mind that \'Possible\' is a white list, \'PossibleNot\' a black list.' =>
             '',
-        'Check the official %sdocumentation%s.' => '',
+        'A list of all possible match and set criteria is found in the ACL Reference Guide %sdocumentation%s.' =>
+            '',
         'Edit ACL %s' => 'Redaguoti ACL',
         'Edit ACL' => 'Redaguoti ACL',
         'Show or hide the content' => 'Slėpti arba rodyti turinį',

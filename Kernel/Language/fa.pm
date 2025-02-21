@@ -85,7 +85,8 @@ sub Data {
         'Change settings' => 'تغییر تنظیمات',
         'Set up what you want to change if the criteria match. Keep in mind that \'Possible\' is a white list, \'PossibleNot\' a black list.' =>
             'تنظیم آنچه که می خواهید تغییر دهید اگر بازی معیارهای. به خاطر داشته باشید که ممکن است یک لیست سفید، \'PossibleNot، یک لیست سیاه است.',
-        'Check the official %sdocumentation%s.' => '',
+        'A list of all possible match and set criteria is found in the ACL Reference Guide %sdocumentation%s.' =>
+            '',
         'Edit ACL %s' => 'ویرایش ACL %s',
         'Edit ACL' => '',
         'Show or hide the content' => 'نمایش یا عدم نمایش محتوا',

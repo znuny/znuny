@@ -79,7 +79,8 @@ sub Data {
         'Change settings' => 'Измени прилагодување',
         'Set up what you want to change if the criteria match. Keep in mind that \'Possible\' is a white list, \'PossibleNot\' a black list.' =>
             'Поставете ги промените за совшаѓањата со овој критериум. Имајте на ум дека \'Possible\' е белата листа, \'PossibleNot\' е црната листа.',
-        'Check the official %sdocumentation%s.' => '',
+        'A list of all possible match and set criteria is found in the ACL Reference Guide %sdocumentation%s.' =>
+            '',
         'Edit ACL %s' => 'уреди ЛКП %s',
         'Edit ACL' => '',
         'Show or hide the content' => 'Прикаже или скрие содржината',

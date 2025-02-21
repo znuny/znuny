@@ -1,3 +1,6 @@
+# 7.1.7 2025-xx-xx
+ - 2025-02-21 Fixed broken documentation link in ACL Edit Screen and changed text of hint.
+
 # 7.1.6 2025-02-19
  - 2025-02-14 Fixed content security policy HTTP header to allow externally linked images.
  - 2025-02-13 Fixed ticket filter for new mentions.

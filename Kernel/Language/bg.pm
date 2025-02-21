@@ -80,7 +80,8 @@ sub Data {
         'Change settings' => 'Промяна на настройките',
         'Set up what you want to change if the criteria match. Keep in mind that \'Possible\' is a white list, \'PossibleNot\' a black list.' =>
             'Настройте какво искате да промените, ако критериите се съвпадат. Имайте предвид, че "Възможно" е бял списък, "Не е възможно" е черен списък.',
-        'Check the official %sdocumentation%s.' => '',
+        'A list of all possible match and set criteria is found in the ACL Reference Guide %sdocumentation%s.' =>
+            '',
         'Edit ACL %s' => 'Редактиране ACL %s',
         'Edit ACL' => 'Редактиране ACL',
         'Show or hide the content' => 'Покажи или скрий компонента',
