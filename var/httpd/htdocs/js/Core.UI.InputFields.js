@@ -229,7 +229,7 @@ Core.UI.InputFields = (function (TargetNS) {
                 $ShowTreeObj = $SelectObj.next('.ShowTreeSelection');
 
             if ($SelectObj.data('modernized')) {
-                 $('#' + Core.App.EscapeSelector($SelectObj.data('modernized'))).parents('.InputField_Container')
+                $('#' + Core.App.EscapeSelector($SelectObj.data('modernized'))).parents('.InputField_Container')
                     .blur()
                     .remove();
                 $SelectObj.show()
@@ -1119,7 +1119,7 @@ Core.UI.InputFields = (function (TargetNS) {
      *      Remove all diacritic characters from supplied string (accent folding).
      *      Taken from https://gist.github.com/instanceofme/1731620
      */
-     TargetNS.RemoveDiacritics = function (Str) {
+    TargetNS.RemoveDiacritics = function (Str) {
         var Chars = Str.split(''),
             i = Chars.length - 1,
             Alter = false,

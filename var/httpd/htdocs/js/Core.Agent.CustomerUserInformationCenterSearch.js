@@ -135,7 +135,7 @@ Core.Agent.CustomerUserInformationCenterSearch = (function (TargetNS) {
 
         // Prevent form submit.
         $("#AgentCustomerUserInformationCenterSearchForm").submit(function(Event) {
-          Event.preventDefault();
+            Event.preventDefault();
         });
     };
 

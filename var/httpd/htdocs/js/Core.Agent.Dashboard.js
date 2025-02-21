@@ -341,7 +341,7 @@ Core.Agent.Dashboard = (function (TargetNS) {
                 Layer =
                 '<div id="events-layer" class="Hidden" style="position:absolute; top: ' + PosY + 'px; left:' + PosX + 'px; z-index: 999;"> ' +
                 '    <div class="EventDetails">' +
-                         $('#event-content-' + calEvent.id).html() +
+                        $('#event-content-' + calEvent.id).html() +
                 '    </div> ' +
                 '</div> ';
 

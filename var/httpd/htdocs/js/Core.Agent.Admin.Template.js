@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special function for AdminTemplate module.
  */
- Core.Agent.Admin.Template = (function (TargetNS) {
+Core.Agent.Admin.Template = (function (TargetNS) {
 
     /**
      * @name Init
@@ -65,9 +65,9 @@ Core.Agent.Admin = Core.Agent.Admin || {};
                                 Core.Config.Get('Baselink'),
                                 TemplateDelete.data('query-string'),
                                 function() {
-                                   Core.App.InternalRedirect({
-                                       Action: 'AdminTemplate'
-                                   });
+                                    Core.App.InternalRedirect({
+                                        Action: 'AdminTemplate'
+                                    });
                                 }
                             );
                         }
@@ -87,4 +87,4 @@ Core.Agent.Admin = Core.Agent.Admin || {};
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');
 
     return TargetNS;
- }(Core.Agent.Admin.Template || {}));
+}(Core.Agent.Admin.Template || {}));

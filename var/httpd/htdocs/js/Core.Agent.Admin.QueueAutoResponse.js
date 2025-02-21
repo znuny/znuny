@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special function for AdminQueueAutoResponse module.
  */
- Core.Agent.Admin.QueueAutoResponse = (function (TargetNS) {
+Core.Agent.Admin.QueueAutoResponse = (function (TargetNS) {
 
     /*
     * @name Init

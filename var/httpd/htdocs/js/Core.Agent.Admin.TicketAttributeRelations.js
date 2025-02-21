@@ -17,7 +17,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @memberof Core.Agent.Admin
  * @author Znuny GmbH
  */
- Core.Agent.Admin.TicketAttributeRelations = (function (TargetNS) {
+Core.Agent.Admin.TicketAttributeRelations = (function (TargetNS) {
 
     /*
     * @name Init

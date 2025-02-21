@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special module function for AdminSelectBox.
  */
- Core.Agent.Admin.SelectBox = (function (TargetNS) {
+Core.Agent.Admin.SelectBox = (function (TargetNS) {
 
     /*
     * @name Init
@@ -35,7 +35,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
 
             if ($('#ResultFormat option:selected').text() !== 'CSV'
                 && $('#ResultFormat option:selected').text() !== 'Excel'
-             ) {
+            ) {
                 window.setTimeout(function(){
                     Core.Form.DisableForm($(Form));
                 }, 0);

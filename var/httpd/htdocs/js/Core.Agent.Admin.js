@@ -111,7 +111,7 @@ Core.Agent.Admin = (function (TargetNS) {
                 });
 
                 FavouriteRows.sort(function (a, b) {
-                  return a.localeCompare(b);
+                    return a.localeCompare(b);
                 });
 
                 RowIndex = FavouriteRows.indexOf(ModuleName);

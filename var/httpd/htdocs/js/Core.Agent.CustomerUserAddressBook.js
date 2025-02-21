@@ -240,8 +240,8 @@ Core.Agent.CustomerUserAddressBook = (function (TargetNS) {
                 return false;
             }
             else {
-               $('#SearchForm').submit();
-               ShowWaitingLoader('.ContentColumn');
+                $('#SearchForm').submit();
+                ShowWaitingLoader('.ContentColumn');
             }
         });
 

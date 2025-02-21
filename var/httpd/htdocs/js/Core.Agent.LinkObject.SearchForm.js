@@ -51,7 +51,7 @@ Core.Agent.LinkObject.SearchForm = (function (TargetNS) {
         // if SubmitSelect or AddLinks button was clicked,
         // add "SkipFieldCheck" class to this button
         $('#AddLinks').on('click.Submit', function () {
-           $('#LinkSearchForm').addClass('SkipFieldCheck');
+            $('#LinkSearchForm').addClass('SkipFieldCheck');
         });
 
         $('#SubmitSearch').on('click',function(){
@@ -78,8 +78,8 @@ Core.Agent.LinkObject.SearchForm = (function (TargetNS) {
             });
 
             if (!SearchValueFlag) {
-               alert(Core.Language.Translate("Please enter at least one search value or * to find anything."));
-               return false;
+                alert(Core.Language.Translate("Please enter at least one search value or * to find anything."));
+                return false;
             }
             else {
                 Core.UI.Dialog.ShowWaitingDialog(undefined, Core.Language.Translate("Searching for linkable objects. This may take a while..."));

@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special module function for AdminQueue.
  */
- Core.Agent.Admin.Queue = (function (TargetNS) {
+Core.Agent.Admin.Queue = (function (TargetNS) {
 
     /*
     * @name Init

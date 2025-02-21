@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special function for AdminService module.
  */
- Core.Agent.Admin.Service = (function (TargetNS) {
+Core.Agent.Admin.Service = (function (TargetNS) {
 
     /*
     * @name Init

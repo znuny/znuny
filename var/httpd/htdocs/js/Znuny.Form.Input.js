@@ -215,8 +215,8 @@ Znuny.Form.Input = (function (TargetNS) {
 
         var Result = Znuny.Form.Input.FieldIDMapping('AdminQueue',
             {
-                EscalationStep1Color: 'EscalationStep1Color' # FirstParam = AccessKey
-                                                             # SecondParam = ID of the HTML element on page
+                EscalationStep1Color: 'EscalationStep1Color'    # FirstParam = AccessKey
+                                                                # SecondParam = ID of the HTML element on page
             }
         );
 
@@ -976,7 +976,7 @@ Znuny.Form.Input = (function (TargetNS) {
 
                 // cast to strings
                 SetSelected = jQuery.map(SetSelected, function(Element) {
-                  return Element.toString();
+                    return Element.toString();
                 });
 
                 $('#'+ FieldID +' option').filter(function() {
@@ -1294,15 +1294,15 @@ Znuny.Form.Input = (function (TargetNS) {
     Manipulates the configuration of RichText input fields. It takes a config structure where the key is the Editor FieldID and the value is another structure with the config items it should set. It's possible to use the meta key 'Global' to set the config of all RichText instances on the current site. Notice that old configurations will be kept and extended instead of removed. For a complete list of possible config attributes visit the CKEdior documentation: http://docs.ckeditor.com/#!/api/CKEDITOR.config
 
     var Result = Znuny.Form.Input.RichTextConfig({
-      'RichText': {
-        toolbarCanCollapse:     true,
-        toolbarStartupExpanded: false,
-      }
+        'RichText': {
+            toolbarCanCollapse:     true,
+            toolbarStartupExpanded: false,
+        }
     });
 
     Returns:
 
-      Result = true
+        Result = true
     */
     TargetNS.RichTextConfig = function (NewConfig) {
         if (typeof CKEDITOR === 'undefined') {
@@ -1325,7 +1325,7 @@ Znuny.Form.Input = (function (TargetNS) {
         CKEDITOR.replace = function(EditorID, EditorConfig) {
             var ExtendedConfig = NewConfig[ EditorID ] || NewConfig['Global'];
             $.each(ExtendedConfig, function(Attribute, Value) {
-              EditorConfig[ Attribute ] = Value;
+                EditorConfig[ Attribute ] = Value;
             });
 
             return CKEDITOR.replaceZnunyFormInput(EditorID, EditorConfig);
@@ -1438,7 +1438,7 @@ Znuny.Form.Input = (function (TargetNS) {
     }
 
     function escapeRegExp(str) {
-      return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     }
 
     //

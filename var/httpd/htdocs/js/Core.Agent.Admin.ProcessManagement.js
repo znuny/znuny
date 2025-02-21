@@ -81,7 +81,7 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
 
         // Depending on Action initialize specific functions
         if (Core.Config.Get('Action') === 'AdminProcessManagementPath' && Subaction !== 'ClosePopup') {
-           TargetNS.InitPathEdit();
+            TargetNS.InitPathEdit();
         }
 
         // Initialize ajax call for updating default config parameter
@@ -404,16 +404,16 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
      *      Initializes all event handler to drag and drop elements from the accordion to the canvas.
      */
     TargetNS.InitAccordionDnD = function () {
-      /**
-       * @private
-       * @name GetMousePosition
-       * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
-       * @function
-       * @returns {Object} Mouse position.
-       * @param {Object} Event - The event object.
-       * @description
-       *      Calculates mouse position.
-       */
+        /**
+        * @private
+        * @name GetMousePosition
+        * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
+        * @function
+        * @returns {Object} Mouse position.
+        * @param {Object} Event - The event object.
+        * @description
+        *      Calculates mouse position.
+        */
         function GetMousePosition(Event) {
             var PosX = 0,
                 PosY = 0;
@@ -432,16 +432,16 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
             return {left: PosX, top: PosY};
         }
 
-      /**
-       * @private
-       * @name GetPositionOnCanvas
-       * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
-       * @function
-       * @returns {Object} Position of mouse on canvas.
-       * @param {Object} Event - The event object.
-       * @description
-       *      Calculates mouse position relative to canvas object.
-       */
+        /**
+        * @private
+        * @name GetPositionOnCanvas
+        * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
+        * @function
+        * @returns {Object} Position of mouse on canvas.
+        * @param {Object} Event - The event object.
+        * @description
+        *      Calculates mouse position relative to canvas object.
+        */
         function GetPositionOnCanvas(Event) {
             var $Canvas = $('#Canvas'),
                 CanvasPosition,
@@ -457,16 +457,16 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
             return {left: PosX, top: PosY};
         }
 
-      /**
-       * @private
-       * @name AddActivityToCanvas
-       * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
-       * @function
-       * @param {Object} Event - The event object.
-       * @param {Object} UI - jQuery UI object.
-       * @description
-       *      Adds activity to the canvas after drop event.
-       */
+        /**
+        * @private
+        * @name AddActivityToCanvas
+        * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
+        * @function
+        * @param {Object} Event - The event object.
+        * @param {Object} UI - jQuery UI object.
+        * @description
+        *      Adds activity to the canvas after drop event.
+        */
         function AddActivityToCanvas(Event, UI) {
             var Position = GetPositionOnCanvas(Event),
                 EntityID = $(UI.draggable).data('entity'),
@@ -519,16 +519,16 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
             }
         }
 
-      /**
-       * @private
-       * @name CheckIfMousePositionIsOverActivity
-       * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
-       * @function
-       * @returns {String|Boolean} Returns ID of activity or false, if mouse is not over an activity.
-       * @param {Object} Position - A mouse position object.
-       * @description
-       *      Checks if mouse position is over an activity (e.g. to drop activity dialogs to an activity).
-       */
+        /**
+        * @private
+        * @name CheckIfMousePositionIsOverActivity
+        * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
+        * @function
+        * @returns {String|Boolean} Returns ID of activity or false, if mouse is not over an activity.
+        * @param {Object} Position - A mouse position object.
+        * @description
+        *      Checks if mouse position is over an activity (e.g. to drop activity dialogs to an activity).
+        */
         function CheckIfMousePositionIsOverActivity(Position) {
             var ProcessEntityID = $('#ProcessEntityID').val(),
                 Path = TargetNS.ProcessData.Process[ProcessEntityID].Path,
@@ -550,16 +550,16 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
             return ActivityMatch;
         }
 
-      /**
-       * @private
-       * @name AddActivityDialogToCanvas
-       * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
-       * @function
-       * @param {Object} Event - The event object.
-       * @param {Object} UI - jQuery UI object.
-       * @description
-       *      Adds activity dialog to the canvas after drop event.
-       */
+        /**
+        * @private
+        * @name AddActivityDialogToCanvas
+        * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
+        * @function
+        * @param {Object} Event - The event object.
+        * @param {Object} UI - jQuery UI object.
+        * @description
+        *      Adds activity dialog to the canvas after drop event.
+        */
         function AddActivityDialogToCanvas(Event, UI) {
             var Position = GetPositionOnCanvas(Event),
                 EntityID = $(UI.draggable).data('entity'),
@@ -609,16 +609,16 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
             }
         }
 
-      /**
-       * @private
-       * @name DummyActivityConnected
-       * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
-       * @function
-       * @returns {Boolean} True if a dummy endpoint was found, false otherwise.
-       * @param {String} ProcessEntityID - The process ID.
-       * @description
-       *      Check if any transition has a dummy endpoint.
-       */
+        /**
+        * @private
+        * @name DummyActivityConnected
+        * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
+        * @function
+        * @returns {Boolean} True if a dummy endpoint was found, false otherwise.
+        * @param {String} ProcessEntityID - The process ID.
+        * @description
+        *      Check if any transition has a dummy endpoint.
+        */
         function DummyActivityConnected(ProcessEntityID) {
             var DummyFound = false;
             $.each(TargetNS.ProcessData.Process[ProcessEntityID].Path, function (Activity, ActivityData) {
@@ -631,17 +631,17 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
             return DummyFound;
         }
 
-      /**
-       * @private
-       * @name AddTransitionToCanvas
-       * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
-       * @function
-       * @returns {Boolean} False if a another unconnected transition is on the canvas
-       * @param {Object} Event - The event object.
-       * @param {Object} UI - jQuery UI object.
-       * @description
-       *      Adds transition to the canvas after drop event.
-       */
+        /**
+        * @private
+        * @name AddTransitionToCanvas
+        * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
+        * @function
+        * @returns {Boolean} False if a another unconnected transition is on the canvas
+        * @param {Object} Event - The event object.
+        * @param {Object} UI - jQuery UI object.
+        * @description
+        *      Adds transition to the canvas after drop event.
+        */
         function AddTransitionToCanvas(Event, UI) {
             var Position = GetPositionOnCanvas(Event),
                 EntityID = $(UI.draggable).data('entity'),
@@ -697,17 +697,17 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
             }
         }
 
-      /**
-       * @private
-       * @name AddTransitionActionToCanvas
-       * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
-       * @function
-       * @returns {Boolean} Returns false, if transition is not defined.
-       * @param {Object} Event - The event object.
-       * @param {Object} UI - jQuery UI object.
-       * @description
-       *      Adds transition action to the canvas after drop event.
-       */
+        /**
+        * @private
+        * @name AddTransitionActionToCanvas
+        * @memberof Core.Agent.Admin.ProcessManagement.InitAccordionDND
+        * @function
+        * @returns {Boolean} Returns false, if transition is not defined.
+        * @param {Object} Event - The event object.
+        * @param {Object} UI - jQuery UI object.
+        * @description
+        *      Adds transition action to the canvas after drop event.
+        */
         function AddTransitionActionToCanvas(Event, UI) {
             var EntityID = $(UI.draggable).data('entity'),
                 Entity = TargetNS.ProcessData.TransitionAction[EntityID],
@@ -970,7 +970,7 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
      *      Initialize process edit screen.
      */
     TargetNS.InitProcessEdit = function () {
-      var ConfigProcess = Core.Config.Get('ConfigProcess');
+        var ConfigProcess = Core.Config.Get('ConfigProcess');
 
         // Get Process Data
         TargetNS.ProcessData = {
@@ -1669,7 +1669,7 @@ Core.Agent.Admin.ProcessManagement = (function (TargetNS) {
 
         // if transition select is updated, also update transition edit link
         $('#Transition').on('change', function () {
-           $('#EditPath a').data('entity', $(this).val());
+            $('#EditPath a').data('entity', $(this).val());
         });
 
         $('#Submit').on('click', function() {

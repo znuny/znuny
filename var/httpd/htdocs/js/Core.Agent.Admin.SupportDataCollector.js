@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special module function for SupportDataCollector module.
  */
- Core.Agent.Admin.SupportDataCollector = (function (TargetNS) {
+Core.Agent.Admin.SupportDataCollector = (function (TargetNS) {
 
     /*
     * @name Init

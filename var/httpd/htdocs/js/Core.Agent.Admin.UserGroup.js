@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special module function for UserGroup selection.
  */
- Core.Agent.Admin.UserGroup = (function (TargetNS) {
+Core.Agent.Admin.UserGroup = (function (TargetNS) {
 
     /*
     * @name Init

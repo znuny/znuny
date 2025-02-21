@@ -37,7 +37,7 @@ Core.Agent.Admin.GenericInterfaceErrorHandling = (function (TargetNS) {
 
     };
 
-   /**
+    /**
      * @name ShowDeleteDialog
      * @memberof Core.Agent.Admin.GenericInterfaceErrorHandling
      * @function
@@ -53,18 +53,18 @@ Core.Agent.Admin.GenericInterfaceErrorHandling = (function (TargetNS) {
             'Center',
             true,
             [
-               {
-                   Label: Core.Language.Translate('Cancel'),
-                   Type: 'Secondary',
-                   Function: function () {
-                       Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
-                   }
-               },
-               {
-                   Label: Core.Language.Translate('Delete'),
-                   Type: 'Warning',
-                   Function: function () {
-                       var Data = {
+                {
+                    Label: Core.Language.Translate('Cancel'),
+                    Type: 'Secondary',
+                    Function: function () {
+                        Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
+                    }
+                },
+                {
+                    Label: Core.Language.Translate('Delete'),
+                    Type: 'Warning',
+                    Function: function () {
+                        var Data = {
                             Action: 'AdminGenericInterfaceErrorHandlingDefault',
                             Subaction: 'DeleteAction',
                             CommunicationType: TargetNS.ErrorHandling.CommunicationType,
@@ -88,10 +88,10 @@ Core.Agent.Admin.GenericInterfaceErrorHandling = (function (TargetNS) {
 
                         }, 'json');
 
-                       Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
-                   }
-               }
-           ]
+                        Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
+                    }
+                }
+            ]
         );
 
         Event.stopPropagation();

@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special module function for AutoResponse module.
  */
- Core.Agent.Admin.AutoResponse = (function (TargetNS) {
+Core.Agent.Admin.AutoResponse = (function (TargetNS) {
 
     /**
      * @name Init
@@ -36,4 +36,4 @@ Core.Agent.Admin = Core.Agent.Admin || {};
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');
 
     return TargetNS;
- }(Core.Agent.Admin.AutoResponse || {}));
+}(Core.Agent.Admin.AutoResponse || {}));

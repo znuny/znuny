@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special module functions for log.
  */
- Core.Agent.Admin.Log = (function (TargetNS) {
+Core.Agent.Admin.Log = (function (TargetNS) {
 
     /*
     * @name Init
@@ -36,7 +36,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
 
         /* create click event for hint hiding */
         $('#HideHint').on('click', function() {
-           $(this).parents('.SidebarColumn').hide();
+            $(this).parents('.SidebarColumn').hide();
         });
     };
 

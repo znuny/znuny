@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special module function for SMIME module.
  */
- Core.Agent.Admin.SMIME = (function (TargetNS) {
+Core.Agent.Admin.SMIME = (function (TargetNS) {
 
     /**
      * @name Init
@@ -55,4 +55,4 @@ Core.Agent.Admin = Core.Agent.Admin || {};
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');
 
     return TargetNS;
- }(Core.Agent.Admin.SMIME || {}));
+}(Core.Agent.Admin.SMIME || {}));

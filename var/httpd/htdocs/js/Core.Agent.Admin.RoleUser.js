@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special module function for RoleUser selection.
  */
- Core.Agent.Admin.RoleUser = (function (TargetNS) {
+Core.Agent.Admin.RoleUser = (function (TargetNS) {
 
     /*
     * @name Init

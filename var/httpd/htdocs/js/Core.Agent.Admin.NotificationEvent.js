@@ -93,7 +93,7 @@ Core.Agent.Admin.NotificationEvent = (function (TargetNS) {
             if($(".Validate_OneChecked:checkbox:checked").length > 0){
                 return true;
             }
-           return false;
+            return false;
         });
 
         // add special validation rule
@@ -249,7 +249,7 @@ Core.Agent.Admin.NotificationEvent = (function (TargetNS) {
         });
     };
 
-   /**
+    /**
      * @name AddLanguage
      * @memberof Core.Agent.Admin.NotificationEvent
      * @function

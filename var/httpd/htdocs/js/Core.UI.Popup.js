@@ -500,7 +500,7 @@ Core.UI.Popup = (function (TargetNS) {
                  *  to save the Type parameter.
                  */
 
-                 /* if Unlined is passed and eq 1 add, diferent name of the popup
+                /* if Unlined is passed and eq 1 add, diferent name of the popup
                  * it will ensure that popup is nor linked with the parent window
                  */
                 if (Unlinked && Unlinked === 1) {
@@ -602,7 +602,7 @@ Core.UI.Popup = (function (TargetNS) {
                 HasOpenPopups = true;
                 break;
             }
-         }
+        }
 
         return HasOpenPopups;
     };
@@ -791,7 +791,7 @@ Core.UI.Popup = (function (TargetNS) {
                             Left:   window.screenX,
                             Top:    window.screenY,
                         };
-                       TargetNS.UpdatePopupProfile(Param);
+                        TargetNS.UpdatePopupProfile(Param);
                     },1000);
                 });
             }

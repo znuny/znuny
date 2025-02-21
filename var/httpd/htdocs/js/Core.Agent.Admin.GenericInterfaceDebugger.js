@@ -222,18 +222,18 @@ Core.Agent.Admin.GenericInterfaceDebugger = (function (TargetNS) {
             'Center',
             true,
             [
-               {
-                   Label: Core.Language.Translate('Cancel'),
-                   Type: 'Secondary',
-                   Function: function () {
-                       Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
-                   }
-               },
-               {
-                   Label: Core.Language.Translate('Clear'),
-                   Type: 'Warning',
-                   Function: function () {
-                       var Data = {
+                {
+                    Label: Core.Language.Translate('Cancel'),
+                    Type: 'Secondary',
+                    Function: function () {
+                        Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
+                    }
+                },
+                {
+                    Label: Core.Language.Translate('Clear'),
+                    Type: 'Warning',
+                    Function: function () {
+                        var Data = {
                             Action: 'AdminGenericInterfaceDebugger',
                             Subaction: 'ClearDebugLog',
                             WebserviceID: TargetNS.WebserviceID
@@ -252,10 +252,10 @@ Core.Agent.Admin.GenericInterfaceDebugger = (function (TargetNS) {
 
                         }, 'json');
 
-                       Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
-                   }
-               }
-           ]
+                        Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
+                    }
+                }
+            ]
         );
 
         Event.stopPropagation();

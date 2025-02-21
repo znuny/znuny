@@ -54,7 +54,7 @@ Core.Customer.TicketMessage = (function (TargetNS) {
         });
     };
 
-   /**
+    /**
      * @private
      * @name FieldUpdate
      * @memberof Core.Customer.TicketMessage.Init

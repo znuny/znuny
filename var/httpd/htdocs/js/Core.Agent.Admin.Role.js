@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special function for AdminRole module.
  */
- Core.Agent.Admin.Role = (function (TargetNS) {
+Core.Agent.Admin.Role = (function (TargetNS) {
 
     /*
     * @name Init

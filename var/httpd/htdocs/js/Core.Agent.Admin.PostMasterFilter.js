@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special function for PostMasterFilter module.
  */
- Core.Agent.Admin.PostMasterFilter = (function (TargetNS) {
+Core.Agent.Admin.PostMasterFilter = (function (TargetNS) {
 
     /*
     * @name Init
@@ -93,9 +93,9 @@ Core.Agent.Admin = Core.Agent.Admin || {};
                                 Core.Config.Get('Baselink'),
                                 $PostMasterFilterDelete.data('query-string'),
                                 function() {
-                                   Core.App.InternalRedirect({
-                                       Action: 'AdminPostMasterFilter'
-                                   });
+                                    Core.App.InternalRedirect({
+                                        Action: 'AdminPostMasterFilter'
+                                    });
                                 }
                             );
                         }

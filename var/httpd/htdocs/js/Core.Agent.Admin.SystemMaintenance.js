@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special function for AdminSystemMaintenance module.
  */
- Core.Agent.Admin.SystemMaintenance = (function (TargetNS) {
+Core.Agent.Admin.SystemMaintenance = (function (TargetNS) {
 
     /*
     * @name Init

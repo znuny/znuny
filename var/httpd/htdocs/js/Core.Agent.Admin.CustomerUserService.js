@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special module function for CustomerUserService selection.
  */
- Core.Agent.Admin.CustomerUserService = (function (TargetNS) {
+Core.Agent.Admin.CustomerUserService = (function (TargetNS) {
 
     /*
     * @name Init

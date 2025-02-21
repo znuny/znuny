@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special module function for Attachment module.
  */
- Core.Agent.Admin.Attachment = (function (TargetNS) {
+Core.Agent.Admin.Attachment = (function (TargetNS) {
 
     /**
      * @name Init
@@ -96,4 +96,4 @@ Core.Agent.Admin = Core.Agent.Admin || {};
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');
 
     return TargetNS;
- }(Core.Agent.Admin.Attachment || {}));
+}(Core.Agent.Admin.Attachment || {}));

@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special function for AdminSLA module.
  */
- Core.Agent.Admin.SLA = (function (TargetNS) {
+Core.Agent.Admin.SLA = (function (TargetNS) {
 
     /*
     * @name Init

@@ -492,7 +492,7 @@ Core.Agent.Search = (function (TargetNS) {
                             CheckSearchStringsForStopWords(function () {
                                 $('#SearchForm').submit();
                                 return false;
-                           });
+                            });
                         }
                     }
                     else { // Print and CSV should open in a new window, no waiting dialog

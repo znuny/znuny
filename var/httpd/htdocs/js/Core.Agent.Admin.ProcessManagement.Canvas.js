@@ -127,23 +127,23 @@ Core.Agent.Admin.ProcessManagement.Canvas = (function (TargetNS) {
             'Center',
             true,
             [
-               {
-                   Label:Core.Language.Translate('Cancel'),
-                   Type: 'Secondary',
-                   Function: function () {
-                       Core.UI.Dialog.CloseDialog($('.Dialog'));
-                   }
-               },
-               {
-                   Label: Core.Language.Translate('Delete'),
-                   Type: 'Warning',
-                   Function: function () {
-                       if (typeof Callback !== 'undefined') {
-                           Callback();
-                       }
-                   }
-               }
-           ]
+                {
+                    Label:Core.Language.Translate('Cancel'),
+                    Type: 'Secondary',
+                    Function: function () {
+                        Core.UI.Dialog.CloseDialog($('.Dialog'));
+                    }
+                },
+                {
+                    Label: Core.Language.Translate('Delete'),
+                    Type: 'Warning',
+                    Function: function () {
+                        if (typeof Callback !== 'undefined') {
+                            Callback();
+                        }
+                    }
+                }
+            ]
         );
     }
 
@@ -1198,8 +1198,8 @@ Core.Agent.Admin.ProcessManagement.Canvas = (function (TargetNS) {
 
         // init event to save transition ID, because information is lost while re-connecting connections
         jsPlumb.bind('beforeDrop', function(Data) {
-           TargetNS.LatestConnectionTransitionID = Data.connection.getParameter('TransitionID');
-           return true;
+            TargetNS.LatestConnectionTransitionID = Data.connection.getParameter('TransitionID');
+            return true;
         });
 
         TargetNS.DrawDiagram();

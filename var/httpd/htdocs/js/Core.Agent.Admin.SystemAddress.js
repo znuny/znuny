@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special function for AdminSystemAddress module.
  */
- Core.Agent.Admin.SystemAddress = (function (TargetNS) {
+Core.Agent.Admin.SystemAddress = (function (TargetNS) {
 
     /*
     * @name Init

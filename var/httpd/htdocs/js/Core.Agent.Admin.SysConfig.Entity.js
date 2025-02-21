@@ -21,7 +21,7 @@ Core.Agent.Admin.SysConfig = Core.Agent.Admin.SysConfig || {};
  * @description
  *      This namespace contains the special module function for admin Entity (Queue, Priority, State, etc... ) screens.
  */
- Core.Agent.Admin.SysConfig.Entity = (function (TargetNS) {
+Core.Agent.Admin.SysConfig.Entity = (function (TargetNS) {
 
     /*
     * @name Init

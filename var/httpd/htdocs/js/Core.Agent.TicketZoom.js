@@ -469,7 +469,7 @@ Core.Agent.TicketZoom = (function (TargetNS) {
      * @description
      *      This function initializes calendar events for article.
      */
-     function InitCalendarEvents() {
+    function InitCalendarEvents() {
         var $FieldContainer,
             OverlayTitle,
             OverlayHTML;
@@ -512,7 +512,7 @@ Core.Agent.TicketZoom = (function (TargetNS) {
      * @description
      *      This function initializes events for process widget.
      */
-     function InitProcessWidget() {
+    function InitProcessWidget() {
         var WidgetWidth, FieldsPerRow, FieldMargin, FieldWidth;
 
         if ($('.DynamicFieldAutoResize').length > 0) {

@@ -35,7 +35,7 @@ Core.Agent.LinkObject = (function (TargetNS) {
                 $TriggerObj = $(this);
 
             if (!window.confirm(Core.Language.Translate('Do you really want to delete this link?'))) {
-               return false;
+                return false;
             }
 
             Data = {

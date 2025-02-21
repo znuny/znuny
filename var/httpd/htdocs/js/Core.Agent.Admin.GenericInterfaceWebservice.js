@@ -133,15 +133,15 @@ Core.Agent.Admin.GenericInterfaceWebservice = (function (TargetNS) {
                             $Widget.removeClass('Loading');
 
                             $Widget.find('h2')
-                                   .before('<i class="fa fa-check"></i>')
-                                   .prev('.fa-check')
-                                   .hide()
-                                   .css('float', 'right')
-                                   .css('margin-right', '5px')
-                                   .css('margin-top', '3px')
-                                   .css('color', '#666666')
-                                   .delay(200)
-                                   .fadeIn(function() {
+                                    .before('<i class="fa fa-check"></i>')
+                                    .prev('.fa-check')
+                                    .hide()
+                                    .css('float', 'right')
+                                    .css('margin-right', '5px')
+                                    .css('margin-top', '3px')
+                                    .css('color', '#666666')
+                                    .delay(200)
+                                    .fadeIn(function() {
                                 $(this).delay(1500).fadeOut();
                             });
                         }
@@ -180,36 +180,35 @@ Core.Agent.Admin.GenericInterfaceWebservice = (function (TargetNS) {
             true,
             [
                 {
-                     Label: Core.Language.Translate('Cancel'),
-                     Type: 'Secondary',
-                     Function: function () {
-                         Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
-                     }
+                    Label: Core.Language.Translate('Cancel'),
+                    Type: 'Secondary',
+                    Function: function () {
+                        Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
+                    }
                 },
 
                 {
-                     Label: Core.Language.Translate('Delete'),
-                     Type: 'Warning',
-                     Function: function () {
-                         var Data = {
-                             Action: 'AdminGenericInterfaceWebservice',
-                             Subaction: 'Delete',
-                             WebserviceID: TargetNS.WebserviceID
-                         };
+                    Label: Core.Language.Translate('Delete'),
+                    Type: 'Warning',
+                    Function: function () {
+                        var Data = {
+                            Action: 'AdminGenericInterfaceWebservice',
+                            Subaction: 'Delete',
+                            WebserviceID: TargetNS.WebserviceID
+                        };
 
-                         Core.AJAX.FunctionCall(Core.Config.Get('CGIHandle'), Data, function (Response) {
-                             if (!Response || !Response.Success) {
-                                 alert(Core.Language.Translate('An error occurred during communication.'));
-                                 return;
-                             }
+                        Core.AJAX.FunctionCall(Core.Config.Get('CGIHandle'), Data, function (Response) {
+                            if (!Response || !Response.Success) {
+                                alert(Core.Language.Translate('An error occurred during communication.'));
+                                return;
+                            }
 
-                             Core.App.InternalRedirect({
-                                 Action: Data.Action,
-                                 DeletedWebservice: Response.DeletedWebservice
-                             });
-                         }, 'json');
-
-                     }
+                            Core.App.InternalRedirect({
+                                Action: Data.Action,
+                                DeletedWebservice: Response.DeletedWebservice
+                            });
+                        }, 'json');
+                    }
                 }
             ]
         );
@@ -374,17 +373,17 @@ Core.Agent.Admin.GenericInterfaceWebservice = (function (TargetNS) {
             'Center',
             true,
             [
-               {
-                   Label: Core.Language.Translate('Cancel'),
-                   Type: 'Secondary',
-                   Function: function () {
-                       Core.UI.Dialog.CloseDialog($('#Delete' + ActionType + 'Dialog'));
-                   }
-               },
-               {
-                   Label: Core.Language.Translate('Delete'),
-                   Function: function () {
-                       var Data = {
+                {
+                    Label: Core.Language.Translate('Cancel'),
+                    Type: 'Secondary',
+                    Function: function () {
+                        Core.UI.Dialog.CloseDialog($('#Delete' + ActionType + 'Dialog'));
+                    }
+                },
+                {
+                    Label: Core.Language.Translate('Delete'),
+                    Function: function () {
+                        var Data = {
                             Action: 'AdminGenericInterfaceWebservice',
                             Subaction: 'DeleteAction',
                             WebserviceID: TargetNS.WebserviceID,
@@ -405,10 +404,10 @@ Core.Agent.Admin.GenericInterfaceWebservice = (function (TargetNS) {
 
                         }, 'json');
 
-                       Core.UI.Dialog.CloseDialog($('#Delete' + ActionType + 'Dialog'));
-                   }
-               }
-           ]
+                        Core.UI.Dialog.CloseDialog($('#Delete' + ActionType + 'Dialog'));
+                    }
+                }
+            ]
         );
 
         Event.stopPropagation();

@@ -19,7 +19,7 @@ Core.Agent = Core.Agent || {};
  * @description
  *      This namespace contains the special module function for initialize autocomplete.
  */
- Core.Agent.CustomerSearchAutoComplete = (function (TargetNS) {
+Core.Agent.CustomerSearchAutoComplete = (function (TargetNS) {
 
     /**
      * @name Init
@@ -37,4 +37,4 @@ Core.Agent = Core.Agent || {};
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');
 
     return TargetNS;
- }(Core.Agent.CustomerSearchAutoComplete || {}));
+}(Core.Agent.CustomerSearchAutoComplete || {}));

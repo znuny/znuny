@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special function for AdminSignature module.
  */
- Core.Agent.Admin.Signature = (function (TargetNS) {
+Core.Agent.Admin.Signature = (function (TargetNS) {
 
     /*
     * @name Init

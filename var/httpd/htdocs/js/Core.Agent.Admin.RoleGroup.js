@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special module function for RoleGroup selection.
  */
- Core.Agent.Admin.RoleGroup = (function (TargetNS) {
+Core.Agent.Admin.RoleGroup = (function (TargetNS) {
 
     /*
     * @name Init

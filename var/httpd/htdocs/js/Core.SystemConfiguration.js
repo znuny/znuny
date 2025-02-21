@@ -20,7 +20,7 @@ var Core = Core || {};
  * @description
  *      This namespace contains the special functions for SystemConfiguration module.
  */
- Core.SystemConfiguration = (function (TargetNS) {
+Core.SystemConfiguration = (function (TargetNS) {
 
     var ValueTypes = new Array();
 

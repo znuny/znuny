@@ -35,7 +35,7 @@ Znuny.Agent.MentionAction = (function (TargetNS) {
                     }
                 )
             });
-       });
+        });
     };
 
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');

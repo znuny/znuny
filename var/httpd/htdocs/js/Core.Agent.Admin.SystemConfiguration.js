@@ -22,25 +22,25 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special function for AdminSystemConfiguration module.
  */
- Core.Agent.Admin.SystemConfiguration = (function (TargetNS) {
+Core.Agent.Admin.SystemConfiguration = (function (TargetNS) {
 
-     /**
-      * @name OpenSearchDialog
-      * @memberof Core.Agent.Admin.SystemConfiguration
-      * @function
-      * @description
-      *      This function open the search dialog after clicking on "search" button in nav bar.
-      */
-     TargetNS.OpenSearchDialog = function () {
+    /**
+     * @name OpenSearchDialog
+     * @memberof Core.Agent.Admin.SystemConfiguration
+     * @function
+     * @description
+     *      This function open the search dialog after clicking on "search" button in nav bar.
+     */
+    TargetNS.OpenSearchDialog = function () {
 
-         var Data = {
-             Action    : 'AdminSystemConfiguration',
-             Subaction : 'SearchDialog',
-             Term      : $('#SystemConfigurationEditSearch').data('term'),
-             Category  : $('#SystemConfigurationEditSearch').data('category')
-         };
+        var Data = {
+            Action    : 'AdminSystemConfiguration',
+            Subaction : 'SearchDialog',
+            Term      : $('#SystemConfigurationEditSearch').data('term'),
+            Category  : $('#SystemConfigurationEditSearch').data('category')
+        };
 
-         Core.UI.Dialog.ShowContentDialog('<div class="Spacing Center"><span class="AJAXLoader" title="' + Core.Language.Translate('Loading...') + '"></span></div>', Core.Language.Translate('Loading...'), '10px', 'Center', true);
+        Core.UI.Dialog.ShowContentDialog('<div class="Spacing Center"><span class="AJAXLoader" title="' + Core.Language.Translate('Loading...') + '"></span></div>', Core.Language.Translate('Loading...'), '10px', 'Center', true);
 
         Core.AJAX.FunctionCall(
             Core.Config.Get('CGIHandle'),
@@ -85,14 +85,14 @@ Core.Agent.Admin = Core.Agent.Admin || {};
         );
     };
 
-     /**
-     * @public
-     * @name InitDialogDeployment
-     * @memberof Core.Agent.Admin.SystemConfiguration
-     * @function
-     * @description
-     *      This function initializes Deployment Dialog
-     */
+    /**
+    * @public
+    * @name InitDialogDeployment
+    * @memberof Core.Agent.Admin.SystemConfiguration
+    * @function
+    * @description
+    *      This function initializes Deployment Dialog
+    */
     TargetNS.InitDialogDeployment = function() {
 
         function DeploymentLock() {

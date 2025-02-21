@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special module functions for MailAccount module.
  */
- Core.Agent.Admin.MailAccount = (function (TargetNS) {
+Core.Agent.Admin.MailAccount = (function (TargetNS) {
 
     /**
      * @name MailAccountDelete
@@ -58,9 +58,9 @@ Core.Agent.Admin = Core.Agent.Admin || {};
                                 Core.Config.Get('Baselink'),
                                 MailAccountDelete.data('query-string'),
                                 function() {
-                                   Core.App.InternalRedirect({
-                                       Action: 'AdminMailAccount'
-                                   });
+                                    Core.App.InternalRedirect({
+                                        Action: 'AdminMailAccount'
+                                    });
                                 }
                             );
                         }

@@ -435,10 +435,10 @@ Core.Agent.CustomerSearch = (function (TargetNS) {
             // Hide tooltip in autocomplete field, if user already typed something to prevent the autocomplete list
             // to be hidden under the tooltip. (Only needed for serverside errors)
             $Element.off('keyup.Validate').on('keyup.Validate', function () {
-               var Value = $Element.val();
-               if ($Element.hasClass('ServerError') && Value.length) {
-                   $('#OTRS_UI_Tooltips_ErrorTooltip').hide();
-               }
+                var Value = $Element.val();
+                if ($Element.hasClass('ServerError') && Value.length) {
+                    $('#OTRS_UI_Tooltips_ErrorTooltip').hide();
+                }
             });
 
             Core.App.Subscribe('Event.CustomerUserAddressBook.AddTicketCustomer.Callback.' + $Element.attr('id'), function(UserLogin, CustomerTicketText) {

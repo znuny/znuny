@@ -245,7 +245,7 @@ Core.Agent.TicketBulk = (function (TargetNS) {
                 // move current checkboxUsed to the <for="DynamicField_DynamicFieldName"> tag
                 $('#' + DynamicFieldName + 'Used').prependTo(
                     $("[for='" + DynamicFieldName + UsedSuffix + "']")
-               );
+                );
             }
             else {
                 // insert a new checkbox with id=DynamicFieldNameUsed to label

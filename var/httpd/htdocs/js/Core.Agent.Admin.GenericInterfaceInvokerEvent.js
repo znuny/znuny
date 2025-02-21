@@ -123,7 +123,7 @@ Core.Agent.Admin.GenericInterfaceInvokerEvent= (function (TargetNS) {
      *      This function shows a confirmation dialog with 2 buttons.
      */
     TargetNS.GetConditionConfig = function ($Conditions) {
-         var Conditions = {},
+        var Conditions = {},
             ConditionKey;
 
         if (!$Conditions.length) {

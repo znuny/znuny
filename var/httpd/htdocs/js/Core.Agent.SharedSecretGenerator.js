@@ -49,7 +49,7 @@ Core.Agent.SharedSecretGenerator = (function (TargetNS) {
             }
 
             $("#UserGoogleAuthenticatorSecretKey").val(sharedSecret);
-       });
+        });
     }
 
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');

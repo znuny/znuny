@@ -19,7 +19,7 @@ Core.Agent = Core.Agent || {};
  * @description
  *      This namespace contains the special module functions for AgentTicketBounce functionality.
  */
- Core.Agent.TicketBounce = (function (TargetNS) {
+Core.Agent.TicketBounce = (function (TargetNS) {
 
     /**
      * @name Init
@@ -63,4 +63,4 @@ Core.Agent = Core.Agent || {};
     Core.Init.RegisterNamespace(TargetNS, 'APP_MODULE');
 
     return TargetNS;
- }(Core.Agent.TicketBounce || {}));
+}(Core.Agent.TicketBounce || {}));

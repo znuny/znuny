@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special function for AdminPackageManager module.
  */
- Core.Agent.Admin.PackageManager = (function (TargetNS) {
+Core.Agent.Admin.PackageManager = (function (TargetNS) {
 
     var StatusNotificationText = Core.Language.Translate('There is a package upgrade process running, click here to see status information about the upgrade progress.'),
         FinisedNotificationText = Core.Language.Translate('A package upgrade was recently finished. Click here to see the results.');
@@ -33,9 +33,9 @@ Core.Agent.Admin = Core.Agent.Admin || {};
       *      This function queries the status of the package upgrade process (via AJAX request) from the system data table.
       */
     TargetNS.GetPackageUpgradeResult = function() {
-         var Data = {
-             Action    : 'AdminPackageManager',
-             Subaction : 'AJAXGetPackageUpgradeResult',
+        var Data = {
+            Action    : 'AdminPackageManager',
+            Subaction : 'AJAXGetPackageUpgradeResult',
         },
         DialogTemplate;
 
@@ -97,9 +97,9 @@ Core.Agent.Admin = Core.Agent.Admin || {};
                 }
             }, 'json'
         );
-     };
+    };
 
-     /**
+    /**
       * @name PackageUpgradeAll
       * @memberof Core.Agent.Admin.PackageManager
       * @function
@@ -107,9 +107,9 @@ Core.Agent.Admin = Core.Agent.Admin || {};
       *      This function creates a daemon task (via AJAX call) to upgrade all installed packages.
       */
     TargetNS.PackageUpgradeAll = function() {
-         var Data = {
-             Action    : 'AdminPackageManager',
-             Subaction : 'AJAXPackageUpgradeAll',
+        var Data = {
+            Action    : 'AdminPackageManager',
+            Subaction : 'AJAXPackageUpgradeAll',
         };
 
         Core.AJAX.FunctionCall(
@@ -128,9 +128,9 @@ Core.Agent.Admin = Core.Agent.Admin || {};
                 TargetNS.GetPackageUpgradeRunStatus();
             }, 'json'
         );
-     };
+    };
 
-     /**
+    /**
       * @name DisablePackageActions
       * @memberof Core.Agent.Admin.PackageManager
       * @function
@@ -148,9 +148,9 @@ Core.Agent.Admin = Core.Agent.Admin || {};
             Event.preventDefault();
             return false;
         });
-     };
+    };
 
-     /**
+    /**
       * @name EnablePackageActions
       * @memberof Core.Agent.Admin.PackageManager
       * @function
@@ -178,7 +178,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
         });
     };
 
-     /**
+    /**
       * @name GetPackageUpgradeRunStatus
       * @memberof Core.Agent.Admin.PackageManager
       * @function
@@ -187,9 +187,9 @@ Core.Agent.Admin = Core.Agent.Admin || {};
       *         depending on the results it also enable/disable package actions and show/hide notifications.
       */
     TargetNS.GetPackageUpgradeRunStatus = function() {
-         var Data = {
-             Action    : 'AdminPackageManager',
-             Subaction : 'AJAXGetPackageUpgradeRunStatus',
+        var Data = {
+            Action    : 'AdminPackageManager',
+            Subaction : 'AJAXGetPackageUpgradeRunStatus',
         },
         NotificationType;
 
@@ -261,7 +261,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
                 }
             }, 'json'
         );
-     };
+    };
 
     /**
     * @name Init

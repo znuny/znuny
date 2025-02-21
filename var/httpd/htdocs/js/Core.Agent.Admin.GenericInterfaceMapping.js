@@ -315,22 +315,22 @@ Core.Agent.Admin.GenericInterfaceMapping = (function (TargetNS) {
             'Center',
             true,
             [
-               {
-                   Label: Core.Language.Translate('Cancel'),
-                   Type: 'Secondary',
-                   Function: function () {
-                       Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
-                   }
-               },
-               {
-                   Label: Core.Language.Translate('Delete'),
-                   Type: 'Warning',
-                   Function: function () {
-                       $('#' + IDSelector).closest('.WidgetKey').remove();
-                       Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
-                   }
-               },
-           ]
+                {
+                    Label: Core.Language.Translate('Cancel'),
+                    Type: 'Secondary',
+                    Function: function () {
+                        Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
+                    }
+                },
+                {
+                    Label: Core.Language.Translate('Delete'),
+                    Type: 'Warning',
+                    Function: function () {
+                        $('#' + IDSelector).closest('.WidgetKey').remove();
+                        Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
+                    }
+                },
+            ]
         );
     };
 

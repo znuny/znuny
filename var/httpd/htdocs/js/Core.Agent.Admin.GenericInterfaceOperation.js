@@ -67,18 +67,18 @@ Core.Agent.Admin.GenericInterfaceOperation = (function (TargetNS) {
             'Center',
             true,
             [
-               {
-                   Label: Core.Language.Translate('Cancel'),
-                   Type: 'Secondary',
-                   Function: function () {
-                       Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
-                   }
-               },
-               {
-                   Label: Core.Language.Translate('Delete'),
-                   Type: 'Warning',
-                   Function: function () {
-                       var Data = {
+                {
+                    Label: Core.Language.Translate('Cancel'),
+                    Type: 'Secondary',
+                    Function: function () {
+                        Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
+                    }
+                },
+                {
+                    Label: Core.Language.Translate('Delete'),
+                    Type: 'Warning',
+                    Function: function () {
+                        var Data = {
                             Action: TargetNS.Action,
                             Subaction: 'DeleteAction',
                             WebserviceID: TargetNS.WebserviceID,
@@ -99,10 +99,10 @@ Core.Agent.Admin.GenericInterfaceOperation = (function (TargetNS) {
 
                         }, 'json');
 
-                       Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
-                   }
-               }
-           ]
+                        Core.UI.Dialog.CloseDialog($('#DeleteDialog'));
+                    }
+                }
+            ]
         );
 
         Event.stopPropagation();

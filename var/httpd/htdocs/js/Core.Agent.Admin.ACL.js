@@ -74,43 +74,43 @@ Core.Agent.Admin.ACL = (function (TargetNS) {
             'Center',
             true,
             [
-               {
-                   Label: Core.Language.Translate('Cancel'),
-                   Type: 'Secondary',
-                   Function: function () {
-                       Core.UI.Dialog.CloseDialog($('.Dialog'));
-                   }
-               },
-               {
-                   Label: Core.Language.Translate('Delete'),
-                   Type: 'Warning',
-                   Function: function () {
-                       var Data = {
-                               Action: 'AdminACL',
-                               Subaction: 'ACLDelete',
-                               ID: ACLID
-                           };
+                {
+                    Label: Core.Language.Translate('Cancel'),
+                    Type: 'Secondary',
+                    Function: function () {
+                        Core.UI.Dialog.CloseDialog($('.Dialog'));
+                    }
+                },
+                {
+                    Label: Core.Language.Translate('Delete'),
+                    Type: 'Warning',
+                    Function: function () {
+                        var Data = {
+                                Action: 'AdminACL',
+                                Subaction: 'ACLDelete',
+                                ID: ACLID
+                            };
 
                        // Change the dialog to an ajax loader
-                       $('.Dialog')
-                           .find('.ContentFooter').empty().end()
-                           .find('.InnerContent').empty().append('<div class="Spacing Center"><span class="AJAXLoader"></span></div>');
+                        $('.Dialog')
+                            .find('.ContentFooter').empty().end()
+                            .find('.InnerContent').empty().append('<div class="Spacing Center"><span class="AJAXLoader"></span></div>');
 
                        // Call the ajax function
-                       Core.AJAX.FunctionCall(Core.Config.Get('CGIHandle'), Data, function (Response) {
-                           if (!Response || !Response.Success) {
-                               alert(Response.Message);
-                               Core.UI.Dialog.CloseDialog($('.Dialog'));
-                               return;
-                           }
+                        Core.AJAX.FunctionCall(Core.Config.Get('CGIHandle'), Data, function (Response) {
+                            if (!Response || !Response.Success) {
+                                alert(Response.Message);
+                                Core.UI.Dialog.CloseDialog($('.Dialog'));
+                                return;
+                            }
 
-                           Core.App.InternalRedirect({
-                               Action: Data.Action
-                           });
-                       }, 'json');
-                   }
-               }
-           ]
+                            Core.App.InternalRedirect({
+                                Action: Data.Action
+                            });
+                        }, 'json');
+                    }
+                }
+            ]
         );
     }
 

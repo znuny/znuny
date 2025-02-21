@@ -120,7 +120,7 @@ Core.UI.Autocomplete = (function (TargetNS) {
             .data('item.autocomplete', item)
             .append('<a href="#">' + Label + '</a>')
             .appendTo(ul);
-     };
+    };
 
     /**
      * @name GetConfig

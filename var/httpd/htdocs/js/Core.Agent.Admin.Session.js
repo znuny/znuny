@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special function for AdminSession module.
  */
- Core.Agent.Admin.Session = (function (TargetNS) {
+Core.Agent.Admin.Session = (function (TargetNS) {
 
     /*
     * @name Init

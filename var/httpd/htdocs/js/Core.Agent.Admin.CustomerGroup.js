@@ -20,7 +20,7 @@ Core.Agent.Admin = Core.Agent.Admin || {};
  * @description
  *      This namespace contains the special module function for CustomerGroup selection.
  */
- Core.Agent.Admin.CustomerGroup = (function (TargetNS) {
+Core.Agent.Admin.CustomerGroup = (function (TargetNS) {
 
     /*
     * @name Init

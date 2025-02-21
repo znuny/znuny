@@ -236,7 +236,7 @@ Core.UI.ActionRow = (function (TargetNS) {
                             ]);
                         }
                         else {
-                          Core.UI.Popup.OpenPopup(URL, 'TicketAction');
+                            Core.UI.Popup.OpenPopup(URL, 'TicketAction');
                         }
                     }
                 );

@@ -202,7 +202,7 @@ Core.Agent.Statistics = (function (TargetNS) {
             return false;
         });
 
-       $('.SwitchPreviewFormat').on('click', function() {
+        $('.SwitchPreviewFormat').on('click', function() {
             var Format = $(this).data('format'),
                 FormatCleaned = Format.replace('::', ''),
                 StatsPreviewResult;

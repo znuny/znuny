@@ -302,7 +302,7 @@ Znuny.DynamicField.Webservice = (function (TargetNS) {
 
             // cast to strings
             SetSelected = jQuery.map(SetSelected, function(Element) {
-              return Element.toString();
+                return Element.toString();
             });
 
             $InputField.find('option').filter(function() {
