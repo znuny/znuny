@@ -1,4 +1,5 @@
 # 7.1.7 2025-xx-xx
+ - 2025-02-21 Fixed Core.UI.js bugs - AttachmentExist is only generated for one upload field. However, it should be generated for all of them. In addition, the UploadField is not selected correctly.
  - 2025-02-21 Fixed broken documentation link in ACL Edit Screen and changed text of hint.
 
 # 7.1.6 2025-02-19

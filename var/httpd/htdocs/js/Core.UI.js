@@ -522,6 +522,7 @@ Core.UI = (function (TargetNS) {
 
             var $ContainerObj = $DropObj.closest('.Field'),
                 $FileuploadFieldObj = $ContainerObj.find('.AjaxDnDUpload'),
+                FieldID = $FileuploadFieldObj.attr('id'),
                 FormID = $FileuploadFieldObj.data('form-id') ? $FileuploadFieldObj.data('form-id') : $DropObj.closest('form').find('input[name=FormID]').val(),
                 ChallengeToken = $DropObj.closest('form').find('input[name=ChallengeToken]').val(),
                 IsMultiple = ($FileuploadFieldObj.attr('multiple') == 'multiple'),
@@ -744,8 +745,9 @@ Core.UI = (function (TargetNS) {
                             }
 
                             // Append input field for validation (see bug#13081).
-                            if (!$('#AttachmentExists').length) {
-                                $('.AttachmentListContainer').append('<input type="hidden" id="AttachmentExists" name="AttachmentExists" value="1" />');
+                            // Add the FieldID to the input field value to make it easier to identify the upload field, which gets a new file.
+                            if (!$ContainerObj.find('.AttachmentListContainer').find('#AttachmentExists').length) {
+                                $ContainerObj.find('.AttachmentListContainer').append('<input type="hidden" id="AttachmentExists" name="AttachmentExists" value="' + FieldID + '" />');
                             }
                         });
 
@@ -755,7 +757,6 @@ Core.UI = (function (TargetNS) {
                         $DropObj.removeClass('Uploading');
                     },
                     error: function() {
-                        // TODO: show an error tooltip?
                         $DropObj.removeClass('Uploading');
                     }
                 });
@@ -836,7 +837,7 @@ Core.UI = (function (TargetNS) {
 
             var $TriggerObj = $(this),
                 $AttachmentListContainerObj = $TriggerObj.closest('.AttachmentListContainer'),
-                $UploadFieldObj = $AttachmentListContainerObj.next('.AjaxDnDUpload'),
+                $UploadFieldObj = $AttachmentListContainerObj.nextAll('.AjaxDnDUpload'),
                 FormID = $UploadFieldObj.data('form-id') ? $UploadFieldObj.data('form-id') : $(this).closest('form').find('input[name=FormID]').val(),
                 Data = {
                     Action: $(this).data('delete-action') ? $(this).data('delete-action') : 'AjaxAttachment',
