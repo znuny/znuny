@@ -245,43 +245,83 @@ sub PerlInfoGet {
             parent
             Algorithm::Diff
             Apache::DBI
+            Apache2::Reload
             CGI
+            CGI::Emulate::PSGI
+            CGI::Fast
+            Class::Accessor
+            Class::Accessor::Chained
+            Class::Accessor::Lite
             Class::Inspector
+            Class::ReturnValue
+            CPAN::Audit
+            CPAN::DistnameInfo
             Crypt::PasswdMD5
             Crypt::Random::Source
             CSS::Minifier
+            Data::ICal
+            Date::ICal
+            Date::Leapyear
+            Devel::StackTrace
             Email::Valid
             Encode::Locale
+            Excel::Writer::XLSX
             Exporter::Tiny
+            File::Slurp
+            File::Slurp::Tiny
+            Font::TTF
+            HTML::Parser
+            HTML::Tagset
+            HTTP::Date
+            HTTP::Message
             IO::Interactive
+            IO::String
             JavaScript::Minifier
             JSON
             JSON::PP
+            Lingua::Translit
             Linux::Distribution
             Locale::Codes
             LWP
+            LWP::Protocol::GHTTP
+            LWP::Protocol::https
             Mail::Address
             Mail::Internet
             Math::Random::ISAAC
             Math::Random::Secure
             MIME::Tools
+            Module::CoreList
+            Module::CPANfile
             Module::Find
+            Module::Load
             Module::Refresh
-            Moo
             Mozilla::CA
-            Net::IMAP::Simple
             Net::HTTP
+            Net::IMAP::Simple
             Net::SSLGlue
             PDF::API2
+            Pod::Strip
+            REST::Client
+            Schedule::Cron::Events
+            Selenium::Remote::Driver
+            Set::Crontab
             Sisimai
             SOAP::Lite
+            String::Diff
             Sys::Hostname::Long
             Text::CSV
             Text::Diff
+            Text::Diff::FormattedHTML
+            Text::Diff::HTML
+            Text::vFile::asData
             Types::TypeTiny
-            YAML
             URI
-            namespace::clean
+            XML::FeedPP
+            XML::LibXML::Simple
+            XML::Parser::Lite
+            XML::Simple
+            XML::TreePP
+            YAML
             )
             )
         {
