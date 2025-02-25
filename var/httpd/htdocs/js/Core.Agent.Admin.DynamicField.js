@@ -212,9 +212,6 @@ Core.Agent.Admin.DynamicField = (function (TargetNS) {
         TargetNS.ShowContextSettingsDialog();
         TargetNS.DynamicFieldDelete();
 
-        // Initialize dynamic field filter
-        Core.UI.Table.InitTableFilter($('#FilterDynamicFields'), $('#DynamicFieldsTable'));
-
         Core.Config.Set('EntityType', 'DynamicField');
 
     };
