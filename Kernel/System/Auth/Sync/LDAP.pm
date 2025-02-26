@@ -8,6 +8,8 @@
 # --
 
 package Kernel::System::Auth::Sync::LDAP;
+## nofilter(TidyAll::Plugin::Znuny::Perl::PerlCritic)
+## nofilter(TidyAll::Plugin::Znuny::Perl::SyntaxCheck)
 
 use strict;
 use warnings;
@@ -15,6 +17,8 @@ use warnings;
 use Net::LDAP;
 use Net::LDAP::Util qw(escape_filter_value);
 use URI;
+use Net::LDAP::Control::Paged;
+use Net::LDAP::Constant qw(LDAP_CONTROL_PAGED);
 
 our @ObjectDependencies = (
     'Kernel::Config',
@@ -22,6 +26,7 @@ our @ObjectDependencies = (
     'Kernel::System::Group',
     'Kernel::System::Log',
     'Kernel::System::User',
+    'Kernel::System::Valid',
 );
 
 sub new {
@@ -78,6 +83,8 @@ sub new {
 
     # ldap filter always used
     $Self->{AlwaysFilter} = $ConfigObject->Get( 'AuthSyncModule::LDAP::AlwaysFilter' . $Param{Count} ) || '';
+    $Self->{AlwaysFilterReturnsOnlyValidUsers}
+        = $ConfigObject->Get( 'AuthSyncModule::LDAP::AlwaysFilterReturnsOnlyValidUsers' . $Param{Count} ) || '';
 
     # Net::LDAP new params
     if ( $ConfigObject->Get( 'AuthSyncModule::LDAP::Params' . $Param{Count} ) ) {
@@ -338,7 +345,7 @@ sub Sync {
             if ( !$UserID ) {
                 $Kernel::OM->Get('Kernel::System::Log')->Log(
                     Priority => 'error',
-                    Message  => "Can't create user '$Param{User}' ($UserDN) in RDBMS!",
+                    Message  => "Can't create user '$Param{User}' in DB from LDAP DN ${UserDN}!",
                 );
 
                 # take down session
@@ -348,7 +355,7 @@ sub Sync {
             else {
                 $Kernel::OM->Get('Kernel::System::Log')->Log(
                     Priority => 'notice',
-                    Message  => "Initial data for '$Param{User}' ($UserDN) created in RDBMS.",
+                    Message  => "Valid user '$Param{User}' created in DB from LDAP DN ${UserDN}.",
                 );
 
                 # sync initial groups
@@ -387,6 +394,12 @@ sub Sync {
         # update user attributes (only if changed)
         elsif (%SyncUser) {
 
+            if ( $Self->{AlwaysFilterReturnsOnlyValidUsers} ) {
+
+                # Force updated user to be valid on sync.
+                $SyncUser{ValidID} = 1;
+            }
+
             # get user data
             my %UserData = $UserObject->GetUserData( User => $Param{User} );
 
@@ -404,7 +417,7 @@ sub Sync {
             }
 
             if ($AttributeChange) {
-                $UserObject->UserUpdate(
+                my $Result = $UserObject->UserUpdate(
                     ValidID   => $UserData{ValidID},    # May be not present in %SyncUser and is required by UserUpdate.
                     UserID    => $UserID,
                     UserLogin => $Param{User},
@@ -412,6 +425,23 @@ sub Sync {
                     UserType     => 'User',
                     ChangeUserID => 1,
                 );
+
+                if ( !$Result ) {
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'error',
+                        Message  => "Error updating user '$Param{User}' data in DB from LDAP DN ${UserDN}!",
+                    );
+                }
+                else {
+                    my $MessageExt = '';
+                    if ( ( $SyncUser{ValidID} // $UserData{ValidID} ) != $UserData{ValidID} ) {
+                        $MessageExt = ' (ValidID changed to ' . ( $SyncUser{ValidID} // $UserData{ValidID} ) . ')';
+                    }
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'notice',
+                        Message  => "User '$Param{User}' data updated in DB from LDAP DN ${UserDN}${MessageExt}.",
+                    );
+                }
             }
         }
     }
@@ -483,15 +513,15 @@ sub Sync {
                 }
             }
 
-            # log if there is no LDAP entry
+            # Process next group if user does not belong to group.
             if ( !$Valid ) {
-
-                # failed login note
-                $Kernel::OM->Get('Kernel::System::Log')->Log(
-                    Priority => 'notice',
-                    Message  => "User: $Param{User} not in "
-                        . "GroupDN='$GroupDN', Filter='$Filter'! (REMOTE_ADDR: $RemoteAddr).",
-                );
+                if ( $Self->{Debug} > 0 ) {
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'notice',
+                        Message  => "User: $Param{User} not in "
+                            . "GroupDN='$GroupDN', Filter='$Filter'! (REMOTE_ADDR: $RemoteAddr).",
+                    );
+                }
                 next GROUPDN;
             }
 
@@ -706,15 +736,15 @@ sub Sync {
                 $Valid = $Entry->dn();
             }
 
-            # log if there is no LDAP entry
+            # Process next group if user does not belong to group.
             if ( !$Valid ) {
-
-                # failed login note
-                $Kernel::OM->Get('Kernel::System::Log')->Log(
-                    Priority => 'notice',
-                    Message  => "User: $Param{User} not in "
-                        . "GroupDN='$GroupDN', Filter='$Filter'! (REMOTE_ADDR: $RemoteAddr).",
-                );
+                if ( $Self->{Debug} > 0 ) {
+                    $Kernel::OM->Get('Kernel::System::Log')->Log(
+                        Priority => 'notice',
+                        Message  => "User: $Param{User} not in "
+                            . "GroupDN='$GroupDN', Filter='$Filter'! (REMOTE_ADDR: $RemoteAddr).",
+                    );
+                }
                 next GROUPDN;
             }
 
@@ -854,6 +884,201 @@ sub Sync {
     $LDAP->unbind();
 
     return $Param{User};
+}
+
+=head2 SyncAll()
+
+Sync all users from LDAP to DB (create if not in DB and update it already exists).
+All users in LDAP are found using BaseDN and AlwaysFilter.
+
+    my $Result = $AuthSyncBackend->SyncAll(
+        InvalidateMissing => 0, # Set to 1 to invalidate all valid users in DB that are not found in this backend.
+    );
+
+=cut
+
+sub SyncAll {
+    my ( $Self, %Param ) = @_;
+
+    my $UserObject = $Kernel::OM->Get('Kernel::System::User');
+
+    $Kernel::OM->Get('Kernel::System::Log')->Log(
+        Priority => 'notice',
+        Message  => 'Syncing all users from LDAP'
+            . ( $Param{InvalidateMissing} ? ' (with missing user invalidation)' : '' ),
+    );
+
+    # Find all valid users from DB; users found in LDAP will be removed from this list
+    # during sync and all the remaining users will be invalidated if $Param{InvalidateMissing}
+    # is enabled.
+    my %UsersToBeInvalidatedInDB;
+    if ( $Param{InvalidateMissing} ) {
+        %UsersToBeInvalidatedInDB = $UserObject->UserSearch(
+            Search => '*',
+            Valid  => 1,
+            Limit  => 0,     # Don't limit results - we need all valid users.
+        );
+
+        # Reverse hash for easy look up (UIDs as keys).
+        %UsersToBeInvalidatedInDB = reverse %UsersToBeInvalidatedInDB;
+
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'notice',
+            Message  => 'Number of valid users in DB before sync: ' . keys %UsersToBeInvalidatedInDB,
+        );
+    }
+
+    # LDAP connect and bind (with SearchUserDN and SearchUserPw if specified).
+    my $LDAP = Net::LDAP->new( $Self->{Host}, %{ $Self->{Params} } );
+    if ( !$LDAP ) {
+        if ( $Self->{Die} ) {
+            die "Can't connect to $Self->{Host}: $@";
+        }
+
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => "Can't connect to $Self->{Host}: $@",
+        );
+        return;
+    }
+    my $Result;
+    if ( $Self->{SearchUserDN} && $Self->{SearchUserPw} ) {
+        $Result = $LDAP->bind(
+            dn       => $Self->{SearchUserDN},
+            password => $Self->{SearchUserPw}
+        );
+    }
+    else {
+        $Result = $LDAP->bind();
+    }
+    if ( $Result->code() ) {
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'error',
+            Message  => 'First bind failed! ' . $Result->error(),
+        );
+        return;
+    }
+
+    # Get all users from LDAP in paging mode (every page up to 500 agents).
+
+    my $Page = Net::LDAP::Control::Paged->new( size => 500 );
+    my $Cookie;
+    my $ProcessedLDAPEntries = 0;
+
+    PAGE:
+    while (1) {
+        $Result = $LDAP->search(
+            base    => $Self->{BaseDN},
+            filter  => $Self->{AlwaysFilter},
+            attrs   => [ $Self->{UID} ],
+            control => [$Page]
+        );
+
+        if ( $Result->code() ) {
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'error',
+                Message  => 'Error on LDAP search: ' . $Result->error(),
+            );
+            return;
+        }
+
+        # Process every UID in page.
+        ENTRY:
+        while ( my $Entry = $Result->pop_entry() ) {
+
+            # Extract user UID.
+            my $UserLogin = $Entry->get_value( $Self->{UID} );
+            if ( !$UserLogin ) {
+                $Kernel::OM->Get('Kernel::System::Log')->Log(
+                    Priority => 'error',
+                    Message  => 'User login not found in LDAP response',
+                );
+                return;
+            }
+
+            # Synchronize this user from LDAP. Abort job on error.
+            return if !$Self->Sync( User => $UserLogin );
+
+            $ProcessedLDAPEntries++;
+
+            if ( $Param{InvalidateMissing} ) {
+
+                # Synchronized user is valid user so remove this UID
+                # from list of users to be invalidated if exists.
+                if ( $UsersToBeInvalidatedInDB{$UserLogin} ) {
+                    delete $UsersToBeInvalidatedInDB{$UserLogin};
+                }
+            }
+        }
+
+        # LDAP query paging stuff.
+        my ($Response) = $Result->control(LDAP_CONTROL_PAGED) or last PAGE;
+        $Cookie = $Response->cookie() or last PAGE;
+        $Page->cookie($Cookie);
+    }
+
+    # Take down LDAP session.
+    $LDAP->unbind();
+
+    $Kernel::OM->Get('Kernel::System::Log')->Log(
+        Priority => 'notice',
+        Message  => 'Number of processed valid users from LDAP: ' . $ProcessedLDAPEntries,
+    );
+
+    # Invalidate all users from DB not found in LDAP if $Param{InvalidateMissing} is enabled.
+    if ( $Param{InvalidateMissing} ) {
+
+        my $InvalidatedUsers = 0;
+
+        my $ValidID = $Kernel::OM->Get('Kernel::System::Valid')->ValidLookup(
+            Valid => 'invalid',
+        );
+
+        USERLOGIN:
+        for my $UserLogin ( sort keys %UsersToBeInvalidatedInDB ) {
+            my %User = $UserObject->GetUserData(
+                User  => $UserLogin,
+                Valid => 1,
+            );
+            if ( !%User ) {
+                $Kernel::OM->Get('Kernel::System::Log')->Log(
+                    Priority => 'error',
+                    Message  => "Cannot invalidate user ${UserLogin} (not found or invalid in DB)",
+                );
+                return;
+            }
+
+            # Make sure not to accidentially overwrite the password.
+            delete $User{UserPw};
+
+            my $Result = $UserObject->UserUpdate(
+                %User,
+                ValidID      => $ValidID,
+                ChangeUserID => 1,
+            );
+            if ( !$Result ) {
+                $Kernel::OM->Get('Kernel::System::Log')->Log(
+                    Priority => 'error',
+                    Message  => "Error invalidating user ${UserLogin}",
+                );
+                return;
+            }
+
+            $Kernel::OM->Get('Kernel::System::Log')->Log(
+                Priority => 'notice',
+                Message  => "User ${UserLogin} invalidated in DB (not found in LDAP)",
+            );
+
+            $InvalidatedUsers++;
+        }
+
+        $Kernel::OM->Get('Kernel::System::Log')->Log(
+            Priority => 'notice',
+            Message  => 'Number of users invalidated in DB: ' . $InvalidatedUsers,
+        );
+    }
+
+    return 1;
 }
 
 sub _ConvertTo {

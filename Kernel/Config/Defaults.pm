@@ -543,6 +543,10 @@ sub LoadDefaults {
     # or if you want to filter with a logical OR-Expression, like AlwaysFilter => '(|(mail=*abc.com)(mail=*xyz.com))'
 #    $Self->{'AuthSyncModule::LDAP::AlwaysFilter'} = '';
 
+    # Set to 1 if AlwaysFilter returns only valid users (deactivated user will
+    # be automatically updated to valid on sync).
+#    $Self->{'AuthSyncModule::LDAP::AlwaysFilterReturnsOnlyValidUsers'} = 1;
+
     # AuthSyncModule::LDAP::UserSyncMap
     # (map if agent should create/synced from LDAP to DB after successful login)
     # you may specify LDAP-Fields as either
