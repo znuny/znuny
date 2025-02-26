@@ -1209,28 +1209,28 @@ sub MaskAgentZoom {
 
                 # check the configured priority for this item. The lowest ClusterPriority
                 # within the same cluster wins.
-                my $Priority = $MenuClusters{ $Menus{$Menu}->{ClusterName} }->{Priority} || 0;
+                my $Priority = $MenuClusters{ $Menus{$Menu}->{ClusterName} }->{Prio} || 0;
                 $Menus{$Menu}->{ClusterPriority} ||= 0;
                 if ( !$Priority || $Priority !~ /^\d{3}$/ || $Priority > $Menus{$Menu}->{ClusterPriority} ) {
                     $Priority = $Menus{$Menu}->{ClusterPriority};
                 }
-                $MenuClusters{ $Menus{$Menu}->{ClusterName} }->{Priority} = $Priority;
+                $MenuClusters{ $Menus{$Menu}->{ClusterName} }->{Prio} = $Priority;
                 $MenuClusters{ $Menus{$Menu}->{ClusterName} }->{Items}->{$Menu} = $Item;
             }
         }
 
         for my $Cluster ( sort keys %MenuClusters ) {
-            $ZoomMenuItems{ $MenuClusters{$Cluster}->{Priority} . $Cluster } = {
+            $ZoomMenuItems{ $MenuClusters{$Cluster}->{Prio} . $Cluster } = {
                 Name  => $Cluster,
                 Type  => 'Cluster',
                 Link  => '#',
                 Class => 'ClusterLink',
                 Items => $MenuClusters{$Cluster}->{Items},
+                Prio  => $MenuClusters{$Cluster}->{Prio},
             };
         }
 
-        # display all items
-        # Check for param "Prio", the lowest Prio will be displayed first
+        # display all items, the lowest Prio will be displayed first
         for my $Item ( sort { ($ZoomMenuItems{$a}->{Prio} // 999) <=> ($ZoomMenuItems{$b}->{Prio} // 999) } keys %ZoomMenuItems ) {
             if ( $ZoomMenuItems{$Item}->{ExternalLink} && $ZoomMenuItems{$Item}->{ExternalLink} == 1 ) {
                 $LayoutObject->Block(
@@ -1254,7 +1254,7 @@ sub MaskAgentZoom {
                     },
                 );
 
-                for my $SubItem ( sort keys %{ $ZoomMenuItems{$Item}->{Items} } ) {
+                for my $SubItem ( sort { ($ZoomMenuItems{$Item}->{Items}->{$a}->{Priority} // 999) <=> ($ZoomMenuItems{$Item}->{Items}->{$b}->{Priority} // 999) } keys %{ $ZoomMenuItems{$Item}->{Items} } ) {
                     $LayoutObject->Block(
                         Name => 'TicketMenuSubContainerItem',
                         Data => $ZoomMenuItems{$Item}->{Items}->{$SubItem},
