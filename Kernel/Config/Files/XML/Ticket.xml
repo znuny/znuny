@@ -5425,6 +5425,7 @@
                 <Item Key="PopupType"></Item>
                 <Item Key="ClusterName" Translatable="1"></Item>
                 <Item Key="ClusterPriority"></Item>
+                <Item Key="Prio">000</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5440,6 +5441,7 @@
                 <Item Key="Target"></Item>
                 <Item Key="ClusterName" Translatable="1">Miscellaneous</Item>
                 <Item Key="ClusterPriority">800</Item>
+                <Item Key="Prio">100</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5457,6 +5459,7 @@
                 <Item Key="PopupType">TicketHistory</Item>
                 <Item Key="ClusterName" Translatable="1">Miscellaneous</Item>
                 <Item Key="ClusterPriority">800</Item>
+                <Item Key="Prio">200</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5475,6 +5478,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1"></Item>
                 <Item Key="ClusterPriority"></Item>
+                <Item Key="Prio">210</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5492,6 +5496,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1"></Item>
                 <Item Key="ClusterPriority"></Item>
+                <Item Key="Prio">300</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5509,6 +5514,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1">Miscellaneous</Item>
                 <Item Key="ClusterPriority">800</Item>
+                <Item Key="Prio">310</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5526,6 +5532,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1">Miscellaneous</Item>
                 <Item Key="ClusterPriority">800</Item>
+                <Item Key="Prio">320</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5543,6 +5550,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1">People</Item>
                 <Item Key="ClusterPriority">430</Item>
+                <Item Key="Prio">400</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5560,6 +5568,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1">People</Item>
                 <Item Key="ClusterPriority">430</Item>
+                <Item Key="Prio">410</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5577,6 +5586,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1">People</Item>
                 <Item Key="ClusterPriority">430</Item>
+                <Item Key="Prio">420</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5594,6 +5604,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1">Communication</Item>
                 <Item Key="ClusterPriority">435</Item>
+                <Item Key="Prio">420</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5611,6 +5622,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1">Communication</Item>
                 <Item Key="ClusterPriority">435</Item>
+                <Item Key="Prio">425</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5628,6 +5640,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1">Communication</Item>
                 <Item Key="ClusterPriority">435</Item>
+                <Item Key="Prio">426</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5645,6 +5658,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1">Communication</Item>
                 <Item Key="ClusterPriority">435</Item>
+                <Item Key="Prio">427</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5662,6 +5676,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1">Miscellaneous</Item>
                 <Item Key="ClusterPriority">800</Item>
+                <Item Key="Prio">430</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5679,6 +5694,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1"></Item>
                 <Item Key="ClusterPriority"></Item>
+                <Item Key="Prio">440</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5694,6 +5710,7 @@
                 <Item Key="Target"></Item>
                 <Item Key="ClusterName" Translatable="1"></Item>
                 <Item Key="ClusterPriority"></Item>
+                <Item Key="Prio">448</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5711,6 +5728,7 @@
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="ClusterName" Translatable="1"></Item>
                 <Item Key="ClusterPriority"></Item>
+                <Item Key="Prio">450</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5728,6 +5746,7 @@
                 <Item Key="PopupType"></Item>
                 <Item Key="ClusterName" Translatable="1"></Item>
                 <Item Key="ClusterPriority"></Item>
+                <Item Key="Prio">460</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5745,6 +5764,7 @@
                 <Item Key="PopupType"></Item>
                 <Item Key="ClusterName" Translatable="1"></Item>
                 <Item Key="ClusterPriority"></Item>
+                <Item Key="Prio">470</Item>
             </Hash>
         </Value>
     </Setting>
@@ -5763,6 +5783,7 @@
                 <Item Key="ClusterName" Translatable="1">Miscellaneous</Item>
                 <Item Key="ClusterPriority"></Item>
                 <Item Key="ExternalLink">1</Item>
+                <Item Key="Prio">500</Item>
             </Hash>
         </Value>
     </Setting>

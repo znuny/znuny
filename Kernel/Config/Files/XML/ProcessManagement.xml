@@ -469,6 +469,7 @@
                 <Item Key="Target"></Item>
                 <Item Key="PopupType">TicketAction</Item>
                 <Item Key="Cluster"></Item>
+                <Item Key="Prio">480</Item>
             </Hash>
         </Value>
     </Setting>
